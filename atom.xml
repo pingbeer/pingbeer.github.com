@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://pingbeer.github.io/atom.xml" rel="self"/>
   <link href="http://pingbeer.github.io/"/>
-  <updated>2014-01-12T23:07:08+08:00</updated>
+  <updated>2014-01-17T16:36:07+08:00</updated>
   <id>http://pingbeer.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -12,6 +12,52 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Css]]></title>
+    <link href="http://pingbeer.github.io/blog/2014/01/17/css/"/>
+    <updated>2014-01-17T16:34:11+08:00</updated>
+    <id>http://pingbeer.github.io/blog/2014/01/17/css</id>
+    <content type="html"><![CDATA[<p>CSS不同级别</p>
+
+<pre><code>在属性后面使用 !important 会覆盖页面内任何位置定义的元素样式。
+作为style属性写在元素内的样式
+id选择器
+类选择器
+标签选择器
+通配符选择器
+浏览器自定义或继承
+</code></pre>
+
+<p>&mdash;并不是所有的属性对行内元素都能够生效
+&mdash;(所以最好不要把样式写在行内标签里,大部分能改变width/height相关的一些属性可能会失效)</p>
+
+<pre><code>行内元素不会应用width属性，其长度是由内容撑开的
+行内元素不会应用height属性，其高度也是由内容撑开的，但是高度可以通过line-height调节
+行内元素的padding属性只用padding-left和padding-right生效，padding-top和padding-bottom会改变元素范围，但不会对其它元素造成影响
+行内元素的margin属性只有margin-left和margin-right有效，margin-top和margin-bottom无效
+行内元素的overflow属性无效，这个不用多说了
+行内元素的vertical-align属性无效（height属性无效）
+</code></pre>
+
+<p>一些互斥的元素
+对于absolute和fixed定位的(固定大小，设置了width和height属性)元素，如果设置了top和left属性，那么设置bottom和right值就没有作用了，应该是top和left优先级高，否则同时写了浏览器怎么知道按照谁定位</p>
+
+<pre><code>对于absolute和fixed定位的元素，如果设置了top、left、bottom、right的值后margin属性也就不起作用了
+对于absolute和fixed定位的元素，如果设置了top、left、bottom、right的值后float属性同样会失效
+块元素如果设置了float属性或者是absolute、fixed定位，那么vertical-align属性不再起作用 
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Title2]]></title>
+    <link href="http://pingbeer.github.io/blog/2014/01/15/title2/"/>
+    <updated>2014-01-15T12:17:04+08:00</updated>
+    <id>http://pingbeer.github.io/blog/2014/01/15/title2</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Title]]></title>

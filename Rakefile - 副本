@@ -93,7 +93,7 @@ end
 desc "Begin a new post in #{source_dir}/#{posts_dir}"
 task :new_post, :title do |t, args|
   if args.title
-    title = args.title.force_encoding('utf-8')
+    title = args.title
   else
     title = get_stdin("Enter a title for your post: ")
   end

@@ -1,0 +1,7 @@
+---
+layout: post
+title: "blog"
+date: 2014-01-21 11:26:11 +0800
+comments: true
+categories: 
+---

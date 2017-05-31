@@ -1,0 +1,57 @@
+﻿{"id": "is_68a053aa-f074-440f-89ff-770596a18e32",
+  "status": 0,
+  "message": "成功",
+  "data": {
+    "oprTime": "20170531173913",
+    "planRemain": [
+      {
+        "planName": "",
+        "planId": "2000003891",
+        "validDate": "20160101",
+        "resourcesInfo": [
+          {
+            "resourcesCode": "04",
+            "isMultiTerm": "1",
+            "secResourcesInfo": [
+              {
+                "secResourcesName": "访问",
+                "resourcesLeftInfo": [
+                  {
+                    "totalRes": "512000",
+                    "usedRes": "512000",
+                    "remainRes": "0",
+                    "unit": "03",
+                    "validDate": "20170531173913"
+                  }
+                ],
+                "secResourcesLimitType": "01",
+                "secResourcesRegionType": "01"
+              }
+            ]
+          },
+          {
+            "resourcesCode": "01",
+            "isMultiTerm": null,
+            "secResourcesInfo": [
+              {
+                "secResourcesName": "",
+                "resourcesLeftInfo": [
+                  {
+                    "totalRes": "50",
+                    "usedRes": "50",
+                    "remainRes": "0",
+                    "unit": "01",
+                    "validDate": "20170531173913"
+                  }
+                ],
+                "secResourcesLimitType": null,
+                "secResourcesRegionType": null
+              }
+            ]
+          }
+        ]
+      } ],
+    "mealInfoUp": null,
+    "transIdo": "14962235524831127624"
+  }
+}

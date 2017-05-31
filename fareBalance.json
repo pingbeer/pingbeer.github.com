@@ -1,0 +1,14 @@
+﻿{"id": "is_83c302d2-f40c-4b9b-a443-c70cffcc9aa6",
+  "status": 0,
+  "message": "成功",
+  "data": {
+    "oprTime": "20170531173914",
+    "realFeeQryRsp": {
+      "curFeeTotal": "2214763153",
+      "curFee": "2214763153",
+      "realFee": "pingbeer@163.com",
+      "oweFee": "0.00"
+    },
+    "transIdo": "14962235532391541324"
+  }
+}

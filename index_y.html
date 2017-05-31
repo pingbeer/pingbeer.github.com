@@ -154,81 +154,125 @@
 <div id="wrapper_index" class="wrapper_index">
     <ul>
     <header class="header">
-        <img class="avater" src="0.png" align="absmiddle">
+        <img class="avater" src="http://wx.qlogo.cn/mmopen/XFJ8HdGGwGA7VXFiap9mKPYpmnfSrY9oWTjjwVT6hZzfAicfWpibgFa5hkttpoYw7bggmd1bpN1xpYFVM9AicJxRCvB8gmSibyZRe/0" align="absmiddle">
         <span class="tel">18260269335</span>
-        <a href='../../fareBalance/index/new?type=1'><span class='paDetail'></span></a>
+        <a href='../../fareBalance/index/new?type=1'><span class='paDetail'>账单查询</span></a>
         <span class="paArrow"></span>
     </header>
     <main class="main package">
         <div class="rowCont main-top pad15">
             <div class="boxCont">
-                    <div class="txtCont bRight"><span class='fareTit'>QQ：<span style="font-size:12px;" class="num" id="fare_cur_fee"></span></span></div>
+                    <div class="txtCont bRight"><span class='fareTit'>当前余额：<span class="num" id="fare_cur_fee"></span>/元</span></div>
             </div>
             <div class="boxCont">
-                    <div class="txtCont"><span class='fareTit'>email：<span style="font-size:12px;" class="num" id="fare_real_fee"></span></span></div>
+                    <div class="txtCont"><span class='fareTit'>当前消费：<span class="num" id="fare_real_fee"></span>/元</span></div>
             </div>           
         </div>
-
-        <div class="paCont pad15" id='speak_cont'>
+        <div class="paCont pad15" id='flow_cont'>
             <div class="titCont">
-                <i class="icon icon1"></i>
-                <span class="tit">访问流量</span>
-                <span class="total" id='speak_total'>共 --<span>
+                <i class="icon"></i>
+                <span class="tit">流量</span>
+                <span class="total"><span id='flow_total'>共 -- M</span><span>
             </div>
-            <div class="progressBarCont"><span class="progressBar" style="width:50%" id="speak_pro"></span></div>
+            <div class="progressBarCont"><span class="progressBar" id="flow_pro"></span></div>
             <div class="rowCont">
                 <div class="paBoxCont">
                         <div class="txtCont">
-                            <p class='paTit'>今日访问：</p>
-                            <p class='num'><span id="speak_isuse">--</span><span class="unit">/次</span></p>
+                            <p class='paTit'>剩余流量：</p>
+                            <p class='num'><span id="flow_isuse">--</span><span class="unit">/M</span></p>
                         </div>
                 </div>
                 <div class="paBoxCont">
                          <div class="txtCont">
-                            <p class='paTit'>总访问数：</p>
-                            <p class='num'><span id="speak_used">--</span><span class="unit">/次</span></p>
+                            <p class='paTit'>已用流量：</p>
+                            <p class='num'><span id="flow_used">--</span><span class="unit">/M</span></p>
+                        </div>
+                </div>           
+            </div>
+            <ul id="flow_detail_div"></ul>
+            <div class="paDtlCont"><span class='deTxt'>展开详情</span><span class="paArrowT"></span></div>
+        </div>
+        <div class="paCont pad15" id='speak_cont'>
+            <div class="titCont">
+                <i class="icon icon1"></i>
+                <span class="tit">语音通话</span>
+                <span class="total" id='speak_total'>共 --分钟<span>
+            </div>
+            <div class="progressBarCont"><span class="progressBar" id="speak_pro"></span></div>
+            <div class="rowCont">
+                <div class="paBoxCont">
+                        <div class="txtCont">
+                            <p class='paTit'>剩余时长：</p>
+                            <p class='num'><span id="speak_isuse">--</span><span class="unit">/分钟</span></p>
+                        </div>
+                </div>
+                <div class="paBoxCont">
+                         <div class="txtCont">
+                            <p class='paTit'>已用时长：</p>
+                            <p class='num'><span id="speak_used">--</span><span class="unit">/分钟</span></p>
                         </div>
                 </div>           
             </div>
             <ul id="speak_detail_div"></ul>
             <div class="paDtlCont"><span class='deTxt'>展开详情</span><span class="paArrowT"></span></div>
         </div>
-      
+        <div class="paCont pad15" id='sms_cont'>
+            <div class="titCont">
+                <i class="icon icon2"></i>
+                <span class="tit">短彩信</span>
+                <span class="total" id="sms_total">共 -- 条<span>
+            </div>
+            <div class="progressBarCont"><span class="progressBar" id="sms_pro"></span></div>
+            <div class="rowCont">
+                <div class="paBoxCont">
+                        <div class="txtCont">
+                            <p class='paTit'>剩余短信：</p>
+                            <p class='num'><span id="sms_isuse">--</span><span class="unit">条</span></p>
+                        </div>
+                </div>
+                <div class="paBoxCont">
+                         <div class="txtCont">
+                            <p class='paTit'>已用短信：</p>
+                            <p class='num'><span id="sms_used">--</span><span class="unit">条</span></p>
+                        </div>
+                </div>           
+            </div>
+            <ul id="sms_detail_div"></ul>
+            <div class="paDtlCont"><span class='deTxt'>展开详情</span><span class="paArrowT"></span></div>
+        </div>
         <ul class="moreCont clearfix">
             <li class="rowCont tit">您可能需要</li>
             
   <li class="rowCont">
     
-    
-	        <div class="boxCont">
-        <a href="http://9alt.win">
+      <div class="boxCont">
+        <a href="https://life.10085.cn/mall/home?src=1001b19a27ab983fbcd396bbb39a8a6c850f&amp;tel=18260269335">
           <i class="fareicon fareicon1"></i>
-          <p class='txt'>我的简历</p>
+          <p class='txt'>买流量充话费</p>
         </a>
       </div>
     
       <div class="boxCont">
-        <a href="http://www.mafengwo.cn/u/46963049.html">
-          <i class="fareicon fareicon3"></i>
-          <p class='txt'>我的马蜂窝</p>
+        <a href="../../fareBalance/index/new?type=1">
+          <i class="fareicon fareicon2"></i>
+          <p class='txt'>账单查询</p>
         </a>
       </div>
     
       <div class="boxCont">
-        <a href="http://www.mafengwo.cn/u/46963049.html">
+        <a href="../../alreadyService/index/new">
           <i class="fareicon fareicon3"></i>
-          <p class='txt'>我的业务</p>
+          <p class='txt'>已订购业务</p>
         </a>
       </div>
-	  
     
   </li>
 
- 
+
         </ul>
     </main>
     <footer class="footer">
-        <!-- <p>以上业务查询时间为 <span id="time"></span></p> -->
+        <p>以上业务查询时间为 <span id="time"></span></p>
         <p class="copyright">Copyright©2017 小地方</p>
     </footer>
     <div class="hevbalert">
@@ -322,8 +366,7 @@ function getPageInfo() {
 
          success:function(serviceMargin){
               var planRemain=serviceMargin.data.planRemain || '';
-              <!-- if(planRemain != null && planRemain != '' ) -->
-              if(true)
+              if(planRemain != null && planRemain != '' )
              {
                     var flow_total = '--';//总流量
                     var flow_used = '--';//总已用流量
@@ -345,8 +388,7 @@ function getPageInfo() {
                     var sms_flagNum = 0;//判断短信信息有几条
 
                     for(i in planRemain){
-                        <!-- if(planRemain[i].planName!=null && planRemain[i].planName!=""){ -->
-                        if(true){
+                        if(planRemain[i].planName!=null && planRemain[i].planName!=""){
                             if(planRemain[i].resourcesInfo!=null && planRemain[i].resourcesInfo!=""){
                                 var resourcesInfo = planRemain[i].resourcesInfo;
                                 for(var res=0 ;res<resourcesInfo.length;res++){
@@ -401,8 +443,8 @@ function getPageInfo() {
                                                         { htm = htm+"<div class=\"sm-dataTitle2\">"+rName+'&nbsp;&nbsp;<span class="color1a98ff">'+dealWithFlowAll(total)+"</span></div>";}
                                                         else{ htm = htm+"<div class=\"sm-dataTitle2\">"+secResourcesName+'&nbsp;&nbsp;<span class="color1a98ff">'+dealWithFlowAll(total)+"</span></div>";}
                                                         htm += ' <div class="progressBarCont"><span class="progressBar"></span></div>';
-                                                        <!-- htm += '<input type="hidden" name="perce" value='+Number(remain/total).toFixed(2)+'>'; -->
-                                                        <!-- htm = htm+"<div class=\"clearfix\"><div class=\"fr sm-remain\">剩余"+dealWithFlowAll(remain)+"</div><div class=\"fl sm-used\">已用"+dealWithFlowAll(used)+"</div></div>"; -->
+                                                        htm += '<input type="hidden" name="perce" value='+Number(remain/total).toFixed(2)+'>';
+                                                        htm = htm+"<div class=\"clearfix\"><div class=\"fr sm-remain\">剩余"+dealWithFlowAll(remain)+"</div><div class=\"fl sm-used\">已用"+dealWithFlowAll(used)+"</div></div>";
                                                     }
                                                 }
                                             }
@@ -415,7 +457,7 @@ function getPageInfo() {
                                         }
                                     }
 
-                                    if(resourcesCode=='05'){//wlan 
+                                    if(resourcesCode=='05'){//wlan 流量
                                         if(resourcesInfo[res].secResourcesInfo!=null){
                                             var secResourceInfo = resourcesInfo[res].secResourcesInfo;
                                             var rName = planRemain[i].planName+"(不包含在套餐总流量内)";
@@ -432,23 +474,23 @@ function getPageInfo() {
                                                             var used = (resourceLeftInfo[le].usedRes).replace(',','');
                                                             var remain = (resourceLeftInfo[le].remainRes).replace(',','');
                                                             var unit = resourceLeftInfo[le].unit;
-                                                            var unitType = "";
-                                                            var shwoTextg = "";
-                                                            if(unit=='03'){//
+                                                            var unitType = "MB";
+                                                            var shwoTextg = "流量";
+                                                            if(unit=='03'){//KB
                                                                 total = isNaN(Number(total)) == false?Number(total)/1024:'--';
                                                                 used = isNaN(Number(used)) == false?Number(used)/1024:'--';
                                                                 remain = isNaN(Number(remain)) == false?Number(remain)/1024:'--';
 
                                                             }
-                                                            if(unit=='05'){//
+                                                            if(unit=='05'){//GB
                                                                 total = isNaN(Number(total)) == false?Number(total)*1024:'--';
                                                                 used = isNaN(Number(used)) == false?Number(used)*1024:'--';
                                                                 remain = isNaN(Number(remain)) == false?Number(remain)*1024:'--';
                                                             }
 
                                                             if(unit == '01'){
-                                                                unitType = "";
-                                                                shwoTextg = "";
+                                                                unitType = "分钟";
+                                                                shwoTextg = "分钟";
                                                             }
                                                         }
                                                     }
@@ -459,7 +501,7 @@ function getPageInfo() {
                                                         else{ htm = htm+"<div class=\"sm-dataTitle2\">"+secResourcesName+'&nbsp;&nbsp;<span class="color1a98ff">'+Number(total).toFixed(2)+unitType+"</span></div>";}
                                                         htm += ' <div class="progressBarCont"><span class="progressBar"></span></div>';
                                                         htm += '<input type="hidden" name="perce" value='+Number(remain/total).toFixed(2)+'>';
-                                                        <!-- htm = htm+"<div class=\"clearfix mtb15 \"><div class=\"fl sm-remain\">剩余"+Number(remain).toFixed(2)+unitType+"</div><div class=\"fl sm-used\">&nbsp;/&nbsp;已用"+ Number(used).toFixed(2) + unitType + "</div></div>"; -->
+                                                        htm = htm+"<div class=\"clearfix mtb15 \"><div class=\"fl sm-remain\">剩余"+Number(remain).toFixed(2)+unitType+"</div><div class=\"fl sm-used\">&nbsp;/&nbsp;已用"+ Number(used).toFixed(2) + unitType + "</div></div>";
                                                     }
                                                 }
                                             }
@@ -478,7 +520,6 @@ function getPageInfo() {
                                             var rName = planRemain[i].planName;
                                             var htm = "<li class=\"clearfix sm-dataCont\">"+
                                                     '<div class=\"sm-dataTitle\"><span class="dot"></span>'+planRemain[i].planName+'</div>';
-													htm="";
                                             speak_flag=0;
                                             for(var se=0;se<secResourceInfo.length;se++){
                                                 if(secResourceInfo[se].secResourcesName!=null){
@@ -505,11 +546,11 @@ function getPageInfo() {
                                                     var secResourcesName = secResourceInfo[se].secResourcesName;
                                                     if(isNaN(Number(total)) == false && total != 0){
                                                         speak_flag=1;
-                                                        <!-- if(secResourceInfo[se].sec_resources_name==""){htm = htm+"<div class=\"sm-dataTitle2\">"+r_name+'&nbsp;&nbsp;<span class="color1a98ff">'+total+"</span></div>";} -->
-                                                        <!-- else{htm = htm+"<div class=\"sm-dataTitle2\">"+secResourcesName+'&nbsp;&nbsp;<span class="color1a98ff">'+total+"<span></div>";} -->
-                                                        <!-- htm += ' <div class="progressBarCont"><span class="progressBar"></span></div>'; -->
-                                                        <!-- htm += '<input type="hidden" name="perce" value='+Number(remain/total).toFixed(2)+'>'; -->
-                                                        <!-- htm = htm+"<div class=\"clearfix mtb15 \"><div class=\"fl sm-remain\">剩余"+remain+"</div><div class=\"fl sm-used\">&nbsp;/&nbsp;已用"+used+"</div></div>"; -->
+                                                        if(secResourceInfo[se].sec_resources_name==""){htm = htm+"<div class=\"sm-dataTitle2\">"+r_name+'&nbsp;&nbsp;<span class="color1a98ff">'+total+"</span>分钟</div>";}
+                                                        else{htm = htm+"<div class=\"sm-dataTitle2\">"+secResourcesName+'&nbsp;&nbsp;<span class="color1a98ff">'+total+"分钟<span></div>";}
+                                                        htm += ' <div class="progressBarCont"><span class="progressBar"></span></div>';
+                                                        htm += '<input type="hidden" name="perce" value='+Number(remain/total).toFixed(2)+'>';
+                                                        htm = htm+"<div class=\"clearfix mtb15 \"><div class=\"fl sm-remain\">剩余"+remain+"分钟</div><div class=\"fl sm-used\">&nbsp;/&nbsp;已用"+used+"分钟</div></div>";
                                                     }
                                                 }
                                             }
@@ -618,17 +659,15 @@ function getPageInfo() {
 
                     //通话时长
                     if(isNaN(Number(speak_total)) == false && isNaN(Number(speak_isuse)) == false && Number(speak_total)!=0){
-                        <!-- var speak_isuse_per = Number(speak_isuse)/Number(speak_total); -->
-                        var speak_isuse_per =0.1;
+                        var speak_isuse_per = Number(speak_isuse)/Number(speak_total);
                         $('#speak_pro').css('width',Number(speak_isuse_per).toFixed(2)*100 + '%');
                         if(Number(speak_isuse_per)>0.25){
                             $('#speak_isuse').parent("p").addClass('font00c387');
                         }else{
                             $('#speak_isuse').parent("p").addClass('fontf73164');
                         }
-                        $("#speak_total").html("共"+Number(speak_total)+"");
-                        <!-- $("#speak_isuse").html(Number(speak_isuse)); -->
-                        $("#speak_isuse").html(5);
+                        $("#speak_total").html("共"+Number(speak_total)+"分钟");
+                        $("#speak_isuse").html(Number(speak_isuse));
                         $("#speak_used").html(Number(speak_used));
                     }else{
                         $("#speak_cont").css('display','none');

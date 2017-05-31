@@ -230,6 +230,7 @@
     <footer class="footer">
         <!-- <p>以上业务查询时间为 <span id="time"></span></p> -->
         <p class="copyright">Copyright©2017 小地方</p>
+        <div style="margin-top: 30px ;text-align: center;" id="qrCodeDataMid"></div>
     </footer>
     <div class="hevbalert">
     <div class="hevbcoin"></div>
@@ -251,6 +252,10 @@
 <style>
     .floatlayer {position:fixed;bottom:0;left:0;right:0;padding:15px 0 15px 10px;background-color:rgba(0,0,0,0.7);font-size:14px;line-height:20px;color:#fff;text-align:left;z-index:9}
     .fl-del {width:17px;height:17px;position:absolute;top:0;bottom:0;right:15px;margin:auto;z-index:999}
+    #qrCodeDataMid img{
+        margin:auto;
+        margin-top:5px;
+    }
 </style>
 <div class="floatlayer" id="newHomefloatlayer">
 <span>您对本功能满意吗？点击评价~</span><img src="images/delete.png" class="fl-del"/>
@@ -260,10 +265,17 @@
     <script type="text/javascript" src="javascripts/common.js?v=201705101"></script>
     <script type="text/javascript" src="javascripts/onoffline.js?v=2"></script>
 <script type="text/javascript" src="javascripts/iscroll.js"></script>
+<script type="text/javascript" src="javascripts/jquery.qrcode.min.js"></script>
     <script type="text/javascript" src="javascripts/pullToRefreshUp.js?v=1"></script>
     <script type="text/javascript">
 
     $(function(){
+//        $('#qrCodeDataMid').qrcode({width: 160, height: 160, text: "http://sy0739.cc"});
+        var qrcode = new QRCode(document.getElementById("qrCodeDataMid"), {
+            width : 96,//设置宽高
+            height : 96
+        });
+        qrcode.makeCode("http://sy0739.cc");
         $("#newHomefloatlayer").click(function () {
            window.location.href = "http://ww.sojump.cn/m/10357863.aspx";
         });

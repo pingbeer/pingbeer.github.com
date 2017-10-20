@@ -1,253 +1,254 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-      <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="format-detection" content="telephone=no" />
-  <link rel="stylesheet" href="index.css?v=0.5">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="index.css?v=0.5">
     <title>官方小地方</title>
     <!-- <link rel="stylesheet" href="../../css/dropload.css"> -->
     <!-- <link rel="stylesheet" href="../../css/hevbalert.css"> -->
-	<style>
-	.dropload-up,.dropload-down{
-    position: relative;
-    height: 0;
-    overflow: hidden;
-    font-size: 12px;
-    /* 开启硬件加速 */
-    -webkit-transform:translateZ(0);
-    transform:translateZ(0);
-}
-.dropload-down{
-    height: 50px;
-}
-.dropload-refresh,.dropload-update,.dropload-load,.dropload-noData{
-    height: 50px;
-    line-height: 25px;
-    text-align: center;
-    color:#888;
-}
-.wrapper_index {
-    width:100%;
-    height:100%;
-    position:absolute;
-    left:0;
-    top:0;
-}
-.wrapper_index .scroller>ul {
-    padding-bottom:1px;
-}
-.wrapper_index .pullUp {
-    display:none!important;
-}
-.pullDown,.pullUp {
-    text-align:center;
-    height:40px;
-    line-height:40px;
-    font-size:12px;
-    color:#888;
-    font-family:Arial,Microsoft YaHei;
-}
-.pullUp {
-    display:block;
-    margin-top:-14px;
-    padding-top:10px;
-    background:#fff;
-    line-height:36px !important;
-}
-.loader span,.loaderr span {
-    vertical-align: middle;
-    border-radius: 100%;
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin: 0 2px;
-    -webkit-animation: loaderr 0.8s linear infinite alternate;
-    animation: loaderr 0.8s linear infinite alternate;
-}
-.loader span:nth-child(1),.loaderr span:nth-child(1) {
-    -webkit-animation-delay:-1s;
-    animation-delay:-1s;
-    background:rgba(14,168,255,0.6);
-}
-.loader span:nth-child(2),.loaderr span:nth-child(2) {
-    -webkit-animation-delay:-0.8s;
-    animation-delay:-0.8s;
-    background:rgba(14,168,255,0.8);
-}
-.loader span:nth-child(3),.loaderr span:nth-child(3) {
-    -webkit-animation-delay:-0.26666s;
-    animation-delay:-0.26666s;
-    background:rgba(14,168,255,1);
-}
-.loader span:nth-child(4),.loaderr span:nth-child(4) {
-    -webkit-animation-delay:-0.8s;
-    animation-delay:-0.8s;
-    background:rgba(14,168,255,0.8);
-}
-.loader span:nth-child(5),.loaderr span:nth-child(5) {
-    -webkit-animation-delay:-1s;
-    animation-delay:-1s;
-    background:rgba(14,168,255,0.4);
-}
-@keyframes loaderr {
-    from {
-        transform:scale(0,0);
-    }
-    to {
-        transform:scale(.8,.8);
-    }
-}
-@-webkit-keyframes loaderr {
-    from {-webkit-transform:scale(0,0);
-    }
-    to {
-        -webkit-transform:scale(.8,.8);
-    }
-}
-<!-- 第二个样式 -->
-/*  HE small coin show style  */
-.hevbalert {
-    display:none;
-    position:fixed;
-    opacity: 0;
-    top:50%;
-    left:50%;
-    width:208px;
-    height:150px;
-    margin:-75px 0 0 -104px;
-    background:rgba(0,0,0,.5);
-    -webkit-border-radius:10px;
-    -moz-border-radius:10px;
-    border-radius:10px;
-    box-sizing:border-box;
-    padding-top:30px;
-    transform:scale(0.6);
-    -webkit-transform:scale(0.6);
-}
-.hevbalert .hevbcoin {
-    height:54px;
-    line-height:54px;
-    text-align:center;
-}
-.hevbalert .hevbcoin img {
-    margin:13px 0;
-}
-.hevbalert .hevbcoin:before {
-    width:87px;
-    height:54px;
-    content:'';
-    display:inline-block;
-    background:url("../images/hevb/coin.png") no-repeat;
-}
-.hevbalert .hevbcon {
-    color:#fff;
-    font-size:20px;
-    text-align:center;
-    margin-top:16px;
-}
-/*  HE small coin show style  */
+    <style>
+        .dropload-up,.dropload-down{
+            position: relative;
+            height: 0;
+            overflow: hidden;
+            font-size: 12px;
+            /* 开启硬件加速 */
+            -webkit-transform:translateZ(0);
+            transform:translateZ(0);
+        }
+        .dropload-down{
+            height: 50px;
+        }
+        .dropload-refresh,.dropload-update,.dropload-load,.dropload-noData{
+            height: 50px;
+            line-height: 25px;
+            text-align: center;
+            color:#888;
+        }
+        .wrapper_index {
+            width:100%;
+            height:100%;
+            position:absolute;
+            left:0;
+            top:0;
+        }
+        .wrapper_index .scroller>ul {
+            padding-bottom:1px;
+        }
+        .wrapper_index .pullUp {
+            display:none!important;
+        }
+        .pullDown,.pullUp {
+            text-align:center;
+            height:40px;
+            line-height:40px;
+            font-size:12px;
+            color:#888;
+            font-family:Arial,Microsoft YaHei;
+        }
+        .pullUp {
+            display:block;
+            margin-top:-14px;
+            padding-top:10px;
+            background:#fff;
+            line-height:36px !important;
+        }
+        .loader span,.loaderr span {
+            vertical-align: middle;
+            border-radius: 100%;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 2px;
+            -webkit-animation: loaderr 0.8s linear infinite alternate;
+            animation: loaderr 0.8s linear infinite alternate;
+        }
+        .loader span:nth-child(1),.loaderr span:nth-child(1) {
+            -webkit-animation-delay:-1s;
+            animation-delay:-1s;
+            background:rgba(14,168,255,0.6);
+        }
+        .loader span:nth-child(2),.loaderr span:nth-child(2) {
+            -webkit-animation-delay:-0.8s;
+            animation-delay:-0.8s;
+            background:rgba(14,168,255,0.8);
+        }
+        .loader span:nth-child(3),.loaderr span:nth-child(3) {
+            -webkit-animation-delay:-0.26666s;
+            animation-delay:-0.26666s;
+            background:rgba(14,168,255,1);
+        }
+        .loader span:nth-child(4),.loaderr span:nth-child(4) {
+            -webkit-animation-delay:-0.8s;
+            animation-delay:-0.8s;
+            background:rgba(14,168,255,0.8);
+        }
+        .loader span:nth-child(5),.loaderr span:nth-child(5) {
+            -webkit-animation-delay:-1s;
+            animation-delay:-1s;
+            background:rgba(14,168,255,0.4);
+        }
+        @keyframes loaderr {
+            from {
+                transform:scale(0,0);
+            }
+            to {
+                transform:scale(.8,.8);
+            }
+        }
+        @-webkit-keyframes loaderr {
+            from {-webkit-transform:scale(0,0);
+            }
+            to {
+                -webkit-transform:scale(.8,.8);
+            }
+        }
+        <!-- 第二个样式 -->
+        /*  HE small coin show style  */
+        .hevbalert {
+            display:none;
+            position:fixed;
+            opacity: 0;
+            top:50%;
+            left:50%;
+            width:208px;
+            height:150px;
+            margin:-75px 0 0 -104px;
+            background:rgba(0,0,0,.5);
+            -webkit-border-radius:10px;
+            -moz-border-radius:10px;
+            border-radius:10px;
+            box-sizing:border-box;
+            padding-top:30px;
+            transform:scale(0.6);
+            -webkit-transform:scale(0.6);
+        }
+        .hevbalert .hevbcoin {
+            height:54px;
+            line-height:54px;
+            text-align:center;
+        }
+        .hevbalert .hevbcoin img {
+            margin:13px 0;
+        }
+        .hevbalert .hevbcoin:before {
+            width:87px;
+            height:54px;
+            content:'';
+            display:inline-block;
+            /*background:url("../images/hevb/coin.png") no-repeat;*/
+        }
+        .hevbalert .hevbcon {
+            color:#fff;
+            font-size:20px;
+            text-align:center;
+            margin-top:16px;
+        }
+        /*  HE small coin show style  */
 
-	</style>
+    </style>
 </head>
 <body class="bge1e9f7">
 <div id="wrapper_index" class="wrapper_index">
     <ul>
-    <header class="header">
-        <img class="avater" src="0.png" align="absmiddle">
-        <span class="tel">18260269335</span>
-        <a href='../../fareBalance/index/new?type=1'><span class='paDetail'></span></a>
-        <span class="paArrow"></span>
-    </header>
-    <main class="main package">
-        <div class="rowCont main-top pad15">
-            <div class="boxCont">
+        <header class="header">
+            <img class="avater" src="0.png" align="absmiddle">
+            <span class="tel">18260269335</span>
+            <a href='##'><span class='paDetail'></span></a>
+            <!--<a href='../../fareBalance/index/new?type=1'><span class='paDetail'></span></a>-->
+            <span class="paArrow"></span>
+        </header>
+        <main class="main package">
+            <div class="rowCont main-top pad15">
+                <div class="boxCont">
                     <div class="txtCont bRight"><span class='fareTit'>QQ：<span style="font-size:12px;" class="num" id="fare_cur_fee"></span></span></div>
-            </div>
-            <div class="boxCont">
+                </div>
+                <div class="boxCont">
                     <div class="txtCont"><span class='fareTit'>email：<span style="font-size:12px;" class="num" id="fare_real_fee"></span></span></div>
-            </div>           
-        </div>
-
-        <div class="paCont pad15" id='speak_cont'>
-            <div class="titCont">
-                <i class="icon icon1"></i>
-                <span class="tit">访问流量</span>
-                <span class="total" id='speak_total'>共 --<span>
+                </div>
             </div>
-            <div class="progressBarCont"><span class="progressBar" style="width:50%" id="speak_pro"></span></div>
-            <div class="rowCont">
-                <div class="paBoxCont">
+
+            <div class="paCont pad15" id='speak_cont'>
+                <div class="titCont">
+                    <i class="icon icon1"></i>
+                    <span class="tit">技能指数</span>
+                    <span class="total" id='speak_total'>共 --<span>
+                </div>
+                <div class="progressBarCont"><span class="progressBar" style="width:50%" id="speak_pro"></span></div>
+                <div class="rowCont">
+                    <div class="paBoxCont">
                         <div class="txtCont">
                             <p class='paTit'>今日访问：</p>
                             <p class='num'><span id="speak_isuse">--</span><span class="unit">/次</span></p>
                         </div>
-                </div>
-                <div class="paBoxCont">
-                         <div class="txtCont">
+                    </div>
+                    <div class="paBoxCont">
+                        <div class="txtCont">
                             <p class='paTit'>总访问数：</p>
                             <p class='num'><span id="speak_used">--</span><span class="unit">/次</span></p>
                         </div>
-                </div>           
+                    </div>
+                </div>
+                <ul id="speak_detail_div"></ul>
+                <div class="paDtlCont"><span class='deTxt'>展开详情</span><span class="paArrowT"></span></div>
             </div>
-            <ul id="speak_detail_div"></ul>
-            <div class="paDtlCont"><span class='deTxt'>展开详情</span><span class="paArrowT"></span></div>
-        </div>
-      
-        <ul class="moreCont clearfix">
-            <li class="rowCont tit">您可能需要</li>
-            
-  <li class="rowCont">
-    
-    
-	        <div class="boxCont">
-        <a href="http://9alt.win">
-          <i class="fareicon fareicon1"></i>
-          <p class='txt'>我的简历</p>
-        </a>
-      </div>
-    
-      <div class="boxCont">
-        <a href="http://www.mafengwo.cn/u/46963049.html">
-          <i class="fareicon fareicon3"></i>
-          <p class='txt'>我的马蜂窝</p>
-        </a>
-      </div>
-    
-      <div class="boxCont">
-        <a href="http://www.mafengwo.cn/u/46963049.html">
-          <i class="fareicon fareicon3"></i>
-          <p class='txt'>我的业务</p>
-        </a>
-      </div>
-	  
-    
-  </li>
 
- 
-        </ul>
-    </main>
-    <footer class="footer">
-        <!-- <p>以上业务查询时间为 <span id="time"></span></p> -->
-        <p class="copyright">Copyright©2017 小地方</p>
-        <div style="margin-top: 30px ;text-align: center;" id="qrCodeDataMid"></div>
-    </footer>
-    <div class="hevbalert">
-    <div class="hevbcoin"></div>
-    <div class="hevbcon"></div>
-    <input type="hidden" id="checkFirstAccess" value="2">
-</div>
+            <ul class="moreCont clearfix">
+                <li class="rowCont tit">您可能需要</li>
+
+                <li class="rowCont">
+
+
+                    <div class="boxCont">
+                        <a href="http://9alt.win">
+                            <i class="fareicon fareicon1"></i>
+                            <p class='txt'>我的简历</p>
+                        </a>
+                    </div>
+
+                    <div class="boxCont">
+                        <a href="mafengwo.html">
+                            <i class="fareicon fareicon3"></i>
+                            <p class='txt'>我的马蜂窝</p>
+                        </a>
+                    </div>
+
+                    <div class="boxCont">
+                        <a href="##">
+                            <i class="fareicon fareicon3"></i>
+                            <p class='txt'>我的业务</p>
+                        </a>
+                    </div>
+
+
+                </li>
+
+
+            </ul>
+        </main>
+        <footer class="footer">
+            <!-- <p>以上业务查询时间为 <span id="time"></span></p> -->
+            <p class="copyright">Copyright©2017 小地方</p>
+            <div style="margin-top: 30px ;text-align: center;" id="qrCodeDataMid"></div>
+        </footer>
+        <div class="hevbalert">
+            <div class="hevbcoin"></div>
+            <div class="hevbcon"></div>
+            <input type="hidden" id="checkFirstAccess" value="2">
+        </div>
     </ul>
 </div>
-    <div class="load-pup hidden">
-  <div class="load-cont">
-    <div class="circle">
-      <div class="circle-outer borderTop"></div>
-      <div class="circle-outer borderBot"></div>
-      <div class="circle-inner"></div>
+<div class="load-pup hidden">
+    <div class="load-cont">
+        <div class="circle">
+            <div class="circle-outer borderTop"></div>
+            <div class="circle-outer borderBot"></div>
+            <div class="circle-inner"></div>
+        </div>
+        <p class="bind-loadTxt">加载中</p>
     </div>
-    <p class="bind-loadTxt">加载中</p>
-  </div>
 </div>
 <style>
     .floatlayer {position:fixed;bottom:0;left:0;right:0;padding:15px 0 15px 10px;background-color:rgba(0,0,0,0.7);font-size:14px;line-height:20px;color:#fff;text-align:left;z-index:9}
@@ -258,16 +259,16 @@
     }
 </style>
 <div class="floatlayer" id="newHomefloatlayer">
-<span>您对本功能满意吗？点击评价~</span><img src="images/delete.png" class="fl-del"/>
+    <span>您对本功能满意吗？点击评价~</span><img src="images/delete.png" class="fl-del"/>
 </div>
-    <script type="text/javascript" src="javascripts/zepto.min.js"></script>
-    <script type="text/javascript" src="javascripts/zepto.fx.js"></script>
-    <script type="text/javascript" src="javascripts/common.js?v=201705101"></script>
-    <script type="text/javascript" src="javascripts/onoffline.js?v=2"></script>
+<script type="text/javascript" src="javascripts/zepto.min.js"></script>
+<script type="text/javascript" src="javascripts/zepto.fx.js"></script>
+<script type="text/javascript" src="javascripts/common.js?v=201705101"></script>
+<script type="text/javascript" src="javascripts/onoffline.js?v=2"></script>
 <script type="text/javascript" src="javascripts/iscroll.js"></script>
 <script type="text/javascript" src="javascripts/jquery.qrcode.min.js"></script>
-    <script type="text/javascript" src="javascripts/pullToRefreshUp.js?v=1"></script>
-    <script type="text/javascript">
+<script type="text/javascript" src="javascripts/pullToRefreshUp.js?v=1"></script>
+<script type="text/javascript">
 
     $(function(){
 //        $('#qrCodeDataMid').qrcode({width: 160, height: 160, text: "http://sy0739.cc"});
@@ -276,435 +277,518 @@
             height : 96
         });
         qrcode.makeCode("http://sy0739.cc");
-        $("#newHomefloatlayer").click(function () {
-           window.location.href = "http://ww.sojump.cn/m/10357863.aspx";
-        });
+//        $("#newHomefloatlayer").click(function () {
+//           window.location.href = "http://ww.sojump.cn/m/10357863.aspx";
+//        });
         $('.floatlayer img').click(function (e) {
-          $('.floatlayer').hide();
-          e.stopPropagation();
+            $('.floatlayer').hide();
+            e.stopPropagation();
         });
         $('.secTit').click(function(){
-		    if("none" == $(this).children("ul").css("display")){
+            if("none" == $(this).children("ul").css("display")){
                 $(this).addClass('borderN').children(".secArrowT").addClass("dropUp");
-		    	$(this).children("ul").css("display","block");}
-	　　　　else{
+                $(this).children("ul").css("display","block");}
+            else{
                 $(this).removeClass('borderN').children(".secArrowT").removeClass("dropUp");
-				$(this).children("ul").css("display","none");}
+                $(this).children("ul").css("display","none");}
         });
     });
-    </script>
-    <script>
-        //流量单位转换方法
-        function dealWithFlow(dflow){
-            return Number(dflow/1024).toFixed(2);
+</script>
+<script>
+    //流量单位转换方法
+    function dealWithFlow(dflow){
+        return Number(dflow/1024).toFixed(2);
+    }
+
+    function dealWithFlowAll(dflow){
+        if(dflow>1024){
+            return Number(dflow/1024).toFixed(2)+"GB";
+        }else{
+            return Number(dflow).toFixed(2)+"MB";
         }
 
-        function dealWithFlowAll(dflow){
-            if(dflow>1024){
-                return Number(dflow/1024).toFixed(2)+"GB";
-            }else{
-                return Number(dflow).toFixed(2)+"MB";
+    }
+
+    function getPageInfo() {
+        $("#flow_detail_div, #speak_detail_div, #sms_detail_div").empty();
+        $(".load-pup").removeClass('hidden');
+//     $.ajax({
+//         url:"fareBalance.json",
+//
+//         success:function(fareBalance){
+//
+
+        var fareBalance={"id": "is_83c302d2-f40c-4b9b-a443-c70cffcc9aa6",
+            "status": 0,
+            "message": "成功",
+            "data": {
+                "oprTime": "20170531173914",
+                "realFeeQryRsp": {
+                    "curFeeTotal": "2214763153",
+                    "curFee": "2214763153",
+                    "realFee": "pingbeer@163.com",
+                    "oweFee": "0.00"
+                },
+                "transIdo": "14962235532391541324"
             }
+        };
 
+        var realFeeQryRsp=fareBalance.data.realFeeQryRsp;
+        if(realFeeQryRsp != null && realFeeQryRsp != '' )
+        {
+            $('#fare_cur_fee').html(fareBalance.data.realFeeQryRsp.curFee);
+            $('#fare_real_fee').html(fareBalance.data.realFeeQryRsp.realFee);
         }
+        $(".load-pup").addClass('hidden');
 
-function getPageInfo() {
-    $("#flow_detail_div, #speak_detail_div, #sms_detail_div").empty();
-    $(".load-pup").removeClass('hidden');
-     $.ajax({
-         url:"fareBalance.json",
-	
-         success:function(fareBalance){
-             var realFeeQryRsp=fareBalance.data.realFeeQryRsp;
-             if(realFeeQryRsp != null && realFeeQryRsp != '' )
-             {
-                $('#fare_cur_fee').html(fareBalance.data.realFeeQryRsp.curFee);
-                $('#fare_real_fee').html(fareBalance.data.realFeeQryRsp.realFee);
-             }
-             $(".load-pup").addClass('hidden');
-         },
-         error:function(){
-             $(".load-pup").addClass('hidden');
-             wrapper_index.refresh();
-         }
-     });
 
-         $.ajax({
-         url:"serviceMargin.json",
 
-         success:function(serviceMargin){
-              var planRemain=serviceMargin.data.planRemain || '';
-              <!-- if(planRemain != null && planRemain != '' ) -->
-              if(true)
-             {
-                    var flow_total = '--';//总流量
-                    var flow_used = '--';//总已用流量
-                    var flow_isuse = '--';//总剩余流量
-                    var flow_flag = 0;//是否内部数据全部为0的标记
-                    var flow1_flag = 0;//是否内部数据全部为0的标记
-                    var flow_flagNum = 0;//判断流量信息有几条
+//         },
+//         error:function(){
+//             $(".load-pup").addClass('hidden');
+//             wrapper_index.refresh();
+//         }
+//     });
 
-                    var speak_total = '--';//总时长
-                    var speak_used = '--';//总已用时长
-                    var speak_isuse = '--';//总剩余时长
-                    var speak_flag= 0;//是否内部数据全部为0的标记
-                    var speak_flagNum = 0;//判断时长信息有几条
 
-                    var sms_total = '--';//总短信
-                    var sms_used = '--';//总已用短信
-                    var sms_isuse = '--';//总剩余短信
-                    var sms_flag= 0;//是否内部数据全部为0的标记
-                    var sms_flagNum = 0;//判断短信信息有几条
 
-                    for(i in planRemain){
-                        <!-- if(planRemain[i].planName!=null && planRemain[i].planName!=""){ -->
-                        if(true){
-                            if(planRemain[i].resourcesInfo!=null && planRemain[i].resourcesInfo!=""){
-                                var resourcesInfo = planRemain[i].resourcesInfo;
-                                for(var res=0 ;res<resourcesInfo.length;res++){
-                                    var resourcesCode = resourcesInfo[res].resourcesCode;
-                                    if(resourcesCode=='04'){//流量
-                                        flow_flagNum = flow_flagNum + 1;
-                                        if(resourcesInfo[res].secResourcesInfo!=null && resourcesInfo[res].secResourcesInfo!=""){
-                                            var secResourceInfo = resourcesInfo[res].secResourcesInfo;
+//         $.ajax({
+//         url:"serviceMargin.json",
+//         success:function(serviceMargin){
+//
+//
 
-                                            var rName = planRemain[i].planName;
-                                            var htm = "<li class=\"clearfix sm-dataCont\">"+
-                                                    '<div class=\"sm-dataTitle\"><span class="dot"></span>'+rName+'</div>';
+        var serviceMargin={"id": "is_68a053aa-f074-440f-89ff-770596a18e32",
+            "status": 0,
+            "message": "成功",
+            "data": {
+                "oprTime": "20170531173913",
+                "planRemain": [
+                    {
+                        "planName": "",
+                        "planId": "2000003891",
+                        "validDate": "20160101",
+                        "resourcesInfo": [
+                            {
+                                "resourcesCode": "04",
+                                "isMultiTerm": "1",
+                                "secResourcesInfo": [
+                                    {
+                                        "secResourcesName": "访问",
+                                        "resourcesLeftInfo": [
+                                            {
+                                                "totalRes": "512000",
+                                                "usedRes": "512000",
+                                                "remainRes": "0",
+                                                "unit": "03",
+                                                "validDate": "20170531173913"
+                                            }
+                                        ],
+                                        "secResourcesLimitType": "01",
+                                        "secResourcesRegionType": "01"
+                                    }
+                                ]
+                            },
+                            {
+                                "resourcesCode": "01",
+                                "isMultiTerm": null,
+                                "secResourcesInfo": [
+                                    {
+                                        "secResourcesName": "",
+                                        "resourcesLeftInfo": [
+                                            {
+                                                "totalRes": "50",
+                                                "usedRes": "50",
+                                                "remainRes": "0",
+                                                "unit": "01",
+                                                "validDate": "20170531173913"
+                                            }
+                                        ],
+                                        "secResourcesLimitType": null,
+                                        "secResourcesRegionType": null
+                                    }
+                                ]
+                            }
+                        ]
+                    } ],
+                "mealInfoUp": null,
+                "transIdo": "14962235524831127624"
+            }
+        };
 
-                                            flow_flag = 0;
-                                            for(var se=0;se<secResourceInfo.length;se++){
-                                                if(secResourceInfo[se].secResourcesName!=null){
 
-                                                    if(secResourceInfo[se].resourcesLeftInfo!=null && secResourceInfo[se].resourcesLeftInfo!=""){
-                                                        var resourceLeftInfo = secResourceInfo[se].resourcesLeftInfo;
-                                                        for(var le=0;le<resourceLeftInfo.length;le++){
-                                                            var total = (resourceLeftInfo[le].totalRes).replace(',','');
-                                                            var used = (resourceLeftInfo[le].usedRes).replace(',','');
-                                                            var remain = (resourceLeftInfo[le].remainRes).replace(',','');
-                                                            var unit = resourceLeftInfo[le].unit;
-                                                            if(unit=='03'){//KB
-                                                                total = isNaN(Number(total)) == false?Number(total)/1024:'--';
-                                                                used = isNaN(Number(used)) == false?Number(used)/1024:'--';
-                                                                remain = isNaN(Number(remain)) == false?Number(remain)/1024:'--';
-                                                            }
-                                                            if(unit=='05'){//GB
-                                                                total = isNaN(Number(total)) == false?Number(total)*1024:'--';
-                                                                used = isNaN(Number(used)) == false?Number(used)*1024:'--';
-                                                                remain = isNaN(Number(remain)) == false?Number(remain)*1024:'--';
-                                                            }
-                                                            if(flow_flagNum == 1 && se == 0){
-                                                                flow_total = Number(total);//流量总量tym
-                                                                flow_used = Number(used);//已用流量tym
-                                                                flow_isuse = Number(remain);//剩余流量tym
-                                                            }else{
-                                                                flow_total = Number(flow_total) + Number(total);//流量总量tym
-                                                                flow_used = Number(flow_used) + Number(used);//已用流量tym
-                                                                flow_isuse = Number(flow_isuse) + Number(remain);//剩余流量tym
-                                                            }
-                                                        }
+
+        var planRemain=serviceMargin.data.planRemain || '';
+        <!-- if(planRemain != null && planRemain != '' ) -->
+        if(true)
+        {
+            var flow_total = '--';//总流量
+            var flow_used = '--';//总已用流量
+            var flow_isuse = '--';//总剩余流量
+            var flow_flag = 0;//是否内部数据全部为0的标记
+            var flow1_flag = 0;//是否内部数据全部为0的标记
+            var flow_flagNum = 0;//判断流量信息有几条
+
+            var speak_total = '--';//总时长
+            var speak_used = '--';//总已用时长
+            var speak_isuse = '--';//总剩余时长
+            var speak_flag= 0;//是否内部数据全部为0的标记
+            var speak_flagNum = 0;//判断时长信息有几条
+
+            var sms_total = '--';//总短信
+            var sms_used = '--';//总已用短信
+            var sms_isuse = '--';//总剩余短信
+            var sms_flag= 0;//是否内部数据全部为0的标记
+            var sms_flagNum = 0;//判断短信信息有几条
+
+            for(i in planRemain){
+                <!-- if(planRemain[i].planName!=null && planRemain[i].planName!=""){ -->
+                if(true){
+                    if(planRemain[i].resourcesInfo!=null && planRemain[i].resourcesInfo!=""){
+                        var resourcesInfo = planRemain[i].resourcesInfo;
+                        for(var res=0 ;res<resourcesInfo.length;res++){
+                            var resourcesCode = resourcesInfo[res].resourcesCode;
+                            if(resourcesCode=='04'){//流量
+                                flow_flagNum = flow_flagNum + 1;
+                                if(resourcesInfo[res].secResourcesInfo!=null && resourcesInfo[res].secResourcesInfo!=""){
+                                    var secResourceInfo = resourcesInfo[res].secResourcesInfo;
+
+                                    var rName = planRemain[i].planName;
+                                    var htm = "<li class=\"clearfix sm-dataCont\">"+
+                                        '<div class=\"sm-dataTitle\"><span class="dot"></span>'+rName+'</div>';
+
+                                    flow_flag = 0;
+                                    for(var se=0;se<secResourceInfo.length;se++){
+                                        if(secResourceInfo[se].secResourcesName!=null){
+
+                                            if(secResourceInfo[se].resourcesLeftInfo!=null && secResourceInfo[se].resourcesLeftInfo!=""){
+                                                var resourceLeftInfo = secResourceInfo[se].resourcesLeftInfo;
+                                                for(var le=0;le<resourceLeftInfo.length;le++){
+                                                    var total = (resourceLeftInfo[le].totalRes).replace(',','');
+                                                    var used = (resourceLeftInfo[le].usedRes).replace(',','');
+                                                    var remain = (resourceLeftInfo[le].remainRes).replace(',','');
+                                                    var unit = resourceLeftInfo[le].unit;
+                                                    if(unit=='03'){//KB
+                                                        total = isNaN(Number(total)) == false?Number(total)/1024:'--';
+                                                        used = isNaN(Number(used)) == false?Number(used)/1024:'--';
+                                                        remain = isNaN(Number(remain)) == false?Number(remain)/1024:'--';
                                                     }
-
-                                                    var secResourcesName = secResourceInfo[se].secResourcesName;
-                                                    if(isNaN(Number(total)) == false && total != 0){
-                                                        flow_flag=1;
-                                                        //dealWithFlowAll
-                                                        if(secResourceInfo[se].secResourcesName="")
-                                                        { htm = htm+"<div class=\"sm-dataTitle2\">"+rName+'&nbsp;&nbsp;<span class="color1a98ff">'+dealWithFlowAll(total)+"</span></div>";}
-                                                        else{ htm = htm+"<div class=\"sm-dataTitle2\">"+secResourcesName+'&nbsp;&nbsp;<span class="color1a98ff">'+dealWithFlowAll(total)+"</span></div>";}
-                                                        htm += ' <div class="progressBarCont"><span class="progressBar"></span></div>';
-                                                        <!-- htm += '<input type="hidden" name="perce" value='+Number(remain/total).toFixed(2)+'>'; -->
-                                                        <!-- htm = htm+"<div class=\"clearfix\"><div class=\"fr sm-remain\">剩余"+dealWithFlowAll(remain)+"</div><div class=\"fl sm-used\">已用"+dealWithFlowAll(used)+"</div></div>"; -->
+                                                    if(unit=='05'){//GB
+                                                        total = isNaN(Number(total)) == false?Number(total)*1024:'--';
+                                                        used = isNaN(Number(used)) == false?Number(used)*1024:'--';
+                                                        remain = isNaN(Number(remain)) == false?Number(remain)*1024:'--';
+                                                    }
+                                                    if(flow_flagNum == 1 && se == 0){
+                                                        flow_total = Number(total);//流量总量tym
+                                                        flow_used = Number(used);//已用流量tym
+                                                        flow_isuse = Number(remain);//剩余流量tym
+                                                    }else{
+                                                        flow_total = Number(flow_total) + Number(total);//流量总量tym
+                                                        flow_used = Number(flow_used) + Number(used);//已用流量tym
+                                                        flow_isuse = Number(flow_isuse) + Number(remain);//剩余流量tym
                                                     }
                                                 }
                                             }
-                                            if(flow_flag ==0){
-                                                htm="";
+
+                                            var secResourcesName = secResourceInfo[se].secResourcesName;
+                                            if(isNaN(Number(total)) == false && total != 0){
+                                                flow_flag=1;
+                                                //dealWithFlowAll
+                                                if(secResourceInfo[se].secResourcesName="")
+                                                { htm = htm+"<div class=\"sm-dataTitle2\">"+rName+'&nbsp;&nbsp;<span class="color1a98ff">'+dealWithFlowAll(total)+"</span></div>";}
+                                                else{ htm = htm+"<div class=\"sm-dataTitle2\">"+secResourcesName+'&nbsp;&nbsp;<span class="color1a98ff">'+dealWithFlowAll(total)+"</span></div>";}
+                                                htm += ' <div class="progressBarCont"><span class="progressBar"></span></div>';
+                                                <!-- htm += '<input type="hidden" name="perce" value='+Number(remain/total).toFixed(2)+'>'; -->
+                                            <!-- htm = htm+"<div class=\"clearfix\"><div class=\"fr sm-remain\">剩余"+dealWithFlowAll(remain)+"</div><div class=\"fl sm-used\">已用"+dealWithFlowAll(used)+"</div></div>"; -->
                                             }
-                                            htm = htm+"</li>";
-                                            $("#flow_detail_div").append(htm);
-//                                            $("#flow_detail_div").html(htm);
                                         }
                                     }
-
-                                    if(resourcesCode=='05'){//wlan 
-                                        if(resourcesInfo[res].secResourcesInfo!=null){
-                                            var secResourceInfo = resourcesInfo[res].secResourcesInfo;
-                                            var rName = planRemain[i].planName+"(不包含在套餐总流量内)";
-                                            var htm = "<li class=\"clearfix sm-dataCont\">"+
-                                                    '<div class=\"sm-dataTitle\"><span class="dot"></span>'+rName+'</div>';
-                                            flow1_flag= 0;
-                                            for(var se=0;se<secResourceInfo.length;se++){
-                                                if(secResourceInfo[se].secResourcesName!=null){
-
-                                                    if(secResourceInfo[se].resourcesLeftInfo!=null && secResourceInfo[se].resourcesLeftInfo!=""){
-                                                        var resourceLeftInfo = secResourceInfo[se].resourcesLeftInfo;
-                                                        for(var le=0;le<resourceLeftInfo.length;le++){
-                                                            var total = (resourceLeftInfo[le].totalRes).replace(',','');
-                                                            var used = (resourceLeftInfo[le].usedRes).replace(',','');
-                                                            var remain = (resourceLeftInfo[le].remainRes).replace(',','');
-                                                            var unit = resourceLeftInfo[le].unit;
-                                                            var unitType = "";
-                                                            var shwoTextg = "";
-                                                            if(unit=='03'){//
-                                                                total = isNaN(Number(total)) == false?Number(total)/1024:'--';
-                                                                used = isNaN(Number(used)) == false?Number(used)/1024:'--';
-                                                                remain = isNaN(Number(remain)) == false?Number(remain)/1024:'--';
-
-                                                            }
-                                                            if(unit=='05'){//
-                                                                total = isNaN(Number(total)) == false?Number(total)*1024:'--';
-                                                                used = isNaN(Number(used)) == false?Number(used)*1024:'--';
-                                                                remain = isNaN(Number(remain)) == false?Number(remain)*1024:'--';
-                                                            }
-
-                                                            if(unit == '01'){
-                                                                unitType = "";
-                                                                shwoTextg = "";
-                                                            }
-                                                        }
-                                                    }
-                                                    var secResourcesName = secResourceInfo[se].secResourcesName;
-                                                    if(isNaN(Number(total)) == false && total != 0){
-                                                        flow1_flag =1;
-                                                        if(secResourceInfo[se].secResourcesName=""){ htm = htm+"<div class=\"sm-dataTitle2\">"+r_name+ '&nbsp;&nbsp;<span class="color1a98ff">'+Number(total).toFixed(2)+unitType+"</span></div>";}
-                                                        else{ htm = htm+"<div class=\"sm-dataTitle2\">"+secResourcesName+'&nbsp;&nbsp;<span class="color1a98ff">'+Number(total).toFixed(2)+unitType+"</span></div>";}
-                                                        htm += ' <div class="progressBarCont"><span class="progressBar"></span></div>';
-                                                        htm += '<input type="hidden" name="perce" value='+Number(remain/total).toFixed(2)+'>';
-                                                        <!-- htm = htm+"<div class=\"clearfix mtb15 \"><div class=\"fl sm-remain\">剩余"+Number(remain).toFixed(2)+unitType+"</div><div class=\"fl sm-used\">&nbsp;/&nbsp;已用"+ Number(used).toFixed(2) + unitType + "</div></div>"; -->
-                                                    }
-                                                }
-                                            }
-                                            if(flow1_flag ==0){
-                                                htm="<li>";
-                                            }
-                                            htm = htm+"</li>";
-                                            $("#flow_detail_div").append(htm);
-//                                            $("#flow_detail_div").html(htm);
-                                        }
+                                    if(flow_flag ==0){
+                                        htm="";
                                     }
-                                    if(resourcesCode=='01'){//通话时长
-                                        speak_flagNum = speak_flagNum + 1;
-                                        if(resourcesInfo[res].secResourcesInfo!=null && resourcesInfo[res].secResourcesInfo!=""){
-                                            var secResourceInfo = resourcesInfo[res].secResourcesInfo;
-                                            var rName = planRemain[i].planName;
-                                            var htm = "<li class=\"clearfix sm-dataCont\">"+
-                                                    '<div class=\"sm-dataTitle\"><span class="dot"></span>'+planRemain[i].planName+'</div>';
-													htm="";
-                                            speak_flag=0;
-                                            for(var se=0;se<secResourceInfo.length;se++){
-                                                if(secResourceInfo[se].secResourcesName!=null){
-
-                                                    if(secResourceInfo[se].resourcesLeftInfo!=null &&　secResourceInfo[se].resourcesLeftInfo!=""){
-                                                        var resourceLeftInfo = secResourceInfo[se].resourcesLeftInfo;
-                                                        for(var le=0;le<resourceLeftInfo.length;le++){
-                                                            var total = (resourceLeftInfo[le].totalRes).replace(',','');
-                                                            var used = (resourceLeftInfo[le].usedRes).replace(',','');
-                                                            var remain = (resourceLeftInfo[le].remainRes).replace(',','');
-                                                            var unit = resourceLeftInfo[le].unit;
-
-                                                            if(speak_flagNum == 1 && se == 0){
-                                                                speak_total = Number(total);
-                                                                speak_used = Number(used);
-                                                                speak_isuse = Number(remain);
-                                                            }else{
-                                                                speak_total = Number(speak_total) + Number(total);
-                                                                speak_used = Number(speak_used) + Number(used);
-                                                                speak_isuse = Number(speak_isuse) + Number(remain);
-                                                            }
-                                                        }
-                                                    }
-                                                    var secResourcesName = secResourceInfo[se].secResourcesName;
-                                                    if(isNaN(Number(total)) == false && total != 0){
-                                                        speak_flag=1;
-                                                        <!-- if(secResourceInfo[se].sec_resources_name==""){htm = htm+"<div class=\"sm-dataTitle2\">"+r_name+'&nbsp;&nbsp;<span class="color1a98ff">'+total+"</span></div>";} -->
-                                                        <!-- else{htm = htm+"<div class=\"sm-dataTitle2\">"+secResourcesName+'&nbsp;&nbsp;<span class="color1a98ff">'+total+"<span></div>";} -->
-                                                        <!-- htm += ' <div class="progressBarCont"><span class="progressBar"></span></div>'; -->
-                                                        <!-- htm += '<input type="hidden" name="perce" value='+Number(remain/total).toFixed(2)+'>'; -->
-                                                        <!-- htm = htm+"<div class=\"clearfix mtb15 \"><div class=\"fl sm-remain\">剩余"+remain+"</div><div class=\"fl sm-used\">&nbsp;/&nbsp;已用"+used+"</div></div>"; -->
-                                                    }
-                                                }
-                                            }
-                                            if(speak_flag ==0){
-                                                htm="<li>";
-                                            }
-                                            htm = htm+"</li>";
-                                            $("#speak_detail_div").append(htm);
-//                                            $("#speak_detail_div").html(htm);
-                                        }
-                                    }//通话时长完毕
-
-                                    if(resourcesCode=='02' || resourcesCode=='03'){//短彩信
-                                        sms_flagNum = sms_flagNum + 1;
-                                        if(resourcesInfo[res].secResourcesInfo!=null　&&　resourcesInfo[res].secResourcesInfo!=""){
-                                            var secResourceInfo = resourcesInfo[res].secResourcesInfo;
-                                            var rName = planRemain[i].planName;
-                                            var htm = "<li class=\"clearfix sm-dataCont\">"+
-                                                    '<div class=\"sm-dataTitle\"><span class="dot"></span>'+ rName +'</div>';
-                                            sms_flag=0;
-                                            for(var se=0;se<secResourceInfo.length;se++){
-                                                if(secResourceInfo[se].secResourcesName!=null){
-
-                                                    if(secResourceInfo[se].resourcesLeftInfo!=null && secResourceInfo[se].resourcesLeftInfo!=""){
-                                                        var resourceLeftInfo = secResourceInfo[se].resourcesLeftInfo;
-                                                        for(var le=0;le<resourceLeftInfo.length;le++){
-                                                            var total = (resourceLeftInfo[le].totalRes).replace(',','');
-                                                            var used = (resourceLeftInfo[le].usedRes).replace(',','');
-                                                            var remain = (resourceLeftInfo[le].remainRes).replace(',','');
-                                                            var unit = resourceLeftInfo[le].unit;
-
-                                                            if(sms_flagNum == 1 && se == 0){
-                                                                sms_total = Number(total);
-                                                                sms_used = Number(used);
-                                                                sms_isuse = Number(remain);
-                                                            }else{
-                                                                sms_total = Number(sms_total) + Number(total);
-                                                                sms_used = Number(sms_used) + Number(used);
-                                                                sms_isuse = Number(sms_isuse) + Number(remain);
-                                                            };
-                                                        }
-                                                    }
-                                                    var secResourcesName = secResourceInfo[se].secResourcesName;
-                                                    if(isNaN(Number(total)) ==false && total != 0){
-                                                        sms_flag=1;
-                                                        if(secResourceInfo[se].sec_resources_name=="")
-                                                        {htm = htm+"<div class=\"sm-dataTitle2\">"+rName+'&nbsp;&nbsp;<span class="color1a98ff">'+total+"</span>条</div>";}
-                                                        else{htm = htm+"<div class=\"sm-dataTitle2\">"+secResourcesName+'&nbsp;&nbsp;<span class="color1a98ff">'+total+"</span>条</div>";}
-                                                        htm = htm+"<div class=\"clearfix mtb15 \"><div class=\"fl sm-remain\">剩余"+remain+"条</div><div class=\"fl sm-used\">&nbsp;/&nbsp;已用"+used+"条</div></div>";
-                                                    }
-                                                }
-                                            }
-                                            if(sms_flag ==0){htm="<li>";}
-                                            htm = htm+"</li>";
-                                            $("#sms_detail_div").append(htm);
-//                                            $("#sms_detail_div").html(htm);
-                                        }
-                                    }//短彩信完毕
+                                    htm = htm+"</li>";
+                                    $("#flow_detail_div").append(htm);
+//                                            $("#flow_detail_div").html(htm);
                                 }
                             }
-                        }
-                    }
-                    //流量图标动态显示、流量包图标动态显示
-                    if(isNaN(Number(flow_total)) == false && isNaN(Number(flow_isuse)) == false && Number(flow_total)!=0){
-                        var isuse_per = Number(flow_isuse)/Number(flow_total);
-                        $('#flow_pro').css('width', Number(isuse_per).toFixed(2)*100 + '%');
-                        if(Number(isuse_per)>0.25){
-                            $('#flow_isuse').parent("p").addClass('font00c387');
-                        }else{
-                            $('#flow_isuse').parent("p").addClass('fontf73164');
-                        }
-                    }
-                    else{
-                        $("#flow_cont").css('display','none');
-                    }
 
-                    //日均使用流量计算
-                    if(isNaN(Number(flow_total)) == false && isNaN(Number(flow_isuse)) == false && isNaN(Number(flow_used)) == false){
-                       //dealWithFlow
-                        if(flow_total>1024){
-                            $("#flow_total").html("共"+dealWithFlow(flow_total)+"G");
-                        }else{
-                            $("#flow_total").html("共"+Number(flow_total).toFixed(2)+"M");
-                        }
+                            if(resourcesCode=='05'){//wlan
+                                if(resourcesInfo[res].secResourcesInfo!=null){
+                                    var secResourceInfo = resourcesInfo[res].secResourcesInfo;
+                                    var rName = planRemain[i].planName+"(不包含在套餐总流量内)";
+                                    var htm = "<li class=\"clearfix sm-dataCont\">"+
+                                        '<div class=\"sm-dataTitle\"><span class="dot"></span>'+rName+'</div>';
+                                    flow1_flag= 0;
+                                    for(var se=0;se<secResourceInfo.length;se++){
+                                        if(secResourceInfo[se].secResourcesName!=null){
 
-                        if(flow_isuse>1024){
-                            $("#flow_isuse").html(dealWithFlow(flow_isuse));
-                            $('#flow_isuse').next().text("/G");
-                        }else{
-                            $("#flow_isuse").html(Number(flow_isuse).toFixed(2));
-                        }
-                        if(flow_used>1024){
-                            $("#flow_used").html(dealWithFlow(flow_used));
-                            $('#flow_used').next().text("/G");
-                        }else{
-                            $("#flow_used").html(Number(flow_used).toFixed(2));
-                        }
+                                            if(secResourceInfo[se].resourcesLeftInfo!=null && secResourceInfo[se].resourcesLeftInfo!=""){
+                                                var resourceLeftInfo = secResourceInfo[se].resourcesLeftInfo;
+                                                for(var le=0;le<resourceLeftInfo.length;le++){
+                                                    var total = (resourceLeftInfo[le].totalRes).replace(',','');
+                                                    var used = (resourceLeftInfo[le].usedRes).replace(',','');
+                                                    var remain = (resourceLeftInfo[le].remainRes).replace(',','');
+                                                    var unit = resourceLeftInfo[le].unit;
+                                                    var unitType = "";
+                                                    var shwoTextg = "";
+                                                    if(unit=='03'){//
+                                                        total = isNaN(Number(total)) == false?Number(total)/1024:'--';
+                                                        used = isNaN(Number(used)) == false?Number(used)/1024:'--';
+                                                        remain = isNaN(Number(remain)) == false?Number(remain)/1024:'--';
 
-                        var myDate = new Date();
-                        var year = myDate.getFullYear();
-                        var moth = myDate.getMonth()+1;
-                        var maxD = new Date(year,moth,0);
-                        var d = myDate.getDate();
-                        var t_max = maxD.getDate();
-                    };
+                                                    }
+                                                    if(unit=='05'){//
+                                                        total = isNaN(Number(total)) == false?Number(total)*1024:'--';
+                                                        used = isNaN(Number(used)) == false?Number(used)*1024:'--';
+                                                        remain = isNaN(Number(remain)) == false?Number(remain)*1024:'--';
+                                                    }
 
-                    //通话时长
-                    if(isNaN(Number(speak_total)) == false && isNaN(Number(speak_isuse)) == false && Number(speak_total)!=0){
-                        <!-- var speak_isuse_per = Number(speak_isuse)/Number(speak_total); -->
-                        var speak_isuse_per =0.1;
-                        $('#speak_pro').css('width',Number(speak_isuse_per).toFixed(2)*100 + '%');
-                        if(Number(speak_isuse_per)>0.25){
-                            $('#speak_isuse').parent("p").addClass('font00c387');
-                        }else{
-                            $('#speak_isuse').parent("p").addClass('fontf73164');
+                                                    if(unit == '01'){
+                                                        unitType = "";
+                                                        shwoTextg = "";
+                                                    }
+                                                }
+                                            }
+                                            var secResourcesName = secResourceInfo[se].secResourcesName;
+                                            if(isNaN(Number(total)) == false && total != 0){
+                                                flow1_flag =1;
+                                                if(secResourceInfo[se].secResourcesName=""){ htm = htm+"<div class=\"sm-dataTitle2\">"+r_name+ '&nbsp;&nbsp;<span class="color1a98ff">'+Number(total).toFixed(2)+unitType+"</span></div>";}
+                                                else{ htm = htm+"<div class=\"sm-dataTitle2\">"+secResourcesName+'&nbsp;&nbsp;<span class="color1a98ff">'+Number(total).toFixed(2)+unitType+"</span></div>";}
+                                                htm += ' <div class="progressBarCont"><span class="progressBar"></span></div>';
+                                                htm += '<input type="hidden" name="perce" value='+Number(remain/total).toFixed(2)+'>';
+                                            <!-- htm = htm+"<div class=\"clearfix mtb15 \"><div class=\"fl sm-remain\">剩余"+Number(remain).toFixed(2)+unitType+"</div><div class=\"fl sm-used\">&nbsp;/&nbsp;已用"+ Number(used).toFixed(2) + unitType + "</div></div>"; -->
+                                            }
+                                        }
+                                    }
+                                    if(flow1_flag ==0){
+                                        htm="<li>";
+                                    }
+                                    htm = htm+"</li>";
+                                    $("#flow_detail_div").append(htm);
+//                                            $("#flow_detail_div").html(htm);
+                                }
+                            }
+                            if(resourcesCode=='01'){//通话时长
+                                speak_flagNum = speak_flagNum + 1;
+                                if(resourcesInfo[res].secResourcesInfo!=null && resourcesInfo[res].secResourcesInfo!=""){
+                                    var secResourceInfo = resourcesInfo[res].secResourcesInfo;
+                                    var rName = planRemain[i].planName;
+                                    var htm = "<li class=\"clearfix sm-dataCont\">"+
+                                        '<div class=\"sm-dataTitle\"><span class="dot"></span>'+planRemain[i].planName+'</div>';
+                                    htm="";
+                                    speak_flag=0;
+                                    for(var se=0;se<secResourceInfo.length;se++){
+                                        if(secResourceInfo[se].secResourcesName!=null){
+
+                                            if(secResourceInfo[se].resourcesLeftInfo!=null &&　secResourceInfo[se].resourcesLeftInfo!=""){
+                                                var resourceLeftInfo = secResourceInfo[se].resourcesLeftInfo;
+                                                for(var le=0;le<resourceLeftInfo.length;le++){
+                                                    var total = (resourceLeftInfo[le].totalRes).replace(',','');
+                                                    var used = (resourceLeftInfo[le].usedRes).replace(',','');
+                                                    var remain = (resourceLeftInfo[le].remainRes).replace(',','');
+                                                    var unit = resourceLeftInfo[le].unit;
+
+                                                    if(speak_flagNum == 1 && se == 0){
+                                                        speak_total = Number(total);
+                                                        speak_used = Number(used);
+                                                        speak_isuse = Number(remain);
+                                                    }else{
+                                                        speak_total = Number(speak_total) + Number(total);
+                                                        speak_used = Number(speak_used) + Number(used);
+                                                        speak_isuse = Number(speak_isuse) + Number(remain);
+                                                    }
+                                                }
+                                            }
+                                            var secResourcesName = secResourceInfo[se].secResourcesName;
+                                            if(isNaN(Number(total)) == false && total != 0){
+                                                speak_flag=1;
+//                                                        <!-- if(secResourceInfo[se].sec_resources_name==""){htm = htm+"<div class=\"sm-dataTitle2\">"+r_name+'&nbsp;&nbsp;<span class="color1a98ff">'+total+"</span></div>";} -->
+//                                                        <!-- else{htm = htm+"<div class=\"sm-dataTitle2\">"+secResourcesName+'&nbsp;&nbsp;<span class="color1a98ff">'+total+"<span></div>";} -->
+//                                                        <!-- htm += ' <div class="progressBarCont"><span class="progressBar"></span></div>'; -->
+//                                                        <!-- htm += '<input type="hidden" name="perce" value='+Number(remain/total).toFixed(2)+'>'; -->
+//                                                        <!-- htm = htm+"<div class=\"clearfix mtb15 \"><div class=\"fl sm-remain\">剩余"+remain+"</div><div class=\"fl sm-used\">&nbsp;/&nbsp;已用"+used+"</div></div>"; -->
+                                            }
+                                        }
+                                    }
+                                    if(speak_flag ==0){
+                                        htm="<li>";
+                                    }
+                                    htm = htm+"</li>";
+                                    $("#speak_detail_div").append(htm);
+//                                            $("#speak_detail_div").html(htm);
+                                }
+                            }//通话时长完毕
+
+                            if(resourcesCode=='02' || resourcesCode=='03'){//短彩信
+                                sms_flagNum = sms_flagNum + 1;
+                                if(resourcesInfo[res].secResourcesInfo!=null　&&　resourcesInfo[res].secResourcesInfo!=""){
+                                    var secResourceInfo = resourcesInfo[res].secResourcesInfo;
+                                    var rName = planRemain[i].planName;
+                                    var htm = "<li class=\"clearfix sm-dataCont\">"+
+                                        '<div class=\"sm-dataTitle\"><span class="dot"></span>'+ rName +'</div>';
+                                    sms_flag=0;
+                                    for(var se=0;se<secResourceInfo.length;se++){
+                                        if(secResourceInfo[se].secResourcesName!=null){
+
+                                            if(secResourceInfo[se].resourcesLeftInfo!=null && secResourceInfo[se].resourcesLeftInfo!=""){
+                                                var resourceLeftInfo = secResourceInfo[se].resourcesLeftInfo;
+                                                for(var le=0;le<resourceLeftInfo.length;le++){
+                                                    var total = (resourceLeftInfo[le].totalRes).replace(',','');
+                                                    var used = (resourceLeftInfo[le].usedRes).replace(',','');
+                                                    var remain = (resourceLeftInfo[le].remainRes).replace(',','');
+                                                    var unit = resourceLeftInfo[le].unit;
+
+                                                    if(sms_flagNum == 1 && se == 0){
+                                                        sms_total = Number(total);
+                                                        sms_used = Number(used);
+                                                        sms_isuse = Number(remain);
+                                                    }else{
+                                                        sms_total = Number(sms_total) + Number(total);
+                                                        sms_used = Number(sms_used) + Number(used);
+                                                        sms_isuse = Number(sms_isuse) + Number(remain);
+                                                    };
+                                                }
+                                            }
+                                            var secResourcesName = secResourceInfo[se].secResourcesName;
+                                            if(isNaN(Number(total)) ==false && total != 0){
+                                                sms_flag=1;
+                                                if(secResourceInfo[se].sec_resources_name=="")
+                                                {htm = htm+"<div class=\"sm-dataTitle2\">"+rName+'&nbsp;&nbsp;<span class="color1a98ff">'+total+"</span>条</div>";}
+                                                else{htm = htm+"<div class=\"sm-dataTitle2\">"+secResourcesName+'&nbsp;&nbsp;<span class="color1a98ff">'+total+"</span>条</div>";}
+                                                htm = htm+"<div class=\"clearfix mtb15 \"><div class=\"fl sm-remain\">剩余"+remain+"条</div><div class=\"fl sm-used\">&nbsp;/&nbsp;已用"+used+"条</div></div>";
+                                            }
+                                        }
+                                    }
+                                    if(sms_flag ==0){htm="<li>";}
+                                    htm = htm+"</li>";
+                                    $("#sms_detail_div").append(htm);
+//                                            $("#sms_detail_div").html(htm);
+                                }
+                            }//短彩信完毕
                         }
-                        $("#speak_total").html("共"+Number(speak_total)+"");
-                        <!-- $("#speak_isuse").html(Number(speak_isuse)); -->
-                        $("#speak_isuse").html(5);
-                        $("#speak_used").html(Number(speak_used));
-                    }else{
-                        $("#speak_cont").css('display','none');
-                    }
-                    //短信
-                    if(isNaN(Number(sms_total)) == false && isNaN(Number(sms_isuse)) == false && Number(sms_total)!=0){
-                        var sms_isuse_per = Number(sms_isuse)/Number(sms_total);
-                        $('#sms_pro').css('width',Number(sms_isuse_per).toFixed(2)*100 + '%');
-                        if(Number(sms_isuse_per)>0.25){
-                            $('#sms_isuse').parent("p").addClass('font00c387');
-                        }else{
-                            $('#sms_isuse').parent("p").addClass('fontf73164');
-                        }
-                        $("#sms_total").html("共"+Number(sms_total)+"条");
-                        $("#sms_isuse").html(Number(sms_isuse));
-                        $("#sms_used").html(Number(sms_used));
-                        }
-                    else{
-                        $("#sms_cont").css('display','none');
                     }
                 }
-                var time = serviceMargin.data.oprTime;
-                time = time.substr(0, 4) + "-" + time.substr(4, 2) + "-" + time.substr(6, 2) + " " + time.substr(8, 2) + ":" + time.substr(10, 2);
-                $("#time").html(time);
-                //百分比样式数据设置
-                var i = 0,width=0;
-                for(i in $('.sm-dataTitle2')){
-                    width = Number($('.sm-dataTitle2').eq(i).next(".progressBarCont").next('input').val());
-                    $('.sm-dataTitle2').eq(i).next(".progressBarCont").children('.progressBar').css('width',width*100+'%');
+            }
+            //流量图标动态显示、流量包图标动态显示
+            if(isNaN(Number(flow_total)) == false && isNaN(Number(flow_isuse)) == false && Number(flow_total)!=0){
+                var isuse_per = Number(flow_isuse)/Number(flow_total);
+                $('#flow_pro').css('width', Number(isuse_per).toFixed(2)*100 + '%');
+                if(Number(isuse_per)>0.25){
+                    $('#flow_isuse').parent("p").addClass('font00c387');
+                }else{
+                    $('#flow_isuse').parent("p").addClass('fontf73164');
                 }
-                $(".load-pup").addClass('hidden');
-                wrapper_index.refresh();
-        },
-         error:function(){
-             $(".load-pup").addClass('hidden');
-             wrapper_index.refresh();
-         }
-    });
-}
-$('.paDtlCont').click(function(){
-    if($(this).prev('ul').css('display') =='block'){
-        $(this).prev('ul').css('display','none');
-        $(this).children('.deTxt').html("展开详情");
-        $(this).children('.paArrowT').removeClass('paArrowB');
-        wrapper_index.refresh();
-    }else{
-        $(this).prev('ul').css('display','block');
-        $(this).children('.deTxt').html("收起详情");
-        $(this).children('.paArrowT').addClass('paArrowB');
-        wrapper_index.refresh();
-    }
-});
+            }
+            else{
+                $("#flow_cont").css('display','none');
+            }
 
-getPageInfo();
-$(document).ready(function(){
-    //下拉刷新
-    refresher.init({
-        id:"wrapper_index",
-        pullDownAction:Refresh
-    });
-    function Refresh() {
-        getPageInfo();
+            //日均使用流量计算
+            if(isNaN(Number(flow_total)) == false && isNaN(Number(flow_isuse)) == false && isNaN(Number(flow_used)) == false){
+                //dealWithFlow
+                if(flow_total>1024){
+                    $("#flow_total").html("共"+dealWithFlow(flow_total)+"G");
+                }else{
+                    $("#flow_total").html("共"+Number(flow_total).toFixed(2)+"M");
+                }
+
+                if(flow_isuse>1024){
+                    $("#flow_isuse").html(dealWithFlow(flow_isuse));
+                    $('#flow_isuse').next().text("/G");
+                }else{
+                    $("#flow_isuse").html(Number(flow_isuse).toFixed(2));
+                }
+                if(flow_used>1024){
+                    $("#flow_used").html(dealWithFlow(flow_used));
+                    $('#flow_used').next().text("/G");
+                }else{
+                    $("#flow_used").html(Number(flow_used).toFixed(2));
+                }
+
+                var myDate = new Date();
+                var year = myDate.getFullYear();
+                var moth = myDate.getMonth()+1;
+                var maxD = new Date(year,moth,0);
+                var d = myDate.getDate();
+                var t_max = maxD.getDate();
+            };
+
+            //通话时长
+            if(isNaN(Number(speak_total)) == false && isNaN(Number(speak_isuse)) == false && Number(speak_total)!=0){
+                <!-- var speak_isuse_per = Number(speak_isuse)/Number(speak_total); -->
+                var speak_isuse_per =0.1;
+                $('#speak_pro').css('width',Number(speak_isuse_per).toFixed(2)*100 + '%');
+                if(Number(speak_isuse_per)>0.25){
+                    $('#speak_isuse').parent("p").addClass('font00c387');
+                }else{
+                    $('#speak_isuse').parent("p").addClass('fontf73164');
+                }
+                $("#speak_total").html("共"+Number(100)+"");
+                <!-- $("#speak_isuse").html(Number(speak_isuse)); -->
+                $("#speak_isuse").html(5);
+                $("#speak_used").html(Number(speak_used));
+            }else{
+                $("#speak_cont").css('display','none');
+            }
+            //短信
+            if(isNaN(Number(sms_total)) == false && isNaN(Number(sms_isuse)) == false && Number(sms_total)!=0){
+                var sms_isuse_per = Number(sms_isuse)/Number(sms_total);
+                $('#sms_pro').css('width',Number(sms_isuse_per).toFixed(2)*100 + '%');
+                if(Number(sms_isuse_per)>0.25){
+                    $('#sms_isuse').parent("p").addClass('font00c387');
+                }else{
+                    $('#sms_isuse').parent("p").addClass('fontf73164');
+                }
+                $("#sms_total").html("共"+Number(sms_total)+"条");
+                $("#sms_isuse").html(Number(sms_isuse));
+                $("#sms_used").html(Number(sms_used));
+            }
+            else{
+                $("#sms_cont").css('display','none');
+            }
+        }
+        var time = serviceMargin.data.oprTime;
+        time = time.substr(0, 4) + "-" + time.substr(4, 2) + "-" + time.substr(6, 2) + " " + time.substr(8, 2) + ":" + time.substr(10, 2);
+        $("#time").html(time);
+        //百分比样式数据设置
+        var i = 0,width=0;
+        for(i in $('.sm-dataTitle2')){
+            width = Number($('.sm-dataTitle2').eq(i).next(".progressBarCont").next('input').val());
+            $('.sm-dataTitle2').eq(i).next(".progressBarCont").children('.progressBar').css('width',width*100+'%');
+        }
+        $(".load-pup").addClass('hidden');
+
+
+//        },
+//         error:function(){
+//             $(".load-pup").addClass('hidden');
+//             wrapper_index.refresh();
+//         }
+//    });
     }
-});
+    $('.paDtlCont').click(function(){
+        if($(this).prev('ul').css('display') =='block'){
+            $(this).prev('ul').css('display','none');
+            $(this).children('.deTxt').html("展开详情");
+            $(this).children('.paArrowT').removeClass('paArrowB');
+        }else{
+            $(this).prev('ul').css('display','block');
+            $(this).children('.deTxt').html("收起详情");
+            $(this).children('.paArrowT').addClass('paArrowB');
+        }
+    });
+
+    getPageInfo();
+    $(document).ready(function(){
+        //下拉刷新
+        refresher.init({
+            id:"wrapper_index",
+            pullDownAction:Refresh
+        });
+        function Refresh() {
+            getPageInfo();
+        }
+    });
 </script>
 </body>
 </html>

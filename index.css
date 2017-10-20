@@ -266,7 +266,7 @@ input {
 	margin: auto 0;
 	height: 15px;
 	width: 15px;
-	background: url(../../images/new/index/sprites.png) no-repeat;
+	background: url(images/sprites.png) no-repeat;
 	background-size: 200px 200px;
 }
 
@@ -342,7 +342,7 @@ input {
 	height: 20px;
 	width: 20px;
 	margin: 0 2px -5px 0;
-	background-image: url(../../images/new/index/sprites.png);
+	background-image: url(images/sprites.png);
 	background-repeat: no-repeat
 }
 
@@ -736,7 +736,7 @@ input {
 	right: 15px;
 	height: 15px;
 	width: 8px;
-	background: url(../../images/new/package/sprites.png) -69px -3px no-repeat;
+	/*background: url(../../images/new/package/sprites.png) -69px -3px no-repeat;*/
 	background-size:100px 100px;
 }
 .billCont{
@@ -768,11 +768,12 @@ input {
 }
 
 .paCont .titCont .icon {
-	background-image: url(../../images/new/package/sprites.png);
+	/*background-image: url(../../images/new/package/sprites.png);*/
 	background-size:100px 100px;
 }
 .paCont .titCont .icon1{
-	background-position:-23px 1px;
+	background-position:0px 0px;
+	/*background-position:-23px 1px;*/
 }
 .paCont .titCont .icon2{
 	background-position:-45px 1px;
@@ -845,7 +846,7 @@ input {
 	height: 10px;
 	width: 10px;
 	margin: 0 5px;
-	background: url(../../images/new/package/sprites.png) -76px -6px no-repeat;
+	/*background: url(../../images/new/package/sprites.png) -76px -6px no-repeat;*/
 	background-size:100px 100px;
 }
 

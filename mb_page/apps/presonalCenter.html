@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+-->  <meta name="format-detection"content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <title>个人中心</title>
+   <link href="../css/style.css" rel="stylesheet" type="text/css">
+
+
+    <!--公共JS-->
+    <script src="../js/jquery-mobile/jquery-2.1.1.min.js"></script>
+
+    <!--自定义JS-->
+	<script type="text/javascript" src="../js/apps/app.initDB.js"></script> 
+	<script type="text/javascript" src="../js/public/app.util.js"></script>
+	<script type="text/javascript" src="../js/public/hnct.ui.js"></script>
+
+    <script type="text/javascript" src="../js/public/hnct.login.js"></script>
+	<script type="text/javascript" src="../js/public/hnct.personal.js"></script>
+	<script type="text/javascript" src="../js/public/hnct.shopping.js"></script>
+	<script type="text/javascript" src="../js/public/hnct.orderlist.js"></script>
+	<script type="text/javascript" src="../js/public/hnct.coupons.js"></script>
+	<script type="text/javascript" src="../js/public/hnct.paypassword.js"></script>
+
+</head>
+<body >
+     <!-- header -->
+    <header class="clearfix">
+      <span class="top_return" onClick="window.history.go(-1)" style="cursor:pointer"></span>
+      <p>个人中心</p>
+   </header>  
+  
+  <!--中间内容-->
+  <div class="content">  
+    <!--个人基本信息-->
+       <section class="per_info">
+             <span class="show user-name" id="userName"></span>
+             <span class="show welcome-tips">欢迎使用**</span>
+            
+            
+       </section>
+      <!--等待付款四块-->  
+    <section class="wait4"> 
+      	 <div class="wait-box">
+         	 <div class="wait-box-sub1" onClick="doOpenOrderListPage('UN_PAY')">
+                	<img src="../images/per_icon1.png" >
+                    <span class="per-number" id="unPayOrderQty"></span>
+                    等待付款
+              </div>
+               <div class="wait-box-sub2"  onclick="doOpenOrderListPage('UN_RCV')">
+                	<img src="../images/per_icon2.png" >
+                     <span class="per-number" id="unRcvOrderQty"></span>
+                    等待收货
+              </div>
+               <div class="wait-box-sub3" onClick="doOpenOrderListPage('REFUND')">
+                	<img src="../images/per_icon3.png">
+                    退货退款
+              </div>
+         </div>	
+         <div class="all-order clearfix" onClick="doOpenOrderListPage('ALL')">
+            <i></i>
+         	 <span class="fl">全部订单</span>
+              <a class="per_item_arrow" href="#"></a>
+       </div> 
+      </section> 
+
+       <!--我的地址四块-->  
+      <section class="myinfo4"> 
+      	 <div class="myinfo4-ad clearfix" >
+         	 <i class="icon1"></i>
+         	 <span  class="fl">我的地址</span>
+              <a class="per_item_arrow" href="#"></a>
+         </div> 
+ 
+	
+         <div class="myinfo4-line"></div>
+          <div class="myinfo4-ad clearfix" >
+             <i class="icon4"></i>
+         	 <span  class="fl">账户与安全</span>
+              <a class="per_item_arrow" href="#"></a>
+         </div> 
+		  <div class="myinfo4-line"></div>
+        <div class="myinfo4-ad clearfix" >
+             <i class="icon3 icozfmm"></i>
+         	 <span  class="fl">支付密码管理</span>
+              <a class="per_item_arrow" href="#"></a>
+         </div> 
+         <div class="myinfo4-line"></div>
+          <div class="myinfo4-ad clearfix" onClick="updateApp()">
+             <i class="icon5 version"></i>
+         	 <span  class="fl" id="versionSpan">版本更新</span>
+              <a class="per_item_arrow" href="#"></a>
+         </div> 
+      </section>
+     <!--退出按钮-->
+     <div class="box">
+       <div class="btn-quit" href="#" >退出当前账号</div>
+     </div>
+  </div>
+<!--底部固定的工具栏-->   
+<footer class="clearfix">
+	<div class="item1" >
+    	<img src="../images/btm_icon_home.png" >
+    	首页    </div>
+    <div class="item1" >
+    	<img src="../images/btm_icon_lei.png" >
+    	分类    </div>
+    <div class="item1" >
+	    <img src="../images/btm_icon_fx.png" >
+    	发现    </div>
+    <div class="item1"  >
+		<img src="../images/btm_icon_gwc.png" >
+    	购物车    </div>
+    <div class="item05" style="color:#0085d0">
+     <img src="../images/btm_icon_per_on.png" >
+    	个人中心    </div>
+
+</footer> 
+<script language="javascript">  
+
+ </script>
+</body>
+</html>

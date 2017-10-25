@@ -1,0 +1,493 @@
+﻿ <!DOCTYPE html>
+<html style="min-width: 800px;" lang="zh">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+<!-- <script src="http://libs.useso.com/js/jquery/1.11.1/jquery.min.js"></script> -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/angular.js"></script>
+<script src="js/modernizr.js"></script>
+<head>
+</head>
+<body  ng-app="myApp" ng-controller="shopCtrl">
+
+<header>
+    <div id="cd-hamburger-menu"><a class="cd-img-replace" href="#0">Menu</a></div>
+    <div id="cd-cart-trigger"><a class="cd-img-replace" href="#0">Cart</a></div>
+</header>
+
+<nav id="main-nav">
+    <ul>
+        <li><a href="#0">Home</a></li>
+        <li><a class="current" href="#0">Services</a></li>
+    </ul>
+</nav>
+
+<!--<main>-->
+    <div class="container" style="margin-top:80px;">
+
+        <h3>Shop</h3>
+        <button class="btn btn-success" data-toggle="modal"  data-target="#identifier"  ng-click="editShop('new')">
+            <span class="glyphicon glyphicon-user"></span> Create
+        </button>
+        <table class="table table-striped">
+            <thead><tr>
+                <th><label all-check><input type="checkbox"></label></th>
+                <th>Edit</th>
+                <th>Title</th>
+                <th>Num</th>
+                <th ng-click='shopSort("price")'>Price</th>
+                <th>Total Price</th>
+                <th>Add to Cart</th>
+            </tr></thead>
+            <tbody>
+            <tr ng-repeat="shop in shops">
+                <td><input type="checkbox" single-check item={{shop.id}}></td>
+                <td>
+                    <button class="btn"  data-toggle="modal"  data-target="#identifier" ng-click="editShop(shop)">
+                        <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
+                    </button>
+                    <button class="btn"  ng-click="delShop($index)">
+                        <span class="glyphicon glyphicon-user"></span>Delete
+                    </button>
+
+                </td>
+                <td>{{ shop.title }}</td>
+                <td>
+     <span  item-id={{shop.id}}>
+         <!--ng-click="shop.num=shop.num+1;changeNum($event,shop.num);"-->
+         <a href="javascript:void(0)" shop-add item={{shop.id}} num={{shop.num}}>+</a>
+
+                    <input   type="number" min="0" ng-model="shop.num" ng-init="shop.num=1" ng-change="changeNum(this,shop.num);"/>
+
+         <a href="javascript:void(0)" shop-minus item={{shop.id}}>
+             <!--<a href="javascript:void(0)" class="btn"  ng-click="shop.num=shop.num-1;changeNum($event,shop.num);">-->
+             -
+         </a>
+
+     </span>
+                </td>
+                <td ng-cloak>{{ shop.price }}</td>
+                <td>{{ shop.price*shop.num |number:2 }}</td>
+                <td> <button class="btn"   ng-click="addShop(shop)">
+                    Add
+                </button></td>
+            </tr></tbody>
+            <tfoot>
+            <tr>
+                <td colspan="4">    <p ng-init=0>总价格：{{ total | number:2}}</p></td>
+            </tr>
+            </tfoot>
+        </table>
+        <div class="modal fade" id="identifier" tabindex="-1" role="dialog"  aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3  class="modal-title"  ng-show="edit">Create :</h3>
+                        <h3  class="modal-title"  ng-hide="edit">Edit Shop:</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" id="createForm">
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Title:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="title" ng-model="title"   placeholder="Title">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Password:</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" ng-model="passw1" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2  control-label">Repeat:</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" ng-model="passw2" placeholder="Repeat Password">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button class="btn btn-success" data-dismiss="modal" ng-disabled="error || incomplete" ng-click="saveShop($event)">Save Changes
+                        </button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--</main>-->
+
+<div id="cd-shadow-layer"></div>
+
+<div id="cd-cart">
+    <h2>Cart</h2>
+    <ul class="cd-cart-items">
+        <li ng-repeat="cart in carts">
+            <span class="cd-qty">{{cart.num}}x</span> {{cart.title}}
+            <div class="cd-price">{{cart.price}}</div>
+            <a href="#0" class="cd-item-remove cd-img-replace" ng-click="removeShop($index)">Remove</a>
+        </li>
+    </ul> <!-- cd-cart-items -->
+
+    <div class="cd-cart-total">
+        <p>Total <span>{{cartTotal}}</span></p>
+    </div> <!-- cd-cart-total -->
+</div> <!-- cd-cart -->
+
+<script >
+    var $allNum=7;
+    var shop=angular.module('myApp', []);
+    shop.directive('shopAdd',function(){
+        return {
+            link:function(scope, element, attr){
+                element.click(function(){
+                    angular.forEach(scope.shops,function(data,index,array){
+                        if(attr.item==data.id){
+                            data.num=parseInt(data.num)+1;
+                            scope.getTotal();
+                            scope.$apply(); //刷新视图
+                        }
+
+                    });
+                });
+            }
+        }
+    }) ;
+    shop.directive('shopMinus',function(){
+        return {
+            link:function(scope, element, attr){
+                element.click(function(){
+                    var This=this;
+                    angular.forEach(scope.shops,function(data,index,array){
+                        if(attr.item==data.id){
+                            if(data.num<=1){
+                                if(confirm('是否删除该产品')){
+                                    data.num=0;
+                                    $(This).siblings('input').val(0);
+                                    scope.getTotal();
+                                    scope.$apply(); //刷新视图
+                                    //delete array[index];
+                                    scope.shops.splice(index,1)
+                                    $(This).parents('tr').remove();
+                                }
+
+                            }else{
+                                data.num=parseInt(data.num)-1;
+                            };
+                            scope.getTotal();
+                            scope.$apply(); //刷新视图
+                        }
+                    });
+                });
+            }
+        }
+    }) ;
+    shop.directive('allCheck',function(){
+        return function(scope, element, attr){
+            element.click(function(){
+                var isCheck=$(this).find('input').prop('checked');
+                if(isCheck){
+                    $('input[type=checkbox]').prop('checked',true);
+                }else{
+                    $('input[type=checkbox]').not($('input[type=checkbox]').eq(0)).prop('checked',false);
+                }
+                angular.forEach(scope.shops,function(data,index,array){
+                    data.chk=isCheck;
+                })
+                scope.getTotal();
+                scope.$apply(); //刷新视图
+            })
+        }
+    }) ;
+    shop.directive('singleCheck',function(){
+        return function(scope, element, attr){
+            element.click(function(){
+                var This=this ;
+                angular.forEach(scope.shops,function(data,index,array){
+                    if(attr.item==data.id){
+                        var isCheck=$(This).prop('checked');
+                        data.chk=isCheck;
+                        scope.getTotal();
+                        scope.$apply(); //刷新视图
+                    }
+                })
+            });
+        }
+    });
+
+    shop.controller('shopCtrl', function($scope,$filter) {
+$scope.title = '';
+$scope.passw1 = '';
+$scope.passw2 = '';
+$scope.idTemp = '';
+$scope.carts = [];
+
+$scope.shops = [
+{chk:false,id:1,title:"Pan ",num:1, price : 4.00 },
+{chk:false,id:2,title:"Pan",num:1, price : 5.00  },
+{chk:false,id:3,title:"Pan" ,num:1, price : 6.00 },
+{chk:false,id:4,title:"Pan" ,num:1, price : 700 },
+{chk:false,id:5,title:"Pan", num:1,price : 800  },
+{chk:false,id:6,title:"Pan",num:1, price : 30.00  }
+];
+$scope.edit = true;
+$scope.error = false;
+$scope.incomplete = false;
+
+
+    $scope.total = 0;
+    $scope.cartTotal = 0;
+    var GetTotal = function () {
+        $scope.total = 0;
+        $.each($scope.shops, function(i,o) {
+            $scope.total += o.num * o.price;
+        })
+
+    }
+    $scope.getTotal=function(){
+        $scope.total=0;
+        angular.forEach($scope.shops,function(data,index,array){
+            if(data.chk==true){
+                $scope.total+=parseInt(data.num*data.price);
+            }
+        })
+
+
+        return $scope.total;
+    };
+        $scope.getCartTotal=function(){
+            $scope.cartTotal=0;
+            angular.forEach($scope.carts,function(data,index,array){
+                    $scope.cartTotal+=parseInt(data.num*data.price);
+            })
+
+
+            return $scope.cartTotal;
+        };
+    $scope.editShop = function(shop) {
+  if (shop == 'new') {
+    $scope.edit = true;
+    $scope.incomplete = true;
+    $scope.title = '';
+    $scope.passw1 = '';
+    $scope.idTemp = '';
+    $scope.passw2 = '';
+    } else {
+    $scope.edit = false;
+    $scope.idTemp = shop.id;
+    $scope.title = shop.title;
+  }
+};
+        $scope.addShop = function(shop) {
+           var flag=true;
+            $.each($scope.carts, function(i,o) {
+                if(this.id==shop.id){
+//                    var arr =this;
+//                    arr.num =arr.num+1;
+                    $scope.carts[i].num +=shop.num;
+//                    $scope.carts[i].num = arr.num+1;
+//                    $scope.carts[i].num = arr;
+                    $scope.getCartTotal();
+
+                    flag=false;
+                }
+            })
+             if(flag){
+                 var item={
+                     title:shop.title,
+                     price:shop.price,
+                     id:shop.id,
+                     num:shop.num
+                 };
+                 $scope.carts.push(item);
+                 $scope.getCartTotal();
+             }
+
+
+};
+        $scope.removeShop = function($index) {
+            $scope.carts.splice($index, 1);
+//            $scope.carts.remove(shop);
+            $scope.getCartTotal();
+
+        };
+    $scope.changeNum = function($event,num){
+        var id;
+       if($event.target){
+            id = $event.target.parentNode.getAttribute('item-id');
+       }else{
+         id=$($event).parent().attr("item-id");
+       }
+
+        $.each($scope.shops, function(i,o) {
+            if(this.id==id){
+                var arr =this;
+                arr.num =num;
+                $scope.shops[i] = arr;
+            }
+        })
+        GetTotal();
+    }
+    $scope.saveShop = function($event){
+    if( $scope.edit){
+        $scope.shops.push({id:$allNum++,
+            title:$("#createForm input[name='title']").val(),
+            num:4,
+              price : 4.00 });
+        GetTotal();
+
+    }else{
+         var id =$scope.idTemp;
+        $.each($scope.shops, function(i,o) {
+            if(this.id==id){
+                var arr =this;
+                arr.title =$("#createForm input[name='title']").val();
+                $scope.shops[i] = arr;
+            }
+            })
+
+
+
+
+//         $scope.total = common.getTotal($scope.total);
+
+    }
+
+   }
+//
+        $scope.shopSort=function(arg){
+            angular.forEach($scope.shops,function(data,index,array){
+//                arguments.callee['shopSort('+arg+')']=!arguments.callee['shopSort('+arg+')']
+                var revserse=true;
+                $scope.shops=$filter('orderBy')($scope.shops,arg,revserse)
+//                $scope.shops=$filter('orderBy')($scope.shops,arg,arguments.callee['shopSort('+arg+')'])
+            })
+
+        }
+
+        $scope.delShop = function($index){
+/*        var li = $event.target.parentNode;
+        li.parentNode.removeChild(li);
+        var id = $event.target.getAttribute('item-id');*/
+//        if($scope.users[id-1]){
+//            delete $scope.users[id-1];
+            $scope.shops.splice($index, 1);
+        GetTotal();
+//            $scope.users.splice($scope.users.indexOf(record), 1);
+//        }
+//        $scope.total = common.getTotal($scope.total);
+    }
+
+    $scope.$watch('passw1',function() {$scope.test();});
+$scope.$watch('passw2',function() {$scope.test();});
+$scope.$watch('title', function() {$scope.test();});
+
+$scope.test = function() {
+  if ($scope.passw1 !== $scope.passw2) {
+    $scope.error = true;
+    } else {
+    $scope.error = false;
+  }
+  $scope.incomplete = false;
+  if ($scope.edit && (
+  !$scope.title.length ||
+  !$scope.passw1.length || !$scope.passw2.length)) {
+     $scope.incomplete = true;
+  }
+};
+//    GetTotal();
+});
+
+  jQuery(document).ready(function($){
+        //if you change this breakpoint in the style.css file (or _layout.scss if you use SASS), don't forget to update this value as well
+        var $L = 1200,
+                $menu_navigation = $('#main-nav'),
+                $cart_trigger = $('#cd-cart-trigger'),
+                $hamburger_icon = $('#cd-hamburger-menu'),
+                $lateral_cart = $('#cd-cart'),
+                $shadow_layer = $('#cd-shadow-layer');
+
+        //open lateral menu on mobile
+        $hamburger_icon.on('click', function(event){
+            event.preventDefault();
+            //close cart panel (if it's open)
+            $lateral_cart.removeClass('speed-in');
+            toggle_panel_visibility($menu_navigation, $shadow_layer, $('body'));
+        });
+
+        //open cart
+        $cart_trigger.on('click', function(event){
+            event.preventDefault();
+            //close lateral menu (if it's open)
+            $menu_navigation.removeClass('speed-in');
+            toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
+        });
+
+        //close lateral cart or lateral menu
+        $shadow_layer.on('click', function(){
+            $shadow_layer.removeClass('is-visible');
+            // firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
+            if( $lateral_cart.hasClass('speed-in') ) {
+                $lateral_cart.removeClass('speed-in').on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+                    $('body').removeClass('overflow-hidden');
+                });
+                $menu_navigation.removeClass('speed-in');
+            } else {
+                $menu_navigation.removeClass('speed-in').on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+                    $('body').removeClass('overflow-hidden');
+                });
+                $lateral_cart.removeClass('speed-in');
+            }
+        });
+
+        //move #main-navigation inside header on laptop
+        //insert #main-navigation after header on mobile
+        move_navigation( $menu_navigation, $L);
+        $(window).on('resize', function(){
+            move_navigation( $menu_navigation, $L);
+
+            if( $(window).width() >= $L && $menu_navigation.hasClass('speed-in')) {
+                $menu_navigation.removeClass('speed-in');
+                $shadow_layer.removeClass('is-visible');
+                $('body').removeClass('overflow-hidden');
+            }
+
+        });
+    });
+
+    function toggle_panel_visibility ($lateral_panel, $background_layer, $body) {
+        if( $lateral_panel.hasClass('speed-in') ) {
+            // firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
+            $lateral_panel.removeClass('speed-in').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+                $body.removeClass('overflow-hidden');
+            });
+            $background_layer.removeClass('is-visible');
+
+        } else {
+            $lateral_panel.addClass('speed-in').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+                $body.addClass('overflow-hidden');
+            });
+            $background_layer.addClass('is-visible');
+        }
+    }
+
+    function move_navigation( $navigation, $MQ) {
+        if ( $(window).width() >= $MQ ) {
+            $navigation.detach();
+            $navigation.appendTo('header');
+        } else {
+            $navigation.detach();
+            $navigation.insertAfter('header');
+        }
+    };
+
+</script>
+</body>
+</html>

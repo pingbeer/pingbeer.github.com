@@ -1,0 +1,9 @@
+@charset "utf-8";
+body{margin:0;padding:0 0 20px;color:#666;font:9pt/22px "Quattrocento Sans",Helvetica Neue,Helvetica,Arial,sans-serif}
+article,aside,details,figcaption,figure,footer,header,nav,section,summary{display:block}
+dd,dt,li,ol,ul{list-style:none outside none}
+a{color:#444;text-decoration:none}
+a,address,b,big,blockquote,body,center,cite,code,dd,del,div,dl,dt,em,fieldset,font,form,h1,h2,h3,h4,h5,h6,html,i,iframe,img,ins,label,legend,li,ol,p,pre,small,span,strong,u,ul,var{margin:0;padding:0}
+.clearfix:after{clear:both;display:block;visibility:hidden;width:0;height:0;font-size:0}
+.navbar-nav{position:absolute;top:10px;right:50px;text-align:right}
+.pull-right{float:right!important}

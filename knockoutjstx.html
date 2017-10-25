@@ -1,0 +1,554 @@
+﻿
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+   <meta charset="utf-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>产品选择</title>
+    <link href="css/globle.css" rel="stylesheet" type="text/css" /></head>
+<style>
+    .profile{
+        margin-bottom: 15px;
+    }
+    .detailBar .orangetxt{
+        padding-right: 30px;
+    }
+    div.searchInput .inputText{
+        height: 20px;
+        line-height: 20px;
+    }
+    .page a{
+        height: 22px;
+    }
+    .loading-in div{
+        width: 200px;
+    }
+    .layui-layer-setwin .layui-layer-close1{
+        background-position: 2px -39px !important;
+    }
+    .layui-layer-close1:hover{
+        transform: rotate(180deg);
+        transition: all 0.25s ease 0s;
+    }
+    .nerplusInput{
+        width: 100px;
+        border:1px solid #cbcbcb;
+    }
+    .nerplusPart{
+        width: 40px;
+        border:1px solid #cbcbcb;
+    }
+    .noborder{
+        border:0 none ;
+    }
+
+    select {
+        float: left;
+        height: 30px;
+        width: 90px !important;
+    }
+</style>
+<body>
+
+
+
+
+
+
+
+<script language="javascript" src="js/jquery.js"></script>
+<style type="text/css">
+    .titleList {
+        padding-left: 1px
+    }
+</style>
+
+<script language="javascript" src="js/plusminus.js"></script>
+<div class="menucarIco" style="position:absolute;right:1px;top:50px;"></div>
+<div class="blank6"></div>
+
+<div class="w1010 mainrbor-my mb10 clear">
+<table border="0" cellspacing="0" cellpadding="0">
+    <thead class="tr-th">
+    <tr>
+        <th width="10%" class="title">供应商信息</th>
+        <th width="25%" class="txl">供应商名称</th>
+        <th width="14%">框架合同号</th>
+        <th width="11%">价格（元）</th>
+        <th width="10%">可用份额</th>
+        <th width="10%">申购数量</th>
+
+    </tr>
+    </thead>
+    <!--当前供应商数据循环列表 start-->
+
+
+    <tbody class="dataTbody" data-bind="foreach: vendors,visible: vendors().length > 0">
+    <tr class="tr-bd">
+        <td colspan="2" rowspan="1" class="txl " ><i class="arrowskin"></i>
+            <span data-bind='text: vendorName'></span>
+            
+        </td>
+        <td rowspan="1" data-bind="text:contractCode"></td>
+        <td rowspan="1" class="formattedPrice"  data-bind='with: vendorLine'  ><span data-bind='text:vendorTotal()'>0</span></td>
+        
+        <td rowspan="1" title="份额" data-bind="text:quota" class="orangetxt">0</td>
+        <td rowspan="1"  data-bind='with: vendorLine' >
+            <input type="hidden" value="" name="factoryItemId"
+                   data-bind="value:factoryItemId,valueUpdate:['afterkeydown','click','textchange','propertychange','input'],
+                   attr: { id:'factory'+$parent.vendorId}" />
+
+            <input type="hidden" value="" name="radioSelectedOptionValue" data-bind="value:radioSelectedOptionValue,
+            valueUpdate:['afterkeydown','click','textchange','propertychange','input'],attr: { id:'radio'+$parent.vendorId}" />
+            <input type="text"
+                    
+                   onkeyup="value=value.replace(/[^\d]/g,'')"
+                    
+                   data-bind="value: quantity,valueUpdate:['afterkeydown','click','textchange','propertychange','input']"
+                   class="nerplus"/></td>
+           
+    </tr>
+    <!--当前供应商下默认隐藏数据模块 start-->
+    <tr class="collendlist">
+        <td colspan="8" rowspan="1">
+            <div class="tableboxcol">
+                <!--当前供应商下默认隐藏数据表格 sta rt-->
+                <table border="0" cellspacing="1" cellpadding="0">
+                    <thead class="tr-th">
+                    <tr class="tr-th-order">
+                        <td colspan="3"><span class="boxinfotip zisbg">
+                            <i class="ico">&#xe918;</i>型号设备</span>
+                            <a href="javascript:;" title="查看更多"
+                               data-bind='click: $root.lookMore,visible: completeSetTxList().length > 4' class="r lookmore" style="   
+    clear: both;
+    color: #fff;
+
+    line-height: 30px;
+
+    padding: 0 10px;">
+							   查看更多
+                               </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="54%">型号</th>
+                        <th width="23%">价格</th>
+                        <th width="23%">选择</th>
+                    </tr>
+                    </thead>
+                    <!--当前供应商下默认隐藏数据表格循环列表 start-->
+
+                    <tbody data-bind="foreach: completeSetTxList,attr:{id:'tb_'+$parent.vendorId};visible: completeSetTxList().length > 0">
+                    
+                    <tr>
+                        <td rowspan="1" class="txl" data-bind='text: description'></td>
+                        <td rowspan="1" class="orangetxt"
+                            data-bind='text: unitPrice' ></td>
+                        
+                        <td rowspan="1"><label class="radioclass"  >
+                            <input type="radio"
+                                   data-bind="attr: { name:$parent.vendorId,id:factoryItemId},click:RadioClick.bind($data,$parent.vendorId),
+                                   checkedValue:unitPrice,checked: false,valueUpdate:['afterkeydown','click','textchange','propertychange','input']"
+
+                                   ><span class="pay_list_c1" ></span>
+                        </label></td>
+                    </tr>
+                    
+                    </tbody>
+                    <!--当前供应商下默认隐藏数据表格循环列表 start-->
+                    
+                </table>
+
+            </div>
+            <div class="detailBar txr">
+                <span>税率：<strong class="orangetxt taxRate" data-bind="text:taxRateDesc"></strong></span>
+                <span>是否可抵税：<strong class="orangetxt" data-bind="text:deduction"></strong></span>
+                <span data-bind='with: vendorLine'>总金额：<strong class="redtxt" data-bind='text:subtotal()'></strong></span>
+                
+                <a href="javascript:void(0)" class="detailBtn txc" data-bind='attr: { id:"shop"+vendorId},click: $root.addShop'><i class="ico">&#xe904;</i>加入购物车</a>
+            </div>
+        </td>
+    </tr>
+    <!--当前供应商下默认隐藏数据模块 end-->
+    </tbody>
+</table>
+
+</div>
+
+
+
+
+
+
+<div id="pjMorepop" class="tableboxcol none">
+    <form>
+        <div class="bgfffpa"><p style="padding:0 0 10px 0">选择配件：</p>
+            <table border="0" cellspacing="1" cellpadding="0" class="inputboxcc">
+                <thead class="tr-th">
+                <tr>
+
+                    <th width="6%">序号</th>
+                    <th width="35%">型号</th>
+                    <th width="20%">价格</th>
+                    <th width="6%">选择</th>
+                </tr>
+                </thead>
+                <tbody data-bind="attr:{id:'part_vd'},template: { name: 'part_template', foreach: part }">
+                </tbody>
+                <!-- ko foreach: part -->
+                <!-- ko if: $index()==0 -->
+                
+                <!-- /ko -->
+                <!-- /ko -->
+            </table>
+            <p class="btnptbbox txc"><input
+                    data-bind='click: addPj'
+                    type="button" value="确认" class="bluesubbtn bgnone"></p></div>
+    </form>
+</div>
+<script type="text/html" id="part_template">
+    <tr>
+        <td rowspan="1" data-bind="text: $index()+1"></td>
+        <td rowspan="1" data-bind="text: description"></td>
+        <td rowspan="1" data-bind="text: unitPrice">0</td>
+        <td  rowspan="1">
+            <p class="txl">
+
+                <label class="radioclass"  >
+                    <input name="checkSet" data-bind="attr:{id:'checkSet'+$index()},checked: checks"
+                           type="radio"><span class="pay_list_c1" ></span>
+                </label>
+
+              
+            </p></td>
+    </tr>
+
+</script>
+
+
+<script language="javascript" src="js/knockout-3.4.0.js"></script>
+<script type="text/javascript">
+
+    function formatCurrency(value) {
+        return  value.toFixed(2);
+    }
+    function formatRMB(value) {
+        return  "￥"+value.toFixed(2);
+    }
+    function RadioClick(element,vendor) {
+       $("#radio"+element).val(Number(vendor.unitPrice)).click();
+       $("#factory"+element).val(vendor.factoryItemId).click();
+        return true;
+    }
+    function hasCheckedProduct(vendor){
+        var $checkBox = $("#pjMorepop input[name^='checkSet']:checked");
+        if ($checkBox.length == 0) {
+//            alert("请选择");
+            return false;
+        }
+
+        var data="";
+
+
+        var s = myModel.part();
+        var cont=true;
+        for (var i = 0; i < s.length; i++) {
+            if(s[i].checks === "on" && cont){
+                var arrCp=vendor.completeSetTxList();
+                var conti=false;
+                cont=false;
+                $.each(arrCp, function(k,o) {
+                            if(o.factoryItemId==s[i].factoryItemId){
+                                conti=true;
+
+//                            break;
+                            }
+                        }
+                )
+                  if(conti){$("#"+s[i].factoryItemId).click().attr("checked","checked");continue;}
+
+                vendor.completeSetTxList().splice(5);
+                vendor.completeSetTxList.push({
+                    description: s[i].description,
+                    factoryItemId: s[i].factoryItemId,
+                    erpItemId: s[i].erpItemId,
+                    unitPrice: s[i].unitPrice
+                });
+                $("#"+s[i].factoryItemId).click().attr("checked","checked");
+            }
+        }
+//        $(".layui-layer-close1").click();
+        return true;
+
+    }
+    var ilnum=0;
+    var vendorLine = function(vendor) {
+        var self = this;
+        self.quantity = ko.observable(1);
+        self.factoryItemId =ko.observable("");
+        self.radioSelectedOptionValue =ko.observable("0");
+
+        self.subtotal = ko.pureComputed(function() {
+          //  self.radioSelectedOptionValue(++ilnum);
+            var qtTemp=self.quantity();
+            if(isNaN(qtTemp)){qtTemp=0;self.quantity(0)};
+            var tpsub=Number(Number(self.radioSelectedOptionValue()) * Number(qtTemp));
+            return tpsub.toFixed(2);
+        },this);
+        self.vendorTotal = ko.pureComputed(function() {
+          //  self.radioSelectedOptionValue(++ilnum);
+            return Number(self.radioSelectedOptionValue());
+        },this);
+
+    };
+    function loadQty(){
+    	var mydate = new Date();
+    	var month= mydate.getMonth()+1;
+    	$("#nextMonth").html(month+2+"月数量");
+    	$("#thirdMonth").html(month+3+"月数量");
+    	var biaArea = $(".sys_spec_text li.selected").attr("data-aid");
+    	if(biaArea=='15'){
+    		$(".bigAreaQty").show();
+    	}else{
+    		$(".bigAreaQty").hide();
+    		$("#quantityNextMonth").val(0);
+            $("#quantityThridMonth").val(0);
+    	}
+    }
+    var VendorsModel = function(vendors) {
+        var self = this;
+        self.vendors = ko.observableArray(ko.utils.arrayMap(vendors, function(vendor) {
+            return {
+                vendorId: vendor.vendorId,
+                vendorName : vendor.vendorName ,
+                contractId: vendor.contractId,
+                unitPrice: vendor.unitPrice,
+                quantity:  1,
+                contractCode: vendor.contractCode,
+                quota: vendor.quota,
+                contactUser:  vendor.contactUser,
+                deduction: vendor.deduction,
+                taxRateDesc: vendor.taxRateDesc,
+                vendorLine: new vendorLine(vendor),
+
+                completeSetTxList: ko.observableArray(vendor.completeSetTxList) };
+        }));
+
+        self.addCompleteSet = function(sort,contact) {
+            var num=Number(contact.WebGridCurrPage);
+            var page=sort==0?num+1:num-1;
+            contact.WebGridCurrPage=page;
+            contact.completeSetTxList("");
+            $("#radio"+contact.vendorId).val("0").click() ;
+            $.getJSON("/networkProductAction.do?act=detailKoSet&headerId=65936&WebGridCurrPage="+page, function(data) {
+                contact.completeSetTxList(data);
+                $("#radio"+contact.vendorId).val("0").click()
+            })
+        }
+        self.grandTotal = ko.pureComputed(function() {
+            var total = 0;
+
+            $.each(self.vendors(), function(i,o) { total += this.vendorLine.subtotal() })
+            return Number(total).toFixed(2);
+        });
+        self.grandQty = ko.pureComputed(function() {
+            var total = 0;
+
+            $.each(self.vendors(), function(i,o) { total +=Number(this.vendorLine.quantity()) })
+            return total;
+        });
+        self.removeContact = function(contact) {
+            self.vendors.remove(contact);
+        };
+        self.part =ko.observableArray( [ {description:"",erpItemId:"",
+            quantity:"",unitPrice:"",factoryItemId:"",checks:false}]);
+        self.addPj=function() {
+//            if(!hasCheckedProduct(vendor)){return;}
+            var vendor;
+            var id=$(".layui-layer-title").find(".ico").attr("id");
+            $.each(self.vendors(), function(i,o) {
+                if(this.vendorId==id){
+                    vendor=this;
+
+                }
+            })
+            if(!hasCheckedProduct(vendor)){return;}
+//       self.vendors()[0].completeSetTpList.push({
+
+            myModel.part([]);
+            $(".layui-layer-close1").click();
+
+        }
+    self.lookMore = function(vendor) {
+
+
+        $.getJSON("data/txmore.json", function(data) {
+            myModel.part(data);
+            var span2 = document.getElementById("part_vd");
+            ko.cleanNode(span2);
+            ko.applyBindings(myModel, span2);
+
+            layer.open({
+                type: 1,
+                title: '<i class="ico" id='+vendor["vendorId"]+'>&#xe909;</i>添加 配件',
+                area: ['800px','500px'],
+                scrollbar:false,
+                closeBtn: 1,
+                shade: 0.3, //遮罩透明度
+                moveType: 1, //拖拽风格，0是默认，1是传统拖动
+                shift: 0, //0-6的动画形式，-1不开启
+                btn: 0,
+                content: $('#pjMorepop')
+            })
+//        $( ".nerplusPart" ).spinner();
+            $(".layui-layer-close1").bind("click",function(){
+                myModel.part([]);
+            });
+        })
+//        $('#addbjboxpop').html($('#addbjboxpop').html().replace(/\{([\w\.]*)\}/g,vendor));
+
+        };
+
+        self.addShop = function(vendor,event) {
+        	loadQty();
+            var qtSG=vendor.vendorLine.quantity();
+            var qt=vendor.quota;
+//            self.lastSavedJson(ko.toJSON(vendor));
+            if(vendor.vendorLine.quantity()==0){layer.alert("请填写数量!");return;}
+            if(Number(vendor.vendorLine.subtotal())<=0){layer.alert("请选择物料!");return;};
+            if(Number(vendor.quota)<=0){layer.alert("可用份额不足!");return;}
+            if($("#projectInputText").val()=="" && $("#budgetId").val()==""){  layer.alert('请选择资金来源');return;}
+
+            var ajaxFun=function(){
+                $.ajax({
+                    type: "post",
+                    url: "data/tx.json",
+                    dataType : 'json',
+                    data : {'shopData':encodeURIComponent(ko.toJSON(vendor)),
+                        'projectId':$("#projectInputText").val(),
+                        'budgetDeptId': $("#budgetDeptId").val(),
+                        'activityCode':$("#activityCode").val(),
+                        'quantityNextMonth':$("#quantityNextMonth").val(),
+                        'quantityThridMonth':$("#quantityThridMonth").val(),
+                        'budgetId':$("#budgetId").val(),
+                        'mtlType':$(".sys_spec_text li.selected").attr("data-aid"),
+                        'itemId':$("input[name='itemId']").val()
+
+                    },
+                    success: function(data,textStatus){
+                        layer.closeAll('dialog');
+                     
+                        MoveBox(vendor.vendorId,event);
+                    },
+                    error: function(xhr,status,errMsg){
+                        layer.alert("操作失败!");
+                    }
+
+                });
+            }
+
+            var ajaxFunSec=function(){
+                if(Number(vendor.quota)<Number(vendor.vendorLine.quantity())){
+                    layer.confirm("申购数量"+qtSG+"大于可用份额量"+qt+"，是否继续加入购物车？",function(){
+                        ajaxFun();
+                    });
+                }else{
+                    ajaxFun();
+                }
+            }
+
+            if(vendor.vendorLine.quantity()>1){
+                layer.confirm("请确认本次购买"+vendor.vendorLine.quantity()+"套均为相同配置，如不相同，请逐一选配加入购物车!",function(){
+                    ajaxFunSec();
+                });
+            }else{
+                ajaxFunSec();
+            }
+
+        };
+    };
+    var myModel=null;
+//$(".dataTbody").hide();
+$(function(){
+    $.getJSON("data/tx.json", function(data) {
+        // Now use this data to update your view models,
+        // and Knockout will update your UI automatically
+        if(data==null){
+            $(".dataTbody").hide();
+            alert("数据加载出错!");
+            return;
+        }
+//        $(".dataTbody").show();
+        ko.options.useOnlyNativeEvents = true;
+        myModel=new VendorsModel(data);
+        ko.applyBindings(myModel);
+        $(".mainrbor-my > table").slide({ titCell:".tr-bd", targetCell:".collendlist",effect:"slideDown",delayTime:0,trigger:"click" });
+        $( ".nerplus" ).spinner();
+        
+        $(".lxgysbtn").hover(function() {
+            $(this).addClass("hover");
+            $(this).parent().find(".layer-ov").slideDown('fast').show();
+            $(this).parent().find(".layer-ov").css({'top':$(this).offset().top+$(this).outerHeight()+5,'left':$(this).offset().left});
+            $(this).parent().hover(function() {
+            }, function() {
+                $(this).parent().find(".layer-ov").fadeOut('fast');
+
+            });
+        });
+    })
+})
+
+
+function MoveBox(obj,e) {
+//$("#shop"+obj).shoping();
+    var $shop=$('.menucarIco');
+    var $imgItem=$('.itemShowImg').attr("src");
+//    e.stopPropagation();
+
+    e=e||window.event;
+    var tar = e.srcElement||e.target;
+    var $target=$("#shop"+obj),
+        id=$target.attr('id'),
+
+        x = $target.offset().left + 30,
+        y = $target.offset().top - 20,
+        X = $shop.offset().left+$shop.width()/2-$target.width()/2+50,
+        Y = $shop.offset().top+20;
+
+//    if(true){
+    if ($('#floatOrder').length <= 0) {
+        $('body').append('<div id="floatOrder"><img src="logo.png" width="50" height="50" /></div>');
+    };
+    var $obj=$('#floatOrder');
+    if(!$obj.is(':animated')){
+        $obj.css({'left': x,'top': y}).animate({'left': X,'top': Y-80},500,function() {
+            $obj.stop(false, false).animate({'top': Y-20,'opacity':0},500,function(){
+                $obj.fadeOut(300,function(){
+                    $obj.remove();
+                    var l=$('.carcoubox > .prolist > li').length;
+                });
+            });
+        });
+//        };
+    };
+
+}
+
+</script>
+
+
+
+
+<script language="javascript" src="js/pace.js"></script>
+<script language="javascript" src="js/superslier.js"></script>
+
+
+<script type="text/javascript" src="js/layer.js?v=2.2"></script>
+
+</body>
+</html>

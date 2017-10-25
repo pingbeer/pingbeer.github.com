@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>扁平html5音乐播放器代码</title>
+
+    <link rel="stylesheet" type="text/css" href="metronic/tplayer.css" />
+
+    <link rel="stylesheet" type="text/css" href="metronic/font-awesome.min.css" />
+
+    <script src="jquery.js"></script>
+
+    <script src="metronic/jquery-ui.js"></script>
+
+    <script src="metronic/tPlayer.js"></script>
+
+</head>
+
+<body>
+
+    <div id="t_wrapper">
+
+        <div id="t_cover">
+
+        	<img src="./logo.png">
+
+        </div>
+
+    	<div id="t_top">
+
+    		<div id="t_title_info">
+
+    			<span class="artist"></span>
+
+    			<span class="title"></span>
+
+    		</div>
+
+    	</div>
+
+    	<div id="t_middle">
+
+    		<div id="play"></div>
+
+    		<div id="pause" class="hidden">
+
+    		</div>
+
+    		<div class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="t_progress">
+
+                <div id="trackInfo">
+
+                    <div id="error">
+
+    				</div>
+
+                    <div id="current">0:00</div>
+
+                    <div id="duration">0:00</div>
+
+    			</div>
+
+    			<div style="width: 0%;" class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min"></div>
+
+            	<span style="left: 0%;" class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+
+            </div>
+
+    		<span id="prev"></span>
+
+            <span id="next"></span>
+
+    	</div>
+
+    	<div id="t_bottom">
+
+            <div id="range">
+
+                <div id="val"></div>
+
+                <div id="vol"></div>
+
+                <div id="rangeVal"></div>
+
+            </div>
+
+            <div id="t_pls_show" class="noselectpls"></div>
+
+    	</div>
+
+    </div>
+
+    <div id="playlist">
+
+        <ul>
+
+            <li t_cover="./logo.png" t_artist="好好乐队" t_name="相思赋予谁">
+
+            	<a href="#">相思赋予谁</a>
+
+            	<audio preload="none">
+
+                    <source src="http://mp3file.mafengwo.net/201611282351/1b5ca546b3d00f8d4632abe9d900724b/s9/M00/E8/BD/wKgBs1grIzmAAlEkAB6ZIzExd_Y211.mp3" type="audio/mp3">
+
+                    <!-- <source src="Media/Transformers2.htm" type="audio/ogg; codecs=vorbis"> -->
+
+            	</audio>
+
+            </li>
+			<li t_cover="./logo.png" t_artist="好好乐队" t_name="相思赋予谁">
+
+            	<a href="#">相思赋予谁</a>
+
+            	<audio preload="none">
+
+                    <source src="http://mp3file.mafengwo.net/201611282351/1b5ca546b3d00f8d4632abe9d900724b/s9/M00/E8/BD/wKgBs1grIzmAAlEkAB6ZIzExd_Y211.mp3" type="audio/mp3">
+
+                    <!-- <source src="Media/Transformers2.htm" type="audio/ogg; codecs=vorbis"> -->
+
+            	</audio>
+
+            </li>
+			<li t_cover="./logo.png" t_artist="好好乐队" t_name="相思赋予谁">
+
+            	<a href="#">相思赋予谁</a>
+
+            	<audio preload="none">
+
+                    <source src="http://mp3file.mafengwo.net/201611282351/1b5ca546b3d00f8d4632abe9d900724b/s9/M00/E8/BD/wKgBs1grIzmAAlEkAB6ZIzExd_Y211.mp3" type="audio/mp3">
+
+                    <!-- <source src="Media/Transformers2.htm" type="audio/ogg; codecs=vorbis"> -->
+
+            	</audio>
+
+            </li>
+
+            
+
+        </ul>
+
+    </div>
+
+</body>
+
+</html>

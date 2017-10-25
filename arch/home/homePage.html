@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html> 
+<html> 
+<head> 
+   <meta content="chrome=1" http-equiv="X-UA-Compatible"> 
+   <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport"> 
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+  
+   <title></title>  
+
+
+    <link rel="stylesheet" type="text/css" href="priviRootPage.css" /> 
+    <link rel="stylesheet" type="text/css" href="homepage.css" /> 
+    <script src="js/jquery-1.8.0.min.js"></script> 
+    <!--[if IE]> 
+    <script src="js/html5.js"></script> 
+    <![endif]--> 
+    <!--首页独有的样式--> 
+    <style> 
+        html{ 
+    
+            height: 100%; 
+           box-sizing: border-box; 
+           -moz-box-sizing: border-box; 
+            overflow-x: auto; 
+            /*overflow-y: hidden;*/ 
+            background: url("img/jtsq3Qu1t.png") repeat scroll center top transparent; 
+        } 
+        #personal-area-wrap,.sitenav{ 
+            position: relative; 
+            
+        } 
+        html,body{ 
+            height: 100%; 
+        } 
+        .newcnbox{ 
+            height: 80%; 
+        } 
+        body { 
+            min-width: 1000px; 
+        } 
+        * { 
+            margin: 0; 
+            outline: 0 none; 
+            padding: 0; 
+        } 
+        .page-container{ 
+            padding: 0 0 0 245px; 
+            position: relative; 
+        } 
+        .newcnbox #rightbox{ 
+            width: 100%; 
+            height: 100%; 
+ 
+        } 
+        .menuarea .nav-link{ 
+            background: none repeat scroll 0 0 #F4F4F4; 
+            border:0 none; 
+            border-bottom: 1px solid #DEDEDE; 
+            display: none; 
+            font-size: 14px; 
+            /*height: 0;*/ 
+            overflow: hidden; 
+            height: 33px; 
+            left: 0; 
+            margin: 0 auto; 
+            position: absolute; 
+            text-align: left; 
+            top: 71px; 
+            width: 100%; 
+        } 
+    </style> 
+</head> 
+
+
+
+
+<body> 
+
+
+<header id="personal-area-wrap"> 
+    <div id="personal-area"> 
+        <ul class="list-withmenu" id="personal-menu"> 
+
+
+            <li class="no-line"><a  id="indexLogin" title="" href="javascript:void(0);">您好</a> 
+             <a href="#">XXX</a> 
+            </li> 
+
+
+
+
+        </ul> 
+
+
+       <div id="outside-nav"> 
+            <a  href="#" class="fl">欢迎进入管理系统</a> 
+            <span class="fl"></span> 
+        </div> 
+
+
+
+
+    </div> 
+</header> 
+
+
+<div class="clearfix"> </div> 
+
+
+
+
+<div class="sitenav"> 
+ 
+
+     <div class="box"> 
+         <div style="width:200px;" class="logoarea"> 
+             <a title="" href="#" > 
+                 <img alt="" src="../img/bg82.png" style="height: 65px; vertical-align: middle;"></a> 
+         </div> 
+ 
+
+         <div style="z-index:20" class="menuarea"> 
+             <ul class="clr"> 
+                 <li class="on "><a href="homePage.html">首页</a></li> 
+ 
+
+
+                     <!--<div class="nav-link">--> 
+                     <!--<a class="first" href="#">客户管理</a>--> 
+                     <!--<a href="#">机会管理</a>--> 
+                     <!--</div>--> 
+                 </li> 
+             </ul> 
+         </div> 
+     </div> 
+ </div> 
+ 
+
+ <div class="clearfix"> </div> 
+ 
+
+ <div  class="page-container newcnbox"> 
+ 
+
+ 
+
+ <div id="icontright"> 
+ <div class="flightinx"> 
+ 
+
+ <!--导航--> 
+ <div class="newpov"> 
+     <ul> 
+      
+        
+         <li class="current"> 
+             <a id="systemManager" href="#">系统维护</a> 
+             <ul id="sub4" style="display: ;"> 
+ 
+
+                     <li> 
+                         <a  href="javascript:void(0)" 
+                            onclick="SwitchMenu(666)">系统基础数据</a> 
+                         <ul style="display: none;" id="sub666"> 
+                            
+  <li> 
+                         <a href="##" data-href="template/alterationList_report.html" 
+                             onclick="SwitchMenu(0,this)">统计报表</a> 
+                     </li> 
+
+                         </ul> 
+                     </li> 
+                     <li><a  href="##"  data-href="template/alterationList.html"  onclick="SwitchMenu(0,this)">列表查询1</a></li> 
+                     <li> 
+                         <a  href="##" data-href="template/alteration_textarea.html" 
+                             onclick="SwitchMenu(0,this)">详细查询2</a> 
+                     </li>
+					<!--      <li> 
+                         <a  href="template/contractdetail_date.html"  
+                             onclick="SwitchMenu(0,this)">新窗口打开</a> 
+                     </li>  -->
+					 <!--  
+ 					
+                     <li> 
+                         <a  href="##"  data-href="template/alteration_detail.html" 
+                             onclick="SwitchMenu(0,this)">详细查询4</a> 
+                     </li>  -->
+                 </ul> 
+         </li> 
+     </ul> 
+ </div> 
+ <script> 
+     function SwitchMenu(sid,obj){ 
+         if(sid =="0"){ 
+             liclass($(obj)); 
+             return; 
+         } 
+         var which = document.getElementById("menu" + sid); 
+         var which_sub = document.getElementById("sub" + sid); 
+         if (which_sub.style.display == "none"){ 
+             which_sub.style.display=""; 
+             if(which){ 
+                 which.className="current"; 
+             } 
+         } 
+         else{ 
+             which_sub.style.display="none"; 
+             if(which){ 
+                 which.className=""; 
+             } 
+         } 
+     } 
+     function liclass($this){ 
+         $this.parent().parent().parent().parent().find("li>ul>li").removeClass("current"); 
+         $this.parent().attr("class","current"); 
+ 		if($this.attr("data-href")){ 
+ 		$("#menuiframe").attr("src",$this.attr("data-href"));} 
+     } 
+     $(function(){ 
+         $(".newpov>ul>li>a").click(function(){ 
+             $(this).next("ul").slideToggle();//jquery1.8函数 
+             $(this).parent().toggleClass("current"); 
+         }); 
+     }); 
+  
+  
+ </script> 
+ 
+
+ </div> 
+ </div> 
+ 
+
+ <div id="rightbox"> 
+ 
+
+  <iframe id="menuiframe" name="menuiframe" 
+             frameborder=0 
+             height ="100%"  width="100%" src="template/alterationList.html"></iframe> 
+ </div> 
+ </div> 
+ 
+
+ <script type="text/javascript"> 
+     function do_LogOut(){ 
+         window.parent.location.href = "../index.htm"; 
+     } 
+  
+     function do_ReturnHomePage(){ 
+         window.parent.location.href = "homePage.htm"; 
+     } 
+ </script> 
+ </body> 
+ </html> 

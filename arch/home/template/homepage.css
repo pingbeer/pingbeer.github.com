@@ -1,0 +1,21 @@
+a,address,b,big,blockquote,body,center,cite,code,dd,del,div,dl,dt,em,fieldset,font,form,h1,h2,h3,h4,h5,h6,html,i,iframe,img,ins,label,legend,li,ol,p,pre,small,span,strong,u,ul,var{margin:0;padding:0}
+body{color:#848484;margin:0;padding:0;min-width:1000px;font:12px/24px "\5FAE\8F6F\96C5\9ED1",'Helvetica Neue',Tahoma}
+dd,dt,li,ol,ul{list-style:none outside none}
+a{color:#444;text-decoration:none}
+#toolbar .btn.blue{background-color:#4D90FE;color:#FFF;text-shadow:none}
+#toolbar .btn.blue:hover{background-color:#036AFD;color:#FFF;text-shadow:none}
+#toolbar .btn{border-radius:0!important;border-width:0;box-shadow:none!important;font-size:14px;outline:medium none!important;padding:7px 14px;text-shadow:none}
+.portlet-title{background-color:#35AA47;height:35px}
+.portlet-title{margin-bottom:0}
+.portlet-title{border-bottom:1px solid #EEE;border-left:5px solid #ffb848;color:#FFF!important;padding:0 10px 2px}
+.portlet-title>.caption{display:inline-block;float:left;color:#fff;font-size:18px;font-weight:400;line-height:30px;margin:0 0 8px;padding:0}
+.portlet-title>.tools{margin-top:3px}
+.portlet-title>.tools,.portlet>.portlet-title>.actions{display:inline-block;float:right;margin:8px 0 0;padding:0}
+.portlet-title>.tools>a.collapse,.portlet.solid>.portlet-title>.tools>a.collapse{background-image:url(img/config.png)}
+.portlet-title>.tools>a.collapse{background-image:url(img/config.png);margin-bottom:2px}
+.portlet-title>.tools>a.config{background-image:url(img/edit_add.png);margin-bottom:2px}
+.portlet-title>.tools>a.reload{background-image:url(img/toexcel.gif);margin-bottom:2px}
+.portlet-title>.tools>a.remove{background-image:url(img/edit_remove.png);margin-bottom:2px}
+.portlet-title>.tools>a.save{background-image:url(img/filesave.png);margin-bottom:2px}
+.portlet-title>.tools>a.cancel{background-image:url(img/cancel.png);margin-bottom:2px}
+.portlet-title>.tools>a{display:inline-block;height:16px;width:16px;margin-left:5px}

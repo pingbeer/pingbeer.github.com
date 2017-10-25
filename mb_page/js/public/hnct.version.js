@@ -1,0 +1,1 @@
+successJsonCallback([{"appName":"HNCTClient","verName":"1.0"}])

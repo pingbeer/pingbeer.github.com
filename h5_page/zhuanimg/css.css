@@ -1,0 +1,203 @@
+body {
+    font-family: "Microsoft Yahei","Open Sans","Helvetica Neue", simsun, Tahoma, Helvetica, "Microsoft Yahei", Arial, STHeiti;
+    background-color: #BEE1F5;
+    color: #fff;
+    font-size: 1em;
+	 margin: 0;
+    padding: 0;
+    text-align: center;
+}
+@-ms-viewport {
+  width: device-width;
+}
+p, div, td {
+    word-break: break-all;
+}
+.ten-years-start-wrap {
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+.start-header {
+    left: 0;
+    min-width: 1024px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.start-header img {
+    max-width: 100%;
+}
+fieldset, img, iframe {
+    border: 0 none;
+}
+.start-header .cloud {
+    position: absolute;
+}
+.start-header .top-cloud-01 {
+    height: 9.3815%;
+    left: 3.00781%;
+    position: absolute;
+    top: 19.3324%;
+    width: 6.42969%;
+}
+.start-header .top-cloud-02 {
+    height: 11.6829%;
+    left: 8.98438%;
+    position: absolute;
+    top: 10.4312%;
+    width: 6.60156%;
+}
+.start-header .top-cloud-03 {
+    height: 13.7691%;
+    left: 16.9922%;
+    position: absolute;
+    top: 9.73574%;
+    width: 14.5312%;
+}
+.start-header .top-cloud-04 {
+    height: 25.1739%;
+    left: 29.0234%;
+    position: absolute;
+    top: 1.25174%;
+    width: 7.34375%;
+}
+.start-header .top-cloud-05 {
+    height: 8.34492%;
+    left: 35.5469%;
+    position: absolute;
+    top: 16.6898%;
+    width: 4.41406%;
+}
+.start-header .top-cloud-06 {
+    height: 9.06676%;
+    left: 42.6562%;
+    position: absolute;
+    top: 6.67594%;
+    width: 4.92188%;
+}
+.start-header .top-cloud-07 {
+    height: 18.637%;
+    left: 55.0391%;
+    position: absolute;
+    top: 6.9541%;
+    width: 9.10156%;
+}
+.start-header .top-cloud-08 {
+    height: 10.5702%;
+    left: 70.3516%;
+    position: absolute;
+    top: 0;
+    width: 5.35156%;
+}
+.start-header .top-cloud-09 {
+    height: 9.17942%;
+    left: 67.9688%;
+    position: absolute;
+    top: 14.6439%;
+    width: 5.39062%;
+}
+.start-header .top-cloud-10 {
+    height: 12.6565%;
+    left: 75.5859%;
+    position: absolute;
+    top: 17.3853%;
+    width: 7.03125%;
+}
+.start-header .top-cloud-11 {
+    height: 12.6565%;
+    left: 85.8984%;
+    position: absolute;
+    top: 16.6439%;
+    width: 4.88281%;
+}
+.start-header .top-cloud-12 {
+    height: 6.67594%;
+    left: 90.6641%;
+    position: absolute;
+    top: 8.34492%;
+    width: 3.63281%;
+}
+.start-header .bottom-cloud-01 {
+    height: 7.7886%;
+    left: 4.41406%;
+    position: absolute;
+    top: 50.6203%;
+    width: 3.90625%;
+}
+.start-header .bottom-cloud-02 {
+    height: 18.4%;
+    left: 14.5391%;
+    position: absolute;
+    top: 40.0695%;
+    width: 6.95312%;
+}
+.start-header .bottom-cloud-03 {
+    height: 18.4%;
+    left: 25.3906%;
+    position: absolute;
+    top: 41%;
+    width: 6.95312%;
+}
+.start-header .bottom-cloud-04 {
+    height: 8.06676%;
+    position: absolute;
+    top: 40.6453%;
+    width: 4.60938%;
+}
+.start-header .bottom-cloud-05 {
+    height: 8.48401%;
+    left: 81.4844%;
+    position: absolute;
+    top: 34.6453%;
+    width: 4.76562%;
+}
+.start-header .bottom-cloud-06 {
+    height: 15.0209%;
+    left: 71.4844%;
+    position: absolute;
+    top: 34.6453%;
+    width: 6.5625%;
+}
+.start-header .bottom-cloud-07 {
+    height: 6.9541%;
+    left: 90%;
+    position: absolute;
+    top: 52.6801%;
+    width: 2.65625%;
+}
+.start-header .four_people {
+    height: 37.274%;
+    left: 50%;
+    margin-left: -13.2031%;
+    position: absolute;
+    top: 26.7649%;
+    width: 26.4062%;
+}
+.wrap1,.wrap2 {
+   background-color: #3B302A;
+    display: block;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+	z-index:100;
+}
+
+.active .go {
+    opacity: 1;
+    top: 25%;
+    transition-delay: 1.2s;
+}
+.go {
+    background-image: url("../images/btn.png");
+    height: 70px;
+    left: 50%;
+    margin-left: -127px;
+    margin-top: 220px;
+	top:45%;
+	z-index:99999;
+    position: absolute;
+    text-indent: -9999px;
+    width: 254px;
+}

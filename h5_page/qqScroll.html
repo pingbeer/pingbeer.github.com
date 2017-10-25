@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>blog</title>
+    <meta content="zh-CN" http-equiv="content-language" />
+    <script src="../jquery.js"></script>
+    <script src="../js/stellar.js"></script>
+    <style>
+        .wrap {
+            overflow-x: hidden;
+        }
+        .crossbanenr {
+            width: 100%;
+		 background: url("../arch/img/quc_index_bg.jpg") no-repeat scroll center top #fff;
+        }
+        html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+            font-family: Helvetica,Tahoma,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei",STXihei,STHeiti,Heiti,SimSun,sans-serif;
+            font-size: 100%;
+            margin: 0;
+        }
+        .content {
+            width: 100%;
+        }
+        .content h1 {
+            background: url("http://3gimg.qq.com/qq_product_operations/im/2015/brand.png") no-repeat scroll center top #fff;
+            height: 0;
+            overflow: hidden;
+            padding-top: 280px;
+            width: 100%;
+        }
+
+
+        .crossbanenr li.pcqqbg, .crossbanenr li.mbqqbg, .crossbanenr li.padqqbg, .crossbanenr li.watchbg, .fisrtbg, .secondbg, .thirdbg {
+            background-size: cover;
+        }
+        .fisrtbg {
+            background-image: url("http://3gimg.qq.com/qq_product_operations/im/2015/bg1_1600.jpg");
+        }
+        .activebg {
+            height: 600px;
+            position: relative;
+            width: 100%;
+        }
+
+        .qfigure {
+            background: none repeat scroll 0 0 #fff;
+            height: 584px;
+            width: 100%;
+        }
+        .qw960 {
+            height: 584px;
+            margin: 0 auto;
+            position: relative;
+            width: 960px;
+        }
+        .qcallAnimate {
+            background: url("http://sqimg.qq.com/qq_product_operations/im/2015/update/pic1.png") no-repeat scroll 0 0 transparent;
+            bottom: 0;
+            height: 763px;
+            left: -32px;
+            position: absolute;
+            width: 664px;
+        }
+
+        .secondbg {
+            background-image: url("http://sqimg.qq.com/qq_product_operations/im/2015/update/avds.jpg");
+        }
+        .activebg{ position: relative; width: 100%; height: 600px; background: #fff; background-attachment: fixed;background-position: center 0; background-repeat: no-repeat;}
+        .fisrtbg{ background-image: url(http://3gimg.qq.com/qq_product_operations/im/2015/fisrtbg.jpg);}
+        .secondbg{ background-image: url(http://sqimg.qq.com/qq_product_operations/im/2015/update/avd.jpg);}
+        .thirdbg{ background-image: url(http://3gimg.qq.com/qq_product_operations/im/2015/blog.jpg);}
+        .dot {
+            height: 2px;
+            width: 2px;
+            border-radius: 100%;
+            position: absolute;
+            z-index: 0;
+            animation: sploosh 3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: transparent;
+        }
+
+        @keyframes sploosh {
+  0% {
+    box-shadow: 0 0 0 0px rgba(66, 166, 223, 0.7);
+    background: rgba(66, 166, 223, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 300px rgba(66, 166, 223, 0);
+    background: rgba(66, 166, 223, 0);
+  }
+}
+
+        .qfigure {
+            background: none repeat scroll 0 0 #fff;
+            height: 584px;
+            width: 100%;
+        }
+
+
+        .qfileAnimate {
+            background: url("http://sqimg.qq.com/qq_product_operations/im/2015/update/pic2.png") no-repeat scroll 0 0 transparent;
+            bottom: 104px;
+            height: 330px;
+            position: absolute;
+            right: -100px;
+            width: 597px;
+        }
+
+        .thirdbg {
+            background-image: url("http://3gimg.qq.com/qq_product_operations/im/2015/bg3_1600.jpg");
+            height: 600px;
+        }
+
+        .qblogAnimate {
+            background: url("http://sqimg.qq.com/qq_product_operations/im/2015/update/pic3.png") no-repeat scroll -30px 0 transparent;
+            bottom: 0;
+            height: 506px;
+            left: 88px;
+            position: absolute;
+            width: 344px;
+        }
+        .qblogWrap {
+            height: 150px;
+            left: 0;
+            position: relative;
+            top: 217px;
+            width: 291px;
+        }
+        #pg3 .qblogWrap .pic1 {
+            animation: 0.2s cubic-bezier(0, 0.25, 0.08, 1) 0.4s normal backwards 1 running zoomIn;
+            opacity: 1;
+        }
+        .qblogWrap .pic1 {
+            background: url("http://3gimg.qq.com/qq_product_operations/im/2015/qblog_fig1.png") no-repeat scroll 0 0 transparent;
+            left: -122px;
+        }
+        .qblogWrap div {
+            height: 150px;
+            position: absolute;
+            top: 0;
+            width: 150px;
+        }
+        #pg3 .qblogWrap .pic2 {
+            animation: 0.2s cubic-bezier(0, 0.25, 0.08, 1) 0.5s normal backwards 1 running zoomIn;
+            opacity: 1;
+        }
+        .qblogWrap .pic2 {
+            background: url("http://3gimg.qq.com/qq_product_operations/im/2015/qblog_fig2.png") no-repeat scroll 0 0 transparent;
+            left: 70px;
+        }
+        #pg3 .qblogWrap .pic3 {
+            animation: 0.2s cubic-bezier(0, 0.25, 0.08, 1) 0.6s normal backwards 1 running zoomIn;
+            opacity: 1;
+        }
+        .qblogWrap .pic3 {
+            background: url("http://3gimg.qq.com/qq_product_operations/im/2015/qblog_fig3.png") no-repeat scroll 0 0 transparent;
+            right: -119px;
+        }
+        @keyframes zoomIn {
+    0%{ transform: scale(0);}
+    60%{ transform: scale(1.1);}
+    100% { transform: scale(1);}
+}
+        @-moz-keyframes zoomIn {
+    0%{ transform: scale(0);}
+    60% { transform: scale(1.1);}
+    100% { transform: scale(1);}
+}
+        @-webkit-keyframes zoomIn {
+    0%{ -webkit-transform: scale(0);}
+    60% { -webkit-transform: scale(1.1);}
+    100% { -webkit-transform: scale(1);}
+}
+        @-o-keyframes zoomIn {
+    0%{ -o-transform: scale(0);}
+    90% { -o-transform: scale(1.1);}
+    100% { -o-transform: scale(1);}
+}
+        @-ms-keyframes zoomIn{
+    0%{ -ms-transform: scale(0);}
+    60% { -ms-transform: scale(1.1);}
+    100% { -ms-transform: scale(1);}
+}
+
+    </style>
+</head>
+<script>
+    $(function(){
+        
+		$.stellar({horizontalScrolling:false,verticalOffset:40});
+    })
+</script>
+<body>
+<div class="crossbanenr wrap" style="height: 540px;">
+</div>
+<div class="content">
+    <h1></h1>
+    <div data-stellar-background-ratio="0.03" class="activebg fisrtbg" id="fisrtbg" style="background-position: 50% -12.66px;"></div>
+    <div class="qfigure qcall">
+        <div class="qw960">
+
+            <div class="qcallAnimate">
+                <!--<div class="qcallWrap">-->
+                <!--<div class="qcallbtn"></div>-->
+                <!--<div class="pic1"></div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div data-stellar-background-ratio="0.05" class="activebg secondbg" id="secondbg" style="background-position: 50% 29.1px;"></div>
+
+
+<div class="qfigure qfile">
+    <div class="qw960">
+
+        <div class="qfileAnimate">
+
+        </div>
+    </div>
+</div>
+<div data-stellar-background-ratio="0.5" class="activebg thirdbg" id="thirdbg" style="background-position: 50% 18.15px;"></div>
+
+<div class="qfigure qblog">
+    <div class="qw960">
+
+        <div class="qblogAnimate">
+            <div class="qblogWrap">
+                <div class="pic1"></div>
+                <div class="pic2"></div>
+                <div class="pic3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("body").on('mousedown', function (e) {
+        var left = e.pageX;
+        var top = e.pageY;
+
+        $(this).append('<div class="dot" style="top:' + top + 'px;left:' + left + 'px;"></div>')
+        setTimeout(function () {
+            $('#container .dot:first-of-type').remove();
+        }, 2000);
+    });
+
+</script>
+<script type="text/javascript">
+
+    $(function () {
+
+    function str2JSON(str) {
+        eval("var __pt_json=" + str);
+        return __pt_json
+    }
+
+    var mod = $(".qfigure");
+    var $body = $("body");
+    var dataArr = [];
+    $(mod).each(function (i, item) {
+        if (i === 0) {
+            dataArr[i] = $(item).offset().top - Math.floor($(item).height() / 2) - 500
+        } else {
+            dataArr[i] = $(item).offset().top - Math.floor($(item).height() / 2)
+        }
+    });
+    var winHeight = $(window).height();
+    var bodyheight = $body.height();
+    $(".crossbanenr").animate({height:(winHeight - 130) > 540 ? (winHeight - 130) : 540}, 100, function () {
+    });
+    $(window).resize(function () {
+        winHeight = $(window).height();
+        bodyheight = $body.height();
+        $(".crossbanenr").animate({height:(winHeight - 130) > 540 ? (winHeight - 130) : 540}, 100, function () {
+        })
+    });
+    var isIE = !!window.ActiveXObject;
+    var scrollTop = $(window).scrollTop();
+
+    var clientHeight = $(window).height();
+    var contentHeight = 584;
+    var barHeight = 600;
+    var firstHeight = 778;
+    var topHeight = 321;
+    var thirdScroll = clientHeight < (topHeight + firstHeight) ? contentHeight : (contentHeight - clientHeight + topHeight + firstHeight);
+    var fourthScroll = thirdScroll + contentHeight + barHeight;
+    var fifthScroll = fourthScroll + contentHeight + barHeight;
+    var sixthScroll = fifthScroll + contentHeight + barHeight;
+    var changeH = (firstHeight + topHeight - clientHeight) / 2;
+    var st = new Date().getTime();
+
+    $(window).scroll(function (e) {
+        scrollTop = $(window).scrollTop();
+        if (scrollTop >= firstHeight) {
+            $("#topbar").addClass("topicfixed")
+        } else {
+            if ($("#topbar").hasClass("topicfixed")) {
+                $("#topbar").removeClass("topicfixed")
+            }
+        }
+        if (scrollTop < 100) {
+            $body.attr("id", "pg0")
+        }
+        $(dataArr).each(function (i, item) {
+            if (Math.floor(winHeight / 2) + scrollTop >= item) {
+                $body.attr("id", "pg" + (i + 1))
+            }
+        });
+
+        if (scrollTop + winHeight >= bodyheight) {
+            $body.attr("id", "pg3")
+        }
+    })
+});</script>
+
+</body>
+</html>

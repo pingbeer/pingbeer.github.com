@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="login.css" />
+    <script src="js/jquery-1.8.0.min.js"></script>
+    <script src="js/jquery.boxshadow.js"></script>
+	
+    <!--[if lt IE 10]>
+    <script type="text/javascript">
+        $(function () {
+            $.getScript("js/placeholder.js", function () {
+                $("#searchvaluetext").placeholder();
+            });
+        })
+    </script>
+    <![endif]-->
+    <!--[if IE]>
+    <script>
+        $(document).ready(function () {
+            if (($.browser.msie && Number($.browser.version) < 9)) {
+                $('#entry .text').boxShadow(0, 1, 1, "#ccc");
+            }
+            if (($.browser.msie && Number($.browser.version) < 10)) {
+                $("#entry").css("visibility", "visible");
+            }
+            if (($.browser.msie && Number($.browser.version) < 8)) {
+                $(".dialog").css("display", "block");
+                $(".overlay").css("display", "block");
+                $(".w,.w1,#globalFooter").remove();
+            }
+        });
+    </script>  <![endif]-->
+</head>
+<body class="body-style" style="overflow-x:hidden;overflow-y:auto;">
+<script type="text/javascript">
+
+if(window.location.toString().indexOf('pref=padindex') != -1){
+}else{
+	if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){  
+      if(window.location.href.indexOf("?mobile")<0){
+		try{
+			if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent)){
+			//智能手机
+				window.location.href="login.html";
+			}else{
+			// 简单版
+				window.location.href=""
+			}
+		}catch(e){}
+	}
+	}else{
+				
+	}
+}
+</script>
+<div class="cloud1"></div>
+<div class="cloud2"></div>
+<div id="overlay" class="overlay" style="display: none"></div>
+<div class="w">
+    <div id="logo">
+        <span width="170" height="60" ></span>
+        <b></b></div>
+</div>
+<form name="mainFrm" id="mainFrm" method="POST" action="">
+    <div id="entry" class=" w1">
+        <div class="mc ">
+            <div id="entry-bg"
+                 style="width: 438px; height: 354px; background: url('img/MG9935.jpg') no-repeat scroll center 0 transparent;">
+            </div>
+            <div class="form ">
+
+                <div class="item fore1">
+                    <span>用户名</span>
+
+                    <div class="item-ifo">
+                        <input type="text" placeholder="用户名"
+                               value="test" autocomplete="off" tabindex="1" class="text"
+                               name="loginname" id="loginname">
+
+                        <div class="i-name ico"></div>
+
+                    </div>
+                </div>
+
+
+                <div class="item fore2">
+                    <span>密码</span>
+
+                    <div class="item-ifo">
+                        <input type="password" value="test" placeholder="密码" tabindex="2" class="text"
+                               name="loginpwd"
+                               id="loginpwd">
+
+                        <div class="i-pass ico"></div>
+                    </div>
+                </div>
+
+
+                <div class="item login-btn2013">
+                    <a class="button btn-green" href="javascript:;" onclick="do_Login();">登录</a>
+                </div>
+
+
+              <!--  <div class="regSub ">
+                    <button class="btn"></button>
+                </div>  -->
+
+
+            </div>
+        </div>
+    </div>
+</form>
+<div id="globalFooter">
+    <div class="grid">
+        Copyright&copy;2012-2020&nbsp;&nbsp;
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    (function () {
+        var i = [
+            {src: "img/bg82.png", ext: "1", width: "397"},
+            {src: "img/bg82.png", ext: "4", width: "397"}
+        ];
+
+        function r(arr) {
+            var _random = Math.ceil(arr.length * Math.random());
+            return arr[_random];
+        }
+
+        var c = r(i), o = document.getElementById("entry-bg");
+        o.style.width = c.width + "px";
+        o.style.height = "354px";
+        o.style.background = "url(" + c.src + ") no-repeat center 0";
+    })();
+    function do_Login() {
+        //window.location.href = "home/homePage.html";
+    }
+    function do_Reset() {
+        mainFrm.reset();
+    }
+</script>

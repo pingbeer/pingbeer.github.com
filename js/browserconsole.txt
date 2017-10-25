@@ -1,0 +1,12 @@
+ <script type="text/javascript">
+     !function (o) {
+         "undefined" == typeof console && (o.console = {}, o.console.log = function () {
+         }, o.console.dir = function () {
+         }, o.console.trace = function () {
+         }), o.temp = {}
+     }(window);
+ </script>
+ 
+ 
+ http://online3.map.bdimg.com/onlinelabel/?qt=tile&x=3&y=0&z=5&styles=pl&udt=20160304&scaler=1&p=1
+ http://online0.map.bdimg.com/onlinelabel/?qt=tile&x=0&y=0&z=3&styles=pl&udt=20160304&scaler=1&p=1

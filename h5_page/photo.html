@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>blog</title>
+<meta content="zh-CN" http-equiv="content-language" />
+    <script src="../jquery.js"></script>
+    <script src="../js/photo.js"></script>
+    <script src="../js/masonry.pkgd.min.js"></script>
+<style>
+    html{
+    background-color: #e9e9e9;
+    }
+    p,body,h3,div{
+        margin: 0;
+        padding: 0;
+    }
+    .container-fluid {
+        padding: 20px;
+    }
+    .box {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        float: left;
+        margin-bottom: 20px;
+        padding: 5px;
+        width: 220px;
+    }
+    .box img {
+        max-width: 100%
+    }
+    header h1 {
+        text-align: center;
+        font-size: 24px;
+        font-weight: normal;
+        margin: 30px 0 3px 0;
+    }
+
+    header p {
+        text-align: center;
+        font-size: 13px;
+        color: #777;
+        margin: 0;
+    }
+    @-moz-keyframes tada{0%{-moz-transform:scale(1);}10%,20%{-moz-transform:scale(0.9) rotate(-3deg);}30%,50%,70%,90%{-moz-transform:scale(1.1) rotate(3deg);}40%,60%,80%{-moz-transform:scale(1.1) rotate(-3deg);}100%{-moz-transform:scale(1) rotate(0);}}
+
+    @-webkit-keyframes tada{0%{-webkit-transform:scale(1);}10%,20%{-webkit-transform:scale(0.9) rotate(-3deg);}30%,50%,70%,90%{-webkit-transform:scale(1.1) rotate(3deg);}40%,60%,80%{-webkit-transform:scale(1.1) rotate(-3deg);}100%{-webkit-transform:scale(1) rotate(0);}}
+    .box{
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+        -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 0.15s ease-in;
+        -moz-transition: all 0.15s ease-in;
+        -ms-transition: all 0.15s ease-in;
+        transition: all 0.15s ease-in;
+    }
+
+    .box:hover { z-index: 2;
+        -webkit-transform: scale(1.2) translateY(-40px);
+        -moz-transform: scale(1.2) translateY(-40px);
+        -ms-transform: scale(1.2) translateY(-40px);
+        transform: scale(1.2) translateY(-40px);
+        -webkit-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+        /*
+Rotate left hand column to the left upon hover */
+    .box:nth-child(3n-2):hover {
+        -webkit-transform: scale(1.2) translate3d(0, -30px, 0) rotate(-2.5deg);
+        -moz-transform: scale(1.2) translateY(-30px) rotate(-2.5deg);
+        -ms-transform: scale(1.2) translateY(-30px) rotate(-2.5deg);
+        transform: scale(1.2) translateY(-30px) rotate(-2.5deg);
+    }
+        /*
+Rotate every third li with :nth-child(3n) (right hand column in this demo) to the right upon hover */
+    .box:nth-child(3n):hover {
+        -webkit-transform: scale(1.2) translate3d(0, -30px, 0) rotate(2.5deg);
+        -moz-transform: scale(1.2) translateY(-30px) rotate(2.5deg);
+        -ms-transform: scale(1.2) translateY(-30px) rotate(2.5deg);
+        transform: scale(1.2) translateY(-30px) rotate(2.5deg);
+    }
+
+     .details {
+        background: none repeat scroll 0 0 rgba(255, 255, 255, 0.87);
+        /*border-bottom: 1px solid rgba(0, 0, 0, 0.25);*/
+        /*border-radius: 0 0 5px 5px;*/
+        /*border-top: 1px solid #fff;*/
+        bottom: 0;
+        /*box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.35);*/
+        /*padding: 10px;*/
+        position: absolute;
+        width: 95%;
+    }
+</style>
+</head>
+
+<body>
+<header>
+    <!--windows导出某个文件夹下图片
+    直接切换到dos下面，转到你想要导出的那个文件夹，用dos命令即可：dir/b >a.txt 结果就在a.txt文件中
+    -->
+    <h1>摄影世界</h1>
+    <p>Resize the browser window or click a grid item to trigger layout updates.</p>
+</header>
+
+<div id="masonry" class="container-fluid">
+</div>
+<script>
+    $(function() {
+            var boxHt=[];
+        for(var i=0;i<jsonPt.length;i++){
+
+            boxHt.push('<div class="box"><img src="'+jsonPt[i]+'"><div class="details"><h3>Lanterns</h3></div></div>');
+        }
+         $("#masonry").append(boxHt.join(""));
+        var $container = $('#masonry');
+//        $container.imagesLoaded(function() {
+            $container.masonry({
+                itemSelector: '.box',
+                gutter: 20,
+                isAnimated: true
+            });
+//        });
+    });
+</script>
+</body>
+</html>

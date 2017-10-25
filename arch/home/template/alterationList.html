@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>机会列表</title>
+    <meta content="chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+
+
+
+    <link rel="stylesheet" type="text/css" href="js/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" type="text/css" href="js/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="homepage.css" />
+
+
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/locale/easyui-lang-zh_CN.js"></script>
+    <style>
+
+    </style>
+</head>
+<body class="easyui-layout" fit="true" title="机会成本" style="overflow: hidden;">
+
+    <div data-options="region:'north'" style="height:35px;overflow: hidden">
+        <div class="portlet-title">
+
+            <div class="caption">
+                <i class="fa fa-globe"></i>机会列表
+            </div>
+
+            <div class="tools">
+                <a class="collapse" href="javascript:;">
+                </a>
+                <a class="config" data-toggle="modal" href="#portlet-config">
+                </a>
+                <a class="reload" href="javascript:;">
+                </a>
+                <a class="remove" href="javascript:;">
+                </a>
+            </div>
+        </div>
+
+
+
+
+        </div>
+    <div data-options="region:'center'" style="padding:20px;background:#eee;">
+        <div id="buttons">
+            <table style="border-spacing:0">
+                <tr>
+                    <td>
+                        <input class="easyui-searchbox" data-options="prompt:'请输入关键词',searcher:doSearch" style="width:150px">
+                    </td>
+                    <td>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true"></a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true"></a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"></a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true"></a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-excel',plain:true"></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+
+        <!--<div region="center" split="true" style="overflow: hidden;border:0 none;">-->
+
+
+
+            <table id="dd" class="easyui-datagrid" data-options="striped:true,fit:true,fitColumns:true,pagination:true,method:'get'">
+            <thead>
+            <tr>
+                <th field="alternationNumber" width="200">公司简称</th>
+                <th field="alternationReason" width="200">公司全称</th>
+                <th field="implementUnit" width="150">项目名称</th>
+                <th field="responsibleUnit" width="150">楼盘名称</th>
+                <th field="alternationStatus" width="150">机会跟进状态</th>
+                <th field="contractNumber" width="150" sortable="true">重要级别</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <td>XXX设计院</td>
+                <td>XXX设计院</td>
+                <td>系统更新</td>
+                <td>飞龙大楼</td>
+                <td>暂缓</td>
+                <td>重要</td>
+            </tr>
+            <tr>
+                <td>XXX设计院</td>
+                <td>XXX设计院</td>
+                <td>系统更新</td>
+                <td>飞龙大楼</td>
+                <td>暂缓</td>
+                <td>重要</td>
+            </tr>
+            <tr>
+                <td>XXX设计院</td>
+                <td>XXX设计院</td>
+                <td>系统更新</td>
+                <td>飞龙大楼</td>
+                <td>暂缓</td>
+                <td>重要</td>
+            </tr>
+            <tr>
+                <td>XXX设计院</td>
+                <td>XXX设计院</td>
+                <td>系统更新</td>
+                <td>飞龙大楼</td>
+                <td>暂缓</td>
+                <td>重要</td>
+            </tr>
+            <tr>
+                <td>XXX设计院</td>
+                <td>XXX设计院</td>
+                <td>系统更新</td>
+                <td>飞龙大楼</td>
+                <td>暂缓</td>
+                <td>重要</td>
+            </tr>
+            <tr>
+                <td>XXX设计院</td>
+                <td>XXX设计院</td>
+                <td>系统更新</td>
+                <td>飞龙大楼</td>
+                <td>暂缓</td>
+                <td>重要</td>
+            </tr>
+            <tr>
+                <td>XXX设计院</td>
+                <td>XXX设计院</td>
+                <td>系统更新</td>
+                <td>飞龙大楼</td>
+                <td>暂缓</td>
+                <td>重要</td>
+            </tr>
+            <tr>
+                <td>XXX设计院</td>
+                <td>XXX设计院</td>
+                <td>系统更新</td>
+                <td>飞龙大楼</td>
+                <td>暂缓</td>
+                <td>重要</td>
+            </tr>   <tr>
+                <td>XXX设计院</td>
+                <td>XXX设计院</td>
+                <td>系统更新</td>
+                <td>飞龙大楼</td>
+                <td>暂缓</td>
+                <td>重要</td>
+            </tr>   <tr>
+                <td>XXX设计院</td>
+                <td>XXX设计院</td>
+                <td>系统更新</td>
+                <td>飞龙大楼</td>
+                <td>暂缓</td>
+                <td>重要</td>
+            </tr>
+
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <script type="text/javascript">
+        function doSearch(value){
+            alert('You input: ' + value);
+        }
+        $(function(){
+            var pager = $('#dd').datagrid().datagrid('getPager'); // get the pager of datagrid
+            pager.pagination({
+                showPageList:false,
+                buttons:$("#buttons")
+            });
+        })
+    </script>
+</body>
+</html>
+
+

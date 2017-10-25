@@ -1,0 +1,34 @@
+animation：1s ease-in-out 0s alternate none infinite leyeMoive;
+@keyframes leyeMoive {
+0% {
+    top: 0;
+}
+100% {
+    top: 20px;
+}
+}
+<meta http-equiv="page-Enter" content="blendTrans(Duration=0.5)"> 
+这一行代表进入网页时的效果
+
+<meta http-equiv="page-Exit" content="blendTrans(Duration=0.5)"> 
+这一行代表离开网页时的效果
+
+这种效果只有IE有效。
+blendTrans是动态滤镜的一种，产生渐隐效果。
+具体的你可以看我写在参考资料里的链接。
+				.z_topic_returncalls .tc_dh5 {
+    animation: 0.8s ease 1.5s normal none infinite tada;
+}
+@-moz-keyframes tada {
+0% {
+    opacity: 0.5;
+    transform: scale(1);
+}
+50% {
+    transform: scale(1.3);
+}
+100% {
+    opacity: 0;
+    transform: scale(1);
+}
+}

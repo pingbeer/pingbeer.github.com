@@ -1,0 +1,380 @@
+﻿
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+    <title>产品选择</title>
+    <link href="css/globle.css" rel="stylesheet" type="text/css" />
+</head>
+<style>
+    .profile{
+        margin-bottom: 15px;
+    }
+    .detailBar .orangetxt{
+        padding-right: 30px;
+    }
+    div.searchInput .inputText{
+        height: 20px;
+        line-height: 20px;
+    }
+    .page a{
+        height: 22px;
+    }
+    .loading-in div{
+        width: 200px;
+    }
+    .layui-layer-setwin .layui-layer-close1{
+        background-position: 2px -39px !important;
+    }
+    .layui-layer-close1:hover{
+        transform: rotate(180deg);
+        transition: all 0.25s ease 0s;
+    }
+    .nerplusInput{
+        width: 100px;
+        border:1px solid #cbcbcb;
+    }
+    .nerplusPart{
+        width: 40px;
+        border:1px solid #cbcbcb;
+    }
+    .noborder{
+        border:0 none ;
+    }
+
+    select {
+        float: left;
+        height: 30px;
+        width: 90px !important;
+    }
+</style>
+<body>
+
+
+
+
+
+
+
+
+<script language="javascript" src="js/jquery.js"></script>
+<style type="text/css">
+    .titleList {
+        padding-left: 1px
+    }
+</style>
+<script language="javascript" src="js/plusminus.js"></script>
+
+<div class="blank6"></div>
+
+<div class="menucarIco" style="position:absolute;right:1px;top:50px;"></div>
+<div class="w1010 mainrbor-my mb10 clear" id="dataKo">
+<table border="0" cellspacing="0" cellpadding="0">
+<thead class="tr-th">
+<tr>
+    <th width="10%" class="title">供应商信息</th>
+    <th width="25%" class="txl">供应商名称</th>
+    <th width="14%">框架合同号</th>
+    <th width="11%">价格（元）</th>
+    <th width="10%">可用份额</th>
+    <th width="10%">申购数量</th>
+
+</tr>
+</thead>
+<!--当前供应商数据循环列表 start-->
+
+    <tbody class="dataTbody" data-bind="foreach: vendors">
+<tr class="tr-bd">
+    <input type="hidden" value="" name="contractId" data-bind="value:contractId" />
+    <input type="hidden" value="" name="inventoryItemId" data-bind="value:inventoryItemId" />
+    <td colspan="2" rowspan="1" class="txl "><i class="arrowskin"></i><span data-bind='text: vendorName'></span>
+
+    </td>
+    <td rowspan="1" data-bind="text:contractCode"></td>
+    <td rowspan="1" class="formattedPrice"  data-bind='with: vendorLine'  >
+
+        <!-- ko if: $parent.strategyType=='0' -->
+        <span data-bind="text:vendorTotal">0</span>
+        <!-- /ko -->
+        <!-- ko if: $parent.strategyType=='1' -->
+        <input type="text" value=""
+               onkeyup="value=value.replace(/[^\d.]/g,'')"
+               name="vendorTotal" style="border:1px solid #ccc;width: 100px;text-align: right" data-bind="value:vendorTotal,
+            valueUpdate:['afterkeydown','click','textchange','propertychange','input'],attr: { id:'total'+$parent.vendorId}" />
+        <!-- /ko -->
+
+    </td>
+    <td rowspan="1" title="份额" data-bind="text:quota" class="orangetxt">0</td>
+    <td rowspan="1"  data-bind='with: vendorLine' >
+
+        <input type="hidden" value="" name="vendorTotal" data-bind="value:vendorTotal,
+            valueUpdate:['afterkeydown','click','textchange','propertychange','input'],attr: { id:'total'+$parent.vendorId}" />
+        <!-- ko if: $parent.strategyType=='0' -->
+        <input type="text"
+               data-bind="attr: { id:'mtl'+$parent.vendorId},
+               value: quantity,valueUpdate:['afterkeydown','click','textchange','propertychange','input']"
+                
+               onkeyup="value=value.replace(/[^\d.]/g, '').replace(/^\./g, '')"
+                
+               class="nerplus"
+                />
+        <!-- /ko -->
+        <!-- ko if: $parent.strategyType=='1' -->
+        <input type="text"
+               data-bind="attr: { id:'mtl'+$parent.vendorId},
+               value: quantity,valueUpdate:['afterkeydown','click','textchange','propertychange','input']"
+              disabled="disabled"style="width: 60px;text-align: right"
+                />
+        <!-- /ko -->
+    </td>
+
+</tr>
+<!--当前供应商下默认隐藏数据模块 start-->
+<tr class="collendlist" >
+
+    <td colspan="8" rowspan="1">
+        <div class="tableboxcol">
+        </div>
+        <div class="detailBar txr">
+            <span>税率：<strong class="orangetxt taxRate " data-bind="text:taxRateDesc"></strong></span>
+            <span>是否可抵税：<strong class="orangetxt " data-bind="text:deduction"></strong></span>
+            <span data-bind='with: vendorLine'>总金额：<strong class="redtxt" data-bind='text:subtotal()'></strong></span>
+            <a href="javascript:void(0)" class="detailBtn txc shopingBtn2" data-bind="attr: { id:'shop'+vendorId},click: $root.addShop"><i class="ico">&#xe904;</i>加入购物车</a>
+        </div>
+    </td>
+</tr>
+
+<!--当前供应商下默认隐藏数据模块 end-->
+</tbody>
+
+</table>
+
+</div>
+<script language="javascript" src="js/knockout-3.4.0.js"></script>
+<script type="text/javascript">
+
+function formatCurrency(value) {
+    return  value.toFixed(2);
+}
+function formatRMB(value) {
+    return  "￥"+value.toFixed(2);
+}
+function RadioClick(element,vendor) {
+    $("#radio"+element).val(vendor.itemId).click();
+    return true;
+}
+
+
+function inputClick(id) {
+    var total=0;
+    $.each($("#cpSet"+id).find("input[name='setCount']"),function(){
+        total +=Number($(this).attr("id"))*Number($(this).val());
+    })
+
+    $("#total"+id).val(total).click();
+    $("#mtl"+id).click();
+//        return true;
+}
+var ilnum=0;
+
+var vendorLine = function(vendor) {
+    var self = this;
+    self.quantity = ko.observable(1);
+
+    self.subtotal = ko.pureComputed(function() {
+        //  self.radioSelectedOptionValue(++ilnum);
+        var qtTemp=self.quantity();
+        if(isNaN(qtTemp)){qtTemp=1};
+        var tempTT=(Number(self.vendorTotal()) * Number(qtTemp));
+        return Number(tempTT).toFixed(2) ;
+    },this);
+
+    self.vendorTotal =ko.observable(Number(vendor.unitPrice));
+
+};
+	
+//    第一种方式
+
+
+//    第二种方式
+var VendorsModel = function(vendors) {
+    var self = this;
+    self.vendors = ko.observableArray(ko.utils.arrayMap(vendors, function(vendor) {
+        return {
+            vendorId: vendor.vendorId,
+            vendorName: vendor.vendorName,
+            inventoryItemId: vendor.inventoryItemId,
+            contractId: vendor.contractId,
+            unitPrice: vendor.unitPrice,
+            quantity:  1,
+            quantityNextMonth:"",
+            quantityThridMonth:"",
+            contactUser:  vendor.contactUser,
+            quota: vendor.quota,
+            deduction: vendor.deduction,
+            taxRateDesc: vendor.taxRateDesc,
+            contractCode: vendor.contractCode,
+            strategyType: vendor.strategyType,
+            vendorLine: new vendorLine(vendor)
+        };
+    }));
+
+
+
+    self.grandTotal = ko.pureComputed(function() {
+        var total = 0;
+
+        $.each(self.vendors(), function(i,o) { total += Number(this.vendorLine.subtotal()) })
+        return Number(total).toFixed(2);
+    });
+    self.grandQty = ko.pureComputed(function() {
+        var total = 0;
+
+        $.each(self.vendors(), function(i,o) { total +=Number(this.vendorLine.quantity()) })
+        return total;
+    });
+    self.removeContact = function(contact) {
+        self.vendors.remove(contact);
+    };
+ 
+    self.addShop = function(vendor,event) {
+        var $obj=this;
+
+        var qtSG=vendor.vendorLine.quantity();
+        var qt=vendor.quota;
+        if(Number(vendor.quota)<=0){layer.alert("可用份额不足!");return;}
+        if(isNaN(vendor.vendorLine.vendorTotal())){layer.alert("价格含有非法字符!");return;}
+        if(Number(vendor.vendorLine.vendorTotal())<=0){layer.alert("价格不能为0!");return;}
+        if($("#projectInputText").val()=="" && $("#budgetId").val()==""){  layer.alert('请选择资金来源');return;}
+        if(vendor.vendorLine.quantity()==0){layer.alert("请填写数量!");return;}
+
+        var ajaxFun=function(){
+            $.ajax({
+                type: "post",
+                url: "data/jd.json",
+                dataType : 'json',
+                data : {'shopData':encodeURIComponent(ko.toJSON(vendor)),
+                    'projectId':$("#projectInputText").val(),
+                    'budgetDeptId': $("#budgetDeptId").val(),
+                    'activityCode':$("#activityCode").val(),
+                    'budgetId':$("#budgetId").val(),
+                    'itemId':$("#itemId").val(),
+                    'mtlType':$(".sys_spec_text li.selected").attr("data-aid")},
+                success: function(data,textStatus){
+                    layer.closeAll('dialog');
+             
+                    MoveBox(vendor.vendorId,event);
+//                    layer.alert('操作成功');
+                    
+                },
+                error: function(xhr,status,errMsg){
+                    layer.alert("操作失败!");
+                }
+            });
+        }
+        if(Number(vendor.quota)<Number(vendor.vendorLine.quantity())){
+            layer.confirm("申购数量"+qtSG+"大于可用份额量"+qt+"，是否继续加入购物车？",function(){
+                ajaxFun();
+            });
+        }else{
+            ajaxFun();
+        }
+//
+
+    };
+
+
+
+    self.lastSavedJson = ko.observable("") ;
+};
+    var myModel=null;
+$(function(){
+//    $(".dataTbody").hide();
+    
+        $.getJSON("data/jd.json", function(data) {
+            if(data==null){
+                $(".dataTbody").hide();
+                layer.alert("数据加载出错!");
+                return;
+            }
+//            $(".dataTbody").show();
+              myModel=new VendorsModel(data);
+//            var dataKo = document.getElementById("dataKo");
+//            ko.cleanNode(dataKo);
+//            ko.applyBindings(myModel, dataKo);
+                ko.applyBindings(myModel);
+                $( ".nerplus" ).spinner();
+                
+                $(".mainrbor-my > table").slide({ titCell:".tr-bd", targetCell:".collendlist",effect:"slideDown",delayTime:0,trigger:"click" });
+            $(".lxgysbtn").hover(function() {
+                $(this).addClass("hover");
+                $(this).parent().find(".layer-ov").slideDown('fast').show();
+                $(this).parent().find(".layer-ov").css({'top':$(this).offset().top+$(this).outerHeight()+5,'left':$(this).offset().left});
+                $(this).parent().hover(function() {
+                }, function() {
+                    $(this).parent().find(".layer-ov").fadeOut('fast');
+
+                });
+            });
+        }) ;
+//    }
+//        $("#mtl"+id).click();
+    })
+
+function MoveBox(obj,e) {
+//$("#shop"+obj).shoping();
+    var $shop=$('.menucarIco');
+    var $imgItem=$('.itemShowImg').attr("src");
+//    e.stopPropagation();
+
+    e=e||window.event;
+    var tar = e.srcElement||e.target;
+    var $target=$("#shop"+obj),
+        id=$target.attr('id'),
+
+        x = $target.offset().left + 30,
+        y = $target.offset().top - 20,
+        X = $shop.offset().left+$shop.width()/2-$target.width()/2+50,
+        Y = $shop.offset().top+20;
+
+//    if(true){
+    if ($('#floatOrder').length <= 0) {
+        $('body').append('<div id="floatOrder"><img src="logo.png" width="50" height="50" /></div>');
+    };
+    var $obj=$('#floatOrder');
+    if(!$obj.is(':animated')){
+        $obj.css({'left': x,'top': y}).animate({'left': X,'top': Y-80},500,function() {
+            $obj.stop(false, false).animate({'top': Y-20,'opacity':0},500,function(){
+                $obj.fadeOut(300,function(){
+                    $obj.remove();
+                    var l=$('.carcoubox > .prolist > li').length;
+                });
+            });
+        });
+//        };
+    };
+
+}
+</script>
+
+
+<div class="blank6"></div>
+
+
+
+<!-- <script language="javascript" src="/style/js/jsrender.min.js"></script> -->
+<script language="javascript" src="js/pace.js"></script>
+<script language="javascript" src="js/superslier.js"></script>
+
+
+<script type="text/javascript" src="js/layer.js?v=2.2"></script>
+<!-- <script type="text/javascript" src="/style/js/laypage.js"></script> -->
+
+
+</body>
+</html>

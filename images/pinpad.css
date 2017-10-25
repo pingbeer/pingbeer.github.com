@@ -1,0 +1,84 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.pinpad {
+	width: 287px;
+	height: 308px;
+	background: url(../images/pinpad.png) no-repeat;
+	padding-top: 12px;
+	padding-left: 13px;
+}
+.pinpad-result-row {
+	width: 274px;
+	height: 62px;
+	margin-bottom: 16px;
+}
+.pinpad-result1blank{
+	width: 64px;
+	height: 62px;
+	background: url(../images/bg_pinpad_result.png) no-repeat 0 0;
+	float: left;
+	margin-right: 6px;
+}
+.pinpad-result2blank {
+	width: 64px;
+	height: 62px;
+	background: url(../images/bg_pinpad_result.png) no-repeat 0 0;
+	float: left;
+}
+.pinpad-result1hidden {
+	width: 64px;
+	height: 62px;
+	background: url(../images/bg_pinpad_result.png) no-repeat 0 -62px;
+	float: left;
+	margin-right: 6px;
+	display: none;
+}
+.pinpad-result2hidden {
+	width: 64px;
+	height: 62px;
+	background: url(../images/bg_pinpad_result.png) no-repeat 0 -62px;
+	float: left;
+	display: none;
+}
+.pinpadnumberrow1 {
+	width: 259px;
+	height: 44px;
+	margin-left: 6px;
+	margin-bottom: 6px;
+}
+.pinpadnumberrow2 {
+	width: 259px;
+	height: 44px;
+	margin-left: 6px;
+}
+.number1 {
+	width: 79px;
+	height: 44px;
+	float: left;
+	margin-right: 11px;
+	cursor: pointer;
+}
+.number2 {
+	width: 79px;
+	height: 44px;
+	float: left;
+	cursor: pointer;
+}
+.secretmessage {
+	width: 200px;
+	height: 20px;
+	border: 10px solid #d1fdc2;
+	padding: 15px 10px 10px;
+	color: #568f3c;
+	font: bold 12px "Lucida Grande", Lucida, Verdana, sans-serif;
+	background-color: #e5fedf;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 350px;
+    position: relative;
+    z-index: 10000;
+	display: none;
+}

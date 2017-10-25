@@ -1,0 +1,84 @@
+
+a,address,b,big,blockquote,body,center,cite,code,dd,del,div,dl,dt,em,fieldset,font,form,h1,h2,h3,h4,h5,h6,html,i,iframe,img,ins,label,legend,li,ol,p,pre,small,span,strong,u,ul,var{margin:0;padding:0}
+body,html{height:100%}
+div,input,select,ul{float:none}
+a:link,a:visited{color:#666;text-decoration:none}
+a:hover{text-decoration:underline}
+a:active,a:hover{color:#006dae}
+a img{border:0 none}
+img{vertical-align:middle}
+body{background:url("img/quc_index_bg.jpg") 0 0;color:#666;font:9pt/24px "\5FAE\8F6F\96C5\9ED1",Helvetica Neue,Tahoma}
+.w{margin:0 auto;padding:0;width:990px}
+.w1{width:820px}
+
+#logo{position:relative;float:none;margin:0;padding:30px 0 10px 50px}
+#logo span{display:block;color:#35aa47;text-indent:-99999px;font-size:26px;font-family:\\5FAE\8F6F\96C5\9ED1}
+#logo b{position:absolute;top:18px;left:330px;width:111px;height:46px}
+
+#entry{position:relative;margin:60px auto 55px;border:3px solid #c1d89a;border-radius:3px 3px 3px 3px;background:none repeat scroll 0 0 #fff;box-shadow:0 8px 22px #999}
+#entry .extra-en{position:absolute;top:-20px;right:20px}
+#entry .mc{height:296px;border:1px solid #e1e1e1;background:none repeat scroll 0 0 #fff}
+#entry .form,.m,.mb,.mc,.mt{overflow:hidden}
+#entry .form{position:absolute;top:50px;right:42px;width:307px;height:296px}
+#entry .fore1{z-index:10}
+#entry .item{position:relative;overflow:visible;width:307px;height:4pc;line-height:26px}
+#entry .item span{display:block;margin-top:1px;height:20px;color:#999;line-height:20px}
+#entry .item .item-ifo{position:relative;width:307px}
+#entry .text{float:none;padding:4px 20px 4px 3px;width:282px;height:24px;border:1px solid #ccc;border-radius:2px;box-shadow:2px 2px 2px #f1f1f1 inset;color:#999;font-size:14px;font-family:arial,"����";line-height:24px}
+#entry .text:focus{outline:medium 0;border-color:#92afed;box-shadow:0 0 5px #92afec,1px 1px 2px rgba(0,0,0,.1) inset;transition:all .3s ease 0s}
+#entry .item-ifo .i-name{top:8px;width:1pc;height:1pc;background:url(img/login-all-bg.png) no-repeat scroll -27px -3px #fff}
+#entry .item-ifo .ico{position:absolute;right:9pt;z-index:5}
+#entry .blank{position:absolute;top:9px;right:8px;z-index:10;float:none;display:none;padding:2px;width:1pc;height:1pc}
+#entry .focus{display:none;color:#999;line-height:22px}
+#entry .fore2{z-index:8}
+#entry .item-ifo .i-pass{top:8px;width:14px;height:19px;background:url(img/login-all-bg.png) no-repeat scroll 0 0 #fff}
+
+#entry #autoentry{overflow:hidden;margin-top:8px;height:37px}
+#entry .checkbox{margin-top:8px}
+#entry .mar{margin-right:10px}
+#entry .login-btn2013{margin-top:20px;height:52px}
+#entry .btn-entry{overflow:hidden;width:307px;height:34px;background:url(img/login-all-bg.png) no-repeat scroll 0 -61px transparent;text-indent:-9999px;font-family:"΢���ź�";line-height:75pt}
+#entry .btn-entry:hover{background:url(img/login-all-bg.png) no-repeat scroll 0 -95px transparent}
+#entry .button{display:block;display:inline-block;padding:0 15px;height:40px;border:0 none;border-radius:3px;background-color:#167efb;box-shadow:1px 1px 2px #3e70b1;color:#fff;text-align:center;font-size:18px;font-family:Heiti SC,'΢���ź�','����';line-height:40px;cursor:pointer}
+#entry .btn-green{display:block;background-color:#3e70b1;transition:all .3s ease 0s}
+#entry .button:hover{background-color:#76bf48;box-shadow:1px 1px 2px #76bf48;text-decoration:none;transition:all .3s ease 0s}
+#entry .extra .ftx24{color:#999}
+#entry .item .ftx24 .clr{height:0;line-height:0}
+#entry .item span{display:block;margin-top:1px;color:#999}
+#entry .extra .btns{position:relative;float:left;overflow:hidden;margin-right:2px;height:14px;line-height:14px}
+#entry .extra .ftx24 .btns a:link,#entry .extra .ftx24 .btns a:visited{padding-right:2px;border-right:1px solid #dbdbdb;color:#666;text-decoration:none}
+
+
+.form .label,.form button,.form input,.form label,.form select,.form textarea{float:left;font-size:9pt}
+.btn-img{margin:0;padding:0;border:0 none;text-align:center;cursor:pointer}
+#footer-2013{padding-bottom:30px;text-align:center}
+#footer-2013 .copyright{margin:10px 0}
+#footer-2013 .links a,#footer-2013 .links span{margin:0 10px}
+
+.regSub,.regSub .btn{text-align:center}
+.regSub .btn{position:relative;display:inline-block;margin-left:4px;padding:0 1pc;width:88px;height:26px;border:1px solid #c6c6c6;border-radius:2px;background:url(img/064.png) repeat-x scroll 0 0 transparent;box-shadow:1px 1px 2px #cfd0d2;color:#6cbc00;vertical-align:middle;white-space:nowrap;font-weight:700;font-size:9pt;line-height:23px;cursor:pointer}
+.regSub .btn:hover{background-position:0 -50px}
+.regSub .btn:active{background-position:0 -75pt}
+
+
+#content,.grid{margin:0 auto;width:890px}
+.body-style .cloud1,.body-style .cloud2{position:absolute;top:300px;left:750pt;width:133px;height:76px;background:url(img/top-cloud1.png) no-repeat scroll 0 0 transparent;animation:3s ease-in-out 0s alternate none infinite top_cloud}
+.body-style .cloud2{top:60px;left:200px;background-size:80% auto;animation:3s ease-in-out 0s alternate none infinite top_cloud}
+.body-style .cloud1{top:60px;left:750pt;background-size:80% auto;animation:4s ease-in-out 0s alternate none infinite top_cloud1}
+@keyframes top_cloud{0%{margin-left:-20px}
+to{margin-left:20px}
+}
+@keyframes top_cloud1{0%{margin-left:-40px}
+to{margin-left:40px}
+}
+@keyframes top_boy{0%{transform:scaleY(0)}
+0%,to{visibility:visible}
+to{transform:scaleY(1)}
+}
+.body-style #entry{visibility:hidden;transform-origin:center bottom 0;animation:1s ease-in-out 0s normal forwards 1 top_boy}
+
+.btn{position:relative;display:inline-block;padding:0 11px;height:30px;min-width:2pc;border:1px solid #c6c6c6;border-radius:3px;background:url(img/096.png) repeat-x scroll 0 0 transparent;box-shadow:0 1px 0 rgba(0,0,0,.03);color:#848484;vertical-align:middle;text-align:center;white-space:nowrap;font-size:9pt;line-height:30px;cursor:pointer}
+
+#globalFooter{position:fixed;bottom:0;z-index:100;width:100%;background:none repeat scroll 0 0 #333;background:none repeat scroll 0 0 rgba(0,0,0,.5)}
+.grid:after{clear:both;display:block;visibility:hidden;height:0;content:"."}
+#globalFooter .grid{padding:9px 0;color:#fff;font-size:10px}

@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>机会列表</title>
+    <meta content="chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+    <link rel="stylesheet" type="text/css" href="js/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" type="text/css" href="js/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="homepage.css" />
+    <link rel="stylesheet" type="text/css" href="detail.css" />
+
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/locale/easyui-lang-zh_CN.js"></script>
+    <script>
+        $(function(){
+            $(".fake_slt").on("click",function(){
+                if($(this).hasClass("open")){
+                    $(this).removeClass("open");
+                } else{
+                    $(".fake_slt").removeClass("open");
+                    $(this).addClass("open");
+                }
+
+
+
+            })   ;
+            $(".fake_slt_menu li").on("click",function(){
+                $(this).closest(".fake_slt").find("input[type='hidden']").val($(this).find("a").attr("rel"));
+                $(this).closest(".fake_slt").find("span").text($(this).find("a").text());
+
+            })
+        })
+    </script>
+
+    <style>
+            /*根据每个页面的数据量来决定页面的宽度*/
+        body{
+            min-width: 1000px;
+        }
+        .editContent,    .editContent table,    .editWin{
+            width: 1000px;
+        }
+    </style>
+</head>
+<body class="easyui-layout" fit="true" title="机会成本" style="overflow: hidden;">
+
+<div data-options="region:'north'" style="height:35px;overflow: hidden">
+    <div class="portlet-title">
+
+        <div class="caption">
+            <i class="fa fa-globe"></i>机会列表
+        </div>
+
+    </div>
+
+
+
+
+</div>
+<div data-options="region:'center'" style="padding:20px;background:#eee;overflow: hidden;">
+
+    <div class="editWin">
+        <div class="editContent">
+            <form action="" method="POST">
+                <table id="dataHead" cellspacing="1" cellpadding="0" border="0">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="35%" />
+                        <col width="15%" />
+                        <col width="35%" />
+                    </colgroup>
+                    <tr>
+                        <th>用户编号</th>
+                        <td><input type="text" name="resourceName8" class="finput1" value="" ></td>
+
+                        <th>公司简称</th>
+                        <td><input type="text" name="resourceName8" class="finput1" value="" ></td>
+                    </tr>
+                    <tr>
+                        <th>公司全称</th>
+                        <td><input type="text" name="resourceName8" class="finput1" value="" ></td>
+
+                        <th>公司简介</th>
+                        <td><input type="text" name="resourceName8" class="finput1" value="" ></td>
+                    </tr>
+                    <tr>
+                        <th>客户付款流程</th>
+                        <td><input type="text" name="resourceName8" class="finput1" value="" ></td>
+
+                        <th>组织架构</th>
+                        <td><input type="text" name="resourceName8" class="finput1" value="" ></td>
+                    </tr>
+                    <tr>
+                        <th>关系类型</th>
+                        <td>
+                            <!--<select size="1" name="D" >
+                            <option>请选择---</option>
+                            <option>客户</option>
+                            <option>潜在客户</option>
+                            <option>合作伙伴</option>
+                            <option>竞争对手</option>
+                            <option>职能部门</option>
+                        </select>-->
+
+                            <div class="fake_slt">
+                                <div class="questionContainer">
+                                    <!--<input class="fake_slt_txt questionText" rel="13" type="text" value="请选择关系类型"  />-->
+                                    <span class="fake_slt_txt questionText" rel="13">请选择关系类型</span>
+                                    <input  type="hidden" value="" name="hidquestion"  />
+                                    <a class="fake_slt_a" href="javascript:;"><i class="i_triangle_d"></i></a>
+                                </div>
+                                <ul class="fake_slt_menu popList questionListContainer" >
+                                    <li><a rel="10086" href="javascript:;">请选择</a></li>
+                                    <li><a rel="10" href="javascript:;">客户</a></li>
+                                    <li><a rel="11" href="javascript:;">潜在客户</a></li>
+                                    <li><a rel="12" href="javascript:;">合作伙伴</a></li>
+                                    <li><a rel="12" href="javascript:;">竞争对手</a></li>
+                                    <li><a rel="12" href="javascript:;">职能部门</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <th>公司性质</th>
+                        <td>
+
+
+                            <div class="fake_slt">
+                                <div class="questionContainer">
+                                    <!--<input class="fake_slt_txt questionText" rel="13" type="text" value="请选择公司性质"  />-->
+                                    <span class="fake_slt_txt questionText" rel="13">请选择公司性质</span>
+                                    <input  type="hidden" value="" name="hidquestion"  />
+                                    <a class="fake_slt_a" href="javascript:;"><i class="i_triangle_d"></i></a>
+                                </div>
+                                <ul class="fake_slt_menu popList questionListContainer" >
+                                    <li><a rel="10086" href="javascript:;">请选择</a></li>
+                                    <li><a rel="10" href="javascript:;">优质地产商</a></li>
+                                    <li><a rel="11" href="javascript:;">普通地产商</a></li>
+                                    <li><a rel="12" href="javascript:;">非地产商</a></li>
+                                </ul>
+                            </div>
+
+                        </td>
+                    </tr>
+
+                </table>
+               </form>
+
+    </div>
+    </div>
+</div>
+</body>
+</html>

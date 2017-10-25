@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>机会列表</title>
+    <meta content="chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+
+
+
+    <link rel="stylesheet" type="text/css" href="js/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" type="text/css" href="js/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="homepage.css" />
+    <link rel="stylesheet" type="text/css" href="detail.css" />
+    <link rel="stylesheet" type="text/css" href="js/south-street/jquery-ui-1.10.4.custom.min.css" />
+
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/jquery.ui.datepicker-zh-TW.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/locale/easyui-lang-zh_CN.js"></script>
+       <style>
+           /*根据table布局相应设置select的宽度*/
+           .fake_slt_txt{
+               width: 269px;
+           }
+       </style>
+    <script>
+        $(function(){
+            $(".fake_slt").on("click",function(){
+                if($(this).hasClass("open")){
+                    $(this).removeClass("open");
+                } else{
+                    $(".fake_slt").removeClass("open");
+                    $(this).addClass("open");
+                }
+
+
+
+            })   ;
+            $(".fake_slt_menu li").on("click",function(){
+                $(this).closest(".fake_slt").find("input[type='hidden']").val($(this).find("a").attr("rel"));
+                $(this).closest(".fake_slt").find("span").text($(this).find("a").text());
+
+            })
+        })
+    </script>
+
+<style>
+    /*根据每个页面的数据量来决定页面的宽度*/
+    body{
+        min-width: 1200px;
+    }
+    .editContent,    .editContent table,    .editWin{
+        width: 1200px;
+    }
+</style>
+
+</head>
+<body class="easyui-layout" fit="true" title="机会成本">
+
+<div data-options="region:'north'" style="height:35px;overflow: hidden">
+    <div class="portlet-title">
+
+        <div class="caption">
+            <i class="fa fa-globe"></i>机会列表
+        </div>
+
+    </div>
+
+
+
+
+</div>
+<div data-options="region:'center'" style="padding:20px;background:#eee;overflow-x:hidden;overflow-y:auto; ">
+    <div class="editWin">
+        <div class="editContent">
+            <form action="" method="POST">
+                <table  cellspacing="1" cellpadding="0" border="0">
+                    <colgroup>
+                        <col width="10%" align="right" />
+                        <col width="23.3%" />
+                        <col width="10%" />
+                        <col width="23.3%" />
+                        <col width="10%" />
+                        <col width="23.3%" />
+                    </colgroup>
+                 <tbody>
+                 <tr>
+                     <th>主合同编号</th>
+                     <td>
+                         <input name="resourceName20" type="text" ></td>
+                     <th>合同编号</th>
+                     <td>
+
+
+                         <div class="fake_slt">
+                             <div class="questionContainer">
+                                 <span class="fake_slt_txt questionText" rel="13">请选择合同编号</span>
+                                 <input  type="hidden" value="" name="hidquestion"  />
+                                 <a class="fake_slt_a" href="javascript:;"><i class="i_triangle_d"></i></a>
+                             </div>
+                             <ul class="fake_slt_menu popList questionListContainer" >
+                                 <li><a rel="10086" href="javascript:;">请选择</a></li>
+                                 <li><a rel="10" href="javascript:;">01</a></li>
+                                 <li><a rel="11" href="javascript:;">02</a></li>
+                                 <li><a rel="11" href="javascript:;">03</a></li>
+                                 <li><a rel="11" href="javascript:;">04</a></li>
+                                 <li><a rel="11" href="javascript:;">05</a></li>
+                             </ul>
+                         </div>
+
+                     </td>
+                     <th>项目名称</th>
+                     <td>
+                         <input type="text" name="roleName12" class="finput1" value=""></td>
+                 </tr>
+                 <tr>
+                     <th>公司简称</th>
+                     <td>
+                         <input type="text" name="roleName13" class="finput1" value=""></td>
+
+                     <th>公司全称</th>
+                     <td><input type="text" name="roleName01" class="finput1" value=""></td>
+                     <th>项目公司</th>
+                     <td><input type="text" name="description" class="finput1"  value=""></td>
+                 </tr>
+
+                 <tr>
+                     <th>合同主管区域公司</th>
+                     <td>
+
+                         <div class="fake_slt">
+                             <div class="questionContainer">
+                                 <span class="fake_slt_txt questionText" rel="13">请选择合同主管区域公司</span>
+                                 <input  type="hidden" value="" name="hidquestion"  />
+                                 <a class="fake_slt_a" href="javascript:;"><i class="i_triangle_d"></i></a>
+                             </div>
+                             <ul class="fake_slt_menu popList questionListContainer" >
+                                 <li><a rel="10086" href="javascript:;">请选择</a></li>
+                                 <li><a rel="10" href="javascript:;">成都</a></li>
+                                 <li><a rel="11" href="javascript:;">重庆</a></li>
+                                 <li><a rel="11" href="javascript:;">昆明</a></li>
+                                 <li><a rel="11" href="javascript:;">西安</a></li>
+                                 <li><a rel="11" href="javascript:;">北京</a></li>
+                                 <li><a rel="11" href="javascript:;">上海</a></li>
+                                 <li><a rel="11" href="javascript:;">武汉</a></li>
+                             </ul>
+                         </div>
+
+                     </td>
+                     <th>合同主管客户经理</th>
+                     <td>
+                         <input type="text" name="roleName21"></td>
+                     <th>　</th>
+                     <td>
+                         　</td>
+
+                 </tr>
+
+                 <tr>
+                     <th>合同类型</th>
+                     <td colspan="5">
+						 	       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">全过程</span>
+                        </label>	       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">施工图</span>
+                        </label>	       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">报建方案</span>
+                        </label>	       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">其他方案</span>
+                        </label>	       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">景观设计</span>
+                        </label>	       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">装修设计</span>
+                        </label>	       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">其他形式</span>
+                        </label>	       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">修改</span>
+                        </label>	       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">外包</span>
+                        </label>       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">不签订合同</span>
+                        </label>
+						</td>
+                 </tr>
+
+                 <tr>
+                     <th>产品类型</th>
+                     <td  colspan="5">
+                 <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">高层住宅</span>
+                        </label>       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">办公</span>
+                        </label>
+						   <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">商业</span>
+                        </label>   <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">酒店</span>
+                        </label>
+						   <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">学校</span>
+                        </label>   <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">医院</span>
+                        </label>   <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">文化建筑</span>
+                        </label>   <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">体育建筑</span>
+                        </label> <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">其它公建</span>
+                        </label>
+                     </td>
+                 </tr>
+
+
+
+                 <tr>
+                     <th>合同启动时间</th>
+                     <td>
+                         <input type="text" name="roleName26"></td>
+                     <th>合同返回时间</th>
+                     <td>
+                         <input type="text" name="roleName27" ></td>
+
+                     <th>统计时间(月)</th>
+                     <td>
+                         <input name="roleName31" type="text" ></td>
+                 </tr>
+
+                 <tr>
+                     <th>附加信息</th>
+                     <td colspan="5"><textarea name="textarea" id="textarea"  rows="3" s></textarea></td>
+                 </tr>
+                 <tr>
+                     <th>备注信息</th>
+                     <td colspan="5"><textarea name="textarea2" id="textarea2"  rows="3"></textarea></td>
+                 </tr>
+
+                 </tbody>
+
+                      </table>
+                    <table  cellspacing="1" cellpadding="0" border="0">
+                        <colgroup>
+                            <col width="43.3%" />
+                            <col width="10%" />
+                            <col width="10%" />
+                            <col width="13.3%" />
+                            <col width="10%" />
+                            <col width="13.3%" />
+                        </colgroup>
+
+                     <tbody>
+                     <tr>
+                         <th>承接阶段</th>
+                         <th>规模(万m2)</th>
+                         <th>单价(万元)</th>
+                         <th>奖励单价(万元)</th>
+                         <th>单价合计(万元)</th>
+                         <th>子项合同金额(万元)</th>
+                     </tr>
+                     <tr>
+                         <td>
+                            	<label class="radioclass"><input type="radio" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">全过程</span>
+                        </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">全过程</span>
+                        </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">施工图</span>
+                        </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">施工图套图</span>
+                        </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">报建方案</span>
+                        </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">策划方案</span>
+                        </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">深化方案</span>
+                        </label>     </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">景观设计</span>
+                        </label>
+						    </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">装修设计</span>
+                        </label>    </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">户型设计</span>
+                        </label>    
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">总图</span>
+                        </label>    </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">立面</span>
+                        </label>
+                         </td>
+                         <td>
+                             <input name="roleName33" type="text" value="">
+                         </td>
+                         <td>
+                             <input name="roleName34" type="text">
+                         </td>
+                         <td><input name="roleName2"type="text"></td>
+                         <td><input name="roleName3" type="text"></td>
+                         <td>
+                             <input name="roleName35" type="text">
+                         </td>
+                     </tr>
+                     </tbody>
+                 </table>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+                 <script>
+                     $(function(){
+                         $( "input[name='roleName26']" ).datepicker({ dateFormat: "yy-mm-dd" });
+                     })
+                 </script>
+</body>
+</html>
+

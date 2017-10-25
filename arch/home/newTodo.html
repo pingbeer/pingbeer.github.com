@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html class="layout">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="newTodo.css"/>
+    <script src="js/jquery-1.8.0.min.js"></script>
+    <!--[if IE]>
+    <script src="js/html5.js"></script>
+	
+    <script type="text/javascript">
+        $(function () {
+            $.getScript("js/placeholder.js", function () {
+                $("#searchvaluetext").placeholder();//让id=keyword的元素支持placeholder，换成你自己的选择器
+            }) ;
+        })
+    </script>
+    <![endif]-->
+    <!--[if (gt IE 8) | !(IE)]><!-->
+    <script src="js/prefixfree.min.js"></script>
+
+    <!--<![endif]-->
+
+<!--[if lt IE 9]>
+<script src="js/IE9.js">IE7_PNG_SUFFIX=".png";</script>
+<![endif]-->
+	
+    <script type="text/javascript">
+        $(function(){
+            $("#aside li").on("click",function(){
+                if(!$(this).find("a").hasClass("selected")){
+                    $(this).find("a").addClass("selected");
+                    $(this).siblings().find("a").removeClass("selected");
+                    $(" .content table").eq($(this).index()).removeClass("hide").siblings().addClass("hide");
+                }
+
+            });
+            $(".dialog-close").on("click",function(){
+                $(".dialog").css("display","none");
+                $(".overlay").css("display","none");
+            })  ;
+
+        })
+    </script>
+
+</head>
+<body>
+<noscript><p class="w">您的浏览器不支持javascript，请开启javascript支持或者更换浏览器。</p></noscript>
+<div class="Bdy">
+
+    <!--左侧菜单-->
+    <div id="aside" class="aside">
+        <ul class="nav">
+            <li><a class="all-file selected" href="##" data-pv="" data-ca="aside-files"><b>我的待办</b></a>
+            </li>
+            <li><a class="link " href="##" data-pv="" data-ca="aside-outlink"><b>我的待办</b></a>
+            </li>
+            <li><a class="recyclebin" href="##" data-pv="" data-ca="aside-recycle"><b>我的待办</b></a>
+            </li>
+            <li><a class="apps"  href="##" data-ca="aside-apprec"><b>我的待办</b></a>
+            </li>
+        </ul>
+
+    </div>
+
+    <!--右区主要内容-->
+    <div id="mainer" class="noSelect loading2">
+        <div class="mainT"></div>
+        <div class="main dn" id="linkmanagebox" style="display: block;">
+
+            <div class="maint">
+
+                <div class="mainH operatebar">
+                    <ul class="operate operate-group border-l">
+                        <li class="operate">
+                            <button title="清空" id="cleanrecyle" class="btn empty" data-ca="operate-empty">清空</button>
+                        </li>
+                        <li class="operate">
+                            <button title="新增" id="jRecyclePwdbtn" class="btn cancel-password noDis"
+                                    data-ca="operate-recyclepwd-cancel">新增
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mainH2">
+                    <form id="searchwrapfrom" class="search">
+                        <input type="text" name="search" id="searchvaluetext" class="txt" placeholder="输入文件名搜索">
+                        <button id="searchbutton" class="search-submit"></button>
+                    </form>
+                </div>
+            </div>
+            <div id="content" class="content">
+
+                <table  class="tbl ui-selectable">
+                    <thead>
+                    <tr>
+					<!--
+					  <th class="col_cbox chkall"><span class="checkbox"></span>
+                        </th>
+					-->
+				
+                      
+                        <th>机会项目名称
+                        </th>
+                        <th>重要程度
+                        </th>
+                        <th>紧要级别
+                        </th>
+                    </tr>
+                    </thead>
+
+
+                    <tbody class="list-data-container">
+
+
+                    <tr class="">
+						<!--
+					<td class="col_cbox"><span class="checkbox"></span></td>
+					-->
+                        
+                        <td class="file-name folder-icon"><a title="华润五块石住宅项目" class="name"
+                                                             href="javascript:void(0)"
+                                                             data-ca="listView-see-folder">华润五块石住宅项目</a></td>
+                        <td>重要</td>
+                        <td>紧急</td>
+                    </tr>
+                    <tr class="">
+                    
+                        <td class="file-name folder-icon"><a title="华润五块石住宅项目" class="name"
+                                                             href="javascript:void(0)"
+                                                             data-ca="listView-see-folder">华润五块石住宅项目</a></td>
+                        <td>重要</td>
+                        <td>紧急</td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<!--弹出层-->
+<div class="dialog" style="left:450px;top:150px;display: none">
+    <button class="dialogX dialog-close"></button>
+    <div class="dialogT noSelect">删除提示</div>
+    <div class="dialogC">
+        <div class="IxMsg IxMsgAsk"><p class="IxMsgI"></p>
+
+            <p class="IxMsgT">亲，真的要把我删了吗？</p>
+
+            <div class="IxMsgC"></div>
+        </div>
+    </div>
+    <div class="dialogB btns2">
+        <button class="btn dialog-close">不删你了</button>
+        <button class="btn btn_warn dialog-confirm">狠心删掉</button>
+    </div>
+</div>
+
+
+<div id="overlay" class="overlay" style="display: none"></div>
+</body>
+</html>

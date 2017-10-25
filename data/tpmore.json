@@ -1,0 +1,24 @@
+﻿[
+    {
+        "checks": false, 
+        "description": "", 
+        "descriptionSet": "1", 
+        "erpItemCount": "", 
+        "erpItemCountSel": "", 
+        "erpItemId": "", 
+        "factoryItemId": "1000236784", 
+        "funcName": "", 
+        "functionModule": "", 
+        "itemId": "", 
+        "itemName": "", 
+        "mustPart": "", 
+        "quantity": "1", 
+        "quantitySel": "", 
+        "quantitySet": "1", 
+        "segMent": "", 
+        "segMentSet": "1501020PJ000786", 
+        "unitOfIssueSet": "1", 
+        "unitOfPriceSet": "297.299145299", 
+        "unitPrice": ""
+    }
+]

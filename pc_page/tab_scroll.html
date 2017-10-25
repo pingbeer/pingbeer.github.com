@@ -1,0 +1,606 @@
+﻿
+
+
+
+
+
+
+
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <base target="_self">
+    <title>产品库-分类</title>
+	<link href="/pss/products/css/productsShow.css" rel="stylesheet" type="text/css" />
+	<link href="/pss/products/css/public.css" rel="stylesheet" type="text/css" />
+	<link href="/pss/products/css/base.css" rel="stylesheet" type="text/css" />
+  </head>
+  
+  <body>
+  
+<style>
+/*一个总的样式*/
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #666666;
+    font: 12px/150% Arial,Verdana,"宋体";
+}
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, address, big, cite, code, del, em, font, img, ins, small, strong, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    display: inline-block;
+}
+.red {
+    color: #DB0606;
+}
+
+.blue {
+    color: #0169BE !important;
+}
+.f18px {
+    font-size: 18px;
+}
+.f14px {
+    font-size: 14px;
+}
+.grey {
+    color: #989898;
+}
+.yellow {
+    color:#FF6600
+}
+.blank5 {
+    clear: both;
+    display: block;
+    height: 10px;
+    overflow: hidden;
+}
+em, i {
+    font-style: normal;
+}
+.clr {
+    clear: both;
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+.clearfix:after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.form label, .form input, .form select, .form textarea, .form button, .form .label {
+    float: left;
+}
+
+div, input, select, ul {
+    float: none;
+}
+
+a:hover {
+    color: #006DAE;
+    text-decoration: none;
+}
+a:active {
+    color: #006DAE;
+}
+.blank10 {
+    clear: both;
+    display: block;
+    height: 10px;
+    overflow: hidden;
+}
+.blank15{
+    clear: both;
+    display: block;
+    height: 15px;
+    overflow: hidden;
+}
+
+a img {
+    border: 0 none;
+}
+img {
+    vertical-align: middle;
+}
+.btn-img, .button {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+ol, ul {
+    list-style: none outside none;
+}
+/*基本布局全部以1000px作参考*/
+.w {
+    clear: both;
+    margin: 0 auto;
+    width: 980px;
+}
+.blank6 {
+    clear: both;
+    display: block;
+    font-size: 1px;
+    height: 6px;
+    overflow: hidden;
+}
+.hide {
+    display: none;
+}
+/*一个总的样式结束*/
+
+.tagsMod {
+    position: relative;
+    /* width: 786px;*/
+    z-index: 98;
+}
+.tags {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-top: 16px solid #FFFFFF;
+    clear: both;
+    font-family: "微软雅黑","MicrosoftYahei","宋体","Arial Narrow",sans-serif;
+    height: 46px;
+    position: relative;
+    z-index: 97;
+}
+
+#wrapCon {
+    overflow: hidden;
+    position: relative;
+    min-height: 400px;
+}
+.tags .at {
+    background-position: 0 0;
+    color: #FFFFFF;
+    text-shadow: 1px -1px 1px #134D92;
+}
+
+.tags div {
+    background: url("tag_bg.png") no-repeat scroll -133px 0 transparent;
+    cursor: pointer;
+    float: left;
+    font-size: 16px;
+    height: 33px;
+    line-height: 20px;
+    margin-right: 1px;
+    padding-top: 10px;
+    text-align: center;
+    width: 132px;
+}
+.tagsMod em {
+    font-style: normal;
+    padding: 0 6px;
+}
+.tags .end {
+    margin: 0;
+    width: 120px;
+}
+.cons {
+    position: absolute;
+}
+.con {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #458FCE #D6DBE1 #D6DBE1;
+    border-image: none;
+    border-right: 1px solid #D6DBE1;
+    border-style: solid;
+    border-width: 2px 1px 1px;
+    margin-bottom: 12px;
+}
+.con .hd {
+    background: none repeat scroll 0 0 #FCFCFC;
+    border-bottom: 1px solid #FFFFFF;
+    height: 39px;
+    width: 978px;
+}
+.con:hover .bd {
+    background: none repeat scroll 0 0 #F5F8FA;
+}
+.con .bd {
+    border-top: 1px solid #D6DBE1;
+    overflow: hidden;
+    width: 978px;
+    padding: 10px 0;
+}
+.con .hd h1 {
+    background: url("contit_bg.png") no-repeat scroll right center transparent;
+    font-family: "微软雅黑","MicrosoftYahei","宋体","Arial Narrow",sans-serif;
+    font-size: 16px;
+    height: 39px;
+    line-height: 39px;
+    text-align: center;
+    width: 122px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+.con .bd dl {
+    overflow: hidden;
+    padding: 0 0 10px 10px;
+}
+.con .bd dt {
+    color: #B87500;
+    font-weight: bold;
+    line-height: 28px;
+    padding-left: 7px;
+}
+
+.con .bd dd {
+    float: left;
+    overflow: hidden;
+}
+.con .line, .con .line ul {
+    background: url("../images/homepage/line_bg.png") no-repeat scroll right 8px transparent;
+}
+.con .line, .con .line ul {
+    background: url("../images/homepage/line_bg.png") no-repeat scroll right 8px transparent;
+}
+.con .bd ul {
+    margin-right: 0;
+    overflow: hidden;
+    padding-right: 0;
+}
+.con .bd li {
+    float: left;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 5px;
+}
+.con .bd strong {
+    color: #3B639F;
+}
+strong {
+    font-weight: bold;
+}
+.con .bd strong a {
+    color: #3B639F;
+}
+.con a {
+    padding: 1px 2px 2px;
+    white-space: nowrap;
+    color: #666;
+}
+.con span a{
+    color: #B87500;
+}
+.con a:hover{
+    color: #FF6600;
+    text-decoration: underline;
+}
+a {
+    text-decoration: none;
+}
+</style>
+
+
+
+
+
+
+
+<script language="javascript" src="../jquery.js"></script>
+<style type="text/css">
+    .titleList {
+        padding-left: 1px
+    }
+</style>
+
+  <div class="w">
+  <div class="tagsMod">
+  <div id="tags" class="tags">
+      <div class="at">网络<em>·</em>物资</div>
+      <div>营销<em>·</em>物资</div>
+      <div>定制<em>·</em>终端</div>
+      <div>有价<em>·</em>卡 </div>
+      <div>SIM<em>·</em>卡 </div>
+  </div>
+  <div id="wrapCon">
+  <div class="cons">
+
+
+  
+  <div id="0" class="con">
+  <div class="hd">
+      <h1>网络物资</h1>
+  </div>
+      <div class="bd">
+
+
+          
+          <dl>
+          <dt>[<span><a data-pid='1' data-id='6000' href='#'>移动通信设备</a></span><span><a data-pid='1' data-id='7000' href='#'>基站及附属设备</a></span>]</dt>
+          <dd><ul><li><strong>GSM网主设备</strong></li></ul><ul><li><strong>GPRS网设备</strong></li></ul><ul><li><strong>TD-SCDMA网主设备</strong></li></ul><ul><li><strong>CM-IMS网络接入设备</strong></li><li><a data-pid='1' data-id='6000' href='#'>汇接局设备（TMSC)</a></li><li><a data-pid='1' data-id='6000' href='#'>信令转接点（STP）</a></li><li><a data-pid='1' data-id='6000' href='#'>本地关口交换机(GMSC)</a></li><li><a data-pid='1' data-id='6000' href='#'>话路网操作维护中心(OMC-S)</a></li><li><a data-pid='1' data-id='6000' href='#'>GPRS分组控制单元(SGSN)</a></li><li><a data-pid='1' data-id='6000' href='#'>GPRS业务支持节点(GGSN)</a></li><li><a data-pid='1' data-id='6000' href='#'>计费网管(CG)</a></li><li><a data-pid='1' data-id='6000' href='#'>GPRS操作维护中心(OMC-G)</a></li><li><a data-pid='1' data-id='6000' href='#'>短信中心</a></li><li><a data-pid='1' data-id='6000' href='#'>短信网关</a></li><li><a data-pid='1' data-id='6000' href='#'>彩信中心</a></li><li><a data-pid='1' data-id='6000' href='#'>WAP网关</a></li><li><a data-pid='1' data-id='6000' href='#'>智能网设备</a></li><li><a data-pid='1' data-id='6000' href='#'>彩信网关</a></li><li><a data-pid='1' data-id='6000' href='#'>集团客户行业应用网关</a></li><li><a data-pid='1' data-id='6000' href='#'>MAS服务器2.0产品</a></li><li><a data-pid='1' data-id='6000' href='#'>企业邮件推送代理服务器</a></li><li><a data-pid='1' data-id='6000' href='#'>视讯设备</a></li><li><a data-pid='1' data-id='6000' href='#'>彩铃系统</a></li><li><a data-pid='1' data-id='6000' href='#'>无线网络控制器(RNC)</a></li><li><a data-pid='1' data-id='6000' href='#'>无线网操作维护中心(OMC-R)</a></li><li><a data-pid='1' data-id='6000' href='#'>BBU</a></li><li><a data-pid='1' data-id='6000' href='#'>RRU</a></li><li><a data-pid='1' data-id='6000' href='#'>归属位置寄存嚣(HLR)</a></li><li><a data-pid='1' data-id='6000' href='#'>移动交换机(MSC)</a></li><li><a data-pid='1' data-id='6000' href='#'>无线网操作维护中心(OMC-R)</a></li><li><a data-pid='1' data-id='6000' href='#'>编译码器(TC或XCDR)</a></li><li><a data-pid='1' data-id='6000' href='#'>基站控制器(BSC)</a></li><li><a data-pid='1' data-id='6000' href='#'>GPRS分组控制单元（PCU）</a></li></ul><ul><li><strong>GSM数字光纤直放站</strong></li></ul><ul><li><strong>基站离子接地</strong></li></ul><ul><li><strong>馈线窗</strong></li></ul><ul><li><strong>铁塔航标灯</strong></li></ul><ul><li><strong>接头盒</strong></li></ul><ul><li><strong>数字飞地覆盖系统</strong></li></ul><ul><li><strong>美化天线</strong></li></ul><ul><li><strong>220V交流型基站节能型智能通风系统</strong></li></ul><ul><li><strong>机房消防</strong></li></ul><ul><li><strong>地线排</strong></li></ul><ul><li><strong>地线排(接地铜排）</strong></li></ul><ul><li><strong>BTS无线基站</strong></li></ul><ul><li><strong>GSM直放站</strong></li></ul><ul><li><strong>载波池</strong></li></ul><ul><li><strong>GSM分布系统设备</strong></li></ul><ul><li><strong>远端微功率分布系统</strong></li></ul><ul><li><strong>基站放大器</strong></li></ul><ul><li><strong>塔顶放大器</strong></li></ul><ul><li><strong>馈线</strong></li></ul><ul><li><strong>馈线辅件</strong></li></ul><ul><li><strong>漏泄电缆</strong></li></ul><ul><li><strong>GSM基站用天线</strong></li></ul><ul><li><strong>TD-SCDMA基站设备</strong></li></ul><ul><li><strong>TD-SCDMA基站天线</strong></li></ul><ul><li><strong>TD-SCDMA分布系统设备</strong></li></ul><ul><li><strong>TD-SCDMA直放站</strong></li></ul><ul><li><strong>基站活动房</strong></li></ul><ul><li><strong>基站馈线窗</strong></li></ul><ul><li><strong>基站安装材料</strong></li></ul><ul><li><strong>应急通信车</strong></li></ul><ul><li><strong>通信铁塔</strong></li></ul><ul><li><strong>飞地覆盖系统</strong></li></ul><ul><li><strong>基站防盗设备</strong></li></ul><ul><li><strong>基站滤波器</strong></li></ul><ul><li><strong>天馈附属材料</strong></li></ul><ul><li><strong>基站空调节电器</strong></li></ul><ul><li><strong>基站室外标准化机柜</strong></li><li><a data-pid='1' data-id='7000' href='#'>接头保护盒</a></li><li><a data-pid='1' data-id='7000' href='#'>天线美化外罩</a></li><li><a data-pid='1' data-id='7000' href='#'>GSM数字光纤直放站</a></li><li><a data-pid='1' data-id='7000' href='#'>GSM数字移频直放站</a></li><li><a data-pid='1' data-id='7000' href='#'>无线选频直放站</a></li><li><a data-pid='1' data-id='7000' href='#'>GSM无线直放站</a></li><li><a data-pid='1' data-id='7000' href='#'>GSM光纤直放站</a></li><li><a data-pid='1' data-id='7000' href='#'>GSM移频直放站</a></li><li><a data-pid='1' data-id='7000' href='#'>GSM干线放大器</a></li><li><a data-pid='1' data-id='7000' href='#'>耦合器</a></li><li><a data-pid='1' data-id='7000' href='#'>功分器</a></li><li><a data-pid='1' data-id='7000' href='#'>3dB电桥</a></li><li><a data-pid='1' data-id='7000' href='#'>合路器</a></li><li><a data-pid='1' data-id='7000' href='#'>衰减器</a></li><li><a data-pid='1' data-id='7000' href='#'>负载</a></li><li><a data-pid='1' data-id='7000' href='#'>分布系统天线</a></li><li><a data-pid='1' data-id='7000' href='#'>单载频放大基站放大器</a></li><li><a data-pid='1' data-id='7000' href='#'>多载频放大基站放大器</a></li><li><a data-pid='1' data-id='7000' href='#'>单向塔顶放大器</a></li><li><a data-pid='1' data-id='7000' href='#'>双向塔顶放大器</a></li><li><a data-pid='1' data-id='7000' href='#'>1/2类馈线</a></li><li><a data-pid='1' data-id='7000' href='#'>7/8类馈线</a></li><li><a data-pid='1' data-id='7000' href='#'>5/4系列馈线</a></li><li><a data-pid='1' data-id='7000' href='#'>15/8系列馈线</a></li><li><a data-pid='1' data-id='7000' href='#'>馈线卡</a></li><li><a data-pid='1' data-id='7000' href='#'>馈线连接器</a></li><li><a data-pid='1' data-id='7000' href='#'>馈线跳线</a></li><li><a data-pid='1' data-id='7000' href='#'>馈线避雷器</a></li><li><a data-pid='1' data-id='7000' href='#'>辐射型漏泄电缆</a></li><li><a data-pid='1' data-id='7000' href='#'>偶合型漏泄电缆</a></li><li><a data-pid='1' data-id='7000' href='#'>特型天线</a></li><li><a data-pid='1' data-id='7000' href='#'>电调天线简易控制器</a></li><li><a data-pid='1' data-id='7000' href='#'>全向天线</a></li><li><a data-pid='1' data-id='7000' href='#'>定向单极化天线</a></li><li><a data-pid='1' data-id='7000' href='#'>定向双极化天线</a></li><li><a data-pid='1' data-id='7000' href='#'>电调天线</a></li><li><a data-pid='1' data-id='7000' href='#'>定向单极化天线（8PATH）</a></li><li><a data-pid='1' data-id='7000' href='#'>TD定向双极化智能天线</a></li><li><a data-pid='1' data-id='7000' href='#'>包络检波干线放大器</a></li><li><a data-pid='1' data-id='7000' href='#'>基带解码干线放大器</a></li><li><a data-pid='1' data-id='7000' href='#'>GPS干线放大器</a></li><li><a data-pid='1' data-id='7000' href='#'>TD-SCDMA无线直放站</a></li><li><a data-pid='1' data-id='7000' href='#'>TD-SCDMA光纤直放站</a></li><li><a data-pid='1' data-id='7000' href='#'>基站活动房</a></li><li><a data-pid='1' data-id='7000' href='#'>单管塔A(法兰连接)</a></li><li><a data-pid='1' data-id='7000' href='#'>单管塔B(插接连接)</a></li><li><a data-pid='1' data-id='7000' href='#'>角钢铁塔</a></li><li><a data-pid='1' data-id='7000' href='#'>三管铁塔</a></li><li><a data-pid='1' data-id='7000' href='#'>独管铁塔</a></li><li><a data-pid='1' data-id='7000' href='#'>接头保护盒</a></li><li><a data-pid='1' data-id='7000' href='#'>天线接头保护盒</a></li><li><a data-pid='1' data-id='7000' href='#'>馈线接头保护盒</a></li><li><a data-pid='1' data-id='7000' href='#'>馈线避雷器900M</a></li><li><a data-pid='1' data-id='7000' href='#'>馈线避雷器1800M</a></li><li><a data-pid='1' data-id='7000' href='#'>定向双极化天线900M</a></li><li><a data-pid='1' data-id='7000' href='#'>定向双极化天线900M</a></li><li><a data-pid='1' data-id='7000' href='#'>定向双极化天线1800M</a></li><li><a data-pid='1' data-id='7000' href='#'>定向双极化天线900M/1800M</a></li><li><a data-pid='1' data-id='7000' href='#'>电调天线900M</a></li><li><a data-pid='1' data-id='7000' href='#'>电调天线1800M</a></li><li><a data-pid='1' data-id='7000' href='#'>电调天线900M/1800M</a></li><li><a data-pid='1' data-id='7000' href='#'>广东通宇</a></li><li><a data-pid='1' data-id='7000' href='#'>京信通信</a></li><li><a data-pid='1' data-id='7000' href='#'>张家港国信</a></li><li><a data-pid='1' data-id='7000' href='#'>基站活动房</a></li><li><a data-pid='1' data-id='7000' href='#'>mini机房</a></li><li><a data-pid='1' data-id='7000' href='#'>集装箱</a></li><li><a data-pid='1' data-id='7000' href='#'>接头保护盒</a></li><li><a data-pid='1' data-id='7000' href='#'>基站活动房</a></li></ul><ul><li><strong>华为</strong></li></ul><ul><li><strong>诺基亚</strong></li></ul><ul><li><strong>摩托罗拉</strong></li></ul>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='1' data-id='100' href='#'>成套无线基站</a></span><span><a data-pid='1' data-id='8000' href='#'>传输设备</a></span>]</dt>
+          <dd><ul><li><strong>通信电缆</strong></li></ul><ul><li><strong>PTN散件</strong></li></ul><ul><li><strong>SDH散件</strong></li></ul><ul><li><strong>SDH设备</strong></li></ul><ul><li><strong>PTN设备</strong></li></ul><ul><li><strong>OTN设备</strong></li></ul><ul><li><strong>DWDM设备</strong></li></ul><ul><li><strong>服务费</strong></li></ul><ul><li><strong>SDH</strong></li></ul><ul><li><strong>WDM</strong></li></ul><ul><li><strong>配线架</strong></li></ul><ul><li><strong>PON</strong></li></ul><ul><li><strong>跳纤</strong></li></ul><ul><li><strong>2M射频同轴电缆</strong></li></ul><ul><li><strong>3M射频同轴电缆</strong></li></ul><ul><li><strong>4M射频同轴电缆</strong></li></ul><ul><li><strong>PDH</strong></li></ul><ul><li><strong>无线接入设备</strong></li></ul><ul><li><strong>OTN散件</strong></li><li><a data-pid='1' data-id='8000' href='#'>15G微波</a></li><li><a data-pid='1' data-id='8000' href='#'>18G微波</a></li><li><a data-pid='1' data-id='8000' href='#'>LMDS本地多点分配系统</a></li><li><a data-pid='1' data-id='8000' href='#'>SYV 75-2-2</a></li><li><a data-pid='1' data-id='8000' href='#'>SYV 75-2-1</a></li><li><a data-pid='1' data-id='8000' href='#'>SYV-1.5C-2V</a></li><li><a data-pid='1' data-id='8000' href='#'>SYV 75-1-1</a></li><li><a data-pid='1' data-id='8000' href='#'>PTN 3900</a></li><li><a data-pid='1' data-id='8000' href='#'>光模块</a></li><li><a data-pid='1' data-id='8000' href='#'>PTN散件</a></li><li><a data-pid='1' data-id='8000' href='#'>Metro 1000</a></li><li><a data-pid='1' data-id='8000' href='#'>OSN2500/1500</a></li><li><a data-pid='1' data-id='8000' href='#'>OSN7500/3500/2500/1500</a></li><li><a data-pid='1' data-id='8000' href='#'>OSN7500/3500</a></li><li><a data-pid='1' data-id='8000' href='#'>OSN 9500</a></li><li><a data-pid='1' data-id='8000' href='#'>SDH散件</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容SDH STM10接口</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容SDH GE和FE接口</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容SDH FE接口</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容SDH 622M接口</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容SDH 2M接口</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容SDH 2.5G接口</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容SDH 155M接口</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容SDH 155M和2M接口</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容SDH 10GE接口</a></li><li><a data-pid='1' data-id='8000' href='#'>PTN 910</a></li><li><a data-pid='1' data-id='8000' href='#'>PTN 950</a></li><li><a data-pid='1' data-id='8000' href='#'>PTN设备</a></li><li><a data-pid='1' data-id='8000' href='#'>PTN  10GE</a></li><li><a data-pid='1' data-id='8000' href='#'>PTN  GE</a></li><li><a data-pid='1' data-id='8000' href='#'>OTN设备</a></li><li><a data-pid='1' data-id='8000' href='#'>OSN 8800</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容OTN STM-16接口盘</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容OTN GE接口盘</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容OTN 2.5G接口盘</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容OTN 10G接口盘</a></li><li><a data-pid='1' data-id='8000' href='#'>OTN散件</a></li><li><a data-pid='1' data-id='8000' href='#'>BWS 1600G</a></li><li><a data-pid='1' data-id='8000' href='#'>10G</a></li><li><a data-pid='1' data-id='8000' href='#'>2.5G</a></li><li><a data-pid='1' data-id='8000' href='#'>622M</a></li><li><a data-pid='1' data-id='8000' href='#'>155M</a></li><li><a data-pid='1' data-id='8000' href='#'>10G</a></li><li><a data-pid='1' data-id='8000' href='#'>2.5G</a></li><li><a data-pid='1' data-id='8000' href='#'>光纤分配架</a></li><li><a data-pid='1' data-id='8000' href='#'>综合柜</a></li><li><a data-pid='1' data-id='8000' href='#'>数字配线架 (西门子制式)</a></li><li><a data-pid='1' data-id='8000' href='#'>光缆交接箱</a></li><li><a data-pid='1' data-id='8000' href='#'>光纤配线架（ODF）</a></li><li><a data-pid='1' data-id='8000' href='#'>数字配线架（DDF）</a></li><li><a data-pid='1' data-id='8000' href='#'>基站用配套设备集装架</a></li><li><a data-pid='1' data-id='8000' href='#'>OLT设备</a></li><li><a data-pid='1' data-id='8000' href='#'>GPON尾纤</a></li><li><a data-pid='1' data-id='8000' href='#'>GPON散件</a></li><li><a data-pid='1' data-id='8000' href='#'>OLT散件</a></li><li><a data-pid='1' data-id='8000' href='#'>GPON</a></li><li><a data-pid='1' data-id='8000' href='#'>EPON</a></li><li><a data-pid='1' data-id='8000' href='#'>单芯软跳纤</a></li><li><a data-pid='1' data-id='8000' href='#'>铠装跳纤</a></li><li><a data-pid='1' data-id='8000' href='#'>SYV 75-2-2</a></li><li><a data-pid='1' data-id='8000' href='#'>SYV-1.5C-2V</a></li><li><a data-pid='1' data-id='8000' href='#'>SYV 75-1-1</a></li><li><a data-pid='1' data-id='8000' href='#'>SYV 75-2-1</a></li><li><a data-pid='1' data-id='8000' href='#'>SYV 75-2-2</a></li><li><a data-pid='1' data-id='8000' href='#'>2M对称电缆</a></li><li><a data-pid='1' data-id='8000' href='#'>3.5G微波</a></li><li><a data-pid='1' data-id='8000' href='#'>5.8G微波</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容10GE光接口</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容155M光接口</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容2M接口</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容FE光接口</a></li><li><a data-pid='1' data-id='8000' href='#'>扩容GE光接口</a></li><li><a data-pid='1' data-id='8000' href='#'>大容量10GE设备</a></li><li><a data-pid='1' data-id='8000' href='#'>中容量10GE设备</a></li><li><a data-pid='1' data-id='8000' href='#'>大容量GE设备</a></li><li><a data-pid='1' data-id='8000' href='#'>紧凑型GE设备</a></li><li><a data-pid='1' data-id='8000' href='#'>小容量GE设备</a></li><li><a data-pid='1' data-id='8000' href='#'>线路侧</a></li><li><a data-pid='1' data-id='8000' href='#'>设备侧</a></li><li><a data-pid='1' data-id='8000' href='#'>75欧姆</a></li><li><a data-pid='1' data-id='8000' href='#'>120欧姆</a></li><li><a data-pid='1' data-id='8000' href='#'>5683T</a></li><li><a data-pid='1' data-id='8000' href='#'>5680T</a></li><li><a data-pid='1' data-id='8000' href='#'>OSN 6800</a></li></ul><ul><li><strong>多电脑切换器（KVM设备）</strong></li></ul><ul><li><strong>UNIX小型机</strong></li></ul><ul><li><strong>磁盘阵列</strong></li></ul><ul><li><strong>光纤交换机</strong></li></ul><ul><li><strong>磁带库</strong></li></ul><ul><li><strong>虚拟带库</strong></li></ul><ul><li><strong>其他专用计算机设备</strong></li></ul><ul><li><strong>PC服务器</strong></li></ul><ul><li><strong>计算机外部设备</strong></li></ul><ul><li><strong>瘦客户机</strong></li><li><a data-pid='1' data-id='9000' href='#'>中高端</a></li><li><a data-pid='1' data-id='9000' href='#'>DELL服务器</a></li><li><a data-pid='1' data-id='9000' href='#'>浪潮服务器</a></li><li><a data-pid='1' data-id='9000' href='#'>低端</a></li><li><a data-pid='1' data-id='9000' href='#'>中低端</a></li><li><a data-pid='1' data-id='9000' href='#'>中端</a></li><li><a data-pid='1' data-id='9000' href='#'>华为PC服务器</a></li><li><a data-pid='1' data-id='9000' href='#'>中高端</a></li><li><a data-pid='1' data-id='9000' href='#'>曙光PC服务器</a></li><li><a data-pid='1' data-id='9000' href='#'>高端</a></li><li><a data-pid='1' data-id='9000' href='#'>低端</a></li><li><a data-pid='1' data-id='9000' href='#'>中低端</a></li><li><a data-pid='1' data-id='9000' href='#'>IBM PC服务器</a></li><li><a data-pid='1' data-id='9000' href='#'>中端</a></li><li><a data-pid='1' data-id='9000' href='#'>中高端</a></li><li><a data-pid='1' data-id='9000' href='#'>高端</a></li><li><a data-pid='1' data-id='9000' href='#'>计算机外接摄像头</a></li><li><a data-pid='1' data-id='9000' href='#'>HP服务器</a></li><li><a data-pid='1' data-id='9000' href='#'>模拟KVM</a></li><li><a data-pid='1' data-id='9000' href='#'>数字KVM</a></li><li><a data-pid='1' data-id='9000' href='#'>串口管理器</a></li><li><a data-pid='1' data-id='9000' href='#'>中端</a></li><li><a data-pid='1' data-id='9000' href='#'>中低端</a></li><li><a data-pid='1' data-id='9000' href='#'>低端</a></li><li><a data-pid='1' data-id='9000' href='#'>高端</a></li><li><a data-pid='1' data-id='9000' href='#'>中高端</a></li><li><a data-pid='1' data-id='9000' href='#'>中端</a></li><li><a data-pid='1' data-id='9000' href='#'>中低端</a></li><li><a data-pid='1' data-id='9000' href='#'>低端</a></li><li><a data-pid='1' data-id='9000' href='#'>高端</a></li><li><a data-pid='1' data-id='9000' href='#'>中高端</a></li><li><a data-pid='1' data-id='9000' href='#'>中端</a></li><li><a data-pid='1' data-id='9000' href='#'>中低端</a></li><li><a data-pid='1' data-id='9000' href='#'>低端</a></li><li><a data-pid='1' data-id='9000' href='#'>NCR设备</a></li><li><a data-pid='1' data-id='9000' href='#'>高端</a></li><li><a data-pid='1' data-id='9000' href='#'>浪潮服务器典配8</a></li><li><a data-pid='1' data-id='9000' href='#'>浪潮服务器典配2</a></li><li><a data-pid='1' data-id='9000' href='#'>华为PC服务器典配8</a></li><li><a data-pid='1' data-id='9000' href='#'>华为PC服务器典配5</a></li><li><a data-pid='1' data-id='9000' href='#'>华为PC服务器典配2</a></li><li><a data-pid='1' data-id='9000' href='#'>曙光PC服务器典配2</a></li><li><a data-pid='1' data-id='9000' href='#'>IBM PC服务器典配5</a></li><li><a data-pid='1' data-id='9000' href='#'>IBM PC服务器典配6</a></li><li><a data-pid='1' data-id='9000' href='#'>IBM PC服务器典配3</a></li><li><a data-pid='1' data-id='9000' href='#'>HP服务器典配6</a></li><li><a data-pid='1' data-id='9000' href='#'>HP服务器典配5</a></li><li><a data-pid='1' data-id='9000' href='#'>HP服务器典配3</a></li><li><a data-pid='1' data-id='9000' href='#'>HP服务器典配2</a></li><li><a data-pid='1' data-id='9000' href='#'>DELL服务器典配3</a></li><li><a data-pid='1' data-id='9000' href='#'>服务器机箱</a></li><li><a data-pid='1' data-id='9000' href='#'>刀片服务器</a></li><li><a data-pid='1' data-id='9000' href='#'>数字KVM 典配4</a></li><li><a data-pid='1' data-id='9000' href='#'>数字KVM 典配6</a></li><li><a data-pid='1' data-id='9000' href='#'>模拟KVM 典配4</a></li><li><a data-pid='1' data-id='9000' href='#'>模拟KVM 典配6</a></li><li><a data-pid='1' data-id='9000' href='#'>串口管理器 典配4</a></li><li><a data-pid='1' data-id='9000' href='#'>串口管理器 典配2</a></li></ul>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='1' data-id='9000' href='#'>计算机产品</a></span><span><a data-pid='1' data-id='10000' href='#'>传输线路材料</a></span>]</dt>
+          <dd><ul><li><strong>传输线路用纺织子管</strong></li></ul><ul><li><strong>驻地网线路材料</strong></li></ul><ul><li><strong>光缆</strong></li></ul><ul><li><strong>光纤</strong></li></ul><ul><li><strong>接头盒</strong></li></ul><ul><li><strong>光缆交接箱</strong></li></ul><ul><li><strong>传输线路用塑料管材</strong></li></ul><ul><li><strong>传输线路用铁件(钢铰线/接线/镀锌钢管/吊线等)</strong></li><li><a data-pid='1' data-id='10000' href='#'>分光器</a></li><li><a data-pid='1' data-id='10000' href='#'>光纤分配箱</a></li><li><a data-pid='1' data-id='10000' href='#'>多媒体箱</a></li><li><a data-pid='1' data-id='10000' href='#'>配线箱</a></li><li><a data-pid='1' data-id='10000' href='#'>信息面板</a></li><li><a data-pid='1' data-id='10000' href='#'>五类线</a></li><li><a data-pid='1' data-id='10000' href='#'>皮线光缆</a></li><li><a data-pid='1' data-id='10000' href='#'>光分器</a></li><li><a data-pid='1' data-id='10000' href='#'>六类线</a></li><li><a data-pid='1' data-id='10000' href='#'>存纤盒</a></li><li><a data-pid='1' data-id='10000' href='#'>光缆直熔盒</a></li><li><a data-pid='1' data-id='10000' href='#'>家庭信息箱</a></li><li><a data-pid='1' data-id='10000' href='#'>楼、街道光纤分配箱</a></li><li><a data-pid='1' data-id='10000' href='#'>中心束管</a></li><li><a data-pid='1' data-id='10000' href='#'>水底光缆</a></li><li><a data-pid='1' data-id='10000' href='#'>铠装光缆</a></li><li><a data-pid='1' data-id='10000' href='#'>阻燃光缆</a></li><li><a data-pid='1' data-id='10000' href='#'>自承光缆</a></li><li><a data-pid='1' data-id='10000' href='#'>G.652D</a></li><li><a data-pid='1' data-id='10000' href='#'>G.655</a></li><li><a data-pid='1' data-id='10000' href='#'>带状光缆</a></li><li><a data-pid='1' data-id='10000' href='#'>管道光缆（GYTA)</a></li><li><a data-pid='1' data-id='10000' href='#'>架空光缆（GYTS)</a></li><li><a data-pid='1' data-id='10000' href='#'>直埋光缆(GYTA53)</a></li><li><a data-pid='1' data-id='10000' href='#'>G.652B光纤</a></li><li><a data-pid='1' data-id='10000' href='#'>G.652D光纤</a></li><li><a data-pid='1' data-id='10000' href='#'>G.655光纤</a></li><li><a data-pid='1' data-id='10000' href='#'>终端盒</a></li><li><a data-pid='1' data-id='10000' href='#'>接头保护盒</a></li><li><a data-pid='1' data-id='10000' href='#'>双端进线方式普通光缆接头盒</a></li><li><a data-pid='1' data-id='10000' href='#'>单端进线方式普通光缆接头盒</a></li><li><a data-pid='1' data-id='10000' href='#'>单端进线方式</a></li><li><a data-pid='1' data-id='10000' href='#'>双端进线方式</a></li><li><a data-pid='1' data-id='10000' href='#'>G.652D</a></li><li><a data-pid='1' data-id='10000' href='#'>G.655</a></li><li><a data-pid='1' data-id='10000' href='#'>G.652D</a></li><li><a data-pid='1' data-id='10000' href='#'>G.652D</a></li><li><a data-pid='1' data-id='10000' href='#'>G.655</a></li><li><a data-pid='1' data-id='10000' href='#'>G.652D</a></li><li><a data-pid='1' data-id='10000' href='#'>G.655</a></li><li><a data-pid='1' data-id='10000' href='#'>G.652D</a></li><li><a data-pid='1' data-id='10000' href='#'>管道光缆（GYTA)</a></li><li><a data-pid='1' data-id='10000' href='#'>架空光缆（GYTS)</a></li><li><a data-pid='1' data-id='10000' href='#'>直埋光缆(GYTA53)</a></li><li><a data-pid='1' data-id='10000' href='#'>管道光缆（GYTA)</a></li><li><a data-pid='1' data-id='10000' href='#'>架空光缆（GYTS)</a></li><li><a data-pid='1' data-id='10000' href='#'>直埋光缆(GYTA53)</a></li><li><a data-pid='1' data-id='10000' href='#'>G.652D</a></li><li><a data-pid='1' data-id='10000' href='#'>G.655</a></li><li><a data-pid='1' data-id='10000' href='#'>G.652D</a></li><li><a data-pid='1' data-id='10000' href='#'>G.655</a></li><li><a data-pid='1' data-id='10000' href='#'>G.652D</a></li><li><a data-pid='1' data-id='10000' href='#'>G.655</a></li><li><a data-pid='1' data-id='10000' href='#'>单端A类接头盒</a></li><li><a data-pid='1' data-id='10000' href='#'>单端B类接头盒</a></li><li><a data-pid='1' data-id='10000' href='#'>单端48芯以上</a></li><li><a data-pid='1' data-id='10000' href='#'>单端48芯以下</a></li><li><a data-pid='1' data-id='10000' href='#'>单端48芯以上</a></li><li><a data-pid='1' data-id='10000' href='#'>双端A类接头盒</a></li><li><a data-pid='1' data-id='10000' href='#'>双端B类接头盒</a></li><li><a data-pid='1' data-id='10000' href='#'>双端48芯以下</a></li><li><a data-pid='1' data-id='10000' href='#'>双端48芯以上</a></li><li><a data-pid='1' data-id='10000' href='#'>单端48芯以下</a></li><li><a data-pid='1' data-id='10000' href='#'>单端48芯以下</a></li><li><a data-pid='1' data-id='10000' href='#'>单端48芯以下</a></li><li><a data-pid='1' data-id='10000' href='#'>单端A类接头盒</a></li><li><a data-pid='1' data-id='10000' href='#'>单端A类接头盒</a></li><li><a data-pid='1' data-id='10000' href='#'>单端B类接头盒</a></li><li><a data-pid='1' data-id='10000' href='#'>单端A类接头盒</a></li><li><a data-pid='1' data-id='10000' href='#'>双端48芯以下</a></li><li><a data-pid='1' data-id='10000' href='#'>双端48芯以上</a></li><li><a data-pid='1' data-id='10000' href='#'>双端48芯以上</a></li><li><a data-pid='1' data-id='10000' href='#'>双端48芯以下</a></li><li><a data-pid='1' data-id='10000' href='#'>双端A类接头盒</a></li><li><a data-pid='1' data-id='10000' href='#'>双端B类接头盒</a></li><li><a data-pid='1' data-id='10000' href='#'>双端A类接头盒</a></li><li><a data-pid='1' data-id='10000' href='#'>双端B类接头盒</a></li></ul><ul><li><strong>一体化开关电源</strong></li></ul><ul><li><strong>一体化开关电源配套蓄电池</strong></li></ul><ul><li><strong>壁挂式开关电源</strong></li></ul><ul><li><strong>壁挂式开关电源配套电池</strong></li></ul><ul><li><strong>磷酸铁锂电池</strong></li></ul><ul><li><strong>空调设备</strong></li></ul><ul><li><strong>电源附属材料</strong></li></ul><ul><li><strong>铁塔安全监控设备</strong></li></ul><ul><li><strong>电力电缆（二级集采）</strong></li></ul><ul><li><strong>24V组合式开关电源</strong></li></ul><ul><li><strong>48V组合式开关电源</strong></li></ul><ul><li><strong>48V分立式开关电源</strong></li></ul><ul><li><strong>阀控式铅酸蓄电池</strong></li></ul><ul><li><strong>汽油发电机组</strong></li></ul><ul><li><strong>柴油发电机组</strong></li></ul><ul><li><strong>不间断电源（UPS）</strong></li></ul><ul><li><strong>电力电缆</strong></li></ul><ul><li><strong>太阳能发电系统</strong></li></ul><ul><li><strong>空调</strong></li></ul><ul><li><strong>风光互补发电系统风力发电机部分</strong></li></ul><ul><li><strong>谐波治理电能优化节电装置</strong></li></ul><ul><li><strong>基站用交流配电设备</strong></li></ul><ul><li><strong>应急发电车</strong></li></ul><ul><li><strong>蓄电池活化</strong></li></ul><ul><li><strong>非标配电柜</strong></li></ul><ul><li><strong>动力环境监控设备</strong></li></ul><ul><li><strong>列头柜</strong></li></ul><ul><li><strong>UPS电池</strong></li></ul><ul><li><strong>远端供电系统</strong></li></ul><ul><li><strong>配电箱</strong></li><li><a data-pid='1' data-id='11000' href='#'>交流配电箱</a></li><li><a data-pid='1' data-id='11000' href='#'>12V/100Ah</a></li><li><a data-pid='1' data-id='11000' href='#'>48V/90A</a></li><li><a data-pid='1' data-id='11000' href='#'>壁挂式开关电源整流模块</a></li><li><a data-pid='1' data-id='11000' href='#'>壁挂式开关电源监控模块</a></li><li><a data-pid='1' data-id='11000' href='#'>壁挂式开关电源机柜</a></li><li><a data-pid='1' data-id='11000' href='#'>12V/100Ah</a></li><li><a data-pid='1' data-id='11000' href='#'>磷酸铁锂电池（200A）</a></li><li><a data-pid='1' data-id='11000' href='#'>磷酸铁锂电池（300A）</a></li><li><a data-pid='1' data-id='11000' href='#'>通风节能设备</a></li><li><a data-pid='1' data-id='11000' href='#'>机柜</a></li><li><a data-pid='1' data-id='11000' href='#'>48V组合式监控模块</a></li><li><a data-pid='1' data-id='11000' href='#'>48V组合式机柜</a></li><li><a data-pid='1' data-id='11000' href='#'>48V组合式整流模块</a></li><li><a data-pid='1' data-id='11000' href='#'>48V分立式监控模块</a></li><li><a data-pid='1' data-id='11000' href='#'>48V分立式机柜</a></li><li><a data-pid='1' data-id='11000' href='#'>48V分立式整流模块</a></li><li><a data-pid='1' data-id='11000' href='#'>交流配电屏</a></li><li><a data-pid='1' data-id='11000' href='#'>直流配电屏</a></li><li><a data-pid='1' data-id='11000' href='#'>整流机柜</a></li><li><a data-pid='1' data-id='11000' href='#'>整流模块</a></li><li><a data-pid='1' data-id='11000' href='#'>单体电池2V蓄电池</a></li><li><a data-pid='1' data-id='11000' href='#'>单体电池12V蓄电池（UPS后备电池）</a></li><li><a data-pid='1' data-id='11000' href='#'>单体电池12V蓄电池（前置端子）</a></li><li><a data-pid='1' data-id='11000' href='#'>单相汽油发电机组</a></li><li><a data-pid='1' data-id='11000' href='#'>三相汽油发电机组</a></li><li><a data-pid='1' data-id='11000' href='#'>风冷</a></li><li><a data-pid='1' data-id='11000' href='#'>水冷</a></li><li><a data-pid='1' data-id='11000' href='#'>一体化UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>UPS电池</a></li><li><a data-pid='1' data-id='11000' href='#'>一体化UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>1到3KVA UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>160KVA UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>200到400KVAUPS</a></li><li><a data-pid='1' data-id='11000' href='#'>40到120KVA UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>6到20KVA UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>双变换在线式（室内型）</a></li><li><a data-pid='1' data-id='11000' href='#'>1K UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>2K UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>3K UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>软电缆</a></li><li><a data-pid='1' data-id='11000' href='#'>交联电缆</a></li><li><a data-pid='1' data-id='11000' href='#'>太阳能组件（含电缆汇线盒及其与组件间连接电缆）</a></li><li><a data-pid='1' data-id='11000' href='#'>太阳能控制器（含与汇线盒间连接电缆、系统集成、安装支架）</a></li><li><a data-pid='1' data-id='11000' href='#'>机房空调风帽</a></li><li><a data-pid='1' data-id='11000' href='#'>热管换热机组</a></li><li><a data-pid='1' data-id='11000' href='#'>SDC空调</a></li><li><a data-pid='1' data-id='11000' href='#'>机房专用空调</a></li><li><a data-pid='1' data-id='11000' href='#'>基站舒适型空调</a></li><li><a data-pid='1' data-id='11000' href='#'>基站节能一体化空调</a></li><li><a data-pid='1' data-id='11000' href='#'>基站空调节电器</a></li><li><a data-pid='1' data-id='11000' href='#'>风力发电单元</a></li><li><a data-pid='1' data-id='11000' href='#'>风光互补控制器</a></li><li><a data-pid='1' data-id='11000' href='#'>逆变器</a></li><li><a data-pid='1' data-id='11000' href='#'>有源滤波装置</a></li><li><a data-pid='1' data-id='11000' href='#'>基站用交流配电屏</a></li><li><a data-pid='1' data-id='11000' href='#'>基站用交流配电箱</a></li><li><a data-pid='1' data-id='11000' href='#'>UPS电池</a></li><li><a data-pid='1' data-id='11000' href='#'>基站智能通风节能设备</a></li><li><a data-pid='1' data-id='11000' href='#'>智能换热系统</a></li><li><a data-pid='1' data-id='11000' href='#'>第Ⅱ类蓄电池</a></li><li><a data-pid='1' data-id='11000' href='#'>第Ⅲ类蓄电池</a></li><li><a data-pid='1' data-id='11000' href='#'>5KW单相汽油发电机组</a></li><li><a data-pid='1' data-id='11000' href='#'>5kW三相汽油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>10KW三相汽油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>15kW三相汽油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>10KW风冷柴油发电机组</a></li><li><a data-pid='1' data-id='11000' href='#'>15kW风冷柴油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>30kW风冷柴油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>5KW风冷柴油发电机组</a></li><li><a data-pid='1' data-id='11000' href='#'>30-120KW水冷柴油发电机组</a></li><li><a data-pid='1' data-id='11000' href='#'>300KW</a></li><li><a data-pid='1' data-id='11000' href='#'>800kW水冷柴油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>1100kW水冷柴油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>1300kW水冷柴油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>1600kW水冷柴油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>1760kW水冷柴油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>120kW水冷柴油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>300kW水冷柴油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>30kW水冷柴油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>500kW水冷柴油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>600kW水冷柴油发电机</a></li><li><a data-pid='1' data-id='11000' href='#'>UPS电池（100AH）</a></li><li><a data-pid='1' data-id='11000' href='#'>UPS电池（200AH）</a></li><li><a data-pid='1' data-id='11000' href='#'>UPS电池（65AH）</a></li><li><a data-pid='1' data-id='11000' href='#'>12V第I类UPS蓄电池</a></li><li><a data-pid='1' data-id='11000' href='#'>12V第II类前置端子蓄电池</a></li><li><a data-pid='1' data-id='11000' href='#'>12V第Ⅲ类前置端子蓄电池</a></li><li><a data-pid='1' data-id='11000' href='#'>1KVA UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>2KVA UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>3KVA UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>200KVA UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>400KVA UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>300KVA UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>80K UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>120K UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>40K UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>60K UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>6K UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>10K UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>20K UPS</a></li><li><a data-pid='1' data-id='11000' href='#'>阻燃聚氯乙烯绝缘软电缆（Rvz）</a></li><li><a data-pid='1' data-id='11000' href='#'>阻燃聚氯乙烯绝缘聚氯乙烯护套软电缆（Rvvz）</a></li><li><a data-pid='1' data-id='11000' href='#'>铠装阻燃聚氯乙烯绝缘聚氯乙烯护套软电缆（Rvvz22）</a></li><li><a data-pid='1' data-id='11000' href='#'>耐火无卤低烟聚烯烴绝缘低烟无卤聚烯烴护套软电缆（RYY）</a></li><li><a data-pid='1' data-id='11000' href='#'>铜芯交联聚乙烯绝缘聚氯乙烯护套电力电缆(YJV)</a></li><li><a data-pid='1' data-id='11000' href='#'>铜芯交联聚乙烯绝缘聚氯乙烯护套铠装电力电缆(YJV22)</a></li><li><a data-pid='1' data-id='11000' href='#'>铜芯交联聚乙烯绝缘聚氯乙烯护套阻燃电力电缆(ZR-YJV)</a></li><li><a data-pid='1' data-id='11000' href='#'>铜芯交联聚乙烯绝缘聚氯乙烯护套阻燃铠装电力电缆(ZR-YJV22)</a></li><li><a data-pid='1' data-id='11000' href='#'>显冷量4kW</a></li><li><a data-pid='1' data-id='11000' href='#'>显冷量6kW</a></li><li><a data-pid='1' data-id='11000' href='#'>2.5G机房专用空调</a></li><li><a data-pid='1' data-id='11000' href='#'>3.0G机房专用空调</a></li><li><a data-pid='1' data-id='11000' href='#'>机房专用空调安装费</a></li><li><a data-pid='1' data-id='11000' href='#'>单冷柜式空调</a></li><li><a data-pid='1' data-id='11000' href='#'>第Ⅰ类蓄电池</a></li><li><a data-pid='1' data-id='11000' href='#'>智能通风系统</a></li><li><a data-pid='1' data-id='11000' href='#'>冷暖柜式空调</a></li><li><a data-pid='1' data-id='11000' href='#'>5HP冷暖</a></li><li><a data-pid='1' data-id='11000' href='#'>3HP单冷基站用节能型定制空调</a></li><li><a data-pid='1' data-id='11000' href='#'>3HP单冷</a></li></ul>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='1' data-id='11000' href='#'>电源及动力环境监控设备</a></span><span><a data-pid='1' data-id='12000' href='#'>IT网络设备</a></span>]</dt>
+          <dd><ul><li><strong>IT网络设备扩容</strong></li></ul><ul><li><strong>数据中心交换机</strong></li></ul><ul><li><strong>企业客户接入设备</strong></li></ul><ul><li><strong>路由器</strong></li></ul><ul><li><strong>局域网交换机</strong></li></ul><ul><li><strong>网络安全设备</strong></li></ul><ul><li><strong>负载均衡器</strong></li></ul><ul><li><strong>接头材料</strong></li></ul><ul><li><strong>网络集装架</strong></li></ul><ul><li><strong>数据机柜</strong></li><li><a data-pid='1' data-id='12000' href='#'>网络监控摄像头</a></li><li><a data-pid='1' data-id='12000' href='#'>路由器扩容</a></li><li><a data-pid='1' data-id='12000' href='#'>BRAS扩容</a></li><li><a data-pid='1' data-id='12000' href='#'>高端路由器</a></li><li><a data-pid='1' data-id='12000' href='#'>低端路由器</a></li><li><a data-pid='1' data-id='12000' href='#'>BRAS</a></li><li><a data-pid='1' data-id='12000' href='#'>高端路由器</a></li><li><a data-pid='1' data-id='12000' href='#'>高端交换机</a></li><li><a data-pid='1' data-id='12000' href='#'>高端交换机</a></li><li><a data-pid='1' data-id='12000' href='#'>高端交换机</a></li><li><a data-pid='1' data-id='12000' href='#'>IMS接入设备</a></li><li><a data-pid='1' data-id='12000' href='#'>低端交换机</a></li><li><a data-pid='1' data-id='12000' href='#'>低端交换机</a></li><li><a data-pid='1' data-id='12000' href='#'>微波</a></li><li><a data-pid='1' data-id='12000' href='#'>防火墙</a></li><li><a data-pid='1' data-id='12000' href='#'>局域网交换机扩容</a></li><li><a data-pid='1' data-id='12000' href='#'>三层高端交换机</a></li><li><a data-pid='1' data-id='12000' href='#'>三层低端交换机</a></li><li><a data-pid='1' data-id='12000' href='#'>二层交换机</a></li><li><a data-pid='1' data-id='12000' href='#'>网页防篡改软件</a></li><li><a data-pid='1' data-id='12000' href='#'>WEB漏洞扫描器</a></li><li><a data-pid='1' data-id='12000' href='#'>防病毒网关</a></li><li><a data-pid='1' data-id='12000' href='#'>UTM（统一威胁管理）</a></li><li><a data-pid='1' data-id='12000' href='#'>SSL VPN（安全接入网关）</a></li><li><a data-pid='1' data-id='12000' href='#'>上网行为审计</a></li><li><a data-pid='1' data-id='12000' href='#'>集团信息化防火墙</a></li><li><a data-pid='1' data-id='12000' href='#'>IP Sec VPN</a></li><li><a data-pid='1' data-id='12000' href='#'>IDS（入侵检测）</a></li><li><a data-pid='1' data-id='12000' href='#'>IPS（入侵防御）</a></li><li><a data-pid='1' data-id='12000' href='#'>网闸</a></li><li><a data-pid='1' data-id='12000' href='#'>SSL VPN</a></li><li><a data-pid='1' data-id='12000' href='#'>硬件防火墙</a></li><li><a data-pid='1' data-id='12000' href='#'>入侵检测设备</a></li><li><a data-pid='1' data-id='12000' href='#'>RADWARE负载均衡</a></li><li><a data-pid='1' data-id='12000' href='#'>Array APV6500</a></li><li><a data-pid='1' data-id='12000' href='#'>Array APV6200</a></li><li><a data-pid='1' data-id='12000' href='#'>Array APV3520</a></li><li><a data-pid='1' data-id='12000' href='#'>Radware AppDirector 16016</a></li><li><a data-pid='1' data-id='12000' href='#'>Radware AppDirector 4008</a></li><li><a data-pid='1' data-id='12000' href='#'>Radware AppDirector 12016</a></li><li><a data-pid='1' data-id='12000' href='#'>Radware AppDirector 8016</a></li><li><a data-pid='1' data-id='12000' href='#'>负载均衡器 F5-BIG-LTMI10-8950-R</a></li><li><a data-pid='1' data-id='12000' href='#'>负载均衡器 A10 AX2100</a></li><li><a data-pid='1' data-id='12000' href='#'>负载均衡器 A10 AX1000</a></li><li><a data-pid='1' data-id='12000' href='#'>超五类网线及水晶头</a></li><li><a data-pid='1' data-id='12000' href='#'>六类网线及水晶头</a></li><li><a data-pid='1' data-id='12000' href='#'>16路DVR</a></li><li><a data-pid='1' data-id='12000' href='#'>16路NVR</a></li><li><a data-pid='1' data-id='12000' href='#'>1路DVS</a></li><li><a data-pid='1' data-id='12000' href='#'>3G红外网络半球摄像机</a></li><li><a data-pid='1' data-id='12000' href='#'>4路DVR</a></li><li><a data-pid='1' data-id='12000' href='#'>4路DVS</a></li><li><a data-pid='1' data-id='12000' href='#'>4路NVR</a></li><li><a data-pid='1' data-id='12000' href='#'>8路DVR</a></li><li><a data-pid='1' data-id='12000' href='#'>8路NVR</a></li><li><a data-pid='1' data-id='12000' href='#'>WLAN网络红外半球摄像机</a></li><li><a data-pid='1' data-id='12000' href='#'>标清红外网络半球摄像机</a></li><li><a data-pid='1' data-id='12000' href='#'>标清红外网络球机</a></li><li><a data-pid='1' data-id='12000' href='#'>标清模拟半球摄像机</a></li><li><a data-pid='1' data-id='12000' href='#'>标清模拟球机</a></li><li><a data-pid='1' data-id='12000' href='#'>标清网络半球摄像机</a></li><li><a data-pid='1' data-id='12000' href='#'>标清网络枪机</a></li><li><a data-pid='1' data-id='12000' href='#'>标清网络球机</a></li><li><a data-pid='1' data-id='12000' href='#'>低端网络枪机</a></li><li><a data-pid='1' data-id='12000' href='#'>高清模拟球机</a></li><li><a data-pid='1' data-id='12000' href='#'>高清网络半球摄像机</a></li><li><a data-pid='1' data-id='12000' href='#'>高清网络枪机</a></li><li><a data-pid='1' data-id='12000' href='#'>高清网络球机</a></li><li><a data-pid='1' data-id='12000' href='#'>一档高端路由器</a></li><li><a data-pid='1' data-id='12000' href='#'>二档高端路由器</a></li><li><a data-pid='1' data-id='12000' href='#'>三档高端路由器</a></li><li><a data-pid='1' data-id='12000' href='#'>二档高端路由器扩容</a></li><li><a data-pid='1' data-id='12000' href='#'>六档高端路由器</a></li><li><a data-pid='1' data-id='12000' href='#'>高端路由器扩容</a></li><li><a data-pid='1' data-id='12000' href='#'>高端防火墙</a></li><li><a data-pid='1' data-id='12000' href='#'>中高端防火墙</a></li><li><a data-pid='1' data-id='12000' href='#'>中低端防火墙</a></li></ul><ul><li><strong>集成服务</strong></li></ul><ul><li><strong>网络优化服务</strong></li></ul><ul><li><strong>代维服务</strong></li></ul><ul><li><strong>工程设计服务</strong></li></ul><ul><li><strong>IT系统维护支持服务</strong></li></ul><ul><li><strong>工程审计服务</strong></li></ul><ul><li><strong>IT硬件产品维保服务</strong></li></ul><ul><li><strong>IT软件产品维保服务</strong></li></ul><ul><li><strong>传输设备维保服务</strong></li></ul><ul><li><strong>技术培训</strong></li></ul><ul><li><strong>业务网设备维保服务</strong></li></ul><ul><li><strong>通信主设备维保服务</strong></li><li><a data-pid='1' data-id='13000' href='#'>IP承载网技术培训课程</a></li><li><a data-pid='1' data-id='13000' href='#'>安全培训服务</a></li><li><a data-pid='1' data-id='13000' href='#'>传输线路代维服务</a></li><li><a data-pid='1' data-id='13000' href='#'>基站代维服务</a></li><li><a data-pid='1' data-id='13000' href='#'>分布系统代维服务</a></li><li><a data-pid='1' data-id='13000' href='#'>TD-SCDMA技术培训课程</a></li><li><a data-pid='1' data-id='13000' href='#'>移动通信核心网技术培训课程</a></li><li><a data-pid='1' data-id='13000' href='#'>GSM无线技术培训课程</a></li><li><a data-pid='1' data-id='13000' href='#'>全面预算管理系统集成服务</a></li><li><a data-pid='1' data-id='13000' href='#'>BOSS系统开发服务</a></li><li><a data-pid='1' data-id='13000' href='#'>财务集中化集成服务</a></li><li><a data-pid='1' data-id='13000' href='#'>中间件软件产品维保服务</a></li><li><a data-pid='1' data-id='13000' href='#'>数据库软件产品维保服务</a></li><li><a data-pid='1' data-id='13000' href='#'>防火墙维保服务</a></li><li><a data-pid='1' data-id='13000' href='#'>交换机维保服务</a></li><li><a data-pid='1' data-id='13000' href='#'>路由器维保服务</a></li><li><a data-pid='1' data-id='13000' href='#'>磁盘阵列维保服务</a></li><li><a data-pid='1' data-id='13000' href='#'>小型机维保服务</a></li><li><a data-pid='1' data-id='13000' href='#'>ERP系统硬件集成服务</a></li></ul>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='1' data-id='13000' href='#'>技术支持及服务</a></span><span><a data-pid='1' data-id='14000' href='#'>软件产品</a></span>]</dt>
+          <dd><ul><li><strong>GSM/GPRS业务软件</strong></li></ul><ul><li><strong>网管软件</strong></li></ul><ul><li><strong>IT业务软件</strong></li></ul><ul><li><strong>通用工具类软件</strong></li></ul><ul><li><strong>通用平台类软件</strong></li></ul><ul><li><strong>TD-SCDMA业务软件</strong></li><li><a data-pid='1' data-id='14000' href='#'>中间件软件</a></li><li><a data-pid='1' data-id='14000' href='#'>Office软件</a></li><li><a data-pid='1' data-id='14000' href='#'>报表软件</a></li><li><a data-pid='1' data-id='14000' href='#'>ORACLE ERP</a></li><li><a data-pid='1' data-id='14000' href='#'>数据库软件</a></li><li><a data-pid='1' data-id='14000' href='#'>IBM LOTUS</a></li><li><a data-pid='1' data-id='14000' href='#'>IBM TIVOLI</a></li><li><a data-pid='1' data-id='14000' href='#'>存储备份软件</a></li><li><a data-pid='1' data-id='14000' href='#'>ORACLE</a></li><li><a data-pid='1' data-id='14000' href='#'>IBM</a></li><li><a data-pid='1' data-id='14000' href='#'>东方通中间件软件</a></li><li><a data-pid='1' data-id='14000' href='#'>BORLAND中间件软件</a></li><li><a data-pid='1' data-id='14000' href='#'>ORACLE中间件软件</a></li><li><a data-pid='1' data-id='14000' href='#'>IBM中间件软件</a></li></ul><ul><li><strong>PoE模块</strong></li></ul><ul><li><strong>AP设备</strong></li></ul><ul><li><strong>一次电源</strong></li></ul><ul><li><strong>WLAN用天线</strong></li></ul><ul><li><strong>WLAN用馈线</strong></li></ul><ul><li><strong>WLAN用电缆</strong></li></ul><ul><li><strong>电源模块H3C PSR650A 交流电源模块,650W</strong></li></ul><ul><li><strong>H3C PSR650A 直流电源模块,650W</strong></li></ul><ul><li><strong>光模块</strong></li></ul><ul><li><strong>8端口POE注入器</strong></li></ul><ul><li><strong>16端口POE注入器</strong></li></ul><ul><li><strong>24端口POE注入器</strong></li></ul><ul><li><strong>48端口POE注入器</strong></li></ul><ul><li><strong>24端口POE+注入器</strong></li></ul><ul><li><strong>48端口POE+注入器</strong></li></ul><ul><li><strong>WLAN附属设备</strong></li></ul><ul><li><strong>AC设备</strong></li><li><a data-pid='1' data-id='7059' href='#'>管理802.11g 2048AP容量的AC设备</a></li><li><a data-pid='1' data-id='7059' href='#'>AP设备</a></li><li><a data-pid='1' data-id='7059' href='#'>管理802.11g 4096AP容量的AC设备</a></li><li><a data-pid='1' data-id='7059' href='#'>管理802.11n 4096AP容量的AC设备</a></li><li><a data-pid='1' data-id='7059' href='#'>室分合路型(单空间流支持2.4GHz) 802.11n AP</a></li><li><a data-pid='1' data-id='7059' href='#'>室内放装型802.11g AP</a></li><li><a data-pid='1' data-id='7059' href='#'>室分合路型802.11g AP</a></li><li><a data-pid='1' data-id='7059' href='#'>室外型802.11g AP</a></li><li><a data-pid='1' data-id='7059' href='#'>室内放装型(双空间流支持2.4GHz和5.8GHz) 802.11n AP</a></li><li><a data-pid='1' data-id='7059' href='#'>PoE模块</a></li><li><a data-pid='1' data-id='7059' href='#'>AP防盗盒</a></li><li><a data-pid='1' data-id='7059' href='#'>2.4G全向鞭状天线</a></li><li><a data-pid='1' data-id='7059' href='#'>2.4G柱状天线</a></li><li><a data-pid='1' data-id='7059' href='#'>2.4G/5.8G桨状天线</a></li><li><a data-pid='1' data-id='7059' href='#'>AP跳线</a></li><li><a data-pid='1' data-id='7059' href='#'>PoE+模块</a></li><li><a data-pid='1' data-id='7059' href='#'>室内天线</a></li><li><a data-pid='1' data-id='7059' href='#'>室外天线</a></li><li><a data-pid='1' data-id='7059' href='#'>射频线缆</a></li><li><a data-pid='1' data-id='7059' href='#'>防雷器</a></li><li><a data-pid='1' data-id='7059' href='#'>SFP光收发模块</a></li><li><a data-pid='1' data-id='7059' href='#'>WLAN附属设备</a></li><li><a data-pid='1' data-id='7059' href='#'>管理802.11n 512AP容量的AC设备</a></li><li><a data-pid='1' data-id='7059' href='#'>管理802.11g 512AP容量的AC设备</a></li><li><a data-pid='1' data-id='7059' href='#'>管理802.11n 256AP容量的AC设备</a></li><li><a data-pid='1' data-id='7059' href='#'>管理802.11g 256AP容量的AC设备</a></li><li><a data-pid='1' data-id='7059' href='#'>管理802.11g 1024AP容量的AC设备</a></li><li><a data-pid='1' data-id='7059' href='#'>AC设备</a></li><li><a data-pid='1' data-id='7059' href='#'>AC可选板卡</a></li><li><a data-pid='1' data-id='7059' href='#'>室分合路型(单空间流支持2.4GHz) 802.11n AP</a></li><li><a data-pid='1' data-id='7059' href='#'>室内放装型(双空间流支持2.4GHz和5.8GHz) 802.11n AP</a></li><li><a data-pid='1' data-id='7059' href='#'>室外型802.11g AP</a></li><li><a data-pid='1' data-id='7059' href='#'>室分合路型802.11g AP</a></li><li><a data-pid='1' data-id='7059' href='#'>室内放装型802.11g AP</a></li><li><a data-pid='1' data-id='7059' href='#'>BS-WAP-I500</a></li><li><a data-pid='1' data-id='7059' href='#'>2620-AGN</a></li><li><a data-pid='1' data-id='7059' href='#'>2610E-GNP</a></li><li><a data-pid='1' data-id='7059' href='#'>管理802.11n 2048AP容量的AC设备</a></li></ul>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='1' data-id='7059' href='#'>WLAN及附属设备</a></span><span><a data-pid='1' data-id='16000' href='#'>测试设备</a></span>]</dt>
+          <dd><ul><li><strong>路测手持终端</strong></li></ul><ul><li><strong>测试仪表</strong></li></ul><ul><li><strong>自动拨测系统</strong></li><li><a data-pid='1' data-id='16000' href='#'>TD测试仪表</a></li><li><a data-pid='1' data-id='16000' href='#'>IP类仪表</a></li><li><a data-pid='1' data-id='16000' href='#'>交换类仪表</a></li><li><a data-pid='1' data-id='16000' href='#'>传输类仪表</a></li><li><a data-pid='1' data-id='16000' href='#'>155Mbit/s数字分析仪（无抖动）</a></li><li><a data-pid='1' data-id='16000' href='#'>2Mbit/s数字传输分析仪（无抖动）</a></li><li><a data-pid='1' data-id='16000' href='#'>以太网测试仪</a></li><li><a data-pid='1' data-id='16000' href='#'>光谱分析仪</a></li><li><a data-pid='1' data-id='16000' href='#'>普通OTDR</a></li><li><a data-pid='1' data-id='16000' href='#'>增强OTDR</a></li><li><a data-pid='1' data-id='16000' href='#'>光纤熔接仪</a></li><li><a data-pid='1' data-id='16000' href='#'>管线路由探测器</a></li><li><a data-pid='1' data-id='16000' href='#'>OTN测试仪表（无抖动）</a></li><li><a data-pid='1' data-id='16000' href='#'>OTN/MSTP测试仪表（含抖动）</a></li><li><a data-pid='1' data-id='16000' href='#'>2.5G/MSTP测试仪表（含抖动）</a></li><li><a data-pid='1' data-id='16000' href='#'>2.5Gbit/s数字分析仪（含抖动）</a></li><li><a data-pid='1' data-id='16000' href='#'>155Mbit/s数字分析仪（含抖动）</a></li><li><a data-pid='1' data-id='16000' href='#'>2Mbit/s数字传输分析仪（含抖动）</a></li><li><a data-pid='1' data-id='16000' href='#'>多波长计</a></li><li><a data-pid='1' data-id='16000' href='#'>稳定光源</a></li><li><a data-pid='1' data-id='16000' href='#'>光功率计</a></li><li><a data-pid='1' data-id='16000' href='#'>带光源光功率计</a></li><li><a data-pid='1' data-id='16000' href='#'>光可变衰耗器</a></li><li><a data-pid='1' data-id='16000' href='#'>光接头测试仪</a></li><li><a data-pid='1' data-id='16000' href='#'>光纤识别仪</a></li><li><a data-pid='1' data-id='16000' href='#'>软交换协议分析仪表</a></li><li><a data-pid='1' data-id='16000' href='#'>扫频仪</a></li><li><a data-pid='1' data-id='16000' href='#'>频谱分析仪</a></li><li><a data-pid='1' data-id='16000' href='#'>协议分析仪表</a></li><li><a data-pid='1' data-id='16000' href='#'>网规软件</a></li><li><a data-pid='1' data-id='16000' href='#'>路测软件</a></li><li><a data-pid='1' data-id='16000' href='#'>测试终端</a></li><li><a data-pid='1' data-id='16000' href='#'>HSDPA专用测试卡</a></li><li><a data-pid='1' data-id='16000' href='#'>IP承载网路由分析</a></li><li><a data-pid='1' data-id='16000' href='#'>2.5Gbit/s数字分析仪（无抖动）</a></li><li><a data-pid='1' data-id='16000' href='#'>2.5G/MSTP测试仪表（无抖动）</a></li><li><a data-pid='1' data-id='16000' href='#'>10G/MSTP测试仪表（无抖动）</a></li><li><a data-pid='1' data-id='16000' href='#'>IP承载网性能测试</a></li><li><a data-pid='1' data-id='16000' href='#'>IP承载网网络测试</a></li></ul><ul><li><strong>ONU</strong></li><li><a data-pid='1' data-id='7259' href='#'>MA5626</a></li><li><a data-pid='1' data-id='7259' href='#'>MA5628</a></li><li><a data-pid='1' data-id='7259' href='#'>MA5620</a></li><li><a data-pid='1' data-id='7259' href='#'>HG810</a></li><li><a data-pid='1' data-id='7259' href='#'>ONU设备</a></li><li><a data-pid='1' data-id='7259' href='#'>HG850a</a></li><li><a data-pid='1' data-id='7259' href='#'>HG863</a></li><li><a data-pid='1' data-id='7259' href='#'>SmartAX OT928G</a></li><li><a data-pid='1' data-id='7259' href='#'>HG8110</a></li><li><a data-pid='1' data-id='7259' href='#'>HG8240</a></li><li><a data-pid='1' data-id='7259' href='#'>HG8245</a></li><li><a data-pid='1' data-id='7259' href='#'>HG8247</a></li><li><a data-pid='1' data-id='7259' href='#'>MA5612</a></li><li><a data-pid='1' data-id='7259' href='#'>MA5616</a></li><li><a data-pid='1' data-id='7259' href='#'>HG813</a></li></ul>
+              </dl>
+          
+              <dl>
+          <dt>[<span><a data-pid='1' data-id='7259' href='#'>GPON设备</a></span><span><a data-pid='1' data-id='7700' href='#'>IT设备服务费</a></span>]</dt>
+          <dd><ul><li><strong>交换机服务费</strong></li></ul>
+                  </dl>
+          
+    </div>
+  </div>
+
+
+  
+  <div id="1" class="con">
+  <div class="hd">
+      <h1>营销物资</h1>
+  </div>
+      <div class="bd">
+
+
+          
+          <dl>
+          <dt>[<span><a data-pid='2' data-id='1600043' href='#'>集团景德镇采购基地</a></span><span><a data-pid='2' data-id='1600041' href='#'>集团义乌采购基地</a></span>]</dt>
+          <dd><ul><li><strong>8-15元</strong></li></ul><ul><li><strong>15-25元</strong></li></ul><ul><li><strong>25-35元</strong></li></ul><ul><li><strong>35-45元</strong></li></ul><ul><li><strong>45-55元</strong></li></ul><ul><li><strong>55-75元</strong></li></ul><ul><li><strong>5元以下</strong></li></ul><ul><li><strong>75-95元</strong></li></ul><ul><li><strong>95-115元</strong></li></ul><ul><li><strong>115-145元</strong></li></ul><ul><li><strong>145-175元</strong></li></ul><ul><li><strong>175-205元</strong></li></ul><ul><li><strong>205-235元</strong></li></ul><ul><li><strong>235-300元</strong></li></ul><ul><li><strong>300-400元</strong></li></ul><ul><li><strong>400-500元</strong></li></ul><ul><li><strong>1000元以上</strong></li></ul><ul><li><strong>500-1000元</strong></li></ul><ul><li><strong>5-8元</strong></li></ul><ul><li><strong>工艺品类</strong></li></ul><ul><li><strong>日用品类</strong></li></ul><ul><li><strong>针纺织品类</strong></li></ul><ul><li><strong>健身娱乐类</strong></li></ul><ul><li><strong>数码电子类</strong></li></ul><ul><li><strong>洗浴用品类</strong></li></ul><ul><li><strong>箱包皮具类</strong></li></ul><ul><li><strong>办公类</strong></li></ul><ul><li><strong>小家电类</strong></li><li><a data-pid='2' data-id='1600041' href='#'>笔</a></li><li><a data-pid='2' data-id='1600041' href='#'>笔袋</a></li><li><a data-pid='2' data-id='1600041' href='#'>笔筒</a></li><li><a data-pid='2' data-id='1600041' href='#'>挂绳</a></li><li><a data-pid='2' data-id='1600041' href='#'>配件</a></li><li><a data-pid='2' data-id='1600041' href='#'>网线</a></li><li><a data-pid='2' data-id='1600041' href='#'>纸杯</a></li><li><a data-pid='2' data-id='1600041' href='#'>纸巾</a></li><li><a data-pid='2' data-id='1600041' href='#'>笔记本</a></li><li><a data-pid='2' data-id='1600041' href='#'>打印纸</a></li><li><a data-pid='2' data-id='1600041' href='#'>茶具</a></li><li><a data-pid='2' data-id='1600041' href='#'>瓷器</a></li><li><a data-pid='2' data-id='1600041' href='#'>琉璃</a></li><li><a data-pid='2' data-id='1600041' href='#'>其他</a></li><li><a data-pid='2' data-id='1600041' href='#'>锡器</a></li><li><a data-pid='2' data-id='1600041' href='#'>玉器</a></li><li><a data-pid='2' data-id='1600041' href='#'>伞</a></li><li><a data-pid='2' data-id='1600041' href='#'>杯子</a></li><li><a data-pid='2' data-id='1600041' href='#'>茶具</a></li><li><a data-pid='2' data-id='1600041' href='#'>灯具</a></li><li><a data-pid='2' data-id='1600041' href='#'>玩具</a></li><li><a data-pid='2' data-id='1600041' href='#'>雨具</a></li><li><a data-pid='2' data-id='1600041' href='#'>打火机</a></li><li><a data-pid='2' data-id='1600041' href='#'>广告扇</a></li><li><a data-pid='2' data-id='1600041' href='#'>环保袋</a></li><li><a data-pid='2' data-id='1600041' href='#'>保鲜用品</a></li><li><a data-pid='2' data-id='1600041' href='#'>保险用品</a></li><li><a data-pid='2' data-id='1600041' href='#'>厨卫五金</a></li><li><a data-pid='2' data-id='1600041' href='#'>挂件饰品</a></li><li><a data-pid='2' data-id='1600041' href='#'>户外用品</a></li><li><a data-pid='2' data-id='1600041' href='#'>家居用品</a></li><li><a data-pid='2' data-id='1600041' href='#'>电池炉</a></li><li><a data-pid='2' data-id='1600041' href='#'>电吹风</a></li><li><a data-pid='2' data-id='1600041' href='#'>电饭煲</a></li><li><a data-pid='2' data-id='1600041' href='#'>电风扇</a></li><li><a data-pid='2' data-id='1600041' href='#'>电火锅</a></li><li><a data-pid='2' data-id='1600041' href='#'>豆浆机</a></li><li><a data-pid='2' data-id='1600041' href='#'>挂烫机</a></li><li><a data-pid='2' data-id='1600041' href='#'>果汁机</a></li><li><a data-pid='2' data-id='1600041' href='#'>加湿器</a></li><li><a data-pid='2' data-id='1600041' href='#'>咖啡机</a></li><li><a data-pid='2' data-id='1600041' href='#'>电热水壶</a></li><li><a data-pid='2' data-id='1600041' href='#'>电热水器</a></li><li><a data-pid='2' data-id='1600041' href='#'>电压力锅</a></li><li><a data-pid='2' data-id='1600041' href='#'>蒸煮小电器</a></li><li><a data-pid='2' data-id='1600041' href='#'>按摩器</a></li><li><a data-pid='2' data-id='1600041' href='#'>棋牌类</a></li><li><a data-pid='2' data-id='1600041' href='#'>人体秤</a></li><li><a data-pid='2' data-id='1600041' href='#'>保健仪器</a></li><li><a data-pid='2' data-id='1600041' href='#'>健身用品</a></li><li><a data-pid='2' data-id='1600041' href='#'>渔具套装</a></li><li><a data-pid='2' data-id='1600041' href='#'>U盘</a></li><li><a data-pid='2' data-id='1600041' href='#'>音响</a></li><li><a data-pid='2' data-id='1600041' href='#'>充电器</a></li><li><a data-pid='2' data-id='1600041' href='#'>数码礼盒</a></li><li><a data-pid='2' data-id='1600041' href='#'>数码相框</a></li><li><a data-pid='2' data-id='1600041' href='#'>数码音箱</a></li><li><a data-pid='2' data-id='1600041' href='#'>移动电源</a></li><li><a data-pid='2' data-id='1600041' href='#'>移动硬盘</a></li><li><a data-pid='2' data-id='1600041' href='#'>MP3/MP4/MP5</a></li><li><a data-pid='2' data-id='1600041' href='#'>香皂</a></li><li><a data-pid='2' data-id='1600041' href='#'>牙膏</a></li><li><a data-pid='2' data-id='1600041' href='#'>牙刷</a></li><li><a data-pid='2' data-id='1600041' href='#'>发露水</a></li><li><a data-pid='2' data-id='1600041' href='#'>洗发水</a></li><li><a data-pid='2' data-id='1600041' href='#'>洗衣粉</a></li><li><a data-pid='2' data-id='1600041' href='#'>洗衣皂</a></li><li><a data-pid='2' data-id='1600041' href='#'>沐浴露</a></li><li><a data-pid='2' data-id='1600041' href='#'>包装用品</a></li><li><a data-pid='2' data-id='1600041' href='#'>厨卫洗涤</a></li><li><a data-pid='2' data-id='1600041' href='#'>包</a></li><li><a data-pid='2' data-id='1600041' href='#'>皮带</a></li><li><a data-pid='2' data-id='1600041' href='#'>皮夹</a></li><li><a data-pid='2' data-id='1600041' href='#'>被子</a></li><li><a data-pid='2' data-id='1600041' href='#'>服装</a></li><li><a data-pid='2' data-id='1600041' href='#'>靠垫</a></li><li><a data-pid='2' data-id='1600041' href='#'>毛巾</a></li><li><a data-pid='2' data-id='1600041' href='#'>帽子</a></li><li><a data-pid='2' data-id='1600041' href='#'>手帕</a></li><li><a data-pid='2' data-id='1600041' href='#'>床上用品</a></li></ul><ul><li><strong>办公类</strong></li></ul><ul><li><strong>针纺织品类</strong></li></ul><ul><li><strong>箱包皮具类</strong></li></ul><ul><li><strong>洗浴用品类</strong></li></ul><ul><li><strong>数码电子类</strong></li></ul><ul><li><strong>小家电类</strong></li></ul><ul><li><strong>特定产品</strong></li></ul><ul><li><strong>日用品类</strong></li><li><a data-pid='2' data-id='1600042' href='#'>灯具</a></li><li><a data-pid='2' data-id='1600042' href='#'>床上用品</a></li><li><a data-pid='2' data-id='1600042' href='#'>扇子</a></li><li><a data-pid='2' data-id='1600042' href='#'>杯/壶</a></li><li><a data-pid='2' data-id='1600042' href='#'>厨卫五金</a></li><li><a data-pid='2' data-id='1600042' href='#'>户外用品</a></li><li><a data-pid='2' data-id='1600042' href='#'>家居用品</a></li><li><a data-pid='2' data-id='1600042' href='#'>环保袋</a></li><li><a data-pid='2' data-id='1600042' href='#'>自行车</a></li><li><a data-pid='2' data-id='1600042' href='#'>收纳箱</a></li><li><a data-pid='2' data-id='1600042' href='#'>电风扇</a></li><li><a data-pid='2' data-id='1600042' href='#'>保温容器</a></li><li><a data-pid='2' data-id='1600042' href='#'>帽子</a></li><li><a data-pid='2' data-id='1600042' href='#'>配件</a></li><li><a data-pid='2' data-id='1600042' href='#'>播放器</a></li><li><a data-pid='2' data-id='1600042' href='#'>存储器</a></li><li><a data-pid='2' data-id='1600042' href='#'>音箱音响</a></li><li><a data-pid='2' data-id='1600042' href='#'>T恤</a></li><li><a data-pid='2' data-id='1600042' href='#'>洗浴套装</a></li><li><a data-pid='2' data-id='1600042' href='#'>服饰</a></li><li><a data-pid='2' data-id='1600042' href='#'>箱包</a></li><li><a data-pid='2' data-id='1600042' href='#'>时尚数码</a></li><li><a data-pid='2' data-id='1600042' href='#'>电脑</a></li><li><a data-pid='2' data-id='1600042' href='#'>手机配件
+</a></li><li><a data-pid='2' data-id='1600042' href='#'>电脑配件</a></li><li><a data-pid='2' data-id='1600042' href='#'>笔记本</a></li><li><a data-pid='2' data-id='1600042' href='#'>笔</a></li><li><a data-pid='2' data-id='1600042' href='#'>伞具</a></li></ul>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='2' data-id='1600042' href='#'>集团义乌采购基地动感地带促销品</a></span>]</dt>
+          <dd><ul><li><strong>家用电器</strong></li></ul><ul><li><strong>车载电器</strong></li></ul><ul><li><strong>日用电器</strong></li></ul><ul><li><strong>厨房电器</strong></li></ul><ul><li><strong>通讯产品</strong></li></ul><ul><li><strong>个人护理电器</strong></li></ul>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='2' data-id='1600190' href='#'>生活电器</a></span><span><a data-pid='2' data-id='1600194' href='#'>数码电子</a></span>]</dt>
+          <dd><ul><li><strong>电脑配件</strong></li></ul><ul><li><strong>时尚数码</strong></li></ul><ul><li><strong>电脑</strong></li></ul><ul><li><strong>手机配件</strong></li><li><a data-pid='2' data-id='1600194' href='#'>电子手机链</a></li><li><a data-pid='2' data-id='1600194' href='#'>电子吊坠</a></li><li><a data-pid='2' data-id='1600194' href='#'>音乐播放器</a></li><li><a data-pid='2' data-id='1600194' href='#'>数码相框</a></li><li><a data-pid='2' data-id='1600194' href='#'>MP3</a></li><li><a data-pid='2' data-id='1600194' href='#'>U盘</a></li><li><a data-pid='2' data-id='1600194' href='#'>数据卡</a></li><li><a data-pid='2' data-id='1600194' href='#'>上网卡</a></li><li><a data-pid='2' data-id='1600194' href='#'>鼠标垫</a></li><li><a data-pid='2' data-id='1600194' href='#'>耳机</a></li></ul><ul><li><strong>特色礼品</strong></li></ul>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='2' data-id='1600188' href='#'>特色礼品</a></span><span><a data-pid='2' data-id='1600193' href='#'>儿童玩具</a></span>]</dt>
+          <dd><ul><li><strong>儿童玩具</strong></li></ul><ul><li><strong>时尚礼品</strong></li></ul>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='2' data-id='1600191' href='#'>时尚礼品</a></span><span><a data-pid='2' data-id='1600192' href='#'>品牌礼品</a></span>]</dt>
+          <dd><ul><li><strong>全球通</strong></li></ul><ul><li><strong>神州行</strong></li></ul><ul><li><strong>动感地带</strong></li></ul><ul><li><strong>购物卡</strong></li></ul><ul><li><strong>充值卡</strong></li></ul>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='2' data-id='1600187' href='#'>数字礼品</a></span><span><a data-pid='2' data-id='1600185' href='#'>门票礼品</a></span>]</dt>
+          <dd><ul><li><strong>门票礼品</strong></li></ul><ul><li><strong>入学套装</strong></li></ul>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='2' data-id='1600186' href='#'>学习用品</a></span><span><a data-pid='2' data-id='1600198' href='#'>节日礼品</a></span>]</dt>
+          <dd><ul><li><strong>饮料食品
+</strong></li></ul><ul><li><strong>景德镇瓷器
+</strong></li></ul><ul><li><strong>义乌小商品
+</strong></li></ul><ul><li><strong>义乌动感地带
+</strong></li></ul><ul><li><strong>节日礼品</strong></li></ul><ul><li><strong>饮料食品</strong></li></ul><ul><li><strong>个人饰品</strong></li></ul><ul><li><strong>健康护理</strong></li></ul><ul><li><strong>饮料用品</strong></li></ul><ul><li><strong>清洁用品</strong></li></ul><ul><li><strong>家具用品</strong></li></ul><ul><li><strong>生活必需品</strong></li></ul><ul><li><strong>床上用品</strong></li></ul><ul><li><strong>饮料食品</strong></li></ul><ul><li><strong>交通工具</strong></li></ul><ul><li><strong>建康康体</strong></li></ul><ul><li><strong>卫浴用品</strong></li></ul><ul><li><strong>纺织用品</strong></li></ul><ul><li><strong>生活日用</strong></li></ul><ul><li><strong>厨房用品</strong></li><li><a data-pid='2' data-id='1600199' href='#'>饮料</a></li><li><a data-pid='2' data-id='1600199' href='#'>食用油</a></li><li><a data-pid='2' data-id='1600199' href='#'>大米</a></li></ul>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='2' data-id='1600199' href='#'>日用家居</a></span><span><a data-pid='2' data-id='1600200' href='#'>工艺礼品</a></span>]</dt>
+          <dd><ul><li><strong>工艺礼品</strong></li></ul><ul><li><strong>专项礼品</strong></li></ul>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='2' data-id='1600202' href='#'>专项礼品</a></span><span><a data-pid='2' data-id='1600196' href='#'>户外运动</a></span>]</dt>
+          <dd><ul><li><strong>运动装备</strong></li></ul><ul><li><strong>户外装备</strong></li></ul><ul><li><strong>期刊杂志</strong></li><li><a data-pid='2' data-id='1600201' href='#'>《科技尚品》</a></li><li><a data-pid='2' data-id='1600201' href='#'>《郑州晚报》</a></li></ul>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='2' data-id='1600201' href='#'>期刊杂志</a></span><span><a data-pid='2' data-id='1600195' href='#'>新年礼品</a></span>]</dt>
+          <dd><ul><li><strong>新年礼品</strong></li></ul><ul><li><strong>皮具箱包</strong></li></ul>
+              </dl>
+          
+              <dl>
+          <dt>[<span><a data-pid='2' data-id='1600197' href='#'>皮具箱包</a></span><span><a data-pid='2' data-id='1600189' href='#'>其他</a></span>]</dt>
+          <dd><ul><li><strong>其他</strong></li></ul>
+                  </dl>
+          
+    </div>
+  </div>
+
+
+  
+  <div id="2" class="con">
+  <div class="hd">
+      <h1>定制终端</h1>
+  </div>
+      <div class="bd">
+
+
+          
+          <dl>
+          <dt>[<span><a data-pid='3' data-id='1001' href='#'>2G手机</a></span><span><a data-pid='3' data-id='2001' href='#'>G3手机</a></span>]</dt>
+          <dd>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='3' data-id='3001' href='#'>G3数据卡</a></span><span><a data-pid='3' data-id='4001' href='#'>G3上网本</a></span>]</dt>
+          <dd>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='3' data-id='5001' href='#'>G3无线固话</a></span><span><a data-pid='3' data-id='6001' href='#'>2G数据卡</a></span>]</dt>
+          <dd>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='3' data-id='7001' href='#'>2G实物</a></span><span><a data-pid='3' data-id='8001' href='#'>G3 MIFI </a></span>]</dt>
+          <dd>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='3' data-id='8002' href='#'>4G手机</a></span><span><a data-pid='3' data-id='8003' href='#'>4G MIFI</a></span>]</dt>
+          <dd>
+              </dl>
+          
+          <dl>
+          <dt>[<span><a data-pid='3' data-id='8004' href='#'>4G数据卡</a></span><span><a data-pid='3' data-id='8005' href='#'>宜居通</a></span>]</dt>
+          <dd>
+              </dl>
+          
+              <dl>
+          <dt>[<span><a data-pid='3' data-id='8006' href='#'>车务通</a></span><span><a data-pid='3' data-id='8007' href='#'>TD非定制手机</a></span>]</dt>
+          <dd>
+                  </dl>
+          
+    </div>
+  </div>
+
+
+  
+  <div id="3" class="con">
+  <div class="hd">
+      <h1>有价卡</h1>
+  </div>
+      <div class="bd">
+
+
+          
+          <dl>
+          <dt>[<span><a data-pid='4' data-id='1' href='#'>30元</a></span><span><a data-pid='4' data-id='2' href='#'>50元</a></span>]</dt>
+          <dd>
+              </dl>
+          
+              <dl>
+          <dt>[<span><a data-pid='4' data-id='3' href='#'>100元</a></span>]</dt>
+          <dd>
+                  </dl>
+          
+    </div>
+  </div>
+
+
+  
+  <div id="4" class="con">
+  <div class="hd">
+      <h1>SIM卡</h1>
+  </div>
+      <div class="bd">
+
+
+          
+              <dl>
+          <dt>[<span><a data-pid='5' data-id='1' href='#'>实体卡</a></span><span><a data-pid='5' data-id='2' href='#'>空白卡</a></span>]</dt>
+          <dd>
+                  </dl>
+          
+    </div>
+  </div>
+
+
+  
+
+  </div>
+  </div>
+  </div>
+  </div>
+     
+
+
+
+
+  <style type="text/css">
+      .go-top{width:54px;height:54px;cursor:pointer;display:block;position:fixed;margin-left: 505px;left: 50%;bottom:38px;background-position:0 0;opacity:0.3;filter:alpha(opacity=30);background-image:url("/pss/products/images/homepage/top.png"); background-repeat:no-repeat;}
+      .go-top:hover{opacity:1;filter:alpha(opacity=100);}
+      .go-top.overp{opacity:1;filter:alpha(opacity=100);}
+  </style>
+  <!--[if lte IE 6]> <style type="text/css">
+      html body   {background-image:url(about:blank);background-attachment:fixed;}
+      .backToTop { display: none}
+      .go-top{position:absolute;right:15px;bottom:38px;opacity:1;_filter:alpha(opacity=100);}
+      .go-top:hover {_filter:alpha(opacity=100);}
+  </style>
+  <![endif]-->
+  <script>
+      eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('(4(){b $f="<a r=\'q\' n=\'9-5\'></a>";$2=$(\'<k n="u"></k>\').x($("i")).j($f).w("t","返回顶部").s(4(){$("j, i").v({8:0},G)}),$3=4(){b c=$(l).8(),h=$(1).H();o=$(1).7();6(h<y){$2.d();K}(c>J)?$2.F():$2.d();b p=e($(1).7())+e($(1).8());6($(l).7()<=p){$(".9-5").z("m")}B{$(".9-5").C("m")}6(!1.D){$2.I("5",c+o)}};$(1).g("A",$3);$(1).g("E",$3);$(4(){$3()})})();',47,47,'|window|backToTopEle|backToTopFun|function|top|if|height|scrollTop|go||var|st|hide|parseFloat|backToTopTxt|bind|winw|body|html|div|document|overp|class|winh|totalheight|toTop|id|click|title|backToTop|animate|attr|appendTo|1200|addClass|scroll|else|removeClass|XMLHttpRequest|resize|show|120|width|css|800|return'.split('|'),0,{}))
+
+  </script>
+  <script>
+      $(function(){
+          //导航控制
+          $(".headBottom .titleList li").not('.currentBit')  .hover(function(){
+              if($(this).hasClass("currentBit")){
+                  $(this).removeClass("currentBit");
+              }else{
+                  $(this).addClass("currentBit");
+              }
+          });
+          $("#wrapCon").find("a").click(function(){
+              var menuId= $(this).data("id");
+
+              var pptId= $(this).data("pid");
+              if(pptId==4){
+                  menuId=parseInt($(this).text());
+              }
+              if(pptId==5){
+                  menuId=$(this).text()=="SIM卡"?"实体卡":"空白卡";
+              }
+              forwardTab(pptId,menuId);
+          });
+          var _cur=0;
+          $(".cons").parent().css('height', $(".cons").height() + 'px');
+          $(".tags div").each(function(i, dom){
+              $(dom).click(function(){
+                  if(_cur != i) $(".tags div").eq(_cur).removeClass('at');
+                  else return;
+                  $(dom).addClass("at");
+                  var arr=$("div[id="+i+"]").position().top;
+                  $(".cons").animate({marginTop: '-'+arr+'px'}, "slow",function(){
+                      $(".cons").css('marginTop', 0);
+                      for(var j = 0; j <6; j++){
+                          var id =$(".cons div").eq(0).attr('id');
+                          if(id != i){
+                              $(".cons div").eq(0).appendTo($(".cons"));
+                          }else {
+                              return;
+                          }
+                      }
+                  });
+                  _cur=i;
+              })
+          })
+      });
+      function forwardTab(param1,param2){
+          var url="";
+          if(param1 =="1") {url="networkProductAction.do?categroyid="+param2;}
+          if(param1 =="2") {url="mkListAction.do?flexValue="+param2;}
+          if(param1 =="3") {url="dzListAction.do?typeId="+param2;}
+          if(param1 =="4") {url="cardProductsAction.do?cardcat=5&parValue="+param2}
+          if(param1 =="5") {url="cardProductsAction.do?cardcat=6&cardSubType="+param2}
+
+          window.open("/pss/"+url);
+      }
+  </script>
+  </body>
+</html>

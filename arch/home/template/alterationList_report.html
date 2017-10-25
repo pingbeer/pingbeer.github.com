@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>机会列表</title>
+    <meta content="chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+
+    <link rel="stylesheet" type="text/css" href="js/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" type="text/css" href="js/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="homepage.css" />
+    <link rel="stylesheet" type="text/css" href="detail.css" />
+
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="js/amcharts.js"></script>
+    <script>
+        $(function(){
+            $(".fake_slt").on("click",function(){
+                if($(this).hasClass("open")){
+                    $(this).removeClass("open");
+                } else{
+                    $(".fake_slt").removeClass("open");
+                    $(this).addClass("open");
+                }
+
+
+
+            })   ;
+            $(".fake_slt_menu li").on("click",function(){
+                $(this).closest(".fake_slt").find("input[type='hidden']").val($(this).find("a").attr("rel"));
+                $(this).closest(".fake_slt").find("span").text($(this).find("a").text());
+
+            })
+        })
+    </script>
+
+    <style>
+            /*根据每个页面的数据量来决定页面的宽度*/
+        body{
+            min-width: 1000px;
+			background:none;
+			  background-image: url("img/jtsq3Qu1t.png");
+			   background-repeat: no-repeat;
+        }
+		.panel-body{
+		background:none;
+		}
+        .editContent,    .editContent table,    .editWin{
+            width: 1000px;
+        }
+    </style>
+</head>
+<body class="easyui-layout" fit="true" title="机会成本" style="overflow: hidden;">
+
+<div data-options="region:'north'" style="height:35px;overflow: hidden">
+    <div class="portlet-title">
+
+        <div class="caption">
+            <i class="fa fa-globe"></i>机会列表
+        </div>
+
+       <!-- <div class="tools">
+            <a class="cancel" href="javascript:;">
+            </a>
+
+        </div>-->
+    </div>
+
+
+
+
+</div>
+<div data-options="region:'center'" style="padding:20px;overflow: hidden;">
+
+
+
+
+    <style>
+
+        .fn-clear:after {
+            clear: both;
+            content: " ";
+            display: block;
+            font-size: 0;
+            height: 0;
+            visibility: hidden;
+        }
+
+        .ebill-section {
+            background-color: #FFFFFF;
+            box-shadow: 0 8px 22px #999999;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .fn-clear:after {
+            clear: both;
+            content: " ";
+            display: block;
+            font-size: 0;
+            height: 0;
+            visibility: hidden;
+        }
+        .ebill-section .ebill-title-section {
+            background-color: #4ABAE1;
+            color: #FFFFFF;
+            padding: 6px 15px;
+            position: relative;
+        }
+        .ebill-section .section-title {
+            color: #FFFFFF;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+
+        .fn-clear:after {
+            clear: both;
+            content: " ";
+            display: block;
+            font-size: 0;
+            height: 0;
+            visibility: hidden;
+        }
+        #module-zhanghutong {
+            border-right: 0 none;
+            border-top: 0 none !important;
+            height: 280px;
+            margin: 0 !important;
+        }
+        .module-middle {
+            border-right: 1px dashed #98D3E8;
+            border-top: 1px dashed #98D3E8;
+            float: left;
+            height: 240px;
+            margin-top: -1px;
+            position: relative;
+            transition-duration: 0.5s;
+            transition-property: box-shadow;
+            /*width: 494px;*/
+        }
+        .module-middle .inner-module {
+            padding: 17px 17px 0;
+        }
+
+        .module-middle .module-title {
+            color: #606060;
+            font-size: 14px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .zhanghutong-goto {
+            height: 81px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 33px;
+            position: relative;
+            text-align: center;
+            width: 200px;
+        }
+
+        .zhanghutong-goto .slogan {
+            font-size: 14px;
+            padding-bottom: 3px;
+        }
+    </style>
+    <script type="text/javascript">
+        var chart;
+
+        var chartData = [{
+            country: "USA",
+            visits: 4025,
+            color: "#FF0F00"
+        }, {
+            country: "China",
+            visits: 1882,
+            color: "#FF6600"
+        }, {
+            country: "Japan",
+            visits: 1809,
+            color: "#FF9E01"
+        }, {
+            country: "Germany",
+            visits: 1322,
+            color: "#FCD202"
+        }, {
+            country: "UK",
+            visits: 1122,
+            color: "#F8FF01"
+        }, {
+            country: "France",
+            visits: 1114,
+            color: "#B0DE09"
+        }, {
+            country: "India",
+            visits: 984,
+            color: "#04D215"
+        }, {
+            country: "Spain",
+            visits: 711,
+            color: "#0D8ECF"
+        }, {
+            country: "Netherlands",
+            visits: 665,
+            color: "#0D52D1"
+        }, {
+            country: "Russia",
+            visits: 580,
+            color: "#2A0CD0"
+        }, {
+            country: "South Korea",
+            visits: 443,
+            color: "#8A0CCF"
+        }, {
+            country: "Canada",
+            visits: 441,
+            color: "#CD0D74"
+        }, {
+            country: "Brazil",
+            visits: 395,
+            color: "#754DEB"
+        }, {
+            country: "Italy",
+            visits: 386,
+            color: "#DDDDDD"
+        }, {
+            country: "Australia",
+            visits: 384,
+            color: "#999999"
+        }, {
+            country: "Taiwan",
+            visits: 338,
+            color: "#333333"
+        }, {
+            country: "Poland",
+            visits: 328,
+            color: "#000000"
+        }];
+
+
+        AmCharts.ready(function () {
+            // SERIAL CHART
+            chart = new AmCharts.AmSerialChart();
+            chart.dataProvider = chartData;
+            chart.categoryField = "country";
+            // the following two lines makes chart 3D
+            chart.depth3D = 20;
+            chart.angle = 30;
+
+            // AXES
+            // category
+            var categoryAxis = chart.categoryAxis;
+            categoryAxis.labelRotation = 90;
+            categoryAxis.dashLength = 5;
+            categoryAxis.gridPosition = "start";
+
+            // value
+            var valueAxis = new AmCharts.ValueAxis();
+            valueAxis.title = "Visitors";
+            valueAxis.dashLength = 5;
+            chart.addValueAxis(valueAxis);
+
+            // GRAPH
+            var graph = new AmCharts.AmGraph();
+            graph.valueField = "visits";
+            graph.colorField = "color";
+            graph.balloonText = "[[category]]: [[value]]";
+            graph.type = "column";
+            graph.lineAlpha = 0;
+            graph.fillAlphas = 1;
+            chart.addGraph(graph);
+
+            // WRITE
+            chart.write("ebill-property");
+        });
+    </script>
+    <div id="ebill-property" style="width: 100%; height: 400px;" class="ebill-section fn-clear">
+
+
+        </div>
+
+</div>
+
+</body>
+</html>

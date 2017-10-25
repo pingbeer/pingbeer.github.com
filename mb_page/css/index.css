@@ -1,0 +1,67 @@
+﻿@charset "utf-8";
+/*
+@author 
+*/
+a:hover{ text-decoration:none;}
+body{ background-color:#fff;}
+.row{ margin-left:-15px; margin-right:-15px;}
+.color-darkblue{ background-color:#0066ff; color:#fff; padding:8px 0;}
+.row-lines{ background-color:#efefef; height:1px; width:100%; margin:0 0 10px 0;}
+.col-lines{ background-color:#efefef; width:0.2%; height:130px; float:left }
+.margin-sd{ margin-bottom:10px; margin-top:10px;}
+
+.b_width{ width:49% !important;}
+.margin_top{ float:left; margin-top:5px; color:#ff7011;}
+/*抢购频道*/
+.bg-green{ background-color:#e6f7f7; padding:4px 0; font-family:Microsoft Yahei; font-size:16px; margin-bottom:5px;}
+.small{ font-size:12px; color:#aaaaaa;}
+.top-time{margin:10px 0 14px 0;}
+.img-left{ float:left;} 
+.font-small{ font-size:10px;}
+.font-small .yellow{ background-color:#ff6524; padding:1px 2px; color:#fff; margin:0 1px; font-size:10px;}
+/*导航*/
+.nav > li > a{ padding:0 15px;}
+.nav-tabs{ border-bottom:none !important; background-color:#fff !important;}
+.nav-tabs li{ font-size:14px; margin:0;}
+.nav-tabs a{ color:#d1d1d1;}
+
+.glyphicon-volume-up{ color:#C00 !important; font-size:14px !important;}
+.col-xs-2{ padding-right:0 !important;}
+.col-xs-10{ padding:0 !important;}
+
+/*.text-center input{ background-color:#0066ff; border-bottom:1px #fff solid; border-left:0.5px #fff solid; border-right:0.5px #ccc solid;}*/
+.text-center input{ background-color:#0066ff; }
+.input-dk{ position:relative;}
+.input-text{ position:absolute; top:15px; height:5px; width:100%; border-bottom:1px #fff solid; border-left:1px #fff solid;border-right:1px #fff solid;}
+
+.serchs{ float:left; width:100%;}
+.serchs .icon_left{ float:left; margin:0 3px;}
+.serchs input{ float:left; width:83% !important; font-size:12px; padding:0 3px !important; margin:0 !important;}
+
+.list-inline{
+	width:100%;
+	margin:0 !important;
+	padding:0 !important;
+	float:left;
+	}
+.list-inline li a{
+	font-family:Microsoft Yahei;
+	color:#b1b1b1;
+	font-size:14px;
+	margin:0 !important;
+	padding:0 !important;
+	float:left;
+	}	
+.list-inline > li{
+	padding-left:2% !important;
+	padding-right:2% !important;
+	width:18%;
+	}	
+.font_d{ font-size:12px;}
+.img_banner{ margin-top:3px; margin-bottom:10px;}	
+.img_width{ width:100% !important;}	
+	
+	
+	
+	
+	

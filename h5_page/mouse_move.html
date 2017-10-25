@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>blog</title>
+    <meta content="text/html; charset=GBK" http-equiv="Content-Type">
+    <link href="zhuanimg/css.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../jquery.js"></script>
+</head>
+<body>
+
+
+<script type="text/javascript">
+    $(function(){
+        $(document).on("mousemove", function (f) {
+            var g = $(document.body)[0].clientWidth, j = g / 2, e = f.clientX - j, b = j / 40;
+            for (var d = 0, a = $(".toLeft").length; d < a; d++) {
+                var c = $(".toLeft").eq(d);
+                c[0].X = typeof c[0].X == "undefined" ? parseInt(c.css("left")) : c[0].X;
+                var h =c[0].X+ e / b;
+                c.css({left:h})
+            }
+            for (var d = 0, a = $(".toRight").length; d < a; d++) {
+                var c = $(".toRight").eq(d);
+                c[0].X = typeof c[0].X == "undefined" ? parseInt(c.css("left")) : c[0].X;
+                var h = c[0].X - e / b;
+                c.css({left:h})
+            }
+        });
+    })
+
+</script>
+<div class="wrap1">
+    <div class="wrap2">
+
+    <div id="scence01" class="ten-years-start-wrap" style="display: block;">
+        <div class="start-header">
+            <img id="bgImg" src="zhuanimg/02213106-0619d673fa8942d096e3b50a89245ed5.png">
+
+            <div class="cloud top-cloud-01 toLeft">
+                <img src="zhuanimg/02213251-626802de852e44fb92f1bacd691c91b0.png">
+            </div>
+            <div class="cloud top-cloud-02 toRight">
+                <img src="zhuanimg/02213302-0eb3b85430ad4ef1bbf228e42bac1969.png">
+            </div>
+            <div class="cloud top-cloud-03 toLeft">
+                <img src="zhuanimg/02213314-ac492c4ca7514a4bafb587d6b65d69e8.png">
+            </div>
+            <div class="cloud top-cloud-04 toRight">
+                <img src="zhuanimg/02213307-cc7539ca8caa49a9bc604aaa4340adce.png">
+            </div>
+            <div class="cloud top-cloud-05 toLeft">
+                <img src="zhuanimg/02213321-9ba92ef7c6ab49ad85326512f1fcbc17.png">
+            </div>
+            <div class="cloud top-cloud-06 toRight">
+                <img src="zhuanimg/02213326-ec17d97e5a1d4cc7bd548d79ebea9997.png">
+            </div>
+            <div class="cloud top-cloud-07 toLeft">
+                <img src="zhuanimg/02213330-1288ebcc526a49d19458b2ecd7dbf315.png">
+            </div>
+            <div class="cloud top-cloud-08 toLeft">
+                <img src="zhuanimg/02213347-928056df0d1b48e7aba1f7f074505923.png">
+            </div>
+            <div class="cloud top-cloud-09 toRight">
+                <img src="zhuanimg/02213353-2f62673ee1b64bbfa154a3cadb4307b4.png">
+            </div>
+            <div class="cloud top-cloud-10 toRight">
+                <img src="zhuanimg/02213356-c25962c0f09048f99f504b6dacae764c.png">
+            </div>
+            <div class="cloud top-cloud-11 toLeft">
+                <img src="zhuanimg/02213405-720c3769c34a4caab69a372228a3b741.png">
+            </div>
+            <div class="cloud top-cloud-12 toRight">
+                <img src="zhuanimg/02213409-5060704cc78444c89aeb8a1dadb0ecad.png">
+            </div>
+
+            <div class="cloud bottom-cloud-01 toLeft">
+                <img src="zhuanimg/02213201-e3e9a6ecbe8242b1982fdacbffaeda35.png">
+            </div>
+            <div class="cloud bottom-cloud-02 toLeft">
+                <img src="zhuanimg/02213206-a52fbc527dfd4a2bb9116ca84d5f2c33.png">
+            </div>
+            <div class="cloud bottom-cloud-03 toLeft">
+                <img src="zhuanimg/02213217-59fa36591fc74597b35dd7ff87c5c2df.png">
+            </div>
+            <div class="cloud bottom-cloud-04 toLeft">
+                <img src="zhuanimg/02213223-0e7c5105a69d4b018b08ec6066b68ba2.png">
+            </div>
+            <div class="cloud bottom-cloud-06 toLeft">
+                <img src="zhuanimg/02213233-d7907533c5a945ad908aa42714365dd7.png">
+            </div>
+            <div class="cloud bottom-cloud-05 toLeft">
+                <img src="zhuanimg/02213223-0e7c5105a69d4b018b08ec6066b68ba2.png">
+            </div>
+            <div class="cloud bottom-cloud-07 toLeft">
+                <img src="zhuanimg/02213233-d7907533c5a945ad908aa42714365dd7.png">
+            </div>
+
+            <div class="four_people toRight">
+                <img src="zhuanimg/02213245-ef903ec701ed4ab8aeed480c15df3654.png">
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+</div>
+
+<a class="go" href="full_scroll_163.html">马上体验</a>
+<script>
+    (function($){
+        $.fn.snow=function(options){
+            var $flake=$('<div />')
+                    .css({
+                        'position':'fixed',//'absolute',
+                        'top':'-50px',
+                        'z-index':'1000'
+                    })
+                    .html('&#10052;');
+            var documentHeight=document.documentElement.clientHeight;//$(document).height();
+            var documentWidth=$(document).width();
+            var defaults={minSize:10,maxSize:20,newOn:500,flakeColor:"#FFFFFF"};
+            var options=$.extend({},defaults,options);
+            var interval=setInterval(function(){
+                var startPositionLeft=Math.random()*documentWidth-100;
+                var startOpacity=0.5+Math.random();
+                var sizeFlake=options.minSize+Math.random()*options.maxSize;
+                var endPositionTop=documentHeight-40;
+                var endPositionLeft=startPositionLeft-100+Math.random()*200;
+                var durationFall=documentHeight*10+Math.random()*5000;
+                $flake.clone()
+                        .appendTo('body')
+                        .css({
+                            left:startPositionLeft,
+                            opacity:startOpacity,
+                            'font-size':sizeFlake,
+                            color:options.flakeColor
+                        })
+                        .animate({
+                            top:endPositionTop,
+                            left:endPositionLeft,
+                            opacity:0.2
+                        },
+                        durationFall,
+                        'linear',
+                        function(){
+                            $(this).remove();
+                        });
+            },options.newOn);//interval End
+        };//$.fn.snow End
+    })(jQuery);
+    $.fn.snow({ minSize: 10, maxSize: 60, newOn: 800, flakeColor: '#ccc'});
+</script>
+
+
+</body>
+
+</html>

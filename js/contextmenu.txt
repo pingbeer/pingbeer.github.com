@@ -1,0 +1,193 @@
+        //自定义右键菜单
+        document.getElementById("content").oncontextmenu = function (event) {
+            var oMenu = document.getElementById("dropMenu");
+            var showTimer = hideTimer = null;
+            var i = 0;
+            var maxWidth = maxHeight = 0;
+            var aDoc = [document.documentElement.offsetWidth, document.documentElement.offsetHeight];
+            oMenu.style.display = "none";
+            var event = event || window.event;
+            oMenu.style.display = "block";
+
+            oMenu.style.top = mousePosition(event).x + "px";
+            oMenu.style.left =mousePosition(event).y+ "px";
+//                setWidth(oMenu[0]);
+            //最大显示范围
+//                maxWidth = aDoc[0] - oMenu.offsetWidth;
+//                maxHeight = aDoc[1] - oMenu.offsetHeight;
+            //防止菜单溢出
+//                oMenu.offsetTop > maxHeight && (oMenu.style.top = maxHeight + "px");
+//                oMenu.offsetLeft > maxWidth && (oMenu.style.left = maxWidth + "px");
+            $("#dropMenu").css("display","block");
+            return false;
+        };
+        function mousePosition(ev){//返回一个类
+            if(ev.pageX || ev.pageY){
+                return {x:ev.pageX, y:ev.pageY};
+            }
+            return {
+                x:ev.clientX  - document.body.clientLeft,
+                y:ev.clientY ? - document.body.clientTop
+            }
+        }*/
+
+  <!--  <script type="text/javascript">
+        var getOffset = {
+            top: function (obj) {
+                return obj.offsetTop + (obj.offsetParent ? arguments.callee(obj.offsetParent) : 0)
+            },
+            left: function (obj) {
+                return obj.offsetLeft + (obj.offsetParent ? arguments.callee(obj.offsetParent) : 0)
+            }
+        };
+        var tdName;
+        var tdHtml;
+        window.onload = function () {
+            var oMenu = document.getElementById("dropMenu");
+            var aLi = oMenu.getElementsByTagName("li");
+            var showTimer = hideTimer = null;
+            var i = 0;
+            var maxWidth = maxHeight = 0;
+            var aDoc = [document.documentElement.offsetWidth, document.documentElement.offsetHeight];
+            oMenu.style.display = "none";
+            for (i = 0; i < aLi.length; i++) {
+                //为含有子菜单的li加上箭头
+                //鼠标移入
+                aLi[i].onmouseover = function () {
+                    var oThis = this;
+                    //鼠标移入样式
+                    oThis.className += " active";
+                    //显示子菜单
+                    if (oThis) {
+                        clearTimeout(hideTimer);
+                        showTimer = setTimeout(function () {
+                                             oThis.style.display = "block";
+                            oThis.style.top = oThis.offsetTop + "px";
+                            oThis.style.left = oThis.offsetWidth + "px";
+                            //最大显示范围
+                            maxWidth = aDoc[0] -oThis.offsetWidth;
+                            maxHeight = aDoc[1] - oThis.offsetHeight;
+                            //防止溢出
+                            maxWidth < getOffset.left(oThis) && (oThis.style.left = -oThis.clientWidth + "px");
+                            maxHeight < getOffset.top(oThis) && (oThis.style.top = -oThis.clientHeight + oThis.offsetTop + oThis.clientHeight + "px")
+                        }, 300);
+                    }
+                };
+                //鼠标移出
+
+                aLi[i].onmouseout = function () {
+                    var oThis = this;
+                    //鼠标移出样式
+                    oThis.className = oThis.className.replace(/\s?active/, "");
+                    clearTimeout(showTimer);
+                    hideTimer = setTimeout(function () {
+                        for (i = 0; i < oThis.parentNode.children.length; i++) {
+                            oThis.parentNode.children[i].getElementsByTagName("ul")[0] &&
+                            (oThis.parentNode.children[i].getElementsByTagName("ul")[0].style.display = "none");
+                        }
+                    }, 300);
+                };
+            }
+
+
+            //取li中最大的宽度, 并赋给同级所有li
+            function setWidth(obj) {
+                maxWidth = 0;
+                for (i = 0; i < obj.children.length; i++) {
+                    var oLi = obj.children[i];
+                    var iWidth = oLi.clientWidth - parseInt(oLi.currentStyle ? oLi.currentStyle["paddingLeft"] : getComputedStyle(oLi, null)["paddingLeft"]) * 2
+                    if (iWidth > maxWidth) maxWidth = iWidth;
+                }
+                for (i = 0; i < obj.children.length; i++) obj.children[i].style.width = maxWidth + "px";
+            }
+
+            //单击该单元格取得该Td值
+            var td = $("#menuMain").find("td");
+            td.each(function (i) {
+                td[i].onmousedown = function () {
+                    //event.button ==  //1为左键，2为右键，4为中键,0为没有按键动作，3为屏蔽右键
+                    oMenu.style.display = "none"
+                    if (event.button == 2) {
+                        event.returnValue = false;
+                        tdName = $(this).html();
+                        $(this).attr("real-value", tdName);
+                        tdHtml = $(this);
+                    }
+                };
+            });
+
+            //双击td改变值
+            $("#menuMain").find("td").dblclick(function () {
+                var objHtml= $(this);
+                var oldText = $.trim(objHtml.html());
+                var input = $("<input type='text' id='txtId' value='" + oldText + "'>");
+                $(this).html(input);
+                //var ctr = document.getElementById("txtId").createTextRange();
+                //ctr.collapse(false);//将插入点移动到当前范围的开始或结尾。
+                //ctr.select();
+
+                //编辑td屏蔽右键菜单
+                input.contextmenu(function () {
+                    return false;
+                });
+                input.trigger("focus").trigger("select");
+
+                //失去焦点时
+                input.blur(function () {
+                    var newText = $(this).val();
+                    var input_blur = $(this);
+                    //if (oldText != newText) {
+                    //}
+                    objHtml.html(newText);
+                });
+
+                //判断键盘的某健相对应的事件
+                input.keydown(function (event) {
+                    var keyValue = event.keyCode;
+                    var input_keydown = $(this);
+
+                    switch (keyValue) {
+                        case 13: // 按下回车键
+                            var newValue = input_keydown.val();
+                            objHtml.html(newValue);
+                            break;
+                        case 27: // 按下Esc键
+                            objHtml.html(oldText);
+                            break;
+                    }
+                });
+
+            });
+        };
+
+        //右击选择该单元格
+        function rightClickCell(itemValue) {
+            tdName = itemValue + "，" + tdName;
+            $(tdHtml).html(tdName);
+            selectArow(tdHtml);
+        }
+
+        //右击选择该列为
+        function rightClickColumns(itemValue) {
+            var thisTdIndex = $(tdHtml).index();
+            var thisTrIndex = $(tdHtml).parent().index();
+            $("#menuMain").find("tr").each(function () {
+                var allTrIndex = $(this).index();
+                if (allTrIndex >= thisTrIndex) {
+                    var tdObj = $(this).find("td").eq(thisTdIndex);
+                    var thisTdHtml = $(this).find("td").eq(thisTdIndex).html();
+                    thisTdHtml = itemValue + "，" + thisTdHtml;
+                    tdObj.html(thisTdHtml);
+                    selectArow(tdObj);
+                }
+            });
+
+        }
+
+        //原来的节点，假设原来的背景颜色为白色，点击变为#e6f0fc
+        function selectArow(sObject) {
+            var pre;
+            $(sObject).attr("style", "BACKGROUND-COLOR: #e6f0fc");
+            if (pre != null && pre != sObject) $(pre).attr("style", "BACKGROUND-COLOR: white");
+            pre = sObject;
+        }

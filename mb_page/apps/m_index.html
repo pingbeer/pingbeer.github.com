@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="format-detection"content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <title>我的订单</title>
+    
+   <!--自定义样式-->
+   <link href="../css/order.css" rel="stylesheet" type="text/css">
+
+  
+    <!--公共JS-->
+    <script  src="../../js/zepto.min.js"></script>
+
+ 
+    <!--自定义JS-->
+	<!--自定义JS-->
+	<!-- <script type="text/javascript" src="../js/public/params.js"></script> -->
+	<!-- <script type="text/javascript" src="../js/apps/app.initDB.js"></script>  -->
+	<!-- <script type="text/javascript" src="../js/public/app.util.js"></script> -->
+	<!-- <script type="text/javascript" src="../js/public/hnct.ui.js"></script> -->
+	<!-- <script type="text/javascript" src="../js/public/hnct.events.js"></script> -->
+	<!-- <script type="text/javascript" src="../js/public/hnct.login.js"></script> -->
+	<!-- <script type="text/javascript" src="../js/public/hnct.shopping.js"></script> -->
+	<!-- <script type="text/javascript" src="../js/public/hnct.orderlist.js"></script> -->
+		
+	
+
+
+</head>
+<body >
+	
+	<!--加载图标 开始-->
+     <!-- <div class="onLoad"></div>     -->
+     <!--加载图标 结束-->
+	
+     <!-- header -->
+    <header class="clearfix">
+      <span class="top_return" onClick="window.history.go(-1);"></span>
+      <span class="top_r_search" onClick="clickSeachBar()"></span>
+      <p>我的订单</p>
+   </header>  
+
+
+<div class="content1">
+	<div class="search-box" style="display:none">
+			<div class="search-input">
+				  <input type="text"  id="keyWord" class="subtop-search-c" onblur="if(this.value == ''){this.style.color = '#999999'; this.value = '输入你要搜索的关键字'; }" 
+						onfocus="if(this.value == '输入你要搜索的关键字'){this.value =''; this.style.color = '#333333'; }" style="color:#999;" value="输入你要搜索的关键字">
+				  <a class="q-icon"></a>
+			 </div>
+			 <div onClick="sinoOrderList.doClickSearch()" class="search-btn">搜索</div>
+		   
+	   </div>	
+	
+    <!--标签切换 开始-->  
+      <div class="clearfix allpay-con1">
+  			<div class="waitfk">
+				<span class="waitfk-txt-on"    id="menuAll" onclick="sinoOrderList.doClickList('ALL',this)">全部订单<i class="line"></i></span>   
+               <span class="waitfk-txt" id="menuUnPay" onclick="sinoOrderList.doClickList('UN_PAY',this)">待付款<i class="line"></i></span>
+               <!-- <span class="waitfk-txt"    id="menuUnRcv" onclick="sinoOrderList.doClickList('UN_RCV',this)">待收货<i class="line"></i></span> -->
+               <!-- <span class="waitfk-txt"    id="menuRefund" onclick="sinoOrderList.doClickList('REFUND',this)">退货退款</span>			              -->
+            </div>    
+ 
+      </div>
+    
+	
+	<div id="orderList">
+	 <section class="od_list_l1">
+			  <div class="odl-l-item clearfix">					
+			  <a href="#" class="rg-thumb" target="_blank"><img src="../../pc_page/b2b/images/bg82.png" width="50" height="50"></a>
+					<div class="odl-listtxt">
+					
+					   <div class="txt1 clearfix"><span class="txt1-t fl">订单编号：</span><span class="txt1-c fl">20153243TT</span></div>
+					   <div class="txt1 clearfix"><span  class="txt1-t fl">供应商：</span><span class="txt1-c fl">华为技术有限公司</span></div>
+					   <div class="txt1 clearfix"><span  class="txt1-t fl">订单时间：</span><span class="txt1-c fl">2016-01-01</span></div>
+					</div>
+				</div> 
+			 <div class="subsuc-hottj-pic">
+				  <div class="odl--picbox1" >
+					查看物流信息
+				  </div>
+				  <!--右箭头--><a class="shot_arr_right" href="../../arch/m_opnion.html" ></a>
+			   </div>
+			 <div class="subsuc-hottj-pic">
+				  <div class="odl--picbox1">
+					订单状态：<span class="te33a3d">已完成</span>
+				  </div>
+				  <div  class="allpay-btn-ok" onclick="sinoOrderList.openRefund('{poHeaderId}')">退款</div>
+			   </div>
+		  </section>     
+	 <section class="od_list_l1">
+			  <div class="odl-l-item clearfix">
+					<a href="#" class="rg-thumb" target="_blank"><img src="../../pc_page/b2b/images/bg82.png" width="50" height="50"></a>
+					<div class="odl-listtxt">
+					   <div class="txt1 clearfix"><span class="txt1-t fl">订单编号：</span><span class="txt1-c fl">20153243TT</span></div>
+					   <div class="txt1 clearfix"><span  class="txt1-t fl">供应商：</span><span class="txt1-c fl">华为技术有限公司</span></div>
+					   <div class="txt1 clearfix"><span  class="txt1-t fl">订单时间：</span><span class="txt1-c fl">2016-01-01</span></div>
+					</div>
+				</div> 
+			 <div class="subsuc-hottj-pic">
+				  <div class="odl--picbox1">
+					 查看物流信息
+				  </div>
+				  <!--右箭头--><a class="shot_arr_right" href="../../arch/m_opnion.html" ></a>
+			   </div>
+			 <div class="subsuc-hottj-pic">
+				  <div class="odl--picbox1">
+					订单状态：<span class="te33a3d">已付款</span>
+				  </div>
+				  <!--
+				  <div  class="allpay-btn-ok">再次购买</div>
+				  -->
+			   </div>
+		 </section>    
+		  <section class="od_list_l1">
+		  <div class="odl-l-item clearfix">
+          		<a href="#" class="rg-thumb" target="_blank"><img src="../../pc_page/b2b/images/bg82.png" width="50" height="50"></a>
+                <div class="odl-listtxt">
+                   <div class="txt1 clearfix"><span class="txt1-t fl">订单编号：</span><span class="txt1-c fl">20153243TT</span></div>
+                   <div class="txt1 clearfix"><span  class="txt1-t fl">&nbsp;&nbsp;供应商：</span><span class="txt1-c fl">华为技术有限公司</span></div>
+                   <div class="txt1 clearfix"><span  class="txt1-t fl">订单时间：</span><span class="txt1-c fl">2016-01-01</span></div>
+                </div>
+            </div> 
+			<div class="subsuc-hottj-pic">
+				  <div class="odl--picbox1">
+					查看物流信息
+				  </div>
+				 <!--右箭头--><a class="shot_arr_right" href="../../arch/m_opnion.html" ></a>
+			 </div>
+			 <div class="subsuc-hottj-pic">
+				  <div class="odl--picbox1">
+					订单状态：<span class="te33a3d">未付款</span>
+				  </div>
+				  <div onClick="sinoMobileUI.doOpenOrderDetailPage('{poHeaderId}','UN_PAY',true)" class="allpay-btn-ok">去付款</div>
+			 </div>
+      </section>  
+	  <section class="od_list_l1">
+			  <div class="odl-l-item clearfix">
+					<a href="#" class="rg-thumb" target="_blank"><img src="../../pc_page/b2b/images/bg82.png" width="50" height="50"></a>
+					<div class="odl-listtxt">
+					   <div class="txt1 clearfix"><span class="txt1-t fl">订单编号：</span><span class="txt1-c fl">20153243TT</span></div>
+					   <div class="txt1 clearfix"><span  class="txt1-t fl">供应商：</span><span class="txt1-c fl">华为技术有限公司</span></div>
+					   <div class="txt1 clearfix"><span  class="txt1-t fl">订单时间：</span><span class="txt1-c fl">2016-01-01</span></div>
+					</div>
+				</div> 
+			 <div class="subsuc-hottj-pic">
+				  <div class="odl--picbox1">
+					查看物流信息
+				  </div>
+				<!--右箭头--><a class="shot_arr_right" href="../../arch/m_opnion.html" ></a>
+			   </div>
+			 <div class="subsuc-hottj-pic">
+				  <div class="odl--picbox1">
+					订单状态：<span class="te33a3d">已发货</span>
+				  </div>
+				  <div data-poheaderid="{poHeaderId}" onClick="sinoShopping.doConfirmRcvFromList(this,'{poHeaderId}')" class="allpay-btn-ok">确认收货</div>
+			   </div>
+		  </section> 
+	</div>
+     <!--加载下一页 开始-->
+
+	<!--加载下一页 结束-->
+
+	<!--空数据显示-->
+	<section class=" mb1rem">
+			<div class="copyright">Copyright © 2012-2016 **版权所有</div>
+	</section>
+	
+</div>
+<input type=hidden id="type" value="">
+<textarea style="display:none">
+	
+	$(function(){
+	<!-- var sinoOrderList={}; -->
+
+		$(window).scroll( function() {
+		 if($(document).scrollTop()>=$(document).height()-$(window).height()-50){ 			
+			setTimeout("sinoOrderList.doLoadNextPage()",1000);
+		 }
+		})
+	})
+</textarea>
+<script language="javascript">
+	var clickSeachBar=function (){
+			if($(".search-box").is(":hidden")){				
+				$(".search-box").show();
+				$("#keyWord").focus();
+			}else{
+				$(".search-box").hide();
+			}
+		};
+
+
+  </script>
+</body>
+</html>

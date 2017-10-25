@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>会员中心_订单列表</title>
+<link rel="stylesheet" href="css/styles.css" />
+<script src="../../jquery.js"></script>
+
+<script src="js/superslide.js"></script>
+
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<script src="js/DD_belatedPNG.js"></script>
+<script> DD_belatedPNG.fix('.icon');</script>
+<![endif]-->
+</head>
+
+<body>
+<script type="text/javascript">
+if(window.location.toString().indexOf('pref=padindex') != -1){
+}else{
+	if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){  
+      if(window.location.href.indexOf("?mobile")<0){
+		try{
+			if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry|iPad/i.test(navigator.userAgent)){
+			//智能手机
+				window.location.href="../../mb_page/apps/m_index.html";
+			}else{
+			// 简单版
+				window.location.href=""
+			}
+		}catch(e){}
+	}
+	}else{
+				
+	}
+}
+</script>
+<!--header start-->
+<header class="header">
+	<div class="topbar">
+    	<div class="inner">
+            <div class="welcome fl"><p></p><em class="icon icon-today"></em><p>今天是2015年12月04日 星期四 15:30:30</p></div>
+            <div class="topmenu fr">
+            	
+                <span class="mobile-box">
+                    <a href="#" class="icon icon-mobile">手机逛<em></em></a>
+                    <div class="mobile-ewm"><img src="images/ewm.png"></div>
+                </span>
+				<span class="topuser">您好,XXX先生/女士</span>
+                <!-- <span><a href="#" class="icon icon-contact">联系我们</a></span> -->
+            </div>
+        </div>
+    </div>
+	<div class="wrapper">
+    	<div class="logo fl"><a href="#"><img src="images/bg82.png"/> </a></div>
+        <div class="logo-ms fl"><img src="images/bg82.png"/> </div>
+		<div class="top-search fl"><input type="text" class="input" placeholder="请输入查询关键词"><button class="button tc f14 bold yh">搜 索</button><span>热门搜索：<a href="#">小米</a></span></div>
+        <div class="top-cart fr">
+        	<!-- <span class="icon-dgpt"><a href="#">我的订购平台</a></span> -->
+        	<span class="icon-gwc"><a href="#">我的购物车</a><i class="icon icon-cart">0</i></span>
+        </div>
+    </div>
+</header><!--header end-->
+<nav class="nav wrap">
+	<div class="inner">
+    	<!-- <div class="nav-all f16 yh bold fl"><a href="#" class="white"></a></div> -->
+    	<div class="nav-box f16 yh bold fr"><a href="#" class="white">首页</a><a href="#" class="white">会员中心<i class="icon"></i></a></div>
+	</div>
+</nav>
+<div class="clearfix"></div>
+<!--main start-->
+<section class="inner mt20">
+    <div class="user-menu fl">
+    	<h2>我的订购平台</h2>
+    	<div class="menu-box menu-title active-title">我的订单</div>
+        <div class="menu-main" style="display:block">
+        	<ul>
+                <li class="current"><a href="#">我的订单</a></li>
+                <li><a href="#">我的预购订单</a></li>
+                
+            </ul>
+        </div>
+    
+    	
+    	<div class="menu-box last-title"><a href="#">我的收藏</a></div>
+ 
+    </div>
+    
+    <div class="user-main fr">
+    
+    	<div class="user-tabs f14 bold">
+        	<ul>
+            	<li class="current"><a href="#">全部订单</a></li>
+            	<li><a href="#">待付款<i class="yh">2</i></a></li>
+            	</ul>
+            <div class="order-search"><input type="text" class="input" placeholder="商品名称/订单号"><button class="button">查询</button></div>
+        </div>
+        <div class="clearfix"></div>
+        
+    	<div class="user-wrap user-jxc user-jxc2 mt">
+        	<dl>
+        		<dd>商品订购类型</dd>
+        		<dd>平均单价</dd>
+        		<dd>数量</dd>
+        		<dd>实付款(元)</dd>
+            </dl>
+        	<ul>
+        		<li>手机配件</li>
+        		<li class="yh">￥980.00</li>
+        		<li class="yh">567</li>
+        		<li class="yh">￥8989.00</li>
+            </ul>
+        </div>
+        
+    	<div class="user-order-title-goods user-order-title-list bold">
+        	<div class="user-order-filter-wrap">
+                <div class="user-order-filter">
+                    <dl>
+                        <dd>
+                            <h3><a href="#">近三个月订单<i></i></a></h3>
+                            <ul>
+                                <li><a href="#">近一年订单</a></li>
+                                <li><a href="#">近两年订单</a></li>
+                                <li><a href="#">全部订单</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        	<ul>
+        		<li class="w1">商品</li>
+        		<li class="w2">单价（元）</li>
+        		<li class="w3">数量</li>
+        		<li class="w4">实付款（元）</li>
+        		<li class="w5">状态</li>
+        		<li class="w6">交易操作</li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+        
+        <!-- user-order-list -->
+    	<div class="user-order-list mt5">
+            <div class="user-order-head">
+                <span class="order-no">订单号：<em>414473115813956</em></span><span class="order-time">2015-11-12 14:59:41</span><span class="seller"><a href="#" class="blue">小米官方旗舰店</a></span><span class="seller-icon"><img src="images/ico_qq.jpg"></span><span class="seller-tel">13838003800</span>
+            </div>
+            <div class="user-order-item">
+            	<table border="0" cellpadding="0" cellspacing="1">
+                	<tr>
+                    	<td width="600">
+                            <div class="col-goods fl">
+                                <ul>
+                                    <li class="row-goods">
+                                        <a href="#" class="rg-thumb" target="_blank"><img src="images/bg82.png" width="50" height="50"/></a>
+                                        <div class="rg-detail"><a target="_blank" href="#">三星（SAMSUNG）Galaxy S6 G9200 4G手机（铂光金）32G版</a></div>
+                                    </li>
+                                    <li class="row-price tc"><span class="yh"><small>￥</small>500</span></li>
+                                    <li class="row-num tc"><span class="yh">5</span></li>
+                                </ul>
+                                <ul>
+                                    <li class="row-goods">
+                                        <a href="#" class="rg-thumb" target="_blank"><img src="images/bg82.png" width="50" height="50"/></a>
+                                        <div class="rg-detail"><a target="_blank" href="#">三星（SAMSUNG）Galaxy S6 G9200</a><p class="gray">参加活动：赠送礼品</p></div>
+                                    </li>
+                                    <li class="row-price tc"><span class="yh"><small>￥</small>500</span></li>
+                                    <li class="row-num tc"><span class="yh">5</span></li>
+                                </ul>
+                            </div>
+                        </td>
+                    	<td class="tc" width="140" valign="middle"><span class="yh"><small>￥</small>500</span><p>在线支付</p></td>
+                    	<td class="tc col-status" width="100" valign="middle">
+                            <p><b class="orange">等待付款</b></p>
+                            <p><a href="#" target="_blank">跟踪</a></p>
+                            <div class="gzbox">
+                                <ul>
+                                    <li>2015-08-09 00:28:31<br>您提交了订单，请等待系统确认</li>
+                                    <li>2015-08-09 11:02:56<br>您的订单已经打印完毕</li>
+                                    <li>2015-08-09 11:43:35<br>您的订单已打包完毕</li>
+                                    <li>2015-08-09 19:19:10<br>已完成配送，感谢您在商城购物，欢迎您再次光临！</li>
+                                </ul>
+                            </div>
+                        </td>
+                    	<td class="tc" width="154" valign="middle">
+                            <p><a class="btn-link white" href="#">去付款</a></p>
+                            <p><a href="#" class="blue">订单详情</a></p>
+                            <p><a href="#" class="blue">取消订单</a></p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <!-- user-order-list end -->
+        
+        <!-- user-order-list -->
+    	<div class="user-order-list mt5">
+            <div class="user-order-head">
+                <span class="order-no">订单号：<em>414473115813956</em></span><span class="order-time">2015-11-12 14:59:41</span><span class="seller"><a href="#" class="blue">小米官方旗舰店</a></span><span class="seller-icon"><img src="images/ico_qq.jpg"></span><span class="seller-tel">13838003800</span>
+            </div>
+            <div class="user-order-item">
+            	<table border="0" cellpadding="0" cellspacing="1">
+                	<tr>
+                    	<td width="600">
+                            <div class="col-goods fl">
+                                <ul>
+                                    <li class="row-goods">
+                                        <a href="#" class="rg-thumb" target="_blank"><img src="images/bg82.png" width="50" height="50"/></a>
+                                        <div class="rg-detail"><a target="_blank" href="#">三星（SAMSUNG）Galaxy S6 G9200 4G手机（铂光金）32G版</a></div>
+                                    </li>
+                                    <li class="row-price tc"><span class="yh"><small>￥</small>500</span></li>
+                                    <li class="row-num tc"><span class="yh">5</span></li>
+                                </ul>
+                            </div>
+                        </td>
+                    	<td class="tc" width="140" valign="middle"><span class="yh"><small>￥</small>500</span><p>在线支付</p></td>
+                    	<td class="tc col-status" width="100" valign="middle">
+                            <p><b class="orange">等待付款</b></p>
+                            
+                        </td>
+                    	<td class="tc" width="154" valign="middle">
+                            <p><a class="btn-link white" href="#">去付款</a></p>
+                            <p><a href="#" class="blue">订单详情</a></p>
+                            <p><a href="#" class="blue">取消订单</a></p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <!-- user-order-list end -->
+        
+      
+        <div class="clearfix"></div>
+        <!-- user-order-list end -->
+        
+      
+        <!-- user-order-list end -->
+        
+        <div class="clearfix mt20">
+            <ul class="page-inner fr">
+                <span class="pagenum">总10页</span>
+                <span class="previous"><a href="javascript:void()" class="active"><i class="corner"></i>上一页</a></span>
+                <span class="active">1</span>
+                <li><a href="?page=2">2</a></li>
+                <li><a href="?page=3">3</a></li>
+                <li><a href="?page=4">4</a></li>
+                <li><a href="?page=5">5</a></li>
+                <li><a href="?page=6">6</a></li>
+                <li><a href="?page=7">7</a></li>
+                <span class="next"><a href="?page=8"><i class="corner"></i>下一页</a></span>
+                <span class="pagenum">跳转至第<input type="text" class="numpage">页 <input type="button" class="pagebtn" value="确定"></span>
+            </ul>
+        </div>
+        
+    </div>
+</section>
+<!--main end-->
+<div class="blank20"></div>
+<!--footer start-->
+<footer class="footer mt">
+    <div class="inner">
+    	<div class="foot-item ml50 fl">
+        	<h2 class="f14 yh">购物指南</h2>
+            <ul>
+            	<li><a href="#">购物流程</a></li>
+            	<li><a href="#">发票说明</a></li>
+            	<li><a href="#">联系客服</a></li>
+            	<li><a href="#">注册协议</a></li>
+            </ul>
+        </div>
+    	<div class="foot-item fl">
+        	<h2 class="f14 yh">支付方式</h2>
+            <ul>
+            	<li><a href="#">在线支付</a></li>
+            	<li><a href="#">快捷支付</a></li>
+            	<li><a href="#">货到付款</a></li>
+            </ul>
+        </div>
+    	<div class="foot-item fl">
+        	<h2 class="f14 yh">配送方式</h2>
+            <ul>
+            	<li><a href="#">快递配送</a></li>
+            	<li><a href="#">上门自提</a></li>
+            </ul>
+        </div>
+    	<div class="foot-item fl">
+        	<h2 class="f14 yh">售后服务</h2>
+            <ul>
+            	<li><a href="#">退换货政策</a></li>
+            	<li><a href="#">退换货流程</a></li>
+            	<li><a href="#">退款说明</a></li>
+            	<li><a href="#">退款申请</a></li>
+            </ul>
+        </div>
+
+    
+    	<div class="foot-service fr">
+        	<h2 class="f14 yh">服务热线</h2>
+            <h3 class="f16 yh">400-1234-5678</h3>
+            <p>为了您的问题能够快速解决，建议您先与商家联系，联系方式见商铺页。</p>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</footer>
+
+<!--footer end-->
+
+<!--sidebar begin-->
+<div class="rbar-min">
+    
+    <ul class="rbar-link">
+        <li><a href="#"><span><i class="icoskin cartsIco"></i><p class="span">购物车</p></span></a></li>
+        <li><h1><i class="corner"></i>我的钱包</h1><a href="#"><i class="icoskin myzcIco"></i></a></li>
+        <li><h1><i class="corner"></i>我的收藏</h1><a href="#"><i class="icoskin scicIco"></i></a></li>
+        <li><h1><i class="corner"></i>我的足迹</h1><a href="#"><i class="icoskin hisIco"></i></a></li>
+        <li><h1><i class="corner"></i>个人中心</h1><a href="#"><i class="icoskin userIco"></i></a></li>
+    </ul>
+    <ul class="rbar-linkb">
+    	<li><a href="#"><i class="icoskin topgoIco"></i></a></li>
+    </ul>
+</div><!--sidebar end-->
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".menu-title").click(function(){
+			$(this).next("div").slideToggle("slow").siblings(".menu-main:visible").slideUp("slow");
+			$(this).toggleClass("active-title");
+			$(this).siblings(".active-title").removeClass("active-title");
+		});
+	});
+	$(".user-order-filter").slide({ type:"menu",  titCell:"dd", targetCell:"ul", delayTime:0,defaultPlay:false,returnDefault:true });
+	$(".user-order-filter-wrap .user-order-filter a").mouseleave(function() {
+		$(this).parent().parent().removeClass("on");
+	})
+	$(".user-order-filter-wrap .user-order-filter ul li a").mouseover(function(){
+		$(this).parent().parent().parent().addClass("on");
+	});
+	
+	$(".col-status a").mouseover(function(){
+		$(this).parent().parent().find(".gzbox").fadeIn(10);
+	});
+	$(".col-status a").mouseleave(function() {
+		$(this).parent().parent().find(".gzbox").fadeOut(10);
+	})
+
+</script>
+</body>
+</html>

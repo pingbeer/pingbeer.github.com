@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>管理系统</title>
+<meta content="" name="keywords">
+<meta content="" name="description">
+<meta content="true" name="HandheldFriendly">
+<meta content="width" name="MobileOptimized">
+<meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta content="a215s" name="data-spm">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="stylesheet" href="../css/css.css">
+<script src="../jquery.js"></script>
+<script type="text/javascript" src="home/template/js/amcharts.js"></script>
+<script src="../js/mobile.js"></script>
+</head>
+
+<body>
+<div data-role="page" data-theme="c">
+<header data-role="header" data-position="fixed" data-tap-toggle="false">
+<h1>管理面板</h1>
+
+</header>
+<!-- <section class="ui-header">
+<article class="ico ui-input-search">
+<form  data-ajax="false">
+<input type="search" name="search" id="search" value="" placeholder="请输入相关搜索内容" data-role="none">
+</form>
+</article>
+</section> -->
+<nav data-role="navbar" role="navigation">
+                        <ul>
+                            
+                            <li><a class="ui-btn-active" data-ajax="false">待办任务（18）</a></li>
+                             <li><a data-ajax="false">已办任务</a></li>
+                        </ul>
+                    </nav>
+                  <!--   <section class="cloumn01">
+                   
+                    	<ul>
+                    		<li class="on"><a data-ajax="false"><span class="icoskin ico01"></span>采购寻源待办</a></li>
+                    		<li class="on"><a data-ajax="false" onclick="changeBanel1();return false;"><span class="icoskin ico01"></span>分析待办1</a></li>
+                    		<li><a data-ajax="false" onclick="changeBanel();return false;"><span class="icoskin ico02"></span>分析待办2</a></li>
+                    		
+                    		<li><a data-ajax="false"><span class="icoskin ico05"></span>库存管理待办</a></li>
+                    		<li><a data-ajax="false"><span class="icoskin ico06"></span>供应商管理待办</a></li>
+                    		<li><a data-ajax="false"><span class="icoskin ico07"></span>质量管理待办</a></li>
+                    	</ul>
+                    </section> -->
+                   <script>
+					$(document).ready(function(){
+						
+    $('.ui-navbar + .cloumn01 > ul > li').on('click', function() {
+     $(this).addClass('on').siblings().removeClass("on");
+})
+})
+
+</script>
+<section class="cloumn01">
+                   
+                    	<ul data-role="listview" id="listView">
+                    		<li><a data-ajax="false"><span class="icoskin ico01"></span><h1>XXX设计院XXX设计院系统更新飞龙大楼</h1><p>2011-11-11 15：30：15</p><span>待处理</span></a></li>
+                            <li><a data-ajax="false"><span class="icoskin ico01"></span><h1>XXX设计院XXX设计院系统更新飞龙大楼</h1><p>2011-11-11 15：30：15</p><span>待处理</span></a></li>
+                            <li><a data-ajax="false"><span class="icoskin ico01"></span><h1>XXX设计院XXX设计院系统更新飞龙大楼</h1><p>2011-11-11 15：30：15</p><span>待处理</span></a></li>
+                            <li><a data-ajax="false"><span class="icoskin ico01"></span><h1>XXX设计院XXX设计院系统更新飞龙大楼</h1><p>2011-11-11 15：30：15</p><span>待处理</span></a></li>
+                            <li><a data-ajax="false"><span class="icoskin ico01"></span><h1>XXX设计院XXX设计院系统更新飞龙大楼</h1><p>2011-11-11 15：30：15</p><span>待处理</span></a></li>
+                            </ul>
+						  <div id="ebill-property" style="width: 100%; height: 30rem;" class="ebill-section fn-clear">
+        </div>	
+							
+							
+                            </section>
+                        <footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+    <nav data-role="navbar" role="navigation">
+                        <ul>
+                            
+                            <!-- <li><a data-icon="indexico"  data-ajax="false"><span class="iconskin"></span>首页</a></li> -->
+                             <li><a data-icon="workico" class="ui-btn-active" data-ajax="false"><span class="iconskin"></span>工作单</a></li>
+                             <!-- <li><a data-icon="pushico" data-ajax="false"><span class="iconskin"></span>通知</a></li> -->
+                             <li><a data-icon="myico"  data-ajax="false"><span class="iconskin"></span>我的</a></li>
+                        </ul>
+                    </nav>
+                    </footer>
+ 
+
+</div> 
+<script type="text/javascript">
+function changeBanel(){
+$("#listView").hide();
+$("#ebill-property").show();
+}
+function changeBanel1(){
+$("#listView").show();
+$("#ebill-property").hide();
+}
+        var chart;
+
+        var chartData = [{
+            country: "USA",
+            visits: 4025,
+            color: "#FF0F00"
+        }, {
+            country: "China",
+            visits: 1882,
+            color: "#FF6600"
+        }, {
+            country: "Japan",
+            visits: 1809,
+            color: "#FF9E01"
+        }, {
+            country: "Germany",
+            visits: 1322,
+            color: "#FCD202"
+        }, {
+            country: "UK",
+            visits: 1122,
+            color: "#F8FF01"
+        }, {
+            country: "France",
+            visits: 1114,
+            color: "#B0DE09"
+        }, {
+            country: "India",
+            visits: 984,
+            color: "#04D215"
+        }, {
+            country: "Spain",
+            visits: 711,
+            color: "#0D8ECF"
+        }, {
+            country: "Netherlands",
+            visits: 665,
+            color: "#0D52D1"
+        }, {
+            country: "Russia",
+            visits: 580,
+            color: "#2A0CD0"
+        }, {
+            country: "South Korea",
+            visits: 443,
+            color: "#8A0CCF"
+        }, {
+            country: "Canada",
+            visits: 441,
+            color: "#CD0D74"
+        }, {
+            country: "Brazil",
+            visits: 395,
+            color: "#754DEB"
+        }, {
+            country: "Italy",
+            visits: 386,
+            color: "#DDDDDD"
+        }, {
+            country: "Australia",
+            visits: 384,
+            color: "#999999"
+        }, {
+            country: "Taiwan",
+            visits: 338,
+            color: "#333333"
+        }, {
+            country: "Poland",
+            visits: 328,
+            color: "#000000"
+        }];
+
+
+        AmCharts.ready(function () {
+            // SERIAL CHART
+            chart = new AmCharts.AmSerialChart();
+            chart.dataProvider = chartData;
+            chart.categoryField = "country";
+            // the following two lines makes chart 3D
+            chart.depth3D = 20;
+            chart.angle = 30;
+
+            // AXES
+            // category
+            var categoryAxis = chart.categoryAxis;
+            categoryAxis.labelRotation = 90;
+            categoryAxis.dashLength = 5;
+            categoryAxis.gridPosition = "start";
+
+            // value
+            var valueAxis = new AmCharts.ValueAxis();
+            valueAxis.title = "Visitors";
+            valueAxis.dashLength = 5;
+            chart.addValueAxis(valueAxis);
+
+            // GRAPH
+            var graph = new AmCharts.AmGraph();
+            graph.valueField = "visits";
+            graph.colorField = "color";
+            graph.balloonText = "[[category]]: [[value]]";
+            graph.type = "column";
+            graph.lineAlpha = 0;
+            graph.fillAlphas = 1;
+            chart.addGraph(graph);
+
+            // WRITE
+            chart.write("ebill-property");
+			$("#ebill-property").hide();
+        });
+    </script>
+  
+</body>
+</html>

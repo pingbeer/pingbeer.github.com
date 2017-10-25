@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>机会列表</title>
+    <meta content="chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=GBK"/>
+
+
+
+    <link rel="stylesheet" type="text/css" href="js/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" type="text/css" href="js/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="homepage.css" />
+    <link rel="stylesheet" type="text/css" href="detail.css" />
+
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="js/input_meihua.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/locale/easyui-lang-zh_CN.js"></script>
+
+    <!--<script src="js/PIE_IE9.js"></script>
+    <script>
+        $(function() {
+            if (window.PIE) {
+                $('.editContent input').each(function() {
+                    PIE.attach(this);
+                });
+            }
+        });
+    </script>-->
+
+    <!--[if lt IE 9]>
+
+
+
+    <script src="js/nwmatcher-1.2.5.js"></script>
+    <script src="js/selectivizr-min.js"></script>
+
+    <![endif]-->
+    <script>
+        $(function(){
+            $(".fake_slt").on("click",function(){
+                if($(this).hasClass("open")){
+                    $(this).removeClass("open");
+                } else{
+                    $(".fake_slt").removeClass("open");
+                    $(this).addClass("open");
+                }
+
+
+
+            })   ;
+            $(".fake_slt_menu li").on("click",function(){
+                $(this).closest(".fake_slt").find("input[type='hidden']").val($(this).find("a").attr("rel"));
+                $(this).closest(".fake_slt").find("span").text($(this).find("a").text());
+
+            })
+        })
+    </script>
+</head>
+<body class="easyui-layout" fit="true" title="机会成本" style="overflow: hidden;">
+
+<div data-options="region:'north'" style="height:35px;overflow: hidden">
+    <div class="portlet-title">
+
+        <div class="caption">
+            <i class="fa fa-globe"></i>机会列表
+        </div>
+
+        <div class="tools">
+         <!--    <a class="cancel" href="javascript:;">
+            </a>
+ -->
+        </div>
+    </div>
+
+
+
+
+</div>
+<div data-options="region:'center'" style="padding:20px;background:#eee;overflow: hidden;">
+    <div class="editWin" stlyle="width:900px;">
+        <div class="editContent">
+            <form action="" method="POST">
+                <table id="dataHead" cellspacing="1" cellpadding="0" border="0">
+                    <colgroup>
+                        <col width="9%" />
+                        <col width="44%" />
+                        <col width="9%" />
+                        <col width="44%" />
+                    </colgroup>
+                    <tr>
+                        <th >公司简称</th>
+                        <td>
+
+                            <div class="fake_slt">
+                                <div class="questionContainer">
+                                    <span class="fake_slt_txt questionText" rel="13">请选择公司简称</span>
+                                    <!--<input class="fake_slt_txt questionText" rel="13" type="text" value="请选择公司简称"  />-->
+                                    <input  type="hidden" value="" name="hidquestion"  />
+                                    <a class="fake_slt_a" href="javascript:;"><i class="i_triangle_d"></i></a>
+                                </div>
+                                <ul class="fake_slt_menu popList questionListContainer" >
+                                    <li><a rel="10086" href="javascript:;">请选择</a></li>
+                                    <li><a rel="10" href="javascript:;">中石油</a></li>
+                                    <li><a rel="11" href="javascript:;">XXX地产</a></li>
+                                </ul>
+                            </div>
+
+                        </td>
+                        <th>公司全称</th>
+                        <td>
+                            <div class="fake_slt">
+                                <div class="questionContainer">
+                                    <span class="fake_slt_txt questionText" rel="13">请选择公司全称</span>
+                                    <!--<input class="fake_slt_txt questionText" rel="13" type="text" value="请选择公司简称"  />-->
+                                    <input  type="hidden" value="" name="hidquestion"  />
+                                    <a class="fake_slt_a" href="javascript:;"><i class="i_triangle_d"></i></a>
+                                </div>
+                                <ul class="fake_slt_menu popList questionListContainer" >
+                                    <li><a rel="10086" href="javascript:;">请选择</a></li>
+                                    <li><a rel="10" href="javascript:;">中石油</a></li>
+                                    <li><a rel="11" href="javascript:;">XXX地产</a></li>
+                                </ul>
+                            </div>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>项目名称</th>
+                        <td><input type="text" name="projectName1"  class="finput1"></td>
+                        <th>楼盘名称</th>
+                        <td><input type="text" name="projectName2"  class="finput1"></td>
+                    </tr>
+                    <tr>
+                        <th>机会跟进状态</th>
+                        <td>
+
+                            <div class="fake_slt">
+                                <div class="questionContainer">
+                                    <span class="fake_slt_txt questionText" rel="13">请选择机会跟进状态</span>
+                                    <!--<input class="fake_slt_txt questionText" rel="13" type="text" value="请选择机会跟进状态"  />-->
+                                    <input  type="hidden" value="" name="hidquestion"  />
+                                    <a class="fake_slt_a" href="javascript:;"><i class="i_triangle_d"></i></a>
+                                </div>
+                                <ul class="fake_slt_menu popList questionListContainer" >
+                                    <li><a rel="10086" href="javascript:;">请选择</a></li>
+                                    <li><a rel="10" href="javascript:;">跟进中</a></li>
+                                    <li><a rel="11" href="javascript:;">暂缓</a></li>
+                                    <li><a rel="11" href="javascript:;">跟进后终止</a></li>
+                                    <li><a rel="11" href="javascript:;">谢绝</a></li>
+                                </ul>
+                            </div>
+
+                        </td>
+                        <th>重要级别</th>
+                        <td>
+
+
+                            <div class="fake_slt">
+                                <div class="questionContainer">
+                                    <span class="fake_slt_txt questionText" rel="13">请选择重要级别</span>
+                                    <!--<input class="fake_slt_txt questionText" rel="13" type="text" value="请选择重要级别"  />-->
+                                    <input  type="hidden" value="" name="hidquestion"  />
+                                    <a class="fake_slt_a" href="javascript:;"><i class="i_triangle_d"></i></a>
+                                </div>
+                                <ul class="fake_slt_menu popList questionListContainer" >
+                                    <li><a rel="10086" href="javascript:;">请选择</a></li>
+                                    <li><a rel="10" href="javascript:;">重要</a></li>
+                                    <li><a rel="11" href="javascript:;">较重要</a></li>
+                                    <li><a rel="11" href="javascript:;">一般</a></li>
+                                </ul>
+                            </div>
+
+                        </td>
+                    </tr>
+                 <!--    <tr>
+                        <th>紧要级别</th>
+                        <td>
+
+                            <div class="fake_slt">
+                                <div class="questionContainer">
+                                    <span class="fake_slt_txt questionText" rel="13">请选择紧要级别</span>
+                                  
+                                    <input  type="hidden" value="" name="hidquestion"  />
+                                    <a class="fake_slt_a" href="javascript:;"><i class="i_triangle_d"></i></a>
+                                </div>
+                                <ul class="fake_slt_menu popList questionListContainer" >
+                                    <li><a rel="10086" href="javascript:;">请选择</a></li>
+                                    <li><a rel="10" href="javascript:;">紧急</a></li>
+                                    <li><a rel="11" href="javascript:;">较紧急</a></li>
+                                    <li><a rel="11" href="javascript:;">一般</a></li>
+                                </ul>
+                            </div>
+
+
+                        </td>
+                        <th>          成交可能性</th>
+                        <td>
+
+                            <div class="fake_slt">
+                                <div class="questionContainer">
+                                    <span class="fake_slt_txt questionText" rel="13">请选择成交可能性</span>
+                                   
+                                    <input  type="hidden" value="" name="hidquestion"  />
+                                    <a class="fake_slt_a" href="javascript:;"><i class="i_triangle_d"></i></a>
+                                </div>
+                                <ul class="fake_slt_menu popList questionListContainer" >
+                                    <li><a rel="10086" href="javascript:;">请选择</a></li>
+                                    <li><a rel="10" href="javascript:;">高</a></li>
+                                    <li><a rel="11" href="javascript:;">较高</a></li>
+                                    <li><a rel="11" href="javascript:;">一般</a></li>
+                                </ul>
+                            </div>
+
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <th>承接工作内容</th>
+                        <td>
+						<label class="radioclass"><input type="radio" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">全过程</span>
+                        </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">全过程</span>
+                        </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">施工图</span>
+                        </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">施工图套图</span>
+                        </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">报建方案</span>
+                        </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">策划方案</span>
+                        </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">深化方案</span>
+                        </label>     </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">景观设计</span>
+                        </label>
+						    </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">装修设计</span>
+                        </label>    </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">户型设计</span>
+                        </label>    
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">总图</span>
+                        </label>    </label>
+						<label class="radioclass"><input type="radio" name="paylist"><span class="pay_list_c1"></span>
+						<span class="radioText">立面</span>
+                        </label>
+                    
+                        </td>
+                        <th>产品类型</th>
+                        <td>
+						<label class="label_check" for="checkbox-01" style="display:none">
+						<input name="sample-checkbox-01" id="checkbox-01" value="1" type="checkbox" checked /> I agree to the terms &#38; conditions.</label>
+          
+       <label class="label_radio" for="radio-01" style="display:none">
+	   <input name="sample-radio" id="radio-01" value="1" type="radio" checked /> This is option A...</label>
+       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">多层住宅</span>
+                        </label>
+               <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">花园洋房</span>
+                        </label>
+						       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">多层住宅</span>
+                        </label>
+						       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">别墅</span>
+                        </label>
+						       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">高层住宅</span>
+                        </label>       <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">办公</span>
+                        </label>
+						   <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">商业</span>
+                        </label>   <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">酒店</span>
+                        </label>
+						   <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">学校</span>
+                        </label>   <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">医院</span>
+                        </label>   <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">文化建筑</span>
+                        </label>   <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">体育建筑</span>
+                        </label> <label class="checkboxclass"><input type="checkbox" checked name="paylist"><span class="pay_list_c1"></span>
+						<span class="checkboxText">其它公建</span>
+                        </label>
+               
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><span lang="zh-cn">建筑规模</span></th>
+                        <td>
+                            <input type="text" name="resourceName3" class="finput1" value="" ></td>
+                        <th>预估合同规模(万元)</th>
+                        <td>
+                            <input type="text" name="resourceName5" class="finput1" value=""></td>
+                    </tr>
+                    <tr>
+                        <th>机会跟进纪录</th>
+                        <td colspan="3">
+                            <textarea name="textarea"  class="finput1" id="textarea" cols="45" rows="5"></textarea></td>
+                    </tr>
+
+
+                </table>
+            </form>
+
+            <div class="mb_r"><a class="big_bbtn" id="aSubmit" href="javascript:;" style="width: 260px;">保存</a></div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+

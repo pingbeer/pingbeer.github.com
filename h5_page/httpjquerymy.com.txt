@@ -1,0 +1,389 @@
+http://jquerymy.com/
+第一个例子：
+({
+	id:"en.AdLayout",
+	data:{pages:[]}, params:{remember:50, historyDelay:100},
+	init: function ($form, form) {
+		// Saved?
+		var ls = localStorage, old = ls.getItem("en.AdLayout");
+		if (old) Object.merge(form.data, JSON.parse(old));
+		// localStorage saver
+		$form.then(function(){
+			$form.on("change", function (){
+				ls.setItem("en.AdLayout", JSON.stringify($form.my("data")));
+			}.debounce(200));
+		});
+		
+		// HTML
+		$form.html('<div id="nested"></div>\
+			<div class="my-row">\
+				<input id="btn-addPage" type="button" value="Add page"/> \
+				<input id="btn-undo" type="button" value="Undo"/>\
+			</div>');
+	},
+	ui:{
+		"#nested":{
+			bind:"pages",
+			manifest:"Page",
+			list:'<div class="pagexd"></div>',
+			init: function($o) {
+				$o.sortable({handle:'h3'});
+			}
+		},
+		"#btn-addPage":function(d,v){
+			if (v!=null) {
+				this.my.insert("#nested", 1e6, {stamp:Date.now()});
+			}
+		},
+		"#btn-undo": function (d,v) {
+			if (null != v) this.my.undo();
+		}
+	},
+	
+	// Page, child form of root manifest
+	
+	Page:{ 
+		init: function ($form, data) {
+			$form.html(this.PageHTML);
+			this.Row.RowHTML = this.RowHTML;
+		},
+		data: {ads: [{name:"",vol:"s16",pos:"fl"}]},
+		ui: {
+			"#xds": { 
+				bind : "ads", 
+				recalc:"#impo",
+				init: function($o) {
+					$o.sortable({connectWith:".blocklist"})
+				},
+				manifest:"Row",
+				list:'<div сlass="cb"></div>'
+			},
+			
+			"#pagenum": function(d,v,$o){
+				return 'Page ' + (1+$o.my("index"));
+			},
+
+			"#impo": function(data) { 
+				var i, a=data.ads, html=""; 
+				if (!a || !a.length) return "";
+				for (i=0; i<a.length; i++) 
+					html+=(this.Block).assign(a[i]);
+				return html;
+			},
+
+			"#btn-addBlock": {
+				bind: function(d, v) { 
+					if (v != null) {
+						this.my.insert("#xds", {stamp:Date.now()});
+					}
+				},
+				events:"click.my"
+			},
+			
+			"#btn-removePage": {
+				bind: function (d,v) {
+					if (v!=null) this.my.remove();
+				},
+				events:"click.my"
+			}
+		},
+		
+		// Row, child form of Page
+		
+		Row:{
+			init: function ($form){ $form.html(this.RowHTML); },
+			data:{ name:"",vol:"s16", pos:"fl", type:"Gray" }, 
+			ui:{
+				"#name":"name",
+				"#vol": {bind:"vol", init:"S2"},
+				"#pos": {bind:"pos", init:"S2"},
+				"#type":{bind:"type",init:"S2"},
+				"#btn-removeRow":{
+					bind: function (d,v) {
+						if (v!=null) this.my.remove();
+					},
+					events:"click.my"
+				}
+			},
+			S2: function($o){$o.select2()}
+		},
+		
+// Main code ends here.
+// Below objs are js representations
+// of HTML skeleton and stylesheets
+		
+		PageHTML:'\
+			<h3 class="w230 dib vat"><span class="fi-list fs80 mr5"></span>\
+				<span id="pagenum"></span>\
+			</h3>\
+			<span id="btn-removePage" class="pseudolink small">Delete page</span>\
+			<div id="xds" class="cb blocklist"></div>\
+			<span id="btn-addBlock" \
+				class="pseudolink ml20 mt10 mb10 small">Add block</span>\
+			<div id="impo" class="impo"></div>',
+		Block:'\
+			<div class="{vol} {pos} {type}">\
+				<div style="padding:4px 2px 0 2px">{name}</div>\
+			</div>',
+		RowHTML:'\
+			<span class="dib fi-list dragger pr5 lh130 vam"></span> \
+			<input type="text" id="name" class="w200 mr10 mt0 fs95" \
+				placeholder="Title">\
+			<select id="vol" class="w70 mt2">\
+				<option value="s1">1/1</option>\
+				<option value="s2h">1/2h</option>\
+				<option value="s2v">1/2v</option>\
+				<option value="s4h">1/4h</option>\
+				<option value="s4v">1/4v</option>\
+				<option value="s8h">1/8h</option>\
+				<option value="s8v">1/8v</option>\
+				<option value="s16" selected="">1/16</option>\
+			</select> \
+			<select id="pos" class="w50 mt2">\
+				<option value="fl" selected="">L</option>\
+				<option value="fr">R</option>\
+			</select> \
+			<select id="type" class="w100 mt2">\
+				<option value="Gray" selected="">?</option>\
+				<option value="Blue">Editorial</option>\
+				<option value="Orange">Ad</option>\
+				<option value="Yellow">Pic</option>\
+				<option value="Green">Column</option>\
+				<option value="Violet">News</option>\
+				<option value="Pink">Headline</option>\
+			</select>\
+			<span id="btn-removeRow" class="fi-x mt1 salmon p5 lh100 fr" \
+				style="cursor:pointer"></span>'
+	}, // End of Page form
+	
+	// Stylesheet
+	style:{
+		// pages
+		" #nested": {
+			"": "padding:0px; margin:0;",
+			" .pagexd ": "position:relative;\
+					min-height: 285px; width:700px;\
+					border-bottom:1px solid rgba(35, 118, 200, 0.25);\
+					margin:0px 0 15px 0; padding: 0 0px 15px 210px;\
+					display:inline-block; vertical-align:top;"
+		},
+		// impo
+		" .impo":{
+			"":"\
+				position:absolute; \
+				left:0px; top:2px; width: 184px;\
+				height:264px; border: 1px solid rgba(35, 118, 200, 0.25);\
+				padding:7px;  overflow:hidden;\
+				background-color:rgba(255,255,255,0.8)",
+			">div":"\
+					text-align:center; position:relative; overflow:hidden;\
+					word-wrap:break-word; font-size:9pt;\
+					line-height:1.2em; margin:1px; display:block;\
+					vertical-align:middle;",
+			" .s1" : "width:166px; height:246px",
+			" .s2h": "width:166px; height:122px",
+			" .s2v": "width:82px; height:246px",
+			" .s4h": "width:166px; height:60px",
+			" .s4v": "width:82px; height:122px",
+			" .s8v": "width:40px; height:122px",
+			" .s8h": "width:82px; height:60px",
+			" .s16": "width:40px; height:60px"
+		},
+		" .dragger": "cursor:move; opacity:0.6;",
+		" .remove":
+			"margin:3px 0px -3px 0px;\
+			opacity:0.25;\
+			cursor:pointer;\
+			transition:opacity 0.3s;",
+
+		" .remove:hover, .dragger:hover":"opacity:1",
+		" .pagexd h3":"margin-bottom:10px;",
+		
+		" .Pink":"background-color:rgb(255, 212, 212)",
+		" .Blue":"background-color:rgb(212, 245, 255)",
+		" .Green":"background-color:rgb(215, 234, 150)",
+		" .Yellow":"background-color:rgb(255, 244, 136)",
+		" .Orange":"background-color:rgb(255, 203, 128)",
+		" .Violet":"background-color:rgb(233, 211, 248)",
+		" .Gray":"background-color:#ddd"
+	}
+	
+	
+	
+	
+	第二个列子
+	
+	({
+	//Initial data 
+	data:{
+		sort:"Age ↓", search:"Airplane crash", range:[], result:[]
+	},
+	
+	require:[{
+		"this.List":{
+			url:"/s/rockstar-deaths.json", dataType:"json"
+		}
+	}],
+
+	// Inits form
+	init: function ($form, form){
+		var that = this, 
+				d = form.data,
+				list;
+		// Build HTML
+		$form
+		.html(that.HTML.join(""))
+		.on("click", "x", function ($evt) {
+			$form.find("#search").val($(this).text()).blur();
+		});
+		
+		// index data
+		list = that.List.map(function(e){
+			e.index=[e.name, e.surname, e.band, e.why, e.age].join(" "); 
+			return e;
+		});
+
+		// Age range
+		d.range = that.Ages = [list.min("age").age, list.max("age").age];
+	},
+
+	//UI bindings
+	ui:{
+		"#sort":{
+			bind:"sort", 
+			init: function ($node) { 
+				//Initializing $.tags plugin
+				$node.tags({tags:[["Age ↑","Name","Band","Reason"]],empty:{"Age ↓":"Age ↓"}})
+			}
+		},
+		"#range":{
+			bind:"range",  
+			init: function ($node, form) {
+				$node.slider({ 
+					//Initializing jQuery UI slider plugin
+					range: true, min: this.Ages[0], max: this.Ages[1],
+					values:this.Ages
+				});
+			}
+		},
+		"#search":{
+			bind:"search",  
+			//conditional formatting, fills control with yellow
+			css:{"my-search": /^[^\s][^\s]+/}
+		},
+		"#result":{
+			delay:50,
+
+			//Controls to watch
+			watch:"#search,#range,#sort",
+
+			// Function that sorts, filters and renders results,
+			// returns summary string for div#result.
+			bind: function (data, value, $node) {
+				var that = this,
+						$tbody = $node.my("find","tbody"), 
+						range = data.range, 
+						search = data.search.compact();
+				//Filtering by age
+				var a = this.List.filter(function(e){
+					return e.age<=range[1] && e.age>=range[0]
+				});
+				//Applying search if any
+				if (search.length) {
+					var re = new RegExp(RegExp.escape(search),"i");
+					a = a.filter(function(e){return re.test(e.index)});
+				};
+				//Sorting and rendering table
+				$tbody.html(
+					a.sort(this.Sorters[data.sort])
+					.reduce(
+						function(trail,e){
+							return trail+that.Row.assign(e)
+						},
+						""
+					)
+				);
+				data.result=a;
+
+				//Compositing info line
+				return a.length?"Found "
+				+a.length+" early deaths, ages "+data.range.join("–")
+				+(data.search?", all about <i>"+data.search+"</i>":"")
+				+". It is "+(100*a.length/that.List.length).round(1)
+				+"% of the list.":"No match";
+			}
+		}
+	},
+	
+	// Sorter fuctions
+	Sorters:{
+		"Age ↓": function(x,y){return x.age-y.age},
+		"Age ↑": function(x,y){return y.age-x.age},
+		"Band":  function(x,y){
+			return x.band==""?10:y.band==""?-10:x.band<y.band?-1:x.band==y.band?0:1
+		},
+		"Reason":function(x,y){return x.why<y.why?-1:x.why==y.why?0:1},
+		"Name":  function(x,y){
+			return (x.name||x.surname)<(y.name||y.surname).trim()?-1:x.name==y.name?0:1
+		}
+  },
+	
+	// HTML skeleton
+	HTML:[
+		'<h3>Rock star death stats</h3>',
+		'<div class="nav">',
+			'<span class="group">Sort <span id="sort"></span></span> ',
+			'<span class="group">Age <span id="range"></span></span>',
+			'<div class="searchgroup">',
+			'<input type="text" id="search" class="ui-search" value=""/>',
+			'<img src="/ico/cross-small.png" class="ui-search-clear" '
+				+'onclick="$(this).siblings(\'input:eq(0)\').val(\'\').blur()"/>',
+			'</div>',
+		'</div>',
+		'<div id="result"></div>',
+		'<div id="table">',
+			'<table width=700 border=0>',
+				'<tbody></tbody>',
+			'</table>',
+		'</div>'
+	],
+	// Row template
+	Row:'<tr><td width=200><x>{name}</x> <x>{surname}</x></td>'
+		+'<td width=260><x>{band}</x></td>'
+		+'<td width=50><x>{age}</x></td><td width=190><x>{why}</x></td></tr>',
+	
+	// stylesheet
+	style:{
+		"":"background-color:white;",
+		' h3':'border-bottom: 1px solid rgba(35, 118, 200, 0.25);'
+			+'margin:0 0 10px 0;padding:0 0 15px 0;',
+		".nav":"padding-top:8px; height:40px; border:1px dotted #aaa; "
+			+"border-width:1px 0 1px 0",
+		" .nav .group ":"margin-right:10px",
+		" #range":"width:150px; display:inline-block; margin-left: 15px;font-size:1em;",
+		" .searchgroup":"width:150px; display:inline-block; float:right;",
+		" .searchgroup input":"margin:0; width:150px; font-size:0.9em;line-height:1.2em",
+		" #result":"margin:10px 0 0 0; padding-bottom:10px; "
+			+"border-bottom:1px dotted #aaa;",
+		" #sort":"font-size:95%;margin-left:3px;",
+		" #table":{
+			"":"min-height:350px;max-height:350px;overflow-y:scroll;overflow-y:overlay; " 
+				+"border-bottom:1px solid rgba(35, 118, 200, 0.25); overflow-x:hidden;",
+			" table tr:nth-child(2n)":"background-color:#f0f5f9",
+			" table td ":"padding:5px 0 6px 2px; line-height:1em;",
+			" tr x ":"cursor:pointer; transition:border-bottom-color 0.3s, color 0.3s; "
+				+"transition:border-bottom-color 0.3s, color 0.3s; " 
+				+"border-bottom:1px solid rgba(84,129,160,0);"
+				+"padding-bottom:0;",
+			" tr:hover x":"color:#5481A0;border-bottom:1px solid rgba(84,129,160,0.8)",
+			" tr x:hover":"color:#A3293D;border-bottom-color:rgba(163,41,61,0.8)"
+		},
+		" .ui-search-clear":"margin: 3px 0 -3px -21px!important;"
+	},
+	error:"Something went wrong.<br>{message}",
+	params:{delay:20}
+})
+
+
+
+

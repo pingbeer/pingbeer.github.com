@@ -1,0 +1,750 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title id="head-title" isVote="0" isLike="0">邀请函</title>
+    <link rel="stylesheet"
+          href="http://1251027630.cdn.myqcloud.com/1251027630/zhichi_frontend/static/invitation/css/new_invitation.css?v=10151">
+    <style>
+            /* loading */
+        .spinner {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            text-align: center;
+            z-index: 9999999;
+            background-color: #fff;
+        }
+
+        .svg-container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 71px;
+            margin-left: -35.4px;
+            margin-top: -80px;
+        }
+
+        .svg-st1 {
+            stroke-dasharray: 390;
+            stroke-dashoffset: 390;
+            -webkit-animation: dash 3s ease infinite;
+            animation: dash 3s ease infinite;
+        }
+
+        @-webkit-keyframes dash {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+        @keyframes dash {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+            /* loading */
+        @keyframes logoMenu{
+        0% {
+          background-image: url(http://1251027630.cdn.myqcloud.com/1251027630/zhichi_frontend/static/invitation/images/logo.png);
+          margin-top: 1px;
+        }
+        50% {
+          background-image: url(http://1251027630.cdn.myqcloud.com/1251027630/zhichi_frontend/static/invitation/images/logo.png);
+          margin-top: 1px;
+        }
+      }
+        @-webkit-keyframes logoMenu{
+        0% {
+          background-image: url(http://1251027630.cdn.myqcloud.com/1251027630/zhichi_frontend/static/invitation/images/logo.png);
+          margin-top: 1px;
+        }
+        50% {
+          background-image: url(http://1251027630.cdn.myqcloud.com/1251027630/zhichi_frontend/static/invitation/images/logo.png);
+          margin-top: 1px;
+        }
+      }
+    </style>
+    <script type="text/javascript">
+        var agent = navigator.userAgent.toLowerCase();
+
+        if (agent.indexOf('iphone') != -1 || agent.indexOf('ipad') != -1) {
+            var head = document.getElementsByTagName('head').item(0);
+
+            var style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = '.self-iframe .home-wrap, #iframe, #iframe > .iframe-container, #int-page .int-page-container {-webkit-overflow-scrolling: touch;}';
+
+            head.appendChild(style);
+        }
+        var startTime = (new Date()).getTime();
+    </script>
+</head>
+<body ismem=""
+      data='{"share-desc":"%u54AB%u5C3A%u5FAE%u9875","share-img":"http:\/\/img.zhichiwangluo.com\/zcimgdir\/thumb\/t_14526555525695c3c059dd4.jpg","share-music":"http:\/\/f.zhichiwangluo.com\/zcfrontend\/music\/file_565557ba2c9cd.mp3","musicisloop":"true","vote":{"questionId":"21"},"activity":{"id":"","isRequestAct":"0"},"asidelogo":"","asidelogourl":"","flip-direction":"true","flip-type":"cube","auto-turn-page":{"is_on":"0","time":""},"tab_value":"\n\t\t\t<div class=\"tab-fix\"><a href=\"javascript:;\"><img class=\"before-tap-icon\" src=\"http:\/\/img.zhichiwangluo.com\/zcimgdir\/album\/file_559f927c8e2a2.png\" style=\"display: block;\"><img class=\"after-tap-icon\" src=\"http:\/\/img.zhichiwangluo.com\/zcimgdir\/album\/file_559f927c3d0ce.png\" style=\"display: none;\"><span>导航1<\/span><\/a><a href=\"javascript:;\"><img class=\"before-tap-icon\" src=\"http:\/\/img.zhichiwangluo.com\/zcimgdir\/album\/file_559f9274eb3c3.png\" style=\"display: block;\"><img class=\"after-tap-icon\" src=\"http:\/\/img.zhichiwangluo.com\/zcimgdir\/album\/file_559f92790e70f.png\" style=\"display: none;\"><span>导航2<\/span><\/a><a href=\"javascript:;\"><img class=\"before-tap-icon\" src=\"http:\/\/img.zhichiwangluo.com\/zcimgdir\/album\/file_559f926da2872.png\" style=\"display: block;\"><img class=\"after-tap-icon\" src=\"http:\/\/img.zhichiwangluo.com\/zcimgdir\/album\/file_559f927aab9bc.png\" style=\"display: none;\"><span>导航3<\/span><\/a><\/div>\n\t\t","cre_user_token":"ff0f0efd58e0b6b4ccb0da2614f01628","danmu_data":["10001"],"form_id_arr":["2"],"form_ele_id_arr":["14"],"high_share_front":"","high_share_type":"like","high_share_behind":"","musicname":"C-%u9648%u5955%u8FC5%20%u966A%u4F60%u5EA6%u8FC7%u6F2B%u957F%u5C81%u6708"}'
+      music-url="http://f.zhichiwangluo.com/zcfrontend/music/file_565557ba2c9cd.mp3" aside_show="0" share_count="96"
+      clean-link="0" combine-logo="" admin="" isCollect="0" need-login="1" category_id="0">
+<img style="position:absolute;left:-9999999px;"
+     src="http://img.zhichiwangluo.com/zcimgdir/thumb/t_14526555525695c3c059dd4.jpg" width='0' height='0'/>
+
+<div class="spinner" id="spinner">
+    <div class="svg-container">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             width="70.8px" height="80px" viewBox="271.25 213.754 175.667 198.483"
+             enable-background="new 271.25 213.754 175.667 198.483" xml:space="preserve">
+      <g>
+          <polyline
+                  style="fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke: #125a8a;stroke-width: 30px;stroke-linejoin: round;stroke-linecap: round;"
+                  points="404.22,360.602 312.655,360.602 312.655,265.392 405.513,265.392 335.083,340.151   "/>
+          <polyline class="svg-st1"
+                    style="fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke: #fff;stroke-width: 30px;stroke-linejoin: round;stroke-linecap: round;"
+                    points="404.22,363.602 311.655,363.602 311.655,265.392 405.513,265.392 335.083,340.151  "/>
+
+      </g>
+            <path fill="#3498db" d="M446.89,276.563c-0.092-8.038-1.064-15.204-11.66-21.965c-11.063-7.058-55.543-32.806-61.438-36.356
+        c-10.841-6.527-20.114-5.518-30.165,0.346c-7.372,4.299-14.027,8.125-14.027,8.125s-24.816,13.711-35.873,19.941
+        c-11.058,6.232-22.115,11.965-22.361,28.166c-0.246,16.2-0.02,45.738-0.02,60.816c0,21.102,1.19,27.188,17.957,37.76
+        c13.637,8.6,33.688,19.803,50.25,29.535c22.409,13.168,22.009,10.836,36.566,2.443c12.058-6.947,31.498-18.771,49.56-28.863
+        c17.055-9.531,21.135-10.93,21.135-32.152C446.812,325.416,446.983,284.601,446.89,276.563z M309.719,370.885
+        c0,0-6.401,0.972-5.593-5.998V264.871c0,0-0.729-10.049,6.079-9.807h93.126c0,0,6.971-0.081,8.754,1.54
+        c1.782,1.621,1.944,5.024,1.944,5.024v10.537c0,0,0.811,4.459-3.892,8.834c-4.7,4.457-65.244,64.517-65.244,64.517
+        s-2.27,2.917-0.08,3.079h40.688c0,0,6.482,0.082,12.157,6.16l16.452,16.13H309.719z"/>
+            <path fill="#3498db" d="M326.729,329.061c0,0-0.324,1.461,0.648,2.594c0.973,1.135,2.754-0.891,2.754-0.891
+        s50.82-50.494,51.225-51.953c0.406-1.459-2.918-1.217-2.918-1.217h-47.17c-3.891-0.161-4.458,2.433-4.458,2.433L326.729,329.061
+        L326.729,329.061z"/>
+      </svg>
+    </div>
+    <div style="width: 100%;position: absolute;bottom: 30px;left: 0;text-align: center;font-size: 14px;color:#3498db;">
+        和平旧店
+    </div>
+</div>
+<div id="invitation-container">
+    <script>
+        //   var container=document.getElementById('invitation-container');
+        //   container.style.height=window.innerHeight+'px';
+    </script>
+    <div id="music">
+        <div class="icon more_rotate_run"></div>
+        <!--  <audio id="bg_music" autoplay="autoplay" loop="loop" preload="auto"></audio> -->
+        <!-- <audio id="effect_music" src="" autoplay="autoplay"></audio> -->
+    </div>
+    <!-- 滑动组件 -->
+    <div class="flip" id="flip" act_id="0"
+         url="http://u522649.jisuapp.cn/index.php?r=Invitation/showNewInvitation&id=306733&to_id=dc0787a99fdfb1e9197ecbea8393e49d"
+         nickname="">
+        <section class="page page-15 backgroundSize" id="1071"
+                 style="background-image: url(http://img.zhichiwangluo.com/zcimgdir/album/file_5695f3ab5d962.jpg); background-attachment: initial; background-color: initial; background-size: 100% 100%; background-origin: initial; background-clip: initial; background-repeat: no-repeat;"
+                 imgid="217347">
+            <div class="pageshow">
+
+                <div class="img animate js-min-zIndex fadeInUp" isproportion="false" el_name="图片1"
+                     style="position: absolute; left: 34.8%; top: 48.2%; width: 34.6%; z-index: 200; height: 55.6%; opacity: 1; display: block; animation-duration: 1s; animation-delay: 0.5s; animation-iteration-count: 1;"
+                     animatename="fadeInUp"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;0.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5695f48d63e8d.png" alt=""
+                            style="width: 100%; height: 100%; margin-top: 0px; margin-left: 0px;" imgid="217371"
+                            width=""></div>
+                </div>
+                <div class="img animate fadeInDown" isproportion="false" animatename="fadeInDown" el_name="图片2"
+                     style="position: absolute; left: 34.2%; top: -36.7%; width: 34%; z-index: 201; height: 54.8%; opacity: 1; display: block; animation-duration: 1s; animation-delay: 0.5s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;0.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" rotdegx="0" rotdegy="180" rotdegz="180"
+                         style="transform: perspective(400px) rotateX(0deg) rotateY(180deg) rotateZ(180deg);"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5695f48d63e8d.png" alt=""
+                            style="width: 100%; height: 100%; margin-top: 0px; margin-left: 0px;" imgid="217371"
+                            width=""></div>
+                </div>
+                <div class="img animate scaleCenterOut" isproportion="true" animatename="scaleCenterOut" el_name="图片3"
+                     style="position: absolute; left: 21.8%; top: 14.8%; width: 58.5%; z-index: 202; height: 37.3%; opacity: 1; display: block; animation-duration: 1s; animation-delay: 0.5s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;0.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5695f55645409.png" alt=""
+                            style="height: 100%; margin-top: 0px; margin-left: -0.716036px;" imgid="217387" width="">
+                    </div>
+                </div>
+                <div class="img animate fadeInRight" isproportion="false" animatename="fadeInRight" el_name="图片4"
+                     style="position: absolute; left: 13.2%; top: 58.5%; width: 38.3%; z-index: 203; height: 42.1%; opacity: 1; display: block; animation-duration: 2s; animation-delay: 1.5s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;1.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5695f5bbbd630.png" alt=""
+                            style="width: 100%; height: 100%; margin-top: 0px; margin-left: 0px;" imgid="217396"
+                            width=""></div>
+                </div>
+                <div class="img animate fadeInLeft" isproportion="false" animatename="fadeInLeft" el_name="图片5"
+                     style="position: absolute; left: 49.9%; top: 59.2%; width: 37.5%; z-index: 204; height: 41.3%; opacity: 1; display: block; animation-duration: 2s; animation-delay: 1.5s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;1.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5695f5bc7b79e.png" alt=""
+                            style="width: 100%; height: 100%; margin-top: 0px; margin-left: 0px;" imgid="217397"
+                            width=""></div>
+                </div>
+                <div class="img animate js-max-zIndex int-animate more_swing_run" isproportion="true" el_name="图片6"
+                     style="position: absolute; left: 34%; top: 21.8%; width: 36.7%; z-index: 205; height: 23.1%; animation-duration: 2s; animation-delay: 1s; opacity: 1; animation-iteration-count: infinite; display: block;"
+                     animate-arr="{&quot;1&quot;:{&quot;animation-name&quot;:&quot;scaleCenterIn&quot;,&quot;-webkit-animation-duration&quot;:&quot;1&quot;,&quot;animation-duration&quot;:&quot;1&quot;,&quot;opacity&quot;:1,&quot;-webkit-animation-iteration-count&quot;:&quot;1&quot;,&quot;animation-iteration-count&quot;:&quot;1&quot;,&quot;animation-delay&quot;:&quot;1.5&quot;,&quot;-webkit-animation-delay&quot;:&quot;1.5&quot;,&quot;int-disappear&quot;:&quot;0&quot;},&quot;2&quot;:{&quot;animation-name&quot;:&quot;more_swing_run&quot;,&quot;-webkit-animation-duration&quot;:&quot;2&quot;,&quot;animation-duration&quot;:&quot;2&quot;,&quot;opacity&quot;:1,&quot;-webkit-animation-iteration-count&quot;:&quot;infinite&quot;,&quot;animation-iteration-count&quot;:&quot;infinite&quot;,&quot;animation-delay&quot;:&quot;1&quot;,&quot;-webkit-animation-delay&quot;:&quot;1&quot;,&quot;int-disappear&quot;:&quot;0&quot;}}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5695fb35a77c2.png" alt=""
+                            style="height: 100%; margin-top: 0px; margin-left: -0.0628518px;" width="" imgid="217512">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="page page-1" id="140"
+                 style="background-image: url(http://img.zhichiwangluo.com/zcimgdir/thumb/t_14525836045694aab42ff83.jpg); background-attachment: initial; background-color: initial; background-size: 100% 100%; background-origin: initial; background-clip: initial; background-repeat: no-repeat;"
+                 imgid="211624">
+            <div class="pageshow">
+
+
+                <div class="img animate js-min-zIndex fadeInUp" isproportion="false" animatename="fadeInUp"
+                     el_name="图片1"
+                     style="position: absolute; left: 0.2%; top: 0.2%; width: 99.4%; z-index: 200; height: 19.6%; opacity: 1; display: block; animation-duration: 1s; animation-delay: 0.5s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;0.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5694ab2b0e687.png" alt=""
+                            style="width: 100%; height: 100%; margin-top: 0px; margin-left: 0px;" width=""
+                            imgid="211639"></div>
+                </div>
+                <div class="img animate fadeInDown" isproportion="false" animatename="fadeInDown" el_name="图片3"
+                     style="position: absolute; left: 0.2%; top: 78.3%; width: 99.7%; z-index: 201; height: 21.5%; opacity: 1; display: block; animation-duration: 1s; animation-delay: 0.5s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;0.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" rotdegx="180" rotdegy="0" rotdegz="0"
+                         style="transform: perspective(400px) rotateX(180deg) rotateY(0deg) rotateZ(0deg);"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5694ab2b0e687.png" alt=""
+                            style="width: 100%; height: 100%; margin-top: 0px; margin-left: 0px;" imgid="211639"
+                            width=""></div>
+                </div>
+                <div class="animate text-new text_edit artfont fadeInRight" animatename="fadeInRight" el_name="文字1"
+                     style="position: absolute; left: 0.3%; top: 60.5%; z-index: 202; opacity: 1; display: block; animation-duration: 1s; animation-delay: 3s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;3s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" style="color: rgb(249, 203, 156); font-family: 华文行楷;"
+                         artfonttext="华文行楷"
+                         artfont="<p style='line-height: normal; text-align: center;'><strong><span style='font-size: 36px; color: rgb(249, 203, 156);'>刘玖平＆杨玉凤</span></strong></p>">
+                        <img src="http://img.zhichiwangluo.com/zcimgdir/thumb/o_14525850325694b048d487a.png" alt=""
+                             style="width: 100%;"></div>
+                </div>
+                <div class="animate text-new text_edit artfont fadeInUp" animatename="fadeInUp" el_name="文字2"
+                     style="position: absolute; left: -0.9%; top: 70.9%; z-index: 203; opacity: 1; display: block; animation-duration: 1s; animation-delay: 3.5s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;3.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" style="color: rgb(249, 203, 156); font-family: 华文隶书;"
+                         artfonttext="华文隶书"
+                         artfont="<p style='text-align: center;'><strong><span style='font-size: 36px;'>2016/06/23</span></strong></p>">
+                        <img src="http://img.zhichiwangluo.com/zcimgdir/thumb/o_14525854215694b1cd74810.png" alt=""
+                             style="width: 100%;"></div>
+                </div>
+                <div class="animate text-new text_edit artfont int-animate more_jump_run" el_name="文字3"
+                     style="position: absolute; left: 6%; top: 82.5%; z-index: 204; opacity: 1; display: block; animation-duration: 1s; animation-delay: 0.2s; animation-iteration-count: infinite;"
+                     animate-arr="{&quot;0&quot;:{&quot;animation-name&quot;:&quot;fadeInUp&quot;,&quot;-webkit-animation-duration&quot;:&quot;1&quot;,&quot;animation-duration&quot;:&quot;1&quot;,&quot;opacity&quot;:1,&quot;-webkit-animation-iteration-count&quot;:&quot;1&quot;,&quot;animation-iteration-count&quot;:&quot;1&quot;,&quot;animation-delay&quot;:&quot;4&quot;,&quot;-webkit-animation-delay&quot;:&quot;4&quot;,&quot;int-disappear&quot;:&quot;0&quot;},&quot;1&quot;:{&quot;animation-name&quot;:&quot;more_jump_run&quot;,&quot;-webkit-animation-duration&quot;:&quot;1&quot;,&quot;animation-duration&quot;:&quot;1&quot;,&quot;opacity&quot;:1,&quot;-webkit-animation-iteration-count&quot;:&quot;infinite&quot;,&quot;animation-iteration-count&quot;:&quot;infinite&quot;,&quot;animation-delay&quot;:&quot;0.2&quot;,&quot;-webkit-animation-delay&quot;:&quot;0.2&quot;,&quot;int-disappear&quot;:&quot;0&quot;}}">
+                    <div class="animate-contain" style="color: rgb(249, 203, 156); font-family: 华文行楷;"
+                         artfonttext="华文行楷"
+                         artfont="<p style='text-align: center;'><span style='font-size: 20px;'><strong><span style='color: rgb(249, 203, 156);'>地址:邵阳隆回滩头一个美丽小村</span></strong></span></p>">
+                        <img src="http://img.zhichiwangluo.com/zcimgdir/thumb/o_14526647885695e7d44ad99.png" alt=""
+                             style="width: 100%;"></div>
+                </div>
+                <div class="img animate scaleCenterOut" isproportion="false" animatename="scaleCenterOut" el_name="图片4"
+                     style="position: absolute; left: 28.6%; top: 16.5%; width: 45.7%; z-index: 205; opacity: 1; display: block; animation-duration: 1s; animation-delay: 1.5s; animation-iteration-count: 1; height: 28.8%;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;1.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5694d0be4e96c.png" alt=""
+                            style="width: 100%; height: 100%; margin-top: 0px; margin-left: 0px;" imgid="212509"
+                            width=""></div>
+                </div>
+                <div class="img animate int-animate more_rotate_run" isproportion="true" el_name="图片4"
+                     style="position: absolute; left: 18.3%; top: 10.2%; width: 66.2%; z-index: 206; opacity: 1; display: block; animation-duration: 3s; animation-delay: 1.5s; animation-iteration-count: infinite; height: 41.3%;"
+                     animate-arr="{&quot;0&quot;:{&quot;animation-name&quot;:&quot;scaleCenterIn&quot;,&quot;-webkit-animation-duration&quot;:&quot;2&quot;,&quot;animation-duration&quot;:&quot;2&quot;,&quot;opacity&quot;:1,&quot;-webkit-animation-iteration-count&quot;:&quot;1&quot;,&quot;animation-iteration-count&quot;:&quot;1&quot;,&quot;animation-delay&quot;:&quot;0.2&quot;,&quot;-webkit-animation-delay&quot;:&quot;0.2&quot;,&quot;int-disappear&quot;:&quot;0&quot;},&quot;1&quot;:{&quot;animation-name&quot;:&quot;more_rotate_run&quot;,&quot;-webkit-animation-duration&quot;:&quot;3&quot;,&quot;animation-duration&quot;:&quot;3&quot;,&quot;opacity&quot;:1,&quot;-webkit-animation-iteration-count&quot;:&quot;infinite&quot;,&quot;animation-iteration-count&quot;:&quot;infinite&quot;,&quot;animation-delay&quot;:&quot;1.5&quot;,&quot;-webkit-animation-delay&quot;:&quot;1.5&quot;,&quot;int-disappear&quot;:&quot;0&quot;}}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5695aa8270c6a.png" alt=""
+                            style="height: 100%; margin-top: 0px; margin-left: -0.0034965px;" imgid="216042" width="">
+                    </div>
+                </div>
+                <div class="control cont-map cont-map20 animate js-max-zIndex int-animate" mapid="20" el_name="地图1"
+                     style="z-index: 207; left: 10.9%; top: 80.8%; height: 9.9%; width: 11.1%; opacity: 1; display: block; animation-duration: 1s; animation-delay: 0.2s; animation-iteration-count: infinite;"
+                     address=""
+                     animate-arr="{&quot;0&quot;:{&quot;animation-name&quot;:&quot;fadeInUp&quot;,&quot;-webkit-animation-duration&quot;:&quot;1&quot;,&quot;animation-duration&quot;:&quot;1&quot;,&quot;opacity&quot;:1,&quot;-webkit-animation-iteration-count&quot;:&quot;1&quot;,&quot;animation-iteration-count&quot;:&quot;1&quot;,&quot;animation-delay&quot;:&quot;4&quot;,&quot;-webkit-animation-delay&quot;:&quot;4&quot;,&quot;int-disappear&quot;:&quot;0&quot;},&quot;1&quot;:{&quot;animation-name&quot;:&quot;more_jump_run&quot;,&quot;-webkit-animation-duration&quot;:&quot;1&quot;,&quot;animation-duration&quot;:&quot;1&quot;,&quot;opacity&quot;:1,&quot;-webkit-animation-iteration-count&quot;:&quot;infinite&quot;,&quot;animation-iteration-count&quot;:&quot;infinite&quot;,&quot;animation-delay&quot;:&quot;0.2&quot;,&quot;-webkit-animation-delay&quot;:&quot;0.2&quot;,&quot;int-disappear&quot;:&quot;0&quot;}}">
+                    <div class="animate-contain"
+                         style="color: rgb(249, 203, 156); border: 0px none rgb(249, 203, 156); background-color: rgba(0, 0, 0, 0);">
+                        <p style="background-position: 3px 1px;"></p>
+
+                        <p></p>
+
+                        <div class="map-animate"><em></em><em></em></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="page page-15 backgroundSize" id="1071"
+                 style="background-image: url(http://img.zhichiwangluo.com/zcimgdir/thumb/t_14525791025694991e6dc71.jpg); background-attachment: initial; background-color: initial; background-size: 100% 100%; background-origin: initial; background-clip: initial; background-repeat: no-repeat;"
+                 imgid="211102" animatename="scaleInCenterSlow">
+            <div class="pageshow">
+
+                <div class="img animate scaleCenterOut" animatename="scaleCenterOut"
+                     style="position: absolute; left: 33.7%; top: 9.7%; width: 29.1%; z-index: 202; opacity: 1; display: block; animation-duration: 1s; animation-delay: 2s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;2s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}"
+                     el_name="图片1">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5695b8a3cfe9c.png" alt="" width=""
+                            style="width: 100%; height: 100%; margin-top: 0px; margin-left: 0px;" imgid="216465"></div>
+                </div>
+                <div class="animate text-new text_edit artfont fadeInDown" animatename="fadeInDown" el_name="文字1"
+                     style="position: absolute; left: 5.7%; top: 2.3%; z-index: 201; opacity: 1; display: block; animation-duration: 1s; animation-delay: 3s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;3s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" style="color: rgb(249, 203, 156); font-family: 华文新魏;"
+                         artfonttext="华文新魏"
+                         artfont="<p style='line-height: normal;'><span style='font-size: 24px; color: rgb(249, 203, 156);'><strong>执</strong></span></p><p style='line-height: normal;'><span style='font-size: 24px; color: rgb(249, 203, 156);'><strong>子</strong></span></p><p style='line-height: normal;'><span style='font-size: 24px; color: rgb(249, 203, 156);'><strong>之</strong></span></p><p style='line-height: normal;'><span style='font-size: 24px; color: rgb(249, 203, 156);'><strong>手</strong></span></p>">
+                        <img src="http://img.zhichiwangluo.com/zcimgdir/thumb/o_14525873065694b92a40b6d.png" alt=""
+                             style="width: 100%;"></div>
+                </div>
+                <div class="animate text-new text_edit artfont fadeInDown js-max-zIndex" animatename="fadeInDown"
+                     el_name="文字2"
+                     style="position: absolute; left: -5.4%; top: 2.4%; z-index: 203; opacity: 1; display: block; animation-duration: 1s; animation-delay: 4s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;4s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" style="color: rgb(249, 203, 156); font-family: 华文新魏;"
+                         artfonttext="华文新魏"
+                         artfont="<p style='text-align: right;'><span style='color: rgb(249, 203, 156);'><strong><span style='font-size: 24px;'>与</span></strong><strong><span style='font-size: 24px;'></span></strong></span></p><p style='text-align: right;'><span style='color: rgb(249, 203, 156);'><strong><span style='font-size: 24px;'>子</span></strong><strong><span style='font-size: 24px;'></span></strong><strong><span style='font-size: 24px;'></span></strong></span></p><p style='text-align: right;'><span style='color: rgb(249, 203, 156);'><strong><span style='font-size: 24px;'>偕</span></strong><strong><span style='font-size: 24px;'></span></strong><strong><span style='font-size: 24px;'></span></strong></span></p><p style='text-align: right;'><span style='color: rgb(249, 203, 156);'><strong><span style='font-size: 24px;'>老</span></strong><strong><span style='font-size: 24px;'></span></strong></span><span style='color: rgb(249, 203, 156);'><strong><span style='font-size: 24px; color: rgb(255, 0, 0);'></span></strong></span><span style='color: rgb(249, 203, 156);'><strong><span style='font-size: 24px; color: rgb(255, 0, 0);'></span></strong></span></p>">
+                        <img src="http://img.zhichiwangluo.com/zcimgdir/thumb/o_14525873815694b975ae86c.png" alt=""
+                             style="width: 100%;"></div>
+                </div>
+                <div class="img animate js-min-zIndex fadeInDown" isproportion="false" animatename="fadeInDown"
+                     el_name="图片2"
+                     style="position: absolute; left: 0.2%; top: 0%; width: 99.4%; z-index: 200; opacity: 1; display: block; animation-duration: 2s; animation-delay: 0.3s; animation-iteration-count: 1; height: 98.1%;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;0.3s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5695acca1347c.png" alt=""
+                            style="height: 100%; width: 100%;" imgid="216083" width=""></div>
+                </div>
+            </div>
+        </section>
+        <section class="page page-15" id="1071"
+                 style="background-image: url(http://img.zhichiwangluo.com/zcimgdir/thumb/t_1452672746569606ea4ca0c.jpg); background-attachment: initial; background-color: initial; background-size: 100% 100%; background-origin: initial; background-clip: initial; background-repeat: no-repeat;"
+                 imgid="217831" animatename="scaleInCenterSlow">
+            <div class="pageshow">
+
+                <div class="img animate js-min-zIndex fadeInUp" isproportion="true" animatename="fadeInUp" el_name="图片1"
+                     style="position: absolute; left: -6.9%; top: -4.2%; width: 26.9%; z-index: 200; height: 172.5%; opacity: 1; display: block; animation-duration: 2s; animation-delay: 0.2s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;0.2s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" outer="1" style="box-shadow: rgb(0, 0, 0) 2px 2px 5px;"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_56960e830ca6c.png" alt=""
+                            style="width: 90px; margin-top: 0px; margin-left: 0px; height: 897px;" imgid="217984"
+                            width=""></div>
+                </div>
+                <div class="img animate fadeInDown" isproportion="true" animatename="fadeInDown" el_name="图片2"
+                     style="position: absolute; left: 80.9%; top: -2.7%; width: 23.1%; z-index: 201; opacity: 1; display: block; animation-duration: 2s; animation-delay: 0.2s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;0.2s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" outer="1" style="box-shadow: rgb(85, 85, 85) 2px 2px 5px;"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_56960e830ca6c.png" alt=""
+                            style="width: 100%;" imgid="218030" width=""></div>
+                </div>
+                <div class="img animate fadeInDown" isproportion="true" animatename="fadeInDown" el_name="图片3"
+                     style="position: absolute; left: 63.4%; top: -9.1%; width: 37.2%; z-index: 202; height: 45.4%; opacity: 1; display: block; animation-duration: 2s; animation-delay: 0.7s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;0.7s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" rotdegx="180" rotdegy="0" rotdegz="-180"
+                         style="transform: perspective(400px) rotateX(180deg) rotateY(0deg) rotateZ(-180deg);"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5696121f35b59.png" alt=""
+                            style="width: 100%; margin-top: -0.0978261px; margin-left: 0px;" imgid="218047" width="">
+                    </div>
+                </div>
+                <div class="img animate fadeInRight" isproportion="true" animatename="fadeInRight" el_name="图片4"
+                     style="position: absolute; left: -22.9%; top: 69.5%; width: 50%; z-index: 203; opacity: 1; display: block; height: 27.1%; animation-duration: 2s; animation-delay: 0.7s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;0.7s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_56961242c2ce7.png" alt=""
+                            style="height: 100%; margin-top: 0px; margin-left: -0.123016px;" imgid="218048" width="">
+                    </div>
+                </div>
+                <div class="animate text-new text_edit artfont fadeInCenter" animatename="fadeInCenter" el_name="文字1"
+                     style="position: absolute; left: -0.3%; top: 24.8%; z-index: 204; opacity: 1; display: block; animation-duration: 2s; animation-delay: 1.2s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;1.2s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" style="color: rgb(255, 229, 153); font-family: 华文新魏;"
+                         artfonttext="华文新魏"
+                         artfont="<p><span style='font-size: 36px; color: rgb(255, 229, 153);'>新</span></p><p><span style='font-size: 36px; color: rgb(255, 229, 153);'>娘</span></p>">
+                        <img src="http://img.zhichiwangluo.com/zcimgdir/thumb/o_14526758475696130782a70.png" alt=""
+                             style="width: 100%;"></div>
+                </div>
+                <div class="animate text-new text_edit artfont js-max-zIndex fadeInCenter" animatename="fadeInCenter"
+                     el_name="文字2"
+                     style="position: absolute; left: 82.1%; top: 53.3%; z-index: 205; opacity: 1; display: block; animation-duration: 2s; animation-delay: 1.2s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;1.2s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" style="color: rgb(255, 229, 153); font-family: 华文新魏;"
+                         artfonttext="华文新魏"
+                         artfont="<p><span style='font-size: 24px; color: rgb(255, 229, 153);'>王</span></p><p><span style='font-size: 24px; color: rgb(255, 229, 153);'>冬</span></p><p><span style='font-size: 24px; color: rgb(255, 229, 153);'>璐</span></p>">
+                        <img src="http://img.zhichiwangluo.com/zcimgdir/thumb/o_145267585656961310bb3aa.png" alt=""
+                             style="width: 100%;"></div>
+                </div>
+            </div>
+        </section>
+        <section class="page page-15 backgroundSize" id="1071"
+                 style="background-image: url(http://img.zhichiwangluo.com/zcimgdir/thumb/t_14526730345696080a75c23.jpg); background-attachment: initial; background-color: initial; background-size: 100% 100%; background-origin: initial; background-clip: initial; background-repeat: no-repeat;"
+                 imgid="217868" animatename="scaleInCenterSlow">
+            <div class="pageshow">
+
+                <div class="img animate js-min-zIndex fadeInDown" isproportion="true" animatename="fadeInDown"
+                     el_name="图片1"
+                     style="position: absolute; left: 12.5%; top: 5.4%; width: 26.9%; z-index: 200; height: 172.5%; opacity: 1; display: block; animation-duration: 2s; animation-delay: 0.2s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;0.2s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" outer="1"
+                         style="box-shadow: rgb(0, 0, 0) 2px 2px 5px; transform: perspective(400px) rotateX(0deg) rotateY(0deg) rotateZ(-20deg);"
+                         rotdegx="0" rotdegy="0" rotdegz="-20"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_56960e830ca6c.png" alt=""
+                            style="width: 90px; margin-top: 0px; margin-left: 0px; height: 897px;" imgid="217984"
+                            width=""></div>
+                </div>
+                <div class="img animate fadeInUp" isproportion="true" animatename="fadeInUp" el_name="图片2"
+                     style="position: absolute; left: 99.5%; top: -11.9%; width: 23.1%; z-index: 201; opacity: 1; display: block; animation-duration: 2s; animation-delay: 0.2s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;0.2s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" outer="1"
+                         style="box-shadow: rgb(85, 85, 85) -2px -2px 5px; transform: perspective(400px) rotateX(0deg) rotateY(0deg) rotateZ(-20deg);"
+                         rotdegx="0" rotdegy="0" rotdegz="-20"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_56960e830ca6c.png" alt=""
+                            style="width: 100%;" imgid="218030" width=""></div>
+                </div>
+                <div class="img animate fadeInDown" isproportion="true" animatename="fadeInDown" el_name="图片3"
+                     style="position: absolute; left: 85.9%; top: 24.9%; width: 22%; z-index: 202; height: 26.7%; opacity: 1; display: block; animation-duration: 2s; animation-delay: 0.7s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;0.7s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" rotdegx="180" rotdegy="0" rotdegz="-161"
+                         style="transform: perspective(400px) rotateX(180deg) rotateY(0deg) rotateZ(-161deg);"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5696121f35b59.png" alt=""
+                            style="margin-top: 0px; margin-left: -0.192453px; height: 100%;" imgid="218047" width="">
+                    </div>
+                </div>
+                <div class="img animate fadeInRight" isproportion="true" animatename="fadeInRight" el_name="图片4"
+                     style="position: absolute; left: -27.7%; top: 45.7%; width: 48.9%; z-index: 203; opacity: 1; display: block; height: 26.5%; animation-duration: 2s; animation-delay: 0.7s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;0.7s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" rotdegx="0" rotdegy="0" rotdegz="-26"
+                         style="transform: perspective(400px) rotateX(0deg) rotateY(0deg) rotateZ(-26deg);"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_56961242c2ce7.png" alt=""
+                            style="margin-top: -0.188488px; margin-left: 0px; width: 100%;" imgid="218048" width="">
+                    </div>
+                </div>
+                <div class="animate text-new text_edit artfont fadeInCenter" animatename="fadeInCenter" el_name="文字1"
+                     style="position: absolute; left: 11.2%; top: 74.8%; z-index: 204; opacity: 1; display: block; animation-duration: 2s; animation-delay: 1.2s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;1.2s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" style="color: rgb(255, 229, 153); font-family: 华文新魏;"
+                         artfonttext="华文新魏"
+                         artfont="<p><span style='font-size: 36px; color: rgb(255, 229, 153);'>新</span></p><p><span style='font-size: 36px; color: rgb(255, 229, 153);'>郎</span></p>">
+                        <img src="http://img.zhichiwangluo.com/zcimgdir/thumb/o_1452676084569613f467fb1.png" alt=""
+                             style="width: 100%;"></div>
+                </div>
+                <div class="animate text-new text_edit artfont js-max-zIndex fadeInCenter" animatename="fadeInCenter"
+                     el_name="文字2"
+                     style="position: absolute; left: 73.9%; top: 6%; z-index: 205; opacity: 1; display: block; animation-duration: 2s; animation-delay: 1.2s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;1.2s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" style="color: rgb(255, 229, 153); font-family: 华文新魏;"
+                         artfonttext="华文新魏"
+                         artfont="<p><span style='font-size: 24px;'>李</span></p><p><span style='font-size: 24px;'>虎</span></p>">
+                        <img src="http://img.zhichiwangluo.com/zcimgdir/thumb/o_145267609956961403e439e.png" alt=""
+                             style="width: 100%;"></div>
+                </div>
+            </div>
+        </section>
+        <section class="page page-15 backgroundSize" id="1071"
+                 style="background-image: url(http://img.zhichiwangluo.com/zcimgdir/thumb/t_14525836045694aab42ff83.jpg); background-attachment: initial; background-color: initial; background-size: 100% 100%; background-origin: initial; background-clip: initial; background-repeat: no-repeat;"
+                 imgid="211624" animatename="scaleInCenterSlow">
+            <div class="pageshow">
+
+                <div class="img animate js-min-zIndex fadeInDown" isproportion="false" animatename="fadeInDown"
+                     el_name="图片2"
+                     style="position: absolute; left: 0.8%; top: 0.4%; width: 99.4%; z-index: 200; opacity: 1; display: block; animation-duration: 2s; animation-delay: 0.3s; animation-iteration-count: 1; height: 99.8%;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;0.3s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5695acca1347c.png" alt=""
+                            style="width: 100%; height: 100%; margin-top: 0px; margin-left: 0px;" imgid="216083"
+                            width=""></div>
+                </div>
+                <div class="img animate more_zoomInRight" isproportion="true" animatename="more_zoomInRight"
+                     el_name="图片3"
+                     style="position: absolute; left: 21.3%; top: 38.4%; width: 60.5%; z-index: 201; opacity: 1; display: block; height: 57.7%; animation-duration: 2s; animation-delay: 2.5s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;2.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" style="border-radius: 15px; border: 2px solid rgb(255, 0, 0);"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5694d5518d722.jpg" alt=""
+                            style="border-radius: 15px; margin-top: -0.166667px; margin-left: 0px; width: 100%;"
+                            imgid="212551" width=""></div>
+                </div>
+                <div class="img animate rotateInRight" isproportion="true" animatename="rotateInRight" el_name="图片7"
+                     style="position: absolute; left: 18.8%; top: 37.5%; width: 61.2%; z-index: 202; height: 58.1%; opacity: 1; display: block; animation-duration: 2s; animation-delay: 5s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"
+                         style="border-radius: 15px; border: 2px solid rgb(255, 0, 0); transform: perspective(400px) rotateX(0deg) rotateY(0deg) rotateZ(-8deg);"
+                         rotdegx="0" rotdegy="0" rotdegz="-8"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5694d54fd1e30.jpg" alt=""
+                            style="border-radius: 15px; margin-top: -0.24792px; margin-left: 0px; width: 100%;"
+                            imgid="212548" width=""></div>
+                </div>
+                <div class="img animate rotateInRight" isproportion="false" animatename="rotateInRight" el_name="图片5"
+                     style="position: absolute; left: 21.2%; top: 37.5%; width: 59.7%; z-index: 203; opacity: 1; display: block; height: 59.8%; animation-duration: 2s; animation-delay: 7.5s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;7.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"
+                         style="border-radius: 15px; border: 2px solid rgb(255, 0, 0); transform: perspective(400px) rotateX(0deg) rotateY(0deg) rotateZ(10deg);"
+                         rotdegx="0" rotdegy="0" rotdegz="10"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/thumb/t_14525791025694991e6dc71.jpg" alt=""
+                            style="width: 100%; border-radius: 15px; height: 100%; margin-top: 0px; margin-left: 0px;"
+                            imgid="211102" width=""></div>
+                </div>
+                <div class="animate text-new text_edit artfont fadeInRight" animatename="fadeInRight" el_name="文字1"
+                     style="position: absolute; left: 28.2%; top: 15.6%; z-index: 204; width: 46.5%; opacity: 1; display: block; animation-duration: 1s; animation-delay: 2.5s; animation-iteration-count: 1;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;2.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" style="color: rgb(249, 203, 156); font-family: 华文新魏;"
+                         artfonttext="华文新魏" artfont="<p><span style='font-size: 20px;'>2012年6月12日</span></p>"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/thumb/o_14526707595695ff278a664.png" alt=""
+                            style="width: 100%;"></div>
+                </div>
+                <div class="animate text-new text_edit textanimate js-max-zIndex" animatename="" el_name="文字2"
+                     style="position: absolute; left: 0.7%; top: 24.1%; z-index: 205; opacity: 1; display: block; animation-duration: 1s; animation-delay: 3s; animation-iteration-count: 1;"
+                     textanimate="text_rollIn" textduration="2" textdelay="3000"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;3s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}"
+                     animate-arr="" disappear-animation="">
+                    <div class="animate-contain" style="color: rgb(249, 203, 156);"
+                         textcontent="<p style=&quot;font-size:24px;text-align:center;&quot;>我 们 恋 爱 了</P>"><p
+                            style="font-size:24px;text-align:center;"><span style="visibility: hidden;">我 们 恋 爱 了</span>
+                    </p>
+                        <ul class="texts" style="display: none;">
+                            <li>我 们 恋 爱 了</li>
+                        </ul>
+                        <p></p></div>
+                </div>
+            </div>
+        </section>
+        <section class="page page-1 backgroundSize" id="719"
+                 style="background-image: url(http://img.zhichiwangluo.com/zcimgdir/thumb/t_14525836045694aab42ff83.jpg); background-attachment: initial; background-color: initial; background-size: 100% 100%; background-origin: initial; background-clip: initial; background-repeat: no-repeat;"
+                 imgid="211624">
+            <div class="pageshow">
+
+
+                <div class="img animate js-min-zIndex int-animate scaleCenterOut" isproportion="true" el_name="图片1"
+                     style="position: absolute; left: 3.2%; top: 20%; width: 94.5%; z-index: 200; height: 58.8%; opacity: 1; display: block; animation-duration: 1s; animation-delay: 0.5s; animation-iteration-count: 1;"
+                     animate-arr="{&quot;0&quot;:{&quot;animation-name&quot;:&quot;scaleCenterOut&quot;,&quot;-webkit-animation-duration&quot;:&quot;1&quot;,&quot;animation-duration&quot;:&quot;1&quot;,&quot;opacity&quot;:1,&quot;-webkit-animation-iteration-count&quot;:&quot;1&quot;,&quot;animation-iteration-count&quot;:&quot;1&quot;,&quot;animation-delay&quot;:&quot;0.5&quot;,&quot;-webkit-animation-delay&quot;:&quot;0.5&quot;,&quot;int-disappear&quot;:&quot;0&quot;},&quot;1&quot;:{&quot;animation-name&quot;:&quot;more_flip&quot;,&quot;-webkit-animation-duration&quot;:&quot;2&quot;,&quot;animation-duration&quot;:&quot;2&quot;,&quot;opacity&quot;:1,&quot;-webkit-animation-iteration-count&quot;:&quot;1&quot;,&quot;animation-iteration-count&quot;:&quot;1&quot;,&quot;animation-delay&quot;:&quot;0.2&quot;,&quot;-webkit-animation-delay&quot;:&quot;0.2&quot;,&quot;int-disappear&quot;:&quot;0&quot;}}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5694ab9252924.png" alt=""
+                            style="width: 100%; margin-top: -0.125464px; margin-left: 0px;" imgid="211658" width="">
+                    </div>
+                </div>
+                <div class="img animate fadeInRight" isproportion="false" animatename="fadeInRight" el_name="图片2"
+                     style="position: absolute; left: 11.7%; top: 20%; width: 40.7%; z-index: 203; opacity: 1; display: block; animation-duration: 2.5s; animation-delay: 5.5s; animation-iteration-count: 1; height: 80.8%;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2.5s&quot;,&quot;delay&quot;:&quot;5.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_56961ad1a4fab.png" alt=""
+                            style="width: 100%; height: 100%; margin-top: 0px; margin-left: 0px;" imgid="218209"
+                            width=""></div>
+                </div>
+                <div class="img animate fadeInDown" isproportion="true" animatename="fadeInDown" el_name="图片3"
+                     style="position: absolute; left: -2.7%; top: 3.7%; width: 108.2%; z-index: 201; opacity: 1; display: block; animation-duration: 2s; animation-delay: 4s; animation-iteration-count: 1; height: 15.2%;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;4s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_56961da4c8ca7.png" alt=""
+                            style="height: 100%; margin-top: 0px; margin-left: -0.986264px;" imgid="218306" width="">
+                    </div>
+                </div>
+                <div class="img animate fadeInLeft" isproportion="false" animatename="fadeInLeft" el_name="图片4"
+                     style="position: absolute; left: 47%; top: 15.2%; width: 42.7%; z-index: 202; animation-duration: 2.5s; animation-delay: 5.5s; opacity: 1; animation-iteration-count: 1; display: block;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2.5s&quot;,&quot;delay&quot;:&quot;5.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_56961ad2680f9.png" alt=""
+                            style="width: 100%;" imgid="218211" width=""></div>
+                </div>
+                <div class="img animate fadeInUp" isproportion="false" animatename="fadeInUp" el_name="图片5"
+                     style="position: absolute; left: -7.6%; top: 75.5%; width: 112.4%; z-index: 204; height: 27.1%; animation-duration: 1s; animation-delay: 8s; opacity: 1; animation-iteration-count: 1; display: block;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;8s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5695fed926e5b.png" alt=""
+                            style="width: 100%; height: 100%; margin-top: 0px; margin-left: 0px;" imgid="525" width="">
+                    </div>
+                </div>
+                <div class="animate text-new text_edit artfont js-max-zIndex fadeInCenter" animatename="fadeInCenter"
+                     el_name="文字1"
+                     style="position: absolute; left: -0.3%; top: 85.7%; z-index: 205; animation-duration: 2s; animation-delay: 9s; opacity: 1; animation-iteration-count: 1; display: block;"
+                     data-animation-style="{&quot;duration&quot;:&quot;2s&quot;,&quot;delay&quot;:&quot;9s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" style="color: rgb(249, 203, 156); font-family: 华文新魏;"
+                         artfonttext="华文新魏"
+                         artfont="<p style='font-size: 16px; line-height: 1.5em; text-align: center;'><span style='font-size: 24px; color: rgb(249, 203, 156);'>我们恭候您的光临</span></p>">
+                        <img src="http://img.zhichiwangluo.com/zcimgdir/thumb/o_14526667605695ef8882286.png" alt=""
+                             style="width: 100%;"></div>
+                </div>
+            </div>
+        </section>
+        <section class="page page-1 backgroundSize" id="140"
+                 style="background-image: url(http://img.zhichiwangluo.com/zcimgdir/thumb/t_14525836045694aab42ff83.jpg); background-attachment: initial; background-color: initial; background-size: 100% 100%; background-origin: initial; background-clip: initial; background-repeat: no-repeat;"
+                 imgid="211624">
+            <div class="pageshow">
+
+
+                <div class="img animate js-min-zIndex fadeInDown" isproportion="true" animatename="fadeInDown"
+                     el_name="图片1"
+                     style="position: absolute; left: -34.7%; top: 0.2%; width: 171.4%; z-index: 200; height: 66.7%; animation-duration: 1s; animation-delay: 0.2s; opacity: 1; animation-iteration-count: 1; display: block;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;0.2s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5695acca1347c.png" alt=""
+                            style="height: 100%; margin-top: 0px; margin-left: -1.36243px;" imgid="216083" width="">
+                    </div>
+                </div>
+                <div class="img animate fadeInUp" isproportion="false" animatename="fadeInUp" el_name="图片2"
+                     style="position: absolute; left: 7.4%; top: 12.8%; width: 86%; z-index: 201; height: 82.7%; animation-duration: 1s; animation-delay: 1s; opacity: 1; animation-iteration-count: 1; display: block;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;1s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain"><img
+                            src="http://img.zhichiwangluo.com/zcimgdir/album/file_5695be23b6a32.png" alt=""
+                            style="width: 100%; height: 100%; margin-top: 0px; margin-left: 0px;" imgid="216660"
+                            width=""></div>
+                </div>
+                <div class="barrage animate fadeInUp" animatename="fadeInUp"
+                     style="z-index: 202; position: absolute; top: 31%; height: 51.7%; width: 83.3%; left: 8.8%; animation-duration: 1s; animation-delay: 2s; opacity: 1; animation-iteration-count: 1; display: block;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;2s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain">
+                        <div data-dm-id="10001" class="barrage-container" data-count="3"></div>
+                        <div class="barrage-bottom"><input placeholder="赶快发送您的祝福吧" class="barrage-input">
+                            <button class="barrage-submit">发送</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="animate text-new text_edit artfont fadeInCenter js-max-zIndex" animatename="fadeInCenter"
+                     el_name="文字1"
+                     style="position: absolute; left: 12.4%; top: 20.1%; z-index: 203; animation-duration: 1s; animation-delay: 1.5s; opacity: 1; animation-iteration-count: 1; display: block;"
+                     data-animation-style="{&quot;duration&quot;:&quot;1s&quot;,&quot;delay&quot;:&quot;1.5s&quot;,&quot;iteration-count&quot;:&quot;1&quot;}">
+                    <div class="animate-contain" style="color: rgb(249, 203, 156); font-family: 华文新魏;"
+                         artfonttext="华文新魏"
+                         artfont="<p><span style='font-size: 24px; color: rgb(249, 203, 156);'>赶快送上你的祝福吧！</span></p>">
+                        <img src="http://img.zhichiwangluo.com/zcimgdir/thumb/o_1452679205569620250483c.png" alt=""
+                             style="width: 100%;"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- 侧边栏 -->
+
+    <div class="tab-fix"><a href="javascript:;"><img class="before-tap-icon"
+                                                     src="http://img.zhichiwangluo.com/zcimgdir/album/file_559f927c8e2a2.png"
+                                                     style="display: block;"><img class="after-tap-icon"
+                                                                                  src="http://img.zhichiwangluo.com/zcimgdir/album/file_559f927c3d0ce.png"
+                                                                                  style="display: none;"><span>导航1</span></a><a
+            href="javascript:;"><img class="before-tap-icon"
+                                     src="http://img.zhichiwangluo.com/zcimgdir/album/file_559f9274eb3c3.png"
+                                     style="display: block;"><img class="after-tap-icon"
+                                                                  src="http://img.zhichiwangluo.com/zcimgdir/album/file_559f92790e70f.png"
+                                                                  style="display: none;"><span>导航2</span></a><a
+            href="javascript:;"><img class="before-tap-icon"
+                                     src="http://img.zhichiwangluo.com/zcimgdir/album/file_559f926da2872.png"
+                                     style="display: block;"><img class="after-tap-icon"
+                                                                  src="http://img.zhichiwangluo.com/zcimgdir/album/file_559f927aab9bc.png"
+                                                                  style="display: none;"><span>导航3</span></a></div>
+
+    <!-- 举报 -->
+    <div class="tip-off" id="tip-off">举报</div>
+    <!-- tab end -->
+    <p id='aside-btn' class="aside-btn">
+        <span></span>
+    </p>
+
+    <div class="aside-function">
+        <ul>
+
+            <li>
+                <p class="aside-preview"></p><span id="preview_num">24498</span>
+            </li>
+        </ul>
+
+        <a class="aside-example" id="asideExample" href='/index.php?r=home/showMyInvitation&is_redir=1'>
+
+        </a>
+
+    </div>
+    <!-- 收藏弹框 -->
+
+    <!-- <img src="http://testfe.zhichiwangluo.com/static/invitation/images/top.png" class="vertical-hand hand"> -->
+    <!-- <img src="http://testfe.zhichiwangluo.com/static/invitation/images/next.png" class="" id="next"> -->
+    <!-- 箭头 -->
+    <div class="next vertical-next" id="next"></div>
+    <div class="fix-nav-contianer">
+
+    </div>
+</div>
+<!-- 举报弹窗 -->
+
+<!-- iframe -->
+<div id="iframe">
+    <button class="back-to-int">返回</button>
+    <div class="iframe-container">
+
+    </div>
+</div>
+<!-- flip里面page独立出来 -->
+<div id="int-page">
+    <button class="back-to-int int-special">返回</button>
+    <script>
+        // var container=document.getElementById('int-page');
+        // container.style.height=window.innerHeight+'px';
+    </script>
+    <section class="int-page-container">
+
+    </section>
+</div>
+<!-- 我的活动、圈子 -->
+<div class="self-iframe" status="1" id="self-iframe">
+    <script>
+        // var container=document.getElementById('self-iframe');
+        // container.style.height=window.innerHeight+'px';
+
+    </script>
+</div>
+<!-- 微站 -->
+<div id="user_promotion_container" class="user-promotion-container">
+    <button class="back-to-int int-promotion">返回</button>
+    <div id="user_promotion_content"></div>
+</div>
+<!-- 商品购买按钮 -->
+
+<!-- 图片裁剪 -->
+<iframe id="cropper_iframe" name="cropper_iframe" src=""
+        style="width:100%;height:100%;z-index:500;position: absolute;left:0;top:0;display:none;"
+        frameborder="0"></iframe>
+<!-- 图片裁剪 end -->
+<!-- 地图 -->
+<div class="phone-map-wrap" id="phone-map-wrap">
+    <span class="map-close">×</span>
+
+    <div class="phone-map" id="phone-map"></div>
+</div>
+<!-- 地图 end -->
+<link rel="stylesheet"
+      href="http://1251027630.cdn.myqcloud.com/1251027630/zhichi_frontend/static/invitation/css/animation.css?v=10151">
+<link rel="stylesheet"
+      href="http://1251027630.cdn.myqcloud.com/1251027630/zhichi_frontend/static/version2/common/css/onekeyfocus.css">
+<!-- <script src="http://1251027630.cdn.myqcloud.com/1251027630/zhichi_frontend/static/invitation/js/zepto.min.js"></script> -->
+<script type="text/javascript"
+        src="http://1251027630.cdn.myqcloud.com/1251027630/zhichi_frontend/static/pc/invitation/js/jquery-1.11.1.min.js"></script>
+<script>
+    var animates = $('.animate:not(.int-animate),.background-animate');
+    // alert(JSON.stringify($('#123')[0].style));
+    animates.each(function (index, item) {
+        var animation_data = $(item).data('animation-style');
+        if (animation_data) {
+            item.style.webkitAnimationDuration = animation_data['duration'];
+            item.style.webkitAnimationDelay = animation_data['delay'];
+            item.style.webkitAnimationIterationCount = animation_data['iteration-count'];
+        }
+    });
+
+    $.each($('.animate'), function (index, val) {
+        var _ani = $(val).find('.animate-contain');
+        if (_ani.attr('rotdegx')) {
+            _ani.css("-webkit-transform", 'perspective(400px) rotateX(' + _ani.attr("rotdegx") + 'deg) rotateY(' + _ani.attr("rotdegy") + 'deg) rotateZ(' + _ani.attr("rotdegz") + 'deg)');
+        }
+    });
+    var bg_control = $('.background-animate');
+    bg_control.each(function (index, item) {
+        item.style.display = 'none';
+    });
+    // alert(JSON.stringify($('#123')[0].style));
+    var _hmt = _hmt || [];
+
+</script>
+<script src="http://1251027630.cdn.myqcloud.com/1251027630/zhichi_frontend/static/invitation/js/onekeyfocus.js?v=10151"></script>
+<script src="http://1251027630.cdn.myqcloud.com/1251027630/zhichi_frontend/static/invitation/js/common.js?v=10151"></script>
+<script type="text/javascript"
+        src="http://1251027630.cdn.myqcloud.com/1251027630/zhichi_frontend/static/invitation/js/adaptation.js?v=10151"></script>
+<script src="http://1251027630.cdn.myqcloud.com/1251027630/zhichi_frontend/static/invitation/js/scratch.js?v=10151"></script>
+<script src="http://1251027630.cdn.myqcloud.com/1251027630/zhichi_frontend/static/invitation/js/invitation.js?v=10151"></script>
+<script type="text/javascript" src="http://pingjs.qq.com/h5/stats.js" name="MTAH5"
+        sid="500170511"></script>
+</body>
+</html>

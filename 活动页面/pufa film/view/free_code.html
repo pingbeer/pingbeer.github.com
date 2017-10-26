@@ -1,0 +1,67 @@
+<div ng-app="FreeCodeModule" ng-controller="freeCodeController">
+    <div class="ui-row bor-bottom-dfdfdf bg-col-f8f8f8 clear line-40">
+        <div class="ui-col-10 fl-left" ng-click="returns()">
+            <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+        </div>
+        <div class="ui-col-80 fl-left text-center text-col-333 font-16">
+            我的兑换码
+        </div>
+    </div>
+    <footer class="ui-footer ui-footer-stable ui-border-t" style="box-shadow: 0px -2px 5px rgba(0, 0, 0, .6);">
+        <div class="ui-flex ui-flex-pack-center ui-flex-align-center mt-10 font-16 text-col-00a6ff"
+             ui-sref="freenotice({'id':1})">
+            <li class="ui-icon-order dis-inline font-20 line-20 text-col-00a6ff"></li>
+            <u>活动细则</u>
+        </div>
+    </footer>
+    <div class="bg-col-fff">
+        <ul class="clear text-center pt-5 bor-top-ccc line-30 font-14  text-center">
+            <li class="ui-col-49 fl-left" ng-click="cgcode(1)">
+                <span class="pl-10 pr-10 line-30"
+                      ng-class="{true:'getcode',false:'mycode'}[ckedcode]"
+                >领取兑换码</span>
+            </li>
+            <li class="ui-col-49 fl-left bor-lefts-dfdfdf" ng-click="cgcode(3)">
+                <span class="pl-10 pr-10 line-30"
+                      ng-class="{false:'getcode',true:'mycode'}[ckedcode]"
+                >我的兑换码</span></li>
+        </ul>
+    </div>
+    <div ng-if="!megshow" class="mb-60">
+        <div ng-if="ckedcode" class="mt-20">
+            <div ng-style="codeMax" class="mb-10 position" ng-repeat="item in listitem">
+                <img ng-if="item.status==1" style="width: 100%;height: 100%" ng-src="{{staticUrl}}images/code.jpg"
+                     ng-click="getMyCode(item.id)"/>
+                <img ng-if="item.status==2" style="width: 100%;height: 100%" ng-src="{{staticUrl}}images/codeout.jpg"/>
+                <img ng-if="item.status==3||item.status==4" style="width: 100%;height: 100%"
+                     ng-src="{{staticUrl}}images/codeover.jpg"/>
+                <span ng-if="item.status==1"
+                      style="position: absolute; top: 36%; left:30%;color:#999; font-size: 12px;">请于{{item.disabledTime}}前<br/>领取,过期作废</span>
+
+            </div>
+        </div>
+        <div ng-if="!ckedcode" class="mt-20 font-14">
+            <div ng-style="codeMax" class="mb-10 position" ng-repeat="my in myitem">
+                <img style="width: 100%;height: 100%" ng-src="{{staticUrl}}images/mycode.jpg"/>
+                <ul class="width-60 codenum">
+
+                    <li id="{{'foo'+$index}}"><input value="{{my.serialNo}}" class="bor-none bg-col-fff" type="text"/>
+                    </li>
+                    <li class="text-col-989898">有效期至{{my.disabledTime}}</li>
+                    <li class="text-col-ff7327" ng-show="my.status==3">还有{{my.lastDays}}天过期
+                        <button class="ml-10 bg-col-72b4f4 pl-10 pr-10 line-20 font-12 text-col-fff btn"
+                                data-clipboard-text="{{my.serialNo}}">复制
+                        </button>
+                    </li>
+                    <li class="text-col-ff7327" ng-show="my.status==4">已过期</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div ng-if="megshow" class="mt-45 text-center">
+        暂无信息
+    </div>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

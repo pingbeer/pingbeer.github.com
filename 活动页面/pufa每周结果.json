@@ -1,0 +1,26 @@
+﻿channelId	spdccc
+appId	lottery
+authTicket	redis_campaign_test15011202357210000164610eadcaf9e79f75822d86c64b91df540
+userId	0001001f4f437d52
+sign	BDA117527F0A7594EE349DF805E86836
+sectionId	20170727
+serviceType	com.ebuy.o2o.campaign.service.LotteryService
+serviceMethod	findLotteryResultBySectionId
+
+<LotteryResult>
+  <errorCode>0</errorCode>
+  <errorMsg></errorMsg>
+  <goodsDetailUrl></goodsDetailUrl>
+  <goodsIconUrl></goodsIconUrl>
+  <goodsId>goldkey</goodsId>
+  <goodsName>金钥匙</goodsName>
+  <goodsType>RIGHTS</goodsType>
+  <level>0</level>
+  <orderAppId></orderAppId>
+  <orderGoodsId></orderGoodsId>
+  <orderGoodsSku></orderGoodsSku>
+  <orderId></orderId>
+  <orderSectionId></orderSectionId>
+  <recordId>08118ad81f94</recordId>
+  <userId>0001001f4f437d52</userId>
+</LotteryResult>

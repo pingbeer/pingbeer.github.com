@@ -1,0 +1,208 @@
+﻿
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8" />
+<title>在线秒杀 积分商城</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+
+<link rel="stylesheet" href="https://creditcard.ecitic.com/citiccard/QiangGou/ServerH5/css/jquery.loadmask.css" type="text/css" />
+<link rel="stylesheet" href="https://creditcard.ecitic.com/citiccard/QiangGou/ServerH5/css/intmall_wap1507.css" type="text/css" />
+
+<script type="text/javascript" src="https://creditcard.ecitic.com/citiccard/QiangGou/ServerH5/js/jquery.js"></script> 
+<script type="text/javascript" src="https://creditcard.ecitic.com/citiccard/QiangGou/ServerH5/js/jquery.loadmask.min.js"></script> 
+<script type="text/javascript" src="https://creditcard.ecitic.com/citiccard/QiangGou/ServerH5/js/json.js"></script> 
+<script type="text/javascript" src="https://creditcard.ecitic.com/citiccard/QiangGou/ServerH5/js/common.js"></script> 
+<script type="text/javascript" src="https://creditcard.ecitic.com/citiccard/QiangGou/ServerH5/js/order_wap.js"></script>
+<script type="text/javascript" src="https://creditcard.ecitic.com/citiccard/QiangGou/ServerH5/js/select.js"></script>
+
+<!-- https://creditcard.ecitic.com/citiccard/QiangGou/ServerH5/js/order_wap.js -->
+<!-- https://creditcard.ecitic.com/citiccard/QiangGou/ServerH5/js/common.js -->
+</head>
+<body>
+<!--  顶部栏目 -->
+
+<div class="header">
+		<a class="back_btn" href="javascript:history.go(-1);">返回</a>
+  <div class="txt_area">我的积分</div>
+  <a class="user_btn" href="javascript:;" title="刘玖平"></a>
+  <a class="home_btn" href="https://creditcard.ecitic.com/eshop/mainpage_jf/index.htm"></a>
+</div>
+<!-- https://creditcard.ecitic.com/citiccard/QiangGou/ServerH5/sendSms?timestamp=1492564787075 -->
+
+<input type="hidden" id="ctx" value="https://creditcard.ecitic.com/citiccard/QiangGou/ServerH5"/>
+<input type="hidden" id="intervalTimes" value="120"/>
+
+<!--  支付栏目 -->
+<div class="main content">
+   <div class="address float-l"><span class="address_title_text">收货人信息</span></div>
+   <div class="address float-r"><a class="address_select" href="javascript:void(0)" onclick="address_select()" >选择&nbsp;></a></div>
+   
+    <div class="c"></div>
+  <!--  已经选择的收货人信息  -->
+  <div class="user_add" id="selected_address">
+  	
+  		
+	    <div class="left_infor" id="-1">
+	     	<p class="p_name">刘玖平</p>
+			<p class="p_phone">18260269335</p>
+			<p class="p_add">湖南省邵阳市隆回县滩头镇三塘村</p>
+	     </div>
+     		
+     
+  			
+     
+  			
+     
+  </div>
+  
+  <!--  备注  -->
+  <div class="form_list mt_20">
+    <ul>
+      <li><span class="left_tit w_40">留言</span>
+        <div class="right_input ml_60">
+          <input id="orderDesc" type="text" placeholder="给商户留言 选填项" />
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <p class="col_title">支付信息</p>
+  <!--  支付信息  -->
+  <div class="pay_infor">
+    <ul>
+      <li style="width:60%"><span>名称</span><span>【积分乐享日】Kindle-Paperwhite电子书阅读器</span></li>
+      <li style="width:26%"><span>单价</span><span>999</span></li>
+      <li style="width:14%"><span>数量</span><span>1</span></li>
+    </ul>
+  </div>
+  
+  <!-- 主卡下拉列表 -->
+  <div class="choose_pay"><span class="tit_span">支付卡号</span>
+    <div class="select_box">
+      <select id="cardNo">
+      	 
+      	 	<option point="485868" value="2">6226********5669</option>
+      	 
+      	 	<option point="62795" value="1">6226********7717</option>
+      	 
+      	 	<option point="1731" value="0">6226********2019</option>
+      	
+      </select>
+    </div>
+  </div>
+  
+  <!-- 卡片合并支付 -->
+  <div class="other_pay_card">
+    <p class="int_tips">如支付卡积分不足，请选择其他卡片合并支付：</p>
+    <div class="cards_list" id="cards_list">
+      <ul>
+      	
+        <li ck="2" class="hbNode point-usable">
+          <p class="card_box">信用卡号:<span class="num_span availCard">6226********5669</span></p>
+          <p class="int_box">可用积分:<span class="num_span availPoint">485868</span><span class="koujf"></span></p>
+        </li>
+        
+        <li ck="1" class="hbNode point-usable">
+          <p class="card_box">信用卡号:<span class="num_span availCard">6226********7717</span></p>
+          <p class="int_box">可用积分:<span class="num_span availPoint">62795</span><span class="koujf"></span></p>
+        </li>
+        
+        <li ck="0" class="hbNode point-usable">
+          <p class="card_box">信用卡号:<span class="num_span availCard">6226********2019</span></p>
+          <p class="int_box">可用积分:<span class="num_span availPoint">1731</span><span class="koujf"></span></p>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+  
+   <!-- 合计 -->
+  <p class="col_title">合计
+  	<span class="stillNeedPoint" style="color:red"></span>
+  </p>
+  <div class="pay_int_list">
+    <ul>
+      <li>
+      	<span class="t_span">所需积分：</span><span id="totalReqPoint">999</span>
+      	<span class="total_koujf"></span>
+      </li>
+      <li><span class="t_span">自付金额：</span><span>￥0.0</span></li>
+      <!-- <li><span class="t_span">手续费金额：</span>￥ 0</li> -->
+    </ul>
+  </div>
+  
+   <!--  验证码  -->
+  <div class="form_list mt_20">
+    <ul>
+      <li><span class="left_tit w_90">短信验证码</span>
+        <div class="code_input">
+          <input id="smsCode" type="text" onkeypress="if (event.keyCode == 13){wap_add_order();}" placeholder="验证码" maxlength="6" onfocus="divOnfocus()" onblur="divOnblur()"/>
+        </div>
+        <div class="code_btn"><a class="btn_a" href="javascript:;">免费获取</a><span class="btn_span" style="display:none;">180秒</span></div>
+      </li>
+    </ul>
+  </div>
+  <div class="code_tips" style="display:none;"></div>
+  
+  <!--  报错提示:短信验证码输入有误  -->
+  <div class="code_err_tips" style="visibility: hidden;"><span></span></div>
+  
+ <div class="bottom_pay" >
+  	<div class="pay_btn_box"><a class="red_btn" onclick="wap_add_order();return false">确认支付</a></div>
+ </div>
+ 
+</div>
+<!--  更换收货人信息栏目  -->
+<div id="change_address_dialog" style="display:none;min-width: 320px;" class="content"> 
+	<div class="address_list" >
+		<div>
+	    
+	    <div class="left_infor" id="-1" onclick="left_infor('-1')" >
+			<p class="p_name">刘玖平</p>
+			<p class="p_phone">18260269335</p>
+			<p class="p_add">湖南省邵阳市隆回县滩头镇三塘村</p>
+	    </div>
+	    
+	    <div class="left_infor" id="2013387" onclick="left_infor('2013387')" >
+			<p class="p_name">杨玉凤</p>
+			<p class="p_phone">18260269335</p>
+			<p class="p_add">湖南省邵阳市隆回县滩头镇三塘村</p>
+	    </div>
+	    
+	    <div class="left_infor" id="2628055" onclick="left_infor('2628055')" >
+			<p class="p_name">刘先生</p>
+			<p class="p_phone">18260269335</p>
+			<p class="p_add">上海徐汇区田林路140号16号楼东4楼</p>
+	    </div>
+	    
+	    </div>
+	</div>
+	
+	<div class="c"></div>
+	<div class="splitdiv"></div>
+	
+	<div class="btn_group">
+		<a class="add" href="/citiccard/QiangGou/ServerH5/address/new">新增</a>
+    	<a class="edit" href="javascript:void(0)" onclick="edit()" >编辑</a>
+    	<a class="ok" href="javascript:void(0)" onclick="ok()">确定</a>
+    	<a class="cancel" href="javascript:void(0)" onclick="cancel()">取消</a>
+    	<div class="c"></div>
+	</div>
+</div>
+<div id="spaceDiv" style="height:0px;"></div>
+<script type="text/javascript">
+	function divOnfocus(){document.getElementById("spaceDiv").style.height=screen.height*2/5+"px";}
+	function divOnblur(){document.getElementById("spaceDiv").style.height="0px";}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+
+<div ng-app="LogisticsModule" ng-controller="LogisticsController">
+    <div class="ui-row bg-col-f8f8f8 lineh-40 bor-bottom-dfdfdf">
+        <div class="ui-col-25 fl-left" ui-sref="shoporder({'type':Paramstype})">
+            <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+        </div>
+        <div class="ui-col-50 fl-left text-center text-col-333 font-16">
+            物流信息
+        </div>
+    </div>
+    <!--信息-->
+    <ul class="pl-15 pr-15 clear font-14 bg-col-fff text-col-999 bor-bottom-dfdfdf" ng-if="!isShow">
+        <li class="clear position">
+            <div class="fl-left ui-col-33s pt-10 pb-5">
+                <div class="fl-left ml-10 rightimg"><img ng-src="{{picUrl}}"></div>
+            </div>
+            <ul class="fl-left ui-col-65 mt-5 font-12">
+                <li class="font-14 text-col-666 lineh-20">
+                    物流状态：
+                    <span class="text-col-ff5400" ng-if="expressInfo.State==2">在途中</span>
+                    <span class="text-col-ff5400" ng-if="expressInfo.State==3">签收</span>
+                    <span class="text-col-ff5400" ng-if="expressInfo.State==4">问题件</span>
+                </li>
+                <li>
+                    物流来源：{{expressName}}
+                </li>
+                <li>
+                    运单编号：{{expressInfo.LogisticCode}}
+                </li>
+                <li>
+                    物流电话：<span class="text-col-00a6ff"><a href="tel:{{mobile}}">{{mobile}}</a></span>
+                </li>
+            </ul>
+        </li>
+    </ul><!--
+    &lt;!&ndash;派送员&ndash;&gt;
+    <div class="nav-title mt-10 pt-5 pb-5 clear bor-bottom-dfdfdf bor-top-dfdfdf">
+        <div class="fl-left">
+            <img class="fl-left position mr-10" style="width: 35px;height: 35px; top:3px;"
+                 ng-src="./images/shop/delivery.png" alt="">
+            <ul class="fl-left">
+                <li class="lineh-20 text-col-999 font-12">派送员</li>
+                <li class="lineh-25 font-14">呗</li>
+            </ul>
+        </div>
+        <div class="ui-col-20 fl-right text-right pr-10 position text-col-999 font-12">
+            <img style="width: 35px;height: 35px; position: absolute; right: 28px; top:3px;"
+                 ng-src="./images/cinematel.png">
+            <img class="nav-more" ng-src="./images/r.png"/>
+        </div>
+    </div>-->
+    <!--物流详情-->
+    <div class="bg-col-fff bor-top-dfdfdf mt-10" ng-if="!isShow">
+        <p class="lineh-40 bor-bottom-dfdfdf pl-15">本数据由<span class="pl-5 pr-5 text-col-00a6ff">{{expressName}}快递</span>提供</p>
+        <ul class="fl-left pl-15 pr-15 clear ui-col-100 font-14 bg-col-fff pt-10"
+            style="min-height: 320px; height: auto;">
+            <li class="clear ml-15" ng-repeat="item in logistics.slice().reverse()"
+                ng-class="{true:'bor-lefts-dfdfdf',false:''}[$index!=length]">
+                <div ng-if="$index==0" ng-class="{true:'text-col-ff5400',false:''}[$index==0]">
+                    <div class="ui-col ui-col-15">
+                        <span class="ui-border-radius15 bor-sild bg-col-00a6ff fl-left">
+                        </span>
+                    </div>
+                    <div class="ui-col pb-5 ui-col-85 bor-bottom-dfdfdf">
+                        <p class="line-20">{{item.AcceptStation}}</p>
+                        <p class="line-25">{{item.AcceptTime}}</p>
+                    </div>
+                </div>
+                <div ng-if="$index!=0&&$index!=length">
+                    <div class="ui-col ui-col-15">
+                    <span class="ui-border-radius15 bg-col-cacaca fl-left"
+                          style="width:15px;height: 15px; border-radius: 50%; position: relative; left:-8px; top: 7px;">
+                    </span>
+                    </div>
+                    <div class="ui-col pb-5 ui-col-85 bor-bottom-dfdfdf pt-5">
+                        <p class="line-20">{{item.AcceptStation}}</p>
+                        <p class="line-25">{{item.AcceptTime}}</p>
+                    </div>
+                </div>
+                <div ng-if="$index==length">
+                    <div class="ui-col ui-col-15 bor-lefts-dfdfdf">
+                    <span class="ui-border-radius15 bg-col-cacaca fl-left"
+                          style="width:15px;height: 15px; border-radius: 50%; position: relative; left:-8px; top: 5px;">
+                    </span>
+                    </div>
+                    <div class="ui-col pb-5 ui-col-85 bor-bottom-dfdfdf pt-5 position" style="top:-2px;">
+                        <p class="line-20">{{item.AcceptStation}}</p>
+                        <p class="line-25">{{item.AcceptTime}}</p>
+                    </div>
+                </div>
+            </li>
+            <!--<li class="clear bor-lefts-dfdfdf ml-15">
+                <div class="ui-col ui-col-20">
+                    <span class="ui-border-radius15 bg-col-cacaca fl-left"
+                          style="width:20px;height: 20px; border-radius: 50%; position: relative; left:-10px; top: -5px;">
+                    </span>
+                </div>
+                <div class="ui-col pb-5 ui-col-80 bor-bottom-dfdfdf">
+                    <p class="line-25">{{lfirst.AcceptStation}}</p>
+                    <p class="line-20">{{lfirst.AcceptTime}}</p>
+                </div>
+            </li>
+            <li class="clear ml-15">
+                <div class="ui-col ui-col-20">
+                    <span class="ui-border-radius15 bg-col-cacaca fl-left"
+                          style="width:20px;height: 20px; border-radius: 50%; position: relative; left:-10px; top: -5px;">
+                    </span>
+                </div>
+                <div class="ui-col pb-5 ui-col-80 bor-bottom-dfdfdf">
+                    <p class="line-25">{{logistics[0].AcceptStation}}</p>
+                    <p class="line-20">{{logistics[0].AcceptTime}}</p>
+                </div>
+            </li>-->
+        </ul>
+    </div>
+    <div class="lineh-50 text-center" ng-if="isShow">{{message}}</div>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

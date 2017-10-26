@@ -1,0 +1,95 @@
+
+<div ng-app="SearchModule" ng-controller="searchController">
+    <div class="line-35 mt-8 text-center font-14 position">
+        <div ng-show="isShow" class="position bg-col-f8f8f8 clear">
+            <div class="ui-col-15 fl-left mt-5">
+                <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"
+                   ng-click="returnHistory('',Paramstype,'')"></i>
+            </div>
+            <div class="ui-col-80 fl-left ">
+                <div class="lineh-40">
+                    <form action="">
+                        <input type="text" class="lineh-30 pl-30 mt-5 bor-none ui-border-radius ui-col-100 text-col-333"
+                               placeholder="输入影片、影院" ng-model="search" ng-keyup="searchLoad(1,$event)"/>
+                    </form>
+                </div>
+                <i class="ui-icon-search cinematop-search"></i>
+            </div>
+        </div>
+        <div class="clear ui-row bg-col-f8f8f8 pr-15 position" ng-show="!isShow">
+            <div class="ui-col-15 fl-left mt-5">
+                <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"
+                   ng-click="returnHistory('',Paramstype,'')"></i>
+            </div>
+            <div class="fl-left ui-col-60">
+                <div class="">
+                    <form action="">
+                        <input type="text" class="lineh-30 pl-30 mt-5 bor-none ui-border-radius ui-col-100 text-col-333"
+                               placeholder="输入影片、影院"
+                               ng-model="search" ng-keyup="searchLoad(1,$event)"/>
+                    </form>
+                </div>
+                <i class="ui-icon-search cinematop-search"></i>
+            </div>
+            <div class="ui-col-20 lineh-30 mt-5 font-14 fl-right text-col-999 bor-dfdfdf" ng-click="clearSearch()">清空
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="font-14" ng-if="searchList">
+            <div class="bor-bottom-ccc text-center text-col-333 line-40" ng-bind="text1"></div>
+            <ul class="ui-row pb-10 clear bg-col-fff bor-bottom-dfdfdf overhide" ng-repeat="lists in filmResults">
+                <li class="fl-left film-hot ml-10">
+                    <img class="film-hot" ng-click="filmDetail(lists.id)"
+                         ng-src="{{lists.bigImg}}">
+                </li>
+                <li class="fl-left text-col-666" ng-style="imgWidth">
+                    <ul class="font-12 bg-col-fff ml-10 mt-10">
+                        <li class="clear line-20 font-14 text-col-2c3e50" ng-click="filmDetail(lists.id)">
+                            <div class="film-msg fl-left fotn-bold ui-col-70 text-col-333"
+                                 ng-click="filmDetail(lists.id)">
+                                {{lists.name}}
+                            </div>
+                            <div class="fl-right ui-col-30 text-col-ff7327 text-right pr-10 mt-5">{{lists.grade | number
+                                : 1}}
+                            </div>
+                        </li>
+                        <li class="text-col-2c3e50" ng-click="filmDetail(lists.id)">
+                            {{lists.category}}
+                        </li>
+                        <li class="text-col-989898 overhide width-70 line-25" ng-if="lists.description"
+                            ng-click="filmDetail(lists.id)">
+                            {{lists.description}}
+                        </li>
+                        <li class="text-col-2c3e50 overhide width-70 line-20 ui-nowrap" ng-click="filmDetail(lists.id)">
+                            主演：{{lists.actors}}
+                        </li>
+                        <li class="text-col-989898 clear">
+                            <div class="fl-right ui-col-30 text-right">
+                                <button class="text-col-ff7327 ui-col-100 lineh-30 font-12 border-ff915b"
+                                        ng-click="filmSearch(lists.id)">购票
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+            <div class="bor-bottom-ccc text-center bor-bottoms-dfdfdf text-col-333 line-40" ng-bind="text"></div>
+            <ul class="bg-col-fff">
+                <li class="pl-15 pr-15 bor-bottom-dfdfdf overhide font-12" ng-repeat="list in cinemaResults"
+                    ng-click="detail(list.id)">
+                    <div class=" line-20 mb-20 font-16 mt-10 fotn-bold text-col-333">{{list.name}}</div>
+                    <div class=" line-20 mb-10 mt-10 text-col-666">{{list.address}}</div>
+                </li>
+            </ul>
+            <div class="mt-20 mb-60 text-center " ng-if="!lastPage">
+                <button class="bg-col-0066cc text-col-fff ui-col-80 lineh-30 mb-10" ng-click="downMore()">加载更多
+                </button>
+            </div>
+        </div>
+    </section>
+    <!--loading-->
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

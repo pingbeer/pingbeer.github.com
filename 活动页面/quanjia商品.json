@@ -1,0 +1,83 @@
+﻿{
+  "code": 200,
+  "datas": {
+    "limit_info": {
+      "limit_type": "period",
+      "limit_start": "2017-09-22 10:00:00",
+      "limit_end": "2017-09-22 23:59:59",
+      "limit_show_start": "2017-09-22 00:00:00",
+      "limit_show_end": "2017-09-22 23:59:59",
+      "limit_unit": "3",
+      "total_num": "100",
+      "sale_num": "0",
+      "sub_title": "\u6bcf\u4eba\u9650\u8d2d3\u53f0",
+      "limit_per_num": "1",
+      "state": 0,
+      "status": "\u672a\u5f00\u59cb"
+    },
+    "goods_info": {
+      "store_id": "1",
+      "goods_name": "\u5c0f\u7c73Yeelight\u5e8a\u5934\u706f\u767d\u8272",
+      "goods_commonid": "698009145",
+      "goods_jingle": "\u4eca\u65e512\u70b9\u75af\u62a2\uff0c\u4e701\u53f0\u90014400\u79ef\u5206; \u62a2\u8d2d\u671f\u95f4\u6bcf\u4eba\u9650\u8d2d3\u53f0",
+      "is_selfpick": "0",
+      "goods_storage": "221",
+      "goods_freeze_storage": "101",
+      "goods_storage_alarm": "2",
+      "goods_id": "98009145",
+      "gc_id_1": "165",
+      "gc_id_2": "179",
+      "gc_id_3": "253",
+      "goods_marketprice": "0.00",
+      "goods_price": "218.00",
+      "goods_salenum": "521",
+      "asoi_po_basic_qty": "1",
+      "goods_image": "1_05593288226292948.jpg",
+      "goods_state": "1",
+      "tag_id": "0",
+      "is_group": "0",
+      "group_ids": "",
+      "goods_info": "",
+      "mobile_body": "<img src=\"http:\/\/img.foryouclub.com.cn\/shop\/store\/goods\/1\/1_05562449721548832.jpg\" width=\"100%\" style=\"display:block;border: 0;\"\/><img src=\"http:\/\/img.foryouclub.com.cn\/shop\/store\/goods\/1\/1_05562449751321820.jpg\" width=\"100%\" style=\"display:block;border: 0;\"\/><img src=\"http:\/\/img.foryouclub.com.cn\/shop\/store\/goods\/1\/1_05562449796822842.jpg\" width=\"100%\" style=\"display:block;border: 0;\"\/><img src=\"http:\/\/img.foryouclub.com.cn\/shop\/store\/goods\/1\/1_05562449836335530.jpg\" width=\"100%\" style=\"display:block;border: 0;\"\/><img src=\"http:\/\/img.foryouclub.com.cn\/shop\/store\/goods\/1\/1_05562449869813759.jpg\" width=\"100%\" style=\"display:block;border: 0;\"\/>",
+      "goods_num": "221",
+      "activity_info": "\u4e701\u53f0\u90014400\u79ef\u5206",
+      "unit_name": "\u53f0",
+      "tag_name": "",
+      "tag_color": "",
+      "tag_position": 0,
+      "font_size": 0,
+      "font_color": ""
+    },
+    "goods_img": [
+      {
+        "goods_image": "1_05593288226292948.jpg",
+        "goods_img_url": "http:\/\/img.foryouclub.com.cn\/shop\/store\/goods\/1\/1_05593288226292948_640.jpg"
+      }
+    ],
+    "product_parameter": {
+      "ab_barcode": "6924922200093",
+      "ab_package_incase": "1.00",
+      "ab_length": "10.00",
+      "abi_sales_unit_id": "033",
+      "ab_width": "10.00",
+      "ab_height": "20.00",
+      "ab_gross_weight": "680.000",
+      "ab_net_weight": "0.000",
+      "abi_brand": "\u5c0f\u7c73",
+      "abi_spec": "\u5355\u4e2a\u88c5",
+      "abi_production_location": "\u4e2d\u56fd",
+      "abi_grade": "\u5408\u683c",
+      "abi_shelflife": "99",
+      "abi_shelflife_measure": "10"
+    },
+    "share_title": "\u5c0f\u7c73Yeelight\u5e8a\u5934\u706f\u767d\u8272",
+    "share_desc": "\u4eca\u65e512\u70b9\u75af\u62a2\uff0c\u4e701\u53f0\u90014400\u79ef\u5206; \u62a2\u8d2d\u671f\u95f4\u6bcf\u4eba\u9650\u8d2d3\u53f0",
+    "share_img": "http:\/\/img.foryouclub.com.cn\/shop\/store\/goods\/1\/1_05593288226292948_60.jpg",
+    "share_url": "http:\/\/weidian.foryouclub.com.cn\/index.php?c=goods&a=detail&goods_id=98009145&memberId=xxx",
+"goods_btn_color": "#FF5549",
+    "goods_btn_txt": "\u7acb\u5373\u62a2\u8d2d",
+
+    "goods_btn_state": "1"
+
+  }
+}

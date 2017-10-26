@@ -1,0 +1,152 @@
+{
+  "reply": {
+    "returnCode": {
+      "domain": null,
+      "type": "S",
+      "code": "AAAAAA"
+    },
+    "prodList": [
+      {
+        "goodsBannerPicName": "20170505161033.jpg",
+        "useLife": "限达标次周每周一",
+        "goodsBannerPicPath": "img/active/banner/A20170505897/20170505161033.jpg",
+        "usageMode": "1.刷民生信用卡每自然周消费满3笔且单笔满199元或等值外币（达标交易类型包含计积分交易、微信交易、支付宝交易），即可于消费达标的次周周一（10:00后）至COSTA指定门店7元领取中杯饮品一杯；<br/>\r\n2.每人每活动日所有门店限领取一杯，名额有限，先到先得。",
+        "remark": "限指定门店享受特权，门店信息详见民生信用卡官方微信或官网。",
+        "isGroup": "false",
+        "giftSN": "1",
+        "giftID": "G201705057256",
+        "giftName": "-周一咖啡日",
+        "exchMode": "03",
+        "actyID": "A20170505897"
+      },
+      {
+        "goodsBannerPicName": "20170505161314.jpg",
+        "useLife": "限达标次周每周二",
+        "goodsBannerPicPath": "img/active/banner/A20170505897/20170505161314.jpg",
+        "usageMode": "1.刷民生信用卡每自然周消费满3笔且单笔满199元或等值外币（达标交易类型包含计积分交易、微信交易、支付宝交易），即可于消费达标的次周周二至哈根达斯指定门店7元领取指定甜品（单球、脆皮条或小纸杯三选一）；<br/>\r\n2.每人每活动日所有门店限领取一次，名额有限，先到先得。",
+        "remark": "限指定门店享受特权，门店信息详见民生信用卡官方微信或官网。",
+        "isGroup": "false",
+        "giftSN": "2",
+        "giftID": "G201705057257",
+        "giftName": "-周二甜蜜日",
+        "exchMode": "03",
+        "actyID": "A20170505897"
+      },
+      {
+        "goodsBannerPicName": "20170505162040.jpg",
+        "useLife": "流量充值兑换码有效期自领取之日起3个月内有效",
+        "goodsBannerPicPath": "img/active/banner/A20170505897/20170505162040.jpg",
+        "usageMode": "1.刷民生信用卡每自然周消费满3笔且单笔满199元或等值外币（达标交易类型包含计积分交易、微信交易、支付宝交易），即可于消费达标的次周周三在民生信用卡微信“我的优惠”-“我的特权”7元领取500M手机流量充值兑换码一个；<br/>\n2.每人每活动日限领取一个，名额有限，先到先得，每活动日两次领取时间：上午10点和下午15点。",
+        "remark": "流量当月充值当月有效，月底清零",
+        "isGroup": "false",
+        "giftSN": "3",
+        "giftID": "G201705057258",
+        "giftName": "-周三流量日",
+        "exchMode": "02",
+        "actyID": "A20170505897",
+        "giftListExchShowRule": [
+          {
+            "actionName": "立即兑换",
+            "actionTarget": {
+              "TPLTCode": "1211",
+              "TPLTType": "TPLT.UI.Gift"
+            },
+            "payPageShowType": "01"
+          }
+        ]
+      },
+      {
+        "goodsBannerPicName": "20170505162114.jpg",
+        "useLife": "长期有效",
+        "goodsBannerPicPath": "img/active/banner/A20170505897/20170505162114.jpg",
+        "usageMode": "1.刷民生信用卡每自然周消费满3笔且单笔满199元或等值外币（达标交易类型包含计积分交易、微信交易、支付宝交易），即可于消费达标的次周周四在民生信用卡微信“我的优惠”-“我的特权”7积分领取QQ音乐付费音乐包兑换码一个；<br/>\n2.每人每活动日限领取一个，名额有限，先到先得，每活动日两次领取时间：上午10点和下午15点。",
+        "remark": "限指定时间内充值，充值后付费音乐包有效期为30天。",
+        "isGroup": "false",
+        "giftSN": "4",
+        "giftID": "G201705057259",
+        "giftName": "-周四爱乐日",
+        "exchMode": "02",
+        "actyID": "A20170505897",
+        "giftListExchShowRule": [
+          {
+            "actionName": "立即兑换",
+            "actionTarget": {
+              "TPLTCode": "1211",
+              "TPLTType": "TPLT.UI.Gift"
+            },
+            "payPageShowType": "01"
+          }
+        ]
+      },
+      {
+        "goodsBannerPicName": "20170505162708.jpg",
+        "useLife": "美食券自在大众点评领取之日起90天内有效",
+        "goodsBannerPicPath": "img/active/banner/A20170505897/20170505162708.jpg",
+        "usageMode": "1.刷民生信用卡每自然周消费满3笔且单笔满199元或等值外币（达标交易类型包含计积分交易、微信交易、支付宝交易），即可于消费达标的次周周五在民生信用卡微信“我的优惠”-“我的特权”7积分领取大众点评满50元减30元美食券兑换码一个；<br/>\n2.每人每活动日限领取一个，名额有限，先到先得，每活动日两次领取时间：上午10点和下午15点。",
+        "remark": "进入大众点评APP购买美食团购/闪惠买单时使用。",
+        "isGroup": "false",
+        "giftSN": "5",
+        "giftID": "G201705057260",
+        "giftName": "-周五美食日",
+        "exchMode": "02",
+        "actyID": "A20170505897",
+        "giftListExchShowRule": [
+          {
+            "actionName": "立即兑换",
+            "actionTarget": {
+              "TPLTCode": "1211",
+              "TPLTType": "TPLT.UI.Gift"
+            },
+            "payPageShowType": "01"
+          }
+        ]
+      },
+      {
+        "goodsBannerPicName": "20170505162758.jpg",
+        "useLife": "观影券自在大众点评领取之日起90天内有效",
+        "goodsBannerPicPath": "img/active/banner/A20170505897/20170505162758.jpg",
+        "usageMode": "1.刷民生信用卡每自然周消费满3笔且单笔满199元或等值外币（达标交易类型包含计积分交易、微信交易、支付宝交易），即可于消费达标的次周周六在民生信用卡微信“我的优惠”- “我的特权”7积分领取大众点评30元电影券兑换码一个；<br/>\n2.每人每活动日限领取一个，名额有限，先到先得，每活动日两次领取时间：上午10点和下午15点。",
+        "remark": "进入大众点评APP订座电影票时使用。",
+        "isGroup": "false",
+        "giftSN": "6",
+        "giftID": "G201705057261",
+        "giftName": "-周六观影日",
+        "exchMode": "02",
+        "actyID": "A20170505897",
+        "giftListExchShowRule": [
+          {
+            "actionName": "立即兑换",
+            "actionTarget": {
+              "TPLTCode": "1211",
+              "TPLTType": "TPLT.UI.Gift"
+            },
+            "payPageShowType": "01"
+          }
+        ]
+      },
+      {
+        "goodsBannerPicName": "20170523165918.jpg",
+        "useLife": "有效期为三个月",
+        "goodsBannerPicPath": "img/active/banner/A20170505897/20170523165918.jpg",
+        "usageMode": "1.刷民生信用卡每自然周消费满3笔且单笔满199元或等值外币（达标交易类型包含计积分交易、微信交易、支付宝交易），即可于消费达标的次周周日在民生信用卡微信“我的优惠”- “我的特权”7积分领取我买网满百立减优惠券兑换码一个；<br/>\n2.每人每活动日限领取一个，名额有限，先到先得，每活动日两次领取时间：上午10点和下午15点。",
+        "remark": "进入我买网的购物网站或APP购买商品时使用，部分特惠品不参加用劵",
+        "isGroup": "false",
+        "giftSN": "7",
+        "giftID": "G201705057262",
+        "giftName": "-周日享购日",
+        "exchMode": "02",
+        "actyID": "A20170505897",
+        "giftListExchShowRule": [
+          {
+            "actionName": "立即兑换",
+            "actionTarget": {
+              "TPLTCode": "1211",
+              "TPLTType": "TPLT.UI.Gift"
+            },
+            "payPageShowType": "01"
+          }
+        ]
+      }
+    ]
+  }
+}

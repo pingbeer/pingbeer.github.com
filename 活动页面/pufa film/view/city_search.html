@@ -1,0 +1,48 @@
+<div ng-app="CityModule" ng-controller="cityController">
+    <div class="nav-mainf ui-row bg-col-f8f8f8 lineh-40 bor-bottom-dfdfdf">
+        <div class="ui-col-20 pl-15 fl-left text-col-333" ng-click="returnHistory('',Paramsid,'')">
+            <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+        </div>
+        <div class="ui-col-53 fl-left text-center text-col-333 font-16">
+            城市
+        </div>
+    </div>
+    <section>
+        <div class="mt-40 pt-10 font-14">
+            <p class="lineh-30 ml-15 ui-col-80">定位城市：</p>
+            <div class="lineh-30 pt-10 pb-10 bg-col-f8f8f8">
+                <button class="bg-col-fff bor-none ml-15 text-col-333 lineh-30 ui-col-25"
+                        ng-click="checkcity(currents.name,currents.id)">{{currentCityName}}
+                </button>
+            </div>
+            <p class="lineh-30 ml-15 ui-col-80">热门城市：</p>
+            <div class="clear pt-10 pb-10 bg-col-f8f8f8">
+                <button class="bg-col-fff bor-none ml-15 fl-left lineh-30 ui-col-25 mb-10"
+                        ng-repeat="hot in hotcity"
+                        ng-click="checkcity(hot.name,hot.id)">{{hot.name}}
+                </button>
+            </div>
+            <p class="bg-col-f8f8f8 lineh-30 pl-15">县级城市请选择该归属地级市</p>
+        </div>
+        <div class="pr-20 font-14">
+            <div id="letter"></div>
+            <div class="sort_box pl-20 pr-20">
+                <div class="sort_list bg-col-f8f8f8" ng-repeat="city in cities"
+                     repeat-finish="doSomething()">
+                    <div class="num_name ml-15 lineh-40 bor-bottom-dfdfdf"
+                         ng-click="checkcity(city.name,city.id)">
+                        <span class="cityEnName" style="display: none;">{{city.city_en}}</span>
+                        <span class="cityName">{{city.name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="initials">
+            <ul class="text-center">
+            </ul>
+        </div>
+    </section>
+    <!--loading-->
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

@@ -1,0 +1,79 @@
+<div ng-app="MyOrderModule" ng-controller="MyOrderController">
+    <div class="nav-mainf ui-row bg-col-f8f8f8 lineh-40  bor-bottom-dfdfdf">
+        <div class="ui-col-10 fl-left">
+            <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"
+               ng-click="orderReturn()"></i>
+        </div>
+        <div class="ui-col-80 fl-left text-col-333 font-16" style="position:relative;top:-2px;">
+            <button class="btn-bor left-btn btn-active" style="position:relative;right: -6px;width:32%;height: 30px;">
+                电影
+            </button>
+            <button class="btn-bor bor-bottom-0066ff line-20 font-14" style="position:relative;width:32%;height: 30px;"
+                    ui-sref="recharge({'type':Paramstype})" ng-click="changeShowValue()">
+                充值
+            </button>
+            <button class="btn-bor right-btn" style="position:relative;left: -6px;width:32%;height: 30px;" ui-sref="shoporder({'type':Paramstype})" ng-click="changeShowValue()">
+                商城
+            </button>
+        </div>
+    </div>
+    <ul class="clear mt-45 text-center bor-top-ccc bg-col-fff mb-10 line-40 font-14  text-center">
+        <li class="ui-col ui-col-49"><span class="line-35 dis-inline"
+                                           ng-class="{true:'getcode',false:'mycode'}[ckedcode]"
+                                           ng-click="ordertype(1)">已完成订单</span>
+        </li>
+        <li class="ui-col mt-10 bor-dfdfdf" style="width: 2px; height: 25px;"></li>
+        <li class="ui-col ui-col-49"><span class="line-35 dis-inline"
+                                           ng-class="{false:'getcode',true:'mycode'}[ckedcode]"
+                                           ng-click="ordertype(2)">未完成订单</span></li>
+    </ul>
+    <section>
+        <div class="pl-15 pr-15  bg-col-fff font-12">
+            <!--ng-if="orderlist.length>0" ng-repeat="list in orderlist"-->
+            <div class="ui-row clear text-col-999 pt-5 bor-bottom-dfdfdf" ng-repeat="list in orderlist">
+                <div class="ui-col ui-col-25 mr-5" ng-click="orderDetail(list.orderId,list.status)">
+                    <img ng-if='list.filmImg' ng-src="{{list.filmImg}}"
+                         err-src="{{staticUrl}}images/noimg.jpg" alt=""
+                         style="width:72px; height:95px;">
+                    <img ng-if='!list.filmImg' ng-src="{{staticUrl}}images/noimg.jpg" alt="" style="width:72px; height:95px;">
+                </div>
+                <div class="fl-right ui-col-70">
+                    <div class="ui-row clear" ng-click="orderDetail(list.orderId,list.status)">
+                        <div class="ui-col ui-col-70 overhide text-col-666 font-14">{{list.filmName}}</div>
+                        <div class="ui-col ui-col-30 overhide"> {{list.typeName}}</div>
+                    </div>
+                    <div class="ui-row clear">
+                        <ul class="ui-col ui-col-65" ng-click="orderDetail(list.orderId,list.status)">
+                            <li class="lineh-25 overhide">{{list.cinemaName}}</li>
+                            <li>
+                                {{list.showDate}} <span class="pl-5">{{list.showTime}}</span>
+                            </li>
+                            <li ng-if="list.status==1||list.status==5||list.status==6">
+                                支付总额:<span class="text-col-ff5400">￥{{list.payAmount/100?list.payAmount/100:0}}</span>({{list.count}}张)
+                            </li>
+                            <li ng-if="list.status!=1&&list.status!=5&&list.status!=6">
+                                支付总额:<span class="text-col-ff5400">￥{{list.amount}}</span>({{list.count}}张)
+                            </li>
+                        </ul>
+                        <div class="fl-right ui-col-33" ng-show="list.status==2">
+                            <button class="pl-15 pr-15 lineh-30 mt-20 border-00a6ff text-col-00a6ff ui-border-radius"
+                                    ng-click="getOrder($index)">继续支付
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div infinite-scroll="myPagingFunction()" infinite-scroll-distance="0"></div>
+        </div>
+        <div class="lineh-50 mt-40 text-center font-14" ng-if="orderlist.length==0">
+            <div ng-if="type==1">
+                暂无完成订单
+            </div>
+            <div ng-if="type!=1">
+                暂无未完成订单
+            </div>
+        </div>
+    </section>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

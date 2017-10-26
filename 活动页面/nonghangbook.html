@@ -1,0 +1,654 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="utf-8">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="format-detection" content="telephone=no, email=no"/>
+        <script src="/Public/Lib/jquery/js/jquery-1.8.3.js"></script>
+        <script src="/Public/Lib/thinkbox/js/jquery.ThinkBox.min.js"></script>
+        <link href="/Public/Lib/thinkbox/css/style.css" rel="stylesheet" text="text/css" />
+        <link href="/Public/Wap/css/global.css" rel="stylesheet" text="text/css">
+        <link href="/Public/Lib/jquery/css/base/jquery-ui.css" rel="stylesheet">
+        <script src="/Public/Lib/jquery/js/jquery-ui-1.9.2.custom.js"></script>
+        <script src="/Public/Lib/jquery/js/jqalert-0.9.js"></script>
+        <script src="/Public/Lib/validate/jquery.validate.1.9.js"></script>
+        <script src="/Public/Lib/validate/jquery.metadata.js"></script>
+        <script src="/Public/Lib/validate/messages_cn.js"></script>
+        <script src="/Public/Lib/jquery/js/jquery.etalage.min.js"></script>
+        <script src="/Public/Lib/jquery/js/jquery.blockUI.js"></script>
+        <script src="/Public/Lib/jquery/js/jquery-webox.js"></script>
+        <script src="/Public/Lib/jquery/js/jquery-ui-timepicker-addon.js"></script>
+        <script src="/Public/Lib/jquery/js/jquery-ui-timepicker-zh-CN.js"></script>
+        <script src="/Public/Common/js/global.js"></script>
+        <script src="/Public/Ucenter/js/common.js"></script>
+		<script src="/Public/Lib/jquery/js/jquery.slides.min.js"></script>
+        <!-- 标准模板只有一个js文件js.js,css文件style.css Start-->
+        <script src="/Public/Tpl/zyb2c-test/wap/abcwsc/js/js.js"></script>
+        <link href="/Public/Tpl/zyb2c-test/wap/abcwsc/css/style.css" rel="stylesheet">        <!-- 标准模板只有一个js文件js.js,css文件style.css End-->
+    </head>
+	<body>
+	    
+
+	    <script src="/Public/Wap/js/order.js" type="text/javascript"></script>
+ <link rel="stylesheet" href="/Public/Tpl/zyb2c-test/wap/abcwsc/css/style.css">
+<style type="text/css">
+     .userM {/*background-color:#FFFFCC;*/background-size: cover;}
+     .userM a {top:23px}
+    .splb ul li.sy {padding-left: 70px;}
+    .umessage {border: none;padding-right: 2px!important;}
+    .moren2 p {color: #FFFFFF;font-family: '微软雅黑';font-size: 12px; font-weight: 600;background-color: red;border-radius: 15%;display: block;vertical-align: middle;padding: 3px;}
+    .text-overflow {
+        display:block;/*内联对象需加*/
+        width:18em;/*指定宽度*/
+        word-break:keep-all;/* 不换行 */
+        white-space:nowrap;/* 强制在同一行内显示所有文本，直到文本结束或者遭遇 br 对象。不换行 */
+        overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+        text-overflow:ellipsis;/* IE 专有属性，当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    }
+    .scMeCon{margin-bottom: 10px;}
+    /*.shopcartM a.tijiaodd{background-color: #ff6633 !important;border-color: #ff6633!important;}*/
+    .userM{padding: 10px 10px 10px 10px;}
+</style>
+<div class="warp" style="margin-bottom:3rem;">
+      <div class="head" style="background-color:#FFF ;margin-bottom: 10px;height:44px!important;">
+          <p style="font-size:18px;font-family:'冬青黑体简体';font-weight: 800;line-height: 45px!important;padding-top:7px;">掌&nbsp;上&nbsp;秒&nbsp;杀</p>
+          <a href="javascript:void(0);" onclick="window.history.back();" class="back" style="background:url(/Public/Tpl/zyb2c-test/wap/abcwsc/images/返回按钮.png) no-repeat  top;top: 14px!important;padding-left: 30px;height: 32px;left: 10px;position: absolute;top: 8px;margin-top:7px;"></a>
+      </div>
+     <script>
+    if(window.name != "bencalie"){
+        location.reload();
+        window.name = "bencalie";
+    }else{
+        window.name = "";
+    }
+    </script>
+    <form action="/Wap/Orders/doAdd" method="post" id="addOrder" >
+    <div class="shopcartM" style="position:relative;"><!--shopcartM 开始-->
+        <div class="scMessage">
+            <h3>商品列表</h3>
+            <div class="scMeCon">
+                <div class="userMr">
+                    <div class="splb">
+                        <ul>
+                            <li class="clearfix"><a href="/Wap/Products/detail/gid/3648" class="proN text-overflow" style="width:65%;display:block;">《有花的地方风水好》——七夕追女神的秘笈都在这里了</a><label>1</label><span>&yen;0.01</span></li>                        </ul>
+                    </div>
+                </div>
+                <i></i>
+            </div>  
+        </div>
+        <div class="scMessage">
+            <h3>收货人信息<a href="/Wap/My/pageDeliver">[管理]</a><a href="/Wap/ReceiveAddress/addAddressPage">[新增]</a><!--<a href="/Wap/My/editDeliver/raid/20601">[修改当前]</a>--></h3>
+	   <span style="color:red;"><strong style="display:none;">（收货人手机请务必填写济南本地手机！）</strong></span>
+            <div class="scMeCon">
+               <div class="userM " style="border-bottom: 1px solid #c8c8c8;margin: 0 0 1px 0;">
+                        <div class="umessage" >
+                            <!--<input type="hidden" name="rja_id" id="ra_id" class="otherAddr" value="">-->
+                            <input type="hidden" name="ra_id" id="ra_id" class="otherAddr" value="20601">
+                            <p style="font-family: '微软雅黑';font-size: 1.4em;font-weight: 600;"><label style="width:30%">收货人：刘先生</label><label style="float:right">182*****635</label></p>
+                            <p style="font-family: '微软雅黑';font-size: 1em;">收货地址：上海 上海市 徐汇区 &nbsp;&nbsp;田林路越界创意园16号楼2楼</p>
+                        </div>
+                        <!--                             <a href="javascript:void(0);"  onclick="saveAsDefault(this);" pids="" lt_id="" ra_id="" data-default="" class="moren2">
+                                    <p class="default">设为默认</p>
+                            </a> -->
+                    </div>                <i></i>
+            </div>
+        </div>
+        <div class="scMessage" style="display: none;">
+            <h3>配送方式</h3>
+            <div class="scMeCon">
+                <div class="userMr">
+                    <input type="hidden" id="goods_pids" name="goods_pids" value="6153" />
+                    <div class="psfs">
+                            <p><label><input type="radio" name="lt_id" onclick="checkLogistic(this.value);" value="68" checked  />顺丰&nbsp;&nbsp;&nbsp;   运费 + 0元</label></p>                        </div>
+                </div>
+                <i></i>
+            </div>
+        </div>
+
+        <!-- <div class="scMessage"> -->
+            <!-- <h3>配送时间</h3> -->
+            <div class="scMeCon" style="display: none;">
+                <div class="userMr">
+                    <div class="pssj">
+                        <p>送货时间:<span style="color:red;"><strong>（周末及节假日顺延发货，敬请谅解！）</strong></span>
+                            <p><label><input type="radio" value="工作日节假日均可送货" name="o_receiver_time" checked="checked"/>工作日节假日均可送货</label></p>
+                            <p><label><input type="radio" value="仅工作日送货" name="o_receiver_time" />仅工作日送货</label></p>
+                            <p><label><input type="radio" value="仅节假日送货" name="o_receiver_time" />仅节假日送货</label></p>
+                        <!-- <select name="o_receiver_time">
+                            <option value="工作日节假日均可送货">工作日节假日均可送货</option>
+                            <option value="仅工作日送货">仅工作日送货</option>
+                            <option value="仅节假日送货">仅节假日送货</option>
+                        </select> -->
+                        </p>
+                    </div>
+                </div>
+                <i></i>
+            </div>
+        <!-- </div> -->
+        
+<!--             <h3>订单结算</h3>
+ -->            <div class="scMeCon">
+                <div class="userMr">
+                    <div class="splb">
+                        <ul>
+                            <!--      -->                       
+                            <li id="useCoupon" class="sy" style=""><span>使用嗨券:</span>
+                                <label class="coupon_num" id='coupon_num' ></label>
+                                <input type="hidden" name='coupon_sn' value=""/>
+                                <div href="javascript:void(0);" style="cursor: pointer; text-decoration: underline;" onclick="myCouponShow();">我的嗨券<spane style="color:red;">(可用0张)</span></div>
+                                <label href="javascript:void(0);" style="cursor: pointer; text-decoration: underline;" id="huaye" onclick="cancel(0);"></label>
+                                <div id='my_coupon' style='display:none;'>    
+                                                                    <p>您还没有可用的嗨券...</p>                                </div>
+                            </li>
+                            <li class="li02" id="msg0" style='display:none;'>嗨券号不存在，请核对后再试！</li>
+                                                        <li class="sy"><span>订单备注:</span><input type="text" name="o_buyer_comments" id="o_buyer_comments"/></li>
+                        </ul>
+                    </div>
+                </div>
+                <i></i>
+            </div>
+        <!-- </div> -->
+            <div class="scMessage">
+                 <h3>发票信息<a href="javascript:void(0);" onclick="revise_invoice();">[修改]</a></h3>
+		<div class="scMeCon"><!--scMeCon 开始-->
+                <div class="userMm">
+                    <p id="fapiao">发票信息：不开发票</p>
+                    <div class="psfs" id="fp_input_list" style="display:none;">
+                        <p>发票信息：
+                        <label><input type="radio" value="0" checked name="invoice_type" autocomplete="off"/>不开发票</label>
+                        <label><input type="radio" value="1"  name="invoice_type" autocomplete="off"/>普通发票</label>
+                        <label><input type="radio" value="2" name="invoice_type" autocomplete="off"/>增值发票</label>
+                        <div class="ptfp" id="pt_fapiao" style="display: none;">
+                            <p><span>发票抬头：</span><label><input type="radio" value="1" checked="checked" name="invoice_head"/>个人</label><label><input type="radio"  value="2"  name="invoice_head" class="radio1"/>公司</label></p>
+                            <p class="userName" id="invoice_people_p"><span>个人姓名：&nbsp;</span> <input type="text" class="text" name="invoice_people" /></p>
+                            <p class="userName" style="display: none;" id="invoice_name_p"><span>单位名称：&nbsp;</span> <input type="text" class="text" name="invoice_name" /></p>
+                            <p><span>发票内容：</span>
+                                <label><input type="radio"  value="商品明细"  name="invoice_content"/>商品明细</label>                            </p>                        </div>
+                        
+                        <div class="zzfp" id="zzs_fapiao" style="display: none;">
+                                <h4>增值税发票专用发票资质填写：</h4>
+                            <ul>
+                                <li><span><em>*</em> 单位名称：</span><input name="add_invoice_name" type="text" class="text"/></li>
+                                
+                                <li><span><em>*</em> 纳税人识别号：</span><input name="invoice_identification_number" type="text" class="text"/></li>
+                                <li><span><em>*</em> 注册地址：</span><input name="invoice_address" type="text" class="text"/></li>
+                                <li><span><em>*</em> 注册电话：</span><input name="invoice_phone" type="text" class="text"/></li>
+                                <li><span><em>*</em> 开户银行：</span><input name="invoice_bank" type="text" class="text"/></li>
+                                <li><span><em>*</em> 银行帐户：</span><input name="invoice_account" type="text" class="text"/></li>
+                                <li><span>发票内容：</span>
+                                    <label><input type="radio"  value="商品明细"  name="invoice_content"/>商品明细</label>                                </li>                                
+                            </ul>
+                            <strong>温馨提示:</strong>
+                            <p>1.发票相关信息将被系统自动打印到发票上，请仔细核对所填发票信息。</p>
+                            <p>2.增值税发票开具时限：增值税发票将在订单成功收货15天后开出，且没有退换货记录，下单后30天未申请开具增值税专用发票的，将不再受理开具增票申请；</p>
+                        </p>
+                        </div>
+                        <a href="javascript:void(0);" onclick="special_save_invoice();" class="saveFP">保存发票信息</a>
+                    </div>
+                    <div class="psfs" id="fp_info_preview" style="display:none;">
+                        <div class="invoice_show"></div>
+                        <!-- <a href="javascript:void(0);" onclick="edit_invoice();" class="saveFP">返回修改</a> -->
+                    </div>
+                </div>
+                <i></i>
+            </div>
+        </div>
+            <!-- <div class="scMessage"> -->
+            <!-- <h3>支付方式</h3> -->
+            <div class="scMeCon">
+                <div class="userMr">
+                    <div class="psfs">
+                        <p>支付方式：
+                        <!---->
+                        <!--                         	<p><label><input value="16" type="radio"  name="o_payment" checked/><img class="am-img-responsive  am-margin-top-xs" style="width:30%;" src="/Public/Tpl/zyb2c-test/wap/abcwsc/images/快e付.png" ></label></p> -->
+                                                     
+                                                                    <p><label><input value="16" type="radio"  name="o_payment" checked/><img class="am-img-responsive  am-margin-top-xs" style="width:30%;" src="/Public/Tpl/zyb2c-test/wap/abcwsc/images/快e付.png" ></label></p>                             
+                        <!---->                        </p>
+                        <span style="color:red;"><strong>（周末及节假日顺延发货，敬请谅解！）</strong></span>
+                    </div>
+                </div>
+                <i></i>
+            </div>
+        <!-- </div> -->
+        <!-- <div class="scMessage"> -->
+            <!--scMeCon 结束-->
+            <script type="text/javascript">
+            $(function(){
+                
+                $(':radio[name="invoice_type"]').click(function(){
+                    switch($(this).val()){
+                        case '0':
+                            $("#pt_fapiao").hide();
+                            $("#zzs_fapiao").hide();
+                            break;
+                        case '1':
+                            $("#pt_fapiao").show();
+                            $("#zzs_fapiao").hide();
+                            break;
+                        case '2':
+                            $("#pt_fapiao").hide();
+                            $("#zzs_fapiao").show();
+                            break;
+                    }
+                });
+                $('[name="invoice_head"]').click(function(){
+                    if($(this).val() == 1){
+                        $("#invoice_name_p").hide();
+                        $("#invoice_people_p").show();
+                    }else{
+                        $("#invoice_name_p").show();
+                        $("#invoice_people_p").hide();
+                    }
+                });
+            });
+                function revise_invoice () {
+                    // $("#fp_input_list").css("display","block");
+                    $("#fapiao").css("display","none");
+                    $("#fp_input_list").show();
+                    $("#fp_info_preview").hide();
+                }
+            </script>
+        <!-- </div>scMessage 结束 -->
+        
+
+        <div class="scMT" style="margin-left:15px;">
+            <input type="hidden" id="goods_all_price" name="goods_all_price" value="0.01">
+            <input type="hidden" name="c_id" type="text" value="">
+            <input type="hidden" id="all_orders_promotion_price" name="all_orders_promotion_price" value="0.00">
+            <input type="hidden" id="used_coupon_price" name="coupon_price" value="0">
+            <input type="hidden" name="total_tax" id="total_tax" value=""/>
+            <p class="clearfix" style="width:100%"><span style="float:left;"><strong>0.01</strong><span>商品总价：&yen;</span></span></p>
+            <p class="clearfix" style="float:left;"></p>
+                       <!-- <p class="clearfix" style="width:100%;"></p>-->
+            <p class="clearfix" style="width:100%;"><span style="float:left;"><strong id="logistic_price">&yen;0.00</strong><span>运费金额：</span></span></p>
+            <!--<p class="clearfix"><strong id="total_gift_price">0</strong><span>可获得嗨豆：</span></p>-->
+            <p id="usePoint" class="clearfix" style="display:none;"><strong id="point_price">0</strong><span>花费嗨豆：</span></p>
+                <p id="pointPrice" class="clearfix" style="display:none;"><strong id="point_money">&yen;&minus;0.00</strong><span>嗨豆抵消金额：</span></p>
+                    
+            <p id="usedCoupon" class="clearfix" style="width:100%;"><span style="float:left;"><strong id="promotion_price" value="">&yen;0.00</strong><span>嗨券：</span></span></p>
+            <!-- <p class="clearfix" style="width:100%;"><span style="float:left;"><strong class="totle" id="all_orders_price">&yen;0.01</strong><span>合计：</span></span></p> -->
+        </div>
+        <input type="hidden" id="seller_id" name="seller_id" value="1064"/>
+        <input type="hidden" id="seller_nick" name="seller_nick" value="森田药妆专营店"/>
+        <input type="hidden" id="isjinan" value="">
+        <input type="hidden" id="st_ms_already" name="st_ms_already" value="0"/>
+        <p class="clearfix" style="width:100%;height:53px;">
+	<span style="float:left;width:67%;height:53px;text-align:center;font-size:14px;line-height:53px;background-color:white;border:1px solid #cccccc;">
+		<span>合计：</span>
+		<strong class="totle" id="all_orders_price">&yen;0.01</strong>
+	</span>
+	<a href="javascript:void(0);" class="tijiaodd" onclick="javascrpt:submitOrders();"id="orders" style="width:33%;display:block;float:right;height:53px;line-height:53px;margin:0;color:white;font-size:20px">提交订单</a>
+        </p>
+    </div><!--shopcartM 结束
+    <!--shopcartM 结束-->
+   </form>
+</div>
+<script>
+$(document).ready(function(){
+        //单品商城去掉首页按钮
+        var host=window.location.host;
+        //alert(host);
+        if(host == "danpin.quneigou.com"){
+            var backhome = document.getElementById('backHome');  
+            backhome.style.display = "none";
+            var useCoupon = document.getElementById('useCoupon');  
+            useCoupon.style.display = "none";
+            var usedCoupon = document.getElementById('usedCoupon');  
+            usedCoupon.style.display = "none";
+            var pointPrice = document.getElementById('pointPrice');  
+            pointPrice.style.display = "none";
+            var usePoint = document.getElementById('usePoint');  
+            usePoint.style.display = "none";
+        }
+});
+
+checkLogistic(68);
+</script>
+
+	    <noempty name="ary_online">
+<style>
+/*在线咨询   开始*/
+.cusService { display:inline-block; position:fixed; left:0px; top:200px;}
+.cusServiceCon { float:left; width:180px; border:1px solid #d7d7d7; background:white; display:none}
+.cusServiceCon table { width:100%}
+.cusServiceCon table thead td { border-bottom:1px solid #d7d7d7; color:#333; font-size:14px; text-shadow:1px 1px 3px #999;}
+.cusServiceCon table td { padding:5px 0px; line-height:23px; padding-left:10px;}
+.cusServiceCon table td.addBorder { border-top:1px dashed #d7d7d7;}
+.cusServiceCon table td a { display:inline-block; white-space:nowrap}
+.cusServiceCon table td span { position:relative; top:-6px; margin-left: 4px;}
+.cusServiceCon table td a:hover { text-decoration:none; color:red;}
+.cusServiceCon table tfoot td { border-top:1px sold #d7d7d7;}
+a.cusSerClick { float:left; background:url(/Public/Ucenter/images/customerService.jpg) no-repeat 0px -124px; width:42px; height:124px;}
+a.cusSerClickAgain { background-position:0px 0px;}
+/*在线咨询   结束*/
+</style>
+</noempty>
+
+	    <style type="text/css">
+@media only screen and (max-width: 640px)
+body {
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+.am-text-lg {
+    font-size: 1.6rem!important;
+}
+.am-text-white {
+	color: #FFFFFF;
+}
+.am-cf:before, .am-cf:after {
+  content: " ";
+  display: table;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.am-cf:after {
+  clear: both;
+}
+.am-cf:before, .am-cf:after {
+  content: " ";
+  display: table;
+}
+.am-navbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /*height: 49px;*/
+  /*line-height: 49px;*/
+  z-index: 1010;
+  font-family: 'FontAwesome';
+}
+.am-navbar-default .am-navbar-nav {
+  background-color: #F7F7F7
+}
+.am-navbar .am-navbar-nav {
+  /*padding-left: 8px;
+  padding-right: 8px;*/
+  text-align: center;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  : ;}
+.am-navbar ul {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+.am-navbar-nav {
+  position: relative;
+  z-index: 1015;
+}
+[class*="am-avg-"] {
+  display: block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.am-navbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /*height: 49px;*/
+  /*line-height: 49px;*/
+
+  z-index: 1010;
+}
+.am-navbar .am-navbar-nav li {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  float: none;
+}
+@media only screen
+.am-avg-sm-4>li:nth-of-type(4n+1) {
+  clear: both;
+}
+@media only screen
+.am-avg-sm-4>li:nth-of-type(n) {
+  clear: none;
+}
+@media only screen
+.am-avg-sm-4>li {
+  width: 25%;
+}
+[class*="am-avg-"]>li {
+  display: block;
+  height: auto;
+  float: left;
+}
+.am-navbar-default a {
+  color: #fff;
+}
+.am-navbar-nav a {
+  display: inline-block;
+  width: 100%;
+  height: 49px;
+  line-height: 20px;
+}
+a {
+  text-decoration: none;background-color: transparent;
+}
+.am-navbar-nav a .am-navbar-label {
+  padding-top: 2px;
+  line-height: 1;
+  font-size: 12px;
+  display: block;
+  word-wrap: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #8B8B8B;
+}
+.am-navbar-nav a [class*="am-icon"] {
+  width: 24px;
+  height: 24px;
+  margin: 4px auto 0;
+  display: block;
+  line-height: 24px;
+  color: #8B8B8B;
+}
+[class*="am-icon-"] {
+  display: inline-block;
+}
+.am-navbar-nav a [class*="am-icon"]:before {
+  font-size: 22px;
+  vertical-align: middle;
+}
+.am-icon-home:before{
+	content: "\f015";
+}
+.am-icon-location-arrow:before {
+  content: "\f124";
+}
+.am-icon-shopping-cart:before {
+  content: "\f07a";
+}
+.am-icon-group:before, .am-icon-users:before {
+  content: "\f007";
+}
+.am-icon-arrow-up:before {
+  content: "\f062";
+}
+
+.am-icon-list:before {
+  content: "\f03a";
+}
+.am-icon-user:before {
+  content: "\f007";
+}
+
+[class*="am-icon-"]:before {
+  display: inline-block;
+  font: normal normal normal 1.6rem/1 "FontAwesome",sans-serif;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transform: translate(0,0);
+  -ms-transform: translate(0,0);
+  transform: translate(0,0);
+}
+.am-with-fixed-navbar .am-gotop-fixed {
+  bottom: 60px;
+}
+.am-gotop-fixed.am-active {
+  opacity: .8;
+}
+.am-gotop-fixed {
+  position: fixed;
+  right: 10px;
+  bottom: 60px;
+  z-index: 1010;
+  opacity: 0;
+  width: 48px;
+  min-height: 48px;
+  overflow: hidden;
+  border-radius: 0;
+  text-align: center;
+}
+.am-gotop a {
+  display: inline-block;
+  text-decoration: none;
+}
+.am-gotop-fixed a {
+  display: block;
+}
+.am-gotop-fixed .am-gotop-icon {
+  width: 100%;
+  line-height: 48px;
+  background-color: #555;
+  vertical-align: middle;
+  color: #ddd;
+}
+.am-circle {
+	border-radius: 50%;
+}
+html, body {
+  min-height: 100%;
+}
+.am-icon-file-text::before {
+    content: "";
+}
+
+</style>
+<form name="surveyForm" method="post" action="/mibew/client.php?locale=zh-cn">
+							<input type="hidden" name="style" value="simplicity"/>
+							<input type="hidden" name="info" value=""/>
+							<input type="hidden" name="referrer" value="https://abzhangyin.quneigou.com/Wap/Orders/addOrderPage"/>
+							<input type="hidden" name="survey" value="on"/>
+							<input type="hidden" name="email" value=""/>
+							<input type="hidden" name="group" value=""/>
+							<input type="hidden" name="message" value=""/>
+							<input type="hidden" name="name" size="50" value='7a8f83aec5732d4386bb8c2513d24aa0d7c02097873c680d'></form>
+
+
+
+<div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
+           <a href="#top" title="">
+                 <i class="am-gotop-icon am-icon-arrow-up am-circle" style="font-size: 3rem;"></i>
+           </a>
+         </div>
+         <div style="">
+                   <div style="margin:0; background-color:#f7f7f7!important;text-align:center;line-height:8px;"><span class="am-navbar-label iconcolor" style="font-size:8px;color:#8b8b8b;">地址：上海市静安区延安西路358号24楼&nbsp;&nbsp;&nbsp;电话:400-920-8559</span>
+        </div>
+        <div style="margin-bottom:0.5rem; background-color:#f7f7f7!important;text-align:center;line-height:8px;">
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010602000649"><span class="am-navbar-label iconcolor" style="font-size:8px;color:#8b8b8b;"><img src="/Public/Uploads/zyb2c-test/images/beian/备案图标.png" style="height:auto"/>沪公网安备 31010602000649号</span></a>
+      </div>    </div>
+        <div style="">
+        	<div style="height:40px;"></div>  <!--占位符-->
+	<div  class="am-navbar am-cf am-navbar-default  am-no-layout" id="" >
+        <ul class="am-navbar-nav am-cf am-avg-sm-5" >
+                      <li style="">
+             <!--20170227,zhoujin,for standalone shop when login in from weixin,ex: MinLongDa-->
+             <a href="/Wap/Index/index" class="">
+                 
+                   <span class="am-icon-home iconcolor"></span>
+                   <span class="am-navbar-label iconcolor">首页</span>
+              </a>
+            
+            </li>                                             <li style="">              <a href="/Wap/Cart/pageCartList" class="">
+                    <p class="am-icon-shopping-cart iconcolor"></p>
+                  <span class="am-navbar-label iconcolor">购物车
+                  <span id="cartcount" style="color: #6C6C6C;font-weight: 600;" >2</span>
+                  </span>
+              </a>
+            </li>
+	<!-- -->
+             <!-- <li> -->
+              <!-- <a href="/Wap/Category/WscCategory" class=""> -->
+                    <!-- <p class="am-icon-file iconcolor"></p> -->
+                  <!-- <span class="am-navbar-label iconcolor">分类 -->
+                  <!-- </span> -->
+              <!-- </a> -->
+            <!-- </li> -->
+	<!-- -->
+                           <li style="">
+              <a href="/Wap/Ucenter/index" class="">
+                    <span class="am-icon-user iconcolor"></span>
+                  <span class="am-navbar-label iconcolor">我的</span>
+              </a>
+            </li>            <!--<li class="am-navbar-labels am-navbar-more" style="display: none;">
+            	<a href="javascript: void(0);"><span class="am-icon-angle-up"></span>
+            		<span class="am-navbar-label">更多</span></a></li>-->
+        </ul>
+        <!-- <ul class=" am-navbar-nav am-cf am-avg-sm-2 backg-color">
+          <li>
+            <span  class="am-navbar-label iconcolor" style="font-size:10px !important;float:right;">公司地址：上海市静安区延安西路358号24楼&nbsp;&nbsp;&nbsp;</span>
+          </li>
+          <li>
+            <span  class="am-navbar-label iconcolor" style="font-size:10px !important;float:left;">公司电话:4006-055599</span>
+          </li>
+        </ul> -->
+        
+    <ul class="am-navbar-actions"></ul>
+	</div></div>
+    <!--<![endif]-->
+<script src="/Public/Tpl/zyb2c-test/wap/abcwsc/js/amazeui.min.js"></script>
+<script type="text/javascript">
+       var height=$(window).height();
+	     jQuery('.warp').css({'min-height':height-50});
+</script>
+<script type="text/javascript">
+window.alert = function(name){
+ var iframe = document.createElement("IFRAME");
+iframe.style.display="none";
+iframe.setAttribute("src", 'data:text/plain,');
+document.documentElement.appendChild(iframe);
+window.frames[0].window.alert(name);
+iframe.parentNode.removeChild(iframe);
+}
+</script>
+        <!--弹出框-->
+<div id="alert" style="display: none;" title="系统提示">
+    <table width="100%">
+        <tr>
+            <td style="padding:5px; vertical-align: top;"><div id="alert_face" class=""></div></td>
+            <td style="padding:5px; vertical-align: top;">
+                <div id="alert_title">提示标题</div>
+                <div id="alert_msg">提示内容</div>
+            </td>
+        </tr>
+    </table>
+</div>
+<!--End of 弹出框-->
+	    <!-- 是否有统计代码,有则显示  Start-->
+	    <noempty name="shop_code">
+	    	<script language="javascript" type="text/javascript" src="/Public/Wap/js/18652435.js"></script>
+<noscript><a href="http://www.51.la/?18652435" target="_blank"><img alt="我要啦免费统计" src="http://img.users.51.la/18652435.asp" style="border:none" /></a></noscript>	    </noempty>
+	    <!-- 是否有统计代码，有则显示 End-->
+	</body>
+</html>

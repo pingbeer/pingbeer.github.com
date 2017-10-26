@@ -1,0 +1,141 @@
+
+<div ng-app="MineModule" ng-controller="mineController">
+    <section class="mb-60">
+        <div class="film-banner"></div>
+        <div class="bg-col-fff pt-10 pb-10 text-col-333">
+            <ul class="ui-justify ui-whitespace clear">
+                <li class="ui-col-33s fl-left main-justify" ui-sref="allorder({'type':''})">
+                    <div class="nav-mine"><img ng-src="{{staticUrl}}images/myorder.png"></div>
+                    <p class="line-25"><span class="font-14">我的订单</span></p>
+                </li>
+                <li class="ui-col-33s fl-left main-justify bor-lefts-dfdfdf" ui-sref="collect">
+                    <div class="nav-mine"><img ng-src="{{staticUrl}}images/colled.png"></div>
+                    <p class="line-25"><span class="font-14">收藏影院</span></p>
+                </li>
+                <li class="ui-col-33s fl-left main-justify bor-lefts-dfdfdf" ng-click="showwx()">
+                    <div class="nav-mine"><img ng-src="{{staticUrl}}images/kfweixin.png"></div>
+                    <p class="line-25"><span class="font-14">客服微信</span></p>
+                </li>
+            </ul>
+        </div>
+        <div class="bg-col-fff mt-10 text-col-555">
+            <div class="clear ml-10 bor-bottom-dfdfdf">
+                <div class="ui-col-15 fl-left icon-user"><img ng-src="{{staticUrl}}images/icon1.png"></div>
+                <div class="ui-col-85 line-50  fl-left" ui-sref="mainactivity">
+                    <div class="ui-arrowlink"><span class="font-14">活动中心</span></div>
+                </div>
+            </div>
+            <div class="clear ml-10  bor-bottom-dfdfdf">
+                <div class="ui-col-15 fl-left icon-user"><img ng-src="{{staticUrl}}images/icon3.png"></div>
+                <div class="ui-col-85 line-50 fl-left" ui-sref="myprize({'type':1})">
+                    <div class="ui-arrowlink"><span class="font-14">我的奖励</span></div>
+                </div>
+            </div>
+            <div class="clear ml-10  bor-bottom-dfdfdf">
+                <div class="ui-col-15 fl-left icon-user"><img ng-src="{{staticUrl}}images/icon9.png"></div>
+                <div class="ui-col-85 line-50 fl-left" ui-sref="mypacket">
+                    <div class="ui-arrowlink"><span class="font-14">我的红包</span></div>
+                </div>
+            </div>
+            <div class="clear ml-10  bor-bottom-dfdfdf">
+                <div class="ui-col-15 fl-left icon-user"><img ng-src="{{staticUrl}}images/myshiwu.png"></div>
+                <div class="ui-col-85 line-50 fl-left" ui-sref="mypiece">
+                    <div class="ui-arrowlink"><span class="font-14">实物奖励</span></div>
+                </div>
+            </div>
+            <div class="clear ml-10">
+                <div class="ui-col-15 fl-left icon-user"><img ng-src="{{staticUrl}}images/icon2.png"></div>
+                <div class="ui-col-85 line-50  fl-left">
+                    <a href="tel:4009209553"
+                       class="text-col-555">
+                        <div class="ui-arrowlink"><span class="font-14">客服电话</span></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="bg-col-fff mt-10 mb-60 text-col-555">
+            <div class="clear ml-10 bor-bottom-dfdfdf">
+                <div class="ui-col-15 fl-left icon-user"><img ng-src="{{staticUrl}}images/icon5.png"></div>
+                <div class="ui-col-85 line-50 fl-left" ui-sref="setsign">
+                    <div class="ui-arrowlink"><span class="font-14">签约快捷支付</span></div>
+                </div>
+            </div>
+            <div class="clear ml-10 bor-bottom-dfdfdf">
+                <div class="ui-col-15 fl-left icon-user"><img ng-src="{{staticUrl}}images/icon4.png"></div>
+                <div class="ui-col-85 line-50 fl-left" ng-click="signshow()">
+                    <div class="ui-arrowlink"><span class="font-14">解约快捷支付</span></div>
+                </div>
+            </div>
+            <!-- <div class="clear ml-10 bor-bottom-dfdfdf">
+                 <div class="ui-col-15 fl-left icon-user"><img src="{{staticUrl}}images/icon6.png"></div>
+                 <div class="ui-col-85 line-50 fl-left">
+                     <div class="ui-arrowlink"><span class="font-14">兑换免费观影</span></div>
+                 </div>
+             </div>-->
+            <div class="clear ml-10 bor-bottom-dfdfdf">
+                <div class="ui-col-15 fl-left icon-user"><img ng-src="{{staticUrl}}images/icon7.png"></div>
+                <div class="ui-col-85 line-50 fl-left" ui-sref="freecode({'id':1})">
+                    <div class="ui-arrowlink"><span class="font-14">兑换码领取</span></div>
+                </div>
+            </div>
+            <div class="clear ml-10 bor-bottom-dfdfdf" ui-sref="guess">
+                <div class="ui-col-15 fl-left icon-user"><img ng-src="{{staticUrl}}images/cai.png"></div>
+                <div class="ui-col-85 line-50 fl-left">
+                    <div class="ui-arrowlink"><span class="font-14 ">票房竞猜领奖</span></div>
+                </div>
+            </div>
+            <div class="clear ml-10">
+                <div class="ui-col-15 fl-left icon-user"><img ng-src="{{staticUrl}}images/icon8.png"></div>
+                <div class="ui-col-85 line-50 fl-left" ui-sref="question">
+                    <div class="ui-arrowlink"><span class="font-14">常见问题</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="ui-dialog telModel">
+        <div class="ui-dialog-cnt font-12 dialog-seat bg-col-fff">
+            <div class="ui-dialog-bd">
+                <div>
+                    <h4 class="text-center ">确定解除您卡号{{encryptCardNo}}的快捷支付绑定？</h4>
+                </div>
+            </div>
+            <div class="ui-dialog-ft ">
+                <button type="button" ng-click="closeDialog()">关闭</button>
+                <button type="button" ng-click="Dialog()">确认</button>
+            </div>
+        </div>
+    </div>
+    <div class="ui-dialog noticeModel">
+        <div class="ui-dialog-cnt font-12 dialog-seat bg-col-fff">
+            <div class="ui-dialog-bd">
+                <div>
+                    <input type="text" id="cvv2" placeholder="兑换码" ng-model="noticenum"
+                           class="line-30 font-12 width-100 pl-5">
+                </div>
+            </div>
+            <div class="ui-dialog-ft font-14">
+                <button type="button" ng-click="closeDialog()">关闭</button>
+                <button type="button" ng-click="noticeDialog()">确认</button>
+            </div>
+        </div>
+    </div>
+    <div class="ui-dialog imgModel">
+        <div class="ui-dialog-cnt dialog-erma">
+            <div class="ui-dialog-bd text-center">
+                <div>
+                    <h1 class="line-20">微信添加好友(xpgy003)或截图微信二维码添加客服</h1>
+                    <div class="font-14 mt-5">
+                        <img ng-src="{{staticUrl}}images/weixin.png" class="ui-col-80"/>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-dialog-ft font-14">
+                <button type="button" ng-click="closeDialog()">关闭</button>
+            </div>
+        </div>
+    </div>
+    <!--loading-->
+    <footer-view typenum="pagetype" new-page="getFooter(page)"></footer-view>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

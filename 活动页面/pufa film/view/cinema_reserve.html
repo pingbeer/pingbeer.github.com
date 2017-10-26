@@ -1,0 +1,133 @@
+
+<div ng-app="FeserveModule" ng-controller="FeserveController">
+    <div class="ui-row bor-bottom-dfdfdf bg-col-f8f8f8 clear line-40">
+        <div class="ui-col-10 fl-left" ui-sref="find">
+            <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+        </div>
+        <div class="ui-col-80 fl-left text-center text-col-333 font-16">
+            包场活动
+        </div>
+    </div>
+    <section>
+        <div ng-style="baochangmgs1">
+            <img ng-style="baochangmgs1" ng-src="{{staticUrl}}images/reserve/reserve1.jpg"/>
+        </div>
+        <div ng-style="baochangmgs1">
+            <img ng-style="baochangmgs1" ng-src="{{staticUrl}}images/reserve/reserve2.jpg"/>
+        </div>
+        <div ng-style="baochangmgs2">
+            <img ng-style="baochangmgs2" ng-src="{{staticUrl}}images/reserve/reserve3.jpg"/>
+        </div>
+        <div ng-style="baochangmgs1" class="position">
+            <img ng-style="baochangmgs1" ng-src="{{staticUrl}}images/reserve/reserve4.jpg"/>
+            <div style="position: absolute; top: 0; width: 100%; color: #2f3c28;">
+                <ul class="text-center font-14">
+                    <li class="font-16">6月7日</li>
+                    <li>浦发全国30座城市《李雷和韩梅梅》首映包场活动</li>
+                </ul>
+                <div style="height: 40px; text-align: center;margin-top:10px;">
+                    <img ng-src="{{staticUrl}}images/reserve/reservebtn.png" ng-if='btnShow==1'
+                         style="width:170px; height: 40px;"
+                         ng-click="activeDraw()">
+                    <img ng-src="{{staticUrl}}images/reserve/bigpay.png" ng-click="payOrder()" ng-if='btnShow==3'
+                         style="width:170px; height: 40px;">
+                    <img ng-src="{{staticUrl}}images/reserve/reservebtned.png" ng-if='btnShow==2'
+                         style="width:170px; height: 40px;">
+                </div>
+                <div class="text-center mt-10" style="color:#2f3c28; font-size:12px;"><a
+                        style="color:#2f3c28;text-decoration: underline;"
+                        ng-click="activeResult()">中奖记录</a><a class="ml-15"
+                                                             style="color:#2f3c28;text-decoration: underline;"
+                                                             ui-sref="rule">活动细则</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        .reserveTis .tisBg {
+            background: url('/images/reserve/reserveTis.png');
+            background-size: 80% 90%;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            margin-top: 50px;
+            color: #262f0d;
+        }
+
+        .reserveTis .content {
+            padding: 40% 18% 0;
+        }
+
+        .reserveTis .content li {
+            line-height: 18px;
+            padding: 2px 0;
+            font-size: 14px;
+        }
+    </style>
+    <div class="ui-dialog reserveTis">
+        <div class="tisBg position" ng-style="tisBg">
+            <div class="content">
+                <p class="text-center font-14">您所参与抢票信息</p>
+                <ul>
+                    <li>城市：{{cinemasMsg.cityName}}</li>
+                    <li>影院：{{cinemasMsg.cinemaName}}</li>
+                    <li>场次： {{cinemasMsg.showTime}}</li>
+                    <li>地址：{{cinemasMsg.address}}</li>
+                </ul>
+                <div style="height: 32px; margin-top:10px; text-align: center;">
+                    <img style="height: 32px; width: 103px;" ng-click="confirmMsg()"
+                         ng-src="{{staticUrl}}images/reserve/confirm.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-dialog reserveSucess">
+        <div class="sucessBg position" ng-style="sucessBg">
+            <div class="ui-spr-bd text-center">
+                <div class="text-col-333">
+                    <h1></h1>
+                    <img ng-style="sucessBg" ng-src="{{staticUrl}}images/reserve/sprtips.png"/>
+                    <img ng-src="{{staticUrl}}images/reserve/re-close.png" ng-click="closeReserve()"
+                         style="position: absolute; width: 8%; top: 12%; right:3%"/>
+                    <div class="font-14" style="position: absolute;top:50%; padding: 0 13%;">
+                        <div>
+                            恭喜帐户{{encryptCardNo}}用户获得
+                            <span class="text-col-fd4404">2</span>元购买<span class="text-col-fd4404">2</span>张电影票资格
+                        </div>
+                        <div class="font-12 mt-10">
+                            请于15分钟付款，过期则视为自动放弃资格
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="position: absolute;bottom: 20px; width:100%; text-align: center;">
+                <img style="width: 100px; height: 30px;" ng-click="payOrder()"
+                     ng-src="{{staticUrl}}images/reserve/paybtn.png"/>
+                <img style="width: 100px; height: 30px;" ng-click="cancelorder()"
+                     ng-src="{{staticUrl}}images/reserve/cancel.png"/>
+            </div>
+        </div>
+    </div>
+    <div class="ui-dialog reserveModel">
+        <div class="sucessBg position" ng-style="sucessBg">
+            <div class="ui-spr-bd text-center">
+                <div class="text-col-333">
+                    <h1></h1>
+                    <img ng-style="sucessBg" ng-src="{{staticUrl}}images/reserve/sprtips.png"/>
+                    <div class="font-12" style="position: absolute;top:35%; padding: 0 13%; width: 74%">
+                        <div style="display: flex; align-items: center; justify-content: center; align-content: center; height: 150px;">
+                            <div>
+                                {{messages}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="position: absolute;bottom: 20px; width:100%; text-align: center;">
+                <img style="width: 100px; height: 30px;" ng-click="closeModel()"
+                     ng-src="{{staticUrl}}images/reserve/confirm.png"/>
+            </div>
+        </div>
+    </div>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

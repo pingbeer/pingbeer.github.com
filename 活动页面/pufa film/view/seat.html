@@ -1,0 +1,231 @@
+
+<div ng-app="SeatModule" ng-controller="SeatController" id="seatCount">
+    <section>
+        <div class="ui-row bor-bottom-dfdfdf clear line-40">
+            <div class="ui-col-10 fl-left" ng-click="returnHistory('cinemadetail',Paramstype,Paramsid)">
+                <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+            </div>
+            <div class="ui-col-80 fl-left text-center text-col-333 font-16">
+                {{filmName}}
+            </div>
+        </div>
+        <div class="bg-col-fff ui-row bor-bottom-dfdfdf claer text-col-666 seat-tip">
+            <div class="">{{showDate[1]}}/{{showDate[2]}}</div>
+            <div class="bor-left-666666">{{showTime}}</div>
+            <div class="bor-left-666666">{{filmtype}}</div>
+            <div class="bor-left-666666"><span class="text-col-ff5400 font-14">￥{{jbzPrice}}</span>/张</div>
+        </div>
+        <div class="bg-col-fff line-30 ui-row bor-bottom-dfdfdf clear seat-tip-img">
+            <div class="fl-left ui-col-33"><img src="{{staticUrl}}images/btn-white.png"/>可选</div>
+            <div class="fl-left ui-col-33"><img src="{{staticUrl}}images/btn-green.png"/>已选</div>
+            <div class="fl-left ui-col-33"><img src="{{staticUrl}}images/btn-red.png"/>已售</div>
+        </div>
+        <div class="ui-col-70 lineh-25 text-center bg-col-cacaca text-col-fff font-12"
+             style="margin-left: 15%; margin-right: 15%;">{{cinameName}}{{hallNum}}
+        </div>
+    </section>
+    <div id="seatWrapper" class="position">
+        <div id="wrapper">
+            <div id="scroller">
+                <div class="clear">
+                    <div id="centerLine"></div>
+                    <div class="text-center mt-30">
+                        <span class="btn-bg-fff">银幕中央</span>
+                    </div>
+                    <div class="fl-left bg-col-cacaca ui-border-radius15 radius ml-15">
+                        <ul class="mt-20 mb-20 seat-num font-14 text-center  text-col-fff">
+                            <li ng-repeat="row in rowseat" ng-style="rowIds"> {{$index+1}}</li>
+                        </ul>
+                    </div>
+                    <div class="fl-left mt-20 pb-30" id="seats">
+                        <div class="seat-row">
+                            <div ng-if="cinametype=='wangpiao'">
+                                <ul ng-repeat="row in rowseat" class="seat-column clear" repeat-finish="initScroll()">
+                                    <li ng-repeat="colum in columnseat" ng-style="seatTd">
+                                        <div ng-show="seatMap.seatMap['{{row}}:{{colum}}']">
+                                            <!--网票 0:普通 1:情侣1 2:情侣2-->
+                                            <div ng-show="seatMap.seatMap['{{row}}:{{colum}}'].LoveFlag==0">
+                                                <img ng-show="seatMap.seatMap['{{row}}:{{colum}}'].Status=='N'"
+                                                     src="{{staticUrl}}images/btn-red.png"/>
+                                                <img ng-show="seatMap.seatMap['{{row}}:{{colum}}'].Status=='Y'"
+                                                     ng-src="{{staticUrl}}images/{{active[row][colum]}}.png"
+                                                     ng-click="checkSeat(row,colum)"/>
+                                            </div>
+                                            <div ng-show="seatMap.seatMap['{{row}}:{{colum}}'].LoveFlag!=0">
+                                                <img ng-show="seatMap.seatMap['{{row}}:{{colum}}'].Status=='N'"
+                                                     src="{{staticUrl}}images/btn-red.png"/>
+                                                <img ng-show="seatMap.seatMap['{{row}}:{{colum}}'].Status=='Y'"
+                                                     ng-src="{{staticUrl}}images/{{active[row][colum]}}.png"
+                                                     ng-click="checkSeat(row,colum)"/>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div ng-if="cinametype=='spider'">
+                                <ul ng-repeat="row in rowseat" class="seat-column clear"
+                                    repeat-finish="initScroll()">
+                                    <li ng-repeat="colum in columnseat" ng-style="seatTd">
+                                        <div ng-show="seatMap.seatMap['{{row+1}}:{{colum}}']"><!--蜘蛛-->
+                                            <div ng-show="seatMap.seatMap['{{row+1}}:{{colum}}'].loveIndex==0">
+                                                <img ng-show="seatMap.seatMap['{{row+1}}:{{colum}}'].isLock"
+                                                     src="{{staticUrl}}images/btn-red.png"/>
+                                                <img ng-hide="seatMap.seatMap['{{row+1}}:{{colum}}'].isLock"
+                                                     ng-src="{{staticUrl}}images/{{active[row][colum]}}.png"
+                                                     ng-click="checkSeat(row,colum)"/>
+                                            </div>
+                                            <div ng-show="seatMap.seatMap['{{row+1}}:{{colum}}'].loveIndex!=0">
+                                                <img ng-show="seatMap.seatMap['{{row+1}}:{{colum}}'].isLock"
+                                                     src="{{staticUrl}}images/btn-red.png"/>
+                                                <img ng-hide="seatMap.seatMap['{{row+1}}:{{colum}}'].isLock"
+                                                     ng-src="{{staticUrl}}images/{{active[row][colum]}}.png"
+                                                     ng-click="checkSeat(row,colum)"/>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div ng-if="cinametype=='maizuo'">
+                                <ul ng-repeat="row in rowseat" class="seat-column clear"
+                                    repeat-finish="initScroll()">
+                                    <li ng-repeat="colum in columnseat" ng-style="seatTd">
+                                        <div ng-show="seatMap.seatMap['{{row+1}}:{{colum+1}}']"><!--卖座-->
+                                            <div ng-show="seatMap.seatMap['{{row+1}}:{{colum+1}}'].loveIndex==0">
+                                                <img ng-show="seatMap.seatMap['{{row+1}}:{{colum+1}}'].isLock=='0'"
+                                                     ng-src="{{staticUrl}}images/{{active[row][colum]}}.png"
+                                                     ng-click="checkSeat(row,colum)"/>
+                                                <img ng-show="seatMap.seatMap['{{row+1}}:{{colum+1}}'].isLock=='1'"
+                                                     src="{{staticUrl}}images/btn-red.png"/>
+                                            </div>
+                                            <div ng-show="seatMap.seatMap['{{row+1}}:{{colum+1}}'].loveIndex!=0">
+                                                <img ng-show="seatMap.seatMap['{{row+1}}:{{colum+1}}'].isLock=='0'"
+                                                     ng-src="{{staticUrl}}images/{{active[row][colum]}}.png"
+                                                     ng-click="checkSeat(row,colum)"/>
+                                                <img ng-show="seatMap.seatMap['{{row+1}}:{{colum+1}}'].isLock=='1'"
+                                                     src="{{staticUrl}}images/btn-red.png"/>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div ng-if="cinametype=='danche'">
+                                <ul ng-repeat="row in rowseat" class="seat-column clear"
+                                    repeat-finish="initScroll()">
+                                    <li ng-repeat="colum in columnseat" ng-style="seatTd">
+                                        <div ng-show="seatMap.seatMap['{{row+1}}:{{colum+1}}'].isSeat"><!--单车-->
+                                            <div ng-show="seatMap.seatMap['{{row+1}}:{{colum+1}}'].loveIndex==0">
+                                                <img ng-hide="seatMap.seatMap['{{row+1}}:{{colum+1}}'].isLock"
+                                                     ng-src="{{staticUrl}}images/{{active[row][colum]}}.png"
+                                                     ng-click="checkSeat(row,colum)"/>
+                                                <img ng-show="seatMap.seatMap['{{row+1}}:{{colum+1}}'].isLock"
+                                                     src="{{staticUrl}}images/btn-red.png"/>
+                                            </div>
+                                            <div ng-show="seatMap.seatMap['{{row+1}}:{{colum+1}}'].loveIndex!=0">
+                                                <img ng-hide="seatMap.seatMap['{{row+1}}:{{colum+1}}'].isLock"
+                                                     ng-src="{{staticUrl}}images/{{active[row][colum]}}.png"
+                                                     ng-click="checkSeat(row,colum)"/>
+                                                <img ng-show="seatMap.seatMap['{{row+1}}:{{colum+1}}'].isLock"
+                                                     src="{{staticUrl}}images/btn-red.png"/>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div ng-if="cinametype=='baidu'">
+                                <ul ng-repeat="row in rowseat" class="seat-column clear"
+                                    repeat-finish="initScroll()">
+                                    <li ng-repeat="colum in columnseat" ng-style="seatTd">
+                                        <div ng-show="seatMap.seatMap['{{row+1}}:{{colum}}'].status !=0"><!--百度-->
+                                            <div ng-show="seatMap.seatMap['{{row+1}}:{{colum}}'].isLove==0">
+                                                <img ng-hide="seatMap.seatMap['{{row+1}}:{{colum}}'].status == 2"
+                                                     ng-src="{{staticUrl}}images/{{active[row][colum]}}.png"
+                                                     ng-click="checkSeat(row,colum)"/>
+                                                <img ng-show="seatMap.seatMap['{{row+1}}:{{colum}}'].status ==2"
+                                                     src="{{staticUrl}}images/btn-red.png"/>
+                                            </div>
+                                            <div ng-show="seatMap.seatMap['{{row+1}}:{{colum}}'].isLove!=0">
+                                                <img ng-hide="seatMap.seatMap['{{row+1}}:{{colum}}'].isLock"
+                                                     ng-src="{{staticUrl}}images/{{active[row][colum]}}.png"
+                                                     ng-click="checkSeat(row,colum)"/>
+                                                <img ng-show="seatMap.seatMap['{{row+1}}:{{colum}}'].isLock"
+                                                     src="{{staticUrl}}images/btn-red.png"/>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="seat-column clear">
+                                <li ng-style="seatTd"></li>
+                            </ul>
+                            <ul class="seat-column clear">
+                                <li ng-style="seatTd"></li>
+                            </ul>
+                            <ul class="seat-column clear">
+                                <li ng-style="seatTd"></li>
+                            </ul>
+                            <ul class="seat-column clear">
+                                <li ng-style="seatTd"></li>
+                            </ul>
+                            <ul class="seat-column clear">
+                                <li ng-style="seatTd"></li>
+                            </ul>
+                            <ul class="seat-column clear">
+                                <li ng-style="seatTd"></li>
+                            </ul>
+                            <ul class="seat-column clear">
+                                <li ng-style="seatTd"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="seatbom text-col-333">
+        <div class='font-12'>
+            <p class='pl-15'>已选影片<span class="text-col-989898">(每个订单最多购买{{changeNum}}张)</span></p>
+            <div class="ui-row ml-15 mr-15 mt-10">
+                <button class="bor-dfdfdf mb-10 mr-5 pl-10 pr-10 line-20 ui-border-radius2" ng-repeat="seat in seatNum">
+                    {{seat.rownum}}排{{seat.colum}}座
+                </button>
+            </div>
+        </div>
+        <footer class="ui-footer ui-row film-deital-footer bor-top-dfdfdf">
+            <div class="bg-col-fff lineh-40">
+                <div class="fl-left ui-col-65 line-40 pl-10">支付金额：
+                    <span class="font-14 text-col-ff5400">￥{{jbzPrice*ticknum | number:2}}</span>
+                </div>
+                <div class="fl-right  ui-col-33 ml-5 bg-col-ff5400">
+                    <div class="borimg fl-left"></div>
+                    <div class="fl-left buytickit g-col-ff5400" ng-click="seatMaps()">确认选座</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!--    <section ng-show="!isSeat">
+            <div class="bg-col-0066cc text-col-fff line-50 text-center font-16">
+                <i class="ui-icon-return icon-return dis-inline text-col-fff" ng-click="retunts()"></i>{{cinameName}}
+            </div>
+            <div class="line-60 text-center">{{text}}</div>
+        </section>-->
+    <div class="ui-dialog telModel">
+        <div class="ui-dialog-cnt dialog-seat bg-col-fff">
+            <div class="ui-dialog-bd">
+                <div>
+                    <h4 class="text-center">取票码短信接收手机号</h4>
+                    <div class="mt-10 bor-8e8e93 line-30"><input
+                            class="ui-col-100 lineh-30 ui-border-radius2 bor-dfdfdf text-center" type="number"
+                            ng-model="tel" ng-pattern="/^1[3|4|5|7|8]\d{9}$/">
+                    </div>
+                </div>
+            </div>
+            <div class="ui-dialog-ft ">
+                <button type="button" ng-click="closeDialog()">关闭</button>
+                <button type="button" ng-click="Dialog()">确认</button>
+            </div>
+        </div>
+    </div>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

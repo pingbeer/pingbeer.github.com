@@ -1,0 +1,45 @@
+﻿{
+  "respCode": "1000",
+  "moduleId": "1",
+  "qualifyUrl": "cmblife://go?url\u003dActivityModelDemandQualifiction\u0026cGName\u003d9LWJFlk170919\u0026templateNo\u003df19a342c-ea60-4740-bf78-963645322e0c\u0026campaignNo\u003d\u0026voucherType\u003d",
+  "status": "2",
+  "campaigns": [
+    {
+      "title": "999积分抢兑罗莱四件套",
+      "campaignNo": "1fb27c40-8b25-4096-a09d-a9cd1e89674a",
+      "templateNo": "f19a342c-ea60-4740-bf78-963645322e0c",
+      "products": [
+        {
+          "productId": "10106",
+          "goodsId": "12028",
+          "channelCode": "NewEgg",
+          "productName": "罗莱绅士品格四件套DY7491-4",
+          "productType": 0,
+          "productNo": "A1I-00Z-039",
+          "isStage": "",
+          "referencePrice": "1680.00",
+          "salePrice": "0.00",
+          "salePoint": "999",
+          "inventoryInfo": "99",
+          "imageBaseUrl": "https://img.jf.cmbchina.com/images/CM/",
+          "thumbImage": "P600/A1I-00Z-039.jpg",
+          "redirectUrl": "cmblife://go?url\u003dGetProductDetail\u0026channelCode\u003dNewEgg\u0026registerTraceNo\u003d580257e6-c029-446f-b04a-0bc926182a59\u0026productNo\u003dA1I-00Z-039\u0026templateNo\u003df19a342c-ea60-4740-bf78-963645322e0c\u0026cGName\u003d9LWJFlk170919\u0026campaignNo\u003d1fb27c40-8b25-4096-a09d-a9cd1e89674a\u0026maxQuantity\u003d1\u0026voucherId\u003d\u0026directPay\u003d0\u0026readOnly\u003d2\u0026shareId\u003d18\u0026moduleId\u003d1\u0026sign\u003dd992288030174706dacc1caa5aa3dbb6"
+        }
+      ]
+    }
+  ],
+  "defaultCampaignNo": "1fb27c40-8b25-4096-a09d-a9cd1e89674a",
+  "shareId": "18",
+  "needQualify": "0",
+  "defaultTemplateNo": "f19a342c-ea60-4740-bf78-963645322e0c",
+  "cGName": "9LWJFlk170919",
+  "respMsg": "操作成功",
+  "displayName": "9来玩积分-罗莱四件套",
+  "panicStatus": {
+    "curQgEndTime": 8412,
+    "status": 5,
+    "countdownStartMin": 60,
+    "qgTime": "2017-09-19 14:00",
+    "sysCurTime": "2017-09-19 14:39:48"
+  }
+}

@@ -1,0 +1,396 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<title>浦东发展银行信用卡</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/onkey.css">
+<link rel="stylesheet" href="../css/redPacket.css" />
+
+<style>
+	.changeLineDeg{
+		transform: rotate(163deg);
+	    width: 59%;
+	    height: 1px;
+	    border-top:1px dashed black;
+	    position: absolute;
+	    top: 43px;
+	    left: 11px;
+	}
+	.ticket-left-floatLeft{
+		float:left;
+		padding-left: 3%;
+	}
+	.ticket-left-floatRight{
+  	 	padding-top: 5%;
+    	padding-right: 5%;
+	}
+	.number-ticket {
+    	float: none;
+	}
+	.tit-name{
+	    width: 100%;
+	    float: right;
+	    color: #333;
+	    text-align: right;
+	    white-space: nowrap;
+	    border:none;
+	    font-size:1.4rem;
+	}
+	@media only screen and (max-width: 320px){
+		.changeLineDeg{
+	    top: 39px;
+	}
+}
+.model-button{
+width:100%;
+float:left;
+margin-bottom:2rem;
+}
+
+#btn1{
+width:50%;
+float:left;
+}
+#btn1 span{
+display:inline-block;
+border:1px solid #b8a269;
+box-sizing:border-box;
+padding:0.5rem 2rem;
+font-size:1.4rem;
+border-radius:4px;
+margin-left:3rem;
+color:#fff;
+background:#b8a269;
+}
+#btn2 span{
+display:inline-block;
+border:1px solid #b8a269;
+box-sizing:border-box;
+padding:0.5rem 2rem;
+font-size:1.4rem;
+color:#fff;
+background:#b8a269;
+border-radius:4px;
+margin-right:3rem;
+}
+#btn2{
+width:50%;
+float:left;
+}
+</style>
+</head>
+
+<body>
+	<div class="main">
+		<div class="page-box">
+			<h1>
+				<figure>
+					<img src="../images/logo.png">
+				</figure>
+				领券中心 
+			</h1>
+		</div>
+		<input id="milCurBal" type="hidden" />
+		<div id="merchantTickets" class="fixed-bg bg-page">
+			
+		</div>
+	</div>
+	
+	<!-- ----------------------------------Model dialog begin 余额不足用--------------------------------------------------- -->
+	<div class="text-model">
+	<div class="model-title">温馨提示</div>
+	<div id="msgdiv" class="model-content-ticket">
+
+	</div>
+	<div class="model-button">
+	<div id="btn1"><span id="s1" class="model-sure"></span></div>
+	<div id="btn2"><span id="s2" class="model-cancle"></span></div>
+	</div>
+	</div>  
+	<div class="Dialog"></div>
+	<!-- ----------------------------------Model dialog end--------------------------------------------------- -->
+	
+	<script type="text/javascript" src="../js/lib/jquery/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="../js/lib/alert/lcyh_alert.js"></script>
+	<script type="text/javascript" src="../js/httpRequest.js"></script>
+	<script type="text/javascript" src="../js/lib/alert/onkey.js"></script>
+	<script type="text/javascript" src="../js/select.js"></script>  
+	<script type="text/javascript" src="../js/mask.js"></script>
+    <script type="text/javascript">
+		//禁用页面右上角的分享功能 Begin
+		$().ready(function(){
+		    document.addEventListener('WeixinJSBridgeReady',
+		        function onBridgeReady() {
+		            WeixinJSBridge.call('hideToolbar'); //隐藏微信界面下方导航栏
+		            WeixinJSBridge.call('hideOptionMenu');//隐藏微信界面右上方分享按钮
+		        }
+		    );
+		 });
+		 //禁用页面右上角的分享功能 End
+		(function(){		
+			initTicketList();
+			queryBal();
+		})();
+		 
+		//初始化页面，查询优惠券列表
+		function initTicketList(){
+			var httpRequest=new HTTPRequest({
+				url:"../rebateTicket/queryRebateTicketsForPage",
+				data:"",
+				method:"get",
+				successFunc:function(result){
+					if(result.status=='SUCCESS'){
+						var obj=result.respData.tickets;
+						if(obj.length > 0){
+							var html="";
+							html+='<h5><img src="../images/tit-ticket.png"></h5>';
+							html+='<ul class="ticket-list">';
+							for(var i=0;i<obj.length;i++){
+								html+='<li style="position:relative">';
+								html+='<div class="ticket-left">';
+								html+='<div class="ticket-left-floatLeft">';
+								html+='<h6 style="font-size:1.4rem">'+obj[i].TICKET_VALUE+'里程优惠包</h6>';
+								html+='<p style="text-align:left;font-size:1.4rem;">（'+matchCountryType(obj[i].COUNTRY_TYPE)+'）</p>';
+								html+='</div>';
+								html+='<div class="ticket-left-floatRight">';	
+								html+='<div class="number-ticket">'+obj[i].TICKET_DISCOUNT+'<span>'+matchUnit(obj[i].TICKET_TYPE)+'</span></div>';
+								if(obj[i].COUNTRY_TYPE=="01"){
+									html+='<div class="tit-name">（仅需'+(obj[i].TICKET_VALUE*(obj[i].TICKET_DISCOUNT/10))+'里程值）</div>';
+								}else{
+									html+='<div class="tit-name">（仅需'+(obj[i].TICKET_VALUE*2*(obj[i].TICKET_DISCOUNT/10))+'里程值）</div>';
+								}
+								html+='<div class="ticket-text">';
+								html+='</div>';
+								html+='</div>';
+								html+='</div>';
+								html+='<div class="ticket-right">';
+								html+='<div class="jdt-box">';
+								html+='<span></span>';	
+								html+='</div>';
+								html+='<p>剩余<span>'+obj[i].SUB_NUMBER+'</span>%</p>';
+								html+='<button type="button" class="ticket-btn" onclick="drawTicket(\''+obj[i].ACT_BATCH_NO+'\',\''+obj[i].COUNTRY_TYPE+'\',\''+obj[i].TICKET_TYPE+'\',\''+obj[i].TICKET_VALUE+'\',\''+obj[i].TICKET_DISCOUNT+'\',\''+obj[i].ACT_START_DATE+'\',\''+obj[i].ACT_END_DATE+'\',\''+obj[i].SUB_NUMBER+'\')">立即兑换</button>';
+								html+='</div>';
+								html+='<img src="../images/bg-ticket.png">';
+								html+='<div class="changeLineDeg"></div>';
+								html+='</li>';
+							}
+							html+=' </ul>';
+							html+='<button type="button" class="my-btn myTicket-btn" onclick="myTicketsBtn()">我的券包</button>';
+							$("#merchantTickets").html(html);
+						}else{
+							var html="";
+							html+='<h5><img src="../images/tit-ticket.png"></h5>';
+							html+='<ul class="ticket-list">';
+							html+='<h2>敬请期待...</h2>';
+							html+=' </ul>';
+							html+='<button type="button" class="my-btn myTicket-btn" onclick="myTicketsBtn()">我的券包</button>';
+							$("#merchantTickets").html(html);
+						}
+					}
+					$(".ticket-list li").each(function(){
+						var per = $(this).find(".ticket-right p span").text();
+					$(this).find(".ticket-right .jdt-box span").css("width",per+"%");
+					})
+				}
+			});
+			httpRequest.sendJSON();
+		}
+		
+		//查询账户余额
+		function queryBal(){
+			var httpRequest1 = new HTTPRequest({
+				url : "../milCurOut/queryMilCurBal",
+				data : "",
+				method : "get",
+				successFunc : function(result) {
+					if (result.status == "SUCCESS") {
+						$("#milCurBal").val(result.milCurBal < 0 ? 0 : result.milCurBal);
+					}
+				}
+			});
+			httpRequest1.sendJSON();
+		}
+		
+		//匹配券对应类型
+		function matchTicketName(ticketType){
+			if(ticketType == "USE"){
+				return "抵用券";
+			}else if(ticketType == "DISCOUNT"){
+				return "折扣券";
+			}else if(ticketType == "ENJOY"){
+				return "专享券";
+			}else{
+				return "";
+			}
+		}
+		 
+		//匹配券对应的面额单位
+		function matchUnit(ticketType){
+			if(ticketType == "USE"){
+				return "元";
+			}else if(ticketType == "DISCOUNT"){
+				return "折";
+			}else if(ticketType == "ENJOY"){
+				return "元";
+			}else{
+				return "";
+			}
+		}
+		
+		//匹配国别类型
+		function matchCountryType(countryType){
+			if(countryType == "01"){
+				return "国内";
+			}else if(countryType == "02"){
+				return "国际";
+			}
+		}
+		
+		//我的券包
+		function myTicketsBtn(){
+			window.location.href='../template/myticket.htm';
+		}
+		
+		//领券，merchantCode：券商代码，batchNo：批次号，ticketNumber：券面额
+		function drawTicket(actBatchNo,countryType,ticketType,ticketValue,ticketDiscount,actStartDate,actEndDate,subNum){
+			var isGoNext = true;
+			var bal = $("#milCurBal").val();
+			var exMilCur;
+			if(countryType=="01"){
+				exMilCur = ticketDiscount/10*ticketValue;
+			}else if(countryType=="02"){
+				exMilCur = ticketDiscount/10*ticketValue*2;
+			}else{
+				louis.ap({message:"系统异常！请稍后重试",ok:"确认",buttom:true});
+				return;
+			}
+			if(bal == "" || bal == null){
+				louis.ap({message:"系统异常！请稍后重试",ok:"确认",buttom:true});
+				return;
+			}
+			//验证剩余量
+			if(subNum=="" || subNum==0){
+				louis.ap({message:"该券已被领完！",ok:"确认",buttom:true});
+				return;
+			}
+			//验证活动是否已经开始
+			var nowTime = new Date().getTime();
+			var actStartTime;
+			var actEndTime = new Date(actEndDate.replace(new RegExp("-","gm"),"/")).getTime();
+		
+				actStartTime = new Date(actStartDate.replace(new RegExp("-","gm"),"/")).getTime();
+			
+	
+			
+			//判断是否绑定我行信用卡
+			var httpRequest=new HTTPRequest({
+				url:"../milCurInAccount/checkIsBindWx" ,
+				method:"get",
+				successFunc:function(result){
+		            if(result.status=="SUCCESS"){
+		    	 		if(bal < exMilCur){
+		    	 			isGoNext = false;
+		    				var divHtml = "";
+		    				divHtml+="<p>您目前里程值余额不够</p>";
+		    				divHtml+="<p>兑换该里程包，您可通</p>";
+		    				divHtml+="<p>过积分充值里程值哦</p>";
+		    				$("#msgdiv").html(divHtml);
+		    				$("#s1").html("去充值");
+		    				$("#s2").html("取&nbsp;&nbsp;&nbsp;消");
+		    				$("#btn1").bind("click", function(){
+		    					//关闭确认框
+		    					$(".text-model").hide();
+		    					$(".Dialog").hide();
+		    					window.location.href="../template/recharge-air.htm";
+		    				});
+		    				$("#btn2").bind("click", function(){
+		    					//关闭确认框
+			    				$(".text-model").hide();
+			    				$(".Dialog").hide();
+		    				});
+		    				//弹出确认框
+		    				$(".text-model").show();
+		    				$(".Dialog").show();
+		    			}else{
+		    				var httpRequest=new HTTPRequest({
+		    					url:"../accAirlRelation/queryBindedAirlRelation",
+		    					data:{
+		    						'countryType':countryType,	
+		    					},
+		    					successFunc:function(result){
+		    						if(result.responseStatus=="SUCCESS"){
+										var param=actBatchNo+","+countryType+","+ticketType+","+ticketValue+","+ticketDiscount;
+										localStorage["rebateTicketParam"]=param;
+			    						if(result.responseMap.airs.length > 0){
+			    							window.location.href="../template/airline-list.htm";
+			    						}else{
+			    		    				var divHtml = "";
+			    		    				divHtml+='<p>您将兑换<span id="s11" class="font-color">' + ticketValue + '</span>里程特惠包，将扣除';
+			    		    				divHtml+='<p>您<span id="s21" class="font-color">' + exMilCur + '</span>里程值，特惠包仅限兑换至您';
+			    		    				divHtml+="<p>已绑定的航空公司，如还未绑定请</p>";
+			    		    				divHtml+="<p>提前至绑定页面绑定您的航空公司</p>";
+			    		    				divHtml+="<p>会员卡</p>";
+			    		    				$("#s1").html("去绑定");
+			    		    				$("#s2").html("取&nbsp;&nbsp;&nbsp;消");
+			    		    				$("#msgdiv").html(divHtml);
+			    		    				$("#btn1").bind("click", function(){
+			    		    					//关闭确认框
+			    		    					$(".text-model").hide();
+			    		    					$(".Dialog").hide();
+			    		    					window.location.href="../template/exchange-air2.htm"
+			    		    				});
+			    		    				$("#btn2").bind("click", function(){
+			    			    				//弹出确认框
+			    			    				$(".text-model").hide();
+			    			    				$(".Dialog").hide();
+			    		    				});
+			    		    				//弹出确认框
+			    		    				$(".text-model").show();
+			    		    				$(".Dialog").show();
+			    						}
+		    						}else{
+		    							louis.ap({message:"系统异常！请稍后重试",	ok:"确认"});
+		    						}
+		    					}
+		    			});
+		    			httpRequest.sendJSON();
+		    			}
+		            }else{
+						var divHtml = "";
+						divHtml+='<p>您尚未绑定我行信用卡，请您</p>';
+						divHtml+='<p>先绑定我行信用卡参与此活动</p>';
+						$("#s1").html("去绑定");
+						$("#s2").html("取&nbsp;&nbsp;&nbsp;消");
+						$("#msgdiv").html(divHtml);
+						$("#btn1").bind("click", function(){
+							//关闭确认框
+							$(".text-model").hide();
+							$(".Dialog").hide();
+							window.location.href="../template/recharge-point2.htm"
+						});
+						$("#btn2").bind("click", function(){
+							$(".text-model").hide();
+							$(".Dialog").hide();
+						});
+						//弹出确认框
+						$(".text-model").show();
+						$(".Dialog").show();
+		            }
+				 }
+		     });
+			 httpRequest.sendJSON();
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+

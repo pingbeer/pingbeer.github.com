@@ -1,0 +1,64 @@
+<div ng-app="MyPacketModule" ng-controller="MyPacketController">
+    <div class="ui-row bor-bottom-dfdfdf bg-col-f8f8f8 clear line-40">
+        <div class="ui-col-10 fl-left" ng-click="returnHistory('',5,'')">
+            <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+        </div>
+        <div class="ui-col-80 fl-left text-center text-col-333 font-16">
+            我的红包
+        </div>
+    </div>
+    <ul class="clear text-center bg-col-fff bor-top-ccc line-40 font-14 text-center">
+        <li class="ui-col-49 fl-left lineh-40" ng-click="cgcode(1)">
+            <span class="pl-10 pr-10 line-30 dis-inline" ng-class="{true:'getcode',false:'mycode'}[ckedcode]">
+                可用红包
+            </span>
+        </li>
+        <li class="ui-col-49 fl-left lineh-40 bor-lefts-dfdfdf" ng-click="cgcode(2)">
+            <span class="pl-10 pr-10 line-30 dis-inline" ng-class="{false:'getcode',true:'mycode'}[ckedcode]">
+                已过期
+            </span>
+        </li>
+    </ul>
+    <footer class="ui-footer ui-footer-stable ui-border-t" style="box-shadow: 0px -2px 5px rgba(0, 0, 0, .6);">
+        <div class="ui-flex ui-flex-pack-center ui-flex-align-center mt-10 font-16 text-col-00a6ff">
+            <ul class="clear ui-row ui-col-100 line-35 text-center">
+                <li class="fl-left ui-col-49" ng-click="rootPaycheck(3)">
+                    <i class="ui-icon-order dis-inline font-20 line-20 text-col-00a6ff"></i><u>立即使用</u>
+                </li>
+                <li class="fl-left ui-col-49" ui-sref="packetrule">
+                    <i class="ui-icon-order dis-inline font-20 line-20 text-col-00a6ff"></i><u>活动细则</u>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <div class="mb-60 mt-10" ng-if="weekCount>0">
+        <ul class="font-12 mb-10 prizetype" ng-repeat="list in weeklist">
+            <li ng-style="activeimg" ng-if="list.status==1">
+                <img class='bgimg' ng-src="{{staticUrl}}images/packet.png">
+            </li>
+            <li ng-style="activeimg" ng-if="list.status!=1">
+                <img class='bgimg' ng-src="{{staticUrl}}images/packetblack.png">
+            </li>
+            <ul class="ml-15 text-col-999" ng-if="list.status==1">
+                <li class="text-col-666 font-14 font-weight"><span class="text-col-E5302F">{{list.price}}元</span>充值红包
+                </li>
+                <li class="mt-5">有效期至：{{list.disabledTime.split(' ')[0]}}</li>
+                <li ng-if='list.price<=2' class="text-col-ff7327">充值满50可用</li>
+                <li ng-if='list.price>=3&&list.price<=5' class="text-col-ff7327">充值满100可用</li>
+                <li ng-if='list.price>=6&&list.price<=10' class="text-col-ff7327">充值满200可用</li>
+            </ul>
+            <ul class="ml-15 text-col-999" ng-if="list.status!=1">
+                <li class="text-col-666 font-14 font-weight"><span class="text-col-999">{{list.price}}元</span>充值红包</li>
+                <li class="mt-5">有效期至：{{list.disabledTime.split(' ')[0]}}</li>
+                <li ng-if='list.price<=2'>充值满50可用</li>
+                <li ng-if='list.price>=3&&list.price<=5'>充值满100可用</li>
+                <li ng-if='list.price>=6&&list.price<=10'>充值满200可用</li>
+            </ul>
+        </ul>
+        <div infinite-scroll="myPagingFunction()" infinite-scroll-distance="0"></div>
+    </div>
+
+    <div ng-if="weekCount==0" class="lineh-50 mt-45 pt-10 text-center">{{errormsg}}</div>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

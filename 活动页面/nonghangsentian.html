@@ -1,0 +1,496 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="utf-8">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="format-detection" content="telephone=no, email=no"/>
+        <script src="/Public/Lib/jquery/js/jquery-1.8.3.js"></script>
+        <script src="/Public/Lib/thinkbox/js/jquery.ThinkBox.min.js"></script>
+        <link href="/Public/Lib/thinkbox/css/style.css" rel="stylesheet" text="text/css" />
+        <link href="/Public/Wap/css/global.css" rel="stylesheet" text="text/css">
+        <link href="/Public/Lib/jquery/css/base/jquery-ui.css" rel="stylesheet">
+        <script src="/Public/Lib/jquery/js/jquery-ui-1.9.2.custom.js"></script>
+        <script src="/Public/Lib/jquery/js/jqalert-0.9.js"></script>
+        <script src="/Public/Lib/validate/jquery.validate.1.9.js"></script>
+        <script src="/Public/Lib/validate/jquery.metadata.js"></script>
+        <script src="/Public/Lib/validate/messages_cn.js"></script>
+        <script src="/Public/Lib/jquery/js/jquery.etalage.min.js"></script>
+        <script src="/Public/Lib/jquery/js/jquery.blockUI.js"></script>
+        <script src="/Public/Lib/jquery/js/jquery-webox.js"></script>
+        <script src="/Public/Lib/jquery/js/jquery-ui-timepicker-addon.js"></script>
+        <script src="/Public/Lib/jquery/js/jquery-ui-timepicker-zh-CN.js"></script>
+        <script src="/Public/Common/js/global.js"></script>
+        <script src="/Public/Ucenter/js/common.js"></script>
+		<script src="/Public/Lib/jquery/js/jquery.slides.min.js"></script>
+        <!-- 标准模板只有一个js文件js.js,css文件style.css Start-->
+        <script src="/Public/Tpl/zyb2c-test/wap/abcwsc/js/js.js"></script>
+        <link href="/Public/Tpl/zyb2c-test/wap/abcwsc/css/style.css" rel="stylesheet">        <!-- 标准模板只有一个js文件js.js,css文件style.css End-->
+    </head>
+	<body>
+	    
+
+	    <link rel="stylesheet" href="/Public/Tpl/zyb2c-test/wap/abcwsc/css/amazeui-min.css">
+ <style>
+     html,body{background: #FEFEE0;max-width: 560px!important;margin: 0 auto;}
+     #div1 {
+    display: none;
+    position: absolute;
+    z-index: 9998;
+    height: 100%;
+    width: 100%;
+    background: #000000;
+    filter:Alpha(opacity:30);
+    opacity:0.3;
+    }
+    #div2 {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding-top: 10%;
+    z-index: 9999;
+    max-width: 560px;
+    left: 0px;
+    top: 0px;
+    }
+ </style>
+<div class="detailbackground" style="background:#FFF none repeat scroll 0 0!important;">
+    <div class="head2" style="height:20px!important;">
+      <!-- <p style="font-size:18px;font-family:'冬青黑体简体';font-weight: 800;line-height: 45px!important;padding-top: 7px;display:none;;">掌&nbsp;上&nbsp;秒&nbsp;杀</p> -->
+    </div>
+<div>	<ul class=" am-avg-sm-1 am-margin-top-xs">
+        <li>
+            <a href="javascript:void(0);" onclick="clickflowers();"><img src="/Public/Tpl/zyb2c-test/wap/abcwsc/images//mianmo01/森田_01.jpg" class="am-img-responsive"></a>
+        </li>
+		<li>
+			<a href="javascript:void(0);" onclick="clickmianmo();"><img src="/Public/Tpl/zyb2c-test/wap/abcwsc/images//mianmo01/森田_02.jpg" class="am-img-responsive"></a>
+		</li>
+	</ul>
+	<ul class=" am-avg-sm-1 am-margin-top-xs">
+		<li>
+			<a href="/Wap/Products/detail/gid/3620"><img src="/Public/Tpl/zyb2c-test/wap/abcwsc/images//mianmo01/森田_03.jpg" class="am-img-responsive"></a>
+		</li>
+	</ul>
+	<ul class=" am-avg-sm-1 am-margin-top-xs">
+		<li>
+			<a href="/Wap/Products/detail/gid/3624"><img src="/Public/Tpl/zyb2c-test/wap/abcwsc/images//mianmo01/森田_04.jpg" class="am-img-responsive"></a>
+		</li>
+	</ul>
+	<ul class=" am-avg-sm-1 am-margin-top-xs">
+		<li>
+			<a href="/Wap/Products/detail/gid/3622"><img src="/Public/Tpl/zyb2c-test/wap/abcwsc/images//mianmo01/森田_05.jpg" class="am-img-responsive"></a>
+		</li>
+	</ul>
+	<ul class=" am-avg-sm-1 am-margin-top-xs">
+		<li>
+			<a href="/Wap/Products/detail/gid/3623"><img src="/Public/Tpl/zyb2c-test/wap/abcwsc/images//mianmo01/森田_06.jpg" class="am-img-responsive"></a>
+		</li>
+	</ul>
+	<ul class=" am-avg-sm-1 am-margin-top-xs">
+		<li>
+			<a href="/Wap/Products/detail/gid/3627"><img src="/Public/Tpl/zyb2c-test/wap/abcwsc/images//mianmo01/森田_07.jpg" class="am-img-responsive"></a>
+		</li>
+	</ul>
+	<ul class=" am-avg-sm-1 am-margin-top-xs">
+		<li>
+			<a href="/Wap/Products/detail/gid/3625"><img src="/Public/Tpl/zyb2c-test/wap/abcwsc/images//mianmo01/森田_08.jpg" class="am-img-responsive"></a>
+		</li>
+	</ul>
+    <ul class=" am-avg-sm-1 am-margin-top-xs">
+        <li>
+            <a href="javascript:void(0);" onclick="clickbooks();"><img src="/Public/Tpl/zyb2c-test/wap/abcwsc/images//mianmo01/森田_09.jpg" class="am-img-responsive"></a>
+        </li>
+    </ul>
+	<ul class=" am-avg-sm-1 am-margin-top-xs">
+		<li>
+			<img src="/Public/Tpl/zyb2c-test/wap/abcwsc/images//mianmo01/森田_10.jpg" class="am-img-responsive">
+		</li>
+	</ul>
+</div>
+<input type="hidden" value="2491692" id="mid">
+<input type="hidden" value="1" id="stock_m1">
+<input type="hidden" value="1" id="stock_m2">
+<input type="hidden" value="1" id="stock_b">
+<div id="div1"></div>
+<div id="div2">
+<table width="95%" border="1px solid #778899;" cellpadding="3" cellspacing="1" style="background: #808080; position:absolute;left:2%;filter:progid:DXImageTransform.Microsoft.DropShadow(color=#666666,offX=4,offY=10,positives=true)" align="center" id="mytable">
+<tr id="m_tr">
+<td ><font color="#FFFFFF" style="margin-left:2%">获取手机验证码</font></td>
+</tr>
+<tr>
+<form name="myform"  method="post"  >
+<td colspan="2" width="100%" bgcolor="#FFFFFF" height="150">
+<div style="margin-left:5%;margin-top:5%"><span style="font-size:15px">手&nbsp;&nbsp;机&nbsp;&nbsp;号: </span><input type="text" id="tele" name="tele" size="12"><input type="button" name="logoin" value="获取验证码" onClick="fasong()" style="background:#df0013;color:white;" id="zphone"/></div>
+ <br><div style="margin-left:5%;"><span style="font-size:15px">验&nbsp;&nbsp;证&nbsp;&nbsp;码: </span><input type="text" id="smscode" name="smscode" size="12"></div>
+<br><input type="button" name="logoin" value="确定" onClick="logo()" style="margin-left:12%;margin-bottom:5%;width:20%">
+<input type="button" name="exit" value="取消" onClick="closeme()" style="margin-left:20%;margin-bottom:5%;width:20%">
+<input type="hidden" name="send_code" value="651393" id="send_code">
+</td>
+</form>
+</tr>
+</table>
+</div>
+<script>
+    function clickflowers(){
+    
+            location.href = "/Wap/Products/detail/gid/3650";
+        
+    }
+    function clickbooks () {
+
+            location.href = "/Wap/Products/detail/gid/3648";
+       
+    }
+    function clickmianmo () {
+    
+            location.href = "/Wap/Products/detail/gid/3649";
+        
+    }
+</script>
+	    <noempty name="ary_online">
+<style>
+/*在线咨询   开始*/
+.cusService { display:inline-block; position:fixed; left:0px; top:200px;}
+.cusServiceCon { float:left; width:180px; border:1px solid #d7d7d7; background:white; display:none}
+.cusServiceCon table { width:100%}
+.cusServiceCon table thead td { border-bottom:1px solid #d7d7d7; color:#333; font-size:14px; text-shadow:1px 1px 3px #999;}
+.cusServiceCon table td { padding:5px 0px; line-height:23px; padding-left:10px;}
+.cusServiceCon table td.addBorder { border-top:1px dashed #d7d7d7;}
+.cusServiceCon table td a { display:inline-block; white-space:nowrap}
+.cusServiceCon table td span { position:relative; top:-6px; margin-left: 4px;}
+.cusServiceCon table td a:hover { text-decoration:none; color:red;}
+.cusServiceCon table tfoot td { border-top:1px sold #d7d7d7;}
+a.cusSerClick { float:left; background:url(/Public/Ucenter/images/customerService.jpg) no-repeat 0px -124px; width:42px; height:124px;}
+a.cusSerClickAgain { background-position:0px 0px;}
+/*在线咨询   结束*/
+</style>
+</noempty>
+
+	    <style type="text/css">
+@media only screen and (max-width: 640px)
+body {
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+.am-text-lg {
+    font-size: 1.6rem!important;
+}
+.am-text-white {
+	color: #FFFFFF;
+}
+.am-cf:before, .am-cf:after {
+  content: " ";
+  display: table;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.am-cf:after {
+  clear: both;
+}
+.am-cf:before, .am-cf:after {
+  content: " ";
+  display: table;
+}
+.am-navbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /*height: 49px;*/
+  /*line-height: 49px;*/
+  z-index: 1010;
+  font-family: 'FontAwesome';
+}
+.am-navbar-default .am-navbar-nav {
+  background-color: #F7F7F7
+}
+.am-navbar .am-navbar-nav {
+  /*padding-left: 8px;
+  padding-right: 8px;*/
+  text-align: center;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  : ;}
+.am-navbar ul {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+.am-navbar-nav {
+  position: relative;
+  z-index: 1015;
+}
+[class*="am-avg-"] {
+  display: block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.am-navbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /*height: 49px;*/
+  /*line-height: 49px;*/
+
+  z-index: 1010;
+}
+.am-navbar .am-navbar-nav li {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  float: none;
+}
+@media only screen
+.am-avg-sm-4>li:nth-of-type(4n+1) {
+  clear: both;
+}
+@media only screen
+.am-avg-sm-4>li:nth-of-type(n) {
+  clear: none;
+}
+@media only screen
+.am-avg-sm-4>li {
+  width: 25%;
+}
+[class*="am-avg-"]>li {
+  display: block;
+  height: auto;
+  float: left;
+}
+.am-navbar-default a {
+  color: #fff;
+}
+.am-navbar-nav a {
+  display: inline-block;
+  width: 100%;
+  height: 49px;
+  line-height: 20px;
+}
+a {
+  text-decoration: none;background-color: transparent;
+}
+.am-navbar-nav a .am-navbar-label {
+  padding-top: 2px;
+  line-height: 1;
+  font-size: 12px;
+  display: block;
+  word-wrap: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #8B8B8B;
+}
+.am-navbar-nav a [class*="am-icon"] {
+  width: 24px;
+  height: 24px;
+  margin: 4px auto 0;
+  display: block;
+  line-height: 24px;
+  color: #8B8B8B;
+}
+[class*="am-icon-"] {
+  display: inline-block;
+}
+.am-navbar-nav a [class*="am-icon"]:before {
+  font-size: 22px;
+  vertical-align: middle;
+}
+.am-icon-home:before{
+	content: "\f015";
+}
+.am-icon-location-arrow:before {
+  content: "\f124";
+}
+.am-icon-shopping-cart:before {
+  content: "\f07a";
+}
+.am-icon-group:before, .am-icon-users:before {
+  content: "\f007";
+}
+.am-icon-arrow-up:before {
+  content: "\f062";
+}
+
+.am-icon-list:before {
+  content: "\f03a";
+}
+.am-icon-user:before {
+  content: "\f007";
+}
+
+[class*="am-icon-"]:before {
+  display: inline-block;
+  font: normal normal normal 1.6rem/1 "FontAwesome",sans-serif;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transform: translate(0,0);
+  -ms-transform: translate(0,0);
+  transform: translate(0,0);
+}
+.am-with-fixed-navbar .am-gotop-fixed {
+  bottom: 60px;
+}
+.am-gotop-fixed.am-active {
+  opacity: .8;
+}
+.am-gotop-fixed {
+  position: fixed;
+  right: 10px;
+  bottom: 60px;
+  z-index: 1010;
+  opacity: 0;
+  width: 48px;
+  min-height: 48px;
+  overflow: hidden;
+  border-radius: 0;
+  text-align: center;
+}
+.am-gotop a {
+  display: inline-block;
+  text-decoration: none;
+}
+.am-gotop-fixed a {
+  display: block;
+}
+.am-gotop-fixed .am-gotop-icon {
+  width: 100%;
+  line-height: 48px;
+  background-color: #555;
+  vertical-align: middle;
+  color: #ddd;
+}
+.am-circle {
+	border-radius: 50%;
+}
+html, body {
+  min-height: 100%;
+}
+.am-icon-file-text::before {
+    content: "";
+}
+
+</style>
+<form name="surveyForm" method="post" action="/mibew/client.php?locale=zh-cn">
+							<input type="hidden" name="style" value="simplicity"/>
+							<input type="hidden" name="info" value=""/>
+							<input type="hidden" name="referrer" value="https://enjoy.abchina.com/yh-web/branchpage/init/1BOA38PMD0240101007F000068263943/289/121.4075445559/31.173212351546"/>
+							<input type="hidden" name="survey" value="on"/>
+							<input type="hidden" name="email" value=""/>
+							<input type="hidden" name="group" value=""/>
+							<input type="hidden" name="message" value=""/>
+							<input type="hidden" name="name" size="50" value='7a8f83aec5732d4386bb8c2513d24aa0d7c02097873c680d'></form>
+
+
+
+<div data-am-widget="gotop" class="am-gotop am-gotop-fixed">
+           <a href="#top" title="">
+                 <i class="am-gotop-icon am-icon-arrow-up am-circle" style="font-size: 3rem;"></i>
+           </a>
+         </div>
+         <div style="">
+                   <div style="margin:0; background-color:#f7f7f7!important;text-align:center;line-height:8px;"><span class="am-navbar-label iconcolor" style="font-size:8px;color:#8b8b8b;">地址：上海市静安区延安西路358号24楼&nbsp;&nbsp;&nbsp;电话:400-920-8559</span>
+        </div>
+        <div style="margin-bottom:0.5rem; background-color:#f7f7f7!important;text-align:center;line-height:8px;">
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010602000649"><span class="am-navbar-label iconcolor" style="font-size:8px;color:#8b8b8b;"><img src="/Public/Uploads/zyb2c-test/images/beian/备案图标.png" style="height:auto"/>沪公网安备 31010602000649号</span></a>
+      </div>    </div>
+        <div style="">
+        	<div style="height:40px;"></div>  <!--占位符-->
+	<div  class="am-navbar am-cf am-navbar-default  am-no-layout" id="" >
+        <ul class="am-navbar-nav am-cf am-avg-sm-5" >
+                      <li style="display:none;">
+             <!--20170227,zhoujin,for standalone shop when login in from weixin,ex: MinLongDa-->
+             <a href="/Wap/Index/index" class="">
+                 
+                   <span class="am-icon-home iconcolor"></span>
+                   <span class="am-navbar-label iconcolor">首页</span>
+              </a>
+            
+            </li>                                             <li style="display:none;">              <a href="/Wap/Cart/pageCartList" class="">
+                    <p class="am-icon-shopping-cart iconcolor"></p>
+                  <span class="am-navbar-label iconcolor">购物车
+                  <span id="cartcount" style="color: #6C6C6C;font-weight: 600;" ></span>
+                  </span>
+              </a>
+            </li>
+	<!-- -->
+             <!-- <li> -->
+              <!-- <a href="/Wap/Category/WscCategory" class=""> -->
+                    <!-- <p class="am-icon-file iconcolor"></p> -->
+                  <!-- <span class="am-navbar-label iconcolor">分类 -->
+                  <!-- </span> -->
+              <!-- </a> -->
+            <!-- </li> -->
+	<!-- -->
+                           <li style="">
+              <a href="/Wap/Ucenter/index" class="">
+                    <span class="am-icon-user iconcolor"></span>
+                  <span class="am-navbar-label iconcolor">我的</span>
+              </a>
+            </li>            <!--<li class="am-navbar-labels am-navbar-more" style="display: none;">
+            	<a href="javascript: void(0);"><span class="am-icon-angle-up"></span>
+            		<span class="am-navbar-label">更多</span></a></li>-->
+        </ul>
+        <!-- <ul class=" am-navbar-nav am-cf am-avg-sm-2 backg-color">
+          <li>
+            <span  class="am-navbar-label iconcolor" style="font-size:10px !important;float:right;">公司地址：上海市静安区延安西路358号24楼&nbsp;&nbsp;&nbsp;</span>
+          </li>
+          <li>
+            <span  class="am-navbar-label iconcolor" style="font-size:10px !important;float:left;">公司电话:4006-055599</span>
+          </li>
+        </ul> -->
+        
+    <ul class="am-navbar-actions"></ul>
+	</div></div>
+    <!--<![endif]-->
+<script src="/Public/Tpl/zyb2c-test/wap/abcwsc/js/amazeui.min.js"></script>
+<script type="text/javascript">
+       var height=$(window).height();
+	     jQuery('.warp').css({'min-height':height-50});
+</script>
+<script type="text/javascript">
+window.alert = function(name){
+ var iframe = document.createElement("IFRAME");
+iframe.style.display="none";
+iframe.setAttribute("src", 'data:text/plain,');
+document.documentElement.appendChild(iframe);
+window.frames[0].window.alert(name);
+iframe.parentNode.removeChild(iframe);
+}
+</script>
+        <!--弹出框-->
+<div id="alert" style="display: none;" title="系统提示">
+    <table width="100%">
+        <tr>
+            <td style="padding:5px; vertical-align: top;"><div id="alert_face" class=""></div></td>
+            <td style="padding:5px; vertical-align: top;">
+                <div id="alert_title">提示标题</div>
+                <div id="alert_msg">提示内容</div>
+            </td>
+        </tr>
+    </table>
+</div>
+<!--End of 弹出框-->
+	    <!-- 是否有统计代码,有则显示  Start-->
+	    <noempty name="shop_code">
+	    	<script language="javascript" type="text/javascript" src="/Public/Wap/js/18652435.js"></script>
+<noscript><a href="http://www.51.la/?18652435" target="_blank"><img alt="我要啦免费统计" src="http://img.users.51.la/18652435.asp" style="border:none" /></a></noscript>	    </noempty>
+	    <!-- 是否有统计代码，有则显示 End-->
+	</body>
+</html>

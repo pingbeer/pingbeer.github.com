@@ -1,0 +1,24 @@
+<div ng-app="CollectModule" ng-controller="CollectController">
+    <div class="nav-main ui-row bg-col-f8f8f8 line-40 bor-bottom-dfdfdf">
+        <div class="ui-col-10 fl-left" ng-click="returnHistory('',5,'')">
+            <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+        </div>
+        <div class="ui-col-80 fl-left text-center text-col-333 font-16">
+            我的收藏
+        </div>
+    </div>
+    <section class="mt-45" ng-if="collectedCinemas.length>0">
+        <div class="bg-col-fff col-cinema" ng-repeat="cinema in collectedCinemas"
+             ui-sref="cinemadetail({'id':cinema.id,'type':6})" >
+            <div class="ui-arrowlink">
+                <div class="font-14 lineh-25 mt-10">{{cinema.name}}</div>
+                <div class="font-12 lineh-25 text-col-999">{{cinema.address}}</div>
+            </div>
+        </div>
+    </section>
+    <section class="mt-45 ui-col-100 lineh-50 text-center" ng-if="collectedCinemas.length==0">
+        {{errormsg}}
+    </section>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

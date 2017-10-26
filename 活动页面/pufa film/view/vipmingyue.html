@@ -1,0 +1,168 @@
+
+<div ng-app="DroiyanActivity" ng-controller="droiyanController">
+    <div class="ui-row bor-bottom-dfdfdf bg-col-f8f8f8 clear line-40">
+        <div class="ui-col-10 fl-left" ui-sref="find">
+            <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+        </div>
+        <div class="ui-col-80 fl-left text-center text-col-333 font-16">
+            明月几时有（双卡客户专场）
+        </div>
+    </div>
+    <section ng-style="sectionHeitht">
+        <!--<section class="bg-bs pb-80">-->
+        <div ng-style="xyimgs1">
+            <img ng-style="xyimgs1" src="{{staticUrl}}images/bothimg1.jpg"/>
+        </div>
+        <div ng-style="xyimgs1">
+            <img ng-style="xyimgs1" src="{{staticUrl}}images/bothimg2.jpg"/>
+        </div>
+        <div ng-style="xyimgs1">
+            <img ng-style="xyimgs1" src="{{staticUrl}}images/bothimg3.jpg"/>
+        </div>
+        <div ng-style="xyimgs1" class="position overhide">
+            <img ng-style="xyimgs1" src="{{staticUrl}}images/bothimg4.jpg"/>
+            <div ng-style="countSpr">
+                <div class="text-center clickbtn">
+                    <div ng-if="status"><img ng-click="getTickit1()" ng-src="{{staticUrl}}images/bothfy.png"/></div>
+                    <div ng-if="!status"><img ng-click="getStatus(1)" ng-src="{{staticUrl}}images/bothblackbtn.png"/></div>
+                </div>
+                <div class="text-center" style="color:#dce3e7; font-size:12px;"><a
+                        style="color:#dce3e7;text-decoration: underline;"
+                        ng-click="getjl()">中奖记录</a>
+                    <a class="ml-15" style="color:#dce3e7;text-decoration: underline;"
+                       ui-sref="viprule({'type':ParamsType})">活动细则</a>
+                </div>
+            </div>
+        </div>
+        <div style="width: 30px;position: fixed; right: 0px; top: 30%" ng-click="actionRule()">
+            <img style="width: 30px;" ng-src="{{staticUrl}}images/rightFlex.png" alt="">
+        </div>
+    </section>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <!--规则-->
+    <div class="ui-dialog ruletipModel">
+        <div class="sprizjbdactive position">
+            <div class="ui-spr-bd text-center">
+                <div>
+                    <h1></h1>
+                    <img ng-style="zjstyle" ng-src="{{staticUrl}}images/bothruletip.png"/>
+                    <div class="font-14" style="position: absolute; top: 0px; padding: 0 14%; width: 72%;">
+                        <img ng-src="{{staticUrl}}images/bothclosex.png"
+                             style="position: absolute; top: -16px; right:7%; width: 8%;" ng-click="closeDialog()">
+                        <p class="text-left text-col-333" ng-style="ruleTop">
+                            06月30日14:00起，持卡人可抽兑《明月几时有》10元观影券每人限抽1次(随机1~3张)。活动总限量2000张，抽兑成功后，持卡人在14天有效期内选座购票并使用该券，可以10元价格购买《明月几时有》电影票一张，
+                            见<a style="color:#f02800;text-decoration: underline;"
+                                ui-sref="direction({'type':ParamsType})">《使用说明》</a>
+                            详情见<a style="color:#f02800;text-decoration: underline;" ui-sref="viprule({'type':ParamsType})">《活动细则》</a>。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--文字信息提示-->
+    <div class="ui-dialog sprtipsModel">
+        <div class="sprizjbdactive position">
+            <div class="ui-spr-bd text-center">
+                <div>
+                    <h1></h1>
+                    <img ng-style="zjstyle" ng-src="{{staticUrl}}images/bothsprtips.png"/>
+                    <img ng-src="{{staticUrl}}images/bothclosex.png"
+                         style="position: absolute; top: -16px; right:7%; width:8%;" ng-click="closeDialog()"/>
+                    <div class="font-14 tipsmeg" ng-bind-html="signtext | to_trusted">
+                    </div>
+                </div>
+            </div>
+            <div class="ui-spr-ft" style="margin-bottom: 20px;">
+                <img ng-click="closeDialog()" ng-src="{{staticUrl}}images/bothfybtn.png"/>
+            </div>
+        </div>
+    </div>
+    <!--抢票中的提示-->
+    <div class="ui-dialog sprtipsModels">
+        <div class="sprizjbdactive position">
+            <div class="ui-spr-bd text-center">
+                <img ng-style="zjstyle" ng-src="{{staticUrl}}images/bothsprtips.png"/>
+            </div>
+            <div class="ui-spr-ft mt-10">
+                <div style="height: 96px; background: url('/images/bgk2.png') center 0 no-repeat;background-size:93px 93px;">
+                    <img style="width:50px; height:50px; margin-top: 19px;" ng-src="{{showimg}}"/>
+                </div>
+                <div class="clear ml-15 mr-15">
+                    <div class="fl-left ui-col-33s" ng-class="{false:'nbgimg',true:'ybgimg'}[showTypes==1]">
+                        <img ng-click="uiPlay(1)" style="width:55px;height: 55px;margin-top: 5px;"
+                             ng-src="{{staticUrl}}images/shitou.png"/>
+                    </div>
+                    <div class="fl-left ui-col-33s" ng-class="{false:'nbgimg',true:'ybgimg'}[showTypes==2]">
+                        <img ng-click="uiPlay(2)" style="width:55px;height: 55px;margin-top: 5px;"
+                             ng-src="{{staticUrl}}images/jiandao.png"/>
+                    </div>
+                    <div class="fl-left ui-col-33s" ng-class="{false:'nbgimg',true:'ybgimg'}[showTypes==3]">
+                        <img ng-click="uiPlay(3)" style="width:55px;height: 55px; margin-top: 5px;"
+                             ng-src="{{staticUrl}}images/bu.png"/>
+                    </div>
+                </div>
+                <p class="lineh-30 text-center font-14">请选择猜拳手势</p>
+            </div>
+        </div>
+    </div>
+    <!--中奖图片提示-->
+    <div class="ui-dialog sprzjModel">
+        <div class="sprizjbdactive position">
+            <div class="ui-spr-bd text-center">
+                <div>
+                    <h1></h1>
+                    <img ng-style="zjstyle" ng-src="{{sprjimg}}"/>
+                    <img ng-src="{{staticUrl}}images/bothclosex.png"
+                         style="position: absolute; top: -16px; right:7%; width: 8%;" ng-click="sprzjHide()">
+                </div>
+            </div>
+            <div class="ui-spr-ftzj">
+                <p class="font-12 line-20 text-center"
+                   style="width:70%; padding-left: 15%; padding-right: 15%; color:#f78d2f;">奖券将在活动结束后24小时内发放至持卡人账户</p>
+                <img ng-click="sprzjHide()" ng-src="{{staticUrl}}images/bothfybtn.png"/>
+            </div>
+        </div>
+    </div>
+    <!--未中奖的图片提示-->
+    <div class="ui-dialog sprerrModel">
+        <div class="sprizjbdactive position">
+            <div class="ui-spr-bd text-center">
+                <div>
+                    <h1></h1>
+                    <img ng-style="zjstyle" ng-src="{{staticUrl}}images/bothfail.png"/>
+                    <img ng-src="{{staticUrl}}images/bothclosex.png"
+                         style="position: absolute; top: -16px; right:7%; width: 8%;" ng-click="sprerrHide()">
+                </div>
+            </div>
+            <div class="ui-spr-ft">
+                <img ng-click="sprerrHide()" ng-src="{{staticUrl}}images/bothfybtn.png"/>
+            </div>
+        </div>
+    </div>
+    <!--验证码-->
+    <div class="ui-dialog sprcodeModel">
+        <div class="sprizjbdactive position">
+            <div class="ui-spr-bd text-center">
+                <div>
+                    <img ng-style="zjstyle" ng-src="{{staticUrl}}images/bothsprtips.png"/>
+                    <img ng-src="{{staticUrl}}images/bothclosex.png"
+                         style="position: absolute; top: -16px; right:7%; width: 8%;" ng-click="closeSpr()">
+                    <div class="font-14 tipsmeg">
+                        <div class="ui-col-80 clear" style="margin-left: 10%">
+                            <input class="ui-col-60 fl-left bor-radius5 bor-none bor-8e8e93 line-30 pl-5"
+                                   placeholder='请输入右侧验证码' type="text" ng-model="setcode" id="setcode"
+                                   ng-focus="clearMsg()"/>
+                            <span class="font-16  fl-right ui-col-30 text-left line-30 text-col-2c3e50"
+                                  ng-click="code()" ng-bind="codemsg"></span>
+                        </div>
+                        <p>{{checkcodes}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-spr-ft" style="margin-bottom: 10px;">
+                <img ng-click="checkout()" ng-src="{{staticUrl}}images/bothfybtn.png"/>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<title>浦东发展银行信用卡</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/onkey.css">
+</head>
+
+<body>
+	<div class="main">
+		<div class="page-box">
+			<h1>
+				<figure>
+					<img src="../images/logo.png">
+				</figure>
+				里程银行 <a href="javascript:void(0);" onclick="javascript:window.location.href='../template/activity-rules.htm'">活动细则</a>
+			</h1>
+		</div>
+		<div class="fixed-bg bg-page">
+			<section class="member-box">
+				
+<!-- 				<button class="bank"> -->
+<!-- 					<b>&lt;</b>流量银行 -->
+<!-- 				</button> -->
+			<div class="progress-image" onclick="showTips();"><img src="../images/icon_dreamhelp.png"></div>
+			</section>
+			<h2 class="weixin">用户名</h2>
+			<!-----------------------------------------plane------------------------------------------->
+			<div class="plane-text">
+			  <div class="small">账户余额</div>
+			  <div class="large" id='bal'></div>
+			  <div class="small">里程值</div>
+			</div>
+			<div class="fly-container">
+				<div class="fly-container-ball">
+					<div class="fly-container-ballColor">
+						
+					</div>
+					<div class="fly-container-plane">
+						<div class="fly-container-planeRadius"></div>
+					</div>
+				</div>
+			</div>
+			<!-----------------------------------------nav button------------------------------------------->
+			<section class="dream-nav">	    	
+	      <ul>	 
+	      <!--   href="../template/dreamcity.htm" -->
+	      	<a><figure class="dream-box" onclick="ChangeDreamAddr();"><img src="../images/dream.png"></figure></a>
+		      <li onclick="javascript:window.location.href='../template/exchange-air2.htm'" class="lcdh">
+			      <figure class="lcdh-icon"><img src="../images/icon_hkli.png"></figure>
+			      <p class="lcdh-text">兑换航空里程</p>
+		      </li>	     
+		      <li onclick="javascript:window.location.href='../template/recharge-air.htm'" class="lccz">
+			      <figure class="lccz-icon"><img src="../images/icon_lcb.png"></figure>
+			      <p class="lccz-text">充值里程值</p>
+		      </li>	     
+<!-- 		      <li onclick="javascript:window.location.href='../template/recharge-flow.htm'" class="lldh"> -->
+<!-- 			      <figure class="lldh-icon"><img src="../images/icon_ll.png"></figure> -->
+<!-- 			      <p class="lldh-text">兑换流量</p> -->
+<!-- 		      </li>		      -->
+		      <li onclick="javascript:window.location.href='../template/lottery.htm'" class="lldh">
+			      <figure class="lldh-icon"><img src="../images/icon_ll.png"></figure>
+			      <p class="lldh-text">梦享抽奖</p>
+		      </li>		     
+		      <li onclick="javascript:window.location.href='../template/my-account.htm'" class="wdzh">
+			      <figure class="wdzh-icon"><img src="../images/icon_wdzh.png"></figure>
+			      <p class="wdzh-text">我的账户</p>
+		      </li>	      
+	      </ul>
+     </section>
+		</div>
+	</div>
+	<script type="text/javascript" src="../js/lib/jquery/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="../js/lib/jquery/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../js/lib/alert/lcyh_alert.js"></script>
+	<script type="text/javascript" src="../js/lib/alert/onkey.js"></script>
+	<script type="text/javascript" src="../js/mask.js"></script>
+	<script type="text/javascript" src="../js/httpRequest.js"></script>
+https://pufalicheng.spdbccc.com.cn/pflc-app-web/js/httpRequest.js
+    <script type="text/javascript">
+	 //禁用页面右上角的分享功能 Begin
+	   $().ready(function(){
+		    document.addEventListener('WeixinJSBridgeReady',
+		        function onBridgeReady() {
+		            WeixinJSBridge.call('hideToolbar'); //隐藏微信界面下方导航栏
+		            WeixinJSBridge.call('hideOptionMenu');//隐藏微信界面右上方分享按钮
+		        }
+		    );
+		});
+	 //禁用页面右上角的分享功能 End
+    	var cUser = null,countM = function() {
+		// 初始化设置用户名
+		set.uName();
+		var currentUserId=$.cookie('currentUserId');
+		var currentUserName=$.cookie('currentUserName');
+		var headImgUrl=$.cookie('headImgUrl');
+
+		//查询该用户现在有效期内的余额总计
+		$.cookie("currentUserId", currentUserId, {
+			expires : 7,
+			path : '/'
+		});
+		$.cookie("currentUserName", currentUserName, {
+			expires : 7,
+			path : '/'
+		});
+		// add by xiaoyaojie 微信头像
+		$.cookie("headImgUrl", headImgUrl, {
+			expires : 7,
+			path : '/'
+		});
+		
+		var httpRequest1 = new HTTPRequest({
+			url : "../milCurOut/queryMilCurBal",
+			data : "",
+			method : "get",
+			successFunc : function(result) {
+// 				console.debug(JSON.stringify(result));
+				if (result.status == "SUCCESS") {
+					$("#bal").html(result.milCurBal < 0 ? 0 : result.milCurBal);
+// 					$("h2")[0].innerHTML =result.weiChatName;
+				}
+			}
+		});
+			httpRequest1.sendJSON();
+		}, set = {
+			uName : function() {
+				$("h2")[0].innerHTML = $.cookie('currentUserName');
+			}
+		};
+		var visitCount = function() {
+			var param = new Object();
+			var httpService =new HTTPRequest({
+				url : "../enterPflc/visitCount",
+				data : "",
+				method : "get",
+				dataType : "text",
+				successFunc : function(result) {
+// 					console.debug(JSON.stringify(result));
+				}
+			});
+			httpService.sendJSON();
+		}
+		
+		$(function() {
+			countM();
+			visitCount();
+			$("h2")[0].innerHTML = $.cookie('currentUserName');
+		});
+		
+		 //用户点击梦想地图片事件 
+		   function ChangeDreamAddr(){
+			   var httpRequest = new HTTPRequest({
+					url : "../dreamAddrs/checkDreamAddrExit",
+					data : "",
+					method : "get",
+					successFunc : function(result) {
+						if(result==0){
+							window.location.href="../template/dreamcity.htm"; //没有设置梦想地的路径
+						}else{
+							window.location.href = " ../template/exchange-dream-plane.htm";  //已设置梦想地的路径 
+						}
+					} 
+				});
+				httpRequest.sendJSON();
+		   }
+		 
+		 
+		 function showTips(){
+			 louis.ap({
+					message:"您可使用里程“银行”账户余额兑换航空里程",
+					ok:"关闭"
+			 });
+			 
+		 }
+	</script>
+</body>
+</html>
+
+
+
+
+

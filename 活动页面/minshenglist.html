@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name= "format-detection" content= "telephone=no" />
+    <title>我的特权</title>
+        <link rel="icon" href="/promotion/favicon.ico"/>
+        <script language="javascript" type="text/javascript">
+            contextPath="/promotion";
+        </script>
+        <script src="/promotion/js/activityday/jquery-2.1.0.min.js?version=20170317" type="text/javascript"></script>
+        <script src="/promotion/js/activityday/activitydayMain.js?version=20170317" type="text/javascript"></script>
+        <!-- 引入fastclick,消除移動端的點擊延遲 非必須 可不用 -->
+        <script src="/promotion/js/activityday/fastclick_enc.min.js?version=20170317" type="text/javascript"></script>
+        <script src="/promotion/js/activityday/swipe.js?version=20170317" type="text/javascript"></script>
+        <link href="/promotion/css/activityday/default.css?version=20170317" rel="stylesheet" type="text/css">
+        <link href="/promotion/css/activityday/ms_lxl.css?version=20170317" rel="stylesheet" type="text/css">
+        <link href="/promotion/css/activityday/zl_ms.css?version=20170317" rel="stylesheet" type="text/css">
+    <script type="text/javascript">var ctx = '/promotion';</script>
+    </head>
+    <body>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=20170317"></script>
+<script type="text/javascript">
+  wx.config({
+        debug: false,         // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: "wxb5c7e8178bbff71f",      // 必填，公众号的唯一标识
+        timestamp: "1489813529",  // 必填，生成签名的时间戳
+        nonceStr: "c74fba30-cec4-4ca8-8fcb-b4d8b9d60029",   // 必填，生成签名的随机串
+        signature: "3d8acc1caff5522712605ad472cee32ecbe69195",  // 必填，签名，见附录1
+        jsApiList: [
+                  'checkJsApi',
+                  'onMenuShareTimeline',    //分享到朋友圈
+                  'onMenuShareAppMessage',  //分享到朋友
+                  'onMenuShareQQ',      //分享到QQ
+                  'onMenuShareWeibo',     //分享到腾讯微博
+                  'onMenuShareQZone'      //分享到QQ空间
+                ]             // 必填，需要使用的JS接口列表
+    });
+  var url='http://creditcard.cmbc.com.cn/H5/html/ttmsr/index.htm';
+  //var imgUrlPref="http://test.creditcard.cmbc.com.cn/";
+  var imgUrlPref="http://promotion.creditcard.cmbc.com.cn/";
+    wx.ready(function(){
+      //分享到朋友圈
+      wx.onMenuShareTimeline({
+        title:'没错！这就是一条广告，但你想要的这里都有！',
+        link:url,
+        imgUrl:imgUrlPref+'/promotion/images/activityday/weshare.jpg',
+        success:function(){
+          //alert("分享到朋友圈成功");
+        },
+        cancel:function(){
+          //alert("分享到朋友圈失败");
+        }
+      });
+      //分享给朋友
+      wx.onMenuShareAppMessage({
+        title:'没错！这就是一条广告，但你想要的这里都有！',
+        desc:'COSTA、哈根达斯、大众点评、屈臣氏我们都有，刷民生信用卡当月计积分消费3笔99元即可，约么？',
+        link:url,
+        imgUrl:imgUrlPref+'/promotion/images/activityday/weshare.jpg',
+        success:function(){
+          //alert("分享给朋友成功");
+        },
+        cancel:function(){
+          //alert("分享给朋友失败");
+        }
+      });
+    });
+</script><script type="text/javascript">
+    $(function(){
+        //引入fastclick,消除移動端的點擊延遲 優化體驗 非必須 可不用
+        FastClick.attach(document.body);
+
+        //滑动广告模块
+        var swipePosition = $(".swipe_navpos li");
+        window.mySwipe = $('#mySwipe').Swipe({
+            continuous: true,//是否无限滚动
+            disableScroll: false,
+            stopPropagation: false,
+            callback: function(index, elem) {
+                $(".swipe_navpos li").removeClass('on');
+                var numSlides=window.mySwipe.data('Swipe').getNumSlides();
+                var reIndex=index;
+                if(numSlides==2){//如果只有两张图片时的情况
+                    reIndex=Math.ceil(index%numSlides);
+                }
+                swipePosition[reIndex].className='on';
+            },
+            auto:3000,
+        });
+    var now=new Date();
+    var year=now.getFullYear();
+    var month=now.getMonth()+1;
+    var day=new Date(year,month,0);
+    var lastday=year+"年"+month+"月"+day.getDate()+"日";
+    //$("#lastday").text(lastday);
+    $(".lastday").each(function(){
+      $(this).text(lastday);
+    });
+    });
+</script>
+<div id="ms_01_12" class="flex">
+  <div class="top_bar">
+  <div class="top_home"><img src="/promotion/images/activityday/ico_home.png" onclick="goHome()"></div>
+    <div class="top_logo"><img src="/promotion/images/activityday/ico_logo.png"></div>
+    <div class="top_person"><img src="/promotion/images/activityday/ico_person.png" onclick="goMyList()"></div>
+</div>    <div class="content">
+        <p class="top_txt border b_btm">恭得本月天天民生日特权</p>
+        <!-- 滑动广告模块 -->
+        <div id='mySwipe' class='swipe_wrap'>
+            <div class='swipeDov'>
+                <div class="swip_item"><p class="swip_p1">每自然月计积分交易满3笔99元</p><p class="swip_p2">特权有效期：<span class="lastday"></span></p></div>
+            </div>
+            <ul class="swipe_navpos">
+                <li class="on"></li>
+            </ul>
+        </div>
+
+        <div class="pro_list pro_main">
+            <div class="cvt_item border b_lrb bg_w"  onclick="goProdDetial(1,1)">
+                <span class="ico_top"></span>
+                <span class="ico_ylt"></span>
+                <span class="ico_yrt"></span>
+                <p class="cvt_img"><img src="/promotion/images/activityday/eveday_01.jpg"></p>
+
+        <div class="cvt_tdov">
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用方式：</div>
+                        <div class="cvt_txt">
+                            <p>1.刷民生信用卡当月计积分消费满3笔99元，即可于达标当月的每周一至COSTA门店10元领取中杯经典咖啡或者五星经典咖啡一杯；</p>
+                            <p>2.每人每活动日所有门店限领取一杯，名额有限，先到先得。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用期限：</div>
+                        <div class="cvt_txt">
+                            <p>限达标当月每周一。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">其他说明：</div>
+                        <div class="cvt_txt">
+                            <p>限指定门店享受特权，门店信息详见民生信用卡官方微信或官网。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="dh_p"><span class="btn_dh">查看详情</span></p>
+            </div>
+
+            <div class="cvt_item border b_lrb bg_w"  onclick="goProdDetial(2,1)">
+                <span class="ico_top"></span>
+                <span class="ico_ylt"></span>
+                <span class="ico_yrt"></span>
+                <p class="cvt_img"><img src="/promotion/images/activityday/eveday_02.jpg"></p>
+
+        <div class="cvt_tdov">
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用方式：</div>
+                        <div class="cvt_txt">
+                            <p>1.刷民生信用卡当月计积分消费满3笔99元，即可于达标当月的每周二至哈根达斯门店10元领取单球一枚；</p>
+                            <p>2.每人每活动日所有门店限领取一次，名额有限，先到先得。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用期限：</div>
+                        <div class="cvt_txt">
+                            <p>限达标当月每周二。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">其他说明：</div>
+                        <div class="cvt_txt">
+                            <p>限指定门店享受特权，门店信息详见民生信用卡官方微信或官网。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="dh_p"><span class="btn_dh">查看详情</span></p>
+            </div>
+
+            <div class="cvt_item border b_lrb bg_w"  onclick="goProdDetial(3)">
+                <span class="ico_top"></span>
+                <span class="ico_ylt"></span>
+                <span class="ico_yrt"></span>
+                <p class="cvt_img"><img src="/promotion/images/activityday/eveday_03.jpg"></p>
+
+        <div class="cvt_tdov">
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用方式：</div>
+                        <div class="cvt_txt">
+                            <p>1.刷民生信用卡（汽车分期、汽车分期泊车产品、白金理财、通宝分期、通宝白领、新e贷、公务卡除外）当月计积分消费满3笔99元，即可于达标当月的每周三在民生信用卡微信“我的特权”领取50元分期手续费红包一个；</p>
+                            <p>2.每人每活动日限领取一个红包，名额有限，先到先得，每活动日两次抢兑时间：上午10点和下午15点。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用期限：</div>
+                        <div class="cvt_txt">
+                            <p>红包有效期自领取之日起3个月内有效。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">其他说明：</div>
+                        <div class="cvt_txt">
+                            <p>红包仅适用于通过微信办理账单分期，由于附属卡客户无法申请分期，兑换后红包将无法使用。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="dh_p"><span class="btn_dh">立即兑换</span></p>
+            </div>
+
+      <div class="cvt_item border b_lrb bg_w" onclick="goProdDetial(4)">
+                <span class="ico_top"></span>
+                <span class="ico_ylt"></span>
+                <span class="ico_yrt"></span>
+                <p class="cvt_img"><img src="/promotion/images/activityday/eveday_04.jpg"></p>
+
+        <div class="cvt_tdov">
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用方式：</div>
+                        <div class="cvt_txt">
+                            <p>1.刷民生信用卡当月计积分消费满3笔99元，即可于达标当月的每周四在民生信用卡微信“我的特权”领取1元洗车券一个；</p>
+                            <p>2.每人每活动日限领取一个，名额有限，先到先得，每活动日两次抢兑时间：上午10点和下午15点。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用期限：</div>
+                        <div class="cvt_txt">
+                            <p>洗车券自领取之日起三个月内有效。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">其他说明：</div>
+                        <div class="cvt_txt">
+                            <p>限指定洗车网点享受特权，网点信息详见民生信用卡官方微信。</p>
+                        </div>
+                    </div>
+                </div>
+        <p class="dh_p"><span class="btn_dh">立即兑换</span></p>
+            </div>
+
+      <div class="cvt_item border b_lrb bg_w"  onclick="goProdDetial(5)">
+                <span class="ico_top"></span>
+                <span class="ico_ylt"></span>
+                <span class="ico_yrt"></span>
+                <p class="cvt_img"><img src="/promotion/images/activityday/eveday_05.jpg"></p>
+
+        <div class="cvt_tdov">
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用方式：</div>
+                        <div class="cvt_txt">
+                            <p>1.刷民生信用卡当月计积分消费满3笔99元，即可于达标当月的每周五在民生信用卡微信“我的特权”领取美食券兑换码一个；</p>
+                            <p>2.每人每活动日限领取一个，名额有限，先到先得，每活动日两次抢兑时间：上午10点和下午15点。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用期限：</div>
+                        <div class="cvt_txt">
+                            <p>美食券自在大众点评领取之日起3个月内有效。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">其他说明：</div>
+                        <div class="cvt_txt">
+                            <p>进入大众点评APP购买美食团购时使用。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="dh_p"><span class="btn_dh">立即兑换</span></p>
+            </div>
+      <div class="cvt_item border b_lrb bg_w"  onclick="goProdDetial(6)">
+                <span class="ico_top"></span>
+                <span class="ico_ylt"></span>
+                <span class="ico_yrt"></span>
+                <p class="cvt_img"><img src="/promotion/images/activityday/eveday_06.jpg"></p>
+
+        <div class="cvt_tdov">
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用方式：</div>
+                        <div class="cvt_txt">
+                            <p>1.刷民生信用卡当月计积分消费满3笔99元，即可于达标当月的每周六在民生信用卡微信“我的特权”领取电影券兑换码一个；</p>
+                            <p>2.每人每活动日限领取一个，名额有限，先到先得，每活动日两次抢兑时间：上午10点和下午15点。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用期限：</div>
+                        <div class="cvt_txt">
+                            <p>电影券自在大众点评领取之日起3个月内有效。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">其他说明：</div>
+                        <div class="cvt_txt">
+                            <p>进入大众点评APP订座电影票时使用。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="dh_p"><span class="btn_dh">立即兑换</span></p>
+            </div>
+
+      <div class="cvt_item border b_lrb bg_w"  onclick="goProdDetial(7,1)">
+                <span class="ico_top"></span>
+                <span class="ico_ylt"></span>
+                <span class="ico_yrt"></span>
+                <p class="cvt_img"><img src="/promotion/images/activityday/eveday_07.jpg"></p>
+
+        <div class="cvt_tdov">
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用方式：</div>
+                        <div class="cvt_txt">
+                            <p>1.刷民生信用卡当月计积分消费满3笔99元，即可于达标当月的每周日在屈臣氏门店享受消费满100元减50元（最高减50元）；</p>
+                            <p>2.每人每活动日限享受一次优惠特权，名额有限，先到先得。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用期限：</div>
+                        <div class="cvt_txt">
+                            <p>限达标当月每周日。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">其他说明：</div>
+                        <div class="cvt_txt">
+                            <p>限指定门店享受特权，门店信息详见民生信用卡官方微信或官网。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="dh_p"><span class="btn_dh">查看详情</span></p>
+            </div>
+
+      <div class="cvt_item border b_lrb bg_w" onclick="goProdDetial(7)">
+                <span class="ico_top"></span>
+                <span class="ico_ylt"></span>
+                <span class="ico_yrt"></span>
+                <p class="cvt_img"><img src="/promotion/images/activityday/eveday_0707.jpg"></p>
+
+        <div class="cvt_tdov">
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用方式：</div>
+                        <div class="cvt_txt">
+                            <p>1.刷民生信用卡当月计积分消费满3笔99元，即可于达标当月的每周日在民生信用卡微信“我的特权”领取优惠券兑换码“卡号和密码”</p>
+                            <p>2.每人每活动日限领取一个，名额有限，先到先得，每活动日两次抢兑时间：上午10点和下午15点。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">使用期限：</div>
+                        <div class="cvt_txt">
+                            <p>兑换码自在民生信用卡微信领取之日起3个月内有效。</p>
+                        </div>
+                    </div>
+                    <div class="cvt_kit">
+                        <div class="cvt_lable">其他说明：</div>
+                        <div class="cvt_txt">
+                            <p>进入我买网的购物网站或APP购买商品时使用，部分特惠品不参加用券。</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="dh_p"><span class="btn_dh">立即兑换</span></p>
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="w_cvt border b_top_btm mtop10" onclick="goActivityDay('eveDay')">
+            <div class="cvtNav">
+                <p class="cvt_title">活动细则</p>
+            </div>
+        </div>
+
+    </div><!-- content end -->
+
+</div>
+
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?3d3a094b33b15c394ba6e7d495ad808a";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    </body>
+</html>

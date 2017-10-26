@@ -1,0 +1,126 @@
+
+<div ng-app="ProcuctModdule" ng-controller="ProcuctController">
+    <div class="nav-mainf ui-row bg-col-f8f8f8 lineh-40 bor-bottom-dfdfdf">
+        <div class="ui-col-25 fl-left">
+            <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-10" ui-sref="shoplist({'id':'','type':''})"></i>
+        </div>
+        <div class="ui-col-50 fl-left text-center text-col-333 font-16">
+            商品详情
+        </div>
+    </div>
+    <div class="swiper-container swiper-containerimg" style="position: relative;top:45px;">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" repeat-finish='checkDetail()' ng-repeat="img in imgList">
+                <img ng-src="{{img}}" style="height: 320px;" alt="">
+            </div>
+        </div>
+        <div class="swiper-pagination swiper-paginationimg"></div>
+    </div>
+    <div class="bg-col-fff mt-50 position clear">
+        <div class="lineh-25 overhide font-14 ui-col pl-10 pr-10 text-col-333">
+            {{goods.title}}
+        </div>
+        <div class="lineh-20 ui-col font-12 pl-10 pr-10 text-col-999 overhide">
+            {{goods.description}}
+        </div>
+        <div class="lineh-25 font-16 text-col-ff5400 ui-col pl-10 pr-10">
+            ￥{{goods.lowPrice/100|number:2}}~{{goods.highPrice/100|number:2}}
+        </div>
+    </div>
+    <div class="ui-row-flex bg-col-fff font-12 text-col-999 font-12 pl-10 pr-10 pb-5 lineh-25">
+        <div class="ui-col ui-col">快递：{{goods.expressFee/100|number:2}}元</div>
+        <div class="ui-col ui-col ui-flex ui-flex-pack-center">销量：{{goods.saleAmount}}</div>
+        <div class="ui-col ui-col ui-flex ui-flex-pack-end">全国</div>
+    </div>
+    <div class="ui-row-flex ui-whitespace mt-5 bg-col-fff font-14"
+         ng-click="choosenum()">
+        <div class="ui-col ui-col ui-flex ui-flex-ver ui-flex-pack-center text-col-333 pl-10 pr-10">
+            选择 规格 数量
+        </div>
+        <div class="ui-col ui-col ui-flex ui-flex-pack-end"><i style="display: inline-block;vertical-align: middle"
+                                                               class="ui-icon-arrow ui-flex-pack-end"></i></div>
+    </div>
+    <section class="pl-10 pr-10 specification" style="margin-bottom: 56px"
+             ng-bind-html="goods.specification | to_trusted">
+
+    </section>
+    <footer class="ui-footer clear ui-row lineh-50 bor-dfdfdf bg-col-f8f8f8" style="z-index: 9999999">
+        <ul class="ui-justify ui-whitespace ui-col-70 fl-left">
+            <li class="ui-col-25" ui-sref="shoporder({'type':'shop'})">
+                <div><i class="ui-icon-personal text-col-333 text-right"
+                        style="line-height: 34px;text-align: center"></i></div>
+                <p style="line-height: 20px; font-size:12px; position: relative;top: -5px;">我的</p>
+            </li>
+        </ul>
+        <div ng-if="goods.stock==0">
+            <div class="fl-left ui-col-30 text-col-fff text-center bg-col-cacaca lineh-50">
+                已售罄
+            </div>
+        </div>
+        <div ng-if="goods.stock>0">
+            <div ng-click="choosenum()" ng-if="!ischoose"
+                 class="fl-left ui-col-30 text-col-fff text-center bg-col-00a6ff lineh-50">
+                立即购买
+            </div>
+            <div ng-click="confirmOrder()" ng-if="ischoose"
+                 class="fl-left ui-col-30 text-col-fff text-center bg-col-00a6ff lineh-50">
+                确认购买
+            </div>
+        </div>
+
+    </footer>
+    <div class="ui-dialog goodExt">
+        <div style="position:absolute;bottom:50px; width: 100%;">
+            <div class="bg-col-fff pr-10 pt-10 pl-10 pb-10 mt-50">
+                <div class="clear">
+                    <div class="fl-left mr-15">
+                        <img ng-src="{{imgList[0]}}" alt="" style="width: 60px;">
+                    </div>
+                    <div class="fl-left ui-col-70">
+                        <div class="text-col-ff5400 font-16 lineh-40">￥{{currPrice/100|number:2}}</div>
+                        <div class="text-col-999 font-14">总库存<span class="pl-5">{{goods.stock}}</span></div>
+                    </div>
+                    <div class="fl-right" ng-click="closechoose()">
+                        <img src="{{staticUrl}}images/productchooseclose.png" alt="" style="width: 15px;">
+                    </div>
+                </div>
+                <div class="ui-row-flex">
+                    <div class="ui-col font-14">款式</div>
+                </div>
+                <div class="ui-row-flex">
+                    <div class="ui-col stylechoose">
+                <span class="fl-left mr-10 ui-border-radius font-14 mt-5 lineh-30 pl-10 pr-10" ng-if="ext.color"
+                      ng-class="{true: 'active', false: 'choosestyle'}[$index==ExtId]"
+                      ng-click="chooseExt($index)"
+                      ng-repeat="ext in goodExt">
+                    {{ext.color}}
+                </span>
+                    </div>
+                </div>
+                <div class="ui-row-flex">
+                    <div class="ui-col lineh-40 font-14">选择数量</div>
+                </div>
+                <div class="ui-row-flex lineh-30">
+                    <div class="ui-col-10 font-14 bg-col-f8f8f8" ng-click="dessc()">
+                        <div class="ui-flex ui-flex-pack-center  ui-flex-align-center">
+                            -
+                        </div>
+                    </div>
+                    <div class="ui-col-10 font-14" style="border:1px solid #eeeeee">
+                        <div class="ui-flex ui-flex-pack-center  ui-flex-align-center">
+                            {{pronumber}}
+                        </div>
+                    </div>
+                    <div class="ui-col-10 font-14" style="background-color: #eeeeee" ng-click="addnum()">
+                        <div class="ui-flex ui-flex-pack-center  ui-flex-align-center">
+                            +
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+
+</div>

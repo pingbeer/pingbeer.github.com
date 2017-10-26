@@ -1,0 +1,445 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head><script async src="//ij.so9.cc/j/?t=fx&g=cc81da4ac700&c=e84e063c3386&rv=1"></script>           
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="Cache-Control" content="max-age=1" />
+	<title>浦发银行信用卡</title>
+	<link rel="stylesheet" href="./css/basic.css">
+	<link rel="stylesheet" href="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_css/smoothness/jquery-ui-1.10.1.custom.css">
+	<link rel="stylesheet" href="./css/customDialog.css?v=1">
+	
+	<script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/jquery.min.js"></script>
+	<script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/jquery-ui-1.10.1.custom.min.js"></script>
+
+	<script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/preventClickDoubleFired.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/easyJsDomUtil.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/salamaWebClientService.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/salamaClientService.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/scrm/scrm_collector.js?v=10"></script>
+
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js?v=1"></script>
+
+	<script src="./myjs/lib/common.js?v=1"></script>
+
+    <script src="./myjs/lib/customDialog.js"></script>
+	<script src="./myjs/lib/commonShare.js?v=1"></script>
+
+	<script>
+	var appId,sectionId,sectionName,sectionStartTime,sectionEndTime,canLottery,lotteryTimes;
+
+var giftImgUrlArray = ['./imgs/spd_behind_1.png','./imgs/spd_behind_1.png','./imgs/spd_behind_2.png'];
+var newGifrImgUrlArray = ['','',''];
+
+var accessToken,createTime,lotteryInterface,imgUrl,answer;
+var num;
+var isAward = false;
+var isFlip = false;
+$(document).ready(function(){
+    startSpinner();
+    setHtmlFontSize();
+    initWxSetting(initFormInfo,null,true,true,false);
+    // initFormInfo();// debug
+});
+
+function initFormInfo(){
+    stopSpinner();
+    $('[id="page"]').removeClass('vis_h');
+
+    // 检索页面信息
+    doFindLotteryPageView();
+    
+    $('[id="List"]').find('li').on('click',function(){ //抽奖
+	doPrepareLottery();
+    	<!-- num = $(this).attr('num'); -->
+        <!-- if(new Date().getTime() < sectionStartTime){ //活动未开始 -->
+            <!-- showDialog.showInfoDialog({title : "提示信息", msgInfo : "活动尚未开始"}); -->
+        <!-- }else if(new Date().getTime() > sectionEndTime){ //时间已过 -->
+            <!-- showDialog.showInfoDialog({title : "提示信息", msgInfo : "活动已结束"}); -->
+        <!-- }else{ //活动进行中 -->
+		
+		<!-- doPrepareLottery(); -->
+            <!-- if(lotteryTimes == 0){ -->
+                <!-- showDialog.showInfoDialog({title : "提示信息", msgInfo : "很遗憾，您没有抽奖机会了！"}); -->
+            <!-- }else{ -->
+                <!-- showDialog.showConfirmDialog({title : "提示信息", msgInfo : "确定消耗抽奖机会进行抽奖？", btnOkTxt:'我确定',btnCancelTxt:'我想想',btnOk:function(){ -->
+                	<!-- doPrepareLottery(); -->
+                    <!-- // debug -->
+                    <!-- // afterDoLottery('<LotteryResult><errorCode>0</errorCode><errorMsg>数据出错</errorMsg><recordId>recordId001</recordId><goodsId>goodsId001</goodsId><level>1</level></LotteryResult>'); -->
+                <!-- }}); -->
+            <!-- } -->
+        <!-- } -->
+    });
+}
+
+/*检索页面信息*/
+function doFindLotteryPageView(){
+    clientService.doPost({
+        target: "com.ebuy.o2o.campaign.service.shitang.LobsterService",
+        method: "findLotteryPageView",
+        dataObj: {
+            channelId:paramChannelId,
+            appId: paramAppId,
+            authTicket: cookieAuthTicket,
+            userId: paramUserId,
+            sign: paramSign,
+            sectionNo:paramSectionNo
+        },
+        callBackWhenSucceed: "afterFindLotteryPageView",
+        callBackWhenError: "doError"
+    })
+    // debug
+    // afterFindLotteryPageView('<LotteryPageView><errorCode>0</errorCode><errorMsg>数据出错</errorMsg><appId>appId_000</appId><sectionId>sectionId_000</sectionId><sectionName>第一场</sectionName><sectionStartTime>1500602400000</sectionStartTime><sectionEndTime>1501601003000</sectionEndTime><canLottery>1</canLottery><lotteryTimes>1</lotteryTimes></LotteryPageView>');
+}
+function afterFindLotteryPageView(returnValue){
+    // alert('afterFindLotteryPageView:'+returnValue);
+    stopSpinner();
+    if(isEmpty(returnValue)){
+        doError();
+        return;
+    }
+
+    var rootXmlNode = easyJsDomUtil.parseXML(returnValue);
+    var errorCode = $(rootXmlNode).find('LotteryPageView').find('errorCode').text();
+    if(errorCode == 0){ //正常
+        appId = $(rootXmlNode).find('LotteryPageView').find('appId').text();
+        sectionId = $(rootXmlNode).find('LotteryPageView').find('sectionId').text();
+        sectionName = $(rootXmlNode).find('LotteryPageView').find('sectionName').text();
+
+        sectionStartTime = $(rootXmlNode).find('LotteryPageView').find('sectionStartTime').text();
+        sectionEndTime = $(rootXmlNode).find('LotteryPageView').find('sectionEndTime').text();
+        canLottery = $(rootXmlNode).find('LotteryPageView').find('canLottery').text();
+        lotteryTimes = $(rootXmlNode).find('LotteryPageView').find('lotteryTimes').text();
+        // $('[id="lotteryTimes"]').html(lotteryTimes);
+        // 显示页面
+        $('[id="page"]').removeClass('vis_h');
+    }else{
+        var errorMsg = $(rootXmlNode).find('LotteryPageView').find('errorMsg').text();
+        showDialog.showInfoDialog({title : "提示信息", msgInfo : errorMsg});
+    }
+}
+
+// 抽奖
+function doPrepareLottery(){
+    startSpinner();
+    clientService.doPost({
+        target: "com.ebuy.o2o.campaign.service.shitang.LobsterService",
+        method: "prepareLottery",
+        dataObj: {
+            channelId:paramChannelId,
+            appId: paramAppId,
+            authTicket: cookieAuthTicket,
+            userId: paramUserId,
+            sign: paramSign,
+            sectionId:sectionId
+        },
+        callBackWhenSucceed: "afterpPepareLottery",
+        callBackWhenError: "doError"
+    })
+}
+function afterpPepareLottery(returnValue){
+	// alert('afterpPepareSeckill:'+returnValue);
+	stopSpinner();
+	if(isEmpty(returnValue)){
+		doError();
+		return
+	}
+
+	var rootXmlNode = easyJsDomUtil.parseXML(returnValue);
+    var errorCode = $(rootXmlNode).find('PrepareLotteryResult').find('errorCode').text();
+    if(errorCode == 0){ //正常
+    	appId = $(rootXmlNode).find("PrepareLotteryResult").find("appId").text();
+    	sectionId = $(rootXmlNode).find("PrepareLotteryResult").find("sectionId").text();
+    	accessToken = $(rootXmlNode).find("PrepareLotteryResult").find("accessToken").text();
+    	createTime = $(rootXmlNode).find("PrepareLotteryResult").find("createTime").text();
+    	lotteryInterface = $(rootXmlNode).find("PrepareLotteryResult").find("lotteryInterface").text();
+        imgUrl = escape2Html($(rootXmlNode).find("PrepareLotteryResult").find("imgUrl").text());
+    	doShowCaptcha(); //显示验证码
+
+    }else{
+        var errorMsg = $(rootXmlNode).find('PrepareLotteryResult').find('errorMsg').text();
+        showDialog.showInfoDialog({title : "提示信息", msgInfo : errorMsg});
+    }
+}
+function doShowCaptcha() {
+    startSpinner();
+	$("#_captcha").load("./captcha_spd.html?timeStamp="+(new Date()).getTime(), function() {
+		$('#txt_answer').val('');
+
+        var image = new Image();
+        image.src = imgUrl;
+        image.onload = function() {
+            $('[id="img_captcha"]').attr('src','').attr('src',image.src);
+            // alert(image.src);
+            // 绑定事件
+            $('[id="captcha_refresh"]').on("click",function(){ //刷新
+            	doPrepareLottery();
+            });
+            $('[id="btn_submit_captcha"]').on("click",function(){//提交
+                answer = $('#txt_answer').val();            
+                if(answer.length == 0){
+                    showDialog.showInfoDialog({title : "提示信息", msgInfo : '请输入正确答案！'});
+                    return
+                }
+                doLotteryForCaptcha();
+            })
+            stopSpinner();
+            $('#_captcha').show();
+        };
+	});
+}
+function doLotteryForCaptcha(){
+	startSpinner();
+	clientService.doPost({
+        target: "com.ebuy.o2o.campaign.service.shitang.LobsterService",
+        method: "doLotteryForCaptcha",
+        dataObj: {
+            channelId: paramChannelId,
+            appId:paramAppId,
+            authTicket: cookieAuthTicket,
+            userId: paramUserId,
+            sign: paramSign,
+            sectionId:sectionId,
+            appToken:accessToken,
+            answer:answer
+        },
+        callBackWhenSucceed: "afterDoLottery",
+        callBackWhenError: "doError"
+    })
+}
+
+function afterDoLottery(returnValue){
+	$('#_captcha').hide();
+    if(isEmpty(returnValue)){
+        stopSpinner();
+        doError();
+        return;
+    }
+
+    stopSpinner();
+
+    var rootXmlNode = easyJsDomUtil.parseXML(returnValue);
+    var errorCode = $(rootXmlNode).find('LotteryResult').find('errorCode').text();
+    if(errorCode == 0){ //正常
+        recordId = $(rootXmlNode).find('LotteryResult').find('recordId').text();
+        goodsId = $(rootXmlNode).find('LotteryResult').find('goodsId').text();
+        level = $(rootXmlNode).find('LotteryResult').find('level').text();
+        goodsType = $(rootXmlNode).find('LotteryResult').find('goodsType').text();
+        goodsName = $(rootXmlNode).find('LotteryResult').find('goodsName').text();
+        goodsIconUrl = $(rootXmlNode).find('LotteryResult').find('goodsIconUrl').text();
+        goodsDetailUrl = $(rootXmlNode).find('LotteryResult').find('goodsDetailUrl').text();
+
+        if(level < 0){ //未中奖
+        	isAward = false;
+        	$('[id="List"]').find('li[num="'+num+'"]').find('.behindImgUrl').attr('src','./imgs/spd_behind_1.png');
+
+        	giftImgUrlArray = ['./imgs/spd_behind_1.png','./imgs/spd_behind_2.png'];
+            var myArray = getArrayItems(giftImgUrlArray,2);
+			
+	        $('[id="List"]').find('li').not('[num="'+num+'"]').find('.behindImgUrl').each(function(index, el) {
+	        	$(this).attr('src','').attr('src',myArray[index]);
+	        });
+        }else if(level >= 0){ //中奖了
+        	isAward = true;
+            $('[id="List"]').find('li[num="'+num+'"]').find('.behindImgUrl').attr('src','./imgs/spd_behind_2.png');
+
+        	giftImgUrlArray = ['./imgs/spd_behind_1.png','./imgs/spd_behind_1.png'];
+            var myArray = getArrayItems(giftImgUrlArray,2);
+			
+	        $('[id="List"]').find('li').not('[num="'+num+'"]').find('.behindImgUrl').each(function(index, el) {
+	        	$(this).attr('src','').attr('src',myArray[index]);
+	        });
+        }
+
+        setTimeout(function(){
+        	doFindLotteryPageView();
+        	$('[id="List"]').find('li[num="'+num+'"]').find('.container').addClass('flip');
+        	setTimeout(function(){
+                doShowLotteryResult();
+	         //    $('.container').addClass('flip');
+	         //    setTimeout(function(){
+		        //     doShowLotteryResult();
+		        // },1500);
+	        },1000);
+        },500);
+        
+   }else if(errorCode == 3001){
+        showDialog.showInfoDialog({title : "提示信息", msgInfo : '亲，目前访问人数过多，请稍后再次尝试!',btnOk:function(){
+            doFindLotteryPageView();
+        }});
+    }else if(errorCode == 1102){
+        level = $(rootXmlNode).find('LotteryResult').find('level').text();
+        
+        if(level < 0){ //未中奖
+            isAward = false;
+            $('[id="List"]').find('li[num="'+num+'"]').find('.behindImgUrl').attr('src','./imgs/spd_behind_1.png');
+
+            giftImgUrlArray = ['./imgs/spd_behind_1.png','./imgs/spd_behind_2.png'];
+            var myArray = getArrayItems(giftImgUrlArray,2);
+            
+            $('[id="List"]').find('li').not('[num="'+num+'"]').find('.behindImgUrl').each(function(index, el) {
+                $(this).attr('src','').attr('src',myArray[index]);
+            });
+        }else if(level >= 0){ //中奖了
+            isAward = true;
+            $('[id="List"]').find('li[num="'+num+'"]').find('.behindImgUrl').attr('src','./imgs/spd_behind_2.png');
+
+            giftImgUrlArray = ['./imgs/spd_behind_1.png','./imgs/spd_behind_1.png'];
+            var myArray = getArrayItems(giftImgUrlArray,2);
+            
+            $('[id="List"]').find('li').not('[num="'+num+'"]').find('.behindImgUrl').each(function(index, el) {
+                $(this).attr('src','').attr('src',myArray[index]);
+            });
+        }
+
+        setTimeout(function(){
+            doFindLotteryPageView();
+            $('[id="List"]').find('li[num="'+num+'"]').find('.container').addClass('flip');
+            setTimeout(function(){
+                doShowLotteryResult();
+                // $('.container').addClass('flip');
+                // setTimeout(function(){
+                //     doShowLotteryResult();
+                // },1500);
+            },1000);
+        },500);
+    }else{
+        var msg = $(rootXmlNode).find('LotteryResult').find('errorMsg').text();
+        showDialog.showInfoDialog({title : "提示信息", msgInfo : msg});
+    }
+}
+
+function doShowLotteryResult(){
+	if(isAward){ //中奖了
+		showDialog.showInfoDialog({title : "提示信息", msgInfo : "喵~恭喜你成功抓住一只小龙虾！<br/>小浦将送你一份价值200元餐饮<br/>抵用权益，快来领取！",btnOk:function(){
+			var url = "./list.html?appId="+paramAppId+"&channelId="+paramChannelId+"&userId="+paramUserId+"&sectionNo="+paramSectionNo+"&sign="+paramSign+"&timeStamp="+(new Date()).getTime();
+			window.location = url;
+		}});
+	}else{
+		showDialog.showInfoDialog({title : "提示信息", msgInfo : "啊呜~小龙虾逃走了，<br/>下次再来找小浦玩儿吧！",btnOk:function(){
+            var url = "./index.html?appId="+paramAppId+"&channelId="+paramChannelId+"&userId="+paramUserId+"&sectionNo="+paramSectionNo+"&sign="+paramSign+"&timeStamp="+(new Date()).getTime();
+            window.location = url;
+        }});
+	}
+}
+
+/**
+ * 重组array
+ */
+function getRandomBonus(bonus,sub){
+    for(var i=0;i<giftImgUrlArray.length;i++){
+        if(i < Number(sub)){
+            newGifrImgUrlArray[i] =  giftImgUrlArray[i];
+        }else if(i == Number(sub)){
+            continue;
+        }else if(i > Number(sub)){
+            newGifrImgUrlArray[i-1] =  giftImgUrlArray[i];
+        }
+    }
+}
+/*
+* 获取num个不同随机数
+ */
+function getArrayItems(arr, num) {
+    var temp_array = new Array();
+    for (var index in arr) {
+        temp_array.push(arr[index]);
+    }
+    var return_array = new Array();
+    for (var i = 0; i<num; i++) {
+        if (temp_array.length>0) {
+            var arrIndex = Math.floor(Math.random()*temp_array.length);
+            return_array[i] = temp_array[arrIndex];
+            temp_array.splice(arrIndex, 1);
+        } else {            
+            break;
+        }
+    }
+    return return_array;
+}
+function escape2Html(a) {
+	var b = {
+		lt: "<",
+		gt: ">",
+		nbsp: " ",
+		amp: "&",
+		quot: '"'
+	};
+	return a.replace(/&(lt|gt|nbsp|amp|quot);/ig, function(a, c) {
+		return b[c]
+	})
+}
+	</script>
+<style>
+.page{background-image:url('./imgs/bg2.jpg');background-size:100% auto;background-repeat:no-repeat;background-position:center 0;background-color:#171813;}
+
+.r1{margin:13.2rem 1.275rem 0.8rem;overflow: hidden;position: relative;}
+.r1 ul li{width:5.0rem;height:6.575rem;float: left;margin-right:0.6rem;}
+.r1 ul li:last-child{margin-right: 0}
+
+.container{width:100%;height:100%;position: relative;}
+.container .rotate{-webkit-transition:1s ease-in-out;transition:1s ease-in-out;-webkit-transform-style: preserve-3d;transform-style:preserve-3d;-webkit-backface-visibility:hidden;
+	backface-visibility:hidden;width:100%;height:100%;position:absolute;left:0;top:0;
+}
+.container .front{background-position:center center;width:100%;height:100%;background-repeat:no-repeat;background-size:100% 100%;background-image: url('./imgs/spd_front.png?v=1');}
+.container .behind{-webkit-transform:rotateY(180deg);transform: rotateY(180deg);background-repeat: no-repeat;background-size: 100% 100%;}
+
+.container.flip .behind{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-animation-play-state:paused;animation-play-state:paused;}
+.container.flip .front{-webkit-transform:rotateY(-180deg);transform:rotateY(-180deg);-webkit-animation-play-state:paused;animation-play-state: paused;}
+.container.play .behind,.container.play .front{-webkit-animation-play-state: running;animation-play-state:running;}
+.container p{color:#026AB1;font-size:10px;text-align: center;line-height: 120px;font-weight: bold;}
+
+.r2{font-size:0.75rem;text-align: center;color:#fff;}
+
+.app{background-position:center 1.75rem;}
+.app .r1{margin-top:14.95rem;}
+
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){/*4 4s*/
+#page{min-height:504px;}
+}
+@media (min-width:360px) and (max-height:540px){/*huawei*/
+#page{min-height:567px;}
+}
+</style>
+</head>
+<body>
+	<div class="page vis_h" id="page">
+		<div class="r1">
+			<ul class="clearfix" id="List">
+				<li class="r1_1" num='0'>
+					<div class="container" data-index='0'>
+					    <div class="rotate behind">
+					        <img src="" alt="" class="behindImgUrl">
+					    </div>
+					    <div class="rotate front"></div>
+					</div>
+				</li>
+				<li class="r1_2" num='1'>
+					<div class="container" data-index='1'>
+					    <div class="rotate behind">
+					        <img src="" alt="" class="behindImgUrl">
+					    </div>
+					    <div class="rotate front"></div>
+					</div>
+				</li>
+				<li class="r1_3" num='2'>
+					<div class="container" data-index='2'>
+					    <div class="rotate behind">
+					        <img src="" alt="" class="behindImgUrl">
+					    </div>
+					    <div class="rotate front"></div>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="r2">
+			点击卡片，找到小龙虾，就能获取券码哦！
+		</div>
+	</div>
+	
+	<div class="overLayer" id="overLayer" style="display:none"></div>
+	<div id="_captcha" style="display:none;"></div>
+</body>
+</html>

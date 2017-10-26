@@ -1,0 +1,98 @@
+
+<div ng-app="shopAddrModule" ng-controller="shopAddrController">
+    <div ng-if="editShow">
+        <div class="ui-row bg-col-f8f8f8 lineh-40 bor-bottom-dfdfdf">
+            <div class="ui-col-25 fl-left" ui-sref="paymsg({'type':1})">
+                <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+            </div>
+            <div class="ui-col-50 fl-left text-center text-col-333 font-16">
+                地址管理
+            </div>
+            <div class="ui-col-25 fl-left text-center" ui-sref="editaddr">
+                新增
+            </div>
+        </div>
+        <div class="bg-col-fff font-12">
+            <div class="bor-bottom-dfdfdf" ng-repeat="list in addressList">
+                <ul class="pl-10 pr-10 bor-bottom-dfdfdf pt-5 pb-5">
+                    <li class="clear font-16 lineh-25">
+                        <div class="fl-left ui-col-33s">{{list.name}}</div>
+                        <div class="fl-right text-right ui-col-65">{{list.mobile}}</div>
+                    </li>
+                    <li class="font-12 line-20">{{list.street}}</li>
+                </ul>
+                <div class="clear lineh-40 pl-10 pr-10">
+                    <div class="ui-col-40 fl-left font-12">
+                        <label for="radios{{$index}}" class="position ui-col-100" ng-click="updateAddress(list.id)">
+                            <input type="radio" name="radio" id='radios{{$index}}' class="mr-5"
+                                   style="position: relative;top: 2px;"
+                                   ng-checked="list.status==1">设置为默认地址{{}}
+                        </label>
+                    </div>
+                    <div class="ui-col-60 fl-left text-right">
+                        <button class="mr-10" ng-click="remove($index,list.id)">删除</button>
+                        <button class="ml-10" ng-click="editAddr($index)">编辑</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="!editShow">
+        <div class="ui-row bg-col-f8f8f8 lineh-40 bor-bottom-dfdfdf">
+            <div class="ui-col-15 fl-left" ng-click="returnShow()">
+                <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+            </div>
+            <div class="ui-col-65 fl-left text-center text-col-333 font-16">
+                收货地址
+            </div>
+            <div class="ui-col-18 fl-left text-center" ng-click="saveAddr()">
+                保存
+            </div>
+        </div>
+        <ul class="bg-col-fff font-14 position">
+            <li class="clear bor-bottom-dfdfdf lineh-40 pl-10 pr-10">
+                <div class="ui-col-30 fl-left">收货人姓名</div>
+                <div class="ui-col-70 fl-left">
+                    <input type="text" class="ui-col-100 line-35 bor-none" ng-model="name" ng-focus="testFocus()">
+                </div>
+            </li>
+            <li class="clear bor-bottom-dfdfdf lineh-40 pl-10 pr-10">
+                <div class="ui-col-30 fl-left">手机号码</div>
+                <div class="ui-col-70 fl-left">
+                    <input type="text" class="ui-col-100 line-35 bor-none" ng-pattern="/^1[3|4|5|7|8]\d{9}$/"
+                           ng-model="mobile" ng-focus="testFocus()">
+                </div>
+            </li>
+            <li class="clear bor-bottom-dfdfdf lineh-40 text-center areastyle">
+                <div class="ui-col-25 fl-left">选择地区</div>
+                <div class="ui-col-33 fl-left pt-5">
+                    <select-view selectobj="savelist" checked-option="nowsave" class="ui-col-90"
+                                 op-click="getSave(selectid,selectname)" op-show="selectShow"
+                                 selectimg="saveimg"></select-view>
+                </div>
+                <div class="ui-col-33 fl-left ml-5 pt-5">
+                    <select-view selectobj="citylist" checked-option="nowcity" class="ui-col-90"
+                                 op-click="getCity(selectid,selectname)" op-show="select2Show"
+                                 selectimg="cityimg"></select-view>
+                </div>
+            </li>
+            <li class="clear ml-10 mr-10">
+                <textarea class="ui-col-100 textarea" placeholder="地址详情" ng-model="street"
+                          ng-focus="testFocus()"></textarea>
+            </li>
+        </ul>
+        <div class="bg-col-fff mt-10 bor-top-dfdfdf bor-bottom-dfdfdf lineh-50 pl-10 pr-10 clear">
+            设为默认
+            <div class="fl-right lineh-40 mt-10" ng-click="setAddree()">
+                <input type="checkbox" id="radio" checked='checked' name="switch" style="display: none">
+                <label for="radio" class="radio">
+                    <span class="circle"></span>
+                    <span class="text on"></span>
+                    <span class="text off"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

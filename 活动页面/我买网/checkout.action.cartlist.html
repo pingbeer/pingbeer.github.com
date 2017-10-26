@@ -1,0 +1,1234 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+    <title>结算中心</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="m.womai.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="applicable-device"content="mobile">
+    <meta http-equiv="Expires" CONTENT="-1">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="http://m.womai.com/images/favicon.ico" rel="shortcut icon">
+    <link href="http://m.womai.com/css/s-base.min.css?v=2017011701" rel="stylesheet" type="text/css" />
+    <link href="http://m.womai.com/css/ban.min.css?v=20170110" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://m.womai.com/js2/rem.min.js" dpr="1"></script>
+    <script type="text/javascript">
+        var _isWebKit = '__proto__' in {};//是否是webkit内核
+        if(_isWebKit){
+            document.write('<script src="http://m.womai.com/js/jquery-1.8.3.min.js"><\/script>');
+            //document.write('<script src="/js/zepto.min.js"><\/script>');
+        }else{
+            document.write('<script src="http://m.womai.com/js/jquery-1.8.3.min.js"><\/script>');
+        }
+    </script>
+    <script type="text/javascript" src="http://m.womai.com/js/os.js"></script>
+    <script type="text/javascript" src="http://m.womai.com/js/weixin_share.js"></script>
+    <script type="text/javascript" src="http://m.womai.com/js2/banner.min.js?v=20170110"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//whcdn.womaiapp.com/externals/analytics.js','gaTracker');
+    </script>
+    <!-- Piwik -->
+    <script type="text/javascript" src="http://m.womai.com/js/piwik/piwiktrack_common.js"></script>
+    <!-- End Piwik Code -->
+</head>
+
+	<body id="mainframe">
+	<script type="text/javascript" src="http://m.womai.com/js/jquery.reveal.fclick.js"></script>
+    <script type="text/javascript" id="checkoutjspart" needShowWindow="false" src="http://m.womai.com/js/checkout/checkout.js"></script>
+<link href="http://m.womai.com/css/checkout.css" rel="stylesheet" type="text/css" />
+<a name="s-top" id="s-top"></a>
+<header>
+    <div class="s-topbar">
+            <div class="s-return"><a href="http://m.womai.com/100cart.shtml" class="s-bg2">返回</a></div>
+        <h1>结算中心</h1>
+    </div>
+</header>
+<script type="text/javascript">
+   var  productListCheckout = new Array(),productCheckoutCount = 0, checkoutTotalMoney = 0;
+</script>
+<form action="http://m.womai.com/order/submitorder.action" method="post" id="checkoutform">
+<div>
+    <ol class="s-114">
+        <li>
+            <a href="javascript:void(0)" onclick="addresslist()">
+                <h4>选择收货地址</h4>
+                <p><span>收货人：</span></p>
+                <p><span>电话：</span></p>
+                <p>
+                    <span>地址：</span>
+                    
+                    
+                    
+                    
+                </p>
+                <label id="addresslistError" style="color:red"></label>
+            </a>
+            <span class="s-bg s-arrowR s-arrowR60"></span>
+        </li>
+        <li id="paywayLi">
+            <h4>请选择支付方式</h4>
+            <input type="hidden" id="pricetrue" value="107.90">
+                            <p>
+                    <label for="payway_122080">
+                    
+                                            <input id="payway_122080" type="radio" onclick="otherPays()" name="checkOutRequest.payWay.other" value="122080"  checked />
+                                                    微信支付【推荐】&nbsp;&nbsp;
+                                                <span class="s-color2" id="price_122080">
+                                                            ￥107.90
+                                                    </span>
+                                        </label>
+                </p>
+                <label id="payWayOtherError" style="color:red"></label>
+                            <p>
+                    <label for="payway_9999">
+                    
+                                            <input id="payway_9999" type="radio" onclick="otherPays()" name="checkOutRequest.payWay.other" value="9999" />
+                                                    百度钱包&nbsp;&nbsp;
+                                                <span class="s-color2" id="price_9999">
+                                                    </span>
+                                        </label>
+                </p>
+                <label id="payWayOtherError" style="color:red"></label>
+                            <p>
+                    <label for="payway_51001">
+                    
+                                            <input id="payway_51001" type="radio" onclick="otherPays()" name="checkOutRequest.payWay.other" value="51001" />
+                                                    银联快捷支付&nbsp;&nbsp;
+                                                <span class="s-color2" id="price_51001">
+                                                    </span>
+                                        </label>
+                </p>
+                <label id="payWayOtherError" style="color:red"></label>
+                        <label id="checkout_pay_message" style="color:red">当您绑定手机及设定我买卡支付密码后才可以使用我买卡支付方式，请前往我的小买中进行绑定设置</label>
+        </li>
+
+        
+        <li>
+            <a href="javascript:void(0)" onclick="card()">
+                使用优惠卡券
+                                    （<i class="s-color2" id="couponcardSize">
+                    您有2张可使用卡券
+                    </i>）
+                
+            </a>
+            <span class="s-bg s-arrowR"></span>
+        </li>
+        
+        <li>
+            <h4>配送时间</h4>
+                            <p>
+                    <label for="deliveryId1">
+                        <input class="deliveryRadio" id="deliveryId1" name="checkOutRequest.expressTime.deliveryId" type="radio" value="0" >
+                        <span class="delivery-detail-desc">不限</span>
+                        <span class="select-time-span">
+                                                                                </span>
+                    </label>
+                </p>
+            
+            <input id="segmentId" name="checkOutRequest.expressTime.segmentId" type="hidden" value="0"/>
+        </li>
+
+        <li id="invoicetitle">
+            <a href="javascript:void(0)" id="syncUpdtInvoiceTitle" onclick="showInvoice(true,'','1')">
+                <span>发票信息</span>&nbsp;&nbsp;&nbsp;&nbsp;<i id="existCheckoutInvoice">否</i>
+            </a>
+            <span class="s-bg s-arrowR"></span>
+        </li>
+        <li class="s-203input" id="invoice">
+            <h4><a href="javascript:void(0)" id="syncUpdtInvoice" onclick="showInvoice(true,'','1')">发票信息</a></h4>
+            <p class="s-inputbox">
+                <span class="s-labelH28">发票抬头：</span>
+                    <span class="s-inputBorder s-block" style="width:98.9%">
+                        <input type="text" placeholder="个人/公司全称" class="s-input s-inputH28" name="submitOrder.invoiceTitle" id="invoiceName" value="">
+                    </span>
+            </p>
+            <p class="s-inputbox">
+                <span class="s-labelH28">发票类型：</span>
+                    <span class="s-block">
+                      <select name="submitOrder.invoiceId" id="invoiceId" placeholder="个人/公司全称" class="s-select s-selectH28" style="padding: 0; margin: 0;width:98.9%">
+                          <option value="" selected>----请选择----</option>
+                                                        <option value="0"  >食品</option>
+                                                        <option value="1"  >礼品</option>
+                                                </select>
+                    </span>
+            </p>
+            <span class="s-bg s-arrowB"></span>
+        </li>
+        
+        <li id="productlist">
+            <h4>商品清单</h4>
+            <dl class="s-row">
+                                    <script type="text/javascript">
+                        productListCheckout.push(616993);
+                        productCheckoutCount += parseInt("数量：1件".split("：")[1]);
+                    </script>
+                    <dd class="s-rowli s-top">
+                        <a href="javascript:void(0);">
+                            <dl class="s-rowdl">
+                                                                    <dt class="s-img"
+                                 proId="616993"><span><img width="60" height="60"  src="http://pic.womai.com/upload/601/603/606/6590/248321/248353/616993/616993_1_phone120_3892.jpg"/></span></dt>
+                                <dd class="s-title">
+                                    <h3>
+                                        【自营】五羊 婴儿抑菌洗衣皂80g/块
+                                    </h3>
+                                </dd>
+                                <dd class="s-other">
+                                    <span>抢购价：￥1.00</span>数量：1件
+                                </dd>
+                                <dd class="s-other">
+                                    <span>重量：0.08kg</span>积分：3.00
+                                </dd>
+                            </dl>
+                        </a>
+                    </dd>
+                                    <script type="text/javascript">
+                        productListCheckout.push(502167);
+                        productCheckoutCount += parseInt("数量：1件".split("：")[1]);
+                    </script>
+                    <dd class="s-rowli s-top">
+                        <a href="javascript:void(0);">
+                            <dl class="s-rowdl">
+                                                                    <dt class="s-img"
+                                 proId="502167"><span><img width="60" height="60"  src="http://pic.womai.com/upload/601/603/606/7000/65906/502167/502167_0_phone120_1921.jpg"/></span></dt>
+                                <dd class="s-title">
+                                    <h3>
+                                        【自营】善存佳维片(盒装 120片)
+                                    </h3>
+                                </dd>
+                                <dd class="s-other">
+                                    <span>抢购价：￥99.00</span>数量：1件
+                                </dd>
+                                <dd class="s-other">
+                                    <span>重量：0.232kg</span>积分：135.00
+                                </dd>
+                            </dl>
+                        </a>
+                    </dd>
+                                    <script type="text/javascript">
+                        productListCheckout.push(562225);
+                        productCheckoutCount += parseInt("数量：1件".split("：")[1]);
+                    </script>
+                    <dd class="s-rowli s-top">
+                        <a href="javascript:void(0);">
+                            <dl class="s-rowdl">
+                                                                    <dt class="s-img"
+                                 proId="562225"><span><img width="60" height="60"  src="http://pic.womai.com/upload/601/666/562225/562225_0_phone120_8068.jpg"/></span></dt>
+                                <dd class="s-title">
+                                    <h3>
+                                        SUNSIDES上质全脂纯牛奶1L（德国原装进口 盒）
+                                    </h3>
+                                </dd>
+                                <dd class="s-other">
+                                    <span>赠品价：￥7.90</span>数量：1件
+                                </dd>
+                                <dd class="s-other">
+                                    <span>重量：1.06kg</span>积分：0.00
+                                </dd>
+                            </dl>
+                        </a>
+                    </dd>
+                            </dl>
+        </li>
+        <li class="s-zongji2">
+            <h4>结算明细</h4>
+            <p><span>商品总重</span><i>1.37kg</i></p>
+            <p><span>商品总金额</span><i>￥107.90</i></p>
+            <p><span>运费</span><i>￥0.00</i></p>
+            <p><span>优惠金额</span><i>￥0.00</i></p>
+            <p><span>卡券冲抵</span><i>￥0.00</i></p>
+            <p><span id="womaicard_pay_name">我买卡支付金额</span><i id="womaicard_pay_value">￥0.00</i></p>
+            <p><span>赠送积分</span><i class="s-color15">138.00分</i></p>
+            <p class="otherline"><span class="s-color4">总金额</span><i class="s-color2">￥107.90</i></p>
+        </li>
+    </ol>
+</div>
+<div class="s-screenWrap-2">
+        <span class="s-jvBorder s-block" id="sub1">
+            <a href="javascript:void(0)" onclick="mySubmit();" class="s-jvBtn s-Btn34">提交订单</a>
+        </span>
+            <span class="s-jvBorder s-block" style="display:none" id="sub2">
+            <a href="javascript:void(0)" class="s-jvBtn s-Btn34">提交中...</a>
+            </span>
+             <span class="s-jvBorder s-block" style="border:1px solid gray;display:none" id="sub3">
+            <a href="javascript:void(0)" class="s-jvBtn s-Btn34" style="border:1px solid gray;background-color: gray;">提交订单</a>
+              </span>
+</div>
+
+<input type="hidden" id="checkoutSe" name="checkoutSe" value="eyJyZXNwb25zZSI6IiIsImVycm9yIjpudWxsLCJjaGVja291dF9jb25zaWduZWVpbmZvIjp7ImNvbnNpZ25lZV9pZCI6IiIsIm5hbWUiOiIiLCJtb2JpbGVwaG9uZSI6IiIsInByb3ZpbmNlIjoiIiwiY2l0eSI6IiIsImFyZWEiOiIiLCJkZXRhaWwiOiIiLCJhZGRyZXNzQ29kZSI6IiIsImFkZHJlc3NNc2ciOiIiLCJjb25maXJtQnRuIjoiIiwiY2FuY2VsQnRuIjoiIn0sImRlbGl2ZXJ5X2luZm8iOnsiZGV0YWlsX25hbWUiOiLphY3pgIHml7bpl7QiLCJzZWdtZW50X25hbWUiOiIiLCJkZWxpdmVyeV9kZXRhaWwiOlt7ImRlbGl2ZXJ5X2lkIjoiMCIsImRlc2MiOiLkuI3pmZAiLCJzaG93IjpmYWxzZX1dLCJkZWxpdmVyeV9ob3VyX3NlZ21lbnQiOltdLCJkZWxpdmVyeV90eXBlIjoi5b+r6YCSIn0sImNoZWNrb3V0X3BheSI6eyJwYXlfd2F5IjpbeyJwYXl3YXlfaWQiOiIxMjIwODAiLCJkZXNjIjoi5b6u5L+h5pSv5LuY44CQ5o6o6I2Q44CRIiwicHJpY2UiOiIxMDcuOTAiLCJzaG93Ijp0cnVlfSx7InBheXdheV9pZCI6Ijk5OTkiLCJkZXNjIjoi55m+5bqm6ZKx5YyFIiwicHJpY2UiOiIwLjAwIiwic2hvdyI6ZmFsc2V9LHsicGF5d2F5X2lkIjoiNTEwMDEiLCJkZXNjIjoi6ZO26IGU5b+r5o235pSv5LuYIiwicHJpY2UiOiIwLjAwIiwic2hvdyI6ZmFsc2V9XSwid21jYXJkX2JhbGFuY2UiOnsidGl0bGUiOiIiLCJjb3VudCI6IiJ9LCJtZXNzYWdlIjoi5b2T5oKo57uR5a6a5omL5py65Y+K6K6+5a6a5oiR5Lmw5Y2h5pSv5LuY5a+G56CB5ZCO5omN5Y+v5Lul5L2/55So5oiR5Lmw5Y2h5pSv5LuY5pa55byP77yM6K+35YmN5b6A5oiR55qE5bCP5Lmw5Lit6L+b6KGM57uR5a6a6K6+572uIn0sImNoZWNrb3V0X2NvdXBvbmNhcmQiOnsiY2hvb3NlX2NhcmQiOltdLCJ1bmNob29zZV9jYXJkIjpbeyJjb3Vwb25jYXJkX2lkIjoiNTI4NjI5NDEwIiwiY2FyZF90eXBlIjoi5oqY5omj5Yi4IiwicHJpY2UiOiI1MC4wMCIsInVzZV9kZXNjIjoi5YWo5Zu977yI572R56uZ44CB5omL5py66YCa55So77yJ77ya44CQ5rCR55Sf5Lya5ZGY5LiT5Lqr44CR5YWo5ZOB57G75ruhMTAw5YWD56uL5YePNTDlhYPvvIjpg6jliIbllYblk4HpmaTlpJbvvIkg5oqY5omj5Yi477yMWFlGMyIsImNhcmRfbnVtYmVyIjoiNHh5ZjM5NzA0NTExMjY2MCIsInRpbWVfaW5mbyI6IjIwMTYtMTAtMjZ+MjAxNy0wNy0zMSIsImxpbWl0UGF5TW9kZSI6IiIsImNvbmZpcm1CdG4iOiIiLCJjYW5jZWxCdG4iOiIiLCJwcm9tcHRDb250ZW50IjoiIn0seyJjb3Vwb25jYXJkX2lkIjoiNTc1NjUxMzE4IiwiY2FyZF90eXBlIjoi5oqY5omj5Yi4IiwicHJpY2UiOiI1LjAwIiwidXNlX2Rlc2MiOiLlhajlm73vvIjnvZHnq5njgIHmiYvmnLrpgJrnlKjvvInvvJrjgJDkvJrlkZjkuJPkuqvliLhaWOOAkeWFqOWTgeexu+a7oTk55YWD5YePNeWFg++8iOmDqOWIhuWVhuWTgemZpOWklu+8iSDmipjmiaPliLjvvIxDVEM0IiwiY2FyZF9udW1iZXIiOiI0Y3RjNDcwMzg4MTA0MTEyIiwidGltZV9pbmZvIjoiMjAxNy0wNC0wMX4yMDE3LTA0LTMwIiwibGltaXRQYXlNb2RlIjoiIiwiY29uZmlybUJ0biI6IiIsImNhbmNlbEJ0biI6IiIsInByb21wdENvbnRlbnQiOiIifV0sInNpemUiOjJ9LCJjaGVja291dF9pbnZvaWNlIjp7Imludm9pY2VfdGl0bGUiOlt7Imludm9pY2VfaWQiOiIwIiwidHlwZSI6Iumjn+WTgSJ9LHsiaW52b2ljZV9pZCI6IjEiLCJ0eXBlIjoi56S85ZOBIn1dLCJwcm9tcHQiOiLlj5Hnpajph5Hpop3kuLrlrp7pmYXmlK/ku5jnjrDph5HmgLvph5Hpop3vvIjkuI3lkKvmiJHkubDljaHjgIHlm6LotK3ljaHjgIHmipjmiaPliLjjgIHotK3nianliLjjgIHmiYvmnLrnuqLljIXjgIHmmbrmg6DljaHnrYnljaHliLjmirXmtojph5Hpop3vvIlcclxu5Y+R56Wo5oqs5aS05Y+q6IO95aGr5YaZ4oCc5Liq5Lq64oCd6L+Z5Lik5Liq5a2X5oiW6ICF5YW35L2T55qE5YWs5Y+45ZCN56ewIn0sInNob3dfcHJpY2UiOiJ0cnVlIiwicmVhbFBheU1vZGUiOiIxMjIwODAsMTA3LjkwIiwiY2hlY2tvdXRfcHJvZHVjdGxpc3QiOlt7InByb2R1Y3RfaWQiOiI2MTY5OTMiLCJuYW1lIjoi44CQ6Ieq6JCl44CR5LqU576KIOWptOWEv+aKkeiPjOa0l+iho+eagjgwZy/lnZciLCJwaWMiOiJodHRwOi8vcGljLndvbWFpLmNvbS91cGxvYWQvNjAxLzYwMy82MDYvNjU5MC8yNDgzMjEvMjQ4MzUzLzYxNjk5My82MTY5OTNfMV9waG9uZTEyMF8zODkyLmpwZyIsInByaWNlIjoi5oqi6LSt5Lu377ya77+lMS4wMCIsIm51bWJlciI6IuaVsOmHj++8mjHku7YiLCJwb2ludCI6Iuenr+WIhu+8mjMuMDAiLCJ3ZWlnaHQiOiLph43ph4/vvJowLjA4a2ciLCJwcmVzZW50IjoiZmFsc2UiLCJwdHlwZSI6IjAiLCJzZWxsYWJsZSI6IjEifSx7InByb2R1Y3RfaWQiOiI1MDIxNjciLCJuYW1lIjoi44CQ6Ieq6JCl44CR5ZaE5a2Y5L2z57u054mHKOebkuijhSAxMjDniYcpIiwicGljIjoiaHR0cDovL3BpYy53b21haS5jb20vdXBsb2FkLzYwMS82MDMvNjA2LzcwMDAvNjU5MDYvNTAyMTY3LzUwMjE2N18wX3Bob25lMTIwXzE5MjEuanBnIiwicHJpY2UiOiLmiqLotK3ku7fvvJrvv6U5OS4wMCIsIm51bWJlciI6IuaVsOmHj++8mjHku7YiLCJwb2ludCI6Iuenr+WIhu+8mjEzNS4wMCIsIndlaWdodCI6IumHjemHj++8mjAuMjMya2ciLCJwcmVzZW50IjoiZmFsc2UiLCJwdHlwZSI6IjAiLCJzZWxsYWJsZSI6IjEifSx7InByb2R1Y3RfaWQiOiI1NjIyMjUiLCJuYW1lIjoiU1VOU0lERVPkuIrotKjlhajohILnuq/niZvlpbYxTO+8iOW+t+WbveWOn+ijhei/m+WPoyDnm5LvvIkiLCJwaWMiOiJodHRwOi8vcGljLndvbWFpLmNvbS91cGxvYWQvNjAxLzY2Ni81NjIyMjUvNTYyMjI1XzBfcGhvbmUxMjBfODA2OC5qcGciLCJwcmljZSI6Iui1oOWTgeS7t++8mu+/pTcuOTAiLCJudW1iZXIiOiLmlbDph4/vvJox5Lu2IiwicG9pbnQiOiLnp6/liIbvvJowLjAwIiwid2VpZ2h0Ijoi6YeN6YeP77yaMS4wNmtnIiwicHJlc2VudCI6InRydWUiLCJwdHlwZSI6IjEiLCJzZWxsYWJsZSI6IjEifV0sImNoZWNrb3V0X3N0YXRpc3RpY3MiOnsidG90YWxfbmVlZF9wYXkiOnsibmFtZSI6IuaAu+mHkeminSIsInZhbHVlIjoiMTA3LjkwIn0sInByb2R1Y3RfdG90YWxfd2VpZ2h0Ijp7Im5hbWUiOiLllYblk4HmgLvph40iLCJ2YWx1ZSI6IjEuMzdrZyJ9LCJwcm9kdWN0X3RvdGFsX3ByaWNlIjp7Im5hbWUiOiLllYblk4HmgLvph5Hpop0iLCJ2YWx1ZSI6Iu+/pTEwNy45MCJ9LCJmcmVpZ2h0Ijp7Im5hbWUiOiLov5DotLkiLCJ2YWx1ZSI6Iu+/pTAuMDAifSwiZnJlaWdodF9wcml2aWxlZ2UiOnsibmFtZSI6IiIsInZhbHVlIjoiIn0sImNvdXBvbmNhcmRfYWdhaW5zdCI6eyJuYW1lIjoi5Y2h5Yi45Yay5oq1IiwidmFsdWUiOiLvv6UwLjAwIn0sInRvdGFsX3BvaW50Ijp7Im5hbWUiOiLotaDpgIHnp6/liIYiLCJ2YWx1ZSI6IjEzOC4wMOWIhiJ9LCJjaGVja291dF9wcml2aWxlZ2UiOnsibmFtZSI6IuS8mOaDoOmHkeminSIsInZhbHVlIjoi77+lMC4wMCJ9LCJ3b21haWNhcmRfcGF5Ijp7Im5hbWUiOiLmiJHkubDljaHmlK/ku5jph5Hpop0iLCJ2YWx1ZSI6Iu+/pTAuMDAifX0sImV4aXN0Q2hlY2tvdXRJbnZvaWNlIjp0cnVlLCJjaGVja291dEludm9pY2VNc2ciOiIiLCJjYXJ0aWQiOiIxIiwiY2FydFR5cGUiOm51bGwsIm9yZGVyVHlwZSI6IiIsInByb2R1Y3Rfc2VsbG91dCI6eyJjb2RlIjoiMCIsInRleHQiOiIifSwidXNlck5hbWUiOiIiLCJ1c2VySWRlbnRpZnkiOiIiLCJpc1VwSWRlbnRpZnlQaWMiOiIiLCJpZGVudGlmeVBpY1BhdGgiOltudWxsLG51bGxdfQ=="/>
+<input type="hidden" id="cartId" name="checkOutRequest.cartId" value="1"/>
+<input type="hidden" id="" name="cartId" value="1"/>
+<input type="hidden" id="cartType" name="checkOutRequest.cartType" value="1"/>
+<input type="hidden" id="delId" name="checkOutRequest.delId" value="1"/>
+<input type="hidden" id="address" name="checkOutRequest.address" value=""/>
+<input type="hidden" id="product_sellout_code"  value="0"/>
+<input type="hidden" id="product_sellout_text"  value=""/>
+    <input type="hidden" id="desPayPassword" name="desPayPassword" value=""/>
+<input type="hidden" id="remark" name="submitOrder.remark" value=""/>
+</form>
+<div class="s-popbox reveal-modal" id="s-popbox-id">
+    <div class="s-popbox-a">
+        <p>
+            <span class="s-no s-bg2"></span>
+            <span class="s-text">
+                            </span>
+        </p>
+    </div>
+    <div class="s-popbox-b">
+            </div>
+</div>
+<div class="s-select-bg" style="display: none">
+    <dl class="s-select-time">
+        <dt>
+            <span class="fl select-time-cancel">取消</span>
+            <label>预约时间</label>
+            <span class="fr select-time-confirm">确定</span>
+        </dt>
+        <dd>
+            <ul class="time">
+                            </ul>
+            <div class="cl"></div>
+        </dd>
+    </dl>
+</div>
+<a href="#" data-reveal-id="s-popbox-id" data-animation="fadeAndPop" data-animationspeed="300"
+   data-closeonbackgroundclick="true" data-dismissmodalclass="close-reveal-modal" id="s-popbox-a"></a>
+<form id="submitSuccess" method="post" action="http://m.womai.com/order/submitSuccess.action">
+    <input type="hidden" name="submitInfo" id="submitInfo" value=""/>
+</form>
+<link href="http://m.womai.com/css/zepto.alert.min.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+    checkoutTotalMoney = parseFloat(107.90);
+    if(productListCheckout.length > 10){
+        productListCheckout = productListCheckout.slice(0,10);
+    }
+    var __zp_tag_params = {
+            productId_list: productListCheckout,
+            totalPrice: checkoutTotalMoney,
+            totalNum: productCheckoutCount
+    };
+    console.log(__zp_tag_params);
+</script>
+<script type="text/javascript" src="http://m.womai.com/js2/zepto.alert.js"></script>
+
+<script type="text/javascript" language="javascript">
+
+var testTemp = function (payway){
+    var cartId = $("#cartId").val();
+    var cartType = $("#cartType").val();
+    var delId = $("#delId").val();
+    alert(cartId+" "+cartType+" "+delId)
+    jQuery.ajax({
+        type:'post',
+        url:"http://m.womai.com/order/checkout.action",
+        async:true,
+        cache:false,
+        data:{payway:""+payway,cartId:""+cartId,cartType:""+cartType,delId:""+delId},
+        dataType:'json',
+        success:function(data){
+            alert("succeed")
+        },
+        error:function(xhr,type){
+
+        }
+    })
+}
+
+function existCheckoutInvoice(invoiceMsg){
+        //输入的金额
+        var syamount =  $("#syamount").val();
+
+        //需要支付的金额
+        var pricetrue = $("#pricetrue").val();
+        if((($("#card").css('display')=='' || $("#card").css('display')=='block') && syamount*1.0 >= pricetrue*1.0)
+                || pricetrue*1.0<=0){
+            //不允许开发票
+            if(invoiceMsg == null || invoiceMsg == "" || invoiceMsg == undefined){
+//                $("#existCheckoutInvoice").html("<span style='color: red'>虚拟货币结算，暂不提供发票</span>");
+            }else{
+                $("#existCheckoutInvoice").html("<span style='color: red'>"+invoiceMsg+"</span>");
+            }
+            $("#invoice").css('display','none');
+            $("#invoicetitle").css('display','block');
+            return false;
+        }else{
+            //允许开发票
+            if(!"false"){
+                $("#existCheckoutInvoice").html("否");
+            }
+            return true;
+        }
+    }
+
+    //特殊需求
+//    function showService(){
+//        var serviceTitle = $("#serviceTitle").css("display");
+//        if (serviceTitle == "none"){
+//            $("#serviceTitle").css("display","block");
+//            $("#service").css("display","none");
+//        } else {
+//            $("#serviceTitle").css("display","none");
+//            $("#service").css("display","block");
+//        }
+//    }
+//    function chbv(){
+//        var s;
+//        var chb = '';
+//        $('input[name="specialDemand"]:checked').each(function(){
+//            chb+=$(this).val()+',';
+//        })
+//        var tx = $('input[name="specialDemandText"]').val().trim();
+//        s = chb + tx;
+//        $('input[name="sd"]').val(s);
+//        $('#checkoutform').submit();
+//    }
+    function ssbtn(){
+        if($("input[name='specialServiceradio']:checked").val()==null){
+            $('input:radio[name="specialServiceradio"]').attr("checked","1");
+        }
+    }
+    function idinfoBtn(){
+        $("#idinfoError").html("");
+    }
+    function existOtherPayWay(){
+        //输入的金额
+        var syamount =  $("#syamount").val();
+
+        if(!($("#card").css('display')=='' || $("#card").css('display')=='block')){
+            syamount = 0;
+        }
+
+        //需要支付的金额
+        var pricetrue = $("#pricetrue").val();
+
+        if($("input[name='checkOutRequest.payWay.other']:checked").val()==null){
+            $('input:radio[name="checkOutRequest.payWay.other"]').eq(0).attr('checked', 'true');
+        }
+
+        $('input[name="checkOutRequest.payWay.other"]').each(function(){
+            $("#price_"+this.value).html("");
+        });
+
+        var price = (pricetrue*1000-syamount*1000)/1000;
+        if(price>0){
+            price = "￥"+price;
+        }else{
+            price = "";
+            $('input:radio[name="checkOutRequest.payWay.other"]').attr("checked",false);
+        }
+        $("#price_"+$("input[name='checkOutRequest.payWay.other']:checked").val()).html(price);
+
+    }
+
+    //我买卡支付，显示、隐藏切换 isReloadInvoice  是否重新加载发票信息，因为该接口被otherPay 调用时不需要重加载，onclick 触发时需要重加载
+    function showkaPay(isReloadInvoice){
+        var kaPay = $("#card").css('display');
+        if(kaPay=='none'){
+            $("#payWayOtherError").html("");
+            $("#card").slideDown('fast').css('display','block');
+            $("#cardtitle").css('display','none');
+        }else{
+            $("#card").slideUp('fast').css('display','none');
+            $("#cardtitle").css('display','block');
+            $("#payWayAmount").html("¥0");
+            //避免闪屏
+        }
+        change_womaicard();
+        existCheckoutInvoice();
+        existOtherPayWay();
+        if(isReloadInvoice == '1'){
+            syncReloadPayWay();
+        }
+    }
+    //发票信息，显示、隐藏切换 change 是否显示隐藏切换，该方法被onclick触发时，需要切换，被syncReloadInvoice 方法触发时 不需要切换
+    function showInvoice(existInvoice,invoiceMsg,change){
+//        alert(existInvoice+"----"+invoiceMsg);
+        if(!existCheckoutInvoice(invoiceMsg)){
+            return;
+        }
+        if(!existInvoice){
+            $("#existCheckoutInvoice").html("<span style='color: red'>"+invoiceMsg+"</span>");
+            $("#invoice").css('display','none');
+            $("#invoicetitle").css('display','block');
+            return ;
+        }
+        var kaPay = $("#invoice").css('display');
+        if(kaPay=='none' && change === '1'){
+            $("#invoicetitle").css('display','none');
+            $("#invoice").css('display','block');
+        }else if(change === '1'){
+            $("#invoice").css('display','none');
+            $("#invoicetitle").css('display','block');
+            $("#existCheckoutInvoice").html("否");
+        }
+    }
+    function syncReloadPayWay(){
+        //异步请求前的准备工作
+        //1、我买卡支付金额：如果隐藏则归0,
+        var cardCss = $("#card").css('display');
+        var syamount=$("#syamount").val();
+        var kaAmount = $("#syamount").attr("kaAmount");
+        if(cardCss=="" || cardCss !="block"){
+//            alert(cardCss);
+            $("#syamount").val(0);
+            $("#syamount").attr("kaAmount",syamount)
+        }
+        jQuery.ajax({
+            type:'POST',
+            url:"http://m.womai.com/order/syncCheckOut.action?cartId=1&delCartId=1",
+            async:false,
+            cache:false,
+            data:$("#checkoutform").serialize(),
+            dataType:'json',
+            success:function (data) {
+               if(data.code =="00"){
+                   //2、将我买卡数据还原，以保证展开我买卡时数据准确还原
+                   $("#syamount").val(syamount);
+                   $("#syamount").attr("kaAmount",0)
+                   //3、将涉及发票的地方更新
+                   $("#syncUpdtInvoiceTitle").attr("onclick","showInvoice("+data.result.existCheckoutInvoice+",'"+data.result.checkoutInvoiceMsg+"','1')");
+                   $("#syncUpdtInvoice").attr("onclick","showInvoice("+data.result.existCheckoutInvoice+",'"+data.result.checkoutInvoiceMsg+"','1')");
+                   //4、填充我买卡余额
+                   $("#womaicard_pay_name").text(data.result.checkout_statistics.womaicard_pay.name);
+                   $("#womaicard_pay_value").text(data.result.checkout_statistics.womaicard_pay.value);
+                   change_womaicard();
+                   //5、填充是否售罄的信息
+                   $("#product_sellout_code").val(data.result.product_sellout.code);
+                   $("#product_sellout_text").val(data.result.product_sellout.text);
+                   if(data.result.product_sellout.code == "1"){
+//                        $("#sub1").hide();
+//                        $("#sub3").show();
+                       btnShowOrHide("sub1","sub3");
+                   }else{
+//                       $("#sub1").show();
+//                       $("#sub3").hide();
+                       if($(":radio[name='checkOutRequest.payWay.other']").size()==0){
+                           btnShowOrHide("sub1","sub3");
+                       }else{
+                           btnShowOrHide("sub3","sub1");
+                       }
+                   }
+                   //6、循环商品列表是否已经售罄
+                   jQuery.each(data.result.checkout_productlist,function(n,p){
+                        if (p.sellable == "3"){
+                            $("#productlist").find("dt[proId="+ p.product_id+"]").eq(0).addClass("over");
+                        }else{
+                            $("#productlist").find("dt[proId="+ p.product_id+"]").eq(0).removeClass("over");
+                        }
+                   });
+                   showInvoice(data.result.existCheckoutInvoice,data.result.checkoutInvoiceMsg,0);
+                   //7、如果限制支付方式则显示提示
+                   if(data.result.checkout_pay.message && data.result.checkout_pay.message.length>0){
+                       $("#checkout_pay_message").html(data.result.checkout_pay.message);
+                        $("#cardtitle").hide();//隐藏我买卡支付
+                   }
+               }else{
+                   $("#existCheckoutInvoice").html("<span style='color: red'>发票信息加载失败</span>");
+               }
+            },
+            error:function (xhr, type) {
+            }
+        })
+    }
+    function otherPays(){
+        $("#payWayOtherError").html("");
+        var payP = $("#payPassword").val();
+        var cardCss = $("#card").css('display');
+        if(payP == "" && cardCss != "none"){
+            showkaPay('0');
+        }
+
+        existOtherPayWay();
+        syncReloadPayWay();
+    }
+
+    //初始化页面选项
+    $(function () {
+        //我买卡金额输入框
+        var amount =  $("#syamount").val();
+
+        if($("#amount1").val() == '303' && amount>0){
+            $("#cardtitle").css('display','none');
+            $("#card").css('display','block');
+        }else{
+            $("#cardtitle").css('display','block');
+            $("#card").css('display','none');
+        }
+
+        //发票输入框
+        if(''==''){
+            $("#invoicetitle").css('display','block');
+            $("#invoice").css('display','none');
+        }else{
+            $("#invoicetitle").css('display','none');
+            $("#invoice").css('display','block');
+        }
+//        existCheckoutInvoice();
+        showInvoice(true,'','0');
+//        $("#payPassword").val("");
+                //有售罄商品自动消失的框
+        var code = $("#product_sellout_code").val();
+        var text = $("#product_sellout_text").val();
+
+        if(code == "1"){
+            if(text == null || text == "" || text == undefined){
+                text="当前城市下所有商品已售罄，请查看！";
+            }
+//            $("#sub1").hide();
+//            $("#sub3").show();
+            btnShowOrHide("sub1","sub3");
+            jQuery.dialog({
+                content: text,
+                title: '',
+                okText: '',
+                cancelText: '',
+                width: 200,
+                ok: function () {
+                },
+                cancel: function () {
+                },
+                time:2000
+            });
+        }else if(code == "2"){
+            if(text == null || text == "" || text == undefined){
+                text="当前地址下商品库存发生变化！";
+            }
+            jQuery.dialog({
+                content: text,
+                title: '',
+                okText: '',
+                cancelText: '',
+                width: 200,
+                ok: function () {
+
+                },
+                cancel: function () {
+                },
+                time:2000
+            });
+        }else if(code ==3){//自定义的其他类型提示：如生成订单时，库存售罄
+            if(text == null || text == "" || text == undefined){
+                text="抱歉，由于商品库存发生变化，请重新查看结算中心！";
+            }
+            jQuery.dialog({
+                content: text,
+                title: '',
+                okText: '确认',
+                cancelText: '',
+                width: 200,
+                ok: function () {
+                    document.getElementById("checkoutform").action = "http://m.womai.com/order/checkout.action";
+                    document.getElementById("checkoutform").submit();
+                },
+                cancel: function () {
+                }
+            });
+        }
+        if(code != "1" && $(":radio[name='checkOutRequest.payWay.other']").size()==0){
+            btnShowOrHide("sub1","sub3");
+        }
+        if($(":radio[name='checkOutRequest.payWay.other']").size()>0 && $("input[name='checkOutRequest.payWay.other']:checked").val()==null){
+            otherPays();
+        }
+        change_womaicard();
+    });
+    function change_womaicard(){
+        if($("#card").css('display')=='' || $("#card").css('display')=='block'){
+            if($("#countinput").text() =="" || $("#countinput").text() == null ||$("#countinput").text() ==undefined){
+                var syamount=  $("#syamount").val();
+                if(syamount!=null && syamount!="" && syamount!=undefined ){
+                    var _index = syamount.indexOf(".");
+                    if(_index>-1){
+                        var _last = syamount.substr(_index+1,syamount.length);
+                        if(_last.length == 1){
+                            syamount=syamount+"0";
+                        }
+                    }else{
+                        syamount = syamount+".00";
+                    }
+                    $("#womaicard_pay_value").text("￥"+syamount);
+                }
+            }else{
+                //设置为0
+                $("#womaicard_pay_value").text("￥0.00");
+            }
+        }else{
+            //设置为0
+            $("#womaicard_pay_value").text("￥0.00");
+        }
+    }
+    function card(){
+        handleSyamount();
+        document.getElementById("checkoutform").action = "http://m.womai.com/order/getCardList.action";
+        document.getElementById("checkoutform").submit();
+    }
+    function wmcard(){
+        handleSyamount();
+        document.getElementById("checkoutform").action = "http://m.womai.com/order/addCard.action";
+        document.getElementById("checkoutform").submit();
+    }
+    function addresslist(){
+        //1、我买卡支付金额：如果隐藏则归0,
+        handleSyamount();
+        document.getElementById("checkoutform").action = "http://m.womai.com/order/distributionlist.action";
+        document.getElementById("checkoutform").submit();
+//        $("#checkoutform").submit(submitorder);
+    }
+    function handleSyamount(){
+        var cardCss = $("#card").css('display');
+        var syamount=$("#syamount").val();
+        var kaAmount = $("#syamount").attr("kaAmount");
+        if(cardCss=="" || cardCss !="block"){
+//            alert(cardCss);
+            $("#syamount").val(0);
+            $("#syamount").attr("kaAmount",syamount)
+        }
+    }
+    var submitorder = function(){
+        //输入的金额
+        var syamount =  $("#syamount").val();
+        //需要支付的金额
+        var pricetrue = $("#pricetrue").val();
+
+        if(pricetrue*1.0<=0){
+            //清除发票内容
+            $("#invoiceName").val("");
+            $("#invoiceId").val("");
+        }else if($("#card").css('display')=='' || $("#card").css('display')=='block'){
+            //我买卡支付
+            if(!paySubimt()){
+                return false;
+            }
+            if(syamount*1.0 >= pricetrue*1.0){
+                //清除发票内容
+                $("#invoiceName").val("");
+                $("#invoiceId").val("");
+            }
+        }else{
+            var kaPay = $("#invoice").css('display');
+            if(kaPay!='block'){
+                //清除发票内容
+                $("#invoiceName").val("");
+                $("#invoiceId").val("");
+            }
+
+            var val=$('input:radio[name="checkOutRequest.payWay.other"]:checked').val();
+            //需要支付的金额
+            var pricetrue = $("#pricetrue").val();
+            if(val==null && pricetrue>0){
+//                $("#payWayOtherError").html("至少选择一种支付方式");
+                jQuery.dialog({
+                    content: "至少选择一种支付方式",
+                    title: '提示',
+                    okText: "确定",
+                    width: 200,
+                    ok: function () {
+                    }
+                });
+                return false;
+            }else{
+                $("#syamount").val("");
+                $("#payWayOtherError").html("");
+            }
+        }
+
+        if(''==''){
+//            $("#addresslistError").html("收货人地址不能为空");
+            jQuery.dialog({
+                content: "收货人地址不能为空",
+                title: '提示',
+                okText: "确定",
+                width: 200,
+                ok: function () {
+                }
+            });
+            return false;
+        }
+
+        document.getElementById("checkoutform").action = "http://m.womai.com/order/submitorder.action";
+//        document.getElementById("checkoutform").submit();
+        var deliveryIdChecked=$('input:radio[name="checkOutRequest.expressTime.deliveryId"]:checked').val();
+        var deliveryTimeNeed = $("#checkoutjspart").attr("needShowWindow");
+        var deliveryTime = $("#segmentId").val();
+        if(deliveryIdChecked==null || (deliveryTimeNeed=="true" && deliveryTime=="")){
+            jQuery.dialog({
+                content: "请选择配送时间",
+                title: '提示',
+                okText: "确定",
+                width: 200,
+                ok: function () {
+                }
+            });
+            return false;
+        }
+           //        $("#sub1").hide();
+//        $("#sub2").show();
+        btnShowOrHide("sub1","sub2");
+        return true;
+    }
+    function checkPicPath(path){
+        return path!=null && path!="" && path !=undefined;
+    }
+    function btnShowOrHide(hideId,showId){
+        $("#"+hideId).hide();
+        if($("#"+hideId).css('display')=='none'){
+            $("#"+showId).show();
+        }
+    }
+
+//    $("#checkoutform").submit(submitorder);
+    function mySubmit(){
+        if(!submitorder()){
+            return false;
+        }
+        jQuery.ajax({
+            type: 'POST',
+            url: "http://m.womai.com/order/submitorder.action",
+            async:false,
+            cache:false,
+            data: $("#checkoutform").serialize(),
+            dataType: 'json',
+            success: function(data){
+                if(data.code == '00'){
+                    $("#submitInfo").val(data.result);
+                    if(""=="true"){
+                        $("#submitSuccess").attr("method","GET");
+                    }
+                    $("#submitSuccess").submit();;
+                }else if(data.code=="01"){
+                    jQuery.dialog({
+                        content: data.result.msg,
+                        title: '',
+                        okText: data.result.btn_ok,
+                        cancelText: '',
+                        width: 200,
+                        ok: function () {
+                            document.getElementById("checkoutform").action = "http://m.womai.com/order/checkout.action";
+                            document.getElementById("checkoutform").submit();
+                        },
+                        cancel: function () {
+                        }
+                    });
+                }else if(data.code == "02"){
+                    jQuery.dialog({
+                        content: data.result.message,
+                        title: '',
+                        okText: "确认",
+                        cancelText: '',
+                        width: 200,
+                        ok: function () {
+                            document.getElementById("checkoutform").action = "http://m.womai.com/order/checkout.action";
+                            document.getElementById("checkoutform").submit();
+                        },
+                        cancel: function () {
+                        }
+                    });
+                }
+            },
+            error: function(xhr, type){
+            }
+        })
+    }
+
+    var getOrders= function(){
+        var payPassword = $("#payPassword").val();
+        jQuery.ajax({
+            type: 'POST',
+            url: "http://m.womai.com/order/verifyPayPassword.action?",
+            async:false,
+            cache:false,
+            data: {payPassword: ""+payPassword},
+            dataType: 'json',
+            success: function(data){
+                if(data.result){
+                    $("#payPasswordError").html("");
+                    $('#desPayPassword').val(data.response);
+                }else{
+                    if(payPassword!=''){
+                        $("#payPasswordError").html("支付密码错误");
+                    }else{
+                        $("#payPasswordError").html("支付密码为空");
+                    }
+                }
+            },
+            error: function(xhr, type){
+            }
+        })
+    };
+
+    function balance(values){
+//        var reg = /^((\d{1,3}(,\d{3})*)|(\d+))(\.\d{2})?$/;
+        var reg = /^[0-9]+$|^[0-9]+\.[0-9]{1,2}$/;
+        var syamount =  $("#syamount").val();
+        if(values.value == ""){
+            existOtherPayWay();
+            change_womaicard();
+        }
+        if(!reg.test(syamount)){
+            $("#countinput").html("请输入正确的格式");
+            $("#syamount").value = "";
+            change_womaicard();
+            return;
+        }
+        existOtherPayWay();
+        //输入的金额
+        var syamount =  $("#syamount").val();
+        if($("#card").css('display')=='none'){
+            syamount = 0;
+        }
+
+        //需要支付的金额
+        var pricetrue = $("#pricetrue").val();
+        //我买卡余额
+        var count = $("#count").val().replace("元", "");
+
+        var amounttrue;
+
+        if(count*1.0<pricetrue*1.0){
+            if(syamount*1.0 > count*1.0){
+                amounttrue = count;
+            }else{
+                amounttrue =  syamount;
+            }
+            $("#existCheckoutInvoice").html("否");
+        }else{
+            if(syamount*1.0 > pricetrue*1.0){
+                amounttrue = pricetrue;
+                $("#otherprice").html("");
+                $('input:radio[name="checkOutRequest.payWay.other"]').attr("checked",false);
+            }else{
+                amounttrue =  syamount;
+                $("#existCheckoutInvoice").html("否");
+            }
+        }
+
+        if(syamount!=''){
+            $("#countinput").html("");
+        }else{
+            $("#countinput").html("金额不能为空");
+        }
+
+        $("#syamount").val(amounttrue);
+        $("#balance").html(amounttrue);
+        existCheckoutInvoice();
+        change_womaicard();
+    }
+    //我买卡支付方式验证
+    function paySubimt(){
+        if($("#syamount").val() == ''){
+            //如果我买卡支付方式，金额为空
+            jQuery.dialog({
+                content: "我买卡金额不能为空",
+                title: '提示',
+                okText: "确定",
+                width: 200,
+                ok: function () {
+                }
+            });
+            return false;
+        }
+
+        if($("#payPassword").val() == '') {
+            //如果我买卡支付方式，密码为空
+            $("#countinput").html("");
+            jQuery.dialog({
+                content: "请输入支付密码！",
+                title: '提示',
+                okText: "确定",
+                width: 200,
+                ok: function () {
+                }
+            });
+            return false;
+        }
+
+        getOrders();
+        var desPayPassword = $('#desPayPassword').val();
+        if(desPayPassword == ''){
+            $("#countinput").html("");
+            jQuery.dialog({
+                content: "支付密码错误",
+                title: '提示',
+                okText: "确定",
+                width: 200,
+                ok: function () {
+                }
+            });
+            return false;
+        }
+        return true;
+    }
+    function cardError(){
+        $("#couponCard").attr("value","");//清空有问题卡卷
+        window.location.href = "http://m.womai.com/cart/cartGet.action";
+    }
+
+    $(function(){
+        var lineLink = location.href;
+        var descContent = '全球美食尽在中粮我买网';
+        var shareTitle = '中粮我买网';
+        loadInfo.init(lineLink,descContent,shareTitle);
+    })
+
+    function checkUserName(addrUserName,customerName){
+        return customerName!=null && customerName!="" && customerName!=undefined ;
+    }
+
+    function isChineseIdentityID(identityId){
+        identityId = identityId.toString()
+        var _identityId="";
+        if(_identityId!=null && _identityId!="" && _identityId!=undefined && identityId == _identityId){
+            return true;
+        }
+        //1.验证最后一位验证码
+        if (identityId.length == 18){
+            var a,b,c
+            if (!isInteger(identityId.substr(0,17))) {
+                return false;
+            }
+            a = str2int(identityId.substr(0,1))*7 + str2int(identityId.substr(1,1))*9 + str2int(identityId.substr(2,1))*10;
+            a = a + str2int(identityId.substr(3,1))*5 + str2int(identityId.substr(4,1))*8 + str2int(identityId.substr(5,1))*4;
+            a = a + str2int(identityId.substr(6,1))*2 + str2int(identityId.substr(7,1))*1 + str2int(identityId.substr(8,1))*6;
+            a = a + str2int(identityId.substr(9,1))*3 + str2int(identityId.substr(10,1))*7 + str2int(identityId.substr(11,1))*9;
+            a = a + str2int(identityId.substr(12,1))*10 + str2int(identityId.substr(13,1))*5 + str2int(identityId.substr(14,1))*8;
+            a = a + str2int(identityId.substr(15,1))*4 + str2int(identityId.substr(16,1))*2;
+            b = a%11;
+            if (b==2){ //最后一位为校验位
+                c = identityId.substr(17,1).toUpperCase(); //转为大写X
+            }else{
+                c = str2int(identityId.substr(17,1));
+            }
+
+            switch(b){
+                case 0: if (c != 1) {return false;}break;
+                case 1: if (c != 0) {return false;}break;
+                case 2: if (c != "X") {return false;}break;
+                case 3: if (c != 9) {return false;}break;
+                case 4: if (c != 8) {return false;}break;
+                case 5: if (c != 7) {return false;}break;
+                case 6: if (c != 6) {return false;}break;
+                case 7: if (c != 5) {return false;}break;
+                case 8: if (c != 4) {return false;}break;
+                case 9: if (c != 3) {return false;}break;
+                case 10: if (c != 2){return false;}break;
+            }
+        }else{ //15位身份证号
+            if (!isInteger(identityId)) {
+                return false;
+            }
+        }
+
+        //2.验证出生年月日
+        switch(identityId.length){
+            case 15:
+                if (isValidDate("19"+identityId.substr(6,2),identityId.substr(8,2),identityId.substr(10,2))) {
+                    return true;
+                }else {
+                    return false;
+                }
+            case 18:
+                if (isValidDate(identityId.substr(6,4),identityId.substr(10,2),identityId.substr(12,2))) {
+                    return true;
+                }else {
+                    return false;
+                }
+        }
+        return false;
+
+    }
+
+    function str2int(str){
+        //注意：此程序中不能直接使用parseInt()转换，因为08，09会被当作八进制数来转换<以0开始>
+        return parseInt(parseFloat(str));
+    }
+
+    //验证年月日
+    function isValidDate(iY, iM, iD) {//此法巧妙
+        var date = new Date(str2int(iY),str2int(iM) - 1,str2int(iD));//注意：Date(year,month,date)的参数取值范围：year:4位整数，month:0~11，date:1~31.
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;//注意：getMonth()的结果范围：0～11
+        var d = date.getDate();
+        if (y != iY || m != iM || d != iD){
+            return false;
+        }
+        return true;
+    }
+
+    //验证是否是数字
+    function isInteger(str) {
+        if (!/^\d+$/.test(str)){
+            return false;
+        }
+        return true;
+    }
+
+$(function(){
+    dailog_module.check();
+});
+var dailog_module={
+    data:{
+        addressCode:"",
+        addressMsg:"",
+        confirmBtn:"",
+        cancelBtn:""
+    },
+    init:function(){
+        dailog_module.data.addressCode="";
+        dailog_module.data.addressMsg="";
+        dailog_module.data.confirmBtn="";
+        dailog_module.data.cancelBtn="";
+//            alert(dailog_module.data.addressCode+"---"+dailog_module.data.addressMsg+"---"+dailog_module.data.confirmBtn+"---"+dailog_module.data.cancelBtn);
+    },
+    check:function(){
+        dailog_module.init();
+        if(dailog_module.data.addressCode === "1" || dailog_module.data.addressCode === "2"){
+            dailog_module.show();
+        }
+
+    },
+    show:function(){
+        jQuery.dialog({
+            content: dailog_module.data.addressMsg,
+            title: '提示',
+            okText: dailog_module.data.confirmBtn,
+            cancelText: dailog_module.data.cancelBtn,
+            width: 200,
+            ok: function () {
+                document.getElementById("checkoutform").action = "http://m.womai.com/order/distributionlist.action";
+                document.getElementById("checkoutform").submit();
+            },
+            cancel: function () {
+            }
+        });
+    }
+}
+</script>
+<script id="ga_checkout" GA_UserId="87541366" type="text/javascript" src="http://m.womai.com/js/GA/checkout.js?v=20160606"></script>
+
+
+	<footer class="syncsite-city-h">
+        <div class="s-footera s-lr">
+        <div class="sl">
+                            <a href="http://m.womai.com/my/home.action">sj_55978643362</a> | <a href="http://m.womai.com/sso/loginOut.action">退出</a>
+                    </div>
+        <div class="sr">
+            <a href="http://m.womai.com/my/feedBack.action">反馈</a> |
+            <a href="javascript:scrollTo(0,0);">回顶部</a>
+        </div>
+    </div>
+    <div class="s-footerb">
+        <span class="s-baiBorder s-inblock"><a href="http://m.womai.com/index.shtml" class="s-baiBtn s-Btn29">首页</a></span>&nbsp;
+        <span class="s-baiBorder s-inblock"><a href="http://m.womai.com/category/list.action" class="s-baiBtn s-Btn29">分类</a></span>&nbsp;
+        <span class="s-baiBorder s-inblock"><a href="http://m.womai.com/cart/cartGet.action" class="s-baiBtn s-Btn29">购物车</a></span>&nbsp;
+        <span class="s-baiBorder s-inblock"><a href="http://m.womai.com/my/home.action" class="s-baiBtn s-Btn29">我的小买</a></span>
+    </div>
+    <div class="s-footerc">
+        <p class="s-color7"><a target="_blank" class="s-color7" href="https://itunes.apple.com/cn/app/zhong-liang-wo-mai-wang/id528910047?mt=8">&nbsp;下载iphone客户端</a>&#12288;|&#12288;<a target="_blank" class="s-color7" href="http://upload.m.womai.com/app/android/womai.apk">下载android客户端</a></p>
+        <p class="s-color7"><a class="s-color7" href="http://m.womai.com/">触屏版</a>&#12288;|&#12288;<a class="s-color7" href="http://www.womai.com?redirect=false">电脑版</a></p>
+        <p>客服电话 <a href="tel:400-005-5678" class="s-color7">400-005-5678</a></p>
+        <div style="width:300px;margin:0 auto; padding:5px 0;">
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010102000458" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="http://m.womai.com/images/icpno.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11010102000458号</p></a>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript">
+        var GA_PageGroup = GA_PageGroup || "";
+    var GA_UserId = '87541366';
+    var _runJaExtra=_runJaExtra|| "";
+    //是不是在外部执行ja
+    if(!_runJaExtra){
+        gaTracker('create', 'UA-10228579-1', 'auto','Truemetrics', {'userId': '87541366'});
+        gaTracker('Truemetrics.require', 'linkid', 'linkid.js');
+//        gaTracker('Truemetrics.require', 'displayfeatures');
+        gaTracker('Truemetrics.set', 'displayFeaturesTask', null);
+        gaTracker('Truemetrics.require', 'ec');
+        gaTracker('Truemetrics.set', 'contentGroup1', GA_PageGroup);
+        gaTracker(function() {
+            var clientID = gaTracker.getByName('Truemetrics').get('clientId');
+            gaTracker('Truemetrics.set', 'dimension1', clientID); });
+        gaTracker('Truemetrics.set', 'dimension2', '87541366');
+
+        gaTracker('Truemetrics.set', 'transport', 'beacon');
+        gaTracker('Truemetrics.set', 'forceSSL', true);
+        gaTracker('Truemetrics.send', 'pageview');
+    }
+</script><script type="text/javascript">
+            //Vizury埋点
+            (function() {
+                try {
+                    var viz = document.createElement("script");
+                    viz.type = "text/javascript";
+                    viz.async = true;
+                    viz.src = ("https:" == document.location.protocol ?"https://cn-tags.vizury.com" : "http://cn-tags.vizury.com")+ "/analyze/pixel.php?account_id=VIZVRM2960";
+
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(viz, s);
+                    viz.onload = function() {
+                        try {
+                            pixel.parse();
+                        } catch (i) {
+                        }
+                    };
+                    viz.onreadystatechange = function() {
+                        if (viz.readyState == "complete" || viz.readyState == "loaded") {
+                            try {
+                                pixel.parse();
+                            } catch (i) {
+                            }
+                        }
+                    };
+                } catch (i) {
+                }
+            })();
+            //百度统计
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?3d400e618922947d47d0b95855f8b230";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+            //sem
+            var _fxcmd = _fxcmd || [];
+            _fxcmd.sid = 'dad82a7fe513d4091944229540d582e1';
+            (function () {
+                var _pzfx = document['createElement']('script');
+                _pzfx.type = 'text/javascript';
+                _pzfx.async = true;
+                _pzfx.src = '//static.w3t.cn/fx/1/1/fx.js';
+                var sc = document.getElementsByTagName('script')[0];
+                sc.parentNode.insertBefore(_pzfx, sc);
+            })();
+</script>
+<script type="text/javascript">
+    (function(){
+        var bp = document.createElement('script');
+        bp.src = '//push.zhanzhang.baidu.com/push.js';
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+<script type="text/javascript">
+    (window.__zp_tag_params = window.__zp_tag_params ||{})["src"] = "H5";
+
+    (function(param){
+        var c = {query:[], args:param||{}};
+        c.query.push(["_setAccount","75"]);
+        c.query.push(["_setSiteID","2"]);
+        (window.__zpSMConfig = window.__zpSMConfig||[]).push(c);
+        var zp = document.createElement("script"); zp.type = "text/javascript"; zp.async = true;
+        zp.src = ("https:" == document.location.protocol ? "https:" : "http:") + "//cdn.zampda.net/s.js";
+        var len = document.getElementsByTagName("script").length;
+        var s = document.getElementsByTagName("script")[len-1]; s.parentNode.appendChild(zp);
+    })(window.__zp_tag_params);
+</script>
+	</body>
+</html>

@@ -1,0 +1,493 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=320, initial-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        * { padding:0; margin: 0; -webkit-appearance: none;}
+        html{ position:relative; height: 100%;}
+        body { position: relative; font-family: '微软雅黑','华文仿宋';background-color: #f0f0f0; color: #888; font-size: 13px; height: 100%}
+        img {border: none;}
+        a {text-decoration: none;color: #000;}
+        input{outline:none;border: none;}
+        #app {position: relative; width: 100%; height: 100%; overflow: hidden;}
+        .sub {text-align:  center; margin-top: 35px; margin-bottom: 25px; font-size: 20px;color: #323232; }
+        .num {font-size: 24px; color: #ff5252;}
+        .box {position: relative; margin: 15px; background-color: #fff; line-height: 47px; font-size: 15px; color:#646464;border: .5px solid #e1e1e1; border-radius: 5px;}
+        .title {position: absolute;
+            left: 15px;
+            width: 80px;}
+        .benefit {padding: 8px 15px;}
+        .question {line-height: 25px; color:#323232;}
+        .line {border-top: 1px solid #e1e1e1;}
+        .answer {line-height: 18px; font-size: 13px; color: #888;}
+        input{ border: none;}
+        .row {position:relative;}
+        .row input {
+            margin-left: 95px;
+            width: 63%;
+            line-height: 20px;
+            color: #323232;
+            font-size: 14px;
+        }
+        .submit { display: block; margin: 15px; background-color: #ff5252; color: #fff; text-align: center; line-height: 48px; border-radius: 5px; font-size: 17px;}
+        .black {color: #323232;margin-left: 2px;}
+        .red {width: 15px; height: 15px;vertical-align: middle;margin-left:2px;margin-bottom: 2px;    margin-right: 20px;}
+        .no-circle {width: 13px; height: 13px; border-radius: 50%; border: .5px solid #646464;display: inline-block;vertical-align: middle;margin-bottom: 2px;}
+        .row .redcircle{width: 15px; height:15px; vertical-align: middle;margin-bottom: 2px;}
+        .mask { background: rgba(0,0,0,.8); z-index: 100; position: fixed ;top:0; left: 0; right: 0; bottom: 0; }
+        .window {position: relative;width: 290px; height:190px; margin: 215px auto 0 auto;background-color: #fff; border-radius: 5px;}
+        .m-btn {position: absolute; line-height: 45px; bottom: 20px; left: 15px; right: 15px; background-color: #ff5252;font-size: 15px; color: #fff; text-align: center; border-radius: 5px;}
+        .window p{line-height: 22px; padding: 50px 25px 0 25px; font-size: 15px; color: #323232;}
+        .window .txtcenter {text-align: center;}
+        .invalid::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: red;
+            opacity: 1;
+        }
+        input.invalid:-ms-input-placeholder{
+            color: red;
+        }
+        input.invalid::-webkit-input-placeholder {
+            color: red;
+        }
+        .flexbox {
+            -webkit-box-orient:vertical;
+            flex-direction: column;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top:0;
+            bottom: 0;
+            overflow-y: auto;
+        }
+        .mainbox { flex: 1 0 auto;
+            -webkit-overflow-scrolling: touch;}
+        [v-cloak] {
+            display: none;
+        }
+        .top-area{
+            display: block;
+        }
+        .hid {display: none; opacity: 0;}
+        .show {display: block; opacity: 1;}
+        @media screen and (max-width: 325px) {
+            .flexbox{display: block;width:100%;}
+            .box{margin: 10px;}
+            .redcircle{margin-left: -15px;}
+            .top-area{position: absolute;width: 100%;top: 0;bottom: 100px;overflow-y: auto;}
+            .submit{position: absolute;bottom: 0;width: 90%;}
+        }
+    </style>
+    <title>填写收件信息</title>
+    <link rel="stylesheet" type="text/css" href="css/LArea.css"/>
+</head>
+<body>
+<div id="app">
+    <div id="mainbox" class="flexbox hid">
+        <div class="top-area">
+            <div class="sub" v-cloak>{{receipt_detail.length}}张发票 共<span class="num" v-cloak>{{totalAmount}}</span>元</div>
+            <div class="box">
+                <div class="row">
+                    <label class="title">发票类型：</label>
+                    <!--<template v-if="type">-->
+                        <!--<img class="redcircle" style="margin-left: 95px;" v-on:click="billType(true,true)" src="//i1.yongche.name/media/g2/M01/16/21/rBEBJVj_HgeIVSy1AAAGSBZ9ljkAAIxOgP_-XkAAAaH373.png">-->
+                    <!--</template>-->
+                    <!--<template v-else>-->
+                        <!--<img class="redcircle" style="margin-left: 95px;" v-on:click="billType(true,true)" src="//i1.yongche.name/media/g2/M03/16/21/rBEBP1j_HiKIAhkZAAAGco2tyYAAAIxSQP_-DgAAAaK433.png">-->
+                    <!--</template>-->
+                    <!--<span class="black">电子发票</span><img class="red" src="//i2.yongche.name/media/g2/M03/16/21/rBEBJVj_HjyICvnwAAAGA647254AAIw-QP_-coAAAY2150.png">-->
+                    <!--<template v-if="type">-->
+                        <!--<img class="redcircle" v-on:click="billType(false,false)" src="//i1.yongche.name/media/g2/M03/16/21/rBEBP1j_HiKIAhkZAAAGco2tyYAAAIxSQP_-DgAAAaK433.png">-->
+                    <!--</template>-->
+                    <!--<template v-else>-->
+                        <!--<img class="redcircle" v-on:click="billType(false,false)" src="//i1.yongche.name/media/g2/M01/16/21/rBEBJVj_HgeIVSy1AAAGSBZ9ljkAAIxOgP_-XkAAAaH373.png">-->
+                    <!--</template>-->
+                    <span class="black" style="margin-left: 100px;">纸质发票</span>
+                </div>
+                <div class="benefit line">
+                    <!--<template v-if="textType">-->
+                        <!--<template v-if="morePostFlag">-->
+                            <!--<p class="answer">您选择的纸质发票将在提交后10个工作日尽快寄出，自2016年12月1日起，发票邮寄所产生的快递费用需要您自行支付。</p>-->
+                        <!--</template>-->
+                        <!--<template v-else>-->
+                            <!--<p class="answer">感谢您选择电子发票，发票将在提交后24小时内发送到您的电子邮箱，请核对邮箱地址准确无误。</p>-->
+                        <!--</template>-->
+                    <!--</template>-->
+                    <!--<template v-else>-->
+                        <!--<p class="answer">-->
+                            <!--您选择的纸质发票将在提交后10个工作日尽快寄出，自2016年12月1日起，发票邮寄所产生的快递费用需要您自行支付。</p>-->
+                    <!--</template>-->
+                    <p class="answer">
+                        您选择的纸质发票将在提交后10个工作日尽快寄出，自2016年12月1日起，发票邮寄所产生的快递费用需要您自行支付。</p>
+                </div>
+                <!--<template v-if="textType">-->
+                    <!--<div class="row line">-->
+                        <!--<label class="title">邮箱地址：</label>-->
+                        <!--<input id="receipt_email" v-model="receipt_email" placeholder="请输入"/>-->
+                    <!--</div>-->
+                <!--</template>-->
+                <!--<template v-else>-->
+                    <!--<div class="row line">-->
+                        <!--<label class="title"><span style="margin-right:30px;">姓</span>名：</label>-->
+                        <!--<input id="receipt_name" v-model="receipt_name" placeholder="请输入收件人姓名"/>-->
+                    <!--</div>-->
+                    <!--<div class="row line">-->
+                        <!--<label class="title">联系电话：</label>-->
+                        <!--<input type="tel" id="receipt_cellphone" v-model="receipt_cellphone" placeholder="请输入收件人联系电话"/>-->
+                    <!--</div>-->
+                    <!--<div class="row line">-->
+                        <!--<label class="title">所在地区：</label>-->
+                        <!--<input type="text" v-model="selectAddress" v-on:click="nokeyBoard" placeholder="地址" id="selectAddress">-->
+                        <!--<input type="text" v-model="value2" style="display: none;"   id="value2">-->
+                    <!--</div>-->
+                    <!--<div class="row line">-->
+                        <!--<label class="title">邮寄地址：</label>-->
+                        <!--<input id="receipt_address" v-model="receipt_address" placeholder="请输入详细收件地址"/>-->
+                    <!--</div>-->
+                    <!--<div class="row line">-->
+                        <!--<label class="title"><span style="margin-right:30px;">邮</span>编：</label>-->
+                        <!--<input type="tel" id="receipt_postcode " v-model="receipt_postcode " placeholder="请输入邮编"/>-->
+                    <!--</div>-->
+                    <!--<div class="row line">-->
+                        <!--<label class="title">邮箱地址：</label>-->
+                        <!--<input type="email" id="receipt_email2" v-model="receipt_email2" placeholder="请输入邮箱地址"/>-->
+                    <!--</div>-->
+                <!--</template>-->
+                <div class="row line">
+                    <label class="title"><span style="margin-right:30px;">姓</span>名：</label>
+                    <input id="receipt_name" v-model="receipt_name" placeholder="请输入收件人姓名"/>
+                </div>
+                <div class="row line">
+                    <label class="title">联系电话：</label>
+                    <input type="tel" id="receipt_cellphone" v-model="receipt_cellphone" placeholder="请输入收件人联系电话"/>
+                </div>
+                <div class="row line">
+                    <label class="title">所在地区：</label>
+                    <input type="text" v-model="selectAddress" v-on:click="nokeyBoard" placeholder="地址" id="selectAddress">
+                    <input type="text" v-model="value2" style="display: none;"   id="value2">
+                </div>
+                <div class="row line">
+                    <label class="title">邮寄地址：</label>
+                    <input id="receipt_address" v-model="receipt_address" placeholder="请输入详细收件地址"/>
+                </div>
+                <div class="row line">
+                    <label class="title"><span style="margin-right:30px;">邮</span>编：</label>
+                    <input type="tel" id="receipt_postcode " v-model="receipt_postcode " placeholder="请输入邮编"/>
+                </div>
+                <div class="row line">
+                    <label class="title">邮箱地址：</label>
+                    <input type="email" id="receipt_email2" v-model="receipt_email2" placeholder="请输入邮箱地址"/>
+                </div>
+            </div>
+        </div>
+        <div class="submit" v-on:click="submit($event)" v-bind:disabled='isSubmit'>提交</div>
+    </div>
+    <div id="loading">
+        <p>loading ...</p>
+    </div>
+
+    <template v-if="eleAlert">
+        <div class="mask">
+            <div class="window">
+                <p>电子发票与近期行程单会随后发送到您的邮箱，请注意查收</p>
+                <div class="m-btn" v-on:click="know">我知道了</div>
+            </div>
+        </div>
+    </template>
+    <template v-if="paperAlert">
+        <div class="mask">
+            <div class="window">
+                <p>我们已经收到了您的开票请求，会按照开票需求为您邮寄发票，发票将在10个工作日内寄出</p>
+                <div class="m-btn" v-on:click="know">我知道了</div>
+            </div>
+        </div>
+    </template>
+    <div class="mask" v-show="errorShow" style="display: none;">
+        <div class="window">
+            <p class="txtcenter">{{errorMsg}}</p>
+            <div class="m-btn" v-on:click="errorBack">我知道了</div>
+        </div>
+    </div>
+
+</div>
+<template id="paper"></template>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/vue-resource.min.js"></script>
+<script src="js/vue-router.min.js"></script>
+<script src="js/LAreaData.js"></script>
+<script src="js/selectAdd.js"></script>
+<script>
+    function getCookie(name)
+    {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+    var token=getCookie('_app_token_v3');
+
+    new Vue({
+        el: '#app',
+        data: {
+            apiUrl: '/h5/receipt?access_token='+token,
+            result: {},
+//            type: true, 隐藏电子发票
+            type: false,
+            textType: true,
+            eleAlert: false,
+            paperAlert: false,
+            receipt_detail: [],
+//            receipt_type: 3, 隐藏电子发票
+            receipt_type: 1,
+            chooseAmount: 0, //总金额
+            totalAmount:0,
+            errorShow:false,
+            errorMsg:"",
+            morePostFlag: false,
+            selectAddress: "",
+            value2: "",
+            GlobalCity: "",
+            receipt_email2: "",
+            receipt_postcode: "",
+            receipt_address: "",
+            selectAddress: "",
+            receipt_cellphone: "",
+            receipt_name: "",
+            receipt_email: "",
+            isSubmit:false
+        },
+        ready: function() {
+            this.receipt_detail = JSON.parse(localStorage["newPool"]);
+            this.GlobalCity = JSON.parse(localStorage["GlobalCity"]);
+            this.totalAmount = JSON.parse(localStorage["totalAmount"]);
+            this.morePostFlag = JSON.parse(localStorage["morePostFlag"]);
+            this.formCity();
+            this.$nextTick(function(){
+                $("#mainbox").removeClass('hid');
+                $("#loading").addClass("hid");
+
+                /**隐藏电子发票 暂时移动的代码**/
+                var area = new LArea();
+                area.init({
+                    'trigger': '#selectAddress',
+                    'valueTo': '#value2',
+                    'keys': {
+                        id: 'value',
+                        name: 'text'
+                    },
+                    'type': 2,
+                    'data': [provs_data, citys_data, dists_data]
+
+                });
+
+            });
+        },
+        methods: {
+            formCity: function() {
+                var that = this;
+                for(var i=0;i<that.receipt_detail.length; i++) {
+                    var cityName = that.receipt_detail[i].city;
+                    $.each(that.GlobalCity, function(key,val) { //遍历数组
+                        if(cityName == val) {
+                            that.receipt_detail[i].city = key;
+                            return;
+                        }
+                    });
+                }
+
+            },
+            billType: function(flag1,flag2) {
+                $('input').blur();
+                this.type = flag1;
+                this.textType = flag2;
+                this.$nextTick(function(){
+                    if(!!!flag1){
+                        var area = new LArea();
+                        area.init({
+                            'trigger': '#selectAddress',
+                            'valueTo': '#value2',
+                            'keys': {
+                                id: 'value',
+                                name: 'text'
+                            },
+                            'type': 2,
+                            'data': [provs_data, citys_data, dists_data]
+
+                        });
+                    }
+                });
+            },
+            submit: function(event) {
+                var that =this ;
+                if(that.isSubmit){
+                    return false;
+                }
+                that.isSubmit=true;
+
+                if(that.type) { //电子发票
+                    that.receipt_type = 3;
+                    if(!that.receipt_email||!that.receipt_email.trim()) {
+                        /*$("#receipt_email").addClass("invalid");*/
+                        that.errorMsg="请输入用户邮箱"
+                        that.errorShow=true;
+                        that.isSubmit=false;
+
+                        return false;
+                    }
+                    if(!(/^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/.test(that.receipt_email))){
+                        that.errorMsg="邮箱格式不正确"
+                        that.errorShow=true;
+                        that.isSubmit=false;
+
+                        return false;
+                    }
+                } else { //纸质发票
+                    that.receipt_type = 1;
+                    if(!that.receipt_name||!that.receipt_name.trim()) {
+                        /*$("#receipt_name").css("color","red");*/
+                        that.errorMsg="请输入姓名"
+                        that.errorShow=true;
+                        that.isSubmit=false;
+
+                        return false;
+                    }
+                    if(!that.receipt_cellphone||!that.receipt_cellphone.trim()) {
+                        /*$("#receipt_cellphone").addClass("invalid");*/
+                        that.errorMsg="请输入联系电话"
+                        that.errorShow=true;
+                        that.isSubmit=false;
+
+                        return false;
+                    }
+                    if(!(/^1(3|4|5|6|7|8)\d{9}$/.test(that.receipt_cellphone.trim()))){
+                        /*$("#receipt_cellphone").addClass("invalid");*/
+                        that.errorMsg="手机号码格式不正确";
+                        that.errorShow=true;
+                        that.isSubmit=false;
+
+                        return false;
+                    }
+                    if(!that.selectAddress||!that.selectAddress.trim()) {
+                        /*$("#selectAddress").addClass("invalid");*/
+                        that.errorMsg="请输入所在地区";
+                        that.errorShow=true;
+                        that.isSubmit=false;
+
+                        return false;
+                    }
+                    if(!that.receipt_address||!that.receipt_address.trim()) {
+                        /*$("#receipt_address").addClass("invalid");*/
+                        that.errorMsg="请输入邮寄地址";
+                        that.errorShow=true;
+                        that.isSubmit=false;
+
+                        return false;
+                    }
+                    if(!that.receipt_postcode||!that.receipt_postcode.trim()) {
+                        /*$("#receipt_postcode").addClass("invalid");*/
+                        that.errorMsg="请输入邮编";
+                        that.errorShow=true;
+                        that.isSubmit=false;
+
+                        return false;
+                    }
+                    if(!(/^[0-9]\d{5}(?!\d)$/.test(that.receipt_postcode.trim()))) {
+                        /*$("#receipt_postcode").addClass("invalid");*/
+                        that.errorMsg="邮编格式不正确";
+                        that.errorShow=true;
+                        that.isSubmit=false;
+
+                        return false;
+                    }
+                    if(!that.receipt_email2||!that.receipt_email2.trim()) {
+                        /*$("#receipt_email2").addClass("invalid");*/
+                        that.errorMsg="请输入邮箱地址";
+                        that.errorShow=true;
+                        that.isSubmit=false;
+
+                        return false;
+                    }
+                    if(!(/^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/.test(that.receipt_email2))){
+                        that.errorMsg="邮箱格式不正确";
+                        that.errorShow=true;
+                        that.isSubmit=false;
+
+                        return false;
+                    }
+                    var addr = that.selectAddress.split(","); //地区名称
+                    that.province_name = addr[0];
+                    that.city_name = addr[1];
+                    that.county_name = addr[2];
+                    var addrcode2 =  $('#value2').val().split(","); //地区编码
+                    that.province_code = addrcode2[0];
+                    that.city_code = addrcode2[1];
+                    that.county_code = addrcode2[2];
+                    that.receipt_email = that.receipt_email2;
+                }
+
+                $.ajax({
+                    type: 'post',
+                    url: that.apiUrl,
+                    data: {
+                        receipt_postcode:that.receipt_postcode,
+                        receipt_name:that.receipt_name,
+                        receipt_cellphone:that.receipt_cellphone,
+                        receipt_address:that.receipt_address,
+                        province_code:that.province_code,
+                        city_code: that.city_code,
+                        county_code:that.county_code,
+                        province_name:that.province_name,
+                        city_name:that.city_name,
+                        county_name:that.county_name,
+                        receipt_email:that.receipt_email,
+                        receipt_detail:JSON.stringify(that.receipt_detail),
+                        receipt_type:that.receipt_type
+                    },
+                    success:function(data){
+                        if(data.ret_code==200){
+                            if(that.receipt_type == 3) { //电子发票
+                                that.eleAlert = true;
+                            }
+                            else { //纸质发票 提示窗
+                                that.paperAlert = true;
+                            }
+                            that.isSubmit=true;
+
+                        } else {
+                            that.errorMsg=data.ret_msg;
+                            that.errorShow=true;
+                            that.isSubmit=false;
+
+                            return false;
+                        }
+                    },
+                    error:function(data){
+                        console.log("error");
+                        that.isSubmit=false;
+                    }
+                })
+            },
+            know: function() {
+                var url="yongche://closeWindow";
+                window.location.href=url;
+
+                /* window.location.href = "invoiceRecord.html"*/
+            },
+            errorBack:function(){
+                this.errorShow=false;
+                this.errorMsg="";
+            },
+            nokeyBoard: function() {
+                $('input').blur();
+            }
+        }
+    });
+</script>
+</body>
+</html>

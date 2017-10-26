@@ -1,0 +1,953 @@
+{
+  "data": {
+    "secLength": 1,
+    "sections": [
+      {
+        "1": {
+          "seatMap": {
+            "9:12": {
+              "columnNo": "12",
+              "rowNo": "9",
+              "columnId": "1",
+              "seatNo": "749",
+              "status": "N",
+              "rowId": "9"
+            },
+            "9:13": {
+              "columnNo": "13",
+              "rowNo": "9",
+              "columnId": "",
+              "seatNo": "1_9_13",
+              "status": "E",
+              "rowId": "9"
+            },
+            "9:10": {
+              "columnNo": "10",
+              "rowNo": "9",
+              "columnId": "3",
+              "seatNo": "747",
+              "status": "N",
+              "rowId": "9"
+            },
+            "9:11": {
+              "columnNo": "11",
+              "rowNo": "9",
+              "columnId": "2",
+              "seatNo": "748",
+              "status": "N",
+              "rowId": "9"
+            },
+            "1:13": {
+              "columnNo": "13",
+              "rowNo": "1",
+              "columnId": "1",
+              "seatNo": "646",
+              "status": "N",
+              "rowId": "1"
+            },
+            "1:12": {
+              "columnNo": "12",
+              "rowNo": "1",
+              "columnId": "2",
+              "seatNo": "645",
+              "status": "N",
+              "rowId": "1"
+            },
+            "1:11": {
+              "columnNo": "11",
+              "rowNo": "1",
+              "columnId": "3",
+              "seatNo": "644",
+              "status": "N",
+              "rowId": "1"
+            },
+            "1:10": {
+              "columnNo": "10",
+              "rowNo": "1",
+              "columnId": "4",
+              "seatNo": "643",
+              "status": "N",
+              "rowId": "1"
+            },
+            "1:1": {
+              "columnNo": "1",
+              "rowNo": "1",
+              "columnId": "13",
+              "seatNo": "634",
+              "status": "N",
+              "rowId": "1"
+            },
+            "1:2": {
+              "columnNo": "2",
+              "rowNo": "1",
+              "columnId": "12",
+              "seatNo": "635",
+              "status": "N",
+              "rowId": "1"
+            },
+            "1:3": {
+              "columnNo": "3",
+              "rowNo": "1",
+              "columnId": "11",
+              "seatNo": "636",
+              "status": "N",
+              "rowId": "1"
+            },
+            "1:4": {
+              "columnNo": "4",
+              "rowNo": "1",
+              "columnId": "10",
+              "seatNo": "637",
+              "status": "N",
+              "rowId": "1"
+            },
+            "1:5": {
+              "columnNo": "5",
+              "rowNo": "1",
+              "columnId": "9",
+              "seatNo": "638",
+              "status": "N",
+              "rowId": "1"
+            },
+            "5:1": {
+              "columnNo": "1",
+              "rowNo": "5",
+              "columnId": "13",
+              "seatNo": "686",
+              "status": "N",
+              "rowId": "5"
+            },
+            "1:6": {
+              "columnNo": "6",
+              "rowNo": "1",
+              "columnId": "8",
+              "seatNo": "639",
+              "status": "N",
+              "rowId": "1"
+            },
+            "5:2": {
+              "columnNo": "2",
+              "rowNo": "5",
+              "columnId": "12",
+              "seatNo": "687",
+              "status": "N",
+              "rowId": "5"
+            },
+            "1:7": {
+              "columnNo": "7",
+              "rowNo": "1",
+              "columnId": "7",
+              "seatNo": "640",
+              "status": "N",
+              "rowId": "1"
+            },
+            "5:3": {
+              "columnNo": "3",
+              "rowNo": "5",
+              "columnId": "11",
+              "seatNo": "688",
+              "status": "N",
+              "rowId": "5"
+            },
+            "1:8": {
+              "columnNo": "8",
+              "rowNo": "1",
+              "columnId": "6",
+              "seatNo": "641",
+              "status": "N",
+              "rowId": "1"
+            },
+            "5:4": {
+              "columnNo": "4",
+              "rowNo": "5",
+              "columnId": "10",
+              "seatNo": "689",
+              "status": "N",
+              "rowId": "5"
+            },
+            "1:9": {
+              "columnNo": "9",
+              "rowNo": "1",
+              "columnId": "5",
+              "seatNo": "642",
+              "status": "N",
+              "rowId": "1"
+            },
+            "4:13": {
+              "columnNo": "13",
+              "rowNo": "4",
+              "columnId": "1",
+              "seatNo": "685",
+              "status": "N",
+              "rowId": "4"
+            },
+            "5:5": {
+              "columnNo": "5",
+              "rowNo": "5",
+              "columnId": "9",
+              "seatNo": "690",
+              "status": "N",
+              "rowId": "5"
+            },
+            "9:1": {
+              "columnNo": "1",
+              "rowNo": "9",
+              "columnId": "12",
+              "seatNo": "738",
+              "status": "N",
+              "rowId": "9"
+            },
+            "5:6": {
+              "columnNo": "6",
+              "rowNo": "5",
+              "columnId": "8",
+              "seatNo": "691",
+              "status": "LK",
+              "rowId": "5"
+            },
+            "9:2": {
+              "columnNo": "2",
+              "rowNo": "9",
+              "columnId": "11",
+              "seatNo": "739",
+              "status": "N",
+              "rowId": "9"
+            },
+            "5:7": {
+              "columnNo": "7",
+              "rowNo": "5",
+              "columnId": "7",
+              "seatNo": "692",
+              "status": "N",
+              "rowId": "5"
+            },
+            "9:3": {
+              "columnNo": "3",
+              "rowNo": "9",
+              "columnId": "10",
+              "seatNo": "740",
+              "status": "N",
+              "rowId": "9"
+            },
+            "5:8": {
+              "columnNo": "8",
+              "rowNo": "5",
+              "columnId": "6",
+              "seatNo": "693",
+              "status": "N",
+              "rowId": "5"
+            },
+            "9:4": {
+              "columnNo": "4",
+              "rowNo": "9",
+              "columnId": "9",
+              "seatNo": "741",
+              "status": "N",
+              "rowId": "9"
+            },
+            "5:9": {
+              "columnNo": "9",
+              "rowNo": "5",
+              "columnId": "5",
+              "seatNo": "694",
+              "status": "N",
+              "rowId": "5"
+            },
+            "9:5": {
+              "columnNo": "5",
+              "rowNo": "9",
+              "columnId": "8",
+              "seatNo": "742",
+              "status": "N",
+              "rowId": "9"
+            },
+            "9:6": {
+              "columnNo": "6",
+              "rowNo": "9",
+              "columnId": "7",
+              "seatNo": "743",
+              "status": "N",
+              "rowId": "9"
+            },
+            "9:7": {
+              "columnNo": "7",
+              "rowNo": "9",
+              "columnId": "6",
+              "seatNo": "744",
+              "status": "LK",
+              "rowId": "9"
+            },
+            "9:8": {
+              "columnNo": "8",
+              "rowNo": "9",
+              "columnId": "5",
+              "seatNo": "745",
+              "status": "N",
+              "rowId": "9"
+            },
+            "9:9": {
+              "columnNo": "9",
+              "rowNo": "9",
+              "columnId": "4",
+              "seatNo": "746",
+              "status": "N",
+              "rowId": "9"
+            },
+            "4:10": {
+              "columnNo": "10",
+              "rowNo": "4",
+              "columnId": "4",
+              "seatNo": "682",
+              "status": "N",
+              "rowId": "4"
+            },
+            "4:11": {
+              "columnNo": "11",
+              "rowNo": "4",
+              "columnId": "3",
+              "seatNo": "683",
+              "status": "N",
+              "rowId": "4"
+            },
+            "4:12": {
+              "columnNo": "12",
+              "rowNo": "4",
+              "columnId": "2",
+              "seatNo": "684",
+              "status": "N",
+              "rowId": "4"
+            },
+            "7:11": {
+              "columnNo": "11",
+              "rowNo": "7",
+              "columnId": "",
+              "seatNo": "1_7_11",
+              "status": "E",
+              "rowId": "7"
+            },
+            "7:10": {
+              "columnNo": "10",
+              "rowNo": "7",
+              "columnId": "1",
+              "seatNo": "721",
+              "status": "N",
+              "rowId": "7"
+            },
+            "7:13": {
+              "columnNo": "13",
+              "rowNo": "7",
+              "columnId": "",
+              "seatNo": "1_7_13",
+              "status": "E",
+              "rowId": "7"
+            },
+            "7:12": {
+              "columnNo": "12",
+              "rowNo": "7",
+              "columnId": "",
+              "seatNo": "1_7_12",
+              "status": "E",
+              "rowId": "7"
+            },
+            "4:1": {
+              "columnNo": "1",
+              "rowNo": "4",
+              "columnId": "13",
+              "seatNo": "673",
+              "status": "N",
+              "rowId": "4"
+            },
+            "4:2": {
+              "columnNo": "2",
+              "rowNo": "4",
+              "columnId": "12",
+              "seatNo": "674",
+              "status": "N",
+              "rowId": "4"
+            },
+            "4:3": {
+              "columnNo": "3",
+              "rowNo": "4",
+              "columnId": "11",
+              "seatNo": "675",
+              "status": "N",
+              "rowId": "4"
+            },
+            "4:4": {
+              "columnNo": "4",
+              "rowNo": "4",
+              "columnId": "10",
+              "seatNo": "676",
+              "status": "N",
+              "rowId": "4"
+            },
+            "4:5": {
+              "columnNo": "5",
+              "rowNo": "4",
+              "columnId": "9",
+              "seatNo": "677",
+              "status": "N",
+              "rowId": "4"
+            },
+            "8:1": {
+              "columnNo": "1",
+              "rowNo": "8",
+              "columnId": "",
+              "seatNo": "1_8_1",
+              "status": "E",
+              "rowId": "8"
+            },
+            "2:10": {
+              "columnNo": "10",
+              "rowNo": "2",
+              "columnId": "4",
+              "seatNo": "656",
+              "status": "N",
+              "rowId": "2"
+            },
+            "4:6": {
+              "columnNo": "6",
+              "rowNo": "4",
+              "columnId": "8",
+              "seatNo": "678",
+              "status": "N",
+              "rowId": "4"
+            },
+            "8:2": {
+              "columnNo": "2",
+              "rowNo": "8",
+              "columnId": "9",
+              "seatNo": "726",
+              "status": "N",
+              "rowId": "8"
+            },
+            "4:7": {
+              "columnNo": "7",
+              "rowNo": "4",
+              "columnId": "7",
+              "seatNo": "679",
+              "status": "N",
+              "rowId": "4"
+            },
+            "8:3": {
+              "columnNo": "3",
+              "rowNo": "8",
+              "columnId": "8",
+              "seatNo": "727",
+              "status": "N",
+              "rowId": "8"
+            },
+            "4:8": {
+              "columnNo": "8",
+              "rowNo": "4",
+              "columnId": "6",
+              "seatNo": "680",
+              "status": "N",
+              "rowId": "4"
+            },
+            "8:4": {
+              "columnNo": "4",
+              "rowNo": "8",
+              "columnId": "7",
+              "seatNo": "728",
+              "status": "N",
+              "rowId": "8"
+            },
+            "4:9": {
+              "columnNo": "9",
+              "rowNo": "4",
+              "columnId": "5",
+              "seatNo": "681",
+              "status": "N",
+              "rowId": "4"
+            },
+            "8:5": {
+              "columnNo": "5",
+              "rowNo": "8",
+              "columnId": "6",
+              "seatNo": "729",
+              "status": "N",
+              "rowId": "8"
+            },
+            "8:6": {
+              "columnNo": "6",
+              "rowNo": "8",
+              "columnId": "5",
+              "seatNo": "730",
+              "status": "N",
+              "rowId": "8"
+            },
+            "8:7": {
+              "columnNo": "7",
+              "rowNo": "8",
+              "columnId": "4",
+              "seatNo": "731",
+              "status": "N",
+              "rowId": "8"
+            },
+            "8:8": {
+              "columnNo": "8",
+              "rowNo": "8",
+              "columnId": "3",
+              "seatNo": "732",
+              "status": "N",
+              "rowId": "8"
+            },
+            "8:9": {
+              "columnNo": "9",
+              "rowNo": "8",
+              "columnId": "2",
+              "seatNo": "733",
+              "status": "N",
+              "rowId": "8"
+            },
+            "2:13": {
+              "columnNo": "13",
+              "rowNo": "2",
+              "columnId": "1",
+              "seatNo": "659",
+              "status": "N",
+              "rowId": "2"
+            },
+            "2:12": {
+              "columnNo": "12",
+              "rowNo": "2",
+              "columnId": "2",
+              "seatNo": "658",
+              "status": "N",
+              "rowId": "2"
+            },
+            "2:11": {
+              "columnNo": "11",
+              "rowNo": "2",
+              "columnId": "3",
+              "seatNo": "657",
+              "status": "N",
+              "rowId": "2"
+            },
+            "5:10": {
+              "columnNo": "10",
+              "rowNo": "5",
+              "columnId": "4",
+              "seatNo": "695",
+              "status": "N",
+              "rowId": "5"
+            },
+            "5:11": {
+              "columnNo": "11",
+              "rowNo": "5",
+              "columnId": "3",
+              "seatNo": "696",
+              "status": "N",
+              "rowId": "5"
+            },
+            "5:12": {
+              "columnNo": "12",
+              "rowNo": "5",
+              "columnId": "2",
+              "seatNo": "697",
+              "status": "N",
+              "rowId": "5"
+            },
+            "5:13": {
+              "columnNo": "13",
+              "rowNo": "5",
+              "columnId": "1",
+              "seatNo": "698",
+              "status": "N",
+              "rowId": "5"
+            },
+            "3:1": {
+              "columnNo": "1",
+              "rowNo": "3",
+              "columnId": "13",
+              "seatNo": "660",
+              "status": "N",
+              "rowId": "3"
+            },
+            "3:2": {
+              "columnNo": "2",
+              "rowNo": "3",
+              "columnId": "12",
+              "seatNo": "661",
+              "status": "N",
+              "rowId": "3"
+            },
+            "3:3": {
+              "columnNo": "3",
+              "rowNo": "3",
+              "columnId": "11",
+              "seatNo": "662",
+              "status": "N",
+              "rowId": "3"
+            },
+            "3:4": {
+              "columnNo": "4",
+              "rowNo": "3",
+              "columnId": "10",
+              "seatNo": "663",
+              "status": "N",
+              "rowId": "3"
+            },
+            "3:5": {
+              "columnNo": "5",
+              "rowNo": "3",
+              "columnId": "9",
+              "seatNo": "664",
+              "status": "N",
+              "rowId": "3"
+            },
+            "7:1": {
+              "columnNo": "1",
+              "rowNo": "7",
+              "columnId": "",
+              "seatNo": "1_7_1",
+              "status": "E",
+              "rowId": "7"
+            },
+            "3:6": {
+              "columnNo": "6",
+              "rowNo": "3",
+              "columnId": "8",
+              "seatNo": "665",
+              "status": "N",
+              "rowId": "3"
+            },
+            "7:2": {
+              "columnNo": "2",
+              "rowNo": "7",
+              "columnId": "9",
+              "seatNo": "713",
+              "status": "N",
+              "rowId": "7"
+            },
+            "3:7": {
+              "columnNo": "7",
+              "rowNo": "3",
+              "columnId": "7",
+              "seatNo": "666",
+              "status": "N",
+              "rowId": "3"
+            },
+            "7:3": {
+              "columnNo": "3",
+              "rowNo": "7",
+              "columnId": "8",
+              "seatNo": "714",
+              "status": "N",
+              "rowId": "7"
+            },
+            "3:8": {
+              "columnNo": "8",
+              "rowNo": "3",
+              "columnId": "6",
+              "seatNo": "667",
+              "status": "N",
+              "rowId": "3"
+            },
+            "7:4": {
+              "columnNo": "4",
+              "rowNo": "7",
+              "columnId": "7",
+              "seatNo": "715",
+              "status": "N",
+              "rowId": "7"
+            },
+            "3:9": {
+              "columnNo": "9",
+              "rowNo": "3",
+              "columnId": "5",
+              "seatNo": "668",
+              "status": "N",
+              "rowId": "3"
+            },
+            "7:5": {
+              "columnNo": "5",
+              "rowNo": "7",
+              "columnId": "6",
+              "seatNo": "716",
+              "status": "N",
+              "rowId": "7"
+            },
+            "7:6": {
+              "columnNo": "6",
+              "rowNo": "7",
+              "columnId": "5",
+              "seatNo": "717",
+              "status": "LK",
+              "rowId": "7"
+            },
+            "7:7": {
+              "columnNo": "7",
+              "rowNo": "7",
+              "columnId": "4",
+              "seatNo": "718",
+              "status": "LK",
+              "rowId": "7"
+            },
+            "7:8": {
+              "columnNo": "8",
+              "rowNo": "7",
+              "columnId": "3",
+              "seatNo": "719",
+              "status": "N",
+              "rowId": "7"
+            },
+            "7:9": {
+              "columnNo": "9",
+              "rowNo": "7",
+              "columnId": "2",
+              "seatNo": "720",
+              "status": "N",
+              "rowId": "7"
+            },
+            "8:11": {
+              "columnNo": "11",
+              "rowNo": "8",
+              "columnId": "",
+              "seatNo": "1_8_11",
+              "status": "E",
+              "rowId": "8"
+            },
+            "8:12": {
+              "columnNo": "12",
+              "rowNo": "8",
+              "columnId": "",
+              "seatNo": "1_8_12",
+              "status": "E",
+              "rowId": "8"
+            },
+            "8:10": {
+              "columnNo": "10",
+              "rowNo": "8",
+              "columnId": "1",
+              "seatNo": "734",
+              "status": "LK",
+              "rowId": "8"
+            },
+            "8:13": {
+              "columnNo": "13",
+              "rowNo": "8",
+              "columnId": "",
+              "seatNo": "1_8_13",
+              "status": "E",
+              "rowId": "8"
+            },
+            "3:12": {
+              "columnNo": "12",
+              "rowNo": "3",
+              "columnId": "2",
+              "seatNo": "671",
+              "status": "N",
+              "rowId": "3"
+            },
+            "3:13": {
+              "columnNo": "13",
+              "rowNo": "3",
+              "columnId": "1",
+              "seatNo": "672",
+              "status": "N",
+              "rowId": "3"
+            },
+            "3:10": {
+              "columnNo": "10",
+              "rowNo": "3",
+              "columnId": "4",
+              "seatNo": "669",
+              "status": "N",
+              "rowId": "3"
+            },
+            "3:11": {
+              "columnNo": "11",
+              "rowNo": "3",
+              "columnId": "3",
+              "seatNo": "670",
+              "status": "N",
+              "rowId": "3"
+            },
+            "2:1": {
+              "columnNo": "1",
+              "rowNo": "2",
+              "columnId": "13",
+              "seatNo": "647",
+              "status": "N",
+              "rowId": "2"
+            },
+            "2:2": {
+              "columnNo": "2",
+              "rowNo": "2",
+              "columnId": "12",
+              "seatNo": "648",
+              "status": "N",
+              "rowId": "2"
+            },
+            "2:3": {
+              "columnNo": "3",
+              "rowNo": "2",
+              "columnId": "11",
+              "seatNo": "649",
+              "status": "N",
+              "rowId": "2"
+            },
+            "2:4": {
+              "columnNo": "4",
+              "rowNo": "2",
+              "columnId": "10",
+              "seatNo": "650",
+              "status": "N",
+              "rowId": "2"
+            },
+            "2:5": {
+              "columnNo": "5",
+              "rowNo": "2",
+              "columnId": "9",
+              "seatNo": "651",
+              "status": "N",
+              "rowId": "2"
+            },
+            "6:1": {
+              "columnNo": "1",
+              "rowNo": "6",
+              "columnId": "",
+              "seatNo": "1_6_1",
+              "status": "E",
+              "rowId": "6"
+            },
+            "2:6": {
+              "columnNo": "6",
+              "rowNo": "2",
+              "columnId": "8",
+              "seatNo": "652",
+              "status": "N",
+              "rowId": "2"
+            },
+            "6:2": {
+              "columnNo": "2",
+              "rowNo": "6",
+              "columnId": "9",
+              "seatNo": "700",
+              "status": "N",
+              "rowId": "6"
+            },
+            "2:7": {
+              "columnNo": "7",
+              "rowNo": "2",
+              "columnId": "7",
+              "seatNo": "653",
+              "status": "N",
+              "rowId": "2"
+            },
+            "6:3": {
+              "columnNo": "3",
+              "rowNo": "6",
+              "columnId": "8",
+              "seatNo": "701",
+              "status": "N",
+              "rowId": "6"
+            },
+            "2:8": {
+              "columnNo": "8",
+              "rowNo": "2",
+              "columnId": "6",
+              "seatNo": "654",
+              "status": "N",
+              "rowId": "2"
+            },
+            "6:4": {
+              "columnNo": "4",
+              "rowNo": "6",
+              "columnId": "7",
+              "seatNo": "702",
+              "status": "N",
+              "rowId": "6"
+            },
+            "2:9": {
+              "columnNo": "9",
+              "rowNo": "2",
+              "columnId": "5",
+              "seatNo": "655",
+              "status": "N",
+              "rowId": "2"
+            },
+            "6:5": {
+              "columnNo": "5",
+              "rowNo": "6",
+              "columnId": "6",
+              "seatNo": "703",
+              "status": "LK",
+              "rowId": "6"
+            },
+            "6:6": {
+              "columnNo": "6",
+              "rowNo": "6",
+              "columnId": "5",
+              "seatNo": "704",
+              "status": "LK",
+              "rowId": "6"
+            },
+            "6:7": {
+              "columnNo": "7",
+              "rowNo": "6",
+              "columnId": "4",
+              "seatNo": "705",
+              "status": "LK",
+              "rowId": "6"
+            },
+            "6:8": {
+              "columnNo": "8",
+              "rowNo": "6",
+              "columnId": "3",
+              "seatNo": "706",
+              "status": "LK",
+              "rowId": "6"
+            },
+            "6:9": {
+              "columnNo": "9",
+              "rowNo": "6",
+              "columnId": "2",
+              "seatNo": "707",
+              "status": "N",
+              "rowId": "6"
+            },
+            "6:10": {
+              "columnNo": "10",
+              "rowNo": "6",
+              "columnId": "1",
+              "seatNo": "708",
+              "status": "N",
+              "rowId": "6"
+            },
+            "6:12": {
+              "columnNo": "12",
+              "rowNo": "6",
+              "columnId": "",
+              "seatNo": "1_6_12",
+              "status": "E",
+              "rowId": "6"
+            },
+            "6:11": {
+              "columnNo": "11",
+              "rowNo": "6",
+              "columnId": "",
+              "seatNo": "1_6_11",
+              "status": "E",
+              "rowId": "6"
+            },
+            "6:13": {
+              "columnNo": "13",
+              "rowNo": "6",
+              "columnId": "",
+              "seatNo": "1_6_13",
+              "status": "E",
+              "rowId": "6"
+            }
+          },
+          "maxRow": 9,
+          "maxColumn": 13
+        }
+      }
+    ]
+  },
+  "errorCode": 0,
+  "message": "请求成功"
+}

@@ -1,0 +1,14 @@
+
+<div class="content">
+    <div class="top_imgs">
+        <img ng-src={{bannerPath}}>
+    </div>
+    <!-- <p class="rule_tit">活动细则:</p> -->
+    <ul class="rule_con">
+        <!-- <li><span>1. </span><span>凭此券免费获赠等值的一杯。</span> </li> -->
+        <li ng-bind-html="actyDetail"></li>
+    </ul>
+</div>
+<div class="button_bg">
+    <span class="ylw_btn" ui-sref="prodList">返回</span>
+</div>

@@ -1,0 +1,158 @@
+
+<div ng-app="mainModule" ng-controller="setMainController" ng-style="mainHeight"
+     style=" -webkit-overflow-scrolling: touch;">
+    <div style="overflow: hidden">
+        <div class="ui-row bor-bottom-dfdfdf bg-col-f8f8f8 clear line-40" ng-if="inType=='HSH'">
+            <div class="ui-col-10 fl-left" ng-click="returnHui()">
+                <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+            </div>
+        </div>
+        <div ng-if="noticeShow" class="line-40 bg-col-fff font-14 text-col-fff bg-col-0066cc" ui-sref="notice">
+            <marquee direction=left scrollamount=3>
+                {{announcement}}
+            </marquee>
+        </div>
+        <div ng-show="!noticeShow"></div>
+        <div class="swiper-container hot-rec position" ng-style="hotrec" ng-if="mainbanner">
+            <!-- Swiper -->
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" repeat-finish="checkLastBanner()" ng-repeat="simg in swiperImg"><img
+                        ng-style="hotrec" ui-sref="filmdetail({'id':simg.filmId,'type':1})" ng-src="{{simg.imgUrl}}"/>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination" id="swiper-container-id">
+            <span class="swiper-pagination-bullet" repeat-finish="checkLastBanner()"
+                  ng-repeat="simg in swiperImg"></span>
+            </div>
+        </div>
+        <!--搜索-->
+        <div class="nav-main ui-row lineh-30">
+            <div class="ui-col-20 pl-15 fl-left" ui-sref="city({id: 1})">
+                {{pname}}<i class="ui-icon-unfold dis-inline text-col-fff line-25"></i>
+            </div>
+            <div class="ui-col-53 fl-left position">
+                <form action="">
+                    <input class="line-30" type="search" ng-model="search"
+                           ng-keyup="searchLoad($event)" placeholder="搜索电影、影院"/>
+                </form>
+                <i class="ui-icon-search"></i>
+            </div>
+            <div class="ui-col-10 fl-right" ng-click="curraddress()">
+                <i class="ui-icon-pin text-col-0066cc dis-inline line-25 dwimg"></i>
+            </div>
+        </div>
+        <div id="scrollStyle" style="margin-top: 30px;">
+            <!--热门快捷图标-->
+            <ul class="ui-justify ui-whitespace bg-col-fff" ng-class="mainbanner?'':''">
+                <li class="ui-col-20 nav-fast" ui-sref="activity({'id':1})">
+                    <div><img ng-src="{{staticUrl}}images/fast1.png"></div>
+                    <p>每日抽奖</p>
+                </li>
+                <li class="ui-col-20 nav-fast" ng-click="rootPaycheck(1)">
+                    <div><img ng-src="{{staticUrl}}images/fast3.png"></div>
+                    <p>充值兑换</p>
+                </li>
+                <li class="ui-col-20 nav-fast" ui-sref="signIn"><!--ng-click="qzyl()"-->
+                    <div><img ng-src="{{staticUrl}}images/fast2.png"></div>
+                    <p>签到有礼</p>
+                </li>
+                <li class="ui-col-20 nav-fast" ui-sref="myshop">
+                    <div><img ng-src="{{staticUrl}}images/fast5.png"></div>
+                    <p>周边商城</p>
+                </li>
+                <li class="ui-col-20 nav-fast">
+                    <a href="https://ecentre.spdbccc.com.cn/creditcard/indexActivity.htm?data=P855800">
+                        <div><img ng-src="{{staticUrl}}images/fast4.png"></div>
+                        <p>信用卡申请</p>
+                    </a>
+                </li>
+            </ul>
+            <!--热映推荐-->
+            <div class="nav-title mt-10 clear" ui-sref="films" ng-if="hotleng">
+                <img class="nav-title-img fl-left" ng-src="{{staticUrl}}images/nav-film.png"/>
+                <span class="line-40 fl-left pl-10">热映推荐</span>
+                <div class="ui-col-20 fl-right text-right pr-10 text-col-999 font-12">更多<img class="nav-more"
+                                                                                             ng-src="{{staticUrl}}images/r.png"/>
+                </div>
+            </div>
+            <div class="hot-film position overhide">
+                <div class="bannerBackground" ng-style="bannerBackground"></div>
+                <div class="swiper-container hot-swiper hot-swiper1">
+                    <ul class="swiper-wrapper"><!---->
+                        <li class="swiper-slide" repeat-finish="checkLast()" ng-repeat="list in hotfilmlist"
+                            ng-click="filmDetail(list.id)">
+                            <img ng-src="{{list.smallImg+'?imageView2/2/w/410/h/600/interlace/0/q/100'}}"/>
+                            <div ng-if='!list.isShow' class="hot-tip">预售推荐</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="text-col-fff line-30 text-center font-14 film-name" ng-if="hotleng">
+                    {{findfilm.name}}
+                    <span class="pl-5" ng-if='findfilm.id=="b81b0430338c43c1ac40a6f0ee719b0f"'>8.5分</span>
+                    <span class="pl-5" ng-if='findfilm.id!="b81b0430338c43c1ac40a6f0ee719b0f"'>{{findfilm.grade | number:1}}分</span>
+                </div>
+            </div>
+            <!--附近影院-->
+            <div class="nav-title clear" ui-sref="cinema" ng-if="hotleng">
+                <img class="nav-title-img fl-left" ng-src="{{staticUrl}}images/nav-cinema.png"/>
+                <span class="line-40 fl-left pl-10">附近影院</span>
+                <div class="ui-col-20 fl-right text-right pr-10 text-col-999 font-12">更多<img class="nav-more"
+                                                                                             ng-src="{{staticUrl}}images/r.png"/>
+                </div>
+            </div>
+            <div ng-show="leng" class="bg-col-fff" ng-style="scrollStyle1">
+                <div class="hot-cinema bd-top-e5e5e5 pr-10" ng-repeat="cinema in  cinemalist"
+                     ng-click="getCinemaDetail(cinema.id)">
+                    <div class="font-14 text-col-333 line-25 clear">
+                        <div class="ui-col-67 fl-left">{{cinema.name}}</div>
+                        <div class="ui-col-33 fl-left text-right">
+                            <div class="text-right font-12 text-col-ff5400">￥<span
+                                    class="font-14">{{cinema.minJbzPrice}}</span>起
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-row clear font-12 line-20 text-col-999">
+                        <div class="ui-col-70 fl-left">{{cinema.address}}</div>
+                        <div class="ui-col-30 fl-left">
+                            <div class="text-right text-right">{{cinema.distance}}km</div>
+                        </div>
+                    </div>
+                    <div class="text-col-999 line-30 clear">
+                        <div class="ui-col-90 font-12 fl-left">
+                            <img class="cinemaimg fl-left" ng-repeat="imgiton in cinema.cinemaNames"
+                                 ng-src="{{staticUrl}}images/{{imgiton}}.png"/>
+                            <span class="fl-left"><span class="text-col-ff5400">{{cinema.compareCount}}</span>家比价</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="!leng" class="pt-10 pb-10 lineh-50 text-center">
+                {{errormsg}}
+            </div>
+        </div>
+    </div>
+    <footer-view typenum="pagetype" new-page="getFooter(page)"></footer-view>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+    <div class="ui-dialog dialogWrapper">
+        <div>
+            <div style="width: 100%;margin: 0 auto;">
+                <div id="gotoActivityBtn" ui-sref="activity({'id':1})"
+                     ng-style="activestyle">
+                    <div style="position: absolute;color: #33ccff;bottom: 0;width: 100%; text-align: center;">
+                        您有{{lege}}次抽奖机会
+                    </div>
+                </div>
+                <div style="text-align: center;margin-top: 10px;margin-bottom: 10px;" ui-sref="activity({'id':1})">
+                    <p style="color: #33ccff;margin-top: 10px;">
+                        <a style="text-decoration: underline;">更多详情请点击</a>
+                    </p>
+                </div>
+                <div id="closeDialogBtn" ng-style="colesstyle" ng-click="clockWrapper()">
+                    <!--<img ng-src="{{staticUrl}}images/activity-close1.png" style="width:25px;height:100%;">-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

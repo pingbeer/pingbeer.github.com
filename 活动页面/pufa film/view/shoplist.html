@@ -1,0 +1,50 @@
+
+<div ng-app="shopListModule" ng-controller="shopListController">
+    <div class="ui-row nav-mainf bg-col-f8f8f8 lineh-40 bor-bottom-dfdfdf">
+        <div class="ui-col-25 fl-left">
+            <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5" ui-sref="myshop"></i>
+        </div>
+        <div class="ui-col-50 fl-left text-center text-col-333 font-16">
+            周边商城
+        </div>
+        <div class="ui-col-25 fl-right position" ui-sref="shopsearch">
+            <i class="ui-icon-search text-col-333 pt-5 mr-10"></i>
+        </div>
+    </div>
+    <ul class="mt-45 clear bg-col-f4f4f4 text-center font-14 bor-bottom-dfdfdf">
+        <li class="fl-left ui-col-33">
+            <select-view selectobj="subjects" checked-option="subCheck" class="ui-col-90"
+                         op-click="selectClass(selectid,selectname,'subject')" op-show="subShow" selectimg="subjectsimg"></select-view>
+        </li>
+        <li class="fl-left ui-col-33">
+            <select-view selectobj="categories" checked-option="catCheck" class="ui-col-90"
+                         op-click="selectClass(selectid,selectname,'category')" op-show="catShow" selectimg="categoriesimg"></select-view>
+        </li>
+        <li class="fl-left ui-col-33">
+            <select-view selectobj="sort" checked-option="sorCheck" class="ui-col-90"
+                         op-click="selectClass(selectid,selectname,'sort')" op-show="sorShow" selectimg="sortimg"></select-view>
+        </li>
+    </ul>
+    <ul class="bg-col-fff font-14" ng-if="!isShow" >
+        <li class="bor-bottom-dfdfdf clear position" ng-repeat="goods in goodlist"
+            ui-sref="shopproduct({'id':goods.id})">
+            <div class="fl-left ui-col-33s pt-10 pb-5">
+                <div class="fl-left ml-10"><img ng-style="imgHeight" ng-src="{{goods.mainUrl}}"></div>
+            </div>
+            <ul class="fl-left ui-col-65 mt-5">
+                <li ng-style="lineHeight" class="overhide">{{goods.title}}</li>
+                <li class="text-col-999 overhide font-12 lineh-25">{{goods.description}}</li>
+                <li class="ui-row clear lastList mt-10 ui-col-65" ng-style="lineHeight">
+                    <div class="ui-col-49 fl-left text-left text-col-ff5400">￥{{goods.lowPrice/100|number:2}}</div>
+                    <div class="ui-col-50 fl-left text-right font-12 text-col-999">已售 <span class="pl-5">{{goods.saleAmount}}</span>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div class="mt-30 lineh-50 text-center" ng-if="isShow">
+        没有此商品
+    </div>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

@@ -1,0 +1,119 @@
+
+<div ng-app="CinemaDetailModule" ng-controller="cinemaDetailController">
+    <div class="nav-mainf ui-row bg-col-f8f8f8  lineh-40 bor-bottom-dfdfdf">
+        <div class="ui-col-18 fl-left">
+            <i ng-if="ParamsName=='filmsearch'" class="ui-icon-return icon-return dis-inline text-col-333
+            line-25 font-24 ml-5"
+               ng-click="returnHistory(ParamsName,splitType,splitid)"></i>
+            <i ng-if="ParamsName!='filmsearch'" class="ui-icon-return icon-return dis-inline text-col-333
+            line-25 font-24 ml-5"
+               ng-click="returnHistory(ParamsName,Paramstype,Paramsid)"></i>
+        </div>
+        <div class="ui-col-53 fl-left text-center text-col-333 font-16">
+            {{cinema.name}}
+        </div>
+        <div class="ui-col-10 fl-right position" ng-if="!isCollected" ng-click="collected(cinema.id, cinema.name)">
+            <img class="top-img pt-5" ng-src="{{staticUrl}}images/collect.png">
+        </div>
+        <div class="ui-col-10 fl-right position" ng-if="isCollected" ng-click="uncollecimg(cinema.id)">
+            <img class="top-img pt-5" ng-src="{{staticUrl}}images/collectblue.png">
+        </div>
+    </div>
+    <div class=" bg-col-fff mt-40 pt-10 pl-10 pr-10 pb-10 font-14" ng-if="!isShow || nomessage">
+        <ul class="ui-arrowlink">
+            <li class="text-col-333 pt-5 line-20" ui-sref="map({'id':Paramsid,'type':Paramstype+'-4'})">
+                {{cinema.name}}
+            </li>
+            <li class="text-col-999 font-12  line-20" ui-sref="map({'id':Paramsid,'type':Paramstype+'-4'})">
+                {{cinema.address}}
+            </li>
+            <li class="text-col-999 font-12 lineh-25">
+                <a class="text-col-999"
+                   href="tel:{{cinemaMobile}}"><img class="cinemaPhone" src="{{staticUrl}}images/phone.png"/>{{cinemaMobile}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="hot-cinema-film position">
+        <div class="bannerBackground" ng-style="bannerBackground"></div>
+        <div class="swiper-container hot-cinema-swiper">
+            <ul class="swiper-wrapper"><!---->
+                <li class="swiper-slide" repeat-finish="checkLast()" ng-repeat="list in filmlist "
+                    ng-click="getfilmDetail(list.id)">
+                    <img ng-src="{{list.smallImg+'?imageView2/2/w/410/h/600/interlace/0/q/100'}}"/>
+                </li>
+            </ul>
+        </div>
+        <div class="text-col-fff line-30 text-center font-14 cinema-film-name" ng-if="nomessage">
+            {{findfilm.name}}
+            <span class="pl-5" ng-if='findfilm.id=="b81b0430338c43c1ac40a6f0ee719b0f"'>8.5分</span>
+            <span class="pl-5"
+                  ng-if='findfilm.id!="b81b0430338c43c1ac40a6f0ee719b0f"'>{{findfilm.grade  | number:1 }}分</span>
+        </div>
+    </div>
+    <div class="datetime font-14 overhide bor-bottom-ccc bg-col-fff">
+        <ul class="swiper-wrapper swiper-date">
+            <li class="swiper-slide line-40 bg-col-f8f8f8" ng-repeat="time in timez track by $index"
+                repeat-finish="datelast()"
+                ng-click="cinematimes($index)">
+                {{time}}
+            </li>
+        </ul>
+    </div>
+
+    <section class="ui-container" id="cinemalist" ng-if="!isShow">
+        <div class="clear bg-col-fff" ng-repeat="price in filmprice">
+            <div class="bor-bottomd-dfdfdf" ng-click="checkShow($index)">
+                <ul class="ui-row clear line-30 font-14 pl-10 pr-10">
+                    <li class="ui-col ui-col-30 text-col-333 font-14">{{price.showTime}}</li>
+                    <li class="ui-col ui-col-33  text-col-666 pl-20">{{price.language}}
+                        <span class="pl-10">{{price.dimensional}}</span>
+                    </li>
+                    <li class=" fl-right text-col-ff5400 pr-20 text-right">
+                        <span class="font-14">￥</span>{{price.minJbzPrice}}<span class="font-14"></span>
+                    </li>
+                </ul>
+                <ul class="ui-row line-30 font-12 text-col-999 pr-10 pl-10">
+                    <li class="ui-col ui-col-30">{{price.endTime}}散场</li>
+                    <li class="ui-col ui-col-40 pl-20 line-20 mt-5">{{price.hallName}}</li>
+                    <li class="ui-col ui-col-30  pr-20 text-right ">
+                        <button class="text-col-ff915b border-ff915b pl-5 pr-5 ui-border-radius2 line-20">
+                            {{price.compareCount}}家比价
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="dis-block" ng-if="!price.isMore">
+                <div class="ui-arrowlink bor-bottom-dfdfdf pr-10 bg-col-f7f7f7" ng-repeat="net in price.data"
+                     ng-click="cinemaseats(net,$index)">
+                    <ul class="lineh-50 font-12 pr-5">
+                        <li class="ui-col ui-col-33">
+                            <img class="cinema-other ml-15" ng-src="{{staticUrl}}images/{{net.type}}.png">
+                            <span class="pl-5">{{net.typename}}</span>
+                        </li>
+                        <li class="ui-col ui-col-67 clear text-right text-col-ff5400 pr-10">
+                            <span ng-if="!hasFreePrize">
+                                <span ng-if="net.hasDiscount"
+                                      class="border-00a6ff pl-5 pr-5 text-col-00a6ff line-20 ui-border-radius2 dis-inline font-12">券</span>
+                                <span ng-if="$index==0"
+                                      class="border-ff915b pl-5 pr-5 text-col-ff915b line-20 ui-border-radius2 dis-inline font-12">最惠</span>
+                            </span>
+                            <div class="fl-right pr-10">
+                                <p class="font-12  pl-5 line-50">
+                                    ￥{{net.jbzPrice<1000?net.jbzPrice:net.jbzPrice/100}}
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section ng-if="isShow" class="text-center lineh-40 mt-40">
+        暂无场次
+    </section>
+    <section ng-if="!nomessage" class="text-center lineh-40 mt-40">
+        暂无场次
+    </section>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

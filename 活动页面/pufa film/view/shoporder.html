@@ -1,0 +1,107 @@
+
+<div ng-app="shopOrderModule" ng-controller="shopOrderController">
+    <div class="nav-mainf ui-row bg-col-f8f8f8 lineh-40  bor-bottom-dfdfdf">
+        <div class="ui-col-10 fl-left">
+            <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"
+               ng-click="orderReturn()"></i>
+        </div>
+        <div class="ui-col-80 fl-left text-col-333 font-16" style="position:relative;top:-2px;">
+            <button class="btn-bor left-btn" style="position:relative;right: -6px; width:32%; height: 30px;"
+                    ui-sref="allorder({'type':Paramstype})" ng-click="changeShowValue()">
+                电影
+            </button>
+            <button class="btn-bor bor-bottom-0066ff line-20 font-14" style="position:relative; width:32%;height: 30px;"
+                    ui-sref="recharge({'type':Paramstype})" ng-click="changeShowValue()">
+                充值
+            </button>
+            <button class="btn-bor right-btn btn-active" style="position:relative;left: -6px;width:32%;height: 30px;">
+                商城
+            </button>
+        </div>
+    </div>
+    <ul class="clear mt-45 text-center bor-top-ccc bg-col-fff mb-10 line-40 font-14  text-center">
+        <li class="ui-col ui-col-49"><span class="line-35 dis-inline"
+                                           ng-class="{true:'getcode',false:'mycode'}[ckedcode]"
+                                           ng-click="ordertype(1)">已完成订单</span>
+        </li>
+        <li class="ui-col mt-10 bor-dfdfdf" style="width: 2px; height: 25px;"></li>
+        <li class="ui-col ui-col-49"><span class="line-35 dis-inline"
+                                           ng-class="{false:'getcode',true:'mycode'}[ckedcode]"
+                                           ng-click="ordertype(2)">未完成订单</span></li>
+    </ul>
+    <section>
+        <div class="pl-15 pr-15 bg-col-fff font-12">
+            <!--ng-if="orderlist.length>0" ng-repeat="list in orderlist"-->
+            <div class="ui-row clear text-col-999 pt-5 bor-bottom-dfdfdf" ng-repeat="list in orderlist">
+                <div class="ui-col ui-col-25 mr-5" ng-click="orderDetail(list.orderId)">
+                    <img ng-if='list.mainUrl' ng-src="{{list.mainUrl}}"
+                         err-src="{{staticUrl}}images/noimg.jpg" alt=""
+                         style="width:72px; height:95px;">
+                    <img ng-if='!list.mainUrl' ng-src="{{staticUrl}}images/noimg.jpg" alt="" style="width:72px; height:95px;">
+                </div>
+                <div class="fl-right ui-col-70">
+                    <div class="ui-row clear" ng-click="orderDetail(list.orderId)">
+                        <div class="ui-col ui-col-70 overhide text-col-666 font-14">{{list.name}}</div>
+                        <div class="ui-col ui-col-30 overhide" ng-if="list.status==1">
+                            已收货
+                        </div>
+                        <div class="ui-col ui-col-30 overhide" ng-if="list.status==2">
+                            未支付
+                        </div>
+                        <div class="ui-col ui-col-30 overhide" ng-if="list.status==3">
+                            支付失败
+                        </div>
+                        <div class="ui-col ui-col-30 overhide" ng-if="list.status==4">
+                            订单关闭
+                        </div>
+                        <div class="ui-col ui-col-30 overhide" ng-if="list.status==5">
+                            待发货
+                        </div>
+                        <div class="ui-col ui-col-30 overhide" ng-if="list.status==6">
+                            已发货
+                        </div>
+                    </div>
+                    <div class="ui-row clear">
+                        <ul class="ui-col ui-col-65" ng-click="orderDetail(list.orderId,list.status)">
+                            <li class="lineh-25 overhide">{{list.description}}</li>
+                            <li>
+                                {{list.createdTime}}
+                            </li>
+                            <li class="lineh-25" ng-if="list.status==1||list.status==5||list.status==6">
+                                支付总额:<span class="text-col-ff5400">￥{{list.payAmount/100|number:2}}</span>
+                            </li>
+                            <li class="lineh-25" ng-if="list.status!=1&&list.status!=5&&list.status!=6">
+                                支付总额:<span
+                                    class="text-col-ff5400">￥{{(list.amount+list.expressFee)/100|number:2}}</span>
+                            </li>
+                        </ul>
+                        <div class="fl-right ui-col-33 text-right"
+                             ng-if="list.status==1||list.status==5||list.status==6">
+                            <button class="ui-col-100 lineh-30 mt-20 border-00a6ff text-col-00a6ff ui-border-radius"
+                                    ui-sref="logistics({'id':list.orderId,'change':Paramstype})">
+                                查看物流
+                            </button>
+                        </div>
+                        <div class="fl-right ui-col-33 text-right" ng-if="list.status==2">
+                            <button class="ui-col-100 lineh-30 mt-20 border-00a6ff text-col-00a6ff ui-border-radius"
+                                    ng-click="shopPay($index)">
+                                继续支付
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div infinite-scroll="myPagingFunction()" infinite-scroll-distance="0"></div>
+        </div>
+        <div class="lineh-50 mt-40 text-center font-14" ng-if="orderlist.length==0">
+            <div ng-if="type==1">
+                暂无完成订单
+            </div>
+            <div ng-if="type!=1">
+                暂无未完成订单
+            </div>
+        </div>
+    </section>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

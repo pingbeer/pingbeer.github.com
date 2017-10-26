@@ -1,0 +1,21 @@
+<!--https://prefacty.creditcard.cmbc.com.cn/mmc-main-webapp/main/-->
+<!--https://prefacty.creditcard.cmbc.com.cn/activityday/template/tabAll.$10128.html-->
+https://prefacty.creditcard.cmbc.com.cn/activityday/template/tabExclusive.$10128.html
+
+<nav class="nav_tit border b_btm1" >
+	<i class="payNavitem" ui-sref="tab1">全部</i>
+	<i class="payNavitem on" ui-sref="tab2">专属权益</i>
+	<i class="payNavitem" ui-sref="tab3">全卡活动</i>
+	<!--  <i class="payNavitem" ui-sref="tab4">惠生活</i> -->
+</nav>
+<div class="content">
+	<ul class="list">
+		<li class="border b_full" ng-repeat="item in actyList |filter : {'actyClass':'01'} |filter : {'visibleFlag':'01'}">
+			<div>
+				<img ng-src="{{item.bannerPath}}" ng-click="toProdList(item)">
+				<span class="img_info" ng-bind="item.actyTitle" ng-class="{'on':item.isShowOn}" ng-click="item.isShowOn=!item.isShowOn"></span>
+			</div>
+			<div class="introduce_con" ng-bind="item.actyDesc" ng-class="{'none':!item.isShowOn}"></div>
+		</li>
+	</ul>
+</div>

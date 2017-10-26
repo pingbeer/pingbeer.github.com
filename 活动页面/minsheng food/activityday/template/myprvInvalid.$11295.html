@@ -1,0 +1,22 @@
+
+<nav class="nav_tit border b_btm1">
+    <i class="payNavitem" data-type="use_list" ui-sref="mypriv">我的礼品</i>
+    <i class="payNavitem on" data-type="used_list">已失效</i>
+    <i class="payNavitem" data-type="expired_list" ui-sref="myprivWait">待支付</i>
+</nav>
+<div class="content">
+    <p class="no_data_tit" ng-if="emptyFlag">暂时没有已失效的礼品哦~</p>
+    <div class="cvt_item_txt " id="used_list">
+        <div class="cvt_item border b_lrb" ng-repeat="invalidData in orderList" >
+            <span class="ico_top"></span>
+            <span class="ico_ylt"></span>
+            <span class="ico_yrt"></span>
+            <p class="cvt_img"><img ng-src={{invalidData.goodsBannerPicPath}}></p>
+            <p class="cvt_btm" ng-if="invalidData.goodsType==10"><span></span><span ng-bind="invalidData.endDate | effectDate"></span></p>
+        </div>
+    </div>
+    <p class="lmore_p" ng-if="isRetry" ng-click="retry()">活动火爆，请点击此处重试...</p>
+    <p class="lmore_p" ng-click="loadMore()" ng-if="showTag">
+        <span class="lookMore">查看更多</span>
+    </p>
+</div>

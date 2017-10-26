@@ -1,0 +1,617 @@
+﻿	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="Cache-Control" content="max-age=1" />
+	<title></title>
+	<link rel="stylesheet" href="../../css/basic.css">
+	<link rel="stylesheet" href="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_css/showLoading.css?v=1">
+	<link rel="stylesheet" href="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_css/smoothness/jquery-ui-1.10.1.custom.css">
+	<link rel="stylesheet" href="../../css/customDialog.css?v=1">
+	
+	<script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/jquery.min.js"></script>	
+	<script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/showLoading.min.js"></script>
+	<script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/jquery-ui-1.10.1.custom.min.js"></script>
+
+	<script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/preventClickDoubleFired.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/easyJsDomUtil.js"></script>
+
+	<script src="../../jslib/WeiXinSdk.js"></script>
+	<script src="../../jslib/iscroll.js"></script>
+	<script src="../../jslib/swiper.min.js"></script>
+	<script src="../../jslib/input_check.js"></script>
+	<script src="../../myjslib/myCommon.js?v=1"></script>
+	<script src="../../myjslib/customDialog.js"></script>
+	<script src="../../myjslib/shopCommon.js?v=2"></script>
+	<script src="../../myjslib/commonShare.js"></script>
+	<script>
+	var itemDetailPage = new ItemDetailPage();
+
+if (window.__skipInitPage == undefined || !window.__skipInitPage) {
+    $(document).ready(function () {
+        //TODO test
+        // commonShare.initWxSetting(indexPage.initPage,indexPage.doSendShare,false,true);
+        itemDetailPage.initPage();
+        console.log("$(document).ready() initPage");
+    });
+}
+
+function ItemDetailPage() {
+
+    var _this = this;
+    var _appId = "";
+    var activityItemId = "";
+    var _buy_limit_qty = '';
+    var _shopListUrl = '';
+
+    _buy_limit_qty = $('#buy_limit_qty').val();
+    this.initPage = function () {
+        _appId = $my.getUrlParam('appId');
+        _this.activityItemId = $my.getUrlParam('activityItemId');
+
+        $my.async.series([
+            initFormInfo,
+            loadShopListUrl,
+        ], function (totalCount, doneCount, error) {
+            if (totalCount == doneCount) {
+                console.log("indexPage initPage() done");
+            }
+        });
+    };
+
+    function initFormInfo(callback) {
+        setHtmlFontSize();
+        $('[id="page"]').removeClass('vis_h');
+
+        initProImgSwipe();
+        $('#addCart').unbind('click').bind('click', addCartItem);
+        $('#payNow').unbind('click').bind('click', buyItemPayNow);
+
+        $('#shopList').unbind('click').bind('click', gotoShopList);
+        $('#proDetail').unbind('click').bind('click', gotoItemDetail);
+        $('#buyNow').bind('click', function () {
+            buyItem();
+        });
+
+        $('.dialog_close').bind('click', function () {
+            $('.overLayer').hide();
+            $('.m_pay_fast').hide();
+        });
+
+        if (callback) {
+            callback();
+        }
+    }
+
+    // 产品图片轮播
+    function initProImgSwipe() {
+        mSlideSwipe = new Swiper('#m_slide_swipe', {
+            pagination: '.pagination',
+            autoplay: 3000,
+            grabCursor: true,
+            loop: true,
+            followFinger: false,
+            paginationClickable: true,
+            onSwiperCreated: function (mSlideSwipe) {
+            },
+            onSlideChangeStart: function (mSlideSwipe) {
+            },
+            onSlideChangeEnd: function (mSlideSwipe) {
+                mSlideSwipe.startAutoplay();
+            }
+        });
+    }
+
+    function addCartItem() {
+        $my.async.series([
+            doAddCartItem,
+        ], function (totalCount, doneCount, error) {
+            if (totalCount == doneCount) {
+                console.log("OrderPlacedPage buy done");
+
+            }
+        });
+    }
+
+
+    function loadShopListUrl(callback) {
+        var activity_item_id = $('#activity_item_id').val();
+        $my.ajax({
+            url: $my.getCloudDataServiceUrl(),
+            data: {
+                serviceType: "com.ebuy.shop.web.service.ItemSearchService",
+                serviceMethod: "getShopListUrl",
+                activity_id: activity_item_id,
+            },
+            success: function (response) {
+                if (response && response.length > 0) {
+                    _this._shopListUrl = response;
+                    $('#shop_list').show();
+                }
+
+                if (callback) {
+                    callback();
+                }
+            },
+            error: function (response) {
+                if (callback) {
+                    callback();
+                }
+            },
+        });
+    }
+
+    //该方法同时存在于 item_page.js, cart.js, orderPlaced.js 中
+    function checkResponseCodeIsAllow(code) {
+        var msgInfo = "", allow = false;
+        switch (code) {
+            case '-9999':
+                msgInfo = "登录失效，请重新登录。";
+                break;
+            case '-1':
+                msgInfo = "未知错误";
+                break;
+            case '100':
+                msgInfo = "不在白名单中，不能抢购。";
+                break;
+            case '10':
+                msgInfo = "商品已下架！";
+                break;
+            case '9':
+            case '8':
+                // msgInfo = "客官，当前产品已被疯抢完毕，请移步其他产品吧";
+                msgInfo = "商品已兑完";
+                break;
+            case '24':
+                msgInfo = "每人限制购买" + _buy_limit_qty + "件";
+                break;
+            case '25':
+                msgInfo = "请输入订单商品数量";
+                break;
+            case '30':
+                msgInfo = "没有查到符合你选择的支付类型";
+                break;
+            case '31':
+                msgInfo = "请输入选择支付类型";
+                break;
+            case '32':
+                msgInfo = "没有查到该商品描述";
+                break;
+            case '33':
+                msgInfo = "没有查到该商品的所包含的支付方式";
+                break;
+            case '34':
+                msgInfo = "解析该商品所有支付方式列表异常";
+                break;
+            case '35':
+                msgInfo = "未到兑换时间";
+                break;
+            case '37':
+                msgInfo = "没有查找到购物车相关信息";
+                break;
+            case '38':
+                msgInfo = "没有查找到商品信息";
+                break;
+            case '':
+                msgInfo = "网络繁忙，请重试！";
+                break;
+            default :
+                allow = true;
+                break;
+        }
+        if (!allow) {
+            showDialog.showInfoDialog({
+                title: "提示信息",
+                msgInfo: msgInfo
+            });
+        }
+        return allow;
+    }
+
+
+    /**
+     * 添加购物车
+     * @param callback
+     */
+    function doAddCartItem(callback) {
+        var itemId = $('#activity_item_id').val();
+        var shipping_type = $('#shipping_type').val();
+        var pay_type_id = $('.on #pay_type_id').val();
+        //	针对于原先生成的静态页面没有pay_type_id的，默认赋值pay_type_id=1
+        if ($my.string.isEmpty(pay_type_id)) {
+            pay_type_id = 1;
+        }
+
+        var skuId = "";
+        var installment_num = 1;
+        var itemQty = 1;
+
+        $my.ajax({
+            url: $my.getCloudDataServiceUrl(),
+            data: {
+                serviceType: "com.ebuy.shop.web.service.UserCartService",
+                serviceMethod: "setCartItem",
+                activity_item_id: itemId,
+                sku_id: skuId,
+                pay_type_id: pay_type_id,
+                installment_num: installment_num,
+                item_quantity: itemQty,
+                selected: false,
+                parentId: "",
+                activityItemId: "",
+                shareTime: "",
+                shareSign: "",
+                shipping_type: shipping_type
+            },
+            success: function (response) {
+                if (response == 0) {
+                    showDialog.showConfirmDialog({
+                        title: "提示信息", msgInfo: "已加入兑换篮，是否前往查看？", btnOk: function () {
+                            window.location = $my.getWebApp() + '/cart.html?timeStamp=' + (new Date()).getTime();
+                        }
+                    });
+                }
+                else if (response == 1) {
+                    showDialog.showConfirmDialog({
+                        title: "提示信息", msgInfo: "兑换篮已存在相同商品，是否前往查看？", btnOk: function () {
+                            window.location = $my.getWebApp() + '/cart.html?timeStamp=' + (new Date()).getTime();
+                        }
+                    });
+                }
+                else {
+                    checkResponseCodeIsAllow(response);
+                }
+                if (callback) {
+                    callback();
+                }
+            },
+            error: function (response) {
+                if (callback) {
+                    callback();
+                }
+            },
+        });
+    }
+
+    function buyItem() {
+        $my.async.series([
+            showBuyItemDialog,
+        ], function (totalCount, doneCount, error) {
+            if (totalCount == doneCount) {
+                console.log("OrderPlacedPage buy done");
+
+            }
+        });
+    }
+
+    function buyItemPayNow() {
+        $my.async.series([
+            doBuyItem,
+        ], function (totalCount, doneCount, error) {
+            if (totalCount == doneCount) {
+                console.log("OrderPlacedPage buy done");
+
+            }
+        });
+    }
+
+    function showBuyItemDialog() {
+
+        $('.overLayer').show();
+        $('.m_pay_fast').show();
+    }
+
+    function doBuyItem(callback) {
+        var activity_item_id = $('#activity_item_id').val();
+        var shipping_type = $('#shipping_type').val();
+        var pay_type_id = $('.on #pay_type_id').val();
+        var sku_id = "";
+        var item_qty = 1;
+        //	针对于原先生成的静态页面没有pay_type_id的，默认赋值pay_type_id=1
+        if ($my.string.isEmpty(pay_type_id)) {
+            pay_type_id = 1;
+        }
+        $my.ajax({
+            url: $my.getCloudDataServiceUrl(),
+            data: {
+                serviceType: "com.ebuy.shop.web.service.UserOrderService",
+                serviceMethod: "checkStockNumAndBuyTime",
+                activity_item_id: activity_item_id,
+                sku_id: sku_id,
+                item_qty: item_qty
+            },
+            success: function (response) {
+				alert("response"+response);
+                if (response && response.length > 0) {
+                    var retCode = response;
+                    if (checkResponseCodeIsAllow(retCode)) {
+                        if (shipping_type == '3') {
+                            //alert('填写物流');
+                            window.location = $my.getWebApp() + '/orderPlaced.html?activity_item_id=' + activity_item_id
+                                + '&sku_id=' + sku_id
+                                + '&shipping_type=' + shipping_type
+                                + '&pay_type_id=' + pay_type_id
+                                + '&timeStamp=' + (new Date()).getTime();
+                        } else {
+                            var installment_num = 1;
+									alert("else");
+                            $my.ajax({
+                                url: $my.getCloudDataServiceUrl(),
+                                data: {
+                                    serviceType: "com.ebuy.shop.web.service.UserOrderService",
+                                    serviceMethod: "getNewOrderForBuy",
+                                    activity_item_id: activity_item_id,
+                                    sku_id: sku_id,
+                                    installment_num: installment_num,
+                                    item_qty: item_qty,
+                                    shipping_type: shipping_type,
+                                    pay_type_id: pay_type_id
+                                },
+                                success: function (response) {
+										alert("else success");
+                                    if (response && response.length > 0) {
+                                        var retCode = response;
+                                        //alert(retCode);
+                                        if (checkResponseCodeIsAllow(retCode)) {
+                                            afterRequestConfirmPay(response);
+                                        }
+                                    }
+                                    if (callback) {
+                                        callback();
+                                    }
+                                },
+                                error: function (response) {
+										alert("else error");
+                                    if (callback) {
+                                        callback();
+                                    }
+                                },
+                            });
+                        }
+                    }
+                }
+            }
+        });
+
+    }
+
+    function afterRequestConfirmPay(returnValue) {
+
+        var shipping_type = $('#shipping_type').val();
+
+        if ($my.string.isEmpty(returnValue)) {
+            doError();
+            return;
+        }
+
+        var infoNode = easyJsDomUtil.parseXML(returnValue);
+        var callBackUrl = $(infoNode).find("callBackurl").text();
+        var ordernfo = $(infoNode).find("ordernfo").text();
+        var skey = $(infoNode).find("skey").text();
+
+        var info = "map://PayComm('" + callBackUrl + "','" + ordernfo + "','" + skey + "')";
+        execute(info);
+    }
+
+    function gotoShopList() {
+        if (_this._shopListUrl && _this._shopListUrl.length > 0) {
+            var url = _this._shopListUrl + '&timeStamp=' + (new Date()).getTime();
+            //alert(url);
+            window.location = url;
+        }
+    }
+
+    function gotoItemDetail() {
+        var activity_item_id = $('#activity_item_id').val();
+        window.location = $shop.getItemDetailPageUrl(activity_item_id);
+    }
+
+    var browser = {
+        versions: function () {
+            var u = navigator.userAgent, app = navigator.appVersion;
+            return { //移动终端浏览器版本信息
+                trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+            };
+        }(),
+        language: (navigator.browserLanguage || navigator.language).toLowerCase()
+    }
+
+    function execute(url) {
+        if (browser.versions.ios) {
+            //ios设备，采用此方法调用
+            var iframe = document.createElement("IFRAME");
+            iframe.setAttribute("src", url);
+            document.documentElement.appendChild(iframe);
+            iframe.parentNode.removeChild(iframe);
+            iframe = null;
+        } else {
+            //其他设备，调用此方法
+            window.location = url;
+        }
+    }
+}
+	</script>
+	<script>
+		$(document).ready(function() {
+	        payTypeCellClicked($('[id="payType_cell"]')[0]);
+	    });
+		
+        function payTypeCellClicked(dom) {
+            $('[id="payType_cell"]').removeClass("on");
+
+            $(dom).addClass("on");
+
+            var payTypeName = $(dom).find('[id="payTypeName"]').text();
+            $('[id="totalTxt"]').text(payTypeName);
+            $('[id="payTypeSelect"]').text(payTypeName);
+        }
+    </script>
+<style>
+.r1{width:100%;height:1.8rem;background-image:url('../../imgs/djs_bg.png');background-repeat: no-repeat;background-size:100% 100%;line-height:1.8rem;text-align: right;font-size:0.6rem;position: absolute;top:0;left:0;z-index:2;}
+.r1_1{color:#FA4C48;font-size:0.625rem;margin-right:6px;}
+.r1_item{display:inline;}
+.r1_day{font-size:0.6rem;padding:0.1rem;border:1px solid #000;width:1.2rem;height:0.6rem;line-height:0.6rem;text-align: center;color:#000;}
+.r1_h{font-size:0.6rem;padding:0.1rem;border:1px solid #000;width:1.2rem;height:0.6rem;line-height:0.6rem;text-align: center;color:#000;}
+.r1_m{font-size:0.6rem;padding:0.1rem;border:1px solid #000;width:1.2rem;height:0.6rem;line-height:0.6rem;text-align: center;color:#000;}
+.r1_s{font-size:0.6rem;padding:0.1rem;border:1px solid #000;width:1.2rem;height:0.6rem;line-height:0.6rem;text-align: center;color:#000;margin-right:6px;}
+
+.r2{width:100%;position: relative;}
+.r2_1{width:16rem;height:16rem;position:relative;}
+.r2_2{width:2.5rem;height:1.6rem;position: absolute;background:#FA4C48;border-radius:50%;right:0.65rem;bottom:0.65rem;line-height:0.8rem;padding:0.45rem 0;color:#fff;font-size:0.6rem;text-align:center;z-index:10}
+.r3{padding:0.5rem;background:#fff;overflow: hidden;}
+.r3_1{font-size:0.8rem;line-height:1.4rem;color:#000;}
+.r3_2{}
+.r3_2_1{width:3.25rem;height:1.075rem;line-height:0.85rem;background-image: url('../../imgs/tips.png');background-size:100% 100%;background-repeat: no-repeat;background-position:center center;text-align: center;font-size:0.6rem;color:#fff;}
+.r3_2_2{margin-left:8px;color:#999;font-size:0.6rem;}
+.r3_2_2 em{text-decoration: line-through;}
+.r4{background:#f5f5f5;padding:0.5rem;color:#FA4C48;}
+.r4 ul li{font-size:0.7rem;line-height:1rem;padding-left:1rem;background-image: url('../../imgs/radio.png');background-size:0.9rem 0.9rem;background-repeat:no-repeat;background-position:0 center;float: left;margin-right:20px;cursor: pointer;}
+.r4 ul li:last-child{margin-right:0;}
+.r4 ul li.on{background-image: url('../../imgs/radio_on.png')}
+
+.r5{background:#fff;}
+.r5 ul li{height:1rem;line-height:1rem;padding:0.5rem;color:#666;font-size:0.7rem;border-bottom:1px solid #ccc;position: relative;}
+.r5 ul li:last-child{border-bottom:1px solid #fff;}
+.r5 ul li:after{content:' ';position: absolute;right:0.5rem;top:0.5rem;font-size:0.7rem;line-height:1rem;height:1rem;background-image: url('../../imgs/icon_arrow.png');background-size:auto 0.7rem;background-repeat: no-repeat;background-position: center center;width:1rem;}
+
+</style>
+</head>
+<body>
+
+<!-- **************** description ****************  -->
+
+
+<!-- **************** detail_pic_url ****************  -->
+
+<!-- **************** valid date ****************  -->
+
+
+
+<!-- **************** pay_type ****************  -->
+
+	<div class="page vis_h" id="page">
+		<div class="m_item_page mb50">			
+			<div class="r2">
+				<input type="hidden" id="activity_item_id" value="000001545cc2df07000adf748000004f">
+				<input type="hidden" id="item_id" value="2016042802">
+				<input type="hidden" id="merchant_id" value="000001545638082500edb22080000017">
+				<input type="hidden" id="allow_share_flag" value="0">
+				<input type="hidden" id="delete_flag" value="0">
+				<input type="hidden" id="sales_channel" value="">
+				<input type="hidden" id="buy_limit_qty" value="">
+				<input type="hidden" id="shipping_type" value="0">
+				<input type="hidden" id="shareItem" >
+				<div class="r2_1">
+					<div class="swiper-container" id="m_slide_swipe">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="https://shopcitic.oss-cn-hangzhou.aliyuncs.com/item/headimg/000001545cc2df07000adf748000004f/000001545cc9886b00f6a8dc80000051.jpg" alt="">
+							</div>
+							<div class="swiper-slide">
+								<img src="https://shopcitic.oss-cn-hangzhou.aliyuncs.com/item/headimg/000001545cc2df07000adf748000004f/000001545cc99b2f0030a22b80000052.jpg" alt="">
+							</div>
+							<div class="swiper-slide">
+								<img src="https://shopcitic.oss-cn-hangzhou.aliyuncs.com/item/headimg/000001545cc2df07000adf748000004f/000001545cc9af87009cb29c80000053.jpg" alt="">
+							</div>
+						</div>
+					</div>
+					<div class="pagination"></div>
+				</div>
+				<div class="r2_2" style="display:none">
+					还剩余<br/><span id="remainCount">0</span>份
+				</div>
+			</div>
+			<div class="r3">
+				<div class="r3_1">
+                    <div class="detail_name" id="item_name"> 
+						<span>呷哺呷哺30元代金券</span>
+					</div>
+				</div>
+				<div class="r3_2">
+                        <span class="r3_2_1">9分权益支付</span>
+                    
+				</div>
+			</div>
+			<div class="r4" id="payStyle">
+				<ul class="clearfix">
+                        
+                        <li class="" id="payType_cell" onclick="payTypeCellClicked(this);">
+	                        <input type="hidden" id="pay_type_id" value='3'>
+	                        <span id="payTypeName">
+		                            9分权益支付
+	                        </span>
+                        </li>
+
+				</ul>
+			</div>
+			<div class="r5">
+				<ul>
+					<li id="shopList">
+						适用门店
+					</li>
+					<li id="proDetail">
+						产品详细说明
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="m_navi_menu">
+			<div class="menu_item clearfix">
+				<div class="m_menu_1">
+					总价：<span id="totalTxt"></span>
+				</div>
+				<div class="m_menu_2" id= "addCart">
+					加入兑换篮
+				</div>
+				<div class="m_menu_3" id="buyNow">
+					兑换
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 立即购买 -->
+	<div class="m_pay_fast" style="display:none">
+		<div class="pay_fast_wrap">
+			<div class="dialog_close"></div>
+			<div class="dialog_content">
+				<div class="dialog_content_img">
+					<img src="https://shopcitic.oss-cn-hangzhou.aliyuncs.com/item/headimg/000001545cc2df07000adf748000004f/000001545cc9886b00f6a8dc80000051.jpg" alt="">
+				</div>
+				<div class="dialog_content_img">
+					<img src="https://shopcitic.oss-cn-hangzhou.aliyuncs.com/item/headimg/000001545cc2df07000adf748000004f/000001545cc99b2f0030a22b80000052.jpg" alt="">
+				</div>
+				<div class="dialog_content_img">
+					<img src="https://shopcitic.oss-cn-hangzhou.aliyuncs.com/item/headimg/000001545cc2df07000adf748000004f/000001545cc9af87009cb29c80000053.jpg" alt="">
+				</div>
+				<div class="dialog_content_name">
+					<span>呷哺呷哺30元代金券</span>
+				</div>
+				<div class="dialog_content_price">
+					兑换方式:<span id="payTypeSelect"></span>
+				</div>
+			</div>
+			<div class="dialog_btn" id="payNow">
+				立即兑换
+			</div>
+		</div>
+	</div>
+		
+	<a id="rightBtn" style="display:none"></a>
+
+	<div class="overLayer" id="overLayer" style="display:none"></div>
+	<div class="shareLayer" id="shareLayer" style="display:none"></div>
+</body>
+</html>

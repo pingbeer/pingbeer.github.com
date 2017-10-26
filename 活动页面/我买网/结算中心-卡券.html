@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+    <title>结算中心-使用卡券</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="m.womai.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="applicable-device"content="mobile">
+    <meta http-equiv="Expires" CONTENT="-1">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="http://m.womai.com/images/favicon.ico" rel="shortcut icon">
+    <link href="http://m.womai.com/css/s-base.min.css?v=2017011701" rel="stylesheet" type="text/css" />
+    <link href="http://m.womai.com/css/ban.min.css?v=20170110" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://m.womai.com/js2/rem.min.js" dpr="1"></script>
+    <script type="text/javascript">
+        var _isWebKit = '__proto__' in {};//是否是webkit内核
+        if(_isWebKit){
+            document.write('<script src="http://m.womai.com/js/jquery-1.8.3.min.js"><\/script>');
+            //document.write('<script src="/js/zepto.min.js"><\/script>');
+        }else{
+            document.write('<script src="http://m.womai.com/js/jquery-1.8.3.min.js"><\/script>');
+        }
+    </script>
+    <script type="text/javascript" src="http://m.womai.com/js/os.js"></script>
+    <script type="text/javascript" src="http://m.womai.com/js/weixin_share.js"></script>
+    <script type="text/javascript" src="http://m.womai.com/js2/banner.min.js?v=20170110"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//whcdn.womaiapp.com/externals/analytics.js','gaTracker');
+    </script>
+    <!-- Piwik -->
+    <script type="text/javascript" src="http://m.womai.com/js/piwik/piwiktrack_common.js"></script>
+    <!-- End Piwik Code -->
+</head>
+
+	<body id="mainframe">
+	<link href="http://m.womai.com/css/zepto.alert.min.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="http://m.womai.com/js2/zepto.alert.js"></script>
+
+<a name="s-top" id="s-top"></a>
+<header>
+    <div class="s-topbar">
+        <div class="s-return"><a href="javascript:void(0)" onclick="checkOut()" class="s-bg2">返回</a></div>
+        <h1>选择卡券</h1>
+    </div>
+</header>
+
+<form action="http://m.womai.com/order/checkout.action?cartId=1&delCartId=1" method="post" id="checkoutform">
+    <div class="s-mh250">
+        <p class="s-infobar2 s-color1">
+                    当前订单有优惠券可用，请选择
+                </p>
+
+        
+                    <div class="s-card">
+                <p class="s-yes"></p>
+                <p class="s-value"><span>¥</span>50.00</p>
+                <p class="s-type">折扣券</p>
+                <p class="s-memo">全国（网站、手机通用）：【民生会员专享】全品类满100元立减50元（部分商品除外） 折扣券，XYF3</p>
+                <p class="s-num">卡号：4xyf397045112660</p>
+                <p class="s-date">有效期：2016-10-26~2017-07-31</p>
+                <p class="s-sel">
+                    <input id="idnuse1" name="checkOutRequest.couponCard" type="checkbox" value="528629410" promptContent="" onclick="checkOut(1,'','','',this)"/>
+                    <label for="idnuse1">使用</label>
+                </p>
+            </div>
+                    <div class="s-card">
+                <p class="s-yes"></p>
+                <p class="s-value"><span>¥</span>5.00</p>
+                <p class="s-type">折扣券</p>
+                <p class="s-memo">全国（网站、手机通用）：【会员专享券ZX】全品类满99元减5元（部分商品除外） 折扣券，CTC4</p>
+                <p class="s-num">卡号：4ctc470388104112</p>
+                <p class="s-date">有效期：2017-04-01~2017-04-30</p>
+                <p class="s-sel">
+                    <input id="idnuse2" name="checkOutRequest.couponCard" type="checkbox" value="575651318" promptContent="" onclick="checkOut(2,'','','',this)"/>
+                    <label for="idnuse2">使用</label>
+                </p>
+            </div>
+            </div>
+    <input type="hidden" id="checkoutSe" name="checkoutSe" value="eyJyZXNwb25zZSI6IiIsImVycm9yIjpudWxsLCJjaGVja291dF9jb25zaWduZWVpbmZvIjp7ImNvbnNpZ25lZV9pZCI6IjE4MjY1ODc4IiwibmFtZSI6IuWImOWFiOeUnyIsIm1vYmlsZXBob25lIjoiMTgyKioqKjkzMzUiLCJwcm92aW5jZSI6IuS4iua1tyIsImNpdHkiOiLlvpDmsYfljLoiLCJhcmVhIjoi5aSW546v5YaFIiwiZGV0YWlsIjoi55Sw5p6X6LevMTQw5Y+36LaK55WM5Yib5oSP5ZutMTblj7fmpbzkuJw05qW8IiwiYWRkcmVzc0NvZGUiOiIwIiwiYWRkcmVzc01zZyI6IiIsImNvbmZpcm1CdG4iOiIiLCJjYW5jZWxCdG4iOiIifSwiZGVsaXZlcnlfaW5mbyI6eyJkZXRhaWxfbmFtZSI6IumFjemAgeaXtumXtCIsInNlZ21lbnRfbmFtZSI6IuaXtumXtOautSIsImRlbGl2ZXJ5X2RldGFpbCI6W3siZGVsaXZlcnlfaWQiOiIwIiwiZGVzYyI6IuS4jemZkCIsInNob3ciOnRydWV9LHsiZGVsaXZlcnlfaWQiOiIxIiwiZGVzYyI6IuW3peS9nOaXpemAgei0pyIsInNob3ciOmZhbHNlfSx7ImRlbGl2ZXJ5X2lkIjoiMiIsImRlc2MiOiLlj4zkvJEv6IqC5YGH5pel6YCB6LSnIiwic2hvdyI6ZmFsc2V9XSwiZGVsaXZlcnlfaG91cl9zZWdtZW50IjpbeyJzZWdtZW50X2lkIjoiMCIsImRlc2MiOiLku7vmhI/ml7bpl7QiLCJzaG93Ijp0cnVlfSx7InNlZ21lbnRfaWQiOiIxIiwiZGVzYyI6IjA5OjAwLTE1OjAwIiwic2hvdyI6ZmFsc2V9LHsic2VnbWVudF9pZCI6IjIiLCJkZXNjIjoiMTU6MDAtMTk6MDAiLCJzaG93IjpmYWxzZX0seyJzZWdtZW50X2lkIjoiMyIsImRlc2MiOiIxOTowMC0yMjowMCIsInNob3ciOmZhbHNlfV0sImRlbGl2ZXJ5X3R5cGUiOiLlv6vpgJIifSwiY2hlY2tvdXRfcGF5Ijp7InBheV93YXkiOlt7InBheXdheV9pZCI6IjEyMjA4MCIsImRlc2MiOiLlvq7kv6HmlK/ku5jjgJDmjqjojZDjgJEiLCJwcmljZSI6IjAuMDAiLCJzaG93IjpmYWxzZX0seyJwYXl3YXlfaWQiOiI5OTk5IiwiZGVzYyI6IueZvuW6pumSseWMhSIsInByaWNlIjoiMC4wMCIsInNob3ciOmZhbHNlfSx7InBheXdheV9pZCI6IjUxMDAxIiwiZGVzYyI6IumTtuiBlOW/q+aNt+aUr+S7mCIsInByaWNlIjoiMC4wMCIsInNob3ciOmZhbHNlfSx7InBheXdheV9pZCI6IjEiLCJkZXNjIjoi6LSn5Yiw5LuY5qy+IiwicHJpY2UiOiIxMDYuOTAiLCJzaG93Ijp0cnVlfV0sIndtY2FyZF9iYWxhbmNlIjp7InRpdGxlIjoiIiwiY291bnQiOiIifSwibWVzc2FnZSI6IuW9k+aCqOe7keWumuaJi+acuuWPiuiuvuWumuaIkeS5sOWNoeaUr+S7mOWvhueggeWQjuaJjeWPr+S7peS9v+eUqOaIkeS5sOWNoeaUr+S7mOaWueW8j++8jOivt+WJjeW+gOaIkeeahOWwj+S5sOS4rei/m+ihjOe7keWumuiuvue9riJ9LCJjaGVja291dF9jb3Vwb25jYXJkIjp7ImNob29zZV9jYXJkIjpbXSwidW5jaG9vc2VfY2FyZCI6W3siY291cG9uY2FyZF9pZCI6IjUyODYyOTQxMCIsImNhcmRfdHlwZSI6IuaKmOaJo+WIuCIsInByaWNlIjoiNTAuMDAiLCJ1c2VfZGVzYyI6IuWFqOWbve+8iOe9keermeOAgeaJi+acuumAmueUqO+8ie+8muOAkOawkeeUn+S8muWRmOS4k+S6q+OAkeWFqOWTgeexu+a7oTEwMOWFg+eri+WHjzUw5YWD77yI6YOo5YiG5ZWG5ZOB6Zmk5aSW77yJIOaKmOaJo+WIuO+8jFhZRjMiLCJjYXJkX251bWJlciI6IjR4eWYzOTcwNDUxMTI2NjAiLCJ0aW1lX2luZm8iOiIyMDE2LTEwLTI2fjIwMTctMDctMzEiLCJsaW1pdFBheU1vZGUiOiIiLCJjb25maXJtQnRuIjoiIiwiY2FuY2VsQnRuIjoiIiwicHJvbXB0Q29udGVudCI6IiJ9LHsiY291cG9uY2FyZF9pZCI6IjU3NTY1MTMxOCIsImNhcmRfdHlwZSI6IuaKmOaJo+WIuCIsInByaWNlIjoiNS4wMCIsInVzZV9kZXNjIjoi5YWo5Zu977yI572R56uZ44CB5omL5py66YCa55So77yJ77ya44CQ5Lya5ZGY5LiT5Lqr5Yi4WljjgJHlhajlk4Hnsbvmu6E5OeWFg+WHjzXlhYPvvIjpg6jliIbllYblk4HpmaTlpJbvvIkg5oqY5omj5Yi477yMQ1RDNCIsImNhcmRfbnVtYmVyIjoiNGN0YzQ3MDM4ODEwNDExMiIsInRpbWVfaW5mbyI6IjIwMTctMDQtMDF+MjAxNy0wNC0zMCIsImxpbWl0UGF5TW9kZSI6IiIsImNvbmZpcm1CdG4iOiIiLCJjYW5jZWxCdG4iOiIiLCJwcm9tcHRDb250ZW50IjoiIn1dLCJzaXplIjoyfSwiY2hlY2tvdXRfaW52b2ljZSI6eyJpbnZvaWNlX3RpdGxlIjpbeyJpbnZvaWNlX2lkIjoiMCIsInR5cGUiOiLpo5/lk4EifSx7Imludm9pY2VfaWQiOiIxIiwidHlwZSI6IuekvOWTgSJ9XSwicHJvbXB0Ijoi5Y+R56Wo6YeR6aKd5Li65a6e6ZmF5pSv5LuY546w6YeR5oC76YeR6aKd77yI5LiN5ZCr5oiR5Lmw5Y2h44CB5Zui6LSt5Y2h44CB5oqY5omj5Yi444CB6LSt54mp5Yi444CB5omL5py657qi5YyF44CB5pm65oOg5Y2h562J5Y2h5Yi45oq15raI6YeR6aKd77yJXHJcbuWPkeelqOaKrOWktOWPquiDveWhq+WGmeKAnOS4quS6uuKAnei/meS4pOS4quWtl+aIluiAheWFt+S9k+eahOWFrOWPuOWQjeensCJ9LCJzaG93X3ByaWNlIjoiZmFsc2UiLCJyZWFsUGF5TW9kZSI6IjEsMTA2LjkwIiwiY2hlY2tvdXRfcHJvZHVjdGxpc3QiOlt7InByb2R1Y3RfaWQiOiI1MDIxNjciLCJuYW1lIjoi44CQ6Ieq6JCl44CR5ZaE5a2Y5L2z57u054mHKOebkuijhSAxMjDniYcpIiwicGljIjoiaHR0cDovL3BpYy53b21haS5jb20vdXBsb2FkLzYwMS82MDMvNjA2LzcwMDAvNjU5MDYvNTAyMTY3LzUwMjE2N18wX3Bob25lMTIwXzE5MjEuanBnIiwicHJpY2UiOiLmiqLotK3ku7fvvJrvv6U5OS4wMCIsIm51bWJlciI6IuaVsOmHj++8mjHku7YiLCJwb2ludCI6Iuenr+WIhu+8mjEzNS4wMCIsIndlaWdodCI6IumHjemHj++8mjAuMjMya2ciLCJwcmVzZW50IjoiZmFsc2UiLCJwdHlwZSI6IjAiLCJzZWxsYWJsZSI6IjEifSx7InByb2R1Y3RfaWQiOiI1NjIyMjUiLCJuYW1lIjoiU1VOU0lERVPkuIrotKjlhajohILnuq/niZvlpbYxTO+8iOW+t+WbveWOn+ijhei/m+WPoyDnm5LvvIkiLCJwaWMiOiJodHRwOi8vcGljLndvbWFpLmNvbS91cGxvYWQvNjAxLzY2Ni81NjIyMjUvNTYyMjI1XzBfcGhvbmUxMjBfODA2OC5qcGciLCJwcmljZSI6Iui1oOWTgeS7t++8mu+/pTcuOTAiLCJudW1iZXIiOiLmlbDph4/vvJox5Lu2IiwicG9pbnQiOiLnp6/liIbvvJowLjAwIiwid2VpZ2h0Ijoi6YeN6YeP77yaMS4wNmtnIiwicHJlc2VudCI6InRydWUiLCJwdHlwZSI6IjEiLCJzZWxsYWJsZSI6IjEifV0sImNoZWNrb3V0X3N0YXRpc3RpY3MiOnsidG90YWxfbmVlZF9wYXkiOnsibmFtZSI6IuaAu+mHkeminSIsInZhbHVlIjoiMTA2LjkwIn0sInByb2R1Y3RfdG90YWxfd2VpZ2h0Ijp7Im5hbWUiOiLllYblk4HmgLvph40iLCJ2YWx1ZSI6IjEuMjlrZyJ9LCJwcm9kdWN0X3RvdGFsX3ByaWNlIjp7Im5hbWUiOiLllYblk4HmgLvph5Hpop0iLCJ2YWx1ZSI6Iu+/pTEwNi45MCJ9LCJmcmVpZ2h0Ijp7Im5hbWUiOiLov5DotLkiLCJ2YWx1ZSI6Iu+/pTAuMDAifSwiZnJlaWdodF9wcml2aWxlZ2UiOnsibmFtZSI6IiIsInZhbHVlIjoiIn0sImNvdXBvbmNhcmRfYWdhaW5zdCI6eyJuYW1lIjoi5Y2h5Yi45Yay5oq1IiwidmFsdWUiOiLvv6UwLjAwIn0sInRvdGFsX3BvaW50Ijp7Im5hbWUiOiLotaDpgIHnp6/liIYiLCJ2YWx1ZSI6IjEzNS4wMOWIhiJ9LCJjaGVja291dF9wcml2aWxlZ2UiOnsibmFtZSI6IuS8mOaDoOmHkeminSIsInZhbHVlIjoi77+lMC4wMCJ9LCJ3b21haWNhcmRfcGF5Ijp7Im5hbWUiOiLmiJHkubDljaHmlK/ku5jph5Hpop0iLCJ2YWx1ZSI6Iu+/pTAuMDAifX0sImV4aXN0Q2hlY2tvdXRJbnZvaWNlIjp0cnVlLCJjaGVja291dEludm9pY2VNc2ciOiIiLCJjYXJ0aWQiOiIxIiwiY2FydFR5cGUiOm51bGwsIm9yZGVyVHlwZSI6IiIsInByb2R1Y3Rfc2VsbG91dCI6eyJjb2RlIjoiMCIsInRleHQiOiIifSwidXNlck5hbWUiOiIiLCJ1c2VySWRlbnRpZnkiOiIiLCJpc1VwSWRlbnRpZnlQaWMiOiIiLCJpZGVudGlmeVBpY1BhdGgiOltudWxsLG51bGxdfQ=="/>
+    <input type="hidden" id="address" name="checkOutRequest.address" value="18265878"/>
+
+    <input type="hidden" id="amount" name="checkOutRequest.payWay.amount" value=""/>
+    <input type="hidden" id="other" name="checkOutRequest.payWay.other" value="1"/>
+    <input type="hidden" id="deliveryId" name="checkOutRequest.expressTime.deliveryId"
+           value="0"/>
+    <input type="hidden" id="segmentId" name="checkOutRequest.expressTime.segmentId"
+           value="0"/>
+    <input type="hidden" id="desPayPassword" name="desPayPassword" value=""/>
+    <input type="hidden" id="invoiceId" name="submitOrder.invoiceId" value=""/>
+    <input type="hidden" id="invoiceTitle" name="submitOrder.invoiceTitle" value=""/>
+    <input type="hidden" id="remark" name="submitOrder.remark" value=""/>
+    <input type="hidden" id="cardimgdata_1" name="submitOrder.identifyImgFace" value=""/>
+    <input type="hidden" id="cardimgdata_2" name="submitOrder.identifyImgBack" value=""/>
+    </form>
+
+
+<script type="text/javascript">
+    /*var checkOut = function(checkbox){
+        var a = $('#idnuse'+checkbox).val();
+        if($('#idnuse'+checkbox).attr('checked','checked')){
+            $("input:checkbox").not("input:checked").attr('disabled','disabled');
+        }
+        document.getElementById("checkoutform").submit();
+    }*/
+    var checkOut = function(checkbox,limitPayMode,confirmBtn,cancelBtn,that){
+        if(that===undefined){
+            document.getElementById("checkoutform").submit();
+            return;
+        }
+
+        var promptContent=$(that).attr("promptContent");
+        if($(that).is(':checked')){
+            if(limitPayMode!=""){
+                jQuery.dialog({
+                    content: promptContent,
+                    title: '友情提示',
+                    okText: confirmBtn,
+                    cancelText: cancelBtn,
+                    width: 200,
+                    ok: function () {
+                        if(!cancelBtn){
+                            $(that).attr("checked",false);
+                            return ;
+                        }
+
+                        $("input:checkbox").not(that).attr('checked',false);
+                        $("input:checkbox").not("input:checked").attr('disabled','disabled');
+                        document.getElementById("checkoutform").submit();
+                    },
+                    cancel: function () {
+                        $(that).attr("checked",false);
+//                        $("input:checkbox").not("input:checked").attr('disabled','disabled');
+//                        document.getElementById("checkoutform").submit();
+                    }
+                });
+            }else{
+                $("input:checkbox").not("input:checked").attr('disabled','disabled');
+                document.getElementById("checkoutform").submit();
+            }
+        }else{
+            //如果取消的是已选中的优惠券
+            if($("#iduse").size()>0){
+                document.getElementById("checkoutform").submit();
+            }
+//            $("input:checkbox").not("input:checked").attr('disabled','disabled');
+//            document.getElementById("checkoutform").submit();
+        }
+    }
+
+    $(function(){
+        var lineLink = location.href;
+        var descContent = '全球美食尽在中粮我买网';
+        var shareTitle = '中粮我买网';
+        loadInfo.init(lineLink,descContent,shareTitle);
+    })
+</script>
+	<footer class="syncsite-city-h">
+        <div class="s-footera s-lr">
+        <div class="sl">
+                            <a href="http://m.womai.com/my/home.action">sj_55978643362</a> | <a href="http://m.womai.com/sso/loginOut.action">退出</a>
+                    </div>
+        <div class="sr">
+            <a href="http://m.womai.com/my/feedBack.action">反馈</a> |
+            <a href="javascript:scrollTo(0,0);">回顶部</a>
+        </div>
+    </div>
+    <div class="s-footerb">
+        <span class="s-baiBorder s-inblock"><a href="http://m.womai.com/index.shtml" class="s-baiBtn s-Btn29">首页</a></span>&nbsp;
+        <span class="s-baiBorder s-inblock"><a href="http://m.womai.com/category/list.action" class="s-baiBtn s-Btn29">分类</a></span>&nbsp;
+        <span class="s-baiBorder s-inblock"><a href="http://m.womai.com/cart/cartGet.action" class="s-baiBtn s-Btn29">购物车</a></span>&nbsp;
+        <span class="s-baiBorder s-inblock"><a href="http://m.womai.com/my/home.action" class="s-baiBtn s-Btn29">我的小买</a></span>
+    </div>
+    <div class="s-footerc">
+        <p class="s-color7"><a target="_blank" class="s-color7" href="https://itunes.apple.com/cn/app/zhong-liang-wo-mai-wang/id528910047?mt=8">&nbsp;下载iphone客户端</a>&#12288;|&#12288;<a target="_blank" class="s-color7" href="http://upload.m.womai.com/app/android/womai.apk">下载android客户端</a></p>
+        <p class="s-color7"><a class="s-color7" href="http://m.womai.com/">触屏版</a>&#12288;|&#12288;<a class="s-color7" href="http://www.womai.com?redirect=false">电脑版</a></p>
+        <p>客服电话 <a href="tel:400-005-5678" class="s-color7">400-005-5678</a></p>
+        <div style="width:300px;margin:0 auto; padding:5px 0;">
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010102000458" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="http://m.womai.com/images/icpno.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11010102000458号</p></a>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript">
+        var GA_PageGroup = GA_PageGroup || "";
+    var GA_UserId = '87541366';
+    var _runJaExtra=_runJaExtra|| "";
+    //是不是在外部执行ja
+    if(!_runJaExtra){
+        gaTracker('create', 'UA-10228579-1', 'auto','Truemetrics', {'userId': '87541366'});
+        gaTracker('Truemetrics.require', 'linkid', 'linkid.js');
+//        gaTracker('Truemetrics.require', 'displayfeatures');
+        gaTracker('Truemetrics.set', 'displayFeaturesTask', null);
+        gaTracker('Truemetrics.require', 'ec');
+        gaTracker('Truemetrics.set', 'contentGroup1', GA_PageGroup);
+        gaTracker(function() {
+            var clientID = gaTracker.getByName('Truemetrics').get('clientId');
+            gaTracker('Truemetrics.set', 'dimension1', clientID); });
+        gaTracker('Truemetrics.set', 'dimension2', '87541366');
+
+        gaTracker('Truemetrics.set', 'transport', 'beacon');
+        gaTracker('Truemetrics.set', 'forceSSL', true);
+        gaTracker('Truemetrics.send', 'pageview');
+    }
+</script><script type="text/javascript">
+            //Vizury埋点
+            (function() {
+                try {
+                    var viz = document.createElement("script");
+                    viz.type = "text/javascript";
+                    viz.async = true;
+                    viz.src = ("https:" == document.location.protocol ?"https://cn-tags.vizury.com" : "http://cn-tags.vizury.com")+ "/analyze/pixel.php?account_id=VIZVRM2960";
+
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(viz, s);
+                    viz.onload = function() {
+                        try {
+                            pixel.parse();
+                        } catch (i) {
+                        }
+                    };
+                    viz.onreadystatechange = function() {
+                        if (viz.readyState == "complete" || viz.readyState == "loaded") {
+                            try {
+                                pixel.parse();
+                            } catch (i) {
+                            }
+                        }
+                    };
+                } catch (i) {
+                }
+            })();
+            //百度统计
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?3d400e618922947d47d0b95855f8b230";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+            //sem
+            var _fxcmd = _fxcmd || [];
+            _fxcmd.sid = 'dad82a7fe513d4091944229540d582e1';
+            (function () {
+                var _pzfx = document['createElement']('script');
+                _pzfx.type = 'text/javascript';
+                _pzfx.async = true;
+                _pzfx.src = '//static.w3t.cn/fx/1/1/fx.js';
+                var sc = document.getElementsByTagName('script')[0];
+                sc.parentNode.insertBefore(_pzfx, sc);
+            })();
+</script>
+<script type="text/javascript">
+    (function(){
+        var bp = document.createElement('script');
+        bp.src = '//push.zhanzhang.baidu.com/push.js';
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+<script type="text/javascript">
+    (window.__zp_tag_params = window.__zp_tag_params ||{})["src"] = "H5";
+
+    (function(param){
+        var c = {query:[], args:param||{}};
+        c.query.push(["_setAccount","75"]);
+        c.query.push(["_setSiteID","2"]);
+        (window.__zpSMConfig = window.__zpSMConfig||[]).push(c);
+        var zp = document.createElement("script"); zp.type = "text/javascript"; zp.async = true;
+        zp.src = ("https:" == document.location.protocol ? "https:" : "http:") + "//cdn.zampda.net/s.js";
+        var len = document.getElementsByTagName("script").length;
+        var s = document.getElementsByTagName("script")[len-1]; s.parentNode.appendChild(zp);
+    })(window.__zp_tag_params);
+</script>
+	</body>
+</html>

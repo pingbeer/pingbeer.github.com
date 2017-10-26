@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "area": "大陆上映",
+      "wpId": "26661",
+      "dimensional": "2D/3D/中国巨幕/全景声",
+      "smallImg": "",
+      "director": "吴京",
+      "description": "只身冲险地 甩过宋仲基",
+      "language": "普通话,英语",
+      "showDate": "2017-07-27",
+      "photos": "",
+      "isShow": true,
+      "duration": "123",
+      "actors": "吴京,弗兰克·格里罗,吴刚",
+      "bigImg": "",
+      "bdId": "62880",
+      "myId": "344264",
+      "grade": "8.1",
+      "name": "战狼2",
+      "createdTime": 1501034892000,
+      "id": "de5a27c78c9a4f9da8b2984fd531cd85",
+      "mzId": "3591",
+      "category": "动作,战争",
+      "spiderId": "201707851270",
+      "info": "<p><span style=\"color: rgb(17, 17, 17); font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height: 19.44px; background-color: rgb(255, 255, 255);\">《战狼2》的故事讲述了正经历人生最低谷的冷锋，原想在海上漂泊了此一生，却卷入了一场非洲国家的叛乱。本可以安全撤离的他，无法忘记军人的使命，绝不丢下身陷囹圄的同胞和难民们，便只身犯险冲回沦陷区，带领所有被困民众向邻国大逃亡…...正如吴京本人所说，他依旧想在续集里延续《战狼》第一部的情怀：犯我中华者虽远必诛。他表示，续集会比第一部更加复杂，场面会更大。制片人之一吕建明也明确表示过，《战狼2》会继续获得军方支持。</span></p>"
+    }
+
+  ],
+  "errorCode": 0,
+  "message": "请求成功"
+}

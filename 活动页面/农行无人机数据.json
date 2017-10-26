@@ -1,0 +1,43 @@
+﻿{
+  "status": "success",
+  "result": {
+    "items": [
+      {
+        "shopName": "线上商户",
+        "mehSecClsName": "其他",
+        "distance": "1071714",
+        "merchPicId": "5723358052eb43718116ffe1f20f89d399000012",
+        "bizDisName": "其他",
+        "id": "ad0c3f60-9e96-4011-8ca1-45fb864ca684"
+      }
+    ],
+    "pageNo": "1",
+    "yhDetail": {
+      "nowTimeStamp": "35298",
+      "validCBin": "*",
+      "actStDate": "20170904",
+      "validCardType": "1000",
+      "ruleName": "(券)全家便利店周五、六满30减20元",
+      "exprRtnFlg": "0",
+      "actType": "B",
+      "ruleDesc": "本活动限漂亮升级妈妈卡持卡人参加，每周600名额，领完即止。持卡人可在周一至周三上午10点起登陆掌银领取本周活动日优惠券，领券后可在周五或周六任意一天通过农行云闪付（HCE、Apple Pay、华为Pay、小米Pay或扫码付）使用，支付时立减，过期作废。单卡每周限享一次优惠，优惠券重复领取以优惠金额高的为准，每卡单月可参加2次活动。详见官网。",
+      "remCnt": "600",
+      "appr": "10",
+      "shareEntry": "0",
+      "actNo": "999999CXB00035096",
+      "actPicId": "da378752d1c3410082930dc25894d9b699000012",
+      "cardBin": null,
+      "zoneCode": "04",
+      "anytmRtnFlg": "0",
+      "secKillEdTime": "120000",
+      "secKillFlag": "1",
+      "acquiredCnt": "0",
+      "secKillStTime": "090000",
+      "ruleNo": "035097",
+      "purCshAmt": null,
+      "purPntAmt": null,
+      "actEdDate": "20170909"
+    },
+    "lastPage": "1"
+  }
+}

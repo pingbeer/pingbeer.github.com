@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name= "format-detection" content= "telephone=no" />
+    <title>全年最爆款的福利都在这儿了~大牌特权0元起！</title>
+        <script language="javascript" type="text/javascript">
+            var contextPath="/promotion";
+            var ctx = '/promotion';
+        </script>
+        <script src="../js/activityday/jquery-2.1.0.min.js?version=20170317" type="text/javascript"></script>
+        <script src="../js/activityday/activitydayMain.js?version=20170317" type="text/javascript"></script>
+        <script src="../js/activityday/fastclick_enc.min.js?version=20170317" type="text/javascript"></script>
+        <script src="../js/activityday/swipe.js?version=20170317" type="text/javascript"></script>
+        <script src="../js/activityday/registernew.js?version=20170317" type="text/javascript"></script>
+        <link href="../css/activityday/default.css?version=20170317" rel="stylesheet" type="text/css">
+        <link href="../css/activityday/ms_lxl.css?version=20170317" rel="stylesheet" type="text/css">
+        <link href="../css/activityday/zl_ms.css?version=20170317" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+  <div id="ms_01_12" class="flex">
+    <div class="top_bar">
+      <div class="top_home"><img src="../images/activityday/ico_home.png" onclick="goHome()"></div>
+        <div class="top_logo"><img src="../images/activityday/ico_logo.png"></div>
+        <div class="top_person"><img src="../images/activityday/ico_person.png" onclick="goMyList()"></div>
+    </div>
+
+  <div style="position: absolute; top: 0px; left: 0px; text-align: center; z-index: 100; background: rgb(0, 0, 0) none repeat scroll 0% 0%; width: 100%; height: 100%;opacity:0.3; display:none;" id="masklel">
+  </div>
+  <input name="imageKey" id="imageKey" type="hidden"></input>
+  <div id="con" style="position:absolute;left:30%;top:5%;z-index:101;width:321px; overflow:hidden; background:#fff;margin:0 auto; margin-top:80px; display:none;">
+      <div class="evaItem clearfix">
+            <div class="itemDetail fl zh_authcode_component zh_authcode_grid">
+                <div class="zh_authcode_grid_head clearfix">
+                    <div class="zh_authcode_grid_input">
+                        <div class="inputc"></div>
+                        <div class="inputc"></div>
+                        <div class="inputc"></div>
+                        <div class="inputc"></div>
+                        <div class="zh_authcode_backspace J_captcha_backspace"></div>
+              <input name="HidIndex" id="HidIndex" type="hidden"></input>
+                    </div>
+                </div>
+                <div class="zh_authcode_grid_content">
+                    <img id="imgValadate" class="J_zh_authcode_img J_authcode_changes" src="#" alt="验证码">
+                    <a class="vCodeUpdate J_authcode_change" href="javascript:;">换一个</a>
+
+                    <div class="zh_authcode_help">点击框内文字输入上图中<span class="c_c00">汉字</span>对应汉字</div>
+                    <div id="DivCon" class="zh_authcode_buttons clearfix J_authcode_buttons">
+            </div>
+                </div>
+            </div>
+        <div class="zh_authcode_grid_content">
+          <input id="BtnComfir" type="button" value="确定"/>
+        </div>
+
+            <div class="regTips J_authcodeTips">
+                <i class="tipsEmpt"></i>
+                <i class="tipsTxt"></i>
+                <span class="tipsCont">请输入验证码</span>
+            </div>
+    </div>
+  </div>
+
+      <div class="content">
+      <p class="top_txt border b_btm" id="ex_title"></p>
+          <!-- 滑动广告模块 -->
+          <div id='mySwipe' class='swipe_wrap'>
+              <div class='swipeDov' id="ex_swipeDov"></div>
+          </div>
+
+          <div class="pro_list pro_main">
+              <div class="cvt_item border b_lrb bg_w">
+                  <span class="ico_top"></span>
+                  <span class="ico_ylt"></span>
+                  <span class="ico_yrt"></span>
+                  <p class="cvt_img"><img src="../images/activityday/inbin_01.jpg"></p>
+              </div>
+          </div>
+
+          <div class="w_cvt border b_top_btm">
+              <div class="w_box border b_btm">
+                  <p class="w_title">1积分兑换星巴克特权</p>
+                  <div class="wkit">
+                      <div class="tabc-t">
+                <font color="red" id="ex_msg"></font>
+              <div class="wkit_3" id="timer" style="display:none;"></div>
+            </div>
+                  </div>
+              </div>
+              <div class="gift_redeem border b_top">
+                  <div>数量</div>
+                  <div>
+                      <p class="num_change">
+              <span class="minusBtn"></span>
+                          <span class="num_int">1</span>
+              <span class="plusBtn"></span>
+                      </p>
+                  </div>
+              </div>
+        <div class="gift_redeem code_dov border b_top">
+                  <div>
+                      <p class="yzm_box">
+                          <span class="yzm_sp1">验证码</span>
+                          <span class="yzm_sp2"><input style="background:#fff;border:0;color:red;text-align:center;" type="button" name="j_captcha" id="j_captcha" maxlength="4" value="点击获取验证码"/></span>
+                      </p>
+                  </div>
+                  <!--
+          <div><p><img id="imgAsynchHttpReqArea" height="35px" src="/promotion/activitydaycaptcha.jhtml?timestamp="/></p></div>
+                -->
+              </div>
+
+          </div>
+
+          <div class="w_cvt border b_top_btm">
+          <!--
+              <div class="cvtNav"  onclick="goShopList('starbucks')">
+                  <p class="cvt_title">适用门店</p>
+              </div>
+            -->
+              <div class="cvtrule border b_top">
+                  <!--TODO:状态控制添加class=on-->
+                  <p class="cvtrule_title">使用细则 <i class="ico_wtb"></i></p>
+                  <!--TODO: none 隐藏-->
+                  <div class="cvt_rule">
+            <p>获得资质起一周内可享1积分兑换星巴克大杯手工调制饮品一杯；</p>
+          </div>
+              </div>
+          </div>
+        </div><!-- content end -->
+
+        <div class="foter">
+        <p class="btn_card"  id="sure_btn">立即申请</p>
+        </div>
+      <!--弹出 已经对光了 none 隐藏-->
+        <div class="pop_wraper none" id="dh_fial1">
+            <div class="pop_outer">
+                <div class="pop_cont">
+                    <span class="ico_close"></span>
+                    <p class="pop_icon"><span class="ico_fial"></span></p>
+                    <p class="pop_title">请填写验证码</p>
+                    <p class="pbtn_p"><span class="ylw_btn">返 回</span></p>
+                </div>
+            </div>
+        </div>
+      <!--弹出 已经对光了 none 隐藏-->
+        <div class="pop_wraper none" id="dh_fial2">
+            <div class="pop_outer">
+                <div class="pop_cont">
+                    <span class="ico_close"></span>
+                    <p class="pop_icon"><span class="ico_fial"></span></p>
+                    <p class="pop_title">图片验证码验证不通过</p>
+                    <p class="pbtn_p"><span class="ylw_btn">返 回</span></p>
+                </div>
+            </div>
+        </div>
+      <!--弹出 已经对光了 none 隐藏-->
+        <div class="pop_wraper none" id="dh_fial3">
+            <div class="pop_outer">
+                <div class="pop_cont">
+                    <span class="ico_close"></span>
+                    <p class="pop_icon"><span class="ico_fial"></span></p>
+                    <p class="pop_title">对不起查询卡信息错误！</p>
+                    <p class="pbtn_p"><span class="ylw_btn">返 回</span></p>
+                </div>
+            </div>
+        </div>
+        <!--弹出 已经对光了 none 隐藏-->
+        <div class="pop_wraper none" id="dh_fial4">
+            <div class="pop_outer">
+                <div class="pop_cont">
+                    <span class="ico_close"></span>
+                    <p class="pop_icon"><span class="ico_fial"></span></p>
+                    <p class="pop_title">Sorry，抢光啦！</p>
+                    <p class="pbtn_p"><span class="ylw_btn">返 回</span></p>
+                </div>
+            </div>
+        </div>
+      <div class="pop_wraper none" id="dh_fail5">
+            <div class="pop_outer">
+                <div class="pop_cont">
+                    <span class="ico_close"></span>
+                    <p class="pop_icon"></p>
+                    <p class="pop_title">兑换超时</p>
+                    <p class="pbtn_p" onclick="goMyList()"><span class="ylw_btn">查看我的特权</span></p>
+                </div>
+            </div>
+        </div>
+      <div class="pop_wraper none" id="dh_ing">
+            <div class="pop_outer">
+                <div class="pop_cont">
+            <span class="ico_close"></span>
+                    <p class="pop_title">抢兑中，请稍候……</p>
+                </div>
+            </div>
+        </div>
+      <div class="pop_wraper none" id="dh_fail7">
+            <div class="pop_outer">
+                <div class="pop_cont">
+                  <span class="ico_close"></span>
+                    <p class="pop_icon"></p>
+                    <p class="pop_title">目前活动抢兑火爆，请您稍后重试！</p>
+                    <p class="pbtn_p" onclick="javascript:$('#dh_fail7').addClass('none');"><span class="ylw_btn">关闭</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="pop_wraper none" id="dh_fail8">
+            <div class="pop_outer">
+                <div class="pop_cont">
+                    <p class="pop_icon"></p>
+                    <p class="pop_title">暂未查询到您的兑换资质，请点击继续查询</p>
+                    <p class="pbtn_p" id ="_flush"><span class="ylw_btn">查询</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+      //倒计时
+      var addTimer = function () {
+            var list = [],
+                interval;
+
+            return function (id, time) {
+                if (!interval)
+                    interval = setInterval(go, 1000);
+                list.push({ ele: document.getElementById(id), time: time });
+            }
+
+            function go() {
+                for (var i = 0; i < list.length; i++) {
+                    list[i].ele.innerHTML = getTimerString(list[i].time ? list[i].time -= 1 : 0);
+                    if (!list[i].time)
+                        list.splice(i--, 1);
+                }
+            }
+
+        function getTimerString(time) {
+              var not0 = !!time,
+          h = Math.floor(time / 3600),
+              m = Math.floor((time %= 3600) / 60),
+              s = time % 60;
+          if(h<10){ hh='0'+h; }else{ hh=h; }
+          if(m<10){ mm='0'+m; }else{ mm=m; }
+          if(s<10){ ss='0'+s; }else{ ss=s; }
+              if (not0 &&time >=0)
+            return "距离抢兑开始还有" + hh + ":" + mm + ":" + ss ;
+          else
+            return "";
+          }
+      } ();
+
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?d55f7b03c99cd9fa2e7c08ea87480c97";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <script type="text/javascript">
+      $(function(){
+        $("#_flush").bind('click',function(){
+          $('#dh_fail8').addClass('none');
+          autoFlush();
+        });
+        var pool=1;//刷新次数
+      var second=5;//循环秒数
+      var flag=false;//弹层表示
+      var intervalNum ;//间隔移除标志
+      var resultFlag=0;//后台返回结果
+        autoFlush();
+          function autoFlush(){
+            searchInfoAjax();
+            if(resultFlag==3){
+              intervalNum = self.setInterval(function(){
+                $("#ex_title").text('目前为第'+pool+'次自动刷新');
+            $("#ex_swipeDov").html('<div class=\"swip_item\">活动非常火爆！正在努力为您查询兑换资质，请稍等'+second+'秒</div>');
+            $("#ex_msg").text('');
+            if(second==0){
+              clearInterval(intervalNum);
+              if(flag){
+                //弹层提示手动刷新
+                pool = 1;
+                second=5;
+                flag=false;
+                $("#ex_title").text('');
+                $("#ex_swipeDov").html('<div class=\"swip_item\"></div>');
+                $("#ex_msg").text('');
+                $("#dh_fail8").removeClass('none');
+              }else if(pool==3){
+                autoFlush();
+                flag=true;
+              }else{
+                autoFlush();
+                second=5;
+                ++pool;
+              }
+                }else{
+                  --second
+                }
+              },1000);
+            }
+          }
+
+
+          function searchInfoAjax(){
+            jQuery.ajax({
+              type:"POST",
+                  data:{'temp':(new Date()).getTime(),'type':'inBin'},
+              url:contextPath + "/activityday/ajaxProdList.jhtml",
+              async:false,
+                  success: function(data){
+                  var personFlagStr = data.personFlagStr;
+                  var timerFlagStr = data.timerFlagStr;
+                  var isHaveStrageStr = data.isHaveStrageStr;
+                  var nowDate = data.nowDate;
+                  var starbucksList = data.starbucksList;
+                  resultFlag = 0;
+                  switch (personFlagStr){
+                      case '0'://未绑定卡用户
+                        $("#ex_title").text('很遗憾，您暂时无法参与in卡1积分兑换特权申请');
+                        $("#ex_swipeDov").html('<div class=\"swip_item\">in卡每周计积分消费满399元，即可申请  1 积分抢兑星巴克特权哦，赶快加油吧！</div>');
+                        $("#ex_msg").text('对不起，请先绑定卡。');
+                      break;
+                      case '1'://无资质
+                        $("#ex_title").text('很遗憾，您暂时无法参与in卡1积分兑换特权申请');
+                        $("#ex_swipeDov").html('<div class=\"swip_item\">in卡每周计积分消费满399元，即可申请  1 积分抢兑星巴克特权哦，赶快加油吧！</div>');
+                        $("#ex_msg").text('对不起，您还没有兑换特权。');
+                      break;
+                      case '2'://有资质
+                        $("#ex_title").text('恭喜您可参与in卡1积分兑换特权申请');
+                        addQulificationList(starbucksList);
+                        if(timerFlagStr=='1'){
+                          if(isHaveStrageStr=='1'){
+                            $("#sure_btn").removeClass("disable");
+                          }else{
+                            $("#ex_msg").text('10点和15点开抢，已经抢光啦！');
+                          }
+                        }else{
+                          var timer = nowDate;
+                      if(timer != 0){
+                        addTimer("timer",timer);
+                        $("#timer").show();
+                      }
+                        }
+                      break;
+                      case '3'://活动火爆
+                        resultFlag = 3;
+                      break;
+                      case '4'://当天已经下过单
+                        $("#ex_title").text('恭喜您可参与in卡1积分兑换特权申请');
+                        addQulificationList(starbucksList);
+                        $("#ex_msg").text('您已经申请过啦！');
+                      break;
+                    }
+                }
+              });
+          }
+          function addQulificationList(starbucksList){
+            var ex_swipeDov_innerHtml ='';
+            var ex_swipeDov_outHtml = '<ul class=\"swipe_navpos\" id=\"ex_swipe_navpos\">';
+
+            $.each(starbucksList,function(i,list){
+          ex_swipeDov_innerHtml = ex_swipeDov_innerHtml+
+          '<div class=\"swip_item\">'
+            +'<p class=\"swip_p1\">'+list.lqName+'</p>'
+          +'</div>';
+          ex_swipeDov_outHtml = ex_swipeDov_outHtml+'<li '+(i==0?'class=\"on\"':'')+'></li>';
+        });
+
+        ex_swipeDov_outHtml = ex_swipeDov_outHtml+"</ul>";
+        $("#ex_swipeDov").html(ex_swipeDov_innerHtml);
+        $("#ex_swipeDov").after(ex_swipeDov_outHtml);
+        //滑动广告模块
+            var swipePosition = $(".swipe_navpos li");
+            window.mySwipe = $('#mySwipe').Swipe({
+                continuous: true,//是否无限滚动
+                disableScroll: false,
+                stopPropagation: false,
+                callback: function(index, elem) {
+                    $(".swipe_navpos li").removeClass('on');
+                    var numSlides=window.mySwipe.data('Swipe').getNumSlides();
+                    var reIndex=index;
+                    if(numSlides==2){//如果只有两张图片时的情况
+                        reIndex=Math.ceil(index%numSlides);
+                    }
+                    swipePosition[reIndex].className='on';
+                },
+                auto:3000,
+            });
+          }
+          //引入fastclick,消除移動端的點擊延遲 優化體驗 非必須 可不用
+          FastClick.attach(document.body);
+
+      $("#imgAsynchHttpReqArea").click(function() {
+              var timestamp = (new Date()).getTime();
+              $(this).attr("src", ctx + "/activitydaycaptcha.jhtml?timestamp=" + timestamp);
+        });
+
+      $(".cvtrule_title").on('click',function(){
+          $(this).toggleClass('on');
+          $(this).siblings(".cvt_rule").toggleClass('none');
+    });
+
+      $(".ylw_btn").on('click',function(){
+      $("#dh_fial1").addClass('none');
+      $("#dh_fial2").addClass('none');
+        $("#dh_fial3").addClass('none');
+        $("#dh_fial4").addClass('none');
+      $("#dh_fial5").addClass('none');
+      $("#dh_fail7").addClass('none');
+      $("#dh_fail8").addClass('none');
+      $("#dh_ing").addClass('none');
+      });
+
+    $(".ico_close").on('click',function(){
+      $("#dh_fial1").addClass('none');
+      $("#dh_fial2").addClass('none');
+        $("#dh_fial3").addClass('none');
+        $("#dh_fial4").addClass('none');
+      $("#dh_fial5").addClass('none');
+      $("#dh_fail7").addClass('none');
+      $("#dh_fail8").addClass('none');
+      $("#dh_ing").addClass('none');
+      });
+
+      $("#sure_btn").on('click',function(){
+      var j_captchaValue = $("#HidIndex").val();
+
+      var imageKey =$("#imageKey").val();
+
+
+
+      jQuery.ajax({
+          type:"POST",
+              data:{'prodId':'1','j_captcha':j_captchaValue,'imageKey':imageKey},
+          url:contextPath + "/activityday/goOrder.jhtml?temp="+(new Date()).getTime(),
+              success: function(data){
+                queryOrderResult();
+                if(data.result=='1'){//图片验证不通过
+              $("#dh_ing").addClass('none');
+              $("#sure_btn").click();
+             // toFlushYzm();
+              // $("#dh_fial2").removeClass('none');
+              i=0;
+                }
+            if(data.result=='2'){//库存已经抢光
+              $("#dh_ing").addClass('none');
+             // toFlushYzm();
+          $("#sure_btn").click();
+              i=0;
+            }
+            if(data.result=='3'){//你今天已经下过单
+              $("#dh_ing").addClass('none');
+             // toFlushYzm();
+         $("#sure_btn").click();
+              i=0;
+            }
+            if(data.result=='5'){//卡列表不满足条件
+              $("#dh_ing").addClass('none');
+             // toFlushYzm();
+       $("#sure_btn").click();
+              i=0;
+            }
+            if(data.result=='4'){//成功放入下单队列
+               interval=self.setInterval("queryOrderResult()",100);  //1秒
+            }
+            if(data.result=='7'){//卡列表不满足条件
+                $("#dh_ing").addClass('none');
+               // toFlushYzm();
+      $("#sure_btn").click();
+                i=0;
+            }
+              }
+        });
+    });
+
+      $(".type_p2").on('click',function(){
+          $(this).addClass('on');
+          $(this).siblings(".type_p2").removeClass('on');
+      });
+
+      });
+
+    var interval;
+    var count=0;
+    var i=0;
+    function queryOrderResult(){
+            jQuery.ajax({
+              type  :'POST',
+              url   :contextPath+'/activityday/searchAddOrderResult.jhtml?timestamp='+new Date().getTime()+"&count="+count,
+              async :false,
+              success :function(data){
+              if(data.result=='0'){//兑换失败
+
+                  }else if(data.result=='2'){
+
+                  }else{//兑换成功
+                    $("#dh_ing").addClass('none');
+                      interval=window.clearInterval(interval);
+                window.location.href=contextPath+"/activityday/toPayView.jhtml?orderId="+data.result+"&timestamp="+new Date().getTime();
+              }
+                }
+              });
+
+      }
+  </script>
+    </body>
+    <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?3d3a094b33b15c394ba6e7d495ad808a";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</html>

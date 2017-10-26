@@ -1,0 +1,44 @@
+
+<div ng-app="shopSearchModule" ng-controller="shopSearchController">
+    <div class="line-35 mt-8 text-center font-14 position">
+        <div class="clear ui-row bg-col-f8f8f8 pr-15 position">
+            <div class="ui-col-15 fl-left mt-5">
+                <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5" ui-sref="shoplist({'id':'','type':''})"></i>
+            </div>
+            <div class="fl-left ui-col-60">
+                <div class="">
+                    <form action="">
+                        <input type="text" class="lineh-30 pl-30 mt-5 bor-none ui-border-radius ui-col-100 text-col-333"
+                               placeholder="输入商品"
+                               ng-model="title"/>
+                    </form>
+                </div>
+                <i class="ui-icon-search cinematop-search"></i>
+            </div>
+            <div class="ui-col-20 lineh-30 mt-5 font-14 fl-right text-col-999 bor-dfdfdf" ng-click="shopsearch('')">搜索
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="bg-col-fff pl-15 pr-15 pb-10 pt-10 font-14 bor-bottom-dfdfdf">
+            <hl class="font-16">热搜</hl>
+            <ul class="clear mt-5 text-col-999">
+                <li class="bg-col-f8f8f8 ui-border-radius2 line-20 fl-left mr-15 pl-5 pr-5" ng-repeat="hot in hotlist" ng-click="shopsearch(hot.name)">{{hot.name}}</li>
+            </ul>
+        </div>
+        <div class="bg-col-fff mt-10 pt-5 font-14 bor-top-dfdfdf">
+            <hl class="font-16 pl-15 pr-15">历史搜索</hl>
+            <ul class="text-col-999">
+                <li class="bor-bottom-dfdfdf lineh-40 clear" ng-repeat="history in historyList" ng-click="shopsearch(history.title)">
+                    <div class="pl-15 fl-left ui-col-60">
+                        {{history.title}}
+                    </div>
+                    <div class="pr-15 fl-left ui-col-40 text-right">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

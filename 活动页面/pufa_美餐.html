@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrom=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="format-detection" content="telephone=no" />
+<link href="/qplat-front/style/default/qplat/bootstrap.min.css" rel="stylesheet"/>
+<script src="/qplat-front/jquery/jquery.js"></script>
+<script src="/qplat-front/jquery/bootstrap.min.js"></script>
+<link href="/qplat-front/style/default/qplat/loveindex.css" rel="stylesheet"/>
+<title>小浦美餐</title>
+<style type="text/css">
+html,body{
+height:100%;
+overflow:hidden
+}
+.bg02{
+  width: 100%;
+  height:100%;
+  top: 0;
+  left: 0;
+  background-image: url("https://ttq.spdbccc.com.cn/qplat-image/qpimage/base/lovebuy-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  }
+  
+ 
+
+
+.contain-head-title{width: 85%;padding-top: 30px;margin: auto;}
+.contain-border{position: relative;width: 85%;margin: auto;  margin-top: 3%;height: 92px;}
+.contain-border img{position: absolute;width:100%}
+.contain-border-text{position: absolute;width: 100%;}
+.contain-border-text-title{color:#c63963;font-weight:bold;font-size: 1.6rem;text-align:center;padding-top: 3%;}
+.contain-border-text-title1{text-align: left;padding-left: 12%;color:#c63963;font-weight:bold;font-size: 1.6rem;padding-top: 3%;}
+.contain-border-text-c1 {text-align: center;margin-top: 2%;color: white;font-size: 12px;}
+.contain-border-text-c{text-align: left;margin-top: 3%;margin-left: 20%;color: white;font-size: 12px;}
+.contain-border-text-btn{position:absolute;right:0;bottom:0;width:30%}
+@media only screen and (max-width :320px) {
+.contain-border{margin-top: 1%;height: 92px;}
+.contain-border-text-c1 {margin-top: 1%;}
+.contain-border-text-c{margin-top: 1%;}
+.contain-border-text-title{font-size: 1.3rem;}
+.contain-border-text-title1{font-size: 1.3rem;}
+.contain-head-title{width: 90%;}
+.contain-border{width: 90%;}
+}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+$(document).ready(
+		function() {
+			document.addEventListener('WeixinJSBridgeReady',
+					function onBridgeReady() {
+						WeixinJSBridge.call('hideToolbar'); //隐藏微信界面下方导航栏
+						WeixinJSBridge.call('hideOptionMenu');//隐藏微信界面右上方分享按钮
+					});
+		});
+</script>
+
+
+
+
+	 <div style="top: 34%; left: 0%; width: 100%; position: relative; position: fixed; display: none;z-index: 9999;"
+		id="messagepop" onclick="closeMessage();">
+		<div style="margin: 0 auto;width:80%;">
+		<img src="https://ttq.spdbccc.com.cn/qplat-image/qpimage/base/lover.png"
+			style="width: 98%; margin: auto;">
+		</div>
+		<div style="position: absolute; top: 32%; text-align: center; width: 70%;margin-left:15%;">
+			<p style="font-size:0.8em; word-break:break-all;line-height:24px;" id="showMessage"></p>
+		</div>
+	</div>
+	
+	
+	 <div style="top: 34%; left: 0%; width: 100%; position: relative; position: fixed; display: none;z-index: 9999;"
+		id="messagepops" onclick="closeMessages();">
+		<div style="margin: 0 auto;width:80%;">
+		<img src="https://ttq.spdbccc.com.cn/qplat-image/qpimage/base/lover.png"
+			style="width: 98%; margin: auto;">
+		</div>
+		<div style="position: absolute; top: 32%; text-align: center; width: 70%;margin-left:15%;">
+			<p style="font-size:0.8em; word-break:break-all;line-height:24px;margin-top:10%;" id="showMessages"></p>
+		</div>
+	</div>
+	
+ <!-- 代码开始 -->
+  <div class="bg02"><!-- 首页外包div -->
+  <div class="col-xs-2">
+				<a onclick="javascript:history.back();"> <img
+					src="https://ttq.spdbccc.com.cn/qplat-image/qpimage/base/icon_l.png"
+					style="width: 11px; height: 18px;margin-top: 11px;z-index: 9999;position:absolute;">
+				</a>
+			</div>
+<div class="contain-head-title" style=""><img src="https://ttq.spdbccc.com.cn/qplat-image/qpimage/base/lovebuy-tit.png" style="width:100%"></div>
+<div class="contain-border">
+<img src="https://ttq.spdbccc.com.cn/qplat-image/qpimage/base/lovebuy-step1.png">
+<div class="contain-border-text">
+  <div class="contain-border-text-title1">仅2小时 抽取活动资格券码</div>
+  <div class="contain-border-text-c">2017年4月14日<br/>11:00-13:00</div>
+         <div class="contain-border-text-btn">
+        <div class="stepbtn">
+          <p onclick="tobuy()">
+            立即参与
+          </p>
+        </div>
+      </div>
+</div>
+</div>
+
+<div class="contain-border">
+<img src="https://ttq.spdbccc.com.cn/qplat-image/qpimage/base/lovebuy-step2.png">
+<div class="contain-border-text">
+  <div class="contain-border-text-title1">预约价值777元浦发定制双人套餐</div>
+  <div class="contain-border-text-c">2017年4月15日10:00至<br/>2017年4月20日17:00</div>
+        <div class="contain-border-text-btn">
+        <div class="stepa">
+          <a href="#" onclick="visitorsInfo()">查看预约方式</a>
+        </div>
+      </div>
+</div>
+</div>
+
+<div class="contain-border">
+<img src="https://ttq.spdbccc.com.cn/qplat-image/qpimage/base/lovebuy-step3.png">
+<div class="contain-border-text">
+  <div class="contain-border-text-title1">前往指定门店用餐</div>
+  <div class="contain-border-text-c1">需与店员核对预约信息、预约短信、资格券码<br/>预留浦发信用卡卡号后6位</div>
+        
+</div>
+</div>
+
+<div class="contain-border">
+<img src="https://ttq.spdbccc.com.cn/qplat-image/qpimage/base/lovebuy-step4.png">
+<div class="contain-border-text">
+  <div class="contain-border-text-title1">享受77元优惠价格</div>
+  <div class="contain-border-text-c1">用餐完毕，使用预留的浦发信用卡刷卡消费<br/>预约用餐期限为2017年4月24日至2017年5月23日</div>
+        
+</div>
+</div>
+   
+
+<script type="text/javascript" src="/qplat-front/jquery/jquery.js"></script>
+<script type="text/javascript" src="/qplat-front/jquery/common.js"></script>
+<script type="text/javascript">
+
+function closeMessage(){
+	$("#messagepop").css("display", "none");
+}
+function closeMessages(){
+	$("#messagepops").css("display", "none");
+}
+tobuy();
+function tobuy(){
+	$.ajax({
+		timeout : 800000, //请求时间为8秒
+		//提交数据的类型 POST
+		type : "get",
+		//提交的网址
+		url : "/qplat-front/loveController/toInstantInvlovement.action",
+		//提交的数据
+		data : {
+		},
+		//返回数据的格式
+		datatype : "json",
+		success : function(data) {
+			var result = data.result;
+	 if (result.substring(0, 4) == '0000') {
+				 window.location.href = "/qplat-front/loveController/writeCard.action";
+
+		}else{
+         setTimeout(tobuy,10);
+	 }
+		}
+	});
+	
+}
+
+
+function visitorsInfo(){
+	$.ajax({
+		timeout : 800000, //请求时间为8秒
+		//提交数据的类型 POST
+		type : "POST",
+		//提交的网址
+		url : "/qplat-front/loveController/visitorsInfo.action",
+		//提交的数据
+		data : {
+		},
+		//返回数据的格式
+		datatype : "json",
+		success : function(data) {
+			$("#messagepop").css("display", "block");
+			$("#showMessage").html(data.result);
+		}
+	});
+}
+
+</script>
+
+</body>
+</html>

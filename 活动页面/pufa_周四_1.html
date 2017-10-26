@@ -1,0 +1,245 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Cache-Control" content="max-age=1" />
+    <title>浦发银行信用卡</title>
+    <link rel="stylesheet" href="./css/basic.css">
+    <link rel="stylesheet" href="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_css/smoothness/jquery-ui-1.10.1.custom.css">
+    <link rel="stylesheet" href="./css/customDialog.css?v=1">
+    
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/jquery.min.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/jquery-ui-1.10.1.custom.min.js"></script>
+
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/preventClickDoubleFired.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/easyJsDomUtil.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/salamaWebClientService.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/salamaClientService.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/scrm/scrm_collector.js?v=10"></script>
+
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?v=1"></script>
+<!-- http://campaign.e-pointchina.com.cn/seckill2/weekseckill/ -->
+    <script src="./js/lib/customDialog.js"></script>
+    <script src="./js/common.js?v=0"></script>
+    <script src="./js/commonShare.js?v=1"></script>
+
+    <script src="./js/index.js?v=3"></script>
+<style>
+.page{background-image:url('');background-size:cover;background-repeat:no-repeat;background-position:center 0;background-color:#FE0000;}
+.r1{}
+.r2{height:2.5rem;position:relative;margin:-0.65rem 1.3rem 0;}
+.r2 ul li{width:3.6rem;height:2.4rem;float:left;margin-right:1.3rem;position:relative;cursor:pointer;}
+.r2 ul li:last-child{margin-right:0;}
+.r2_1{width:1.8rem;height:1.6rem;margin:0 auto;background-repeat:no-repeat;background-position:center center;}
+.icon_01{background-image:url('./imgs/icon_recommend.png');background-size:auto 1.2rem}
+.icon_02{background-image:url('./imgs/icon_lottery.png');background-size:auto 1.2rem}
+.icon_03{background-image:url('./imgs/icon_rule.png');background-size:auto 1.2rem}
+.r2_2{color:#fff;font-size:0.65rem;font-weight:bold;line-height:0.8rem;text-align:center;font-weight:bold;}
+.line{margin:0.2rem 0;}
+
+.r3 ul li{width:15.1rem;height:6rem;position:relative;background-image:url('./imgs/bg_01.png');background-size:100% 100%;background-repeat:no-repeat;background-position:center center;margin:0 auto;padding-top:0.2rem;}
+.r3 ul li:nth-child(even){background-image:url('./imgs/bg_04.png');}
+.r3 ul li:nth-child(n+2){margin-top:-0.6rem;}
+
+.r3_1{width:3.5rem;height:3.5rem;position:absolute;left:0.6rem;top:50%;margin-top:-1.75rem;}
+.r3_2{margin:0.5rem 1.9rem 0 4.3rem;font-size:0.5rem;line-height:0.7rem;}
+.r3_2 span{display:inline;}
+.r3_2_txt .txt:first-child,.name{height:1.4rem;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-break:break-all;margin-right: 0rem;}
+.r3_2_txt .txt:last-child{color:#fe0000;font-size:0.45rem;line-height:0.55rem;}
+
+.r3_3{width:2rem;height:2rem;background-image:url('./imgs/icon_bubble.png');background-size:100% 100%;background-repeat:no-repeat;background-position:center center;position:absolute;right:-0.2rem;top:0.2rem;font-size:0.45rem;color:#D3840B;}
+.r3_3 .r3_3_txt{height:2rem;line-height:0.6rem;text-align:center;}
+.r3_3 .r3_3_txt span{font-size:0.6rem;font-weight: bold;}
+.r3_2_btn{width:4.9rem;height:1.4rem;line-height:1.2rem;margin:0.1rem auto 0;background-image:url('./imgs/btn_00.png');background-size:100% 100%;background-repeat:no-repeat;background-position:center center;color:#E23527;font-size:0.65rem;text-align:center;}
+
+.r3_3_btn{margin:0.1rem 0 0 0.3rem;}
+.r3_3_btn .btn_item{width:3.8rem;height:1.3rem;line-height:1.3rem;text-align:center;font-size:0.65rem;color:#fff;float:left;background-image:url('./imgs/btn_02.png');background-size:100% 100%;background-repeat:no-repeat;background-position:center center;margin-right:0.5rem;}
+.r3_3_btn .btn_item:last-child{margin-right:0;}
+
+.am .r3_3{background-image:url('./imgs/icon_jewel.png');color:#E23527;}
+.am .r3_3_btn,.r3_2_btn{display: none;}
+.am .r3_2_btn{display: block;}
+
+/*.r4{width:15.1rem;height:5.9rem;position:relative;background-image:url('./imgs/bg_04.png');background-size:100% 100%;background-repeat:no-repeat;background-position:center center;margin:-0.6rem auto 0;padding-top:0.3rem;}
+.r4_1{width:3.5rem;height:3.5rem;position:absolute;left:0.7rem;top:50%;margin-top:-1.75rem;}
+.r4_2{margin:0.5rem 2rem 0 4.4rem;font-size:0.55rem;line-height:0.7rem;}
+.r4_2 span{display:inline;}*/
+
+.r3_3_btn{margin:0.1rem 0 0 0.3rem;}
+.r3_3_btn .btn_item{width:3.8rem;height:1.3rem;line-height:1.3rem;text-align:center;font-size:0.65rem;color:#fff;float:left;background-image:url('./imgs/btn_02.png');background-size:100% 100%;background-repeat:no-repeat;background-position:center center;margin-right:0.5rem;}
+.r3_3_btn .btn_item:last-child{margin-right:0;}
+
+.r4_3{width:2rem;height:2rem;background-image:url('./imgs/icon_bubble.png');background-size:100% 100%;background-repeat:no-repeat;background-position:center center;position:absolute;right:-0.2rem;top:0.55rem;font-size:0.45rem;color:#D3840B;}
+.r4_3 .r4_3_txt{height:2rem;line-height:0.62rem;text-align:center;}
+.r4_3 .r4_3_txt span{font-size:0.6rem;font-weight: bold;}
+
+.showInfo{position:fixed;left:0.6rem;top:0.6rem;right:0.6rem;bottom:0.6rem;z-index:102;background:#F8F6DF;border-radius:0.8rem;border:0.05rem solid #C31E1C;overflow-y:scroll;}
+.showInfo_wrap{padding:0.5rem;position:relative;overflow-y:scroll;}
+.closeBtn{width:1.5rem;height:1.5rem;position:absolute;right:0.3rem;top:0.3rem;background-image:url('./imgs/btn_close.png');background-size:0.65rem 0.65rem;background-repeat:no-repeat;background-position:center center;}
+.title{font-size:0.85rem;text-align:center;color:#79080A;font-weight:bold;line-height:1.1rem;margin-bottom:0.2rem;}
+.showInfo_wrap p{font-size:0.65rem;line-height:0.9rem;color:#79080A;}
+
+/*01-16*/
+.r3_2_txt h3{font-size:0.9rem;color:#9c0001;font-weight: normal;text-align: center;margin:1.2rem 0 0.4rem;}
+.r3_2_txt p{font-size:0.45rem;color:#9c0001;line-height:0.7rem;}
+.r4 .r3_3_btn .btn_item{float: none;margin:0 auto;}
+
+/*app*/
+.app{}
+.app .r1{margin-top:1.75rem;}
+
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){/*4 4s*/
+#page{min-height:504px;}
+}
+@media (min-width:360px) and (max-height:540px){/*huawei*/
+#page{min-height:567px;}
+}
+</style>
+</head>
+<body>
+    <div class="page " id="page"> <!--普通场-->
+        <div class="r1">
+            <img src="./imgs/banner.png" alt="">
+        </div>
+        <div class="r2">
+            <ul class="clearfix">
+                <li id="doEnterRecommend">
+                    <div class="r2_1 icon_01"></div>
+                    <div class="r2_2">我要推荐</div>
+                </li>
+                <li id="doEnterSlot">
+                    <div class="r2_1 icon_02"></div>
+                    <div class="r2_2">我要抽奖</div>
+                </li>
+                <li id="doShowInfo">
+                    <div class="r2_1 icon_03"></div>
+                    <div class="r2_2">活动规则</div>
+                </li>
+            </ul>
+        </div>
+        <div class="line">
+            <img src="./imgs/line.png" alt="">
+        </div>
+
+        <div class="r3">
+            <ul id="entryList">
+                <li entryResult="SeckillSectionListInfo"> <!--上午场addClass(am) 下午场addClass(pm)-->
+                    <input type="hidden" entryResult='icon'>
+                    <input type="hidden" entryResult='type'>
+                    <input type="hidden" entryResult='nextSectionNo'>
+                    <input type="hidden" entryResult='sectionId'>
+
+                    <div class="r3_1">
+                        <img src="" alt="" id="public_img_url">
+                    </div>
+                    <div class="r3_2">
+                        <div class="r3_2_txt" id="infoList">
+                            <div class="txt" infoResult="DisplayLine">
+                                <input type="hidden" infoResult='name'>
+                                <input type="hidden" infoResult='value'>
+                                <span class="nameValue"></span>
+                            </div>
+                        </div>
+                        <div class="r3_2_btn" id="doEnterLottery">
+                            立即抽取资格
+                        </div>
+                        <div class="r3_3_btn">
+                            <div class="btn_item" id="doWhite">立即抢爆品</div>
+                            <div class="btn_item" id="doEnterList">我的战利品</div>
+                        </div>
+                    </div>
+                    <div class="r3_3">
+                        <div class="r3_3_txt flex flex_v flex_h" id="seckillTips">
+                            
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- <div class="r3 r4">
+            <ul>
+                <li class="am">
+                    <div class="r3_1">
+                        <img src="./imgs/pause_seckill.png" alt="" id="">
+                    </div>
+                    <div class="r3_2">
+                        <div class="r3_2_txt">
+                            <h3 style="margin-top:1.6rem">周四上午10点</h3>
+                            <p>春节期间活动暂停三期，2月16日精彩继续<br/>祝您鸡年大吉，阖家欢乐</p>
+                        </div>
+                    </div>
+                    <div class="r3_3">
+                        <div class="r3_3_txt flex flex_v flex_h">
+                            上午<br><span>抽</span>资格
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="r3_1">
+                        <img src="./imgs/pause_seckill.png" alt="" id="">
+                    </div>
+                    <div class="r3_2">
+                        <div class="r3_2_txt">
+                            <h3>周四下午2点</h3>
+                            <p>春节期间活动暂停三期，2月16日精彩继续<br/>祝您鸡年大吉，阖家欢乐</p>
+                        </div>
+                        <div class="r3_3_btn">
+                            <div class="btn_item" id="gotoMyList">我的战利品</div>
+                        </div>
+                    </div>
+                    <div class="r3_3">
+                        <div class="r3_3_txt flex flex_v flex_h">
+                            下午<br><span>抢</span>爆品
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div> -->
+
+    </div>
+
+    <!--<div class="overLayer" id="overLayer" style="display:none"></div>-->
+    <!--<div class="shareLayer" id="shareLayer" style="display:none"></div>-->
+
+    <!-- 推荐机制 -->
+    <div class="showInfo" id="showInfo" style="display:none">
+        <div class="showInfo_wrap">
+            <div class="closeBtn" id="closeBtn"></div>
+            <div class="title">1积分周周抢“爆品”活动规则</div>
+            <p class="fwb">一、活动一：积分抢兑活动</p>
+            <p>1、活动期间：2016年10月27日至2017年3月31日（其中2017年1月26日、2月2日以及2月9日积分抢兑活动暂停，2月16日正式恢复抢兑）。浦发银行信用卡个人信用卡账户主卡持卡人在活动期间于每周四上午10：00开始参与活动。期间不定期开展加场抢兑，加场以活动页面显示为准。</p>
+            <p>2、每位持卡人每周每场限抢兑一份爆品，每周四上午10：00-12：00 ，免费抽取抢兑资格，每期抢兑资格限5000--10000份不等，具体以活动页面显示资格数为准。通过微信渠道抽到抢兑资格客户可于当天下午14：00通过“浦发银行信用卡”官方微信抢兑当期爆品。通过APP渠道抽到抢兑资格客户于当天下午14：00通过“浦大喜奔”APP抢兑当期爆品。浦发银行信用卡中心将从成功抢兑的持卡人绑定的浦发信用卡的默认账户中扣除1信用卡积分。未抽取到资格的参与客户均可获得一次1信用卡积分抽奖机会，100%中奖。</p>
+            <p>活动名额以活动页面提示为准，先到先得，抢完即止（抢兑系统回屏反馈仅供参考，不作为最终获奖依据）。成功进入抢兑环节的已绑定信用卡持卡用户，但未抢到活动名额的可获得浦发银行信用卡10积分激励（抢兑环节指出现页面提示：正在为您努力抢兑中……）。爆品类型：包含且不局限于实物、服务产品、旅游产品、票务产品等（具体以页面提示为准）。成功抢兑爆品将在60个工作日内兑付。持卡人可在我的战利品中选填配送地址，如未选填配送地址则默认配送至卡片邮寄地址。</p>
+            <p>3、10月27日下午14时成功抢兑到爆品的前五位客户（浦发信用卡中心系统收到时间为准），可获得YSL圣罗兰2016圣诞礼盒一套（含星辰口红一支，以实物为准），其他成功抢兑到爆品的客户获得YSL圣罗兰纯口红一支（色号随机）。最终解释权归浦发银行信用卡中心所有。</p>
+            <p>&nbsp;</p>
+            <p class="fwb">二、活动二：积分抽奖活动</p>
+            <p>1、活动期间：2016年10月27日至2017年3月31日（其中1月27日、2月3日以及2月10日的抽奖活动暂停，2月17日正式恢复抽奖）。指定浦发银行信用卡个人信用卡账户主卡持卡人于活动期间内每周五上午10：00至24：00参与抽奖。</p>
+            <p>2、参与周四活动一（抢兑活动）但未能抽到抢兑资格和抢到爆品的客户均可以参与当周周五的1信用卡积分抽奖活动，即以1信用卡积分参与抽奖活动。奖品含当期爆品、浦发银行信用卡积分及其他礼券等奖品（具体奖品及数量以页面提示为准），100%中奖。抽奖资格可以通过活动页面查询。获得抽奖资格的持卡人可以进入抽奖页面进行抽奖。每人每周最多可获得一次1信用卡积分抽奖机会，过期失效。具体请根据页面提示操作。</p>
+            <p>&nbsp;</p>
+            <p class="fwb">三、活动三：征集活动</p>
+            <p>活动期间：2016年10月27日至2017年3月31日（其中2016年1月26日至2017年2月16日只能进行自定义投票，不能参与三款推荐的爆品投票）。每周给到客户爆品选择项以及推荐填项投票（投票有效票数统计时间为每周四至次周周二，推荐填项可作为下次投票选择项进行投票, 客户可分别通过不同活动入口即“浦发银行信用卡”官方微信或“浦大喜奔”APP为自己喜欢的爆品投票或进行推荐）。若最终选用了客户推荐的某爆品，则第一位（浦发信用卡中心系统收到时间为准）推荐该爆品的客户可获1信用卡积分兑换该爆品权益。其余推荐该爆品但未获得1信用卡积分兑换爆品权益的客户可以享受一次活动二的抽奖机会，即以1信用卡积分参与抽奖活动。浦发银行信用卡中心将通过微信方式通知客户参与抽奖，客户也可以通过活动页面查询资格。如您推荐产品已经是投票或抢兑爆品，将不计入有效推荐。推荐爆品获得1信用卡积分兑换权益和抽奖机会的客户须关注并绑定“浦发银行信用卡”官方微信方可参与。</p>
+            <p>&nbsp;</p>
+            <p class="fwb">四、其他：</p>
+            <p>1、上述三项活动均仅限浦发银行信用卡个人信用卡账户主卡持卡人参与，持卡人需关注并绑定“浦发银行信用卡”官方微信。持卡人也可登录“浦大喜奔”APP进入活动。持卡人通过不同活动入口即“浦发银行信用卡”官方微信或“浦大喜奔”APP抢兑的奖品信息，仅限在参与活动的对应活动入口进行查询。如持卡人个人信用卡账户内只有航空类及/或酒店类联名卡，则该持卡人不可参加本活动。逾期账户、销户账户和被冻结账户等非正常状态账户不可参加本活动。</p>
+            <p>2、活动流程：关注“浦发银行信用卡中心”官方微信——〉点击“微广场”——〉点击“全能积分”菜单——〉在“1积分权益”栏位进入“1积分周周抢”活动页面；登录“浦大喜奔”APP—精品—1积分抢  </p>
+            <p>3、持卡人进行虚假交易或者违法交易或退货交易、所持信用卡过期、被停用、管制、持卡人自行注销信用卡、对所欠信用卡和浦发银行债务不偿还、违反《上海浦东发展银行 信用卡（个人卡）章程》及相关领用合约或本活动及其他相关规定的，浦发银行信用卡中心有权取消该持卡人参加本活动的资格。</p>
+            <p>4、本次活动抢兑爆品由指定供应商提供，以最终拿到爆品为准，不可折现或调换为其他商品。抢兑爆品不予提供发票。</p>
+            <p>5、 浦发银行信用卡中心有权对活动中的恶意套利行为进行鉴定并取消持卡人参加活动的资格。使用任何作弊手段及工具产生的抢兑行为，浦发银行信用卡中心有权取消其订单并保留进一步追究其责任的权利。?</p>
+            <p>6、本次活动未尽事宜，仍受《上海浦东发展银行信用卡（个人卡）章程》、相关领用合约及其他相关文件约束。</p>
+            <p>&nbsp;</p>
+        </div>
+    </div>
+
+    <div class="vote_loading" id="vote_loading" style="display:none;">
+        <div class="vote_loading_wrap">
+            <div class="vote_loading_txt">
+                <span>资格验证排队中...</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

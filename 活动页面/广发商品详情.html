@@ -1,0 +1,530 @@
+<!DOCTYPE html PUBLIC "-//W3C//ttd XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/ttd/xhtml1-transitional.ttd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+    <title>广发商城</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1">
+    <link rel="stylesheet" href="/css/wx/wxMall/normalize.css">
+    <link rel="stylesheet" href="/css/wx/wxMall/idangerous.swiper.css">
+    <link rel="stylesheet" href="/css/wx/wxMall/idangerous.swiper.scrollbar.css">
+    <link rel="stylesheet" href="/css/wx/wxMall/simple-app.css">
+    <link rel="stylesheet" href="/css/wx/wxMall/reset.css">
+    <link rel="stylesheet" href="/css/wx/wxMall/home.css">
+    <script type="text/javascript" src="/js/wx/jquery.1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="/js/wx/wxMall/idangerous.swiper.js"></script>
+    <script type="text/javascript" src="/js/wx/wxMall/idangerous.swiper.scrollbar-2.1.js"></script>
+    <script type="text/javascript" src="/js/wx/wxMall/simple-app.js"></script>
+    <script type="text/javascript" src="/js/wx/wxMall/tabs.js"></script>
+    <script type="text/javascript" src="/js/wx/wxMall/sea.js"></script>
+</head>
+<style>
+        /* Demo Syles */
+    .red-slide {
+        background: #ca4040
+    }
+    .blue-slide {
+        background: #4390ee
+    }
+    .orange-slide {
+        background: #ff8604
+    }
+    .green-slide {
+        background: #49a430
+    }
+    .pink-slide {
+        background: #973e76
+    }
+    .swiper-nested-1{
+        height:300px width:300px  }
+    .swiper-nested-1 img{
+        height:300px width:300pxborder:1px solid #ccc}
+    .pagination {
+        position: absolute
+        z-index: 20
+        left: 10px
+        bottom: 10px
+    }
+    .swiper-pagination-switch {
+        display: inline-block
+        width: 8px
+        height: 8px
+        border-radius: 8px
+        background: #222
+        margin-right: 8px
+        opacity: 0.8
+        border: 1px solid #fff
+        cursor: pointer
+    }
+    .swiper-active-switch {
+        background: #B30101
+    }
+</style>
+<body onload="loaded()" style="background: #E7E6E3 overflow:hidden">
+<form name="productDetail" id="productDetail" action="queryCreditListXML.do" method="post">
+    <header class="md-header">
+        <button class="homeicon-pre ly-left" id="backToMain" name="backToMain">商城首页</button>
+        <span class="text f18" style="display:inline-block vertical-align: middle line-height:30px width:80px margin:5px auto">商品详情</span>
+        <button class="homeicon-next ly-right" id="orderQuery" name="orderQuery">查询订单</button>
+    </header>
+    <input name="wxCode" type="hidden" value="o6HrMjjJuXyMpK0Ycz5Quz6a_8po"/>
+    <input name="srcChannel" type="hidden" value="WS" id="srcChannel"/>
+    <input name="returnCount" id="returnCount" type="hidden" value=""/>
+    <input name="customerId" type="hidden" value="100010956209"/>
+    <input name="certNo" type="hidden" id="certNo" value="430524198806148675"/>
+    <input name="productStatusWX" type="hidden" id="productStatusWX" value="0203"/>
+    <input name="productStatusWS" type="hidden" id="productStatusWS" value="0203"/>
+    <input name="certType" type="hidden" value="0"/>
+    <input name="goodsPrice" id="goodsPrice" type="hidden" value="29.00"/>
+    <input name="accType" id="accType" type="hidden" value="1"/>
+    <input name="mallType" type="hidden" value="01"/>
+    <input name="ordertypeId" type="hidden" value="FQ"/>
+    <input name="pageNum" type="hidden" value="10"/>
+    <input name="currentPage" type="hidden" value="1"/>
+    <input name="perStagePaywayId" id="perStagePaywayId" type="hidden" value=""/>
+    <input name="loopInstalmentCount" id="loopInstalmentCount" type="hidden" value=""/>
+    <input name="loopInstalmentAmt" id="loopInstalmentAmt" type="hidden" value=""/>
+    <input name="goodsColor" id="goodsColor" type="hidden" value=""/>
+    <input name="canIntegral" id="canIntegral" type="hidden" value=""/><!-- 可兑换积分 -->
+    <input name="unitIntegral" id="unitIntegral" type="hidden" value=""/><!-- 单位积分 -->
+    <input name="totvalueYG" id="totvalueYG" type="hidden" value=""/>
+    <input name="goodsId" id="goodsId" type="hidden" value="01161220124942525109"/>
+    <input name="totalPoints" id="totalPoints" type="hidden" value=""/>
+    <input name="status" id="status" type="hidden" value="1"/>
+    <input name="bindFlag" id="bindFlag" type="hidden" value="1"/>
+    <input name="wxMallCouponsList" id="wxMallCouponsList" type="hidden" value="&ltiColl id=&#034wxMallCouponsList&#034 append=&#034false&#034&gt
+&lt/iColl&gt"/>
+    <input name="custLevel" id="custLevel" type="hidden" value=""/>
+    <input name="custPointRate" id="custPointRate" type="hidden" value=""/>
+    <input name="ifFixPoint" id="ifFixPoint" type="hidden" value=""/>
+    <input name="queryFlag" id="queryFlag" type="hidden" value="1"/>
+    <input name="goodsType2" id="goodsType2" type="hidden" value="1"/>
+    <input name="goodsMid" id="goodsMid" type="hidden" value="ZMBIR"/>
+    <input name="goodsBackLog" id="goodsBackLog" type="hidden" value="0"/>
+    <input name="url" id="url" type="hidden" value=""/>
+    <div class="swiper-pages swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="swiper-container scroll-container">
+                    <div class="swiper-scrollbar"></div>
+                    <div class="swiper-wrapper" >
+                        <div class="swiper-slide">
+                            <div style="height:65px"></div>
+                            <div class="swiper-container swiper-nested-1">
+                                <div class="pagination pagination-nested-1" style="width:100%text-align:center"></div>
+                                <div class="swiper-wrapper">
+
+                                    <div class="swiper-slide">
+
+                                        <img src="http://shop.cgbchina.com.cn/eshop/goods/01161220124942525109/images/01161220124942525109_w_1.jpg?modifytime=20161216092734">
+                                    </div>
+
+                                    <div class="swiper-slide">
+
+                                        <img src="http://shop.cgbchina.com.cn/eshop/goods/01161220124942525109/images/01161220124942525109_w_2.jpg?modifytime=20161216092734">
+                                    </div>
+
+                                    <div class="swiper-slide">
+
+                                        <img src="http://shop.cgbchina.com.cn/eshop/goods/01161220124942525109/images/01161220124942525109_w_3.jpg?modifytime=20161216092734">
+                                    </div>
+
+                                    <div class="swiper-slide">
+
+                                        <img src="http://shop.cgbchina.com.cn/eshop/goods/01161220124942525109/images/01161220124942525109_w_4.jpg?modifytime=20161216092734">
+                                    </div>
+
+                                    <div class="swiper-slide">
+
+                                        <img src="http://shop.cgbchina.com.cn/eshop/goods/01161220124942525109/images/01161220124942525109_w_5.jpg?modifytime=20161216092734">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div  style="padding:15px 5px">
+                                <div class="ly-gap price">
+                                    <h3 style="font-size:19pxfont-family: '黑体'">【双旦半价特秒】米菲宝贝儿童壶MF-S255（350ml颜色随机）</h3>
+                                    <div class="color">总价：￥<strong style="color:blackfont-size:18pxfont-family: '黑体'font-weight: bold">
+                                        29.00</strong>&nbsp&nbsp&nbsp
+
+                                        <span class="marking_price"><strong style="font-size:18pxfont-family: '黑体'font-weight: bold">￥58.00</strong></span>
+
+                                    </div>
+                                    <div>
+                                        <span>颜色：</span>
+                                        <div class="tabs2" style="border:1px solid #C00background: #fff" >
+                                            <select style="color: #000">
+
+
+
+                                                <option value='01161220124942525109#颜色随机'>
+                                                    &nbsp颜色随机&nbsp
+                                                </option>
+
+
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--标签切换-->
+                                    <div class="tabs" onclick="toTop()">
+                                        <ul>
+                                            <li>商品详情</li>
+                                            <li>商品参数</li>
+                                            <li>供货商信息</li>
+                                        </ul>
+                                    </div>
+                                    <div class="tabs_content">
+                                        <ul>
+                                            <li><ul style="padding: 10pxletter-spacing: 2pxline-height: 25pxbackground: #E7E6E3" id="img1"><IMG src="http://shop.cgbchina.com.cn/eshop/goods/01161220124942525109/image/20161220134139ChiQzK.jpg" border=0></ul></li>
+                                            <li style="display:none"><ul style="padding: 10pxletter-spacing: 2pxline-height: 25pxbackground: #E7E6E3" id="img2"><h3>产品描述：</h3> 品牌：米菲<br /></ul></li>
+                                            <li  style="display:none">
+                                                <ul style="padding: 10pxletter-spacing: 2pxline-height: 25pxbackground: #E7E6E3">
+                                                    <li>
+                                                        <table style="width: 100%">
+                                                            <tr>
+                                                                <td style="color:#999width:100%display:blockfloat:leftborder-bottom: 1px solid #ccc"><span class="item" style="width: 40%float:left">供货商</span><span class="detail" style="width: 60%float:left">北京中煤（商户）</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="color:#999width:100%display:blockfloat:leftborder-bottom: 1px solid #ccc"><span class="item" style="width: 40%float:left">服务热线</span><span class="detail" style="width: 60%float:left">4007009962</span></td>
+                                                            </tr>
+                                                        </table>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding-bottom:25px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="md-footer">
+        <span class="btn_buy" id="buyNow" name="buyNow" style="">立即购买</span>
+        <div class="panel" style="background:white ">
+            <select style="font-weight: bold-webkit-appearance: none"  id="payStyle" name="payStyle"  onchange="changePayStyle()">
+
+                <option value='01161220124942525113#0003#9.66'>
+                    ￥9.66x3期
+                </option>
+
+                <option value='01161220124942525112#0001#29.00'>
+                    ￥29.00x1期
+                </option>
+
+            </select>&nbsp&nbsp
+            <select style="font-weight: bold-webkit-appearance: none"  id="buyCount" name="buyCount"  onchange="calTotalYQ()">
+
+                <option value='1' selected>1件</option>
+
+                <option value='2' >2件</option>
+
+                <option value='3' >3件</option>
+
+                <option value='4' >4件</option>
+
+                <option value='5' >5件</option>
+
+                <option value='6' >6件</option>
+
+                <option value='7' >7件</option>
+
+                <option value='8' >8件</option>
+
+                <option value='9' >9件</option>
+
+            </select>
+        </div>
+    </footer>
+    <select class="aa" style="color: #000"  id="colorInfo" onChange="getColorInfo()">
+
+
+
+        <option value='01161220124942525109#颜色随机'>
+            &nbsp颜色随机&nbsp
+        </option>
+
+
+
+    </select>
+</form>
+
+<script>
+var webPath = ''
+//加载模块
+$(document).ready(function(){
+    $('.tabs2').click(function() {
+        open($(".aa"))
+    })
+    var colorInfo = $("#colorInfo").val()
+    if(colorInfo != null && colorInfo != ""){
+        goodsId = colorInfo.split('#')[0]
+        goodsColor = colorInfo.split('#')[1]
+        $("#goodsId").val(goodsId)
+        $("#goodsColor").val(goodsColor)
+    }
+    $(".tabs>ul>li").eq(0).addClass("current")
+    //$(".tabs_content>ul>li").eq(0).css({"display":"block"})
+    //不反显证件号
+    if($("#status").val() == 0) {
+        $("#certNo").val("")
+    }
+    seajs.use(webPath+'/js/wx/wxMall/init')
+    $("#buyNow").bind('click',buyNow)
+    $("#backToMain").bind('click',backToMain)
+    $("#orderQuery").bind('click',orderQuery)
+
+    //商品过期则按钮变灰
+    if(($("#srcChannel").val()=='WX') && ($("#productStatusWX").val()!='0203')) {
+        $("#buyNow").unbind('click').css({"background":"gray","color":"white"})
+    }
+    if(($("#srcChannel").val()=='WS') && ($("#productStatusWS").val()!='0203')) {
+        $("#buyNow").unbind('click').css({"background":"gray","color":"white"})
+    }
+    var goodsBackLog = $("#goodsBackLog").val()
+    if(goodsBackLog=='0'){//库存为零时，点击按钮置灰
+        $("#buyNow").unbind('click').css({"background":"gray","color":"white"})
+    }
+    changePayStyle()
+    calTotalYQ()
+    /*
+     var imgSrc1=$("#img1 img").attr("src")
+     if(imgSrc1){
+     imgSrc1="GetOneStopImageServlet?goodsPic="+imgSrc1
+     $("#img1 img").attr("src",imgSrc1)
+     }
+     var imgSrc2=$("#img2 img").attr("src")
+     if(imgSrc2){
+     imgSrc2="GetOneStopImageServlet?goodsPic="+imgSrc2
+     $("#img2 img").attr("src",imgSrc2)
+     }
+     */
+    /*
+     $("#img1 IMG").each(function(){
+     var imgSrc = $(this).attr("src")
+     if(imgSrc){
+     imgSrc="GetOneStopImageServlet?goodsPic="+imgSrc
+     $(this).attr("src",imgSrc)
+     }
+     })
+     $("#img2 IMG").each(function(){
+     var imgSrc = $(this).attr("src")
+     if(imgSrc){
+     imgSrc="GetOneStopImageServlet?goodsPic="+imgSrc
+     $(this).attr("src",imgSrc)
+     }
+     })
+     */
+    getSignature()
+})
+function getColorInfo(){
+    var colorInfo = $("#colorInfo").val()
+    if(colorInfo != null && colorInfo != ""){
+        goodsId = colorInfo.split('#')[0]
+        goodsColor = colorInfo.split('#')[1]
+        $("#goodsId").val(goodsId)
+        $("#goodsColor").val(goodsColor)
+        yanse=$(".aa option:selected").text()
+        $(".tabs2 select option").html(yanse)
+        $("#productDetail").attr('action','wxMallDetailQuery.do')
+        document.forms[0].submit()
+    }
+}
+function open(elem) {
+    if (document.createEvent) {
+        var e = document.createEvent("MouseEvents")
+        e.initMouseEvent("mousedown", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+        elem[0].dispatchEvent(e)
+    } else if (element.fireEvent) {
+        elem[0].fireEvent("onmousedown")
+    }
+}
+function toTop(){
+    $("body").scrollTop(250)
+}
+function buyNow(){
+    $("#buyNow").unbind('click').css({"background":"gray","color":"white"})
+    $("#totvalueYG").val($("#buyCount").val()*$("#goodsPrice").val())
+    if($("#status").val() == 1){//已经绑定
+        //alert($("#accType").val())
+        if($("#accType").val() == 1){
+            $("#productDetail").attr('action','queryCreditListXML.do')//已经绑定信用卡，直接查出信用卡列表
+        }else{
+            $("#productDetail").attr('action','wxBindCard.do')//已经绑定借记卡，加挂信用卡
+            //alert("2")
+        }
+    }else{
+        $("#productDetail").attr('action','weiXinBind.do')//未绑定，进入绑定页面
+        //alert("3")
+    }
+    document.forms[0].submit()
+    $("#buyNow").bind('click',buyNow).removeAttr('style')
+}
+
+function backToMain(){
+    $("#backToMain").unbind('click').css({"background":"gray","color":"white"})
+    $("#productDetail").attr('action','wxMallTuijian.do')
+    document.forms[0].submit()
+    $("#backToMain").bind('click',backToMain).removeAttr('style')
+}
+function orderQuery(){
+    if($("#status").val() == 1){//已经绑定
+        //alert($("#accType").val())
+        if($("#accType").val() == 1){
+            $("#productDetail").attr('action','queryOrderOfNetShop.do')//已经绑定信用卡，直接查出信用卡列表
+        }else{
+            $("#productDetail").attr('action','wxBindCard.do')//已经绑定借记卡，加挂信用卡
+            //alert("2")
+        }
+    }else{
+        $("#productDetail").attr('action','weiXinBind.do')//未绑定，进入绑定页面
+        //alert("3")
+    }
+    $("#orderQuery").unbind('click').css({"background":"gray","color":"white"})
+    //$("#productDetail").attr('action','queryOrderOfNetShop.do')
+    document.forms[0].submit()
+    $("#orderQuery").bind('click',orderQuery).removeAttr('style')
+}
+function changePayStyle(){
+    var payString = $("#payStyle").val()
+    payInfo = payString.split("#")
+    $("#perStagePaywayId").val(payInfo[0])
+    $("#loopInstalmentCount").val(Number(payInfo[1]))
+    $("#loopInstalmentAmt").val(payInfo[2])
+}
+function calTotalYQ(){
+    $("#totvalueYG").val(Number($("#goodsPrice").val())*Number($("#buyCount").val()))
+}
+
+var shareTitle = unicodeToGB('【双旦半价特秒】米菲宝贝儿童壶MF-S2...')
+var descContent = unicodeToGB('￥9.66x3期')
+function getSignature(){
+    var url=window.location.href.split('#')[0]
+    $("#url").val(url)
+    var data=$("form").serialize()
+    $.ajax({
+        type: "post",
+        url: "/wxGetUserLocationAccess.do",
+        dataType: "xml",
+        data: data,
+        cache: false,
+        beforeSend: function() {},
+        success: function(data){
+            var code=$('ec',data).text()
+            if(code!='0'){//获取使用腾讯js权限失败
+                alert($('em',data).text())
+            }else{
+                var url = $('url',data).text()
+                var ticketNo = $('ticketNo',data).text()
+                var nonceStr = $('nonceStr',data).text()
+                var timestamp = $('timestamp',data).text()
+                var signature = $('signature',data).text()
+                var appid = $('appid',data).text()
+                var path = 'https://wap.cgbchina.com.cn:443/wxMallDetailQuery.do?shareFlag=1&srcChannel=WS&goodsId=01161220124942525109&goodsMidZMBIR'
+                var title =	shareTitle
+                var desc = descContent
+                var imgUrl = 'http://shop.cgbchina.com.cn/eshop/goods/01161220124942525109/images/01161220124942525109_1_1.jpg?modifytime=20161216092734'
+                var link_="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+appid+"&redirect_uri="+path+"&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
+                wx.config({
+                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    appId: appid, // 必填，公众号的唯一标识
+                    timestamp: timestamp, // 必填，生成签名的时间戳
+                    nonceStr: nonceStr, // 必填，生成签名的随机串
+                    signature: signature,// 必填，签名，见附录1
+                    jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline','onMenuShareQQ','onMenuShareWeibo']  // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                })
+                // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+                wx.ready(function(){
+                    wx.onMenuShareAppMessage({
+                        title: title,
+                        desc:  desc,
+                        link: link_,
+                        imgUrl: imgUrl,
+                        type: '',
+                        dataUrl: '',
+                        success: function () {
+
+                        },
+                        cancel: function () {
+                        }
+                    })
+                    wx.onMenuShareTimeline({
+                        title: title,
+                        desc:  desc,
+                        link: link_,
+                        imgUrl:imgUrl,
+                        success: function () {
+
+                        },
+                        cancel: function () {
+
+                        }
+                    })
+                    wx.onMenuShareQQ({
+                        title: title,
+                        desc: desc,
+                        link: link_,
+                        imgUrl: imgUrl,
+                        success: function () {
+
+                        },
+                        cancel: function () {
+
+                        }
+                    })
+                    wx.onMenuShareWeibo({
+                        title: title,
+                        desc:desc,
+                        link: link_,
+                        imgUrl: imgUrl,
+                        success: function () {
+
+                        },
+                        cancel: function () {
+
+                        }
+                    })
+                })
+            }
+        }
+    })
+}
+function unicodeToGB(str){
+    str=str.replace(/\%u/g,'\\u')
+    str=str.replace(/\/g,'')
+    str=str.replace(/\\/g,'%')
+    str=unescape(str)
+    return str
+}
+function onBridgeReady(){
+    WeixinJSBridge.call('showOptionMenu')
+}
+if(typeof WeixinJSBridge == "undefined"){
+    if( document.addEventListener ){
+        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false)
+    }else if( document.attachEvent ){
+        document.attachEvent('WeixinJSBridgeReady', onBridgeReady)
+        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady)
+    }
+}else{
+    onBridgeReady()
+}
+</script>
+
+<!--控制图片左右滑动-->
+<script>
+    var swiperNested1 = new Swiper('.swiper-nested-1',{
+        pagination: '.pagination-nested-1',
+        paginationClickable: true,
+        autoplay:2000,
+        loop:true
+    })
+</script>
+
+</body>
+</html>

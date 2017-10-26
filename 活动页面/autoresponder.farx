@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AutoResponder LastSave="2017-05-12T10:17:49.8526109+08:00" FiddlerVersion="2.6.3.48898">
+  <State Enabled="true" Fallthrough="true" UseLatency="false">
+    <ResponseRule Match="http://campaign.e-pointchina.com.cn/seckill2/weekseckill/js/index.js" Action="D:\yiduizhang\活动页面\index.js" Enabled="true" />
+    <ResponseRule Match="http://campaign.e-pointchina.com.cn/campaign/weekseckill/js/lottery.js" Action="D:\yiduizhang\活动页面\lottery.js" Enabled="true" />
+    <ResponseRule Match="http://promotion.creditcard.cmbc.com.cn/promotion/html/index.html?COLLCC=2553004764" Action="D:\yiduizhang\活动页面\minshengindex.html" Enabled="true" />
+    <ResponseRule Match="http://promotion.creditcard.cmbc.com.cn/promotion/activityday/prodDetial.jhtml" Action="D:\yiduizhang\活动页面\minsheng4.html" Enabled="true" />
+    <ResponseRule Match="https://dkzx.e-pointchina.com.cn/shop_citic/myjs/item_page.js" Action="D:\yiduizhang\活动页面\zhongxinaddcartitem_page.js" Enabled="false" />
+    <ResponseRule Match="http://promotion.creditcard.cmbc.com.cn/promotion/html/prodList.html?" Action="D:\yiduizhang\活动页面\minsheng辛巴克.html" Enabled="true" />
+    <ResponseRule Match="http://localhost:8080/ad/salesorder/listPageTotalDetail?pageSize=30&amp;pageNo=1" Action="C:\Users\ydzTech001\Desktop\test.json" Enabled="false" />
+    <ResponseRule Match="https://pufa.soonwill.com/xpmall/Product/ProductDetail?ProductSysNo=32810" Action="D:\yiduizhang\活动页面\pufa_mall_每日惊喜.html" Enabled="true" />
+    <ResponseRule Match="https://pufa.soonwill.com/XPMall/Product/index?channel=000000000000002&amp;os" Action="D:\yiduizhang\活动页面\pufa_mall_每日惊喜.html" Enabled="false" />
+    <ResponseRule Match="http://campaign.e-pointchina.com.cn/seckill2/weekseckill/index.html?appId=weekseckill" Action="D:\yiduizhang\活动页面\pufa_周四_1.html" Enabled="false" />
+    <ResponseRule Match="EXACT:https://prefacty.creditcard.cmbc.com.cn/mmc-main-webapp/main/QueryGift.json?UIFlag=0101&amp;actyId=A20170206786&amp;giftId=G201702078122&amp;isQualify=true&amp;maxInterval=172800&amp;userKey=33nQTTBcBmWOysD8%2B7dxMFMGUOJ3dJKL" Action="" Enabled="true" />
+    <ResponseRule Match="EXACT:http://localhost:8080/ad/salesorder/listPageTotalDetail?orderStatus=01" Action="C:\Users\ydzTech001\Desktop\datagrid.json" Enabled="false" />
+    <ResponseRule Match="http://campaign.e-pointchina.com.cn/seckill2/weekseckill/lottery.html?appId=weekseckill" Action="D:\yiduizhang\活动页面\lottery.html" Enabled="true" />
+    <ResponseRule Match="EXACT:https://weixin.spdbccc.com.cn/wx-page-universalintergral/universalIntergral/oneIntegralEquity.do" Action="D:\yiduizhang\活动页面\1积分list.html" Enabled="true" />
+    <ResponseRule Match="http://campaign.e-pointchina.com.cn/seckill2/weekseckill/index.html?appId=weekseckill" Action="D:\yiduizhang\活动页面\1积分start.html" Enabled="true" />
+    <ResponseRule Match="http://campaign.e-pointchina.com.cn/seckill2/weekseckill/js/common.js" Action="D:\yiduizhang\活动页面\common.js" Enabled="true" />
+    <ResponseRule Match="http://campaign.e-pointchina.com.cn/campaign/weekseckill/js/seckill.js?v=4" Action="D:\yiduizhang\活动页面\seckill.js" Enabled="true" />
+    <ResponseRule Match="http://campaign.e-pointchina.com.cn/campaign/weekseckill/seckill.html" Action="D:\yiduizhang\活动页面\seckill.html" Enabled="true" />
+    <ResponseRule Match="http://campaign.e-pointchina.com.cn/seckill2/weekseckill/js/new.js" Action="D:\yiduizhang\活动页面\pufa_new.js" Enabled="true" />
+    <ResponseRule Match="EXACT:http://campaign.e-pointchina.com.cn/campaign/weekseckill/captcha_spd.html" Action="D:\yiduizhang\活动页面\captcha.html" Enabled="true" />
+    <ResponseRule Match="https://captcha.e-pointchina.com/captcha/myjs/abstract-captcha.min.js" Action="D:\yiduizhang\活动页面\abstract-captcha.min.js" Enabled="false" />
+    <ResponseRule Match="https://prefacty.creditcard.cmbc.com.cn/mmc-main-webapp/main/QueryGift.json?UIFlag=0101" Action="D:\yiduizhang\活动页面\xingbake.json" Enabled="true" />
+    <ResponseRule Match="https://ttq.spdbccc.com.cn/qplat-front/loginController/toLoveLoginWXDoor.action" Action="D:\yiduizhang\活动页面\pufa_美餐door.html" Enabled="true" />
+    <ResponseRule Match="https://ttq.spdbccc.com.cn/qplat-front/loveController/instantDraw.action?cardno=802018" Action="D:\yiduizhang\活动页面\pufa_美食最后一步打开礼盒.html" Enabled="true" />
+    <ResponseRule Match="EXACT:https://ttq.spdbccc.com.cn/qplat-front/loveController/writeCard.action" Action="D:\yiduizhang\活动页面\pufa_填写卡号.html" Enabled="true" />
+    <ResponseRule Match="http://m.gewara.com/movie/m/choiceMovie.xhtml?" Action="D:\yiduizhang\格瓦拉\choiceMovie.html" Enabled="true" />
+    <ResponseRule Match="http://campaign.e-pointchina.com.cn/campaign/weekseckill/multiList.html" Action="D:\yiduizhang\活动页面\浦发演唱会_multilist.html" Enabled="true" />
+    <ResponseRule Match="http://campaign.e-pointchina.com.cn/campaign/weekseckill/js/multiList.js" Action="D:\yiduizhang\活动页面\演唱会_multilList.js" Enabled="true" />
+    <ResponseRule Match="http://campaign.e-pointchina.com.cn/campaign/cloudDataService.do" Action="D:\yiduizhang\活动页面\演唱会数据.js" Enabled="false" />
+    <ResponseRule Match="EXACT:https://dongkaapp.allyes.com/2017419/19go.aspx" Action="D:\yiduizhang\活动页面\中xin19go.html" Enabled="true" />
+    <ResponseRule Match="EXACT:https://spdbwx.idoupiao.com/pufaapp2.2/js/controller/activity/weekcontroller.js" Action="D:\yiduizhang\活动页面\weekcontroller.js" Enabled="true" />
+    <ResponseRule Match="https://weixin.spdbccc.com.cn/wxrp-page-shakepage/shakeIndex?shakePacketNums=2" Action="D:\yiduizhang\活动页面\shakePacketNum.html" Enabled="true" />
+    <ResponseRule Match="https://creditcard.ecitic.com/citiccard/ucwap/login/wxlogin.html" Action="D:\yiduizhang\活动页面\zxentry登录.html" Enabled="true" />
+    <ResponseRule Match="https://creditcard.ecitic.com/citiccard/ucwap/js/jquery-1.11.3.min.js" Action="D:\yiduizhang\活动页面\zx中信jquery.js" Enabled="true" />
+    <ResponseRule Match="https://creditcard.ecitic.com/citiccard/ucwap/login/smscode.html?hostphone=182****9335" Action="D:\yiduizhang\活动页面\中信sendsmscode.html" Enabled="true" />
+    <ResponseRule Match="http://s.creditcard.ecitic.com/eshop/goods/AG46021/AG46021_w.htm" Action="D:\yiduizhang\活动页面\zx中信付款发送验证码.html" Enabled="false" />
+    <ResponseRule Match="http://s.creditcard.ecitic.com/eshop/goods/AA47020/AA47020_w.htm" Action="D:\yiduizhang\活动页面\order中信_AA47020_w.html" Enabled="false" />
+    <ResponseRule Match="https://creditcard.ecitic.com/citiccard/QiangGou/ServerH5/js/common.js" Action="D:\yiduizhang\活动页面\zx_验证码最后.js" Enabled="true" />
+    <ResponseRule Match="EXACT:https://dongkaapp.allyes.com/2017419/index.aspx" Action="D:\yiduizhang\活动页面\zxindex首页419.html" Enabled="true" />
+    <ResponseRule Match="http://citiceshop.sinastorage.com/tips/qg/wait.html" Action="D:\yiduizhang\活动页面\中信wait需要修改产品参数.html" Enabled="false" />
+    <ResponseRule Match="https://creditcard.ecitic.com/citiccard/ucwap/overtime.html" Action="D:\yiduizhang\活动页面\中信wait需要修改产品参数.html" Enabled="false" />
+    <ResponseRule Match="https://spdbwx.idoupiao.com/pufaapp2.2/view/find/find.html" Action="D:\yiduizhang\活动页面\pufa_film活动场.html" Enabled="true" />
+    <ResponseRule Match="https://spdbwx.idoupiao.com/superfilm/rob/robstatus" Action="D:\yiduizhang\活动页面\all_response_json.json" Enabled="true" />
+    <ResponseRule Match="EXACT:https://abchina.52mb.com/huodong.php/Home/Buy/submit_and_topay" Action="D:\yiduizhang\活动页面\农行_流浪all_json.json" Enabled="false" />
+    <ResponseRule Match="https://prefacty.creditcard.cmbc.com.cn/mmc-main-webapp/main/QueryCardList.json" Action="D:\yiduizhang\活动页面\minsheng待支付订单.json" Enabled="true" />
+    <ResponseRule Match="http://s1.eqxiu.com/eqs/page/83144103?code=DEiCVhwE" Action="D:\yiduizhang\易企秀\3d数据.json" Enabled="false" />
+    <ResponseRule Match="https://spdbwx.idoupiao.com/pufaapp2.2/view/activity/weekactivity.html" Action="D:\yiduizhang\活动页面\浦发周四.html" Enabled="true" />
+    <ResponseRule Match="http://yhsz.jikehd.com/index.php/Buy/index.html" Action="D:\yiduizhang\活动页面\建行买oppo手机.html" Enabled="true" />
+  </State>
+</AutoResponder>

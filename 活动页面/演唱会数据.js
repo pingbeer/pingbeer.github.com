@@ -1,0 +1,113 @@
+﻿<SectionGoodsRackPageView>
+  <appId>weekseckill</appId>
+  <appType>SECKILL</appType>
+  <arrGoodsInfos>
+    <SectionGoodsInfo>
+      <appId></appId>
+      <arrGoodsLines>
+        <LineInfo>
+          <lineName>爆品：</lineName>
+          <lineValue>《我好像在哪里见过你》薛之谦全国巡回演唱会门票 深圳站</lineValue>
+        </LineInfo>
+        <LineInfo>
+          <lineName>票面价：</lineName>
+          <lineValue>随机</lineValue>
+        </LineInfo>
+        <LineInfo>
+          <lineName>爆品数量：</lineName>
+          <lineValue>50份（每份2张）</lineValue>
+        </LineInfo>
+        <LineInfo>
+          <lineName>场次：</lineName>
+          <lineValue>第三场</lineValue>
+        </LineInfo>
+      </arrGoodsLines>
+      <goodsDescption>&amp;lt;p&amp;gt;《我好像在哪里见过你》薛之谦全国巡回演唱会门票 深圳站&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;演出场馆：以主办方最终公布为准&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;演出时间：以主办方最终公布为准&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;本场爆品领取发放方式：本爆品具体领奖方式将由浦发信用卡客服或活动供应商按照中奖人在活动页面填写的联系方式在抢兑场次演唱会开始前10个工作日内进行通知。中奖人须持本人有效证件，至指定场所领取演唱会门票。如出现以下情况，则视为主动放弃本次活动奖励：&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;1）在活动结束后15个工作日内卡中心客服人员通过中奖人在活动页面或在信用卡申请时填写的联系方式无法联系上中奖人；&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;2）中奖人在收到通知后24小时内未明确是否参与活动；&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;3）未年满18周岁。&amp;lt;/p&amp;gt;</goodsDescption>
+      <goodsDetailUrl>https://magicactivity.oss-cn-hangzhou.aliyuncs.com/campaign/XZQSZ_D.png</goodsDetailUrl>
+      <goodsIconUrl>https://magicactivity.oss-cn-hangzhou.aliyuncs.com/campaign/XZQ.jpgg</goodsIconUrl>
+      <goodsId>XZQSZ</goodsId>
+      <goodsName>《我好像在哪里见过你》薛之谦全国巡回演唱会门票 深圳站</goodsName>
+      <goodsType>MAIL</goodsType>
+    </SectionGoodsInfo>
+    <SectionGoodsInfo>
+      <appId></appId>
+      <arrGoodsLines>
+        <LineInfo>
+          <lineName>爆品：</lineName>
+          <lineValue>《我好像在哪里见过你》薛之谦全国巡回演唱会门票 北京站</lineValue>
+        </LineInfo>
+        <LineInfo>
+          <lineName>票面价：</lineName>
+          <lineValue>随机</lineValue>
+        </LineInfo>
+        <LineInfo>
+          <lineName>爆品数量：</lineName>
+          <lineValue>50份（每份2张）</lineValue>
+        </LineInfo>
+        <LineInfo>
+          <lineName>场次：</lineName>
+          <lineValue>第三场</lineValue>
+        </LineInfo>
+      </arrGoodsLines>
+      <goodsDescption>&amp;lt;p&amp;gt;《我好像在哪里见过你》薛之谦全国巡回演唱会门票 北京站&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;演出场馆：以主办方最终公布为准&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;演出时间：以主办方最终公布为准&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;本场爆品领取发放方式：本爆品具体领奖方式将由浦发信用卡客服或活动供应商按照中奖人在活动页面填写的联系方式在抢兑场次演唱会开始前10个工作日内进行通知。中奖人须持本人有效证件，至指定场所领取演唱会门票。如出现以下情况，则视为主动放弃本次活动奖励：&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;1）在活动结束后15个工作日内卡中心客服人员通过中奖人在活动页面或在信用卡申请时填写的联系方式无法联系上中奖人；&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;2）中奖人在收到通知后24小时内未明确是否参与活动；&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;3）未年满18周岁。&amp;lt;/p&amp;gt;</goodsDescption>
+      <goodsDetailUrl>https://magicactivity.oss-cn-hangzhou.aliyuncs.com/campaign/XZQBJ_D.png</goodsDetailUrl>
+      <goodsIconUrl>https://magicactivity.oss-cn-hangzhou.aliyuncs.com/campaign/XZQ.jpg</goodsIconUrl>
+      <goodsId>XZQBJ</goodsId>
+      <goodsName>《我好像在哪里见过你》薛之谦全国巡回演唱会门票 北京站</goodsName>
+      <goodsType>MAIL</goodsType>
+    </SectionGoodsInfo>
+    <SectionGoodsInfo>
+      <appId></appId>
+      <arrGoodsLines>
+        <LineInfo>
+          <lineName>爆品：</lineName>
+          <lineValue>《我好像在哪里见过你》薛之谦全国巡回演唱会门票 南京站</lineValue>
+        </LineInfo>
+        <LineInfo>
+          <lineName>票面价：</lineName>
+          <lineValue>随机</lineValue>
+        </LineInfo>
+        <LineInfo>
+          <lineName>爆品数量：</lineName>
+          <lineValue>50份（每份2张）</lineValue>
+        </LineInfo>
+        <LineInfo>
+          <lineName>场次：</lineName>
+          <lineValue>第三场</lineValue>
+        </LineInfo>
+      </arrGoodsLines>
+      <goodsDescption>&amp;lt;p&amp;gt;《我好像在哪里见过你》薛之谦全国巡回演唱会门票 南京站&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;演出场馆：以主办方最终公布为准&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;演出时间：以主办方最终公布为准&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;本场爆品领取发放方式：本爆品具体领奖方式将由浦发信用卡客服或活动供应商按照中奖人在活动页面填写的联系方式在抢兑场次演唱会开始前10个工作日内进行通知。中奖人须持本人有效证件，至指定场所领取演唱会门票。如出现以下情况，则视为主动放弃本次活动奖励：&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;1）在活动结束后15个工作日内卡中心客服人员通过中奖人在活动页面或在信用卡申请时填写的联系方式无法联系上中奖人；&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;2）中奖人在收到通知后24小时内未明确是否参与活动；&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;3）未年满18周岁。&amp;lt;/p&amp;gt;</goodsDescption>
+      <goodsDetailUrl>https://magicactivity.oss-cn-hangzhou.aliyuncs.com/campaign/XZQNJ_D.png</goodsDetailUrl>
+      <goodsIconUrl>https://magicactivity.oss-cn-hangzhou.aliyuncs.com/campaign/XZQ.jpg</goodsIconUrl>
+      <goodsId>XZQNJ</goodsId>
+      <goodsName>《我好像在哪里见过你》薛之谦全国巡回演唱会门票 南京站</goodsName>
+      <goodsType>MAIL</goodsType>
+    </SectionGoodsInfo>
+  </arrGoodsInfos>
+  <arrSectionLines>
+    <LineInfo>
+      <lineName>爆品：</lineName>
+      <lineValue>《我好像在哪里见过你》薛之谦全国巡回演唱会门票</lineValue>
+    </LineInfo>
+    <LineInfo>
+      <lineName>票面价：</lineName>
+      <lineValue>随机</lineValue>
+    </LineInfo>
+    <LineInfo>
+      <lineName>爆品数量：</lineName>
+      <lineValue>共150份</lineValue>
+    </LineInfo>
+    <LineInfo>
+      <lineName>场次：</lineName>
+      <lineValue>第三场</lineValue>
+    </LineInfo>
+  </arrSectionLines>
+  <errorCode>0</errorCode>
+  <errorMsg></errorMsg>
+  <sectionDetailUrl></sectionDetailUrl>
+  <sectionEndTime>1492271999000</sectionEndTime>
+  <sectionIconUrl>https://magicactivity.oss-cn-hangzhou.aliyuncs.com/campaign/XZQ.jpg</sectionIconUrl>
+  <sectionId>ZZQ003</sectionId>
+  <sectionName>周周抢第三场下午场</sectionName>
+  <sectionStartTime>1492236000000</sectionStartTime>
+</SectionGoodsRackPageView>

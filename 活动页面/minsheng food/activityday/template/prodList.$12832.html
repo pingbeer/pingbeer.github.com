@@ -1,0 +1,38 @@
+
+<div class="content">
+    <p class="top_txt border b_btm" ng-bind="title" ng-if="actyType" ng-click="!(isQualify && isQueryDetail)||queryDetail()"></p>
+    <p class="top_txt border b_btm" ng-click="requestAgain()" ng-if="searching"><span ng-bind="titleShow" class="requestState"></span></p>
+    <div id='mySwipe' class='swipe_wrap' ng-if="actyType && isShowDetail">
+        <div class='swipeDov' ng-if="isQualify">
+            <div class="swip_item " ng-repeat="item in userQualifyList">
+                <p class="swip_p1" ng-bind="(item | toJSON).LqName"></p>
+                <p class="swip_p2" ng-bind="(item | toJSON).EndDate | prodlistDate"></p>
+            </div>
+        </div>
+        <ul class="swipe_navpos" ng-if="isQualify">
+            <li ng-class="{on:$first}" ng-repeat="item in userQualifyList"
+                repeat-done="isComplete(userQualifyList.length)"></li>
+        </ul>
+        <!-- 无资质 -->
+        <div class='swipeDov' ng-if="!isQualify">
+            <div class="swip_item">
+                <p class="swip_p3" ng-bind="qualifyDetail"></p>
+            </div>
+        </div>
+        <ul class="swipe_navpos" ng-if="!isQualify">
+            <li class="on"  ng-init="isComplete(1)"></li>
+        </ul>
+    </div>
+    <div ng-if="hotEvent" class="hotEvent" ng-click="queryDetail()">活动火爆,请点击此处重试...</div>
+    <div ui-view="gift" class="contain"></div>
+    <div class="w_cvt border b_top_btm mtop10">
+        <div class="cvtNav">
+            <p class="cvt_title" ui-sref="actyDetail">活动细则</p>
+        </div>
+    </div>
+    <p class="btm_tip" ng-if=" actyType && !isQualify && '02'!= channelType " ng-click="signURL()">已持卡客户签约，兑换特权</p>
+</div>
+<div class='foter'>
+    <p class='btn_card' ng-if="actyType && !isQualify && '02'!= channelType " ng-click="bindBinURL()">立即办卡 享受特权</p>
+</div>
+<!-- <script type='text/javascript' src='activityday/script/weShareReady.js'></script> -->

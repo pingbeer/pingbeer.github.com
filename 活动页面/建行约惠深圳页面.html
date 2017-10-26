@@ -1,0 +1,440 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="telephone=no" name="format-detection" />
+<title>建设银行18元活动</title>
+<script type="text/javascript" src="js/jquery.1.9.1.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript" src="js/ps.1.0.js"></script>
+<script type="text/javascript" src="js/phonecz.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/zepto.alert.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="css/zepto.alert.css">
+<style type="text/css">
+*{padding:0;margin:0;}
+body{font-family:"微软雅黑";font-size:12px;}
+.ui_header{position:fixed;top:0;bottom:0;text-align:center;width:100%;height:3.5rem;line-height:3.5rem;font-size:1.2rem;z-index:999;overflow:hidden;background:#4a87dd;color:#fff;}
+.ui_mobile{border:1px solid #999999;position:absolute;top:50.5%;width:75%;left:12.5%;border-radius:8px;overflow: hidden;}
+.mob_input{padding-left:1rem;border:none;height:2.5rem;line-height:2.5rem;border-radius:8px;width:95%;font-size:16px;}
+.ui_huoqu{position:absolute;top:57%;width:75%;left:12.5%;border-radius:8px;}
+.huoqu_input{float:left;padding-left:1rem;height:2.5rem;border:none;line-height:2.5rem;border-radius:8px;width:50%;font-size:16px;}
+.huoqu_btn{float:left;border:none;background:none;height:2.5rem;line-height:2.5rem;font-size:12px;color:#666666}
+.btn_bottom{position:absolute;top:63.5%;left:12.5%;width:75%}
+.btn1{font-size:14px;border:none;width:48%;float:left;height:2.8rem;line-height:2.8rem;text-align:center;background:#09b6f2;color:#fff;border-radius:8px;}
+.btn2{font-size:14px;border:none;width:48%;float:right;height:2.8rem;line-height:2.8em;text-align:center;background:#09b6f2;color:#fff;border-radius:8px;}
+#phoneno{position: absolute;top:55%;width: 75%;left: 10%;}
+#countno{position: absolute;top: 61.4%;width: 75%;left: 10%;}
+.getOut{position: absolute; top:50.6%; left: 68%;display:none;height: 2.5rem;line-height: 2.5rem;background-color:#37bbff;font-size: 16px;width: 20%;color: #FFFFFF;text-align: center;border-radius: 8px;}
+.paoMa{position: fixed;top:3.5rem;left:0;color: red;z-index: 1000;background-color: rgba(255,255,255,0.6);width: 80%;height: 1.5rem;line-height: 1.5rem;font-size:1rem;}
+</style>
+<script>
+var zc_user=false;//用户登录判断 
+var zc_city=false;//归属地判断 
+var zc_times=true;//是否还有兑换码true么有了
+var zc_count=true;//当天次数true当天已参与过
+var now = new Date();//时间 
+var zc_maxct=true;//总数是否已达上限
+
+$(function(){
+	getUserInfo();
+	if (checkDate()) {
+		$("#myMarquee").show();
+	}
+})
+
+function checkDate() {
+	var myDate = new Date();
+	if (myDate.getMonth() == 0) {
+		if (myDate.getDate() >= 1 && myDate.getDate() <= 10) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+
+//初始化信息
+function getUserInfo(){
+	var account="";
+	if(window.localStorage){
+		//本地缓存
+	var mobile=	localStorage.getItem("userAccount");
+		if(mobile){
+			account=mobile;
+		}
+	}
+	$.ajax({
+		   type: "POST",
+		   url: "/JianHang1802ActivityServlet",
+		   data: "method=getInfo&mobile="+account,
+		   async:false,
+		   dataType:"json",
+		   success: function(datas){
+		    if(datas.resultCode==0){
+		    	zc_user=true;
+		    	if(datas.resultMsg.openid){
+		    		$("#myAccount").val(datas.resultMsg.openid);
+		    		$("#mobile").val(datas.resultMsg.openid);
+		    		$("#mobile").attr("disabled","true");
+		    		$("#mobile").css("color","#000");
+		    		$(".ui_huoqu").hide();
+		    		$(".getOut").css("display","block");
+		    		$(".btn_bottom").css("top","63.5%");
+		    		if(parseInt(getProvinceId(datas.resultMsg.openid), '36')==24){
+		    			//本地手机号码
+		    			zc_city=true;	
+		    		}
+		    	}
+		    }
+		   }
+		});
+}
+$(function(){
+	$('.getOut').click(function(){
+		//清除本地缓存
+		localStorage.setItem("userAccount","");
+		$("#myAccount").val("");
+		$('#mobile').removeAttr("disabled");
+		$('#mobile').val("");
+		$('#idno').val("");
+		$(".ui_huoqu").show();
+		$(".btn_bottom").css("top","63.5%");
+		zc_user=false;
+		$(this).css("display","none");
+	});
+		$(".oldActive").click(function(){
+			window.location.href="http://m.dahanbank.cn/ThirdPlatformActivity/ccb2017/ccb18/index.html"
+	});
+});
+$('body').on('click','.getOut',function(){
+	//清除本地缓存
+	localStorage.setItem("userAccount","");
+	$("#myAccount").val("");
+	$('#mobile').removeAttr("disabled");
+	$('#mobile').val("");
+	$('#idno').val("");
+	$(".ui_huoqu").show();
+	$(".btn_bottom").css("top","63.5%");
+	zc_user=false;
+	$(this).css("display","none");
+});
+function zhuce(){
+
+	  /*  if (now.getHours() < 12) {//用户已登录时间在12点以前
+			layer.open({
+				title : false, // 不显示标题
+				closeBtn : false,
+				type : 1,
+				skin : 'layui-layer-nobg',
+				shade : 0.5, //遮罩透明度
+				area : [ '70%', '27%' ],
+				content : '<img style="width:100%" src="img/12reason.png"  onclick="closeAll()"/>'
+			});
+		}else */ if (!zc_user) {//用户未登陆
+			if(login()){
+				zhuce();	
+			}
+		} else {
+			//用户登录再12点以后
+			if (!zc_city) {//手机号码是否为上海号码 
+				layer.open({
+					title : false, // 不显示标题
+					closeBtn : false,
+					type : 1,
+					skin : 'layui-layer-nobg',
+					shade : 0.5, //遮罩透明度
+					area : [ '70%', '27%' ],
+					content : '<img style="width:100%" src="img/bendi.png"  onclick="closeAll()"/>'
+				});
+			} else {
+				getPrize();
+			}
+		}
+	}
+
+	function check() {
+		if (!zc_user) {//用户未登陆
+			if(login()){
+				check();
+			}
+		} else {
+			window.location.href = "checked.html"
+		}
+	}
+
+	function login() {
+		var isLogin=false;
+		var mobile = $("#mobile").val();
+		var random = $("#idno").val();
+		$("#phoneno").html("");
+		$("#countno").html("");
+
+		var phoneReg = !!mobile.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/);
+		if (mobile == "") {
+			$("#mobile").focus();
+			$("#phoneno").html("手机号不能为空！");
+			$("#phoneno").css("color", "red");
+			return false;
+		} else if (phoneReg == false) {
+			$("#mobile").focus();
+			$("#phoneno").html("手机号错误！");
+			$("#phoneno").css("color", "red");
+			return false;
+		} else if (random == "") {
+			$("#idno").focus();
+			$("#countno").html("验证码不能为空！");
+			$("#countno").css("color", "red");
+			return false;
+		}
+		
+		$.ajax({
+			   type: "POST",
+			   async:false,
+			   url: "/JianHang1802ActivityServlet",
+			   data: "method=login&mobile="+mobile+"&randomCode="+random,
+			   dataType:"json",
+			   success: function(datas){
+			    if(datas.resultCode==0){
+			    	if(window.localStorage){
+			    		//本地缓存
+			    		localStorage.setItem("userAccount",mobile);
+			    	}
+		    		$("#myAccount").val(mobile);
+			    	zc_user=true;
+			    	isLogin= true;
+			    	if(parseInt(getProvinceId(mobile), '36')==24){
+		    			//本地手机号码
+		    			zc_city=true;	
+		    		}
+			    }else{
+			    	alertInfo(datas.resultMsg);
+			    }
+			   }
+			});
+		return isLogin;
+	}
+
+	var sendRC = true;
+	var interval;
+	var count = 60; //倒计时时长
+	var curCount = 60;//剩余秒数
+	function lockButton() {
+		curCount = count;
+		//设置button效果，开始计时
+		$("#PRCbutton").css("background", "#bcbcbd");
+		$("#PRCbutton").attr("disabled", "true");
+		//立即生效
+		if (curCount < 10) {
+			$("#PRCbutton").val("0" + curCount + "s后重新获取");
+		} else {
+			$("#PRCbutton").val(curCount + "s后重新获取");
+		}
+		curCount--;
+		interval = window.setInterval(setButtonContent, 1000); //启动计时器，1秒执行一次
+	}
+	//timer处理函数
+	function setButtonContent() {
+		if (curCount == 0) {
+			window.clearInterval(interval);//停止计时器
+			if (sendRC == true) {
+				$("#PRCbutton").removeAttr("disabled");//启用按钮		
+			}
+			$("#PRCbutton").val("获取验证码");
+			$("#PRCbutton").css("background","none")
+
+		} else {
+			if (curCount < 10) {
+				$("#PRCbutton").val("0" + curCount + "s后重新获取");
+			} else {
+				//$("#PRCbutton").css("background","gray");
+				$("#PRCbutton").val(curCount + "s后重新获取");
+
+			}
+			curCount--;
+		}
+	}
+	//发送随机码
+	function sendRandomCode() {
+		$("[name='randomCode']").val("");//清空验证码输入框
+		window.clearInterval(interval);//停止计时器
+
+		var mobile = $("#mobile").val();
+		var ideo = $("#ideo").val();
+		count = 60;
+		var timestamp = $.now();
+		if (!mobile) {
+			$("#mobile").focus();
+			$("#phoneno").html("手机号不能为空！");
+			$("#phoneno").css("color", "red");
+			return;
+		}
+		var telReg = !!mobile.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/);
+		if (telReg == false) {
+			$("#mobile").focus();
+			$("#phoneno").html("手机号错误！");
+			$("#phoneno").css("color", "red");
+			return;
+		}
+
+		$.post("/JianHang1802ActivityServlet?method=getRandom", {
+			"mobile" : mobile,
+		}, function(data) {
+			if (data.resultCode == 0) {
+				count = 60;
+				lockButton();
+			} else if (data.resultCode == 99) {
+				count = data.resultMsg;
+				lockButton();
+			}else{
+				//lockButton();
+				alertInfo(data.resultMsg);
+			} 
+		}, "json")
+	}
+
+	function closeAll() {
+		layer.closeAll();
+	}
+	function checkmobile() {
+		$("#phoneno").html("");
+	}
+	function checkaccount() {
+		$("#countno").html("");
+	}
+	
+	function alertInfo(desc){
+		layer.open({
+			title : false, // 不显示标题
+			closeBtn : false,
+			type : 1,
+			skin : 'layui-layer-nobg',
+			shade : 0.5, //遮罩透明度
+			area : [ '70%', '27%' ],
+			content : '<img style="width:100%" src="img/tanchuang.png"  onclick="closeAll()"/><div style="position: absolute;top:25%;width:100%;text-align: center;font-size: 18px;">'+desc+'</div>'
+		});
+	}
+	
+	function getProvinceId(psVal) {
+		var _txtPS = psVal.substring(0, 3);
+		var _txtPro = parseInt(psVal.substring(0, 7)) - parseInt(_txtPS) * 10000;
+		var _oProvinceName = "";
+		if (PHONE_SEGMENT_MAP[_txtPS]) {
+			var _provinceId = PHONE_SEGMENT_MAP[_txtPS].substring(_txtPro, _txtPro + 1);
+			return _provinceId;
+		}
+	}
+	//抽奖
+	function getPrize(){
+		$.post("/JianHang1802ActivityServlet?method=getPrizeLL", function(data) {
+			var dt=data.resultMsg;			
+	        if (data.resultCode == 0) {
+				var size = 0;
+				if (dt.yysType == 1) {
+					size = dt.ydSize
+				} else if (dt.yysType == 2) {
+					size = dt.ltSize;
+				} else if (dt.yysType == 3) {
+					size = dt.dxSize;
+				}
+				window.location.href = "mobile_appy.html?rId=" + dt.id + "&yys=" + dt.yysType + "&payMoney=" + dt.payMoney+"&size="+size+"&mobile="+$("#myAccount").val()+"&orderNo="+dt.orderNo;
+			} else {
+				if(data.resultCode == 4){
+					layer.open({
+						title : false, // 不显示标题
+						closeBtn : false,
+						type : 1,
+						skin : 'layui-layer-nobg',
+						shade : 0.5, //遮罩透明度
+						area : [ '70%', '27%' ],
+						content : '<img style="width:100%" src="img/mingtian.png"  onclick="closeAll()"/>'
+					});
+					return;
+				}else if(data.resultCode == 5){
+					layer.open({
+						title : false, // 不显示标题
+						closeBtn : false,
+						type : 1,
+						skin : 'layui-layer-nobg',
+						shade : 0.5, //遮罩透明度
+						area : [ '70%', '27%' ],
+						content : '<img style="width:100%" src="img/more.png"  onclick="closeAll()"/>'
+					});
+					return;
+				}else if(data.resultCode == 7){
+					layer.open({
+						title : false, // 不显示标题
+						closeBtn : false,
+						type : 1,
+						skin : 'layui-layer-nobg',
+						shade : 0.5, //遮罩透明度
+						area : [ '70%', '27%' ],
+						content : '<img style="width:100%" src="img/qiangwan.png"  onclick="closeAll()"/>'
+					});
+					return;
+				}else{
+					alertInfo(data.resultMsg);
+				}
+			}
+		}, "json")
+	}
+	
+	function fanhui() {
+		window.history.back(-1);
+	}
+</script>
+</head>
+<div id="myMarquee"
+		style="background-color: #4a87dd; width: 80%; height: 1em; top: 0; left: 0;position:fixed;display:none;
+	z-index:1000;">
+		<marquee id="myfont" behavior="scroll" loop="-1" width="100%;"
+			style="color: #fff194; float: left; padding-top: 0;">友情提醒：本次活动获得的流量兑换券将于2017年1月10日过期，请在过期日期前兑换使用！</marquee>
+		
+	</div>
+<body>
+	<header class="ui_header">
+		<div onclick="fanhui()" style="height:1.8rem;width:0.8rem;position:absolute;left:0.8rem;top:0.2rem;">
+			<img style="width:100%;" src="img/icon.png"/>
+		</div>
+		<span>手机流量</span>
+	</header>
+	<!--<marquee class="paoMa" direction="left">4月21日（周五）21:30至4月22日（周六）20:00，因建行系统升级，暂停所有渠道的个人客户账务性交易活动，网点暂停营业。由此给您带来的诸多不便深表歉意。</marquee>-->
+	<section style="position:relative;">
+		<div style="margin-top:3.5rem;position:relative;">
+			<img style="width:100%;display:block;" src="img/bg.png"/>
+			<div class="oldActive" style="position:absolute;top:32%;left:55%;width:100px;height:50px;z-index:10;"></div>
+		</div>
+		<form>
+				<div class="ui_mobile">
+					<input type="text" maxlength="11" placeholder="请输入手机号码" class="mob_input" id="mobile" onkeydown="checkmobile()"/>
+					
+				</div>	
+				<div class="getOut">登出</div>
+				<div id="phoneno" style="font-size:12px;"></div>
+				<div class="ui_huoqu">
+					<div style="background:#fff;width:100%;border-radius:8px;overflow:hidden;border: 1px solid #999999;" >
+						<input type="text"  class="huoqu_input" id="idno" onkeydown="checkaccount()"/>
+						<input type="button"  value="获取验证码" id="PRCbutton" onclick="sendRandomCode()"  style="background:none;border:none;float:left;width:40%;line-height:40px;height:40px;font-size:16px;"/> 
+					</div>		
+					
+				</div>	
+				<div id="countno" style="font-size:12px;"></div>
+				<div class="btn_bottom">		
+					<div class="btn1" onclick="zhuce()">立即抢购</div>
+					<div class="btn2" onclick="check()">查看我的券</div>
+				</div>	
+		</form>
+		<div style="clear:both;"></div>	
+		<input type="hidden" id="myAccount" value="">
+	</section>
+	
+</body>
+
+</html>

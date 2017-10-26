@@ -1,0 +1,80 @@
+
+<div ng-app="FilmModule" ng-controller="filmController">
+    <div class="nav-mainf ui-row bg-col-f8f8f8 lineh-40 bor-bottom-dfdfdf">
+        <div class="ui-col-20 pl-15 fl-left text-col-333" ui-sref="city({id: 2})">
+            {{pname}}<i class="ui-icon-unfold dis-inline text-col-333 line-25"></i>
+        </div>
+        <div class="ui-col-50 fl-left text-center">
+            <button class="btn-bor left-btn" ng-class="{true :'btn-active', false :'btn-normal'}[btnTab]"
+                    ng-click="getTab(1)">热映
+            </button>
+            <button class="btn-bor right-btn" ng-class="{true :'btn-normal', false :'btn-active'}[btnTab]"
+                    ng-click="getTab(2)">待映
+            </button>
+        </div>
+        <div class="ui-col-25 fl-right position" ui-sref="search({'type':2})"><i
+                class="ui-icon-search text-col-333 pt-5"></i>
+        </div>
+    </div>
+    <div class="swiper-container filmSwiperBanner mt-40 bg-col-fff " ng-style="hotrec" ng-if="mainbanner">
+        <!-- Swiper -->
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" repeat-finish="checkLastBanner()" ng-repeat="simg in swiperImg"><img
+                    ng-style="hotrec" ui-sref="filmdetail({'id':simg.filmId,'type':2})" ng-src="{{simg.imgUrl}}"/></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination" id="swiper-film-id">
+            <span class="swiper-pagination-bullet" repeat-finish="checkLastBanner()"
+                  ng-repeat="simg in swiperImg"></span>
+        </div>
+    </div>
+    <!--热映-->
+    <div class="bg-col-fff" ng-style="noBanner" ng-if="btnTab">
+        <div ng-style="scrollStyle1">
+            <div class="ui-row clear nav-film" ng-repeat="hot in hotList">
+                <div class="fl-left ui-col-75" ng-click="filmDetail(hot.id)">
+                    <div class="fl-left">
+                        <img ng-src="{{hot.bigImg+'?imageView2/2/w/320/h/318/interlace/0/q/100'}}"/>
+                    </div>
+                    <ul class="fl-left mt-10 font-12 text-col-5f5f5f overhide ui-col-55">
+                        <li class="font-14 text-col-333">{{hot.name}}</li>
+                        <li ng-if='hot.id=="b81b0430338c43c1ac40a6f0ee719b0f"'>8.5</li>
+                        <li ng-if='hot.id!="b81b0430338c43c1ac40a6f0ee719b0f"'>{{hot.grade | number:1}}</li>
+                        <li class="ui-nowrap">{{hot.actors}}</li>
+                        <li class="ui-nowrap">{{hot.description}}</li>
+                    </ul>
+                </div>
+                <div class="fl-right ui-col-20 pr-10 font-14">
+                    <button style="width:100%;" ng-click="getAllTicket(hot.id)">比价购票</button>
+                </div>
+            </div>
+            <div infinite-scroll="myPagingFunction()" infinite-scroll-distance="0"></div>
+        </div>
+    </div>
+    <!--待映-->
+    <div class="bg-col-fff" ng-style="noBanner" ng-if="!btnTab">
+        <div ng-style="scrollStyle1">
+            <div class="ui-row clear nav-film" ng-repeat="wait in waitList">
+                <div class="fl-left ui-col-75" ng-click="filmDetail(wait.id)">
+                    <div class="fl-left">
+                        <img ng-src="{{wait.smallImg+'?imageView2/2/w/320/h/318/interlace/0/q/100'}}"/>
+                    </div>
+                    <ul class="fl-left mt-10 font-12 text-col-5f5f5f overhide ui-col-55">
+                        <li class="font-14 text-col-333">{{wait.name}}</li>
+                        <li ng-if='wait.id=="b81b0430338c43c1ac40a6f0ee719b0f"'>8.5</li>
+                        <li ng-if='wait.id!="b81b0430338c43c1ac40a6f0ee719b0f"'>{{wait.grade | number:1}}</li>
+                        <li class="ui-nowrap">{{wait.actors}}</li>
+                        <li class="ui-nowrap">{{wait.description}}</li>
+                    </ul>
+                </div>
+                <div class="fl-right ui-col-20 pr-10 font-14">
+                    <button style="width:100%;" ng-click="getAllTicket(wait.id)">查看影讯</button>
+                </div>
+            </div>
+            <div infinite-scroll="myPagingFunction1()" infinite-scroll-distance="0"></div>
+        </div>
+    </div>
+    <footer-view typenum="pagetype" new-page="getFooter(page)"></footer-view>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

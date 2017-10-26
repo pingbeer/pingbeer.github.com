@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport"content="width=320,maximum-scale=1.3,user-scalable=no">
+    <title>浦发银行信用卡在线申请</title>
+    <link rel="stylesheet" href="/creditcard/css/swiper.min.css">
+    <link rel="stylesheet" href="/creditcard/css/base.css">
+    <link type="text/css" rel="stylesheet"	href="/creditcard/css/reservationcard/jquery.alert.css" />
+    <script src="/creditcard/js/jquery-1.9.1.min.js"></script>
+    <script src="/creditcard/js/swiper.min.js"></script>
+    <script src="/creditcard/js/common.js"></script>
+    <script type="text/javascript" charset="utf-8"	src="/creditcard/js/jquery-migrate-1.1.1.js"></script>
+    <script type="text/javascript" charset="utf-8"	src="/creditcard/js/jquery.alert.js"></script>
+    <script src="/creditcard/js/reservationcard/jquery.mask.min.js"></script>
+    <script src="/creditcard/js/reservationcard/lazychoice.js"></script>
+
+
+    <style type="text/css">
+        .borderTandB{
+            -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            bottom: -50%;
+            left: -50%;
+            border-bottom: 1px solid #dedede;
+            border-top: 1px solid #dedede;
+        }
+        .dingzhi {
+            width : 45%;
+            /*			display : inline-table;*/
+            position:fixed;
+            bottom:15px;
+            line-height: 30px;
+        }
+
+        .hide {
+            display : none;
+        }
+        .spreadLi{width:10%;height:45px;line-height:45px;text-align:center;top:0;position:absolute;right:0;z-index:100}
+        .adDivCss{
+            text-align: center;
+            padding: 5px 5px;
+        }
+        img {
+            border: 0 none;
+            vertical-align: top;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        #spreadBtn{
+            max-width: 35%;
+            max-height: 35%;
+            vertical-align: middle;
+        }
+        .bar-nav .back1 {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            left: 0;
+            top: 0;
+        }
+        .cardNameCss{
+            text-align: center;
+            padding-bottom: 15px;
+            color: rgb(250, 250, 250);
+            font-size: 14px;
+        }
+        #shenqing{
+            background-color: #0066cc;
+            /* position: relative; */
+            display: block;
+            margin: 0 auto;
+            padding:8px 14px;
+            box-sizing: border-box;
+            font-size: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #FFFFFF;
+            border-radius: 3px;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            overflow: hidden;
+            position:fixed;
+            bottom:15px;
+            width:90%;
+        }
+        .lazyApply{
+            margin:0 150px;
+        }
+    </style>
+
+    <!-- 埋点系统-->
+    <script type="text/javascript">
+        var _ncp = _ncp || [];
+        _ncp.push(['setUserId','f5e83987-762d-4bde-bd2a-722fdf7c166c']);
+        (function() {
+            var host='weixin.spdbccc.com.cn' + '/spdbcccWeChatPage/tnc';
+            _ncp.push(['setTrackerUrl', "https://" + host + "/unc"]);
+            _ncp.push(['setSiteId', 2]);
+            _ncp.push(['setCustomUrl', "http://" + 'weixin.spdbccc.com.cn' + "/creditcard/selectcard.htm"]);
+            _ncp.push(['trackPageView', 'tongyong_selectcard']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src='https://' + host + '/nc.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+</head>
+<body>
+<div style="display:none" id="cardInfos"></div>
+<div class="mask" style="display:none"></div>
+<div class="page-select1">
+    <header >
+        <!-- <a class="back1" href="javascript:void(0)"></a>
+        <h1 class="title">浦发银行信用卡在线申请</h1> -->
+    </header>
+    <div class="swiperBox" style="min-height: 187px;" id="swiper-cardinfo">
+        <div class="swiper-container" style="padding: 5px 0 20px;">
+            <div class="cardNameCss"><span id="cardName"></span></div>
+            <div class="swiper-wrapper"></div>
+            <div class="swiper-button-prev"></div><div class="swiper-button-next"></div><div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <div class="act_select_type  clearfixed" style="position:relative;">
+        <i class="borderTandB"></i>
+        <div class="inner" id ="cardTypeListSize_div" style="overflow:hidden;width:100%;  ">
+            <ul class="clear swiper-wrapper" style="font-size: 14px;width:100%;">
+                <li id="0"
+                    class="cur swiper-slide"
+                    onclick=getCardList($('#typeId0').val(),0,this,true)>
+                    <input type="hidden" id="typeId0"
+                           value="87" />
+                    <p>人气爆款</p>
+                </li> 					<li id="1"
+                                             onclick=getCardList($('#typeId1').val(),1,this,true)>
+                <input type="hidden" id="typeId1"
+                       value="255" />
+                <p>深度定制</p>
+            </li> 					<li id="2"
+                                         onclick=getCardList($('#typeId2').val(),2,this,true)>
+                <input type="hidden" id="typeId2"
+                       value="256" />
+                <p>火热新品</p>
+            </li>
+            </ul>
+
+        </div>
+    </div>
+    <div class='cardinfo'>
+        <i class="borderTandB"></i>
+        <!-- <h3 id="cardName"></h3> -->
+        <p id="cardDesc"></p>
+    </div>
+    <div class="spacing">
+        <a href="javascript:;" class="weui_btn weui_btn_primary" style="display:none;" onclick="orderCard()" id="lazychoice">懒人一步申请</a>
+        <a href="javascript:;" class="weui_btn weui_btn_primary lazyApply" style="display:none" onclick="applyCard()" id="dingzhi">立即定制</a>
+        <a href="javascript:;" onclick="applyCard()" id="shenqing">下一步</a>
+        <form id="cardInfoForm" method="post" action="toBasicInfo.htm" />
+        <!--
+                        <input type="hidden" name="cardNo" id="cardNo">
+                        <input type="hidden" name="shenqingkaproduct" id="cardCode" />
+                        <input type="hidden" name="cardlayoutnumber" id="layoutNo" />
+                        <input type="hidden" name="cardProductApplyFlow" id="cardProductApplyFlow" />
+                        <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+        -->
+        </form>
+    </div>
+    <input type="hidden" name="data" id="data" value="P855800">
+</div>
+<style>
+    #cardTypeLayer{
+        display:none;
+        position:fixed;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+        background:rgba(0,0,0,0.4);
+        z-index:1000;
+    }
+    #cardTypeLayer .cur{
+        color:#d62321;
+    }
+    #cardTypeLayer .close{
+        position: absolute;
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        top: 0;
+        bottom: 0;
+        right: 20px;
+        margin: auto;
+        font-size: 30px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        color:#b8b8b8;
+    }
+    #cardTypeLayer .page{
+        display:none;
+        background:#fff;
+        color:#000;
+        box-shadow: 0px 1px 10px 1px #323232;
+        -webkit-box-shadow: 0px 1px 10px 1px #323232;
+    }
+    #cardTypeLayer .title{
+        position: relative;
+        text-align: center;
+        font-size: 14px;
+        padding: 14px;
+        background-color: #eeeeee;
+        color: #272727;
+    }
+    #cardTypeLayer .content{
+        font-size:16px;
+        overflow:hidden;
+    }
+    #cardTypeLayer .content .aa{
+        width:100%;
+        text-align:center;
+        border-collapse:collapse;
+        font-size:14px;
+        color: #828282;
+        /* height:150px; */
+        vertical-align:middle;
+    }
+    #cardTypeLayer .content .aa p{
+        width: 33.33%;
+    }
+
+    .pCss{
+        float:left;
+        margin:0;
+        height:50px;
+        width:50px;
+        position: relative;
+        line-height: 50px;
+    }
+    .border{
+        -webkit-transform:scale(0.5);
+        transform:scale(0.5);
+        position: absolute;
+        top:-50%;
+        right: -50%;
+        bottom: -50%;
+        left: -50%;
+    }
+    .aa{/* width:300px; */}
+    .aa div:first-child p:first-child .border{
+        border-left:1px solid #dedede;
+    }
+    .aa div:first-child p .border{
+        border-top:1px solid #dedede;
+        border-bottom:1px solid #dedede;
+        border-right:1px solid #dedede;
+    }
+    .aa div p:first-child .border{
+        border-left:1px solid #dedede;
+    }
+    .aa div p .border{
+        border-bottom:1px solid #dedede;
+        border-right:1px solid #dedede;
+    }
+</style>
+<div id="cardInfos" >
+
+</div>
+<div style="display:none">
+
+    <div data-index-bak="87">
+        <div class="swiper-slide" data-index="87" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group2/M00/00/27/wKhmJ1gZhXqAI2ReAACtfEqLfhk038.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="简约白金卡" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none">*白金卡，<strong style='color: red'>免年费</strong><br>
+                    *消费送红包，最高领<strong style='color: red'>4888元</strong>刷卡金，<strong style='color: red'>100%</strong>有奖<br>
+                    *订购外卖、团购，单笔最高立减<strong style='color: red'>77元</strong><br>
+                    *全国商圈消费立享随机折扣，人气美食享<strong style='color: red'>5折</strong><br>
+                    *指定五星级酒店自助餐<strong style='color: red'>买一赠一</strong><br>
+                    *指定五星级酒店<strong style='color: red'>住3付2</strong></div>
+                <input type="hidden" name="cardNo" id="cardNo" value="775">
+                <input type="hidden" name="shenqingkaproduct" value="0052" />
+                <input type="hidden" name="cardlayoutnumber"  value="001" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="87">
+        <div class="swiper-slide" data-index="87" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group1/M00/01/0E/wKhmJll2zI2AckQHAAEV5H9Elqk721.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="VIPlus联盟信用卡（黑）" ref-no="99" style="display:none">
+                <div ref-desc="" style="display:none"><br>*银联+万事达（可选），白金卡，免年费
+                    <br>*唯品会|超级<strong style='color: red'> VIP会员特权</strong>、全场<strong style='color: red'>95折</strong>
+                    <br>*美团点评|全年<strong style='color: red'>免单300</strong>元
+                    <br>*爱奇艺|全年<strong style='color: red'>免费VIP</strong>会员
+                    <br>*滴滴出行|全年优惠<strong style='color: red'>120元</strong> </div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1230">
+                <input type="hidden" name="shenqingkaproduct" value="1029" />
+                <input type="hidden" name="cardlayoutnumber"  value="608" />
+                <input type="hidden" name="cardProductApplyFlow" value="99" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="87">
+        <div class="swiper-slide" data-index="87" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group2/M00/00/E3/wKhmKFk-VBuAB9pOAAGtZnC7uw8414.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="浦发梦卡之666主题信用卡" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none">* 银联白金卡，免年费<br>
+                    *一年<strong style='color: red'>超666元</strong>权益新户免费领：<br>
+                    1.<strong style='color: red'>9元</strong>购买套餐包： 1个月QQ音乐会员、1个月爱奇艺/腾讯视频/优酷会员、一个月QQ会员<br>
+                    2.每月限量6666份<strong style='color: red'>网易游戏30元</strong>兑换券抢兑<br>
+                    *卡片DIY费（版面）：66元/卡<br></div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1201">
+                <input type="hidden" name="shenqingkaproduct" value="1029" />
+                <input type="hidden" name="cardlayoutnumber"  value="597" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="87">
+        <div class="swiper-slide" data-index="87" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group2/M00/00/EE/wKhmJ1lLOSGAE7gVAAErd2qYPqg045.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="浦发QQ音乐联名卡" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none"><br>*银联白金卡，<strong style='color: red'>免年费</strong><br>
+                    *笔笔消费有红包，<strong style='color: red'>最高4888元</strong><br>
+                    *联名卡客户专享<strong style='color: red'>1元抢购</strong>绿钻豪华版特权</div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1208">
+                <input type="hidden" name="shenqingkaproduct" value="1027" />
+                <input type="hidden" name="cardlayoutnumber"  value="515" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="87">
+        <div class="swiper-slide" data-index="87" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group1/M00/00/A9/wKhmJVj90veAD6UkAAEHS_lYRpo154.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="浦发神州御驾卡" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none">* 现在办卡享免年费、免费获盗刷保障权益（极简版）<br>
+                    * “三白金”-享浦发白金卡礼遇、神州专车、神州租车白金权益<br>
+                    * 新户首刷赠100元专车充值奖励<br>
+                    * 新户可享3次“月月返30元”专车充值奖励<br></div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1166">
+                <input type="hidden" name="shenqingkaproduct" value="1027" />
+                <input type="hidden" name="cardlayoutnumber"  value="551" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="87">
+        <div class="swiper-slide" data-index="87" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group1/M00/00/40/wKhmJVhbbpqAd9EeAAKF_It22IA238.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="吉利白金信用卡" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none"><br>*资金周转神器，1-99天任你选择，秒速到账，随借随还（万用随借金）<br>
+                    *专享卡片额度资金提取，一次授信，永久有效 <br>
+                    *自由消费、灵活使用、按日计息<br>
+                </div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1092">
+                <input type="hidden" name="shenqingkaproduct" value="1019" />
+                <input type="hidden" name="cardlayoutnumber"  value="192" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="87">
+        <div class="swiper-slide" data-index="87" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group1/M00/00/CA/wKhmJVklYDiAEw55AAHGorvfQCs232.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="浦发腾讯视频联名信用卡" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none"><br>* 银联白金卡，免年费<br>
+                    * 最多赠24个月腾讯视频会员<br>
+                    * 消费达标送奢华酒店住宿<br>
+                    * 消费达标送自助餐买一赠一<br>
+                    * 每笔消费享浦发红包<br></div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1171">
+                <input type="hidden" name="shenqingkaproduct" value="1018" />
+                <input type="hidden" name="cardlayoutnumber"  value="001" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="87">
+        <div class="swiper-slide" data-index="87" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group2/M00/00/7B/wKhmJ1jIrk-AUepEAAEPKXGG18Q084.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="美团点评主题卡（竖）" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none">*银联白金卡，免年费，免除卡面费 <BR>
+                    *<strong style='color: red'>月月</strong>享八折，<strong style='color: red'> 天天</strong>享立减，<strong style='color: red'> 日日</strong>返优惠券<br>
+                    *【八折放肆享】新户美团点评月刷3笔99元<strong style='color: red'> 享8折优惠</strong><br>
+                    *【天天折上折】外卖/电影/美食每天最高<strong style='color: red'> 减77元</strong><br></div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1134">
+                <input type="hidden" name="shenqingkaproduct" value="1029" />
+                <input type="hidden" name="cardlayoutnumber"  value="559" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="87">
+        <div class="swiper-slide" data-index="87" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group2/M00/00/3F/wKhmJ1haE8eAcl6MAAEpK5YmKKY131.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="梦卡之巴萨主题信用卡" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none"><BR> *尊享1元机场停车<br>
+                    *奕欧来畅购有“礼”<br>
+                    *主题版面，免年费、享银联白金礼遇<br>
+                    *卡面费50元<br></div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1088">
+                <input type="hidden" name="shenqingkaproduct" value="1027" />
+                <input type="hidden" name="cardlayoutnumber"  value="543" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="87">
+        <div class="swiper-slide" data-index="87" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group2/M00/00/3F/wKhmKFhaFFqAdz49AAETakA9ydM552.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="梦卡之巴萨主题信用卡" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none"><BR> *尊享1元机场停车<br>
+                    *奕欧来畅购有“礼”<br>
+                    *主题版面，免年费、享银联白金礼遇<br>
+                    *卡面费50元<br></div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1090">
+                <input type="hidden" name="shenqingkaproduct" value="1027" />
+                <input type="hidden" name="cardlayoutnumber"  value="545" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="87">
+        <div class="swiper-slide" data-index="87" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group1/M00/00/2F/wKhmJVgyo42AfYutAAFp1-4jTV4255.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="浦发美国运通白金信用卡" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none"><br>
+
+
+                    * 首年免年费优惠<br>
+                    * 全年不限次免费贵宾厅权益，可携伴6人次<br>
+                    * 境内3次免费机场接送服务<br>
+                    * 5万积分兑换境内外星级酒店1间夜住宿体验<br>
+                </div>
+                <input type="hidden" name="cardNo" id="cardNo" value="896">
+                <input type="hidden" name="shenqingkaproduct" value="0186" />
+                <input type="hidden" name="cardlayoutnumber"  value="001" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="255">
+        <div class="swiper-slide" data-index="255" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group2/M00/00/74/wKhmJ1i_m6WAffx6AAKe0pweFgY746.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="梦卡之江南（依兰奖获奖产品）" ref-no="1" style="display:none">
+                <div ref-desc="" style="display:none">* <strong style='color: red'>深度定制</strong>：自选卡面、工艺、卡组织、卡号<br>
+                    * 白金卡，<strong style='color: red'>免</strong>年费、<strong style='color: red'> 免</strong>外汇兑换手续费<br>
+                    * 消费送红包，最高领<strong style='color: red'>4888元</strong>刷卡金，<strong style='color: red'>100%</strong>有奖<br>
+                    * 订购外卖、团购，单笔最高立减<strong style='color: red'>77元</strong> <br>
+                    * 全国商圈消费立享随机折扣，人气美食享<strong style='color: red'>5折</strong> <br></div>
+                <input type="hidden" name="cardNo" id="cardNo" value="986">
+                <input type="hidden" name="shenqingkaproduct" value="1027" />
+                <input type="hidden" name="cardlayoutnumber"  value="004" />
+                <input type="hidden" name="cardProductApplyFlow" value="1" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="256">
+        <div class="swiper-slide" data-index="256" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group1/M00/00/AE/wKhmJlkBvW-AQVW9AAcUiopF6FI610.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="手机淘宝联名卡" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none">*办卡享豪礼，新户消费满额绑定淘宝会员,即有机会获赠刷卡金<strong style='color: red'>88-188元</strong>刷卡金<br>*银联白金卡，免年费<br>*笔笔消费送红包，最高领<strong style='color: red'>4888元</strong>刷卡金<br>*全国商圈消费立享随机折扣，人气美食享<strong style='color: red'>5折</strong><br> *小浦观影单笔最高立减<strong style='color: red'>77元</strong></div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1175">
+                <input type="hidden" name="shenqingkaproduct" value="1033" />
+                <input type="hidden" name="cardlayoutnumber"  value="507" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="256">
+        <div class="swiper-slide" data-index="256" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group1/M00/00/39/wKhmJVhHpEeAYHN_AAEIR7-j9N4353.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="浦发梦卡之库支票信用卡（银联版）" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none">*银联白金卡，免年费<br>
+                    *绑卡送价值1000元寺库商城优惠券<br>
+                    *3、6、12期分期0手续费<br>
+                    *消费达标最高赠80元刷卡金<br>
+                    *购物最高享3%优惠<br></div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1076">
+                <input type="hidden" name="shenqingkaproduct" value="1027" />
+                <input type="hidden" name="cardlayoutnumber"  value="531" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="256">
+        <div class="swiper-slide" data-index="256" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group1/M00/00/4C/wKhmJlh17bCAaG0XAAJCLxbS_mk622.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="欧冠主题信用卡" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none"><br>*白金卡，免年费，免卡面费<br>
+                    *五星级酒店下午茶两人同行5折优惠<br>
+                    *全球WIFI享首两日免费<br>
+                    *限万事达线路跨境消费<br></div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1098">
+                <input type="hidden" name="shenqingkaproduct" value="0111" />
+                <input type="hidden" name="cardlayoutnumber"  value="547" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="256">
+        <div class="swiper-slide" data-index="256" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group1/M00/00/96/wKhmJljl916AW8VzAAHdgP5OlPI842.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="浦发梦卡之守望先锋LOGO版" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none"><br>*5折抢购《守望先锋》198元游戏帐号；<br>
+                    *每月1次,5折购《守望先锋》30元游戏补给箱；<br>
+                    *新户首刷更可获赠游戏官方特大版鼠标垫。</div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1087">
+                <input type="hidden" name="shenqingkaproduct" value="1027" />
+                <input type="hidden" name="cardlayoutnumber"  value="533" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="256">
+        <div class="swiper-slide" data-index="256" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group1/M00/00/9E/wKhmJVjvDK2AFdK2AACgigPpPc4443.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="青春卡-银联标准版" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none"><br>
+                    *特定日合格消费享双倍积分<br>
+                    *新客户现金分期享7折费率限时优惠<br>
+                    *额度给力，梦想金自由提取<br>
+                    限40岁以下全日制大专以上客户申请<br>
+                </div>
+                <input type="hidden" name="cardNo" id="cardNo" value="195">
+                <input type="hidden" name="shenqingkaproduct" value="1013" />
+                <input type="hidden" name="cardlayoutnumber"  value="001" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="256">
+        <div class="swiper-slide" data-index="256" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group1/M00/00/4D/wKhmJlh3TWCAeSQNAAKN4YiYUBg040.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="东航浦发联名金卡（双币）" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none"><br>*消费15元=1东方万里行积分【免年费】
+                    <br>*核卡3个月内累计有效交易2千元，送1千里程积分<br>
+                    *更多飞行权益<br>
+                    *优享丰富礼遇<br></div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1075">
+                <input type="hidden" name="shenqingkaproduct" value="0077" />
+                <input type="hidden" name="cardlayoutnumber"  value="001" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="256">
+        <div class="swiper-slide" data-index="256" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group2/M00/00/4C/wKhmJ1h17ZaAH3hzAAIDtW-Ouls435.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="欧冠主题信用卡" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none"><br>*白金卡，免年费，卡面费50元，3D+镭射烫印<br>
+                    *五星级酒店下午茶两人同行5折优惠<br>
+                    *全球WIFI享首两日免费<br>
+                    *限万事达线路跨境消费<br></div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1099">
+                <input type="hidden" name="shenqingkaproduct" value="0111" />
+                <input type="hidden" name="cardlayoutnumber"  value="548" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+
+    <div data-index-bak="256">
+        <div class="swiper-slide" data-index="256" style="width: 544px;">
+            <img data-src="https://image.spdbccc.com.cn/group2/M00/00/6F/wKhmKFi5OziAFoSsAAH8Q2t-nf8945.png" class="swiper-lazy" width="185px">
+            <div class='swiper-lazy-preloader swiper-lazy-preloader-white'></div>
+            <div ref-name="浦发梦卡之龙珠银联信用卡-筋斗云" ref-no="03" style="display:none">
+                <div ref-desc="" style="display:none">*业内首款<strong style='color: red'> AR（增强现实）</strong> 科技信用卡<br>
+                    *玩转AR，召唤神龙，抽取最高<strong style='color: red'> 9个月</strong>视频网站VIP会员资格，100%中奖<br>
+                    *银联白金卡，免年费<br> *消费送红包，最高领<strong style='color: red'>4888元</strong>刷卡金，<strong style='color: red'>100%</strong>有奖<br>
+                    *订购外卖、团购，单笔最高立减<strong style='color: red'>77元</strong> <br>
+                    *全国商圈消费立享随机折扣，人气美食享<strong style='color: red'>5折</strong> <br></div>
+                <input type="hidden" name="cardNo" id="cardNo" value="1125">
+                <input type="hidden" name="shenqingkaproduct" value="1029" />
+                <input type="hidden" name="cardlayoutnumber"  value="553" />
+                <input type="hidden" name="cardProductApplyFlow" value="03" />
+                <input type="hidden" id="cardUrl" value="https://image.spdbccc.com.cn/" />
+            </div>
+        </div>
+    </div>
+</div>
+<div id="cardTypeLayer">
+    <div class="page">
+        <div class="title">全部卡类型<span class="close">+</span></div>
+        <div class="content">
+            <div class="aa">
+                <div>
+                    <p class="pCss cur"><span id="0" class="border"
+                                              onclick=getCardList($('#typeId0').val(),0,this,true)></span>人气爆款</p>
+
+
+                    <p class="pCss "><span id="1" class="border"
+                                           onclick=getCardList($('#typeId1').val(),1,this,true)></span>深度定制</p>
+
+
+                    <p class="pCss "><span id="2" class="border"
+                                           onclick=getCardList($('#typeId2').val(),2,this,true)></span>火热新品</p>
+                </div>
+
+            </div>
+
+            <!-- <table>
+            </table> -->
+        </div>
+    </div>
+</div>
+<!-- 预览页面 -->
+<div class="pop_panel pop_showcase pop_showcase1"  style="display:none">
+    <form id="dreamCardCustomizedForm" method="post">
+        <input type="hidden" id="dreamImgUrl" name="dreamImgUrl" value="http://dreamcard.spdbccc.com.cn/image/">
+        <input type="hidden" id="cardCode1" name="cardCode" value="">
+        <input type="hidden" id="cardName" name="cardName" value="">
+        <input type="hidden" id="cardPageNo" name="cardPageNo" value="">
+        <input type="hidden" id="cardImgNo" name="cardImgNo" value="">
+        <input type="hidden" id="cardImgDiyNo" name="cardImgDiyNo" value="">
+        <input type="hidden" id="sequence" name="sequence" value="">
+        <input type="hidden" id="cardImgUrl" name="cardImgUrl" value="">
+        <input type="hidden" id="cardProduct" name="cardProduct" value="1">
+        <input type="hidden" name="skipChooseCard" id="skipChooseCard" value="">
+        <input type="hidden" id="creditCardNO" name="creditCardNO" value="">
+        <input type="hidden" id="lockUserCode" name="lockUserCode" value="">
+        <input type="hidden" id="dreamCardType" name="dreamCardType" value="">
+        <input type="hidden" id="cardImgHV" name="cardImgHV" value="">
+        <input type="hidden" id="cardorg" name="cardorg" value="">
+        <input type="hidden" id="cardorg_backup" name="cardorg_backup">
+        <input type="hidden" id="cardNo1" name="cardNo" value="">
+        <input type="hidden" id="dreamGceppNo" name="dreamGceppNo" value="" />
+        <input type="hidden" id="cardPhotoId" name="cardPhotoId" value="" />
+    </form>
+    <div class="close"></div>
+    <div class="box">
+        <h2>卡面预览</h2>
+        <div class="pic" style="width:90%" >
+            <img class="img1" id="tupian1">
+            <img  class="img2" width="100%;" id="tupian2">
+        </div>
+        <dl>
+            <dt class="c_high_2" id="shoufei"></dt>
+        </dl>
+        <div class="fenqi_select" data-type="radio" id="fenqi">
+        </div>
+        <dl>
+            <dd id="kazuzhi"></dd>
+            <!--  <dd id="kazuzhiquanyi">权益及功能：<br/></dd>-->
+            <p class="bot-xx"><img src="/creditcard/images/diy/xian_02.jpg"></p>
+            <dd id="kabanmianquanyi"></dd>
+            <dd id="kazuzhiquanyi"></dd>
+            <p class="bot-xx"><img src="/creditcard/images/diy/xian_02.jpg"></p>
+            <dd id="kamiangongyi"></dd>
+            <p class="bot-xx"><img src="/creditcard/images/diy/xian_02.jpg"></p>
+            <dd id="dingzhikahao"></dd>
+            <dd class="c_high_1" id="wenxintishi">温馨提示：您的梦卡一经核发，无论是否激活，均将收取此项费用。卡面预览仅供参考，以实际卡面为准。</dd>
+        </dl>
+    </div>
+    <div class="spacing">
+        <div class="weui_btn_sub weui_btn_primary" id="confirmForm">确认</div>
+    </div>
+</div>    <script type="text/javascript" charset="utf-8">
+    var swiper = new Swiper('.swiper-container', {
+        preloadImages : false,
+        lazyLoading : true,
+        pagination : '.swiper-pagination',
+        /* 		observer :true,
+         observeParents : true, */
+        paginationClickable : true,
+        prevButton : '.swiper-button-prev',
+        nextButton : '.swiper-button-next',
+        onSlideChangeStart : function(swiper) {
+            $(swiper.wrapper).children('.swiper-slide-active').children("div[ref-name]")
+            $("#cardName").html("");
+            $("#cardName").html($(swiper.wrapper).children('.swiper-slide-active').children("div[ref-name]").attr("ref-name"))
+            $("#cardDesc").html("");
+            $("#cardDesc").html($(swiper.wrapper).children('.swiper-slide-active').find("div[ref-desc]").html());
+            $("#cardInfoForm").html("");
+            $("#cardInfoForm").html($(swiper.wrapper).children('.swiper-slide-active').children("div[ref-name]").html());
+            buttonChange($(swiper.wrapper).children('.swiper-slide-active').children("div[ref-no]").attr("ref-no"));
+        }
+    });
+    var swiper1 = new Swiper('#cardTypeListSize_div', {
+        slidesPerView:'auto',
+        freeMode:true,
+        onClick : function(swiper) {
+            showCardInfo();
+        }
+    });
+
+
+    function getCardList(typeId, typeIndex,obj,layerSts) {
+        if(layerSts){
+            $("#cardTypeLayer .page").slideUp(100,function(){
+                $("#cardTypeLayer").fadeOut(100);
+            });
+            swiper1.slideTo(typeIndex,100,false);
+        }
+        swiper.removeAllSlides();
+        var siblings = $("#" + typeIndex).siblings('li');
+        for (var i = 0; i < siblings.size(); i++) {
+            var temp = siblings.get(i);
+            if ($(temp).hasClass("selecton")) {
+                $(temp).removeClass("selecton");
+            }
+        }
+        $("#" + typeIndex).addClass("selecton");
+        $("div[data-index-bak="+typeId+"]").each(function(){
+            swiper.appendSlide($(this).html());
+        });
+        $("#cardTypeLayer .cur").removeClass('cur');
+        $('.act_select_type .cur').removeClass('cur');
+
+        if($(obj)[0].tagName == "SPAN"){
+            $(obj).parent().addClass('cur');
+            $('.act_select_type ul li').each(function(){
+                if($(this).find("p").text() == $(obj).parent().text()){
+                    showCardInfo();
+                    $(this).addClass("cur");
+                }
+            });
+        }else{
+            $(obj).addClass('cur');
+            $("#cardTypeLayer p").each(function(){
+                if($(this).text() == $(obj).find("p").text()){
+                    showCardInfo();
+                    $(this).addClass("cur");
+                }
+            })
+        }
+    }
+
+
+    function showCardInfo(){
+        //展示卡种详细信息
+        $("#cardName").html("");
+        $("#cardName").html($("#swiper-cardinfo .swiper-wrapper").children('.swiper-slide-active').children("div[ref-name]").attr("ref-name"))
+        $("#cardDesc").html("");
+        $("#cardDesc").html($("#swiper-cardinfo .swiper-wrapper").children('.swiper-slide-active').find("div[ref-desc]").html());
+        $("#cardInfoForm").html("");
+        $("#cardInfoForm").html($("#swiper-cardinfo .swiper-wrapper").children('.swiper-slide-active').children("div[ref-name]").html());
+
+        //解决swiper图片懒初次加载图片不显示的问题
+        $("#swiper-cardinfo .swiper-wrapper").children('.swiper-slide-active').children("img").addClass("swiper-lazy-loaded");
+        $("#swiper-cardinfo .swiper-wrapper").children('.swiper-slide-active').children("img").attr("src",$("#swiper-cardinfo .swiper-wrapper").children('.swiper-slide-active').children('img').attr("data-src"));
+        $("#swiper-cardinfo .swiper-wrapper").children('.swiper-slide-active').children("img").removeAttr("data-src");
+        $("#swiper-cardinfo .swiper-wrapper").children('.swiper-slide-active').children(".swiper-lazy-preloader-white").remove();
+        //根据卡种页面定制按钮样式切换
+        buttonChange($("#swiper-cardinfo .swiper-wrapper").children('.swiper-slide-active').children("div[ref-no]").attr("ref-no"));
+    }
+
+    function applyCard() {
+        _ncp.push(['trackEvent', 'Menu', 'Freedom','default','tongyong_selectcard_next']);
+        $("#cardInfoForm").submit();
+
+    }
+
+    function buttonChange(cardProduct){
+        if(cardProduct == '1' || cardProduct == '04' || cardProduct == '05' ){
+            $("#dingzhi").attr("style","display:inline-table").addClass("dingzhi");
+            $("#lazychoice").attr("style","display:inline-table").addClass("dingzhi");
+            $("#shenqing").attr("style","display:none");
+        }else{
+            $("#dingzhi").removeClass("dingzhi").attr("style","display:none");
+            $("#lazychoice").removeClass("dingzhi").attr("style","display:none");
+            $("#shenqing").removeClass("dingzhi").attr("style","display:true");
+        }
+    }
+
+    // 隐藏 弹层
+    $('.pop_panel .close').click(function(){
+        var panel = $(this).parent();
+        hidePop(panel)
+    });
+
+    //展开或收起卡类型
+    $("#spreadBtn").click(function(){
+        var div = $("#cardTypeLayer");
+        if(div.is(":hidden")){
+            div.fadeIn(100,function(){
+                $("#cardTypeLayer .page").slideDown(100);
+            });
+        }else{
+            div.hide();
+        }
+        /*var cardTypeListSize = $("#cardTypeListSize").val();
+         var displayStyle = $("#"+(cardTypeListSize-1)).attr("style");
+         if("display: none;"==displayStyle){
+         for(var i=3;i<cardTypeListSize;i++){
+         $("#"+i).show();
+         }
+         $('.spreadLi').show();
+         }else{
+         for(var i=3;i<cardTypeListSize;i++){
+         $("#"+i).hide();
+         }
+         $('.spreadLi').hide();
+         $("#spreadBtn").parents('.spreadLi').show();
+         }*/
+
+    })
+    //关闭选择卡类型弹层{
+    $("#cardTypeLayer .close").click(function(){
+        $("#cardTypeLayer .page").slideUp(100,function(){
+            $("#cardTypeLayer").fadeOut(100);
+        });
+    })
+    $(function(){
+        if($("#data").val()　==　'002303' ||　$("#data").val()　==　2303){
+            document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {//微信阻止分享界面
+                WeixinJSBridge.call('hideToolbar');
+                WeixinJSBridge.call('hideOptionMenu');
+            });
+        }
+        //默认触发第一个分类
+        $(swiper1 .wrapper).children('.swiper-slide-active').trigger("click");
+    });
+
+</script>
+
+</body>
+</html>

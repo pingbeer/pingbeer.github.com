@@ -1,0 +1,42 @@
+
+<nav class="nav_tit border b_btm1">
+    <i class="payNavitem" data-type="use_list" ui-sref="mypriv">我的礼品</i>
+    <i class="payNavitem" data-type="used_list" ui-sref="myprvInvalid">已失效</i>
+    <i class="payNavitem on" data-type="expired_list">待支付</i>
+</nav>
+<div class="content">
+    <p class="no_data_tit" ng-if="emptyFlag">暂时没有待支付的礼品哦~</p>
+    <div class="cvt_item_txt" id="expired_list">
+        <div class="cvt_item border b_lrb" ng-repeat="waitPay in orderList">
+            <span class="ico_top"></span>
+            <span class="ico_ylt"></span>
+            <span class="ico_yrt"></span>
+            <p class="cvt_img"><img ng-src={{waitPay.goodsBannerPicPath}}></p>
+            <p class="cvt_btm" ng-if="isPayBtn(waitPay.needPayValid,waitPay.orderPrice)"><span ng-bind-html="priceArry[0][$index]"></span><span class="button" ng-click='toPayTwo(waitPay.actyID,waitPay.giftID,waitPay.orderID,waitPay.goodsBannerPicPath,waitPay.orderPrice,waitPay.giftNum,waitPay.giftName)'>立即支付</span></p>
+            <p class="cvt_btm" ng-if="!isPayBtn(waitPay.needPayValid,waitPay.orderPrice)"><span></span><span class="button" ng-click='sub_click||getForFree(waitPay.actyID,waitPay.giftID,waitPay.orderID,waitPay.orderPrice)'>免费领取</span></p>
+        </div>
+    </div>
+    <p class="lmore_p" ng-click="loadMore()" ng-if="showTag">
+        <span class="lookMore">查看更多</span>
+    </p>
+</div>
+<div class="pop_wraper" id="dh_success"  ng-if="isSuccess">
+    <div class="pop_outer">
+        <div class="pop_cont">
+            <p class="pop_icon"><span class="ico_success"></span></p>
+            <p class="pop_title" ng-bind="payTitle"></p>
+            <div class="pop_page" ng-bind="payMessage"></div>
+            <p class="pbtn_p" ui-sref="mypriv"><span class="ylw_btn">查看我的特权</span></p>
+        </div>
+    </div>
+</div>
+<div class="pop_wraper" id="dh_fial" ng-if="isFail">
+    <div class="pop_outer">
+        <div class="pop_cont">
+            <span class="ico_close" ng-click="popClose()"></span>
+            <p class="pop_icon"><span class="ico_fial"></span></p>
+            <p class="pop_title" ng-bind="payMessage"></p>
+            <p class="pbtn_p" ng-click="popClose()"><span class="ylw_btn">返 回</span></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<title>浦东发展银行信用卡</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/onkey.css">
+<style>
+::selection{
+background:none
+}
+::-moz-selection{
+background:none
+}
+::-webkit-selection{
+background:none
+}
+*{
+-moz-user-select:none;
+-webkit-user-select:none;
+-ms-user-select:none;
+user-select:none;
+
+}
+</style>
+</head>
+  <body>
+    <div class="main">
+      <div class="page-box">
+        <h1>
+        <figure><img src="../images/logo.png"></figure>
+               梦享抽奖
+
+      </h1>
+      </div>
+      <div class="fixed-bg bg-page">
+        <div class="choujiang-head">
+          <img src="../images/tit-cj.png">
+        </div>
+        <div class="choujiang-bg">
+        <img src="../images/arrow.png" class="choujiang-bg-center" onclick="lottery()" />
+          <img src="../images/chouj-bg.png" class="choujiang-bg-round" />
+          <img src="../images/chouj-into.png" class="choujiang-bg-in" id="cj" />
+        </div>
+        <div class="choujiang-foot">
+          <span class="choujiang-foot-l"><a href ="../template/lottery-rules.htm">抽奖活动细则</a><span> ></span></span>
+          <span class="choujiang-foot-r"><a href ="#" onclick="myLottery()">我的奖励</a><span> ></span></span>
+        </div>
+      </div>
+    </div>
+
+  <script type="text/javascript" src="../js/lib/jquery/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript" src="../js/lib/alert/lcyh_alert.js"></script>
+  <script type="text/javascript" src="../js/httpRequest.js"></script>
+  <script type="text/javascript" src="../js/lib/alert/onkey.js"></script>
+  <script type="text/javascript" src="../js/select.js"></script>
+  <script type="text/javascript" src="../js/mask.js"></script>
+  <script type="text/javascript" src="../js/awardRotate.js"></script>
+  <script type="text/javascript" src="../js/tools.js"></script>
+  <script type="text/javascript">
+      //禁用页面右上角的分享功能 Begin
+      $().ready(function(){
+        document.addEventListener('WeixinJSBridgeReady',
+          function onBridgeReady() {
+            WeixinJSBridge.call('hideToolbar'); //隐藏微信界面下方导航栏
+            WeixinJSBridge.call('hideOptionMenu');//隐藏微信界面右上方分享按钮
+          }
+        );
+      });
+      //禁用页面右上角的分享功能 End
+
+      //抽奖按钮
+        var clickMark = true;
+      function lottery() {
+        var httpRequest=new HTTPRequest({
+          url:"../lotteryRecord/drawLottery",
+          method:"post",
+          successFunc:function(result){
+            if(result.status=='SUCCESS'){
+              var message=result.respData.resMp.result;
+              if(message=='1' || message=='2' || message=='3' || message=='4' || message=='5' || message=='6'){//中奖
+                var cur=result.respData.resMp.cur;
+                calcu(message,cur);
+              }else{
+                louis.ap({
+                  message:message,
+                  ok:"确认",
+                  buttom:true,
+                  callback:function(){
+                            }
+                });
+              }
+            }else{
+              if(result.respData.result == "DRAW_ERROR"){
+                window.location.href='../template/error.htm'; //抽奖操作异常，跳转到友好错误页面
+              }else{
+                louis.ap({
+                  message:"您尚未绑定我行信用卡",
+                  ok:"确认",
+                  buttom:true,
+                  callback:function(){
+                    window.location.href='../template/recharge-point2.htm'; //未绑卡，进入绑卡页面
+                            }
+                });
+              }
+            }
+          }
+        });
+        httpRequest.sendJSON();
+      }
+
+      function calcu(jp,cur){
+        var num = Math.floor(Math.random() * 20) + 10;
+        if(!clickMark){
+          return
+        }
+        clickMark = false;
+        $('#cj').rotate({
+          angle: 0,
+          animateTo: 360 * 4 - jp * 60 + num,
+          duration: 8000,
+          callback: function() {
+            //成功回调函数
+            clickMark = true;
+            var tranMessage='';
+            if(jp=='1'){
+              tranMessage="中美头等舱（往返）";
+            }else if(jp=='2'){
+              tranMessage="中欧商务舱（往返）";
+            }else if(jp=='3'){
+              tranMessage="中美经济舱";
+            }else if(jp=='4'){
+              tranMessage="梦享里程奖（往返）";
+            }else if(jp=='5'){
+              tranMessage="梦享里程奖";
+            }else if(jp=='6'){
+              tranMessage="阳光浦照奖";
+            }
+
+            PubTools.AlertCj.init({
+              title :"提示",
+              messageTitle :"恭喜您！您抽到了<br/>"+tranMessage,
+              message :"你获得了"+cur+"里程值奖励！"
+             });
+
+          }
+        });
+      }
+
+      //我的奖励
+      function myLottery(){
+        var httpRequest=new HTTPRequest({
+          url:"../lotteryRecord/queryMyLottery",
+          successFunc:function(result){
+            if(result.status === 'SUCCESS'){
+              var resultArr = result.respData.result;
+              var resultArrHtml = matchLevelMsg(resultArr[1]);
+              PubTools.AlertCj.init({
+                title :"我的奖励",
+                messageTitle :"您已获得"+resultArr[0]+"里程值",
+                message :resultArrHtml
+               });
+            }else{
+              PubTools.AlertCj.init({
+                title :"我的奖励",
+                messageTitle :"暂无您的中奖信息",
+                message :"赶快去抽奖吧~"
+               });
+            }
+          }
+        });
+        httpRequest.sendJSON();
+      }
+
+      function matchLevelMsg(level){
+        var resultArrHtml = "";
+        if(level == "1"){
+          resultArrHtml ="兑换后相当于中国到美国头等舱往返机票";
+        }else if(level == "2"){
+          resultArrHtml ="兑换后相当于中国到欧洲商务舱往返机票";
+        }else if(level == "3"){
+          resultArrHtml ="兑换后相当于中国到美国经济舱机票";
+        }else if(level == "4"){
+          resultArrHtml ="梦享里程奖（往返）";
+        }else if(level == "5"){
+          resultArrHtml ="梦享里程奖";
+        }else if(level == "6"){
+          resultArrHtml ="阳光普照奖";
+        }
+        return resultArrHtml;
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,89 @@
+﻿
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<base href="http://192.168.103.190:8443/wx-page-universalintergral/">
+		<title>一积分权益</title>
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="This is my page">
+		<!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimun-scale=1.0,maximum-scale=1.0">
+		<script type="text/javascript" charset="utf-8" src="https://weixin.spdbccc.com.cn/wx-page-static/js/jquery-1.10.2.js"></script>
+		<script type="text/javascript">
+		var _ncp = _ncp || [];	  
+		function buryPoint(openId,url,trackPageView){
+			//埋点厂商
+			
+			if(openId!=null && openId!=""){
+				_ncp.push(['setUserId', openId]);
+			}
+			
+			//(function() {
+				//ip和端口
+			  //var host='172.30.112.166:8443'; 
+			  var host='weixin.spdbccc.com.cn/spdbcccWeChatPage/tnc'
+			  _ncp.push(['setTrackerUrl', "//" + host + "/unc"]);
+			  _ncp.push(['setSiteId', 1]);
+			  _ncp.push(['setCustomUrl', 'http://weixin.spdbccc.com.cn/spdbcccWeChatPage/'+url]);
+			  _ncp.push(['trackPageView',trackPageView]);
+			  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			  //js的位置
+			  g.type='text/javascript'; g.async=false; g.defer=false; g.src='//' + host + '/nc.js'; s.parentNode.insertBefore(g,s);
+			//})(); 	
+		}
+		var openId = 'oggN1jlLAEGzt60TB5sfEgGfomzI';
+		buryPoint(openId,"oneIntegralEquity/oneShadowSelect.jsp","oneIntegralEquity_oneShadowSelect");
+		var action='https://weixin.spdbccc.com.cn/wx-page-universalintergral/universalIntergral.do?operationType=';
+		$(document).ready(function(){
+			$("#TTT").click(function(){
+				//埋点
+				_ncp.push(['trackEvent', 'Menu', 'Freedom','default','qnjf_jfqy_1_3']);
+				$("form").attr('action',"http://spdtl.e-pointchina.com.cn/drama_spd/wx/dramaspd?entryType=0&sectionCode=section_000003&topBannerGroupCode=topbg_000003&showType=1&forwardHtml=plateMenu_03.html");
+			  	$("form").submit();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<form action="" method="post">
+			<table style=" width: 100%; height: 100%;">
+				<tr>
+					<td>
+						<img src="https://weixin.spdbccc.com.cn/wx-page-static/images/oneHead.png" style="width:100%;" />
+					</td>
+				</tr>
+				<tr>
+					<td id="one2">
+						<span>全新实现方式助您实现梦想！只要1积分！</span>
+					</td>
+				</tr>
+				
+					<tr>
+						<td>
+							<!-- PAT -->
+							<a href="http://campaign.e-pointchina.com.cn/seckill2/wx_entry/weekseckill" onclick="javascript:_ncp.push(['trackEvent', 'Menu', 'Freedom','default','qnjf_jfqy_1_2']);">
+							<!-- UAT --> 
+							<!-- <a href="http://spdtl.e-pointchina.com.cn/spd_week_seckill_test/entry?type=0"> -->
+								<img src="https://weixin.spdbccc.com.cn/wx-page-static/images/YJFZZQ_01.jpg" style="width:100%;" id="JFZZQ" /> 
+							</a>
+						</td>
+					</tr>
+				
+				
+				<tr>
+					<td>
+						<img src="https://weixin.spdbccc.com.cn/wx-page-static/images/GYTD.png" style="width:100%;" id="TTT" />
+					</td>
+				</tr>
+				
+			</table>
+		</form>
+	</body>
+</html>

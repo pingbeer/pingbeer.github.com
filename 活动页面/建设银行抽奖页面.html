@@ -1,0 +1,641 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>中国建设银行</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content = "IE=edge,chrome=1" />
+		<meta name="viewport" content="width=480,target-densitydpi=high-dpi,user-scalable=no,minimal-ui" />
+		<link rel="stylesheet" type="text/css" href="includes/ccb.css"/>
+		<link rel="stylesheet" type="text/css" href="includes/style.css"/>
+		<link rel="stylesheet" type="text/css" href="includes/animation.css"/>
+    </head>
+    <body>
+    <div class="main">
+    	<div class="page1" id="defaultIndex" style="display:block;">
+    		<div class="logo"></div>
+			<!-- 活动引导页 -->
+    		<div class="page1-in" style="display:block;">
+	    		<div class="solgen"></div>
+	    		<div class="theme">
+	    			<div class="theme-fr animate-gift-001c"><img src="http://ckcdn.madserving.cn/ccb/prize0317/image/theme_fr.png" alt=""/></div>
+	    			<div class="theme-bk"><img src="http://ckcdn.madserving.cn/ccb/prize0317/image/theme_bk.png" alt=""/></div>
+	    		</div>
+	    		<div class="btn-join " onclick="startGame()"></div>
+	    		<a id="noneCardLink" style="display:none;" href="javascript:void(0);" onclick="noneCardGo()" class="alink">还没建行信用卡，点击这里>></a>
+	    		<div class="bottom">
+	    			<a href="page.php?fromPage=ccbfromapp&channel=9&ccbid=">我的奖品</a>|
+	    			<a href="javascript:void(0);" onclick="showActivity()">活动规则</a>
+	    			<!-- <a href="javascript:void(0);" onclick="howToShare()">分享好友</a> -->
+	    		</div>
+    		</div>
+
+			<!-- 参与说明 -->
+	    	<div class="mask" style="display:none;" id="explain">
+	    		<div class="coupon">
+	    			<div class="close" onclick="closeDiv('explain');"></div>
+	    			<div class="btn-download"></div>
+	    		</div>
+	    	</div>
+
+			<!-- 查询页面 -->
+	    	<div class="mask" style="display:none;">
+	    		<div class="query">
+	    			<div class="close"></div>
+	    			<div class="btn-download"></div>
+	    			<input type="text" placeholder="请输入绑定手机号的后四位" class="active" />
+	    			<p style="display:block;">你输入的号码有误，请核对后再输入</p>
+	    		</div>
+	    	</div>
+
+			<!-- 活动入口 -->
+			
+	    	<div class="mask" style="display:block;" id="maskGame">
+	    		<div class="lottery">
+	    			<div class="close close2" onclick="closeRegMask()"></div>
+	    			<div class="btn-download choujiang " onclick="subReg()"></div>
+	    			<!-- <input type="text" id="regCardNum" name="regCardNum" maxlength="8"  placeholder="XXXX 8888 8888 XXXX" class="active" /> -->
+	    			<div class="inpt-bg ">
+	    				<input type="text" id="leftCardNum" name="leftCardNum" onkeyup="changeCardValue(this.value)" placeholder="前四位" maxlength="4" class="ipt ipt1 active" />
+	    				
+	    				<input type="text" id="rightCardNum" name="rightCardNum" placeholder="后四位" maxlength="4" class="ipt ipt3 active" />
+	    			</div>
+	    			<input type="text" id="regMobile"  name="regMobile" maxlength="11"  placeholder="请输入绑定手机号" class="inpt2 active" />
+	    			<p style="display:none;" id="errorMsg">你输入的信息有误，请核对后再输入</p>
+	    			<a href="javascript:void(0);" onclick="noneCardGo()"></a>
+	    		</div>
+	    	</div>
+	    	
+    	</div>
+
+		<div class="page2" id="page2" style="display:none;">
+
+			<!-- 抽奖页面 -->
+			<div class="page2-in" style="display:block;">
+
+				<!--0922-->
+				<div class="trb"></div>
+				<!--0922 end-->
+
+				<div class="tr">
+
+					<!--0922-->
+					<img src="http://ckcdn.madserving.cn/ccb/prize0317/image/tr.png" id="firstXImg" alt=""/> 
+					<!--0922 end--> 
+
+					<div class="tr-in">
+
+						<!--0922-->
+						<img src="http://ckcdn.madserving.cn/ccb/prize0317/image/tr1.png" id="firstYImg" alt=""/>
+						<!--0922 end-->
+						
+						<div class="to"></div>
+						<div class="to-in"></div>
+					</div>
+				</div>
+				<!--0922-->
+				<div class="trinfo">
+					<p class="line1" style="display:none;" id="messageOne">恭 喜!</p>
+					<p class="line2" style="display:none;" id="messageTwo">您获得格瓦拉15元观影券</p>
+				</div>
+				<!--0922 end-->
+				<div class="btn" style="display:none;" id="btnDiv">
+					<div class="btn-get"  id="btnGet" onclick="howToGet()"></div>
+					<!-- <div class="btn-share" id="btnShare" onclick="howToShare()"></div> -->
+				</div>
+
+				<div class="trinfo1" style="display:none;" id="noneAward"></div>
+			</div>
+
+			<!-- 领取页面 -->
+			<!-- <div class="mask" style="display:none;" id="awardMask">
+	    		<div class="code">
+	    			<div class="close" onclick="closeAwardMask()"></div>
+	    		
+	    		</div>
+	    	</div> -->
+
+	    	<!-- 领取页面 -->
+			<!--0923-->
+			
+			<div class="mask" style="display:none;" id="awardMask">
+	    		<div class="code" id="htmlDetailIndoDiv">
+	    			<div class="close close1" onclick="closeAwardMask()"></div>
+	    			<p class="p1">领取方式：</p>
+	    			<p>一</p>
+	    			<p>7个工作日内，我行将通过短信将券码发送到您在建行绑定的手机上。</p>
+	    			<p>二</p>
+	    			<p>若抽中刷卡抵扣奖品，在规定时间内刷获奖卡，消费大于等于中奖金额，在30天内返还。</p>
+	    			<!-- <div class="cust-code">XXXXXXX</div> -->
+	    		</div>
+	    	</div>
+	    	
+	    	<!--0923 end-->
+
+			
+		</div>
+
+		<div class="page1" id="page3" style="display:none;">
+			<div class="logo"></div>
+			<div class="icon"></div>
+			<!-- 奖品领取说明页面 -->
+			<div class="award rule" style="display:block;">
+				<h2>奖品领取说明</h2>
+				<div class="intro">
+					<p class="mt10">1、奖品领取说明</p>
+					<p class="mt10">2、奖品领取说明</p>
+					<p class="mt10">3、奖品领取说明</p>
+					<p class="mt10">4、奖品领取说明</p>
+				</div>
+				<div class="btn-back btn-gonna"></div>
+			</div>
+
+
+			<!-- 信用卡查询结果页面 -->
+			<div class="win rule" style="display:none;">
+				<h2>您的信用卡中奖情况</h2>
+				<div class="intro">
+					<table cellpadding="0" cellspacing="0">
+						<tr style="font-style: italic;border-bottom:1px solid #ffffff;" valign="middle">
+							<td>任务</td>
+							<td>是否参与了抽奖</td>
+							<td>中奖情况</td>
+						</tr>
+						<tr style="height:20px;"><td></td></tr>
+						<tr>
+							<td class="td1">开通手机银行</td>
+							<td class="td2">参与一次 中奖</td>
+							<td class="td3">小米笔记本<br/><span>奖品提取说明</span></td>
+						</tr>
+						<tr style="height:30px;"><td></td></tr>
+						<tr>
+							<td class="td1">手机银行办业务：</td>
+							<td class="td2"></td>
+							<td class="td3"></td>
+						</tr>
+						<tr>
+							<td class="td4">调整信用卡额度</td>
+							<td class="td2">参与N次 未中奖</td>
+							<td class="td3"></td>
+						</tr>
+						<tr>
+							<td class="td4">信用卡账单分期</td>
+							<td class="td2 tdc">未参与</td>
+							<td class="td3"></td>
+						</tr>
+						<tr>
+							<td class="td4">办理现金分期</td>
+							<td class="td2 tdc">未参与</td>
+							<td class="td3"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="btn-back"></div>
+			</div>
+
+		</div>
+		<!--活动规则-->
+        <div class="page1" id="activityPage" style="display:none;">
+			<div class="logo"></div>
+			<div class="icon"></div>
+
+			<!-- 活动规则 -->
+			<div class="rule" id="rule" style="display:block;">
+				<h2>活动规则</h2>
+				<div class="intro">
+				
+				<p>1. 活动时间：2016年11月16日至2017年5月15日。</p>
+					<p>2. 本次活动仅适用于龙卡信用卡个人卡主卡持卡人（商务卡除外）；</p>
+					<p>3. 参与抽奖的步骤：首次下载及开通手机银行，在手机银行办理信用卡激活、额度调整、账单分期、现金分期、约定账户设置、密码管理、信用卡消息服务定制业务成功后，若手机银行页面上显示“赢取10亿代金券”按钮，即可点击图标，输入本人名下龙卡信用卡卡号前四位、后四位及手机号码参与抽奖。</p>
+					<p>4. 本次活动奖品设置有：刷卡金（500元、1000元和4000元）、旅游优惠券（1000元）、小米产品兑换券（笔记本电脑、手机或电视）、打车优惠券（滴滴5元、10元、20元快车券、100元礼包）、电影优惠券（格瓦拉5元、10元、15元观影券，10元和20元抵值券；猫眼电影满30减20元观影券）、美食优惠券（大众点评满100减30元、美团满100减30元）。</p>
+					<p>5. 抽奖方式为双层转盘，分别代表奖品类型和奖品的有效期，不同的奖品有效期也不同。获得奖券的客户，30天内我行通过短信将券码发送到客户在我行系统预留的手机上。客户需在有效期内，在相应的奖品提供商平台使用建行龙卡信用卡银联卡（62开头）进行支付及使用，过期未使用的，视为自动放弃奖品。</p>
+					<p>6. 获得500元，1000元或4000元刷卡金的客户，需在中奖后30天内，使用在活动页面登记的信用卡刷卡消费，且消费金额累计大于等于中奖金额，奖励将于符合刷卡金额30天内返还到客户的获奖信用卡上。若该卡应还款日前，奖励返未到账，持卡人需先行还款。若在30天内累计消费金额小于中奖金额，则视为自动弃奖。</p>
+					<p>7. 1000元旅游优惠券，需根据获奖短信提示，在指定旅游平台选择预订旅游酒店订单金额大于等于1000元。</p>
+					<p>8. 小米产品兑换券（笔记本、电视或手机等）需通过小米商城进行兑换，并需自行支付运费。</p>
+					<p>9. 滴滴打车优惠券（5元快车券、10元快车券、20元快车券、100元礼包），需在滴滴出行APP使用，支付车费时抵扣相应面值的付账费用。每次只能使用一张，不找零、不兑换。</p>
+					<p>10. 大众点评满100减30元优惠券、美团满100减30元优惠券、猫眼满30减20元优惠券，均仅限手机APP客户端使用，每次只能使用一张，不找零不兑换。成功下单后优惠代码即作废，申请退款后无法退还。</p>
+					<p>11. 格瓦拉电影优惠券，客户需在“格瓦拉”手机APP客户端使用，且无法在格瓦拉标注的特殊场次及电影节使用。其中，5元、10元、15元观影券仅限2/3D场次使用，20元抵值券仅可在订单金额满50元以上时使用，剩余金额支付时需使用62开头的信用卡且选择“银联在线”支付。</p>
+					<p>12. 本活动项下奖品具体使用方式以产品说明和使用平台规则为准。</p>
+					<p>13. 持卡人应准确登记活动参与信息，仅限活动中登记的信用卡及其消费产生的账单可获得相应刷卡金，因登记信息有误而致中奖无法获取视为自动弃奖。</p>
+					<p>14. 每次获得的抽奖资格须实时使用，离开抽奖界面即抽奖资格作废。</p>
+					<p>15.	严禁通过不正当手段刷奖或套取奖金等，若经查实，建行有权取消其活动资格。</p>
+					<p>16.	本次活动仅适用于建行手机银行客户端4.0及以上版本用户参与。</p>
+					<p>17.	中奖者若于活动期间有逾期还款、卡片冻结，或其他违反中国建设银行龙卡信用卡章程、领用协议或相关业务约定条款情形，建行有权取消其活动资格。</p>
+					<p>18.	在法律许可范围内，建行有权修订本活动条款及细则（包括但不限于参加资格及奖励方式等）、暂停或取消本活动、并经相关途径（如建行网站、对账单、短信或各分支网点等）公告后生效。</p>
+					
+				</div>
+				<div class="btn-back" onclick="closeActivity()"></div>
+				<div class="bottom">
+	    			<a href="page.php?fromPage=ccbfromapp&channel=9&ccbid=">我的奖品</a>|
+	    			<a href="javascript:;" class="cur">活动规则</a>
+	    			<!-- <a href="javascript:void;" onclick="howToShare()">分享好友</a> -->
+	    		</div>
+			</div>
+		</div>
+		<!-- 无卡入口详情 -->
+		<!-- <div id="noneCard" class="page5" style="display:none;">
+			<img src="http://ckcdn.madserving.cn/ccb/prize0317/image/nocd1.png" alt="">
+			<img src="http://ckcdn.madserving.cn/ccb/prize0317/image/nocd2.png" alt="">
+			<img src="http://ckcdn.madserving.cn/ccb/prize0317/image/nocd3.png" alt="">
+			<img src="http://ckcdn.madserving.cn/ccb/prize0317/image/nocd4.png" alt="">
+			<img src="http://ckcdn.madserving.cn/ccb/prize0317/image/nocd5.png" alt="">
+		</div> -->
+		<div id="noneCard" class="page3" style="display:none;">
+			<div class="logo" style="height:40px;"></div>
+			<img src="./image/p4_01.png" alt="" style="margin-top: 125px;" />
+			<img src="./image/p4_02.png" alt=""/>
+			<img src="./image/p4_03.png" alt=""/>
+			<img src="./image/p4_04.png" alt=""/>
+			<img src="./image/p4_05.png" alt=""/>
+			<img src="./image/p4_06.png" alt=""/>
+	        <img src="./image/p4_07.png" alt=""/>
+		</div>
+
+		<!--0922-->
+		<div class="share"  id="shareDiv" style="display:none;" onclick="closeShare()">
+			<img src="http://ckcdn.madserving.cn/ccb/prize0317/image/share.png" alt=""/>
+		</div>
+
+		<div class="share"   id="shareCcbDiv" style="display:none;" onclick="closeShare()">
+			<img src="http://ckcdn.madserving.cn/ccb/prize0317/image/share2.png" alt="" class="img-share2" />
+		</div>
+		<!--0922 end-->
+    </div>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+  var dataForWeixin={
+   MsgImg:"",
+   TLImg:"",
+   title:"90%的小伙伴都中奖了，10亿大礼等你赢！",
+   desc:"建行感恩回馈，送出10亿大礼，快来领取！",
+   tdesc:"建行感恩回馈，送出10亿大礼，快来领取！",
+   link:'http://ccb.onemad.com/zd/prize/default.php?site=weixinfx'
+  };
+  wx.config({
+	debug: false,
+    appId: 'wxc715ccbed34fccd7',
+    timestamp: 1492309062,
+    nonceStr: 'ucO7Q0BShUcf9NuW',
+    signature: 'b88f71fe607e7a243b478782db831fb2d872ed13',
+    jsApiList: [
+       'checkJsApi','onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo',
+		'translateVoice',
+        'startRecord',
+        'stopRecord',
+        'onRecordEnd',
+        'playVoice',
+        'pauseVoice',
+        'stopVoice',
+        'uploadVoice',
+        'downloadVoice'
+    ]
+  });
+
+  wx.ready(function () {
+    // 在这里调用 API
+	wx.onMenuShareAppMessage({
+		title: dataForWeixin.title,
+		desc: dataForWeixin.desc,
+		link: dataForWeixin.link, 
+		imgUrl: 'http://ccb.onemad.com/zd/prize/icon.png',
+		type: 'link', 
+		dataUrl: '', 
+		success: function () { 
+			succShare();
+		},
+		cancel: function () { 
+			//alert("share cancel");
+		}
+	});
+	
+	wx.onMenuShareTimeline({
+		title: "90%的小伙伴都中奖了，10亿大礼等你赢！",
+		link: dataForWeixin.link,
+		imgUrl: 'http://ccb.onemad.com/zd/prize/icon.png',
+		success: function () { 
+			succShare();
+		},
+		cancel: function () { 
+			//alert("share cancel");
+		}
+	});
+
+  });
+</script><script type="text/javascript" src="js/jquery.min.js"></script>
+</body>
+	
+<script type="text/javascript">
+
+function closeDiv(type){
+	VDoc(type).style.display = "none";
+}
+
+function showActivity(){
+	VDoc("defaultIndex").style.display = "none";
+	VDoc("activityPage").style.display = "block";
+}
+
+function closeActivity(){
+	VDoc("defaultIndex").style.display = "block";
+	VDoc("activityPage").style.display = "none";
+	VDoc("maskGame").style.display = "none";
+}
+
+function noneCardGo(){
+	VDoc("defaultIndex").style.display = "none";
+	VDoc("noneCard").style.display = "block";
+}
+
+//
+function startjoin(){
+	VDoc("explain").style.display = "block";
+}
+
+function startGame(){
+	VDoc("maskGame").style.display = "block";
+	VDoc("noneCardLink").style.display = "none";
+
+	//VDoc("regMobile").focus();
+}
+
+function closeRegMask(){
+	VDoc("maskGame").style.display = "none";
+	VDoc("noneCardLink").style.display = "block";
+
+	VDoc("leftCardNum").value = "";
+	VDoc("rightCardNum").value = "";
+}
+
+var _this = this 
+var sunRegFlag = 0;
+
+function changeCardValue(v){
+	if(v.length == "4"){
+		//VDoc("regMobile").focus();
+		//VDoc("rightCardNum").value = v.substr(3);
+	}
+
+	VDoc("errorMsg").style.display = "none";
+}
+
+function testMobile(){
+	alert("mobile");
+}
+
+//reg
+function subReg(){
+	//alert('aaa');
+	var leftCardNum = VDoc("leftCardNum").value;
+	var rightCardNum = VDoc("rightCardNum").value;
+
+	//var regCardNum = VDoc("regCardNum").value;
+    var reg = /[0-9]{8}$/;
+    regCardNum = trim(leftCardNum) + trim(rightCardNum);
+    
+    if(regCardNum.length < 8){
+        alert("请输入卡号的前4位+后4位");
+        return false;
+    }else if(!reg.test(regCardNum)){
+        alert("请输入正确的卡号的前4位+后4位");
+        return false;
+    }
+
+    var regMobile = VDoc("regMobile").value;
+    var mreg = /^1[3|4|5|8|6|7][0-9]\d{4,8}$/;;
+    regMobile = trim(regMobile);
+    
+    if(regMobile.length < 11){
+        alert("请输入绑定手机号");
+        return false;
+    }else if(!mreg.test(regMobile)){
+        alert("请输入正确的11位手机号");
+        return false;
+    }
+
+    var jsChannel = "9";
+    var jsCcbid = "";
+
+    if(_this.sunRegFlag == 0){
+    	trackPageUrl("startChouJiang");
+    	_this.sunRegFlag = 1;
+    	jQuery.ajax({
+              url: "dealData.php",
+              type: "post",
+              async: true,
+              data: { regCardNum: regCardNum, regMobile: regMobile, jsChannel:jsChannel,jsCcbid:jsCcbid, type : 'ccb', operate : 'appreg'},
+              //dataType: "json",
+              success: function(msg) {
+                    // console.log(msg);
+                    if(msg != "fail"){
+                    	regCallBack(msg)                   	
+                    }else{
+                    	VDoc("errorMsg").style.display = "block";
+                    }
+
+                    _this.sunRegFlag = 0;
+                    
+                    
+              },
+              error: function(XMLHttpRequest, textStatus, errorThrown) {
+              	_this.sunRegFlag = 0;
+                return false;
+              },
+              complete: function(XMLHttpRequest, textStatus) {
+              	_this.sunRegFlag = 0;
+                return false;
+              }
+        });
+    }  
+}
+
+function howToGet(){
+	VDoc("awardMask").style.display = "block";
+}
+
+function howToShare(){
+	VDoc("shareCcbDiv").style.display = "block";
+}
+
+function closeShare(){
+	VDoc("shareCcbDiv").style.display = "none";
+}
+
+function closeAwardMask(){
+	VDoc("awardMask").style.display = "none";
+}
+
+
+//game
+function setDegree($obj, $sec, deg, subDeg){
+    $obj.css({
+        'transform':     'rotate('+deg+'deg)',
+        '-moz-transform':'rotate('+deg+'deg)',
+        '-o-transform':  'rotate('+deg+'deg)',
+        'animation-timing-function' : 'ease-out'
+    });
+
+    $sec.css({
+        'transform':     'rotate(-'+subDeg+'deg)',
+        '-moz-transform':'rotate(-'+subDeg+'deg)',
+        '-o-transform':  'rotate(-'+subDeg+'deg)',
+        'animation-timing-function' : 'ease-out'
+    });
+}
+
+var succMsg = "建行感恩回馈，送出10亿大礼，我赢取了";
+
+function regCallBack(data){
+	var dt = eval("(" + data +")");
+
+	VDoc("defaultIndex").style.display = "none";
+	VDoc("page2").style.display = "block";
+
+
+	//detail info
+	var tempHtml = '<div class="close close1" onclick="closeAwardMask()"></div>';
+	tempHtml += '<p class="p1 p2">您的奖品：</p>';
+	tempHtml += '<p class="p1">'+dt.message+'，有效期';
+	if(dt.duration == "3"){
+		tempHtml += '1周</p>';
+	}else{
+		tempHtml += dt.duration+'个月</p>';
+	}
+	if(dt.getMsg){
+		tempHtml += '<p class="p2"><span>领取方式：</span>';
+		tempHtml += dt.getMsg+'</p>';
+	}
+
+	if(dt.getMsg){
+		tempHtml += '<p><span>使用方式：</span>';
+		tempHtml += dt.useMsg+'</p>';
+	}
+	VDoc("htmlDetailIndoDiv").innerHTML = tempHtml;
+
+	if(dt.offset != "27"){
+		_this.succMsg = _this.succMsg + dt.message;
+
+		_this.dataForWeixin.tdesc = _this.succMsg;
+  		_this.dataForWeixin.desc = _this.succMsg;
+	}
+
+	rotate(dt.offset, dt.subOffset, dt.message, dt.duration);
+}
+
+function rotate(poffset, psubOffset, pmsg, duration){ 
+    var $tar = $('#firstXImg'),
+
+    $sec = $('#firstYImg'),
+    i,
+    cnt = 100,                          //用做ratio的索引(10-29)
+    total = 0,                          //记录上一次的变化结果
+    subTotal = 0,
+    ratio = [],                         //存放角度的变化比例，制造快慢过渡效果
+    offset = poffset, 		//0-7,代表需要停到的奖项,由后端传入
+    subOffset = psubOffset,    
+    degNuM = 0.200,
+    amount = 18 - ( degNuM*offset ),     //每次每多出45/200=0.225度,200次就多偏转45度
+    subAmount = 18 - ( 0.255*subOffset ),
+    result = ""; //奖项名称用于显示,由后端传入
+ 
+    ratio[1] = [0.2, 0.4, 0.6, 0.8, 1, 1, 1.2, 1.4, 1.6, 1.8];
+    //ratio[2] = [1.8, 1.6, 1.4, 1.2, 1, 1, 0.8, 0.6, 0.4, 0.2];
+    ratio[2] = [0.2, 0.4, 0.6, 0.8, 1, 1, 1.1, 1.3, 1.5, 1.6];
+ 
+    for(i=0;i<70;i++){
+        //设计为200次50ms的间隔，10s出结果感觉比较好
+        setTimeout(function(){
+            //计算每次偏转增量，对应阶段的增减比例最终造成快慢变化
+            var deg = amount*( ratio[ String(cnt).substr(0,1) ][ String(cnt).substr(1,1) ] );
+            var subDeg = subAmount*( ratio[ String(cnt).substr(0,1) ][ String(cnt).substr(1,1) ] );
+            setDegree($tar, $sec, deg+total, subDeg+subTotal);//改变偏转
+            total += deg;//记录
+            subTotal += subDeg;
+            cnt++;//依据次数用作ratio的索引，这里用到了闭包不能使用i
+        },i*50);
+    }
+    setTimeout(function(){
+            if(poffset != "27"){
+               VDoc("messageOne").style.display = "block";
+               VDoc("btnDiv").style.display = "block";
+               var durationText = "";
+               if(duration == "3"){
+               		durationText = "1周";
+               }else{
+               		durationText =  duration + "个月";
+               }
+               
+               VDoc("messageTwo").innerHTML = pmsg + "<br />" + "有效期" + durationText;
+               VDoc("messageTwo").style.display = "block";
+               //VDoc("messageTwo").innerHTML = "";
+            }else{
+               VDoc("noneAward").style.display = "block";
+            }
+            updatesharewx();
+            console.log("offset:" + offset+'  degNuM:' + degNuM);
+    },200*20+500);
+}
+
+function updatesharewx(){
+  wx.onMenuShareAppMessage({
+	    title: dataForWeixin.title,
+	    desc: dataForWeixin.desc,
+	    link: dataForWeixin.link, 
+	    imgUrl: 'http://ccb.onemad.com/zd/prize/icon.png',
+	    type: 'link', 
+	    dataUrl: '', 
+	    success: function () { 
+	      succShare();
+	    },
+	    cancel: function () { 
+	      //alert("share cancel");
+	    }
+  });
+  
+  wx.onMenuShareTimeline({
+	    title: dataForWeixin.tdesc,
+	    link: dataForWeixin.link,
+	    imgUrl: 'http://ccb.onemad.com/zd/prize/icon.png',
+	    success: function () { 
+	      succShare();
+	    },
+	    cancel: function () { 
+	      //alert("share cancel");
+	    }
+  });
+}
+
+function succShare(){
+	trackPageUrl("fromAppPageShare");
+}
+
+function VDoc(id){
+  return document.getElementById(id);
+}
+
+function trackPageUrl(page_name){
+  var axel = Math.random() + "";
+  var num = axel * 100000000;
+  var madtrack_img = new Image();
+  madtrack_img.src = "trackimg.php?sid=&page_name="+page_name+"&t_rand=" + num;
+}
+
+function trim(str){ //删除左右两端的空格 
+  return str.replace(/(^\s*)|(\s*$)/g, ""); 
+} 
+
+var jsFromPage = "";
+
+function onDocLoaded(){
+	if(_this.jsFromPage == "ccbpage"){
+		startGame();
+	}
+
+}
+
+if(document.addEventListener){
+   window.addEventListener("load", onDocLoaded, false);
+}else if(document.attachEvent){
+   window.attachEvent("onload", onDocLoaded);
+}
+</script>
+</html>

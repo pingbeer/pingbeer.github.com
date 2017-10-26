@@ -1,0 +1,87 @@
+
+<div ng-app="CinemaModule" ng-controller="cinemaController">
+    <div class="nav-mainf ui-row bg-col-f8f8f8 lineh-40 bor-bottom-dfdfdf">
+        <div class="ui-col-20 pl-15 fl-left text-col-333" ui-sref="city({id: 4})">
+            {{pname}}<i class="ui-icon-unfold dis-inline text-col-333 line-25"></i>
+        </div>
+        <div class="ui-col-50 fl-left text-center text-col-333 font-16">
+            影院
+        </div>
+        <div class="ui-col-25 fl-right position">
+            <img ng-src="{{xuanimg}}" class="imgxuan pt-5" ng-click="xuanShow()"/>
+            <i class="ui-icon-search ui-icon-searchs  text-col-808080 pt-5" ui-sref="search({'type':4})"></i>
+        </div>
+    </div>
+    <!--主页面-->
+    <div ng-show="cinemaShow">
+        <div class="swiper-container cinemaSwiperBanner position mt-40 bg-col-fff " ng-style="hotrec" ng-if="mainbanner">
+            <!-- Swiper -->
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" repeat-finish="checkLastBanner()" ng-repeat="simg in swiperImg"><img
+                        ng-style="hotrec" ui-sref="filmdetail({'id':simg.filmId,'type':4})" ng-src="{{simg.imgUrl}}"/>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination" id="swiper-cinema-id">
+            <span class="swiper-pagination-bullet" repeat-finish="checkLastBanner()"
+                  ng-repeat="simg in swiperImg"></span>
+            </div>
+        </div>
+        <div ng-show="isCinema" ng-style="noBanner">
+            <div class="bg-col-fff" ng-style="scrollStyleCinema">
+                <div class="hot-cinema bd-top-e5e5e5 pr-10" ng-repeat="cinema in  cinemalist"
+                     ng-click="getCinemaDetail(cinema.id)">
+                    <div class="font-14 text-col-333 line-25 clear">
+                        <div class="ui-col-67 fl-left">{{cinema.name}}</div>
+                        <div class="ui-col-33 fl-left text-right">
+                            <div class="text-right font-12 text-col-ff5400">￥<span
+                                    class="font-14">{{cinema.minJbzPrice}}</span>起
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-row clear font-12 line-20 text-col-999">
+                        <div class="ui-col-70 fl-left">{{cinema.address}}</div>
+                        <div class="ui-col-30 fl-left">
+                            <div class="text-right text-right">{{cinema.distance}}km</div>
+                        </div>
+                    </div>
+                    <div class="font-12 text-col-999 line-30 clear">
+                        <img class="cinemaimg fl-left" ng-repeat="imgiton in cinema.cinemaNames"
+                             ng-src="{{staticUrl}}images/{{imgiton}}.png"/>
+                        <span class="fl-left"><span class="text-col-ff5400">{{cinema.compareCount}}</span>家比价</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cur-address bg-col-f3f3f3 text-col-999 ui-row clear lineh-25">
+                <div class="ui-col-70 fl-left pl-10 overhide">我在{{formatAddress}}</div>
+                <div class="ui-col-25 fl-left bor-lefts-dfdfdf position lineh-20" ui-sref="map({'id':1,'type':'4-1'})">
+                    <i class="ui-icon-pin text-col-0066cc dis-inline font-24 line-20" style="width: 20px"></i>
+                    <span class="dis-inline" style="position: relative;top: -2px;">地图模式</span></div>
+            </div>
+        </div>
+        <div ng-show="!isCinema" class="mt-45 lineh-30">{{noCinema}}</div>
+        <footer-view typenum="pagetype" new-page="getFooter(page)"></footer-view>
+    </div>
+    <!--筛选-->
+    <div ng-show="!cinemaShow" class="detailSearch">
+        <div class="bg-col-fff mt-30 pt-10 mb-60 pb-10">
+            <div class="lineh-30 pt-10 ml-15 font-14">区域</div>
+            <div class="ml-10 mr-10 mt5 clear text-col-fff font-12">
+                <button class="ui-border-radius15 lineh-30 ui-col-20 text-center ml-5 mr-5 mb-10 fl-left"
+                        ng-class="{false:'alltype',true:'activetype'}[ckedbtn==-1]"
+                        ng-click="changeCount(-1,'')">全部区域
+                </button>
+                <button class="ui-border-radius15 lineh-30 ui-col-20 text-center ml-5 mr-5 mb-10 fl-left"
+                        ng-class="{false:'alltype',true:'activetype'}[ckedbtn==$index]" ng-repeat="ions in regions"
+                        ng-click="changeCount($index,ions.Name)">{{ions.Name}}
+                </button>
+            </div>
+        </div>
+        <footer class="ui-footer  film-deital-footer text-center font-14 lineh-40 clear">
+            <div class="fl-left ui-col-50 bg-col-f3f3f3 text-col-999" ng-click="getAll()">重置</div>
+            <div class="fl-right  ui-col-50 bg-col-00a6ff text-col-fff" ng-click="getSearch()"> 确定</div>
+        </footer>
+    </div>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

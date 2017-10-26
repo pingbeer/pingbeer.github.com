@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name= "format-detection" content= "telephone=no" />
+    <title>我的特权</title>
+    <!-- ionic/angularjs js -->
+    <!-- <script src="lib/ionic/js/ionic.bundle.js"></script> -->
+    <script src="lib/angular/1.4.6/angular.min.js"></script>
+    <script src="lib/angular/1.4.6/angular-animate.min.js"></script>
+    <script src="lib/angular/1.4.6/angular-sanitize.min.js"></script>
+    <script src="lib/angular/1.4.6/angular-touch.min.js"></script>
+    <script src="lib/angular-ui/angular-ui-router.min.js"></script>
+    <script src="lib/angular-loading-bar/loading-bar.min.js"></script>
+    <link href="lib/angular-loading-bar/loading-bar.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="icon" href="favicon.ico"/>
+    <!-- css-->
+    <style type="text/css">
+        .flex .contain{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;overflow:auto;-webkit-overflow-scrolling:touch; position:relative;display:-webkit-box;-webkit-box-orient:vertical;}
+    </style>
+    <link href="./css/style.$13042.css" rel="stylesheet" type="text/css">
+    <link href="./activityday/css/default.$11295.css" rel="stylesheet" type="text/css">
+    <link href="./activityday/css/ms_lxl.$11729.css" rel="stylesheet" type="text/css">
+    <link href="./activityday/css/zl_ms.$11295.css" rel="stylesheet" type="text/css">
+    <script src='./activityday/script/main.$13516.js'></script>
+    <!-- your app's js -->
+    <script src="./activityday/script/app.$12206.js"></script>
+    <script src="./activityday/script/controllers.$13516.js"></script>
+    <script src="./activityday/script/routes.$13460.js"></script>
+    <script src="./activityday/script/services.$13515.js"></script>
+    <script src="./activityday/script/directives.$12503.js"></script>
+    <script src="./activityday/script/filters.$12219.js"></script>
+    <script src="activityday/js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="js/login.min.js"></script>
+    <script src='activityday/js/swipe.js'></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <!-- <script type="text/javascript" src="activityday/script/jweixin-1.0.0.js"></script> -->
+    <script type="text/javascript" src="./activityday/script/weShareConfig.$11619.js"></script>
+    <!-- cfca -->
+    <link rel="stylesheet" type="text/css" href="./css/cfca/keyboard.$11295.css">
+    <script src="js/cfca/sip.min.js"></script>
+    <script src="./js/cfca/cfca.h5.number.$11691.js"></script>
+
+    <!--第三方手机app接入-->
+    <link rel="stylesheet" type="text/css" href="./channel/bankapp/css/bankapp.$12215.css">
+    <script src="./channel/bankapp/js/msClientLogin.$12479.js"></script>
+
+    <!-- <script type="text/javascript" src="./activityday/script/weLocationReady.$11295.js"></script> -->
+    <!-- 测试使用 -->
+    <!-- <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=fNt5iqnhihtIhcH5PnuAtdfcjUX9G0pR"></script> -->
+    <!-- <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?a402dc646b9ff3767a84eba34e4a86f8";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script> -->
+</head>
+<body ng-app="activityday">
+<div class="flex">
+    <div ng-controller="headerCtrl"><header></header></div>
+    <div ui-view class="contain"></div>
+</div>
+</body>
+</html>

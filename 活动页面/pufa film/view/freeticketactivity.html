@@ -1,0 +1,48 @@
+
+<div ng-app="FreeActivityModule" ng-controller="FreeActivityController">
+    <section>
+        <div class="nav-mainf ui-row bg-col-f8f8f8 line-40 bor-bottom-dfdfdf">
+            <div class="ui-col-10 fl-left" ui-sref="mainactivity">
+                <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+            </div>
+            <div class="ui-col-80 fl-left text-center text-col-333 font-16">
+                领取观影券
+            </div>
+        </div>
+        <div class="mt-45 pt-10">
+            <div class="position mb-10" ng-style="heightForm" ng-repeat="item in freecode">
+                <img  ng-if='item.status==4' src="{{staticUrl}}images/user-free1.jpg" style="position: absolute; top: 0;left: 0;"
+                      ng-style="heightForm"  ng-click="getFreeTicket(item.id,$index)" />
+                <img ng-if='item.status==1' src="{{staticUrl}}images/user-free2.jpg" style="position: absolute; top: 0;left: 0;" ng-style="heightForm" />
+                <img ng-if='item.status==2' src="{{staticUrl}}images/user-free3.jpg" style="position: absolute; top: 0;left: 0;" ng-style="heightForm" />
+                <img ng-if='item.status==3' src="{{staticUrl}}images/user-free2.jpg" style="position: absolute; top: 0;left: 0;" ng-style="heightForm" />
+                <ul style="position: absolute; top: 26%;left: 25%;">
+                    <li class="font-14 lineh-30">{{item.name}}</li>
+                    <li class="font-12 lineh-20 text-col-999">有效期至{{item.disabledTime.split(' ')[0]}}</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--领券-->
+    <div class="ui-dialog freeTicketModel">
+        <div class="sprizjbdactive position">
+            <div class="ui-spr-bd text-center">
+                <div>
+                    <h1></h1>
+                    <img ng-style="getstyle" ng-src="{{staticUrl}}images/user-getfree.png"/>
+                    <ul style="position: absolute; top: 30%; left: 40%;text-align: left;">
+                        <li class="font-14 lineh-30">{{freeName}}</li>
+                        <li class="font-12 lineh-20 text-col-999">有效期至{{disabledTime}}</li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="userfreebuttom">
+                <button class="bg-col-00a6ff text-col-fff ui-col-50 line-35 font-16 ui-border-radius" ng-click="freeHide()">确定</button>
+                <p class="lineh-30 font-12" ui-sref="myprize({'type':2})"> 我的奖励<span class="text-col-00a6ff">>></span></p>
+            </div>
+        </div>
+    </div>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

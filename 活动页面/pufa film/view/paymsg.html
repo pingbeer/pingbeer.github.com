@@ -1,0 +1,110 @@
+
+<div ng-app="PayMsgModule" ng-controller="PayMsgController">
+    <div class="ui-row bg-col-f8f8f8 lineh-40 bor-bottom-dfdfdf">
+        <div class="ui-col-25 fl-left" ng-click="return()">
+            <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+        </div>
+        <div class="ui-col-50 fl-left text-center text-col-333 font-16">
+            支付
+        </div>
+    </div>
+    <ul class="bg-col-fff ui-arrowlink pl-10 pt-10 pb-10" ng-if="addresses" ui-sref="shopaddr">
+        <li class="font-16 line-25 ui-col-85">
+            收货人：<span class="pl-5 pr-5">{{addresses.name}}</span>{{addresses.mobile}}
+        </li>
+        <li class="font-12 text-col-999 line-20 ui-col-85">
+            收货地址：{{addresses.street}}
+        </li>
+    </ul>
+    <ul class="bg-col-fff ui-arrowlink pl-10 pt-10 pb-10" ng-if="!addresses" ui-sref="editaddr">
+        请填写收货地址
+    </ul>
+    <div class="bg-col-fff mt-10 clear position font-14">
+        <div class="clear ui-row">
+            <div class="fl-left ui-col-33s pt-10 pb-5">
+                <div class="fl-left ml-10 rightimg"><img ng-src="{{mallGood.mainUrl}}"></div>
+            </div>
+            <ul class="fl-left ui-col-65 mt-5">
+                <li class="lineh-25 overhide">{{mallGood.title}}</li>
+                <li class="text-col-999 font-12 mt-5 lineh-25 overhide">{{mallGoodExt.color}}</li>
+                <li class="lineh-25 clear">
+                    <span class="fl-left text-col-ff5400">￥{{mallGoodExt.price/100|number:2}} </span>
+                    <span class="fl-right">x{{order.count}}</span>
+                </li>
+            </ul>
+        </div>
+        <ul class="ui-col-100 ui-row clear bor-bottom-dfdfdf lineh-30 pr-10 pl-10">
+            <li class="ui-col-30 fl-left">信用卡号：</li>
+            <li class="ui-col-70 fl-right text-col-999 font-12 text-right">{{cardNo}}
+            </li>
+        </ul>
+        <ul class="ui-col-100 ui-row clear bor-bottom-dfdfdf lineh-30 pr-10 pl-10">
+            <li class="ui-col-30 fl-left">可用积分：</li>
+            <li class="ui-col-70 fl-right text-col-999 font-12 text-right">{{point}}</span>
+            </li>
+        </ul>
+        <ul class="ui-col-100 ui-row clear bor-bottom-dfdfdf lineh-30 pr-10 pl-10">
+            <li class="ui-col-50 fl-left">抵扣：<span class="text-col-ff5400 font-12">(1200:1)</span></li>
+            <li class="ui-col-50 fl-right">
+                <div class="fl-right bg-col-dbdbdb setnum text-center clear" style="line-height: 20px; height: 20px;">
+                    <span class="fl-left" ng-click="dessc()">-</span>
+                    <input class="fl-left text-center bor-none lineh-20 bg-col-fff text-col-333" disabled="disabled"
+                           ng-model="pointCount"/>
+                    <span class="fl-left " ng-click="addnum()">+</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="ui-col-100 ui-row clear bor-bottom-dfdfdf lineh-30 pr-10 pl-10">
+            <li class="ui-col-30 fl-left">配送方式：</li>
+            <li class="ui-col-70 fl-right text-col-999 font-12 text-right">快递<span class="pl-5 text-col-ff5400">{{order.expressFee/100|number:2}}元</span>
+            </li>
+        </ul>
+        <ul class="ui-col-100 ui-row clear bor-bottom-dfdfdf pr-10 pl-10">
+            <li class="ui-col-30 fl-left  lineh-40">卖家留言：</li>
+            <li class="ui-col-70 fl-right pt-5">
+                <textarea class="ui-col-100 text-lefe font-12 text-col-999 textarea" placeholder="选填"
+                          ng-model="remark"></textarea>
+            </li>
+        </ul>
+    </div>
+    <!--cvv2,验证码-->
+    <footer class="clear ui-col-100 ui-row font-14 mb-55 bg-col-f8f8f8" style="position:fixed;bottom:0px; ">
+        <ul>
+            <li class="bor-bottom-dfdfdf lineh-30 pl-10 clear pr-10 text-col-666" ng-if="!hasFastPay">
+                <div class="ui-col-33 fl-left">cvv2</div>
+                <div class="ui-col-65 fl-left"><input class="ui-col-100 line-30 bor-none bg-col-f8f8f8" ng-model="cvv"
+                                                      placeholder="信用卡背面后三位" type="text"/></div>
+            </li>
+            <li class="lineh-35 pl-10 pr-10 text-col-666">
+                <div class="ui-col-33 line-35 fl-left"><span class="text-col-ff5400">*</span>获取验证码</div>
+                <div class="ui-col-33 fl-left"><input
+                        class="ui-col-100 fl-left lineh-25 mt-5 ui-border-radius5 pl-10 bor-dfdfdf" type="tel"
+                        ng-pattern="/^\d{6}$/" placeholder="请输入验证码"
+                        ng-model="paycode"/></div>
+                <div class="ui-col-33 fl-right">
+                    <button ng-show="isBtn"
+                            class="ui-col-80 text-center fl-right lineh-25 mt-5 ui-border-radius2
+                            bg-col-ff5400 text-col-fff"
+                            ng-click="getcode()">
+                        获取
+                    </button>
+                    <button ng-show="!isBtn"
+                            class="ui-col-90 text-center fl-right lineh-25 mt-5 ui-border-radius2
+                            bg-col-ff5400 text-col-fff">
+                        {{code}}s
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </footer>
+    <footer class="ui-footer clear ui-row font-14 lineh-50 bor-dfdfdf bg-col-f8f8f8">
+        <div class="ui-col-60 fl-left pl-10">
+            支付金额：<span class="text-col-ff5400 font-16">￥{{pay|number:2}}</span>
+        </div>
+        <div ng-click="payOrder()" class="fl-right ui-col-30 text-col-fff text-center bg-col-00a6ff lineh-50">
+            确认支付
+        </div>
+    </footer>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

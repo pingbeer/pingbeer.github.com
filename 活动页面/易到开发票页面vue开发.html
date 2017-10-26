@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=320, initial-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        * { padding:0; margin: 0; font-size: 13px;}
+        html {height: 100%}
+        body { position: relative;width: 100%; height: 100%; font-family: '微软雅黑','华文仿宋';background-color: #f0f0f0;color: #888;}
+        img {border: none;}
+        ul,li {list-style: none;}
+        a {text-decoration: none;color: #000;}
+        .top {text-align: center;}
+        .top .amount {padding-top: 48px; color: #ff5252; font-size: 15px;}
+        .top .amount .num {font-size: 30px; }
+        .top p {margin-bottom: 38px;}
+        .btn {line-height: 47px; font-size: 15px; text-align: center; color: #323232; margin: 0 15px 10px 15px;border: .5px solid #e1e1e1; border-radius: 5px;background-color: #fff;;}
+        .txt {margin: 15px;}
+        .txt li {line-height: 18px; margin: 5px 0;}
+        .txt li a {color:#1e82e6;margin-left: 20px;}
+        .unit {font-size: 15px;}
+        .black {color: #323232;}
+        [v-cloak] {
+            display: none;
+        }
+        .pot {width: 5px;height: 5px; border-radius: 50%;margin-right: 8px;display: inline-block;background-color: rgb(188,188,188); margin-bottom: 3px;}
+
+        .mask { background: rgba(0,0,0,.8); z-index: 100; position: fixed ;top:0; left: 0; right: 0; bottom: 0; }
+        /*.window {position: relative;width: 280px; height:200px; margin: 140px auto 0 auto;background-color: #fff; border-radius: 5px;}*/
+        .window {position: absolute;width: 280px; height:200px; left: 50%; top: 50%; margin-left: -140px; margin-top: -100px;background-color: #fff; border-radius: 5px;z-index: 200}
+        .m-btn {position: absolute; line-height: 45px; bottom: 20px; left: 15px; right: 15px; background-color: #ff5252;font-size: 15px; color: #fff; text-align: center; border-radius: 5px;}
+        .window p{line-height: 22px; padding: 30px 25px 0 25px; font-size: 15px; color: #323232;}
+
+    </style>
+    <title>发票</title>
+</head>
+<body>
+<div id="app" style="height: 100%;">
+    <div class="top">
+        <div class="amount">
+            <span class="num" v-cloak>{{result.receipt_amount}}</span><span class="unit">元</span>
+        </div>
+        <p>可开发票额度</p>
+    </div>
+    <div class="btn" v-on:click="open">我要开票</div>
+    <div class="btn" v-on:click="record">开票记录</div>
+    <ul class="txt">
+        <li><div class="pot"></div>您所申请的发票类型为增值税普通发票，单张发票最高限额为9999元。发票内容为客运服务费。（纸制发票邮寄所产生的快递费用，需要您自行承担，并由快递公司提供快递发票）</li>
+        <li><div class="pot"></div>发票开具页面默认为按金额开票，如您选择按行程开票，发票开具规则会按所选行程发生城市的不同而分成多张发票，同一城市多个行程会开具一张发票。（行程消费中包含的优惠券，充返金额，停车、高速、过路过桥费，不支持开具发票）</li>
+        <li><div class="pot"></div>行程单最多可以开具3个月之内，您需要联系在线客服，留下邮箱地址，由客服人员发送给您指定的邮箱。</li>
+        <li><div class="pot"></div>根据国家税务总局公告2015年第84号的规定，增值税电子普通发票的法律效力、基本用途、使用规定等，与税务机关监制的增值税普通发票纸制版相同。如需纸质报销，可将电子文档打印即可。</li>
+        <li><div class="pot"></div>电子发票将在您提交后10分钟内发送到您指定的邮箱。（如10分钟内未收到，可以联系在线客服留言，我们将在72小时内尽快为您处理）</li>
+        <li><div class="pot"></div>此页面仅支持个人用户开票，企业级用户开票请在企业客户端申请。</li>
+        <li class="black"><div class="pot"></div>还在为开票报销烦恼吗？   <a href="http://www.yongche.com/bd/wap/enterprise_zq821.html?source=131188">快来开通集团服务 ></a></li>
+    </ul>
+
+
+    <div class="mask" v-if="alertFlag" v-on:click="close">
+
+    </div>
+    <div class="window" v-if="alertFlag">
+        <p v-cloak>近期因公司财务系统调试，因改为人工开票 ，寄送周期可能会稍有延长，请您耐心等待，给您带来不便，还请谅解！</p>
+        <div class="m-btn" v-on:click="know">我知道了</div>
+    </div>
+</div>
+
+
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/vue-resource.min.js"></script>
+<script src="js/vue-router.min.js"></script>
+<script>
+    function getCookie(name)
+    {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+    localStorage.clear();
+    var token=getCookie('_app_token_v3');
+
+    new Vue({
+        el: '#app',
+        data: {
+            apiUrl: '/h5/receipt/personal?access_token='+token,
+            result: {},
+            alertFlag: false
+        },
+        ready: function() {
+            this.getData();
+            localStorage.Pool =  JSON.stringify([]); //初始化发票池
+        },
+        methods: {
+            getData: function() {
+                var that =this ;
+                $.ajax({
+                    type: 'get',
+                    url: that.apiUrl,
+                    success:function(data){
+                        if(data.ret_code==200){
+                            data.result.receipt_amount =Number( data.result.receipt_amount).toFixed(2);
+                            that.result = data.result;
+                            localStorage.receipt_titles =  JSON.stringify(data.result.receipt_titles); //发票抬头
+                            localStorage.receipt_amount = JSON.stringify(data.result.receipt_amount); //可开发票金额
+
+                            if(history.length == 1) {
+                                that.alertFlag = true;
+                            }
+                        } else {
+                            alert(data.ret_msg);
+                        }
+                    },
+                    error:function(data){
+                        console.log("error")
+                    }
+                })
+            },
+            open: function(num) {
+                window.location.href = "addInvoice.html"
+            },
+            record: function() {
+                window.location.href = "invoiceRecord.html"
+            },
+            know: function(e) {
+                this.alertFlag = false;
+            },
+            close: function(e) {
+                this.alertFlag = false;
+            }
+
+        }
+    });
+</script>
+
+</body>
+</html>

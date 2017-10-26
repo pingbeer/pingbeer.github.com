@@ -1,0 +1,492 @@
+<div ng-app="SeatOrderModule" ng-controller="seatOrderController">
+    <!--订单-->
+    <section ng-show="ShowOrder">
+        <div class="ui-row bor-bottom-dfdfdf bg-col-f8f8f8 clear line-40">
+            <div class="ui-col-10 fl-left" ng-click="returnHistory(paramsName,paramsType,paramsid)">
+                <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+            </div>
+            <div class="ui-col-80 fl-left text-center text-col-333 font-16">
+                支付确认
+                <!--<a href="weixin://dl/scanqrcode">支付</a>--><!--scanqrcode//首页面-->
+            </div>
+        </div>
+        <div class="lineh-40 bg-col-fdf6dd text-center text-col-777 font-12">
+            请在<span class="text-col-ff5400">15分钟内</span>完成付款，否则系统将取消本次交易
+        </div>
+        <ul class="bg-col-fff pl-15 pr-15 pt-5 text-col-999 font-12">
+            <li class="line-30 ui-row clear">
+                <div class="ui-col-25 fl-left">片名</div>
+                <div class="ui-col-75 fl-left text-col-666">{{orderExt.filmName}}</div>
+            </li>
+            <li class="line-30  ui-row clear">
+                <div class="ui-col-25 fl-left">影院</div>
+                <div class="ui-col-75 fl-left text-col-666">{{orderExt.cinemaName}}</div>
+            </li>
+            <li class="line-30  ui-row clear">
+                <div class="ui-col-25 fl-left">日期</div>
+                <div class="ui-col-75 fl-left text-col-666">{{orderExt.showDate}}
+                    <span class="pl-5">{{orderExt.showTime}} </span>
+                </div>
+            </li>
+            <li class="line-25  ui-row clear">
+                <div class="ui-col-25 fl-left">座位</div>
+                <div class="ui-col-75 fl-left text-col-666">
+                    <button class="bor-dfdfdf lineh-25 pl-5 pr-5 ui-border-radius2 mr-10"
+                            ng-repeat="seat in seatsJson">{{seat.row}}排{{seat.column}}座
+                    </button>
+                </div>
+            </li>
+            <li class="line-30  ui-row clear">
+                <div class="ui-col-25 fl-left">手机号</div>
+                <div class="ui-col-75 fl-left text-col-666">{{filmOrder.mobile}}</div>
+            </li>
+        </ul>
+        <ul class="mt-10 bg-col-fff pl-15 font-14 text-col-666">
+            <li class="bor-bottom-dfdfdf lineh-40 ui-row clear">
+                <div class="fl-left">票价总计</div>
+                <div class="fl-right text-col-999 pr-15"><span
+                        class="text-col-ff5400 font-14">￥{{filmOrder.amount}}元</span></div>
+            </li>
+            <li class="bor-bottom-dfdfdf lineh-40 ui-row clear">
+                <div class="fl-left">信用卡号</div>
+                <div class="fl-right text-col-999  pr-15">{{ordernews.cardNo}}</div>
+            </li>
+            <li class="bor-bottom-dfdfdf lineh-40 ui-row clear">
+                <div class="fl-left">可用积分</div>
+                <div class="fl-right text-col-999  pr-15">{{totalPoint}}</div>
+            </li>
+            <li class="bor-bottom-dfdfdf lineh-40 pr-15 ui-row clear">
+                <div class="fl-left">抵扣</div>
+                <div class="fl-right bg-col-dbdbdb btn-msg clear">
+                    <span class=" fl-left" ng-click="pointremove()">-</span>
+                    <input class=" fl-left text-center text-col-ff5400" type='tel' placeholder="0"
+                           ng-keyup="updateCode($event)" ng-model="iptmodel"/>
+                    <span class=" fl-left " ng-click="pointadd()">+</span>
+
+                </div>
+            </li>
+            <li class="lineh-40 font-12 ui-row clear">
+                <div class="fl-left" ng-if="orderType=='PDXB'&&platform ==2" ng-click="getActivity()"><i
+                        class="ui-icon-info icon-info dis-inline font-24 line-20 text-col-ff5400"></i>活动细则
+                </div>
+                <div class="fl-right text-col-999  pr-15">1200积分=1元</div>
+            </li>
+        </ul>
+        <ul class="mt-10 bg-col-fff pl-15 font-14 text-col-666">
+            <li class="bor-bottom-dfdfdf lineh-40 ui-row clear ui-arrowlink pr-15"
+                ng-if="orderType=='PDXB'&&platform ==2" ng-click="getPrize(isMyprizes)">
+                <div class="fl-left">优惠券</div>
+                <div class="fl-right text-col-999 pr-15">
+                    <span class="font-14" ng-class="{false:'text-col-666',true:'text-col-ff5400'}[isMyprizes==1]">
+                        {{prizesName}}
+                    </span>
+                </div>
+            </li>
+            <li class="bor-bottom-dfdfdf lineh-40 ui-row clear" ng-show="!hasFastPay">
+                <div class="fl-left ui-col-25">CVV2</div>
+                <div class="fl-left text-col-999 ui-col-70 pr-15"><input
+                        class="lineh-30 mt-5 ui-border-radius15 bor-dfdfdf pl-10 ui-col-70" type="tel" ng-model="cvv"
+                        placeholder="信用卡背面后三位"/></div>
+            </li>
+            <li class="bor-bottom-dfdfdf lineh-40 font-12 text-col-999 ui-row clear">
+                <span class="ui-col-40 fl-left"><span class="text-col-ff5400">*</span> 获取短信验证码</span>
+                <input class="ui-col-30 fl-left lineh-30 mt-5 ui-border-radius15 pl-10 bor-dfdfdf" type="tel"
+                       ng-pattern="/^\d{6}$/" placeholder="请输入验证码"
+                       ng-model="paycode"/>
+                <div class="ui-col-25 fl-right pr-15">
+                    <button ng-show="isBtn"
+                            class="ui-col-90 text-center fl-right lineh-30 mt-5 ui-border-radius2
+                            bg-col-00a6ff text-col-fff"
+                            ng-click="getcode()">
+                        获取
+                    </button>
+                    <button ng-show="!isBtn"
+                            class="ui-col-90 text-center fl-right lineh-30 mt-5 ui-border-radius2
+                            bg-col-00a6ff text-col-fff">
+                        {{code}}s
+                    </button>
+                </div>
+            </li>
+        </ul>
+        <ul class="mt-10 bg-col-fff pl-15 pb-10 font-12 pr-15 mb-40">
+            <li class="line-20 pt-5 text-col-ff5400" ng-if="!freeTrue">
+                不支持退票，不支持更换场次，使用券后每单最低支付1元
+            </li>
+            <li class="line-20 pt-5 text-col-ff5400" ng-if="freeTrue">
+                不支持退票，不支持更换场次
+            </li>
+            <li class="line-20 pt-5" ng-if="!hasFastPay">
+                <span ng-click="getSee()"><img ng-src="{{seeCheck}}" class="checkboximg"
+                                               ng-model="isSee"/>我已看过并同意</span>
+                <span class="text-col-00a6ff" ng-click="getSign()">
+                    《上海浦东发展银行信用卡中心快捷支付业务客户服务协议》
+                </span>
+            </li>
+        </ul>
+        <footer class="ui-footer ui-row film-deital-footer bor-top-dfdfdf">
+            <div class="bg-col-fff lineh-40">
+                <div class="fl-left ui-col-65 line-40 pl-10">支付金额：<span
+                        class="font-14 text-col-ff5400">￥{{lastpay}}</span></div>
+                <div class="fl-right  ui-col-33 ml-5 bg-col-00a6ff" ng-click="payOrder()">
+                    <div class="fl-left buytickit bg-col-00a6ff">确认支付</div>
+                </div>
+            </div>
+        </footer>
+    </section>
+    <!--奖券-->
+    <section ng-show="ShowPrize">
+        <div class="ui-row bor-bottom-dfdfdf bg-col-f8f8f8 clear line-40">
+            <div class="ui-col-10 fl-left" ng-click="hideprize()">
+                <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+            </div>
+            <div class="ui-col-80 fl-left text-center text-col-333 font-16">
+                可用奖券
+            </div>
+        </div>
+        <div class="mb-60 mt-10">
+            <ul ng-if="byordersShow" class="font-12 mb-10 prizetype" ng-repeat="list in availablePrizes"
+                ng-click="checkprizes(list.id,$index,list.type)">
+                <li ng-style="activeimg" ng-if="list.type==4||list.type==104||list.type==204||list.type==36">
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-prize-sub10-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type==5||list.type==105||list.type==205">
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-prize-10-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type==9 ||list.type==10||list.type==520||list.type==30">
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-prize-free-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type==11">
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-prize-sub10-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type>=31&&list.type<=34"><!--10元专属-->
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-prize-sub11-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type>=10000&&list.type<=10002"><!--10元专属-->
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-prize-sub11-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type==18">
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-prize-sub11-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type==20||list.type==280">
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-prize-sub10-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type==21">
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-prize-1-icon.png">
+                </li>
+                <ul class="text-col-999"
+                    ng-if="list.type==4||list.type==104||list.type==204||list.type==11||list.type==20||list.type==280||list.type==36">
+                    <li class="text-col-666">{{list.name}}</li>
+                    <li>生效日期{{list.createdTime}}</li>
+                    <li>失效日期{{list.disabledTime}}</li>
+                </ul>
+                <ul class="text-col-999"
+                    ng-if="list.type!=4&&list.type!=104&&list.type!=204&&list.type!=11&&list.type!=20&&list.type!=280&&list.type!=36">
+                    <li class="text-col-666" style="height: 24%">{{list.name}}</li>
+                    <li style="height: 24%">生效日期{{list.createdTime}}</li>
+                    <li style="height: 24%">失效日期{{list.disabledTime}}</li>
+                    <li style="height: 24%">请选择带有“券”标记的场次使用</li>
+                </ul>
+                <img class="checkimg" ng-src="{{staticUrl}}images/{{list.isCheck}}.png"/>
+            </ul>
+            <ul ng-if="!byordersShow" class="font-12 mb-10 prizetype" ng-repeat="list in availablePrizes"
+                ng-click="checkprizes(list.id,$index,list.type)">
+                <li ng-style="activeimg" ng-if="list.type==4||list.type==104||list.type==204||list.type==36">
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-prize-sub10-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type==11">
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-prize-sub10-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type==20||list.type==280">
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-prize-sub10-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type==5||list.type==105||list.type==205">
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-black-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type==9 ||list.type==10||list.type==520||list.type==30">
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-black-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type>=31&&list.type<=34"><!--10元专属-->
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-blackzs-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type>=10000&&list.type<=10002"><!--10元专属-->
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-blackzs-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type==18">
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-blackzs-icon.png">
+                </li>
+                <li ng-style="activeimg" ng-if="list.type==21">
+                    <img class='bgimg' ng-src="{{staticUrl}}images/activity-blackzs-icon.png">
+                </li>
+                <ul class="text-col-999"
+                    ng-if="list.type==4||list.type==104||list.type==204||list.type==11||list.type==20||list.type==280||list.type==36">
+                    <li class="text-col-666">{{list.name}}</li>
+                    <li>生效日期{{list.createdTime}}</li>
+                    <li>失效日期{{list.disabledTime}}</li>
+                </ul>
+                <ul class="text-col-999"
+                    ng-if="list.type!=4&&list.type!=104&&list.type!=204&&list.type!=11&&list.type!=20&&list.type!=280&&list.type!=36">
+                    <li class="text-col-666" style="height: 24%">{{list.name}}</li>
+                    <li style="height: 24%">生效日期{{list.createdTime}}</li>
+                    <li style="height: 24%">失效日期{{list.disabledTime}}</li>
+                    <li style="height: 24%">请选择带有“券”标记的场次使用</li>
+                </ul>
+                <img ng-if="list.type==4||list.type==104||list.type==204||list.type==11||list.type==20||list.type==280||list.type==36"
+                     class="checkimg" ng-src="{{staticUrl}}images/{{list.isCheck}}.png"/>
+            </ul>
+        </div>
+
+        <footer class="ui-footer ui-footer-btn ui-footer-bg bg-col-0066cc" ng-click="hideprize()">
+            <div class="text-center text-col-fff font-18 line-50">
+                确定
+            </div>
+        </footer>
+    </section>
+    <!--协议-->
+    <section ng-show="ShowSign">
+        <div class="nav-mainf ui-row bg-col-f8f8f8 line-40 clear bor-bottom-dfdfdf">
+            <div class="ui-col-20 fl-left text-col-333" ng-click="otherHide()">
+                <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+            </div>
+            <div class="ui-col-50 fl-left text-center text-col-333 font-16">
+                协议
+            </div>
+        </div>
+        <div class="pl-15 pr-15 mt-45 pt-10 pb-10">
+            <div class="text-center"><h1>上海浦东发展银行信用卡中心网关快捷支付业务客户服务协议</h1></div>
+            <div class="font-12 pb-30">
+                <p>为明确双方的权利和义务，规范双方业务行为，甲方（持卡人）、乙方（上海浦东发展银行股份有限公司信用卡中心）
+                    本着平等互利的原则，就浦发信用卡快捷支付业务相关事宜达成本协议，以资共同遵守。</p>
+                <h2>第一条 业务定义</h2>
+                <p> 下列用语在本协议中的含义为：<br>
+                       “浦发信用卡快捷支付”指甲方已开通乙方信用卡网上支付的前提下，建立指定信用卡与乙方的签约关系，
+                    以指定信用卡为支付凭证，凭动态密码等验证要素在乙方合作商户网站上完成资金划转的一种支付方式。<br>
+                        “浦发信用卡快捷支付”的签约和使用渠道包括：计算机、移动终端等。<br>
+                        “手机号码”指甲方在申请乙方信用卡时在乙方系统中预留的通知手机号码。</p>
+                <h2> 第二条 权利和义务</h2>
+                <p>
+                    一、甲方应确保用于“浦发信用卡快捷支付”签约的信用卡为本人所有，保证在签约过程中提供的信息真实、准确、有效，
+                    确保支付行为合法并未侵犯任何第三方合法权益，否则因此造成乙方及其他第三人损失的，由甲方负责赔偿并承担全部法律责任。
+                </p>
+                <p>
+                    二、甲方在首次使用“浦发信用卡快捷支付”时，需提供以下信息用于身份验证，包括但不限于银行信用卡卡号、手机号码、
+                    信用卡CVV2、手机动态验证码等，并同意将指定信用卡卡号与乙方建立签约关系。乙方保留变更上述信息作为验证标准的权利。
+                </p>
+                  <p> 三、“浦发信用卡快捷支付”签约成功后，甲方凭动态密码及辅助验证要素（由乙方确定）提交交易指令，
+                乙方按交易指令从甲方签约信用卡卡上扣划资金。
+            </p>
+                  
+                <p>
+                    四、甲方应妥善保管信用卡卡号、信用卡有效期、信用卡CVV2、与之相关的证件类型及证件号码、手机号码、固定电话、
+                    通信地址等相关信息，如遗失信用卡或泄露上述相关信息，甲方应及时通知乙方并办理挂失或销户等相关手续，
+                    减少可能发生的损失。挂失或销户前的损失，以及因甲方泄露密码（包括但不限于信用卡查询密码、交易密码和手机动态密码等）
+                    、丢失信用卡等所致损失，由甲方自行承担。</p>
+                  
+                <p>
+                    五、甲方不得利用“浦发信用卡快捷支付”业务进行套现、虚假交易、洗钱等行为，甲方有义务配合乙方进行相关调查。
+                    如若甲方拒绝配合进行相关调查或乙方认为存在或涉嫌虚假交易、洗钱、套现或任何其他非法活动、欺诈或违反诚信原则的行为、
+                    或违反本协议约定的，乙方有权采取以下一种、多种或全部措施：
+                <ol>
+                    <li>（1）暂停或终止提供本协议项下浦发信用卡快捷支付服务；</li>
+                    <li>（2）解除本协议；</li>
+                    <li>
+                        （3）对甲方签约信用卡（账户）进行中止支付处理。若因甲方的前述行为而给乙方造成损失的，
+                        甲方应负责赔偿并承担全部法律责任。
+                    </li>
+                </ol>
+                </p>
+                   <p>六、乙方若因以下原因未执行甲方提交的交易指令，无须承担任何责任：</p>
+                <ol>
+                    <li>（1）甲方签约信用卡信用额度不足。</li>
+                    <li>（2）甲方签约信用卡卡片状态异常。</li>
+                    <li>（3）甲方未能按照乙方的有关规定正确操作。</li>
+                    <li>（4）甲方的行为出于欺诈或其他非法目的。</li>
+                </ol>
+                <h2>第三条 不可抗力</h2>
+                   对于由于乙方可控制范围以外的不可抗力因素（包括但不限于自然灾害、意外事故、战争系统故障、通讯故障等）
+                以及监管部门政策变化等造成乙方无法或延后履行本协议的有关义务的，乙方不承担责任。
+                <h2> 第四条 法律适用条款</h2>
+                   本协议的成立、生效、履行、解释，均适用中华人民共和国法律（为本协议之目的，
+                在此不包括香港特别行政区、澳门特别行政区和台湾地区法律）；法律无明文规定的，可适用通行的金融惯例。
+                   本协议是乙方的其他既有协议和约定的补充而非替代文件，如本协议与其他既有协议和约定有冲突，应以本协议为准。
+                <h2>第五条 差错和争议的解决</h2>
+                   乙方仅为甲方提供安全可靠的支付结算服务，依据甲方提交的交易指令实施资金扣划。
+                对于因购买商品或服务而产生的一切关于商品、服务及费用扣收的争议均由甲方与商户自行协商解决，乙方对此不承担任何责任。
+                   双方在履行本协议的过程中，如发生争议，应尽量协商解决。协商不成的，任何一方均应向乙方所在地有管辖权的人民法院提起诉讼。
+                <h2> 第六条 协议的终止</h2>
+                乙方提供的服务受甲方签约信用卡状态的制约，如该卡由于挂失、止付、有效期到期等原因不能正常使用，相关服务自动中止。
+                甲方签约信用卡（账户）状态恢复正常时，乙方重新提供相应服务。若甲方签约信用卡因换卡等原因发生卡号变更，
+                则相关服务自动中止。如需延续服务，甲方须使用新卡号进行注册签约。
+                <h2>第七条 协议的效力和生效</h2>
+                   本协议自甲方确认接受时刻即告成立并生效。
+                乙方有权变更、暂停本协议项下浦发信用卡快捷支付业务服务，有权修改、终止本协议，
+                并于执行前通过乙方网站或其他任何形式进行公告。相关公告一经发布即视为甲方已收到。
+                甲方在乙方公告后继续办理浦发信用卡快捷支付业务的，视同已接受有关本协议、浦发信用卡快捷支付业务服务修改、变更的内容。
+                <h2> 第八条 其他</h2>
+                本协议条款及其未尽事宜，仍同时受《上海浦东发展银行信用卡（个人卡）章程》与相关领用合约等文件约束。甲乙双方确认，
+                在签署本协议前，已就全部条款进行了详细地说明和讨论，双方对合同的全部条款均无疑义，并对协议涉及的权利义务、
+                责任限制及免责条款的法律含义有了准确无误的理解。
+            </div>
+        </div>
+    </section>
+    <!--活动细则-->
+    <section ng-if="orderType=='PDXB'&&platform ==2" ng-show="ShowActivity">
+        <div class="nav-mainf ui-row bg-col-f8f8f8 line-40 clear bor-bottom-dfdfdf">
+            <div class="ui-col-20 fl-left text-col-333" ng-click="otherHide()">
+                <i class="ui-icon-return icon-return dis-inline text-col-333 line-25 font-24 ml-5"></i>
+            </div>
+            <div class="ui-col-50 fl-left text-center text-col-333 font-16">
+                活动细则
+            </div>
+        </div>
+        <div class="mt-40 pt-5 pb-10 pl-10 pr-10">
+            <p class="font-16 text-center">比价购票活动细则：</p>
+            <p class=" pr-10 font-14 font-weight text-col-00a6ff">活动时间：</p>
+            <p class="font-12">2017年7月1日—2017年9月30日</p>
+            <p class="font-14 mt-5 font-weight text-col-00a6ff">活动内容：</p>
+            <p class="font-12 mt-5">活动一：<br/>推广活动期间，浦发银行信用卡持卡人（下称“持卡人”）登录“浦发银行信用卡”官方微信—微广场—小浦观影/观剧/比价购票首页或浦大喜奔APP（浦发银行信用卡中心手机客户端）-精品-小浦观影-小浦比价观影首页在线选座购票，使用上海浦东发展银行信用卡全额支付消费金额，即可享受购买电影票每张随机立减的优惠，最高立减77元（每张电影票原票价需大于2元），每单最低需支付1元。
+            </p>
+            <p class="font-14 font-weight mt-5 text-col-00a6ff">活动细则：</p>
+            <ul class="pr-10 pl-10 line-20 font-12">
+                <li>
+                    1.活动一适用于所有关注并绑定“浦发银行信用卡”官方微信、浦发银行信用卡手机客户端“浦大喜奔”的持卡人；
+                </li>
+                <li>
+                    2.参与活动的持卡人需在提交订单后使用浦发银行信用卡完成在线支付全额消费金额，方可享受购买电影票每张随机立减优惠，最高立减77元（单张电影票原票价需大于2元）。自2016年10月15日起，收银台积分抵现功能将扣取您默认绑定信用卡对应账户内可抵扣积分，敬请留意。
+                </li>
+                <li>
+                    3.每位持卡人每周可享1单优惠，每单限1-3张优惠影票（同一终端设备、同一手机号、同一信用卡号、同一证件号，满足任一条件均视为同一持卡人），每月限量35000张优惠影票，用完即止。
+                </li>
+                <li>4.上述活动均可与平台内其他优惠活动同享。</li>
+                <li>
+                    5.持卡人如有下述任何一种情况，其参加本次活动的资格将被取消，包含但不限于：进行虚假交易或者违法交易或退货交易、当前账户出现欠款逾期、账户状态不正常、出现所持信用卡过期、被停用、管制、持卡人自行注销信用卡、对所欠信用卡和浦发银行债务不偿还、违反《上海浦东发展银行信用卡(个人卡)章程》及相关领用合约或本活动及其他相关规定的；如有任何疑问，可拨打小浦观影-比价购票全国客服电话400-920-9553（8:30-20:30，全年无休）。
+                </li>
+                <li>6.小浦观影比价购票一旦发生出票，不予退款。</li>
+                <li>
+                    7.浦发银行信用卡中心不负责一切有关商品或服务事宜。任何有关商品或服务之责任，由有关参与商户负责。
+                </li>
+                <li>
+                    8.在法律许可的范围内，浦发银行信用卡中心保留变更、调整、终止本活动之权利并有权调整或变更本活动规则并于相关渠道公告后生效。
+                </li>
+                <li>9.对于利用系统漏洞恶意套取优惠的持卡人，浦发银行信用卡中心保留取消其获奖资格的权利。</li>
+                <li>10.本次活动未尽事宜，仍受《上海浦东发展银行信用卡（个人卡）章程》、相关领用合约及其他相关文件约束。</li>
+            </ul>
+            <p class=" pr-10 font-12 mt-10">
+                活动二：<br/>推广活动期间，浦发银行信用卡持卡人（下称“持卡人”）登录“浦发银行信用卡”官方微信—微广场—娱乐美餐优惠，全能积分—“小浦观影，比比更优惠”—
+                小浦比价购票首页-发现-每日抽奖页面或浦大喜奔APP（浦发银行信用卡中心手机客户端）-精品-小浦观影-小浦比价购票首页-发现-每日抽奖页面，即可进行抽奖，每位持卡人每日限抽一次，可自主选择翻1-3张牌（翻一张牌消耗12积分，翻两张牌消耗132积分，翻三张牌消耗372积分），100%有奖。（自2016年10月15日起，积分抽奖活动将扣取您默认绑定信用卡对应账户内可抵扣积分，敬请留意。）选择的翻牌次数需在当天24点前翻完，过了24点，未翻的次数视为自动放弃。
+                <br/>
+                <span class="text-col-00a6ff font-14 font-weight pt-5">活动奖品</span>观影年卡、免费观影券、10元观影权益、观影抵用券、充值红包、幸运豆。<br/>
+                <span class="text-col-00a6ff font-14 font-weight pt-5">奖品发放与使用：</span><br/>
+                活动期间内，同一持卡人（同一微信号、同一手机号码、同一信用卡卡号、同一身份证号满足任一条件均视为同一持卡人）最多可获得1份观影年卡，每周最多可获得2个实物奖项，每月最多可获得4个实物奖项（实物奖项包括观影年卡、免费观影券、10元观影权益、观影抵用券、充值红包）、每月最多可获得10000幸运豆，每位持卡人每月最多使用6张观影抵用券，4张10元观影券
+            </p>
+            <p class="font-14 mt-5 text-col-00a6ff font-weight">活动细则：</p>
+            <ul class="pr-10 pl-10 line-20 font-12  pb-30">
+                <li>
+                    1.活动二适用于关注并绑定“浦发银行信用卡”官方微信的持卡人且持卡人账户应保持正常。如持卡人账户内只有航空类及/或酒店类联名卡，则该持卡人不可参加本活动。逾期账户、销户账户和被冻结账户等非正常状态账户不可参加本活动。
+                </li>
+                <li>
+                    2.
+                    观影年卡：有效期为中奖次月起连续12个月，每月1张免费观影券，每月1日自动发放至持卡人小浦观影平台账户，该观影券有效期为30天。持卡人选座购票后可直接使用该券抵扣票价（只可抵扣带有“券”字标识的电影场次），持卡人可在“我的奖励”中查看。
+                </li>
+                <li>
+                    3.10元观影权益：直接绑定至持卡人小浦观影平台账户，有效期为自获得权益之日起的14天（含）内。持卡人需要在有效期内选座购票并使用该券，可以10元价格购买1张电影票（只可抵扣带有“券”字标识的电影场次）；
+                </li>
+                <li>
+                    4.观影抵用券：直接绑定至持卡人小浦观影平台账户，有效期为自中奖之日起的14天（含）内，持卡人需要在有效期内选座购票并使用该券享受优惠。
+                </li>
+                <li>
+                    5.充值红包：直接绑定至持卡人小浦观影平台账户，请至“我的-我的红包”中查看，有效期为自获得优惠券之日起的3天（含）内，请至发现界面-充值兑换使用，2元充值红包，仅限充值50元及以上金额；4元充值红包，仅限充值100元及以上金额；8元充值红包，仅限充值200元及以上金额，充值红包不可叠加使用。
+                </li>
+                <li>
+                    6.幸运豆奖励：共有1幸运豆、50幸运豆、100幸运豆、500幸运豆、1000幸运豆、5000幸运豆、10000幸运豆7个级别的幸运豆奖励，
+                    2017年7月1日之前中奖的幸运豆有效期至2017年12月31日止，2017年7月1日及之后中奖的幸运豆有效期从即日起至2018年6月30日。幸运豆可在“小浦观影” —“发现”
+                    —“充值有礼”菜单购买产品时按照1000幸运豆=1元的比例来抵扣现金支付。
+                </li>
+                <li>
+                    7.所有实物奖励（除充值红包外）只可在浦发银行信用卡手机客户端（浦大喜奔）中使用。
+                </li>
+                <li>
+                    8.如因系统原因导致网络延迟等情况，获奖实际系统记录情况与页面显示情况不符，以浦发银行信用卡中心系统实际记录为准，浦发银行信用卡中心保留解释及发放相应奖品的权利。
+                </li>
+                <li>
+                    9.小浦观影比价购票一旦发生出票，不予退款。
+                </li>
+                <li>
+                    10.小浦观影比价购票支付时使用小浦支付完成支付交易，所有支付规则需遵守上海浦东发展银行网关快捷支付客户服务协议。
+                </li>
+                <li>
+                    11.持卡人如有下述任何一种情况，其参加本次活动的资格将被取消，包含但不限于：进行虚假交易或者违法交易或退货交易、当前账户出现欠款逾期、账户状态不正常、出现所持信用卡过期、被停用、管制、持卡人自行注销信用卡、对所欠信用卡和浦发银行债务不偿还、违反《上海浦东发展银行信用卡(个人卡)章程》及相关领用合约或本活动及其他相关规定的；如有任何疑问，可拨打小浦观影-比价购票全国客服电话400-920-9553（9：00-23：00，全年无休）。
+                </li>
+                <li>
+                    12.浦发银行信用卡中心不负责一切有关商品或服务事宜。任何有关商品或服务之责任，由有关参与商户负责。
+                </li>
+                <li>
+                    13.在法律许可的范围内，浦发银行信用卡中心保留变更、调整、终止本活动之权利并有权调整或变更本活动规则并于相关渠道公告后生效。
+                </li>
+                <li>
+                    14.对于利用系统漏洞恶意套取优惠的持卡人，浦发银行信用卡中心保留取消其获奖资格的权利。
+                </li>
+                <li>
+                    15.本次活动未尽事宜，仍受《上海浦东发展银行信用卡（个人卡）章程》、相关领用合约及其他相关文件约束。
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div class="ui-dialog telModel" ng-if="freeTrue">
+        <div class="ui-dialog-cnt dialog-seat bg-col-fff">
+            <div class="ui-dialog-bd">
+                <div>
+                    <h4 class="text-center">是否确认用免费观影券支付</h4>
+                </div>
+            </div>
+            <div class="ui-dialog-ft ">
+                <button type="button" ng-click="closeDialog()">关闭</button>
+                <button type="button" ng-click="Dialog()">确认</button>
+            </div>
+        </div>
+    </div>
+    <div class="ui-dialog orderconfirmModel">
+        <div class="ui-dialog-cnt dialog-seat bg-col-fff">
+            <div class="ui-dialog-bd">
+                <div>
+                    <h4 class="text-center">请仔细核对您的订单信息，一旦支付成功后，不可退换</h4>
+                </div>
+            </div>
+            <div class="ui-dialog-ft ">
+                <button type="button" ng-click="closeDialog1()">关闭</button>
+                <button type="button" ng-click="pay()">确认</button>
+            </div>
+        </div>
+    </div>
+    <div class="ui-dialog orderebate">
+        <div class="ui-dialog-cnt dialog-seatorder bg-col-fff">
+            <div class="ui-dialog-bd">
+                <div class="text-center">
+                    <img style="width:25%; " src="{{staticUrl}}images/logo.png">
+                    <p class="text-col-00a6ff line-20">支付成功</p>
+                    <p class="line-30">{{rebate.payAmount/100}}元</p>
+                    <p class="line-20 text-col-999">
+                        <del>{{rebate.amount}}元</del>
+                    </p>
+                </div>
+                <ul class="bor-top-dfdfdf font-12 mt-10">
+                    <li class="bor-bottom-dfdfdf clear ui-row lineh-40">
+                        <div class="ui-col-33s fl-left"><img class="ui-col-90  mt-10"
+                                                             src="{{staticUrl}}images/rebate.png"></div>
+                        <div class="ui-col-33s fl-left">小浦观影优惠</div>
+                        <div class="ui-col-33s fl-left text-right text-col-ff5400">{{rebate.privilidgeAmount}}元</div>
+                    </li>
+                    <li class="bor-bottom-dfdfdf clear ui-row lineh-40">
+                        <div class="ui-col-33s fl-left text-col-999">付款信息</div>
+                        <div class="ui-col-33s fl-left">浦发信用卡</div>
+                        <div class="ui-col-33s fl-left text-right">{{rebate.payAmount/100}}元</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="ui-dialog-ft ">
+                <button type="button" ui-sref="success">确定</button>
+            </div>
+        </div>
+    </div>
+    <loading-view ng-hide="dialogIsHidden"></loading-view>
+    <error-view info="naomi" ng-hide="errorHidden" on-close="hideDialog()"></error-view>
+</div>

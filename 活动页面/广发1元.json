@@ -1,0 +1,183 @@
+﻿{
+  "month": "06",
+  "root": {
+    "sc": "MHYC09",
+    "cd": {
+      "actTypeParam": "",
+      "isSignUp": "0",
+      "actQuota": "2140",
+      "buttonType": "0",
+      "state": "0",
+      "joinDescUrl": "",
+      "mai_isuseproto": "1",
+      "successTip": "恭喜您，秒抢成功！",
+      "mai_join_times": "1",
+      "failTip": "没有抢到哦！",
+      "mai_cycle_type": "3",
+      "result": [
+        {
+          "kColl": [
+            {
+              "applySeqNo": "10000000001056",
+              "isModify": "1",
+              "isGather": "0",
+              "inputValue": "0",
+              "act_id": "2017051210000000000990",
+              "applyName": "身份证号",
+              "isPreFill": "0",
+              "order": "1"
+            },
+            {
+              "applySeqNo": "10000000001057",
+              "isModify": "1",
+              "isGather": "0",
+              "inputValue": "0",
+              "act_id": "2017051210000000000990",
+              "applyName": "姓名",
+              "isPreFill": "0",
+              "order": "2"
+            },
+            {
+              "applySeqNo": "10000000001058",
+              "isModify": "1",
+              "isGather": "0",
+              "inputValue": "0",
+              "act_id": "2017051210000000000990",
+              "applyName": "手机号码",
+              "isPreFill": "0",
+              "order": "3"
+            },
+            {
+              "applySeqNo": "10000000001059",
+              "isModify": "0",
+              "isGather": "1",
+              "inputValue": "1",
+              "act_id": "2017051210000000000990",
+              "applyName": "卡号",
+              "isPreFill": "1",
+              "order": "4"
+            }
+          ],
+          "id": "mhApplyInfoList"
+        },
+        {
+          "kColl": [
+            {
+              "shareSeqNo": "10000000002809",
+              "isShareFlag": "1",
+              "shareTitle": "",
+              "shareLink": "",
+              "shareText": "",
+              "msiId": "2017051210000000000990",
+              "sharePage": "0"
+            },
+            {
+              "shareSeqNo": "10000000002810",
+              "isShareFlag": "1",
+              "shareTitle": "",
+              "shareLink": "",
+              "shareText": "",
+              "msiId": "2017051210000000000990",
+              "sharePage": "1"
+            },
+            {
+              "shareSeqNo": "10000000002811",
+              "isShareFlag": "1",
+              "shareTitle": "",
+              "shareLink": "",
+              "shareText": "",
+              "msiId": "2017051210000000000990",
+              "sharePage": "2"
+            }
+          ],
+          "id": "shareInfoList2"
+        },
+        {
+          "id": "mhActConfigIcollTemp"
+        }
+      ],
+      "secondClassId": "微保险",
+      "searchKeyword": "扫码付\/1元=50元",
+      "actObjectDesc": "广发信用卡（含附属卡、虚拟卡）持卡客户（仅持公司卡、商务卡、转账卡、外币单币卡客户除外）",
+      "buttonType1": "",
+      "mai_isshowjoinnum": "1",
+      "mai_proto_name": "",
+      "actRule": "1、 本活动限广发信用卡（含附属卡、虚拟卡）持卡客户参与，仅持公司卡、商务卡、转账卡、外币单币卡客户除外。^2、扫码付使用付款码与扫一扫均可参与活动。^3、 满足活动条件的消费奖励将在次月内以免还款签账额的形式返还至消费信用卡中。若奖励时客户参与活动的信用卡已注销或失效，将视为主动放弃奖励。^4、 活动返还款签账额以活动有效期内的扫码付最高单笔消费金额为准。单笔消费满50元返49元，高于50元返49元，不满50元按实际消费金额减1元返还，小于1元不返还。^5、 每客户每月限返一次。名额有限，满额即止，先到先得。^6、活动商户为支持银联扫码付商户，有银联扫码付标识的商户均可进行扫码付消费。^7、 广发银行在法律允许范围内，可以根据国家法律法规的规定，根据实际情况对活动内容及细则进行调整。",
+      "actTimeDesc": "5月15日至6月30日期间每周三10:00",
+      "detailImg": "\/mh\/activity\/2017051210000000000990detailss.png",
+      "classId": "10000000000007",
+      "successSmallTip": "您可在首页“我的”功能里查找“我的活动”中查询。",
+      "mai_proto_content": "",
+      "sumNum": "",
+      "actName": "广发扫码付1元=50元优惠秒抢活动",
+      "actDesc": "活动期间，客户通过广发信用卡“发现精彩”APP秒抢1元=50元扫码付优惠资格。秒抢成功当天起七日内（即领取成功当日至下周二23:59:59前），客户使用广发扫码付方式消费（点击发现精彩首页底部中间的扫码图标即可进入扫码付），可享单笔消费最高满50元返49元优惠。每人每月限参与一次。名额有限，先到先得。",
+      "listImg": "\/mh\/activity\/2017051210000000000990list.png",
+      "endTime": "20170630235959",
+      "actId": "2017051210000000000990",
+      "startTime": "20170512204000",
+      "failSmallTip": "亲，您来晚了，下次要赶早哦。",
+      "actEndTime": "20170621235959",
+      "mai_parted_tip": "您已参加过了",
+      "groupType": "0",
+      "isShowButton": "0",
+      "joinDesc": "更新广发信用卡官方APP“发现精彩”至最新版，逢周三10:00登陆APP首页，通过“精彩活动”中的“广发扫码付1元=50元”入口进行秒抢。 ^成功秒抢当天起七日内通过发现精彩APP使用扫码付进行消费（点击发现精彩首页底部中间的扫码图标即可进入扫码付）即可享受优惠。^成功秒抢后可在发现精彩APP“我的活动”中查询参与日期。",
+      "recommended": "30",
+      "actStartTime": "20170621090000",
+      "isShowShop": "1",
+      "buttonName": "立即秒抢",
+      "buttonUrl": "",
+      "mai_parted_small_tip": "亲，您已参加本月活动，欢迎下月参与。",
+      "clubName": "",
+      "mai_actelement_two": "参与流程",
+      "shareImg": "",
+      "resultImg": "",
+      "isDefer": "0",
+      "actType": "2",
+      "actAreaDesc": "全辖（不包括港澳台及境外）",
+      "mai_actelement_three": "活动细则",
+      "clubMemberLevel": "",
+      "buttonUrl1": "",
+      "buttonName1": "",
+      "isShowButton1": "1",
+      "quota": "14980",
+      "codeFlag": "",
+      "mai_actelement_one": "活动内容",
+      "joinNum": "1"
+    },
+    "pkgid": "null",
+    "em": "",
+    "ec": "0"
+  },
+  "isSuccessful": true,
+  "hour": "09",
+  "params": {
+    "userIP": "192.168.1.106",
+    "jsonName": "",
+    "rf": "XML",
+    "dataKey": "MHYC09_2017051210000000000990_MPBank",
+    "doName": "clientService",
+    "isNewMallFlag": "newCommonMallAdapter",
+    "tranCode": "MHYC09",
+    "act_id": "2017051210000000000990",
+    "openChannel": "MH",
+    "srcChannel": "MH"
+  },
+  "errors": [],
+  "info": [],
+  "serverTime": {
+    "month": "06",
+    "second": "05",
+    "minute": "51",
+    "hour": "09",
+    "day": "21",
+    "year": "2017"
+  },
+  "minute": "51",
+  "second": "05",
+  "statusReason": "OK",
+  "warnings": [],
+  "day": "21",
+  "isSecondKill": false,
+  "year": "2017",
+  "statusCode": 200
+}

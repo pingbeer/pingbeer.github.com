@@ -1,0 +1,862 @@
+﻿
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>提交订单</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/XPMall/Content/css/dailySurprise.css" rel="stylesheet" type="text/css" />
+    
+    <link href="/XPMall/Content/css/member.css" rel="stylesheet" type="text/css" />
+    <link href="/XPMall/Content/css/orderSubmit.css" rel="stylesheet" type="text/css" />
+    <link href="/XPMall/Content/css/common.css" rel="stylesheet" />
+    <link href="/XPMall/Content/css/index.css" rel="stylesheet" />
+    <script src="/XPMall/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="/XPMall/Scripts/dailySurprise.js"></script>
+    <script type="text/javascript" src="/XPMall/Scripts/TestAddress.js" charset="gb2312"></script>
+    <script type="text/javascript" src="/XPMall/Scripts/TestChooseAddress.js" charset="gb2312"></script>    
+    <script src="/XPMall/Scripts/popLayer.js"></script>
+    <script src="/XPMall/Scripts/APPCommon.js"></script>
+    <script type="text/javascript">
+        function loadCitys(regionId) {
+            $("#id_citySelect").html("");
+            $("#id_citySelect").append("<option value=''>请选择城市</option>");
+            $("#id_areaSelect").html("");
+            $("#id_areaSelect").append("<option value=''>请选择区域</option>");
+            var paras = "?isAreaType=2&ProvinceSysNo=" + regionId;
+            $.ajax({
+                url: '/XPMall/Order/LoadAreaList' + paras,
+                type: "post",
+                dataType: "json",
+                error: function (a, b, c) {
+                    var errorMsg = "出现JS异常，异常页面：" + window.location.href + ";错误信息：" + a.status + "_" + b + "_" + c;
+                    window.location = '/XPMall/Share/Error' + "?ErrorMsg=" + errorMsg;
+                },
+                success: function (data) {
+                    var jsonData = data;
+                    var Data = jsonData.Data;
+                    if (jsonData.Code == 1 || jsonData.Code == -1) {
+                        showWaitingMask(jsonData.Message);
+                    } else {
+                        for (var i = 0; i < Data.length; i++) {
+                            $("#id_citySelect").append("<option value='" + Data[i].SysNo + "'>" + Data[i].CityName + "</option>");
+                        }
+                    }
+                }
+            })
+        }
+
+        function loadAreas(regionId) {
+            $("#id_areaSelect").html("");
+            $("#id_areaSelect").append("<option value=''>请选择区域</option>");
+            var paras = "?isAreaType=3&CitySysNo=" + regionId;
+            $.ajax({
+                url: '/XPMall/Order/LoadAreaList' + paras,
+                type: "post",
+                dataType: "json",
+                error: function (a, b, c) {
+                    var errorMsg = "出现JS异常，异常页面：" + window.location.href + ";错误信息：" + a.status + "_" + b + "_" + c;
+                    window.location = '/XPMall/Share/Error' + "?ErrorMsg=" + errorMsg;
+                },
+                success: function (data) {
+                    var jsonData = data;
+                    var Data = jsonData.Data;
+                    if (jsonData.Code == 1 || jsonData.Code == -1) {
+                        showWaitingMask(jsonData.Message);
+                    } else {
+                        for (var i = 0; i < Data.length; i++) {
+                            $("#id_areaSelect").append("<option value='" + Data[i].SysNo + "'>" + Data[i].DistrictName + "</option>");
+                        }
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body style="background: rgb(255, 255, 255) none repeat scroll 0% 0%;">
+    <div class="bg" id="bg"></div>
+    <div class="topfixed">
+        <header class="header"> 
+            <a class="a-back"></a>
+            <h2>提交订单</h2>
+        </header>
+    </div>
+
+    <div class="addressOuter mt70">
+    <div class="submit-address" id="mAddress" style="display:">
+            <div class="mt10">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="pl10" width="30"></td>
+                        <td>
+                            <div class="Addrtext clearfix">
+                                 <p class="fl" id="pReceiveName">收货人：刘九平 </p>
+                                 <p class="fr" id="pReceiveMobile">,18260269335 </p>
+                            </div>
+                        </td>
+                        <td class="pl10 pr10"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="mt10" id="changeAddr">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="pl10" width="30"><img src="/XPMall/Content/images/lbs.png" width="20" /></td>
+                            <td class="Addrtext" id="pAddr">收货地址：湖南省 邵阳市 隆回县 滩头镇政府斜对面  </td>
+                        <td class="pl10 pr10"><img  src="/XPMall/Content/images/right.png" width="10" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    
+    
+    <div class="submit-detail" id="mDetail" style="display:none;">
+         <ul class="left-ul">
+           <li>联系人：</li>
+               <li>联系手机：</li>
+               <li>收货地址：</li>
+               <li>详细地址：</li>
+           
+         </ul>
+         <ul class="right-ul">
+             <li><input type="text" id="txtReceiveName" placeholder="收货人姓名" value="刘九平"/></li>
+                <li><input type="text" id="txtReceivePhone" placeholder="收货人手机" value="18260269335"/></li>
+                <li>
+                    <select class="select" id="id_provSelect" name="provSelect" onChange="loadCitys(this.value);">
+                        <option value="">请选择省份</option>
+
+                    </select>
+                    <select class="select" id="id_citySelect" name="citySelect" onChange="loadAreas(this.value);">
+                        <option value="">请选择城市</option>
+                    </select>
+                    <select class="select" id="id_areaSelect" name="areaSelect">
+                        <option value="">请选择区域</option>
+                    </select>
+                </li>
+                <li><input type="text" id="txtReceiveAddress" placeholder="含街道、门牌号等" value="滩头镇政府斜对面" /></li>
+             
+         </ul>
+         <div class="clearer"></div>
+    </div>
+    </div>
+    <!--20151124 newAdd begin-->
+    <div class="coupon">
+        <p class="couponA" id="creditBtn">使用积分+现金支付 > </p>
+        <div class="couponDiv  undis" id="creditEnterLayer">
+            <p><input type="text" class="couponInput" placeholder="积分抵扣金额(单位:元)" id="pointPrice" maxlength="10"></p>
+            <p><input type="button" class="couponBtn" value="抵扣" id="creditUseBtn"></p>
+            <p class="gray">说明：积分抵现，最多可抵用金额的50%</p>
+            <p><a href="https://pufa.soonwill.com/XPMall/Product/ActivityIndex?ActivitySysNo=2&amp;MType=2">积分查询与支付说明</a></p>
+        </div>
+        <div class="couponDiv undis" id="creditGiveUpLayer">
+            <p class="gray">使用积分：<span id="sSYJF">0</span>，积分抵扣：<span id="sJFDK">0</span>元</p>
+            <p><input type="button" class="couponBtn" value="放弃抵扣" id="creditUpBtn"></p>
+            <p class="gray">说明：积分抵现，最多可抵用金额的50%</p>
+            <p><a href="https://pufa.soonwill.com/XPMall/Product/ActivityIndex?ActivitySysNo=2&amp;MType=2">积分查询与支付说明</a></p>
+        </div>
+    </div>
+    <!--20151124 newAdd end-->
+    <!--newAdd begin-->
+    <div class="coupon">
+        <p class="couponA" id="couponBtn">使用商城代金券 > </p>
+        <div class="couponDiv  undis" id="enterLayer">
+            <p><input type="text" class="couponInput" placeholder="请输入优惠串码" id="couponCode" maxlength="12"></p>
+            <p><input type="button" class="couponBtn" value="使用" id="useBtn"></p>
+        </div>
+        <div class="couponDiv undis" id="giveUpLayer">
+            <p>该优惠串码已确认可用</p>
+            <p><input type="button" class="couponBtn" value="放弃使用" id="giveUpBtn"></p>
+        </div>
+    </div>
+    <!--newAdd end-->
+    <div class="submit-detail mt180" style="padding-top:0;">
+         <ul class="left-ul">
+           <li>留言：</li>
+           <li>验证码：</li>
+         </ul>
+         <ul class="right-ul">
+            <li><input type="text" id="txtCustomerNote" placeholder="给卖家留言如发票抬头"/></li>
+            <li>
+                <input class="input2" type="text" id="txtValidateCode" placeholder="验证码">
+                <a href="#">
+                    <img id="imgVerify" style="height:30px; width:98px; cursor:pointer;" align="absmiddle"  src="https://pufa.soonwill.com/xpmall/Order/GetValidateCode?" alt="看不清？点击更换" onclick="this.src=this.src+'?'" />
+                </a>
+            </li>
+         </ul>
+         <div class="clearer"></div>
+    </div>
+    <footer> 
+        <div class="footerDiv clearfix">
+	      <a class="fr" href="#" onclick="return submitOrderHandler()">提交订单</a>
+          <div class="fl">
+              <p>
+                  <span class="price">总价：</span>
+        	      <span class="money">1 元</span>
+              </p>
+
+            <p>
+                <span class="price">代金券抵扣：</span>
+                <span class="money" id="sCouponValue">0 元</span>
+            </p>
+            <p>
+                <span class="price">积分抵扣：</span>
+                <span class="money" id="sPointValue">0 元</span>
+            </p>
+            <p>
+                <span class="price">应付金额：</span>
+                <span class="money" id="sTotalPrice">1 元</span>
+            </p>
+          </div>
+        </div>
+    </footer>
+    <div id="LoadingDiv" class="LoadingStyle" style="display:none;">
+        <img class="LoadingStyle" alt="" src="/XPMall/Content/images/Loading.gif">
+    </div>
+    <div class="MaskPanel"></div>
+    <div class="MaskContent" style="margin-left: -131px;">
+        <section class="section3">
+            <p class="b-Tel" style="text-align: center;"></p>
+            <div class="M-sure" style="text-align: center;">
+                <input onclick="closeMask();" type="button" class="inputFour" value="我知道了" style="display: none;" />
+            </div>
+        </section>
+    </div>
+    <input name="hidProductSysNo" id="hidProductSysNo" type="hidden" value="32810" />
+    <input name="hidIsKillEnable" id="hidIsKillEnable" type="hidden" value="1" />
+    <input name="hidCouponCode" id="hidCouponCode" type="hidden" value="StringNull" />
+    <input name="hidCouponValue" id="hidCouponValue" type="hidden" value="0" />
+    <input name="hidTotalPrice" id="hidTotalPrice" type="hidden" value="1" />
+    <input name="hidReceiveName" id="hidReceiveName" type="hidden" value="刘九平" />
+    <input name="hidReceiveMobile" id="hidReceiveMobile" type="hidden" value="18260269335" />
+    <input name="hidReceiveAreaSysNo" id="hidReceiveAreaSysNo" type="hidden" value="2086" />
+    <input name="hidReceiveAddress" id="hidReceiveAddress" type="hidden" value="滩头镇政府斜对面" />
+    <input name="hidAddressSysNo" id="hidAddressSysNo" type="hidden" value="167260" />
+    <input name="hidIsChange" id="hidIsChange" type="hidden" value="0" />
+    <input name="hidExchangeValue" id="hidExchangeValue" type="hidden" value="1100" />
+    <input name="hidPayExplainUrl" id="hidPayExplainUrl" type="hidden" value="https://pufa.soonwill.com/XPMall/Product/ActivityIndex?ActivitySysNo=2&amp;MType=2" />
+    <input name="hidPointAmt" id="hidPointAmt" type="hidden" value="0" />
+    <input name="hidPointPay" id="hidPointPay" type="hidden" value="0" />
+    <input name="hidMChange" id="hidMChange" type="hidden" value="0" />
+    <!--popLayer begin-->
+    <div class="popLayer_addr undis" id="payLayerAddr">
+        <div class="popTop_addr pr"><span class="pl10">选择收货地址</span><span class="addrCloseBtn pa "></span></div>
+        <div class="popCongt">
+        <ul class="addressUl">
+        </ul>
+        </div>
+        <div class="btnDiv">
+            <input type="button" class="addAddressBtn" id="btnSHGN" value="收货地址管理">
+        </div>
+    </div>
+    <!--popLayer end-->
+</body>
+</html>
+<script src="/XPMall/Scripts/dailySurprise.js" charset="utf-8"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".a-back").click(function () {
+            goback();
+        });
+        $("#btnSHGN").click(function () {
+            window.location = '/XPMall/Customer/AddressManage';
+        });
+        $("#changeAddr").bind('click', function () {
+        	 //popLayer("payLayerAddr");
+        	 var params = "?1=1";
+        	 $.ajax({
+        	     url: '/XPMall/Order/LoadAddressList' + params,
+                type: 'post',
+                dataType: "json",
+                beforeSend: function () {
+                },
+                complete: function () {
+                },
+                error: function (a, b, c) {
+                    var errorMsg = "出现JS异常，异常页面：" + window.location.href + ";错误信息：" + a.status + "_" + b + "_" + c;
+                    window.location = '/XPMall/Share/Error' + "?ErrorMsg=" + errorMsg;
+                },
+                success: function (data) {
+                    var jsonData = data;
+                    $("#payLayerAddr .addressUl").empty();
+                    if (jsonData.Code == 2) {
+                        showWaitingMask(jsonData.Message);
+                    } else {
+                        var Data = jsonData.Data;
+                        if (Data && Data.length) {
+                            $.each(Data, function (key, item) {
+                                EverAddr(item);
+                            })
+                        }
+                    }
+                }
+            });
+        });
+        $("#txtReceivePhone").blur(function () {
+            var ReceivePhone = $(this).val();
+            if (ReceivePhone) {
+                if (!checkMobilePhone($("#txtReceivePhone").val().trim())) {
+                    showWaitingMask("手机号码无效");
+                    $(this).focus();
+                }
+            }
+        });
+
+        $("#couponBtn").bind("click", function () {
+            if ($('#enterLayer').is(':visible') == true) {
+                $("#enterLayer").hide();
+            } else {
+                $("#enterLayer").show();
+            }
+            $("#giveUpLayer").hide();
+            
+        });
+        $("#useBtn").bind("click", function () {
+            var sCouponCode = $("#couponCode").val().trim();
+            if (!sCouponCode) {
+                showWaitingMask("请输入代金券");
+                return false;
+            }
+            if (sCouponCode.length != 10) {
+                showWaitingMask("代金券输入错误");
+                return false;
+            }
+            var params = "CouponCode=" + sCouponCode;
+            $.ajax({
+                url: '/XPMall/Order/CheckCoupon',
+                type: 'post',
+                dataType: "json",
+                data: params,
+                beforeSend: function () { $("#LoadingDiv").show(); },
+                complete: function () { $("#LoadingDiv").hide(); },
+                error: function (a, b, c) {
+                    var errorMsg = "出现JS异常，异常页面：" + window.location.href + ";错误信息：" + a.status + "_" + b + "_" + c;
+                    window.location = '/XPMall/Share/Error' + "?ErrorMsg=" + errorMsg;
+                },
+                success: function (data) {
+                    if (data && data.Code && data.Code == "-1") {
+                        showWaitingMask(data.Message);
+                    } else if (data && data.Code && data.Code == "0" && data.Message) {
+                        var mCPrice = data.Message;
+                        var mTotalSubValue = accAdd($("#hidPointAmt").val(), mCPrice);
+                        var mSubValue = Subtr($("#hidTotalPrice").val(), mTotalSubValue);
+                        if (parseFloat(mSubValue) < 0) {
+                            showWaitingMask("代金券可抵用" + mCPrice + "元;总的抵扣金额超过了订单应付金额 请重新填写积分抵扣金额");
+                            return false;
+                        }
+                        $("#couponBtn").unbind("click");
+                        $("#enterLayer").hide();
+                        $("#giveUpLayer").show();
+                        $("#hidCouponCode").val(sCouponCode);
+                        $("#hidCouponValue").val(data.Message);
+                        $("#sCouponValue").text($("#hidCouponValue").val() + " 元");
+                        var sTotalSubValue = accAdd($("#hidPointAmt").val(), $("#hidCouponValue").val());
+                        $("#sTotalPrice").text(Subtr($("#hidTotalPrice").val(), sTotalSubValue) + " 元");
+                        //alert(Subtr($("#hidTotalPrice").val(), $("#hidCouponValue").val()));
+                        //showWaitingMask(data.Message);
+                    }
+                }
+            })
+            
+        });
+        $("#giveUpBtn").bind("click", function () {
+            $("#giveUpLayer").hide();
+            $("#enterLayer").hide();
+            $("#couponBtn").bind("click", function () {
+                if ($('#enterLayer').is(':visible') == true) {
+                    $("#enterLayer").hide();
+                } else {
+                    $("#enterLayer").show();
+                }
+                $("#giveUpLayer").hide();
+            });
+            $("#hidCouponValue").val(0);
+            $("#hidCouponCode").val('StringNull');
+            $("#sCouponValue").text('0 元');
+            var sTotalSubValue = accAdd($("#hidPointAmt").val(), $("#hidCouponValue").val());
+            $("#sTotalPrice").text(Subtr($("#hidTotalPrice").val(), sTotalSubValue) + " 元");
+        });
+
+        $("#creditBtn").bind("click", function () {
+            if ($('#creditEnterLayer').is(':visible') == true) {
+                $("#creditEnterLayer").hide();
+            } else {
+                $("#creditEnterLayer").show();
+            }
+            $("#creditGiveUpLayer").hide();
+        });
+        $("#creditUseBtn").bind("click", function () {
+            var spointPrice = $("#pointPrice").val().trim();
+            if (!spointPrice) {
+                showWaitingMask("请输入抵扣金额");
+                return false;
+            }
+            if (CheckInt(spointPrice) == false) {
+                showWaitingMask("请输入1元的整倍数,单位:元");
+                return false;
+            }
+            spointPrice = parseInt(spointPrice);
+            if (spointPrice <= 0) {
+                showWaitingMask("抵扣金额必须大于0元");
+                return false;
+            }
+            var sExchangeValue = $("#hidExchangeValue").val().trim();
+            if (!sExchangeValue) {
+                showWaitingMask("积分抵扣有误1，请重新下单");
+                return false;
+            }
+            sExchangeValue = parseInt(sExchangeValue);
+            if (sExchangeValue <= 0) {
+                showWaitingMask("积分抵扣有误2，请重新下单");
+                return false;
+            }
+            var sPointAmt = spointPrice;
+            var sPointPay = spointPrice * sExchangeValue;
+            
+            var sTotalSubValue = accAdd(sPointAmt, $("#hidCouponValue").val());
+            var sTotalPrice = $("#hidTotalPrice").val();
+            if (sTotalPrice > 0 && sTotalPrice / 2 < sPointAmt && '50' != '100') {
+                showWaitingMask("抵扣金额最多为订单金额的50%，请重新输入抵扣金额");
+                return false;
+            }
+            var mCPrice = sPointAmt;
+            var mTotalSubValue = accAdd($("#hidCouponValue").val(), mCPrice);
+            var mSubValue = Subtr($("#hidTotalPrice").val(), mTotalSubValue);
+            if (parseFloat(mSubValue) < 0) {
+                showWaitingMask("积分抵扣可抵用" + mCPrice + "元;总的抵扣金额超过了订单应付金额 请重新填写积分抵扣金额");
+                return false;
+            }
+
+            $("#hidPointAmt").val(sPointAmt);
+            $("#hidPointPay").val(sPointPay);
+            $("#sPointValue").text($("#hidPointAmt").val() + " 元");
+
+            $("#sSYJF").text(sPointPay);
+            $("#sJFDK").text(sPointAmt);
+            $("#creditBtn").unbind("click");
+            $("#creditEnterLayer").hide();
+            $("#creditGiveUpLayer").show();
+            $("#sTotalPrice").text(Subtr($("#hidTotalPrice").val(), sTotalSubValue) + " 元");
+
+            
+        });
+        $("#creditUpBtn").bind("click", function () {
+            $("#creditEnterLayer").hide();
+            $("#creditGiveUpLayer").hide();
+            $("#creditBtn").bind("click", function () {
+                if ($('#creditEnterLayer').is(':visible') == true) {
+                    $("#creditEnterLayer").hide();
+                } else {
+                    $("#creditEnterLayer").show();
+                }
+                $("#creditGiveUpLayer").hide();
+            });
+            $("#hidPointAmt").val(0);
+            $("#hidPointPay").val(0);
+            $("#sSYJF").text(0);
+            $("#sJFDK").text(0);
+            $("#sPointValue").text("0 元");
+            var sTotalSubValue = accAdd($("#hidPointAmt").val(), $("#hidCouponValue").val());
+            $("#sTotalPrice").text(Subtr($("#hidTotalPrice").val(), sTotalSubValue) + " 元");
+        });
+
+        ///*JQuery 限制文本框只能输入数字*/
+        //$("#pointPrice").keyup(function () {
+        //    $(this).val($(this).val().replace(/\D|^0/g, ''));
+        //}).bind("paste", function () {  //CTR+V事件处理      
+        //    $(this).val($(this).val().replace(/\D|^0/g, ''));
+        //}).css("ime-mode", "disabled"); //CSS设置输入法不可用      
+
+        ///*JQuery 限制文本框只能输入数字和小数点*/
+        //$("#pointPrice").keyup(function () {
+        //    $(this).val($(this).val().replace(/[^0-9.]/g, ''));
+        //}).bind("paste", function () {  //CTR+V事件处理      
+        //    $(this).val($(this).val().replace(/[^0-9.]/g, ''));
+        //}).css("ime-mode", "disabled"); //CSS设置输入法不可用    
+
+        // 给文本框加个keypress，即键盘按下的时候判断
+        $("#pointPrice").keypress(function (event) {
+            if (!$.browser.mozilla) {
+                if (event.keyCode && (event.keyCode < 48 || event.keyCode > 57) && event.keyCode != 46) {
+                    // ie6,7,8,opera,chrome管用
+                    event.preventDefault();
+                }
+            } else {
+                if (event.charCode && (event.charCode < 48 || event.charCode > 57) && event.keyCode != 46) {
+                    // firefox管用
+                    event.preventDefault();
+                }
+            }
+        });
+        // 当文本框失去焦点的时候，检测输入的是否是数字
+        $("#pointPrice").blur(function () {
+            var input = $(this);
+            var v = $.trim(input.val());
+            var reg = new RegExp("^[0-9]+(.(([0-9]{2})|([0-9]{1})))?$", "g");
+            if (!reg.test(v)) {
+                showWaitingMask("抵扣金额必须大于0元且是1元的整倍数！");
+                input.val("0");
+            }
+        });
+    });
+
+    //显示收货地址
+    function EverAddr(item) {
+        var items;
+        items = "<li>";
+        items += "<p class=\"text\" style=\"font-size:15px; font-weight:bold;\">";
+        items += "<span>" + item.ReceiveName + ",</span><span>" + item.ReceiveMobile + "</span>";
+        items += "</p>";
+        items += "<div class=\"operate2 clearfix f14\">";
+        items += "<div class=\"fl w80per\" >" + item.Address + "</div>";
+        items += "<div class=\"fr  w20per\">";
+        items += "<input type=\"radio\" class=\"vm\" name='AA' sid='" + item.AddressSysNo + "' sname='" + item.ReturnValues + "' onclick='ChooseAddr(this)'>";
+        items += "</div></div>";
+        items += "</li>";
+        $("#payLayerAddr .addressUl").append(items);
+    }
+
+    function ChooseAddr(obj) {
+        var cK = $(obj);
+        var cReturnValues = cK.attr("sname");
+        if (!cReturnValues) {
+            showWaitingMask("收货地址出现异常,请重新选择收货地址");
+            return false;
+        }
+        var cRVS = cReturnValues.split("&|");
+        if (cRVS.length <= 0) {
+            showWaitingMask("收货地址出现异常,请重新选择收货地址");
+            return false;
+        }
+        $("#payLayerAddr").hide();
+        $("#bg").hide();
+        var MChange = cRVS[6];
+        if (MChange == '1') {
+            $("#hidIsChange").val(1);
+            $("#hidMChange").val(1);
+            $("#hidReceiveAreaSysNo").val('-999999');
+            $("#txtReceiveName").val(cRVS[1]);
+            $("#txtReceivePhone").val(cRVS[2]);
+            $("#txtReceiveAddress").val(cRVS[4]);
+
+            $("#mAddress").hide();
+            $("#mDetail").show();
+
+            var ul = document.getElementById("id_provSelect");
+            while (ul.hasChildNodes()) {
+                ul.removeChild(ul.lastChild);
+            }
+            var ul = document.getElementById("id_citySelect");
+            while (ul.hasChildNodes()) {
+                ul.removeChild(ul.lastChild);
+            }
+            var ul = document.getElementById("id_areaSelect");
+            while (ul.hasChildNodes()) {
+                ul.removeChild(ul.lastChild);
+            }
+            $("#id_provSelect").append("<option value=''>请选择省份</option>");
+            $("#id_citySelect").append("<option value=''>请选择城市</option>");
+            $("#id_areaSelect").append("<option value=''>请选择区域</option>");
+
+            var paras = "?isAreaType=1";
+            $.ajax({
+                url: '/XPMall/Order/LoadAreaList' + paras,
+                type: "post",
+                dataType: "json",
+                error: function (a, b, c) {
+                    var errorMsg = "出现JS异常，异常页面：" + window.location.href + ";错误信息：" + a.status + "_" + b + "_" + c;
+                    window.location = '/XPMall/Share/Error' + "?ErrorMsg=" + errorMsg;
+                },
+                success: function (data) {
+                    var jsonData = data;
+                    var Data = jsonData.Data;
+                    if (jsonData.Code == 1 || jsonData.Code == -1) {
+                        showWaitingMask(jsonData.Message);
+                    } else {
+                        for (var i = 0; i < Data.length; i++) {
+                            $("#id_provSelect").append("<option value='" + Data[i].SysNo + "'>" + Data[i].ProvinceName + "</option>");
+                        }
+                    }
+                }
+            })
+
+        } else {
+            $("#hidIsChange").val(0);
+            $("#hidMChange").val(0);
+            $("#hidReceiveAreaSysNo").val(cRVS[3]);
+            $("#pReceiveName").text('收货人：' + cRVS[1]);
+            $("#pReceiveMobile").text(',' + cRVS[2]);
+            $("#pAddr").text('收货地址：' + cRVS[5]);
+            $("#mAddress").show();
+            $("#mDetail").hide();
+        }
+        $("#hidAddressSysNo").val(cRVS[0]);
+        $("#hidReceiveName").val(cRVS[1]);
+        $("#hidReceiveMobile").val(cRVS[2]);
+        $("#hidReceiveAddress").val(cRVS[4]);
+    }
+
+    function goback() {
+        var isKillEnable = $("#hidIsKillEnable").val();
+        if (isKillEnable == '1') {
+            var productSysNo = $("#hidProductSysNo").val();
+            var paras = "?ProductSysNo=" + productSysNo;
+            $.ajax({
+                url: '/XPMall/Product/MinusKillCount' + paras,
+                type: 'post',
+                dataType: "json",
+                beforeSend: function () {
+                    //提示加载
+                    $("#LoadingDiv").show();
+                },
+                complete: function () {
+                    $("#LoadingDiv").hide();
+                },
+                error: function (a, b, c) {
+                    var errorMsg = "出现JS异常，异常页面：" + window.location.href + ";错误信息：" + a.status + "_" + b + "_" + c;
+                    window.location = '/XPMall/Share/Error' + "?ErrorMsg=" + errorMsg;
+                },
+                success: function (data) {
+                    
+                }
+            });
+        }
+        var params = "?ProductSysNo=" + $("#hidProductSysNo").val();
+        window.location = '/XPMall/Product/ProductDetail' + params;
+    }
+
+    function checkCustomerInfo() {
+        var iIsChange = $.trim($("#hidIsChange").val());
+        if (iIsChange == 1) {
+            if (!$("#txtReceivePhone").val().trim()) {
+                showWaitingMask("收货人手机不能为空");
+                return false;
+            }
+            if (!checkMobilePhone($("#txtReceivePhone").val().trim())) {
+                showWaitingMask("手机号码无效");
+                return false;
+            }
+            if (!$("#txtReceiveName").val().trim()) {
+                showWaitingMask("收货人姓名不能为空");
+                return false;
+            }
+            if (!$("#id_provSelect").val().trim() || !$("#id_citySelect").val().trim() || !$("#id_areaSelect").val().trim()) {
+                showWaitingMask("请选择收货人地址");
+                return false;
+            }
+            if (!$("#txtReceiveAddress").val().trim()) {
+                showWaitingMask("收货人详细地址不能为空");
+                return false;
+            }
+        }
+        else {
+            if (!$("#hidAddressSysNo").val().trim() || !$("#hidReceiveAreaSysNo").val().trim()) {
+                showWaitingMask("请选择收货地址");
+                return false;
+            }
+            if (!$("#hidReceiveMobile").val().trim()) {
+                showWaitingMask("收货人手机不能为空,请重新选择收货地址");
+                return false;
+            }
+            if (!checkMobilePhone($("#hidReceiveMobile").val().trim())) {
+                showWaitingMask("手机号码无效,请重新选择收货地址");
+                return false;
+            }
+            if (!$("#hidReceiveName").val().trim()) {
+                showWaitingMask("收货人姓名不能为空,请重新选择收货地址");
+                return false;
+            }
+            if (!$("#hidReceiveAddress").val().trim()) {
+                showWaitingMask("收货人详细地址不能为空,请重新选择收货地址");
+                return false;
+            }
+        }
+        if (!$("#txtValidateCode").val().trim()) {
+            showWaitingMask("验证码不能为空");
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 检查输入的手机号码格式是否正确
+     * 输入:str  字符串
+     * 返回:true 或 flase; true表示格式正确
+     */
+    function checkMobilePhone(str) {
+        //if (str.match(/^(?:1[358]\d)-?\d{5}(\d{3}|\*{3})$/) == null) {
+        //    return false;
+        //}
+        //else {
+        //    return true;
+        //}
+        var re = /^1\d{10}$/;
+        if (re.test(str)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //判断是为否为正整数
+    function CheckInt(str) {
+        var re = /^\+?[1-9][0-9]*$/;
+        if (!re.test(str)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function submitOrderHandler() {
+        if (!checkCustomerInfo()) {
+            return false;
+        } else {
+            var param = '';
+            var iIsChange = $.trim($("#hidIsChange").val());
+            if (iIsChange == 1) {
+                var HMChange = $("#hidMChange").val().trim();
+                var HAddressSysNo = 'StringNull';
+                if (HMChange == '1') {
+                    HAddressSysNo = $("#hidAddressSysNo").val().trim();
+                }
+                var ReceiveName = $("#txtReceiveName").val().trim();
+                var ReceivePhone = $("#txtReceivePhone").val().trim();
+                var ReceiveAreaSysNo = $("#id_areaSelect").val().trim();
+                var ReceiveAddress = $("#txtReceiveAddress").val().trim();
+                var CustomerNote = $("#txtCustomerNote").val().trim();
+                var ValidateCode = $("#txtValidateCode").val().trim();
+                var CouponCode = $("#hidCouponCode").val().trim();
+                var PointPay = $("#hidPointPay").val().trim();
+                var PointAmt = $("#hidPointAmt").val().trim();
+                param = "ReceiveName=" + ReceiveName + "&ReceivePhone=" + ReceivePhone + "&ReceiveAddress=" + ReceiveAddress + "&CustomerNote=" + CustomerNote + "&ValidateCode=" + ValidateCode + "&CouponCode=" + CouponCode + "&ReceiveAreaSysNo=" + ReceiveAreaSysNo + "&IsChange=1&PointPay=" + PointPay + "&PointAmt=" + PointAmt + "&HAddressSysNo=" + HAddressSysNo;
+            } else {
+                var ReceiveName = $("#hidReceiveName").val().trim();
+                var ReceivePhone = $("#hidReceiveMobile").val().trim();
+                var ReceiveAddress = $("#hidReceiveAddress").val().trim();
+                var CustomerNote = $("#txtCustomerNote").val().trim();
+                var ValidateCode = $("#txtValidateCode").val().trim();
+                var CouponCode = $("#hidCouponCode").val().trim();
+                var ReceiveAreaSysNo = $("#hidReceiveAreaSysNo").val().trim();
+                var PointPay = $("#hidPointPay").val().trim();
+                var PointAmt = $("#hidPointAmt").val().trim();
+                param = "ReceiveName=" + ReceiveName + "&ReceivePhone=" + ReceivePhone + "&ReceiveAddress=" + ReceiveAddress + "&CustomerNote=" + CustomerNote + "&ValidateCode=" + ValidateCode + "&CouponCode=" + CouponCode + "&ReceiveAreaSysNo=" + ReceiveAreaSysNo + "&IsChange=0&PointPay=" + PointPay + "&PointAmt=" + PointAmt + "&HAddressSysNo=StringNull";
+            }
+            $.ajax({
+                url: '/XPMall/Order/CreateAndPayOrder',
+                type: "post",
+                datatype: "json",
+                data: param,
+                beforeSend: function () { $("#LoadingDiv").show(); },
+                complete: function () { $("#LoadingDiv").hide(); },
+                error: function (a, b, c) {
+                    var errorMsg = "出现JS异常，异常页面：" + window.location.href + ";错误信息：" + a.status + "_" + b + "_" + c;
+                    window.location = '/XPMall/Share/Error' + "?ErrorMsg=" + errorMsg;
+                },
+                success: function (data) {
+                    if (data && data.Code && data.Code == "-1") {
+                        //showWaitingMask(data.Message);
+                        showWaitingMask(data.Message);
+                        $("#imgVerify").click();
+                    }
+                    else if (data && data.Code && data.Code == "0" && data.PayUri) {
+                        var isKillEnable = $("#hidIsKillEnable").val();
+                        if (isKillEnable == '1') {
+                            var productSysNo = $("#hidProductSysNo").val();
+                            var paras = "?ProductSysNo=" + productSysNo;
+                            $.ajax({
+                                url: '/XPMall/Product/MinusKillCount' + paras,
+                                type: 'post',
+                                dataType: "json",
+                                beforeSend: function () {
+                                    //提示加载
+                                    $("#LoadingDiv").show();
+                                },
+                                complete: function () {
+                                    $("#LoadingDiv").hide();
+                                },
+                                error: function (a, b, c) {
+                                    var errorMsg = "出现JS异常，异常页面：" + window.location.href + ";错误信息：" + a.status + "_" + b + "_" + c;
+                                    window.location = '/XPMall/Share/Error' + "?ErrorMsg=" + errorMsg;
+                                },
+                                success: function (data) {
+
+                                }
+                            });
+                        }
+                        window.location = data.PayUri;
+                        //showWaitingMask();
+                    }
+                }
+            })
+        }
+    }
+
+    function showWaitingMask(errorMsg) {
+        var panel = $(".MaskPanel");
+        var content = $(".MaskContent");
+        if (errorMsg) {
+            content.find("P").text(errorMsg)
+            content.find("input[type=button]").show();
+        }
+        panel.css("height", document.body.scrollHeight);
+        panel.css("width", document.body.scrollWidth);
+        panel.show();
+        content.show();
+    }
+
+    function closeMask() {
+        $(".MaskPanel").hide();
+        $(".MaskContent").hide();
+    }
+
+    //除法函数，用来得到精确的除法结果
+    //说明：javascript的除法结果会有误差，在两个浮点数相除的时候会比较明显。这个函数返回较为精确的除法结果。
+    //调用：accDiv(arg1,arg2)
+    //返回值：arg1除以arg2的精确结果
+    function accDiv(arg1, arg2) {
+        var t1 = 0, t2 = 0, r1, r2;
+        try { t1 = arg1.toString().split(".")[1].length } catch (e) { }
+        try { t2 = arg2.toString().split(".")[1].length } catch (e) { }
+        with (Math) {
+            r1 = Number(arg1.toString().replace(".", ""))
+            r2 = Number(arg2.toString().replace(".", ""))
+            return (r1 / r2) * pow(10, t2 - t1);
+        }
+    }
+
+    //乘法函数，用来得到精确的乘法结果
+    //说明：javascript的乘法结果会有误差，在两个浮点数相乘的时候会比较明显。这个函数返回较为精确的乘法结果。
+    //调用：accMul(arg1,arg2)
+    //返回值：arg1乘以arg2的精确结果
+    function accMul(arg1, arg2) {
+        var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
+        try { m += s1.split(".")[1].length } catch (e) { }
+        try { m += s2.split(".")[1].length } catch (e) { }
+        return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
+    }
+
+    //加法函数，用来得到精确的加法结果
+    //说明：javascript的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的加法结果。
+    //调用：accAdd(arg1,arg2)
+    //返回值：arg1加上arg2的精确结果
+    function accAdd(arg1, arg2) {
+        var r1, r2, m;
+        try { r1 = arg1.toString().split(".")[1].length } catch (e) { r1 = 0 }
+        try { r2 = arg2.toString().split(".")[1].length } catch (e) { r2 = 0 }
+        m = Math.pow(10, Math.max(r1, r2))
+        return (arg1 * m + arg2 * m) / m
+    }
+
+    //减法函数，用来得到精确的减法结果
+    function Subtr(arg1, arg2) {
+        var r1, r2, m, n;
+        try { r1 = arg1.toString().split(".")[1].length } catch (e) { r1 = 0 }
+        try { r2 = arg2.toString().split(".")[1].length } catch (e) { r2 = 0 }
+        m = Math.pow(10, Math.max(r1, r2));
+        //last modify by deeka
+        //动态控制精度长度
+        n = (r1 >= r2) ? r1 : r2;
+        return ((arg1 * m - arg2 * m) / m).toFixed(n);
+    }
+</script>

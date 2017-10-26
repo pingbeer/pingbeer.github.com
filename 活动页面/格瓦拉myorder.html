@@ -1,0 +1,1304 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" http-equiv="Content-Type" />
+	<meta http-equiv="Cache-Control" content="no-cache"></meta>
+	<title>我的订单</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="keywords" content="电影，看电影，热门电影，热映电影，电影预告，预告片，电影排片，电影购票，格瓦拉电影，网上订电影票，网上订票，电影票，网购电影票,订电影票,电影票网,电影票预定,预订电影票,在线订电影票,上海电影票,电影票网站,电影订票,订购电影票，上海电影，上海电影票，上海，电影排片" />
+	<meta name="description" content="格瓦拉在线查询电影院最新上映电影排片表、票价及影讯，供你在线订电影票，在线选座。更有特价电影票抢购中" />
+	<link href="https://static5.gewara.com/css/touch.css?v=2017042118" rel="stylesheet" type="text/css" />
+	<link href="https://static5.gewara.com/css/swiper.css?v=2017042118" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="https://static5.gewara.com/scripts/gewara.js?n=mobile,passingApp,iscroll,swiper,touchIndex&v=2017042118""></script>
+	<style type="text/css">
+		html{background-color: #f6f7f8;}
+		body{padding:0;margin:0;background-color: #f6f7f8;font-family: "Microsoft YaHei";-webkit-backface-visibility: hidden;font-size: 0.37rem;overflow-x: hidden;position: relative;}
+		div{box-sizing: border-box !important;}
+		/*span{box-sizing: border-box;display: block;}*/
+		p{box-sizing: border-box;}
+		img{display: block;}
+		input{box-sizing: border-box;padding:0;}
+		a{text-decoration: none;display: block;box-sizing: border-box;}
+		.absolute{position: absolute;}
+		.relative{position: relative;}
+		.bda{border:1px solid red;}
+		.wd-100{width: 100%;}
+		.text-center{text-align: center;}
+		.box-center{margin:0 auto;}
+		.clearfix{clear:both;zoom:1;overflow: hidden;}
+		.fl{float: left;}
+		.fr{float: right;}
+		.block{display: block;}
+		.white{color:white;}
+		.font12{font-size: 0.32rem;}
+		.font18{font-size: 0.45rem;}
+		.right-0{right:0;}
+		.top-0{top:0;}
+		.left-0{left:0;}
+		.top-50{top:50%;}
+		.in_block{display: inline-block;vertical-align: middle;}
+		.proBlock{border:1px solid #e5e5e5;background-color: #ffffff;padding:0.4rem 0.4rem 0.27rem 0.4rem;margin-top: 0.27rem;border-radius: 0.11rem;}
+		.ph-sm{padding:0 0.13rem;}
+		.ph{padding: 0 0.27rem;}
+		.title{margin-bottom: 0.4rem;}
+		.pro_con{padding-bottom:0.4rem;border-bottom:0.03rem dashed #e6e6e6;}
+		.font13{font-size: 0.35rem;}
+		.btn_size{width:2.0rem;height:0.8rem;line-height: 0.85rem;text-align: center;font-size: 0.32rem;border-radius:0.13rem;}
+		.mt{margin-top: 0.27rem;}
+		.mr{margin-right: 0.27rem}
+		.cl_999{color:#999999;}
+		.pay_btn{border:0.03rem solid #e1e1e1;}
+		.pr-sm{padding-right: 0.13rem;}
+		.img_size{width:2.0rem;height:2.67rem;}
+		.pro_name{font-size:0.4rem;color:#222222;margin-top:-0.14rem;}
+		.delay_btn{background-color:#ff5200;color:white;}
+		.cl_ff770f{color:#ff770f;}
+		.cl_ff5200{color:#ff5200;}
+		*{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+		.mb-sm{margin-bottom:0.08rem;}
+		.tip{background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAkCAMAAAA0AnPTAAABFFBMVEX///////z8////UwD+///9//3//v/+UwD/UgD8//38VAD9VQD+XAz+ci3/tZH+YhP+UQD/+/n/+/f/8Of/7OD/59r+so7/r4f+fT3/fDv+aR///vz/+fP++PD/4tD/zbP/x63/w6b/nm3/kVr/gUX+ZBf/8uv/49L/28v+nGj+kl3/jVP+ayX+Zh3/XxT/XhD/WQn/VgP+9e3+7uP+6d3+38393Mf/1cD+ya//wJ/+vZr/uZT/rYP/qn/+pHb/mWj+mGP/jlb/eDj+djX+VwP//fn/8On/5Nf/38//18T/1L7/0rn/zbb+xKT/waL/pnv+oHD/ilD/dDH+cCr+biX+9Oj86eD+xqj/tIz+qID6iU7+h0oFulRtAAADAklEQVQ4y01ThZIrQQhkYGwt7snFc+7u/tzd/v8/HszmhNRO1WSgaaABA8oojaChCy/eFMZrf9fGhTdlo1BFAAqCGUANcjuapBQnfif23qeTI0SrQSGIcQA74HIrKVF2VTg+Hp5dZeR8+zBij+CDEPFZHhMVL/bFX/DN/p+iT8ZlUArmZqq3budyQSAFlHOj7V1SfFcFVDbPVl2nzmHA1CAU8mO5k6y/VJKNQ3vfkmxR4BhDKyUsxAdfZpQtKI7jb1Ja/wFgOY01DIXA+MpooxbXaYKB+NCndcs1ILdJXivNtUYXLCDiq5SGzAcrG64g1UM079q1j+k0MqHAgt+oAOhTl1kTqOeM7ZYn/xkQUNhl7oyfMhrx3UpjTCAzde5+mZ2RKZoRZQr68WZZikCLVtARqs1PSzA3rYvUh0ZyjUrxBUMusIcn77uI5sFp1TXgi/+QdzY0CH91EnIrCh5tlHyBb64vCYwNJK9uM1+ir+bJZ4m+w1a8AKFMqf/sa+VfTPENPNmu34Idyh0iZmM79RpRyR/js3n7e0iprLTlTJZ/r9Qn56lYfsbnhd+Gmd8LfCMrQqoUKYkvn8HAnp9Byx3lQgza/eico7rKBYJyvI1bsOKbRiNHykjxlmfVjiBSFlGilGrGKzBMWgHBWmb+rkQUn6rXbxFCW7XRbRrCwjb9VGjAyLFGzqe9g1k9wvne1Cjl3qy6z0H3BhA2vaPvo4138owgkhonq1xMn7ZrQWtodadEieu81kzPRAHmnpZEMBOaimSNBnOy4zbOK9LQoG7TndIqihiqRXcelhkQa3VpjWgwTPDcFaviovA9JR8fXjhK6Kqw4CeUDIJAVGQKlPy2YR1QgnT4lG5QqQDBkBGaCd0sgmYi0phcT4s35JqQW9iJ0bbbbPR0uEuDTa+xSekHC7mSIrCosT4l2loZ7ILisncH16mLp/uPszWYZxy0Yx7W7K51N/NErj0I8Y8mG4Gmu3TR4nCKk7R90Q8rEs2B5kWzycLvHSwf1GTNUEdq/v9/jRA3yyUXgtgAAAAASUVORK5CYII=') no-repeat;background-size: 18px 18px;width:18px;height:18px;margin:10px 8px 0 0;}
+		.wd-74{width:74%;}
+		.mb-px-19{margin-top:0.19rem;}
+		.eptOrder_img{width:30%;margin-top:2.67rem;}
+		.mt-sm-p{margin-top: -0.13rem;}
+		.pl{padding-left: 0.27rem;}
+		.txtOverflow{width:3.1rem;display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+		.mt-px-8{margin-top: 0.21rem;}
+		.mt-px-5{margin-top: 0.13rem;}
+		.wd-33{width:33%;}
+		.wd-34{width:34%;}
+		.txt_deco{text-shadow: 1px 1px 1px #fff;}
+		.nav_unselect{color:#999999;height:42px;}
+		.nav_select{color:#ff770f !important;height:42px;}
+		.nav_select:after{content:"...";position: absolute;bottom:0;left:50%;margin-left:-25px;height:0;width:50px;border-top:2px solid #ff770f;}
+		.nav_block{height:44px;line-height:44px;background-color:white;font-size:17px;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;position:relative;}
+		.bottom-0{bottom:0;}
+		.pro_hg{height:2.67rem;}
+		.pro_boto{margin-bottom:-0.2rem;}
+		.pro_bott{margin-bottom:0.33rem;}
+		.pro_both{margin-bottom:0.9rem;}
+		.ml{margin-left:0.27rem;}
+		.swiper-slide:nth-of-type(2){width:60px;padding-left:10px;right:-60px;height:100%;position:absolute;}
+		.swiper-slide:nth-of-type(2) a{display:block;width:100%;height:100%;}
+		.swiper-slide:nth-of-type(2) a.dispose .disposeTxt{position:absolute;top:50%;left:50%;height:33px;width:33px;margin:-15px 0 0 -10px;}
+		.icon_del{background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAABCCAMAAADUivDaAAAAgVBMVEUAAAD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/UgD/////XRD/9fD/czD/39D/k2D/v6D/qYD/fUD/aCD/ybD/6uD/nnD/iFD/tJD/1MCkQOfHAAAAGnRSTlMAnPrkiSPPHeHo8e1RLgywjQhZCkhENlrdruQF4DQAAAH0SURBVFjDrdjdeqIwEAbgIQnhRxFE2+5+oahodXfv/wK3cFCkZRIgvAc+6kEeMjOZJBArLNVvLVMglTpXZUgzvQQS38jghSaLVIxRUkU0RRgIsETgntBOCViJYkdWWwknuSXePsAkwZ4No8ZEmglrlmCyJKMRrxvMsHkdeYYUs6TZjzhIzCS/xeOgMZs+0LMACwSDisIi26eqllhE9rWusFDxtTYFFhLhMJYeEY0EFhORKxJuqlvhCTwk7bo/YsyjaWo8q5vmjBFHNphXY04VetW7ea+5gDLd+vw5xtMIJ2POGBMThWD8Neby9eODGwEIqQTnYkzTf72AUbIp7R++m9SHJa05bGN0IfzThZaTkwav/kzDrf28V2BpimEbw5jTrUsnLyF73z6b1tXah0nAqjFtTK1cQ1xMm1ob4ZjIw5i74zE21nB2BVGd7MGI7UntCqK6W1OiKbeXRQU4CiMn5SpOV3kqKt1LxL5ISgot6XwA7qUaEsX2dtE3jAfXcijg0vmPmdZQMNJ+mQByq+3IbQL19XrD0K3/a7gJ+G9F/hui/7a83uGACixUrHBQ8j+u+R8a1z66UphgpiTyP8aveZnoZTEmi7MVLlaMfTExmwf/S6bVrvC56vpfuHuRkuy1f/2XD3bhm8q1TCE2v3Su3vgJ/Adxy1krG7K5owAAAABJRU5ErkJggg==") no-repeat top center;background-size:33px 33px;width:33px;height:33px;}
+		.appEnv{height:44px;line-height:44px;background-color:white;font-size:17px;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;position:fixed;top:0;left:0;width:100%;z-index:1;visibility: hidden;}
+		.btn_size_mall{text-align: center;font-size: 0.32rem;border-radius:0.13rem;padding:0 0.27rem;height: 0.93rem;line-height: 0.93rem;}
+		.eptOrder_btn{width:3.2rem;height:0.93rem;line-height:0.93rem;font-size:0.37rem;background-color:#f36d39;border-radius:0.27rem;color:white;margin-top: 0.27rem;}
+		.pt {padding-top: 0.27rem;}
+		
+		.self_linkMore, .self_loading {
+		    border: 1px solid #ddd;
+		    background: #f9f9f9;
+		    color: #5f5f5f;
+		    display: block;
+		    border-radius: 3px;
+		    text-align: center;
+		    font-size: 14px;
+		    padding:5px;
+		}
+		#pullContainer{
+			height:40px;margin: 10px auto 20px;padding:0 10px;
+		}
+
+		.loadAnimo{
+			width:0.4rem;height:0.4rem;border-radius:50%;border:2px dotted #f26522;
+			animation:loadAnimo 2s ease-in 0s infinite ;
+			-webkit-animation:loadAnimo 2s ease-in 0s infinite;
+		}
+
+		@keyframes loadAnimo
+		{
+			0% {transform: rotate(0deg) scale(1.0);}
+			50% {transform: rotate(360deg) scale(1.1);}
+			100% {transform: rotate(720deg) scale(1.0);}
+		}
+
+		@-webkit-keyframes loadAnimo /*Safari and Chrome*/
+		{
+			0% {transform: rotate(0deg);}
+			100% {transform: rotate(360deg);}
+		}
+
+
+	</style>
+	<style type="text/css">
+html,body{background:#f3f3f3;}
+/*图文布局*/
+.ui_media,.ui_text{overflow:hidden; *overflow:visible; zoom:1;}
+.ui_media .ui_pic img,.ui_media .ui_picR img{display:block;}
+.ui_media .ui_pic{margin-right:10px; float:left;}
+.ui_media .ui_picR{margin-left:10px; float:ridetailContentght;}
+.ui_media .ui_media{margin-top:10px; color:#666;}
+
+ul li img{vertical-align:middle;}
+h2,h3,h4{display:block;}
+
+/*download*/
+.d_pic{background:url(https://static5.gewara.com/css/wap/info/mvo5.png?v=4564) no-repeat 0 0;}
+.doanT{padding:20px 5%;background:#fdf9f3;}
+.doanT .ui_pic{width:70px;height:70px;background-position:-2px -4px;background-size:328px;}
+.doanT .ui_text{color:#5f5f5f;font-size:14px;}
+.doanT .ui_text h2{font-size:20px;color:#000;display:block;margin:4px 0 0;}
+.doanT .down_a{padding:10px 0 0;}
+.doanT .down_a a{display:block;float:left;width:30%;padding:5px 5% 5px 10%;color:#fff;font-size:14px;background-color:#f26522;border-radius:5px;border-bottom:3px solid #e0580f;text-align:right;background-size:287px auto;}
+.doanT .down_a a:nth-child(1){margin-right:10%;background-position:-4px -72px;}
+.doanT .down_a a:nth-child(2){background-position:-4px -140px;}
+.downM{padding-bottom:40px;}
+.alink{text-align:center;height:50px;line-height:50px;background:#fdf9f3;position:fixed;bottom:0;left:0;width:100%;}
+.alink a{font-size:16px;color:#f26522;text-decoration:underline;}
+
+/*qa*/
+.qa .qa_hd{background-color:#f8f9f8;text-align:center;font-size:24px;color:#000;padding:15px 5%;background-position:10px -115px;background-size:210px;}
+.qa .qa_bd{padding:15px 5%;background:#f3f3f3;border-top:1px solid #b2b2b2;color:#1d2322;}
+.qa .qa_bd h2{font-size:16px;margin:0 0 5px;}
+.qa .qa_bd .bor{border-top:1px dashed #d5d5d5;}
+.qa .qa_bd dl{margin-top:15px;}
+.qa .qa_bd dl dt{font-size:14px;color:#1d2322;}
+.qa .qa_bd dl dd{color:#9a9a9a;margin-top:7px;line-height:18px; font-size:12px;}
+.qa .qa_bd dl dt span{padding:3px 0px;color:#fff;border-radius:2px;margin:0 10px 0 0; width:60px; display:inline-block; text-align:center;}
+.qa .qa_bd dl dt span.orane{background:#f09336;}
+.qa .qa_bd dl dt span.blue{background:#5bcaf2;}
+.qa .qa_bd dl dt span.gren{background:#29a48d;}
+.qa .qa_bd dl dt span.iM{background:#235da3;}
+.qa .qa_bd .bd1{background-position:-16px -278px;padding:10px 0 10px 60px;background-size:350px;font-size:16px;}
+.qa .qa_bd .bd2{padding-bottom:15px;}
+.qa .qa_bd .bd3{padding-top:15px;}
+.qa .qa_bd .bd2 p{line-height:21px;}
+.qainfo .qa_bd .bd2 p{color:#9A9A9A; font-size:12px;}
+.qa .qa_bd .bd2 p span{color:#5f5f5f;}
+.qa .qa_bd .bd3 ul li{padding-top:5px;}
+.qa .qa_bd .bd3 ul.list li{list-style:square inside none;}
+.qa .qa_bd .bd3 ul li ul{text-indent: 1em;}
+.qa .qa_bd .bd3 ul li,.qainfo .qa_bd .bd3 ul li a{color:#5f5f5f;}
+
+/*开发团队*/
+.teamBox{padding:15px 10px;}
+.teamBox p{line-height:20px; padding-bottom:15px;}
+.teamName{font-size:16px; font-weight:bold; margin-top:15px;}
+.teamBox li{width:50%; float:left; margin-bottom:20px;}
+.teamBox dl{width:100%;}
+.teamBox dt{width:50px; height:50px; float:left;}
+.teamBox dt img{border-radius:50%;}
+.teamBox dd{width:auto; float:left; height:34px; padding:4px 5px;}
+.teamBox dd h2{font-size:16px; font-weight:bold; color:#333; line-height:24px;}
+.teamBox dd h2.spe{color:#f60;}
+.teamBox dd p{font-size:12px; color:#999; line-height:18px;}
+
+
+/* 支付失败 */
+	#failureWrap{}
+	#back{width:100%;height:50px;line-height:50px;text-align:center;font-size:18px;border-bottom:1px solid #E8E8E8;position:relative;}
+	#back a#backIcon{width:10%;height:50px;position:absolute;left:0;top:0;line-height:50px;}
+	#back a#backIcon img{padding-top:12px;}
+	#failureContent{width:100%;height:100%;}
+	#failureContent .failureImg{width:40%;text-align:center;overflow:hidden;padding:30px 30% 15px 30%;}
+	#failureContent .failureImg img{}
+	#failureContent .failureMessage{width:100%;text-align:center;}
+	#failureContent .failureMessage h2{font-size:21px;color:#222;font-family:"黑体";}
+	#failureContent .failureMessage p{font-size:12px;color:#999;font-family:"黑体";padding-top:10px;}
+	#failureContent .failuerBtn{margin-top:56px;text-align:center;}
+	#failureContent .failuerBtn button{width:46%;height:44px;color:#fff;background: #FF770F;border-radius:6px;font-size:15px;}
+	
+/* 支付成功 */	
+    #successWrap{background:#fff;overflow:hidden;}
+	#back{width:100%;height:50px;line-height:50px;text-align:center;font-size:18px;border-bottom:1px solid #E8E8E8;position:relative;}
+	#back a#backIcon{width:10%;height:50px;position:absolute;left:0;top:0;line-height:50px;}
+	#back a#backIcon img{padding-top:12px;}
+	#successContent{width:100%;height:100%;}
+	#successContent .successImg{width:40%;text-align:center;overflow:hidden;padding:30px 30% 15px 30%;}
+	#successContent .successImg img{}
+	#successContent .successMessage{width:100%;text-align:center;}
+	#successContent .successMessage h2{font-size:21px;color:#222;font-family:"黑体";}
+	#successContent .successMessage p{font-size:12px;color:#999;font-family:"黑体";padding-top:10px;}
+	#successContent .successMessage .payMoney{display:block;width:100%;text-align:center;font-size:11px;margin:15px 0 5px 0;}
+	#successContent .successMessage .integral{display:block;width:100%;text-align:center;font-size:11px;margin-bottom:12px;}
+	#successContent .successMessage .payMoney em{font-style:normal;font-weight:bold;font-size:20px;font-family: AvenirNext-Medium;color: #FF770F;letter-spacing: 0;}
+	#successContent .successMessage .integral em{color: #FF770F;font-style:normal;}
+	#successContent .orderDetail{padding:30px 5% 0 6%;width:89%;overflow:hidden;}
+    #successContent .orderDetail .orderTitle{white-space:normal;font-family: PingFangSC-Regular;
+           font-size: 15px;color: #222;letter-spacing:0;line-height:25px;margin-bottom:10px;}
+    #successContent .orderDetail .biaoti{font-family: PingFangSC-Regular;font-size: 10px;color: #999999;letter-spacing: 0;line-height: 20px;}
+	#successContent .orderDetail .neiron{font-family: PingFangSC-Regular;font-size: 13px;color: #222222;line-height: 28px;}
+	#successContent .orderDetail .neiron span{margin-right:3%;}
+	#successContent .successBtn{padding:30px 0;text-align:center;background:#fff;}
+	#successContent .successBtn button{width:46%;height:44px;color:#fff;background: #FF770F;border-radius:6px;font-size:15px;}
+	#successContent .follow{width:100%;overflow:hidden;background:#fff;}
+	#successContent .follow h2{width:100%;text-align:center;height:60px;line-height:60px;font-family: .PingFangSC-Regular;
+       font-size: 14px;color: #222222;letter-spacing: 0;}
+	#successContent .follow h2.followTitle span{width:5%;height:1px;background:#E8E8E8;display:inline-block;margin-bottom:5px;}
+	
+/* 订单列表 */	
+    #orderList{}
+	#orderList .myOrderList{overflow:hidden;width:100%;}
+	#orderList .myOrderList li{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;margin-top: 10px;}
+	#orderList .myOrderList li .order_title{height:40px;line-height:35px;}
+	#orderList .myOrderList li .order_title span{font-family: .PingFangSC-Regular;font-size: 13px;color: #999999;letter-spacing: 0;}
+	#orderList .myOrderList li .order_title .orderStaus{float:right;font-family: .PingFangSC-Regular;color: #FF770F;}
+	#orderList .myOrderList li .order_cont{overflow:hidden;padding-bottom:10px;border-bottom:1px dashed #e8e8e8 !important;}
+	#orderList .myOrderList li .order_cont .orderImg{float:left;margin-right:10px;}
+	#orderList .myOrderList li .order_cont .orderImg .defate{display:inline-block;overflow:hidden;}
+	#orderList .myOrderList li .order_cont .orderImg .defate img{width:90px;height:120px;}
+	#orderList .myOrderList li .order_cont .orderMess{margin-left:100px;}
+	#orderList .myOrderList li .order_cont .orderMess .dramaInfo{display:inline-block;}
+	#orderList .myOrderList li .orderBtn{height:40px;line-height:50px !important;text-align:right;}
+	#orderList .myOrderList li .orderBtn a{border: 1px solid #E1E1E1;border-radius:4px;height:30px;width:27%;background:#fff;
+	color:#999;display:inline-block;line-height:30px;text-align:center;}
+	#orderList .myOrderList li .orderBtn a.payMoney{background: #FF770F;border:0;color:#fff;display:inline-block;}
+	/* 模态弹窗样式 */
+	#motail{position: fixed;z-index: 9998;top: 0px;bottom: 0px;right: 0px;left: 0px;pointer-events: auto;background: rgba(0, 0, 0, 0.6);display:none;}
+	#tanQun,#tanQun2{width:60%;z-index:9999;overflow:hidden;padding:20px 5%;left:50%;margin-left:-35%;top:140px;border-radius:6px;background:#fff;opacity: 1;
+	transform: scale(1);position:absolute;display:none;}
+	#tanQun h2,#tanQun2 h2{height:50px;line-height:50px;width:100%;text-align:center;}
+	#tanQun p{line-height:22px;font-family: .PingFangSC-Regular;font-size:13px;color: #999999;letter-spacing: 0;border-bottom:1px solid #e8e8e8 !important;padding-bottom:10px;}
+	#tanQun span{font-family: .PingFangSC-Regular;font-size:15px;color: #FF770F;letter-spacing: 0;text-align:center;
+	width:100%;height:40px;line-height:55px;display:block;font-weight:bold;}
+	#tanQun2{padding:0;width:70%;}
+	#tanQun2 h2{font-family: .PingFangSC-Medium;font-size:16px;color: #222;letter-spacing: 0;}
+	#tanQun2 p{height:40px;line-height:30px;width:100%;text-align:center;border-bottom:1px solid #e8e8e8 !important;padding-bottom:20px;
+	font-family: .PingFangSC-Regular;font-size: 13px;color: #999999;letter-spacing: 0;}
+	#tanQun2 a{width:50%;height:40px;line-height:40px;float:left;border:0;background:#fff;display:inline-block;
+	font-family:.PingFangSC-Regular;font-size:15px;color:#999;letter-spacing: 0;text-align:center;}
+	#tanQun2 a.confirm{color: #FF770F;}
+
+
+/* 订单详情 */
+/* 待支付订单详情，不显示取票信息 */
+a#fale01{width:15%;height:50px;line-height:50px;position:absolute;right:15%;top:0;}
+a#fale01 img,a#fale02 img{vertical-align: -8px;}
+a#fale02{width:15%;height:50px;line-height:50px;position:absolute;right:0;top:0;}
+#detailWrap{width:100%;overflow:hidden;}
+#detailContent{width:94%;overflow:hidden;padding:10px 3%;margin-bottom:40px;}
+#detailContent .detailCont{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .detailCont .order_cont{overflow:hidden;padding-bottom:10px;border-bottom:1px dashed #e8e8e8 !important;}
+#detailContent .detailCont .order_cont .orderImg{float:left;margin-right:10px;}
+#detailContent .detailCont .order_cont .orderImg .defate{display:inline-block;overflow:hidden;}
+#detailContent .detailCont .order_cont .orderImg .defate img{width:90px;height:120px;}
+#detailContent .detailCont .order_cont .orderMess{margin-left:100px;}
+#detailContent .detailCont .order_cont .orderMess .dramaInfo{display:inline-block;}
+#detailContent .detailCont .orderSeat{padding:3% 0;width:100%;}
+#detailContent .detailCont .orderSeat label{width:11%;text-align:left;vertical-align:top;line-height:24px;display:inline-block;color:#999;font-size:11px;}
+#detailContent .detailCont .orderSeat span{width:80%;display:inline-block;line-height:24px;font-size:12px;color:#151515;}
+#detailContent .detailCont .orderTi{background:#F6F6F6;border-radius:4px;padding:3%;line-height:24px;
+font-family: PingFangSC-Regular;font-size: 11px;color: #999999;letter-spacing: 0;}
+#detailContent .personality{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .personality h2{height:40px;line-height:40px;font-family:.PingFangSC-Medium;font-size:14px;color:#333;letter-spacing: 0;border-bottom:1px solid #e8e8e8 !important;}
+#detailContent .personality p{height:40px;line-height:40px;font-family: .PingFangSC-Regular;font-size:12px;color:#666;}
+#detailContent .venueCont{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .venueCont h2{height:40px;line-height:40px;font-family:.PingFangSC-Medium;font-size:14px;color:#333;letter-spacing: 0;border-bottom:1px solid #e8e8e8 !important;}
+#detailContent .venueCont .site{width:100%;overflow:hidden;}
+#detailContent .venueCont .site .siteIcon{background:url("${wapPath}css/dramawap/image/siteIcon.png?v=2017042118") no-repeat left center;width:9%;
+height:50px;display:inline-block;background-size:55%;float:left;}
+#detailContent .site .siteMess{position:relative;float:left;line-height:24px;font-family: PingFangSC-Regular;font-size:12px;color: #999999;
+letter-spacing: 0;padding-top:10px;width:91%;}
+#detailContent .site .siteMess em{background:url("${wapPath}css/dramawap/image/arrowIcon1.png?v=2017042118") no-repeat right center;
+width:30px;height:20px;background-size:30%;display:inline-block;position:absolute;right:0;bottom:0;} 
+#detailContent .site .siteMess span{font-family: PingFangSC-Regular;font-size:14px;color:#333;letter-spacing: 0;font-weight:bold !important;display:block;}
+#detailContent .orderNumber{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .orderNumber .noPay{position:absolute;right:3%;bottom:10px;font-family: .PingFangSC-Regular;
+font-size:13px;color: #FF770F;letter-spacing: 0;}
+#detailContent .phone{height:40px;line-height:40px;width:100%;text-align:center;font-family: PingFangSC-Regular;
+font-size: 12px;color: #B1B0B6;letter-spacing: 0;}
+#detailContent .phone span{vertical-align: middle;}
+#footerWrap{width:100%;height:50px;line-height:50px;position:fixed;bottom:0;left:0;}
+#footerWrap a{width:50%;height:50px;line-height:50px;text-align:center;float:left;display:inline-block;z-index:2;
+background:#fff;font-family:.PingFangSC-Regular;font-size:16px;color: #999999;}
+#footerWrap a.continue{color:#fff;background: #FF770F;}
+
+/* 支付成功订单详情-不显示取票信息 */
+#detailContent .payMessage{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .payMessage h2{height:40px;line-height:40px;font-family:.PingFangSC-Medium;font-size:14px;color:#333;letter-spacing: 0;border-bottom:1px solid #e8e8e8 !important;}
+#detailContent .payMessage h2 .payTime{float:right;font-family:.PingFangSC-Regular;font-size:12px;color:#A0A0A0;font-weight:normal;}
+#detailContent .payMessage .payContent{width:100%;overflow:hidden;padding:10px 0;border-bottom:1px solid #e8e8e8 !important;
+font-family:PingFangSC-Regular;font-size:13px;color:#666;}
+#detailContent .payMessage .payContent p span{float:right;}
+#detailContent .payMessage .payTotal{font-family: .PingFangSC-Regular;font-size:15px;color: #333333;height:40px;line-height:40px;}
+#detailContent .payMessage .payTotal span{color: #FF770F;float:right;}
+#detailContent .orderNumber .Pay{position:absolute;right:3%;top:10px;font-family: .PingFangSC-Regular;
+font-size: 13px;color: #222222;letter-spacing: 0;}
+
+/* 选座项目——快递 */
+#detailContent .express{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .express h2{height:40px;line-height:40px;font-family:.PingFangSC-Medium;font-size:14px;color:#333;letter-spacing: 0;border-bottom:1px solid #e8e8e8 !important;}
+#detailContent .express .expressMess{background:#F6F6F6;border-radius:8px;padding:3%;margin-top:10px;
+font-family: PingFangSC-Regular;font-size:13px;color: #666666;letter-spacing: 0;}
+#detailContent .express .expressMess .ticketCollector span{float:right;}
+#detailContent .express .status{font-family: PingFangSC-Regular;font-size:13px;letter-spacing: 0;line-height: 24px;}
+#detailContent .express .status span{color: #151515;}
+#detailContent .express .logistic p em{background:url("${wapPath}css/dramawap/image/arrowIcon1.png?v=2017042118") no-repeat right center;
+width:30px;height:20px;background-size:30%;display:inline-block;position:absolute;right:0;bottom:0;}
+
+/* 已退款订单详情-不显示取票信息 */
+#detailContent .refundStaus{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .refundStaus .progress{width:80%;padding:0 10% 0 12%;}
+#detailContent .refundStaus .progress span{display:inline-block;width:15px;height:15px;border-radius:50%;background:#ccc;}
+#detailContent .refundStaus .progress em{display:inline-block;width:35%;height:2px;background:#ccc;vertical-align:6px;}
+#detailContent .refundStaus .progress span.currentProgress{background:url("${wapPath}css/dramawap/image/currentIcon01.png?v=2017042118") no-repeat right center;
+background-size:100%;width:18px;height:18px;}
+#detailContent .refundStaus .progressMes{width:100%;}
+#detailContent .refundStaus .progressMes a{width:32%;display:inline-block;height:30px;line-height:30px;text-align:center;}
+#detailContent .refundStaus .progressMoney{width:100%;text-align:center;padding:20px 0;}
+#detailContent .refundStaus .progressMoney p.money{font-family:PingFangSC-Regular;font-size:11px;color:#333;letter-spacing:0;}
+#detailContent .refundStaus .progressMoney p.money span{color:#FF770F;font-size:15px;font-weight:bold;}
+#detailContent .refundStaus .progressMoney p.date{font-family:PingFangSC-Regular;font-size:12px;color:#999;letter-spacing:0;}
+	#successContent .successMessage .inner .info{font-size:12px;color:#999;font-family:"黑体";padding-top:10px;}
+	#successContent .successMessage .payMoney{display:block;width:100%;text-align:center;font-size:11px;margin:15px 0 5px 0;}
+	#successContent .successMessage .integral{display:block;width:100%;text-align:center;font-size:11px;margin-bottom:12px;}
+	#successContent .successMessage .payMoney em{font-style:normal;font-weight:bold;font-size:20px;font-family: AvenirNext-Medium;color: #FF770F;letter-spacing: 0;}
+	#successContent .successMessage .integral em{color: #FF770F;font-style:normal;}
+	#successContent .orderDetail{padding:30px 5% 0 6%;width:89%;overflow:hidden;}
+    #successContent .orderDetail .orderTitle{white-space:normal;font-family: PingFangSC-Regular;
+           font-size: 15px;color: #222;letter-spacing:0;line-height:25px;margin-bottom:10px;}
+    #successContent .orderDetail .biaoti{font-family: PingFangSC-Regular;font-size: 10px;color: #999999;letter-spacing: 0;line-height: 20px;}
+	#successContent .orderDetail .neiron{font-family: PingFangSC-Regular;font-size: 13px;color: #222222;line-height: 28px;}
+	#successContent .orderDetail .neiron span{margin-right:3%;}
+	#successContent .successBtn{padding:30px 0;text-align:center;background:#fff;}
+	#successContent .successBtn a#btn_a{display:inline-block;width:46%;height:40px;color:#fff;background: #FF770F;border-radius:6px;
+	font-size:15px;line-height:40px;}
+	#successContent .follow{width:100%;overflow:hidden;background:#fff;}
+	#successContent .follow h2{width:100%;text-align:center;height:60px;line-height:60px;font-family: .PingFangSC-Regular;
+       font-size: 14px;color: #222222;letter-spacing: 0;}
+	#successContent .follow h2.followTitle span{width:5%;height:1px;background:#E8E8E8;display:inline-block;margin-bottom:5px;}
+	
+/* 订单列表 */	
+    #orderList{}
+	#orderList .myOrderList{overflow:hidden;width:100%;}
+	#orderList .myOrderList li{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+	#orderList .myOrderList li .order_title{height:40px;line-height:35px;}
+	#orderList .myOrderList li .order_title span{font-family: .PingFangSC-Regular;font-size: 13px;color: #999999;letter-spacing: 0;}
+	#orderList .myOrderList li .order_title .orderStaus{float:right;font-family: .PingFangSC-Regular;color: #FF770F;}
+	#orderList .myOrderList li .order_cont{overflow:hidden;padding-bottom:10px;border-bottom:1px dashed #e8e8e8 !important;}
+	#orderList .myOrderList li .order_cont .orderImg{float:left;margin-right:10px;}
+	#orderList .myOrderList li .order_cont .orderImg .defate{display:inline-block;overflow:hidden;}
+	#orderList .myOrderList li .order_cont .orderImg .defate img{width:90px;height:120px;}
+	#orderList .myOrderList li .order_cont .orderMess{margin-left:100px;}
+	#orderList .myOrderList li .order_cont .orderMess .dramaInfo{display:inline-block;}
+	#orderList .myOrderList li .orderBtn{height:40px;line-height:50px;text-align:right;}
+	#orderList .myOrderList li .orderBtn button{border: 1px solid #E1E1E1;border-radius:4px;height:30px;width:27%;background:#fff;color:#999;}
+	#orderList .myOrderList li .orderBtn button.payMoney{background: #FF770F;border:0;color:#fff;}
+	/* 模态弹窗样式 */
+	#motail{position: fixed;z-index: 9998;top: 0px;bottom: 0px;right: 0px;left: 0px;pointer-events: auto;background: rgba(0, 0, 0, 0.6);display:none;}
+	#tanQun,#tanQun2{width:60%;z-index:9999;overflow:hidden;padding:20px 5%;left:50%;margin-left:-35%;top:140px;border-radius:6px;background:#fff;opacity: 1;
+	transform: scale(1);position:absolute;display:none;}
+	#tanQun h2,#tanQun2 h2{height:50px;line-height:50px;width:100%;text-align:center;}
+	#tanQun p{line-height:22px;font-family: .PingFangSC-Regular;font-size:13px;color: #999999;letter-spacing: 0;border-bottom:1px solid #e8e8e8 !important;padding-bottom:10px;}
+	#tanQun span{font-family: .PingFangSC-Regular;font-size:15px;color: #FF770F;letter-spacing: 0;text-align:center;
+	width:100%;height:40px;line-height:55px;display:block;font-weight:bold;}
+	#tanQun2{padding:0;width:70%;}
+	#tanQun2 h2{font-family: .PingFangSC-Medium;font-size:16px;color: #222;letter-spacing: 0;}
+	#tanQun2 p{height:40px;line-height:30px;width:100%;text-align:center;border-bottom:1px solid #e8e8e8 !important;padding-bottom:20px;
+	font-family: .PingFangSC-Regular;font-size: 13px;color: #999999;letter-spacing: 0;}
+	#tanQun2 button{width:50%;height:40px;line-height:40px;float:left;border:0;background:#fff;
+	font-family:.PingFangSC-Regular;font-size:15px;color:#999;letter-spacing: 0;}
+	#tanQun2 button.confirm{color: #FF770F;}
+
+
+/* 订单详情 */
+/* 待支付订单详情，不显示取票信息 */
+a#fale01{width:15%;height:50px;line-height:50px;position:absolute;right:15%;top:0;}
+a#fale01 img,a#fale02 img{vertical-align: -8px;}
+a#fale02{width:15%;height:50px;line-height:50px;position:absolute;right:0;top:0;}
+#detailWrap{width:100%;overflow:hidden;}
+#detailContent{width:94%;overflow:hidden;padding:10px 3%;margin-bottom:40px;}
+#detailContent .detailCont{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .detailCont .order_cont{overflow:hidden;padding-bottom:10px;border-bottom:1px dashed #e8e8e8 !important;}
+#detailContent .detailCont .order_cont .orderImg{float:left;margin-right:10px;}
+#detailContent .detailCont .order_cont .orderImg .defate{display:inline-block;overflow:hidden;}
+#detailContent .detailCont .order_cont .orderImg .defate img{width:90px;height:120px;}
+#detailContent .detailCont .order_cont .orderMess{margin-left:100px;}
+#detailContent .detailCont .order_cont .orderMess .dramaInfo{display:inline-block;}
+#detailContent .detailCont .orderSeat{padding:3% 0;width:100%;}
+#detailContent .detailCont .orderSeat label{width:11%;text-align:left;vertical-align:top;line-height:24px;display:inline-block;color:#999;font-size:11px;}
+#detailContent .detailCont .orderSeat span{width:80%;display:inline-block;line-height:24px;font-size:12px;color:#151515;}
+#detailContent .detailCont .orderTi{background:#F6F6F6;border-radius:4px;padding:3%;line-height:24px;
+font-family: PingFangSC-Regular;font-size: 11px;color: #999999;letter-spacing: 0;}
+#detailContent .detailCont .orderTi a{position:absolute;right:3%;bottom:10px;width:10%;height:22px;line-height:22px;background-size:54% !important;}
+#detailContent .detailCont .orderTi a.uparrow{background:url("https://static5.gewara.com/css/dramawap/image/Artboard.png?v=2017042118") no-repeat center center;}
+#detailContent .detailCont .orderTi a.downarrow{background:url("https://static5.gewara.com/css/dramawap/image/shape2.png?v=2017042118") no-repeat center center;}
+#detailContent .personality{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .personality h2{height:40px;line-height:40px;font-family:.PingFangSC-Medium;font-size:14px;color:#333;letter-spacing: 0;border-bottom:1px solid #e8e8e8 !important;}
+#detailContent .personality p{height:40px;line-height:40px;font-family: .PingFangSC-Regular;font-size:12px;color:#666;}
+#detailContent .venueCont{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .venueCont h2{height:40px;line-height:40px;font-family:.PingFangSC-Medium;font-size:14px;color:#333;letter-spacing: 0;border-bottom:1px solid #e8e8e8 !important;}
+#detailContent .venueCont .site{width:100%;overflow:hidden;}
+#detailContent .venueCont .site .siteIcon{background:url("https://static5.gewara.com/css/dramawap/image/siteIcon.png?v=2017042118") no-repeat left center;width:9%;
+height:50px;display:inline-block;background-size:55%;float:left;}
+#detailContent .site .siteMess{position:relative;float:left;line-height:24px;font-family: PingFangSC-Regular;font-size:12px;color: #999999;
+letter-spacing: 0;padding-top:10px;width:91%;}
+#detailContent .site .siteMess em{background:url("https://static5.gewara.com/css/dramawap/image/arrowIcon1.png?v=2017042118") no-repeat right center;
+width:30px;height:20px;background-size:30%;display:inline-block;position:absolute;right:0;bottom:6px;} 
+#detailContent .site .siteMess span{font-family: PingFangSC-Regular;font-size:14px;color:#333;letter-spacing: 0;font-weight:bold !important;display:block;}
+#detailContent .orderNumber{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .orderNumber .noPay{position:absolute;right:3%;bottom:10px;font-family: .PingFangSC-Regular;
+font-size:13px;color: #FF770F;letter-spacing: 0;}
+#detailContent .phone{height:40px;line-height:40px;width:100%;text-align:center;font-family: PingFangSC-Regular;
+font-size: 12px;color: #B1B0B6;letter-spacing: 0;}
+#detailContent .phone span{vertical-align: middle;}
+#footerWrap{width:100%;height:50px;line-height:50px;position:fixed;bottom:0;left:0;}
+#footerWrap a{width:50%;height:50px;line-height:50px;text-align:center;float:left;display:inline-block;z-index:2;
+background:#fff;font-family:.PingFangSC-Regular;font-size:16px;color: #999999;}
+#footerWrap a.continue{color:#fff;background: #FF770F;}
+
+/* 支付成功订单详情-不显示取票信息 */
+#detailContent .payMessage{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .payMessage h2{height:40px;line-height:40px;font-family:.PingFangSC-Medium;font-size:14px;color:#333;letter-spacing: 0;border-bottom:1px solid #e8e8e8 !important;}
+#detailContent .payMessage h2 .payTime{float:right;font-family:.PingFangSC-Regular;font-size:12px;color:#A0A0A0;font-weight:normal;}
+#detailContent .payMessage .payContent{width:100%;overflow:hidden;padding:10px 0;border-bottom:1px solid #e8e8e8 !important;
+font-family:PingFangSC-Regular;font-size:13px;color:#666;}
+#detailContent .payMessage .payContent p span{float:right;}
+#detailContent .payMessage .payTotal{font-family: .PingFangSC-Regular;font-size:15px;color: #333333;height:40px;line-height:40px;}
+#detailContent .payMessage .payTotal span{color: #FF770F;float:right;}
+#detailContent .orderNumber .Pay{position:absolute;right:3%;top:10px;font-family: .PingFangSC-Regular;
+font-size: 13px;color: #222222;letter-spacing: 0;}
+
+/* 选座项目——快递 */
+#detailContent .express{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .express h2{height:40px;line-height:40px;font-family:.PingFangSC-Medium;font-size:14px;color:#333;letter-spacing: 0;border-bottom:1px solid #e8e8e8 !important;}
+#detailContent .express .expressMess{background:#F6F6F6;border-radius:8px;padding:3%;margin-top:10px;
+font-family: PingFangSC-Regular;font-size:13px;color: #666666;letter-spacing: 0;}
+#detailContent .express .expressMess .ticketCollector span{float:right;}
+#detailContent .express .status{font-family: PingFangSC-Regular;font-size:13px;letter-spacing:0;line-height:24px;margin-top:10px;}
+#detailContent .express .status span{color: #151515;}
+#detailContent .express .logistic p em{background:url("https://static5.gewara.com/css/dramawap/image/arrowIcon1.png?v=2017042118") no-repeat right center;
+width:30px;height:20px;background-size:30%;display:inline-block;position:absolute;right:0;bottom:25px;}
+
+/* 已退款订单详情-不显示取票信息 */
+#detailContent .refundStaus{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .refundStaus .progress{width:80%;padding:0 10% 0 12%;}
+#detailContent .refundStaus .progress span{display:inline-block;width:15px;height:15px;border-radius:50%;background:#ccc;}
+#detailContent .refundStaus .progress em{display:inline-block;width:35%;height:2px;background:#ccc;vertical-align:6px;}
+#detailContent .refundStaus .progress span.currentProgress{background:url("https://static5.gewara.com/css/dramawap/image/currentIcon01.png?v=2017042118") no-repeat right center;
+background-size:100%;width:18px;height:18px;}
+#detailContent .refundStaus .progressMes{width:100%;}
+#detailContent .refundStaus .progressMes a{width:32%;display:inline-block;height:30px;line-height:30px;text-align:center;}
+#detailContent .refundStaus .progressMoney{width:100%;text-align:center;padding:20px 0;}
+#detailContent .refundStaus .progressMoney p.money{font-family:PingFangSC-Regular;font-size:11px;color:#333;letter-spacing:0;}
+#detailContent .refundStaus .progressMoney p.money span{color:#FF770F;font-size:15px;font-weight:bold;}
+#detailContent .refundStaus .progressMoney p.date{font-family:PingFangSC-Regular;font-size:12px;color:#999;letter-spacing:0;}
+
+/* 物流信息 */
+#logistic{width:100%;overflow:hidden;}
+#logistic .logisticCot{width:90%;background:#fff;padding:20px 5%;}
+#logistic .logisticCot p{font-family:.PingFangSC-Regular;font-size:14px;color:#222;letter-spacing:0;line-height:24px;}
+#logistic .logisticMess{background:#fff;width:94%;overflow:hidden;height:100%;padding:20px 3% 0;}
+#logistic .logisticMess dl{width:100%;}
+#logistic .logisticMess dl dt{float:left;width:10%;height:92px;}
+#logistic .logisticMess dl dd{float:left;width:90%;height:70px;padding-bottom:10px;border-bottom:1px solid #e8e8e8 !important;}
+#logistic .logisticMess dl dd p{font-family:.PingFangSC-Regular;font-size:13px;color:#999;letter-spacing:0;line-height:20px;}
+#logistic .logisticMess dl dd.current p{color:#FF770F;}
+
+/* 选座项目（身份证电子票-刷身份证入场） */
+#detailContent .orderId{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .orderId h2{height:40px;line-height:40px;font-family:.PingFangSC-Medium;font-size:14px;color:#333;letter-spacing: 0;border-bottom:1px solid #ccc;}
+#detailContent .orderId .contentId{padding:10px 0;border-bottom:1px solid #e8e8e8 !important;}
+#detailContent .orderId .contentId .title{color:#FF770F;font-family: PingFangSC-Medium;font-size:12px;
+color: #FF770F;letter-spacing: 0;height:40px;line-height:40px;}
+#detailContent .orderId .contentId .name,#detailContent .orderId .contentId .ID{font-family: .PingFangSC-Regular;font-size:13px;color: #222222;line-height: 26px;}
+#detailContent .orderId .contentId .name span,#detailContent .orderId .contentId .ID span{font-family: .PingFangSC-Regular;
+font-size:13px;color: #666666;line-height: 26px;}
+#detailContent .orderId .contentId .checkID{font-family: PingFangSC-Regular;
+font-size:12px;color:#222222;letter-spacing: 0;line-height: 24px;}
+#detailContent .orderId .contentId .checkID span{color: #666666;}
+
+/* 选座项目（数字码电子票-换取纸质门票） */
+#detailContent .getTicket{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .getTicket h2{height:40px;line-height:40px;font-family:.PingFangSC-Medium;font-size:14px;color:#333;letter-spacing: 0;border-bottom:1px solid #e8e8e8 !important;}
+#detailContent .getTicket .ticketCont{padding:10px 0;}
+#detailContent .getTicket .ticketCont p{font-family:.PingFangSC-Regular;font-size:13px;color:#666;line-height:28px;}
+#detailContent .getTicket .ticketCont p span{}
+#detailContent .getTicket .ticketCont p span.number{font-family:.PingFangSC-Semibold;font-size:18px;color:#CCC;}
+#detailContent .getTicket .ticketCont p span.status{background:#33C899;color:#fff;text-align:center;padding:6px;margin-left:3px;border-radius:3px;}
+
+/* 选座项目（二维码电子票扫码入场）*/
+#detailContent .codeMessage{position:relative;border:1px solid #e8e8e8 !important;border-radius:6px;padding:3% !important;width:93%;margin-bottom:10px;background:#fff;}
+#detailContent .codeMessage .codeCont{padding:3%;width:94%;background:#F7F7F9;border-radius:6px;text-align:center;}
+#detailContent .codeMessage .codeCont p{text-align:center;width:100%;}
+#detailContent .codeMessage .getWap{height:40px;line-height:52px;font-family: PingFangSC-Regular;
+font-size:12px;color:#B1B0B6;letter-spacing: 0;}
+#detailContent .codeMessage .getWap span{color:#151515;}
+#qrcode{width:100px;height:100px;position: relative;margin: 10px auto;}
+#qrcode2{width:200px;height:200px;position: relative;margin: 10px auto;}
+#codeTan{width:80%;z-index:1;padding:20px 5%;left:50%;margin-left:-45%;border-radius:6px;background:#fff;opacity: 0;
+transform: scale(1);position:absolute;}
+#codeTan p{text-align:center;}
+
+
+</style>	<script type="text/javascript">
+		var cssEle = document.createElement('style');
+		document.documentElement.firstElementChild.appendChild(cssEle);
+		function setPxPerRem(){
+			var dpr = 1;
+			var PxPerRem = parseInt(document.documentElement.clientWidth * dpr / 10);
+				cssEle.innerHTML = 'html{font-size:' + PxPerRem + 'px!important;}';
+		}
+		setPxPerRem();
+	</script>
+		</head>
+	<body>
+	<input type="hidden" name="isnewinput" id="isnewinput" value="" />
+	<input type="hidden" name="ordertype" id="ordertype" value="" />
+																<div class="clearfix text-center nav_block" id="nav_blockhtml">
+															<a id="movieOrderDiv"  class="wd-33 txt_deco fl nav_unselect nav_select relative hello" onclick="showOrderLif('movie')" href="javascript:void(0);">电影</a>
+					<a id="dramOrderDiv"  class="wd-34 txt_deco fl nav_unselect relative hello" onclick="showOrderLif('dram')" href="javascript:void(0);">演出</a>
+					<a  id="mallDiv"  class="wd-33 txt_deco fl nav_unselect relative hello" onclick="showOrderLif('mall')" href="javascript:void(0);">商城</a>
+				</div>
+				<div class="clearfix text-center appEnv" id="nav_blockApp">
+															<a id="movieOrderDivForApp"  class="wd-33 txt_deco fl nav_unselect nav_select relative hello" onclick="showOrderLif('movie')" href="javascript:void(0);">电影</a>
+					<a id="dramOrderDivForApp"  class="wd-34 txt_deco fl nav_unselect relative hello" onclick="showOrderLif('dram')" href="javascript:void(0);">演出</a>
+					<a id="mallDivForApp"  class="wd-33 txt_deco fl nav_unselect relative hello" onclick="showOrderLif('mall')" href="javascript:void(0);">商城</a>
+				</div>
+			
+			<div id="appPad" style="position:relative;">
+				<div id="orderList">
+
+				</div>
+
+				<div id="pullContainer"> <!-- style="position:absolute;top:0;width:100%;z-index:999;" -->
+					<div id="pullUp" class="self_linkMore" onclick="orderListAction();" >
+						<span class="loadingIcon in_block loadAnimo" id="pullUpIcon"></span>
+						<span class="pullText in_block" >点击加载更多</span>
+					</div>
+				</div>
+				<div id="noinfodiv" class="noinfo none text-center">
+					<img src="https://static5.gewara.com/css/wap/movie/sleep_1.png" class="box-center eptOrder_img">
+					<span id="nofinfotext" class="text-center">暂无订单</span>
+				</div>
+				<a href="/mall/m/index.xhtml" id="mallBtn" class="box-center text-center eptOrder_btn none">去商城逛逛</a>
+			</div>
+
+	
+
+			<div class="top-0 left-0 shadow" style="display:none;"></div>
+			<div class="top-50 left-50 absolute shadow_model font14 text-center bounce" style="display:none;">
+				<div class="black font16 model_tip">提示</div>
+				<div class="cl_999">您确定要取消该订单吗？</div>
+				<div class="absolute wd-100 font15 clearfix text-center model_btn">
+					<div class="wd-50 fl pv cl_999" onClick="cancelNoFun()">我再想想</div>
+					<div class="wd-50 fl pv cl_ff770f" id="cancle" value="" onClick="cancelEnterFun()">确定取消</div>
+				</div>
+			</div>
+<script type="text/javascript">
+var whatType = "movie";
+R.domready(function(){
+	if(isGewaraApp){
+		document.querySelector("#nav_blockhtml").style.display = "none";
+		document.querySelector("#nav_blockApp").style.zIndex  = 999;
+		document.querySelector("#nav_blockApp").style.visibility  = "visible";
+		document.querySelector("#appPad").style.marginTop  = "44px";
+	}
+	swiperDel();
+	document.addEventListener('scroll', delay, false);
+});
+var delay = function(){
+	setTimeout(function () {
+		atuoLoadList();
+   }, 500);
+	swiperDel();
+};
+function swiperDel(){
+	var swiper = new Swiper('.swiper-container', {
+	    slidesPerView: 'auto',
+		onTouchMove: function(swiper){
+	       $$('.swiper-wrapper').each(function(el){
+	    	   el.style.webkitTransform='translate3d(0px, 0px, 0px)'; 
+	    	   el.style.transform='translate3d(0px, 0px, 0px)';
+	    	   el.style.webkitTransitionDuration='0.5s';
+	    	   el.style.transitionDuration='0.5s';
+	       });
+	    }
+	});
+}
+
+var atuoLoadList = function() {
+
+	var pageTop = function() {
+		var d = document, y = (navigator.userAgent.toLowerCase().match(/iPad/i) == "ipad") ? window.pageYOffset : Math.max(d.documentElement.scrollTop, d.body.scrollTop);
+		return d.documentElement.clientHeight + y;
+	};
+
+	if($('pullContainer')){
+		var PageHeight = document.body.scrollHeight || document.docuemntElement.scrollHeight;
+		var subs = pageTop();
+		if(subs >= PageHeight){
+			orderListAction();
+		}
+	}
+
+
+
+	// if ($('pullContainer')) {
+	// 	var subsVal = $('pullContainer').offsetTop;
+	// 	subsVal <= pageTop() && (orderListAction());
+	// }
+
+
+}
+	showOrderLif('movie');
+function showOrderLif(isnew){
+	$('pullUp').hide();
+	catchs = true;
+	generatedCount = 1
+	// window.scroll(0,0);
+	var oMovieOrderDiv = $('movieOrderDiv'),
+		oDramOrderDiv = $('dramOrderDiv'),
+		oMallDiv = $('mallDiv');
+
+	var hello =	document.querySelectorAll('.hello');
+
+	var pullUpEl = $('pullUp');
+	pullUpEl.querySelector('.pullText').innerHTML = '点击加载更多';
+	
+	$('noinfodiv').addClass('none');
+	$('mallBtn').addClass('none');
+	
+	if(isnew == 'dram'){
+		whatType = "drama";
+		document.addEventListener('scroll', delay, false);
+		$('isnewinput').value='dram';
+
+		// oMallDiv.removeClass("nav_select");
+		// oMallDiv.addClass("nav_unselect");
+		// oMovieOrderDiv.removeClass("nav_select");
+		// oMovieOrderDiv.addClass("nav_unselect");
+		// oDramOrderDiv.removeClass("nav_unselect");
+		// oDramOrderDiv.addClass("nav_select");
+
+		for(var i=0; i<hello.length; i++){
+			var rplClass = hello[i].className.replace('nav_select','');
+			hello[i].className = rplClass;
+			if(hello[i].id == 'dramOrderDiv' || hello[i].id == 'dramOrderDivForApp'){
+				var dramaSel = hello[i].className + ' nav_select';
+					hello[i].className = dramaSel;
+			}
+		}
+
+		var div = document.getElementById('orderList');
+			R.sendLoad(div,"/touch/home/ajax/dramaOrderList.xhtml",{'pageNo':0,'isNew':$('isnewinput').value,'orderType':'drama'},function(){
+				if(div.querySelectorAll('li').length < 10){
+					if(div.innerHTML.length<50){
+						$('noinfodiv').removeClass('none');
+						$('nofinfotext').innerHTML= '暂无订单';
+					}
+				}else{
+					pullUpEl.show();
+				}
+				var divObj = document.getElementById('payMoney');
+				var remain = document.getElementById('remain');
+				if (remain != null && remain != undefined) {
+					var rema=remain.value;
+					if (divObj != null && divObj != undefined) {
+						countDramDown(rema, divObj);
+					}
+				}
+			});
+			
+		}else if(isnew == "movie"){
+			whatType = "movie";
+			document.addEventListener('scroll', delay, false);
+
+			// oMovieOrderDiv.removeClass("nav_unselect");
+			// oMovieOrderDiv.addClass("nav_select");
+			// oDramOrderDiv.removeClass("nav_select");
+			// oDramOrderDiv.addClass("nav_unselect");
+			// oMallDiv.removeClass("nav_select");
+			// oMallDiv.addClass("nav_unselect");
+
+			for(var i=0; i<hello.length; i++){
+				var rplClass = hello[i].className.replace('nav_select','');
+				hello[i].className = rplClass;
+				if(hello[i].id == 'movieOrderDiv' || hello[i].id == 'movieOrderDivForApp'){
+					var movieSel = hello[i].className + ' nav_select';
+						hello[i].className = movieSel;
+				}
+			}
+
+
+			var ordertype = "ticket,goods,baoChang";
+			$('isnewinput').value='movie';
+			var div = document.getElementById('orderList');
+			R.sendLoad(div,"/touch/home/ajax/myOrderNew.xhtml",{'pageNo':0,'isNew':$('isnewinput').value,'orderType':ordertype},function(){
+				   swiperDel();
+				   $$(".ct_item").each(function(item){
+						var _this = item;
+						var tradeNo = _this.get("data-id");
+						data(tradeNo,_this);
+					})
+			 	if(div.querySelectorAll('li').length < 10){
+					if(div.innerHTML.length<50){
+						$('noinfodiv').removeClass('none');
+						$('nofinfotext').innerHTML= '暂无订单';
+					}
+				}else{
+					pullUpEl.show();
+				}
+			});
+			
+		}else if(isnew == "mall"){
+			whatType = "mall";
+			document.addEventListener('scroll', delay, false);
+
+			// oMovieOrderDiv.removeClass("nav_select");
+			// oMovieOrderDiv.addClass("nav_unselect");
+			// oDramOrderDiv.removeClass("nav_select");
+			// oDramOrderDiv.addClass("nav_unselect");
+			// oMallDiv.removeClass("nav_unselect");
+			// oMallDiv.addClass("nav_select");
+
+			for(var i=0; i<hello.length; i++){
+				var rplClass = hello[i].className.replace('nav_select','');
+				hello[i].className = rplClass;
+				if(hello[i].id == 'mallDiv' || hello[i].id == 'mallDivForApp'){
+					var mallSel = hello[i].className + ' nav_select';
+						hello[i].className = mallSel;
+				}
+			}
+
+			var ordertype = "mall";
+			$('isnewinput').value='mall';
+			var div = document.getElementById('orderList');
+			R.sendLoad(div,"/mall/m/home/ajax/orderList.xhtml",{'pageNo':0,'orderType':ordertype},function(){
+				 $$(".ct_item_mall").each(function(item){
+						var _this = item;
+						var tradeNo = _this.get("data-id");
+						validTime(tradeNo,_this);
+					})
+				if(div.querySelectorAll('li').length < 10){
+					if(div.innerHTML.length<50){
+						$('noinfodiv').removeClass('none');
+						$('mallBtn').removeClass('none');
+						$('nofinfotext').innerHTML= '暂无订单';
+					}
+				}else{
+					pullUpEl.show();
+				}
+			});
+			
+		}
+	}
+	
+	var generatedCount = 1; catchs = true;
+	function orderListAction () {
+		var pullUpEl = $('pullUp');
+		if(catchs){
+				
+			if(!pullUpEl.hasClass('self_loading')){
+				pullUpEl.show();
+				pullUpEl.className = 'self_loading';
+				document.querySelector('#pullUpIcon').style.opacity = '1';
+				pullUpEl.querySelector('.pullText').innerHTML = '加载中...';	
+				setTimeout(function () {
+					var el, li, i;
+					el = document.getElementById('orderList');
+					var orderType = "";
+					if(whatType == "movie"){
+						orderType = "ticket,goods,baoChang";
+					}else if(whatType == "drama"){
+						orderType = "drama";
+					}else{
+						orderType = "mall";
+					}
+					if(orderType == "mall"){
+						R.ajax({
+							'url':"/mall/m/home/ajax/orderHaveMore.xhtml",
+							'callback':function(result){
+								if(result.success){
+									if(result.retval == "0"){
+										document.querySelector('#pullUpIcon').style.opacity = '0';
+										pullUpEl.querySelector('.pullText').innerHTML = '已经到底啦！';
+										setTimeout(function(){
+											pullUpEl.hide();
+										},1000);
+										catchs = false;
+									}else{
+										var oDiv = document.createElement('div');
+										oDiv.innerHTML = result.html;
+										oDiv.inject(R.$('orderList'),'bottom');
+										pullUpEl.querySelector('.pullText').innerHTML = '点击加载更多';
+										catchs = true;
+									}
+									pullUpEl.className = 'self_linkMore';
+								}
+								// catchs = true;
+							},
+							'data':{'pageNo':generatedCount++,'pointx':R.x,'pointy':R.y,'orderType':orderType}
+						});
+					}else if(orderType == "drama"){
+						R.ajax({
+							'url':"/touch/home/ajax/dramaOrderList.xhtml",
+							'callback':function(result){
+								if(result.success){
+									if(result.html <= 50){
+											document.querySelector('#pullUpIcon').style.opacity = '0';
+											pullUpEl.querySelector('.pullText').innerHTML = '已经到底啦！';
+											setTimeout(function(){
+											pullUpEl.hide();
+										},1000);
+										catchs = false;
+									}else{
+										var oDiv = document.createElement('div');
+										oDiv.innerHTML = result.html;
+										oDiv.inject(R.$('orderList'),'bottom');
+										pullUpEl.querySelector('.pullText').innerHTML = '点击加载更多';
+										catchs = true;
+									}
+									pullUpEl.className = 'self_linkMore';
+								}
+								// catchs = true;
+							},
+							'data':{'pageNo':generatedCount++,'pointx':R.x,'pointy':R.y,'orderType':orderType}
+						});
+					}else{
+						R.ajax({
+							'url':"/touch/home/ajax/myOrderNew.xhtml",
+							'callback':function(result){
+								if(result.success){
+									if(result.html <= 0){
+										document.querySelector('#pullUpIcon').style.opacity = '0';
+										pullUpEl.querySelector('.pullText').innerHTML = '已经到底啦！';
+										setTimeout(function(){
+											pullUpEl.hide();
+										},1000);
+										catchs = false;
+									}else{
+										var oDiv = document.createElement('div');
+										oDiv.innerHTML = result.html;
+										oDiv.inject(R.$('orderList'),'bottom');
+										pullUpEl.querySelector('.pullText').innerHTML = '点击加载更多';
+										catchs = true;
+									}
+									pullUpEl.className = 'self_linkMore';
+								}
+								// catchs = true;
+							},
+							'data':{'pageNo':generatedCount++,'isNew':$('isnewinput').value,'orderType':orderType}
+						});
+					}
+				}, 1000);
+			}
+		}
+	}
+	
+	function data(tradeNo,obj){
+		var random = new Date().getTime();
+		R.ajax({
+			url: '/movie/m/validTime.xhtml?v='+random,
+			type:'get',
+			data:{'tradeNo':tradeNo},
+			callback:function(result){
+				var remain = parseInt(result.html) * 1;
+				if(remain > 0){
+					countDownMoive(remain,obj);
+					}
+				}
+		})
+	}
+	function countDownMoive(times,obj){
+		var timeStp = window.setInterval(function(){
+				times = times - 1000;
+				var hh = parseInt(times / 1000 / 60 / 60 % 24, 10),
+			        mm = parseInt(times / 1000 / 60 % 60, 10),
+			        ss = parseInt(times / 1000 % 60, 10);
+				    hh = checkTime(hh);
+				    mm = checkTime(mm);  
+				    ss = checkTime(ss);  
+				
+				    obj.innerHTML = "自动取消"  + mm + ":" + ss;
+				
+				if(times <= 0){
+					window.clearInterval(timeStp);
+				}
+			},1000);
+		
+		}
+	function checkTime(i) {
+		if (i < 10) {
+			i = "0" + i;
+		}
+		return i;
+	}
+	function countDramDown(times, obj) {
+		var timeStp = window.setInterval(function() {
+			times = times - 1000;
+			var hh = parseInt(times / 1000 / 60 / 60 % 24, 10), mm = parseInt(
+					times / 1000 / 60 % 60, 10), ss = parseInt(
+					times / 1000 % 60, 10);
+			hh = checkTime(hh);
+			mm = checkTime(mm);
+			ss = checkTime(ss);
+
+			obj.innerHTML = "付款" + mm + ":" + ss;
+
+			if (times <= 0) {
+				window.clearInterval(timeStp);
+				obj.innerHTML = "自动取消";
+				obj.addClass("payMoney2");
+				document.getElementById('cancleOrder').style.display="none";
+			}
+		}, 1000);
+
+	}
+	function removeMoiveOrderItem(orderId,tradeNo){
+		var order = $('orderId_'+orderId); 
+		R.confirm("只能删除已消费、已退款的订单 ",function(){
+			R.ajax({
+				url:'/touch/home/ajax/removeOrder.xhtml',
+				type:'get',
+				data:{"tradeNo":tradeNo},
+				'callback':function(result){
+					if(result.success){
+						order.dispose();
+					} else {
+						R.alert(result.msg);
+					}
+				}
+			}); 
+		},function(){
+		 	$$('.swiper-wrapper').each(function(el){
+	    	   el.style.webkitTransform='translate3d(0px, 0px, 0px)'; 
+	    	   el.style.transform='translate3d(0px, 0px, 0px)';
+	    	   el.style.webkitTransitionDuration='0.5s';
+	    	   el.style.transitionDuration='0.5s';
+	       }); 
+		},"确认删除","","删除订单");
+	} 
+	function writeWala(relatedid, tag){
+		if(isGewaraApp){
+			gewaApp.toPubWala(relatedid,tag,function(back){
+			});
+		}else{
+			window.location.href="/write/"+relatedid+"?tag="+tag;
+		}
+	}
+	function cancelMovieOrder(tradeNo) {
+		R.confirm("您确定要取消该订单吗？ ",function(){
+				var loading = document.createElement('div');
+				loading.addClass('loadingStyle');
+				loading.css('left',R.layouts().pos.x);
+				document.body.appendChild(loading);
+				window.location.href = "/touch/home/cancelOrder.xhtml?tradeNo=" + tradeNo+"&flag=newOder";
+	}	,function(){},"确认取消","我再想想");
+	}
+	function getTicketSms(tradeNo) {
+		R.ajax({
+			'url' : "/touch/home/dramaOrderTakeTicketMsg.xhtml",
+			'callback' : function(result) {
+				if (result.success) {
+					var html = '<p>' + result.retval + '</p>';
+					R.alert(html, '', '我知道了', '格瓦拉取票短信');
+				} else {
+					if (result && result.msg) {
+						R.alert(result.msg);
+					} else {
+						R.alert('网络异常，请稍后再试！');
+					}
+				}
+			},
+			'data' : {
+				'tradeNo' : tradeNo
+			}
+		});
+	}
+	function cancelDramaOrder(tradeNo) {
+		R.confirm("您确定要取消该订单吗？ ",function(){
+				var loading = document.createElement('div');
+				loading.addClass('loadingStyle');
+				loading.css('left',R.layouts().pos.x);
+				document.body.appendChild(loading);
+				window.location.href = "/touch/home/cancelDramaOrder.xhtml?tradeNo=" + tradeNo;
+	    },function(){},"确认取消","我再想想");
+	}
+</script>
+
+<script type="text/javascript">
+/* var pageTop = function () {
+	var d = document,
+	y = (navigator.userAgent.toLowerCase().match(/iPad/i) == "ipad") ? window.pageYOffset : Math.max(d.documentElement.scrollTop, d.body.scrollTop);
+	return d.documentElement.clientHeight + y;
+}; */
+
+/* if(isGewaraApp){
+	document.querySelector("#nav_blockhtml").style.display = "none";
+	document.querySelector("#nav_blockApp").style.zIndex  = 999;
+	document.querySelector("#nav_blockApp").style.visibility  = "visible";
+	document.querySelector("#appPad").style.marginTop  = "54px";
+} */
+
+/* R.domready(function(){
+	var valTime = "";
+	var curtime = "";
+	var valTimes = eval(valTime);
+	 $$('.ct_item').each(function(item){
+		//console.log(item);
+		var _this = item;
+		var tradeNo = _this.get("data-id");
+		for(var i=0; i<valTimes.length; i++){  
+		     var tradeno = valTimes[i].tradeno;
+		     if(tradeNo == tradeno){
+		    	var time = valTimes[i].time;
+		    	 	console.log(time);
+		    	countDown(curtime,time);
+		     }
+		}
+	}) 
+	 window.setInterval(function(){
+		//presellShowCountDown(item);
+	}, 1000); 
+	 向下滑动加载更多 
+	 document.addEventListener('scroll',function(){
+	 	if($('pullUpProduct')){
+			if($('pullUpProduct').offsetTop <= pageTop()){
+				productPullUpAction();
+			}
+		}
+	}); 
+}); */
+
+//倒计时
+/* function presellShowCountDown(item){ 
+	//var cc = document.getElementById(divname);
+	var _this = item;
+	var date_str = _this.get("data-id").replace(/-/g,"/"); 
+	var endDate = new Date(date_str);
+	var now = new Date(); 
+	//var endDate = new Date(year, month-1, day,hour,second); 
+	var leftTime=endDate.getTime()-now.getTime(); 
+	if(leftTime<=0){
+		_this.innerHTML = "已结束"; 
+		return;
+	}
+	var leftsecond = parseInt(leftTime/1000); 
+	//var day1=parseInt(leftsecond/(24*60*60*6)); 
+	var day1=Math.floor(leftsecond/(60*60*24)); 
+	var hour=Math.floor((leftsecond-day1*24*60*60)/3600); 
+	var minute=Math.floor((leftsecond-day1*24*60*60-hour*3600)/60); 
+	var second=Math.floor(leftsecond-day1*24*60*60-hour*3600-minute*60); 
+	_this.innerHTML =day1+"天"+hour+"小时"+minute+"分"+second+"秒"+"后结束"; 
+} */
+var pageNo = 0,catchs = true;
+/* function productPullUpAction() {
+	if(catchs){
+		var pullUpEl = $('pullUpProduct');
+		if(!pullUpEl.hasClass('loading')){
+			pullUpEl.className = 'loading';
+			pullUpEl.querySelector('.pullText').innerHTML = '加载中...';	
+			setTimeout(function () {
+				var el, li, i;
+				el = document.getElementById('orderList');
+				R.ajax({
+					'url':"/mall/home/orderList.xhtml",
+					'callback':function(result){
+						if(result.html != ''){
+							el.innerHTML += result.html;
+							pullUpEl.className = 'linkMore';
+							pullUpEl.querySelector('.pullText').innerHTML = '更多我的订单';
+							hasMore(pageNo);
+						}else{
+							pullUpEl.dispose();
+						}
+						catchs = true;
+					},
+					'data':{'pageNo':++pageNo}
+				});
+			}, 1000);
+		}
+	}
+} */
+
+function hasMore(pageNo){
+	R.ajax({
+		'url':"/mall/home/ajax/orderHaveMore.xhtml",
+		'callback':function(result){
+			if(result.success){
+				if(result.retval == "0"){
+					$('pullUpProduct').hide();
+				}
+			}
+		},
+		'data':{'pageNo':pageNo},
+		'type':'post'
+	});
+}
+
+function createPresellOrder4Retainage(mallOrderId){
+	var values={"mallOrderId":mallOrderId};
+	var url = "/mall/pay/ajax/createPresellOrder4Retainage.xhtml";
+	R.ajax({
+		'url':url,
+		'callback':function(result){
+			if(result.success){
+				document.location.href="/mall/pay/order.xhtml?tradeNo="+result.retval;
+			}else{
+				R.alert("创建尾款订单失败:" + result.msg);
+			}
+		},
+		'data':values
+	});
+}
+
+var shadow = document.querySelector(".shadow"),
+	shadow_model = document.querySelector(".shadow_model");
+
+function cancelOrder(tradeNo){
+	showDialog(tradeNo);
+}
+
+function cancelEnterFun(){
+	var tradeNo = document.getElementById("cancle").value;
+	var values={"tradeNo":tradeNo};
+	var url = "/mall/m/home/cancelOrder.xhtml";
+	R.ajax({
+			'url':url,
+			'callback':function(result){
+				if(result.success){
+					R.alert("取消订单成功");
+											document.location.href="/touch/home/myOrder.xhtml?orderType=mall";
+										
+				}else{
+					R.alert("取消订单失败:" + result.msg);
+				}
+			},
+			'data':values
+		});
+		cancelNoFun();
+}
+
+shadow.addEventListener('touchstart',function(e){
+	e.stopPropagation();
+	e.preventDefault();
+},false)		
+
+function showDialog(tradeNo){
+	shadow.style.display = "block";
+	shadow_model.style.display = "block";
+	//$('#cancle').val(tradeNo);
+	document.getElementById("cancle").value = tradeNo;
+}
+
+function cancelNoFun(){
+	shadow.style.display = "none";
+	shadow_model.style.display = "none";
+}
+
+function validTime(tradeNo,obj){
+	var random = new Date().getTime();
+	R.ajax({
+		url: '/mall/m/validTime.xhtml?v='+random,
+		type:'get',
+		data:{'tradeNo':tradeNo},
+		callback:function(result){
+			var remain = parseInt(result.html) * 1;
+			if(remain > 0){
+				countDownMall(remain,obj);
+				}
+			}
+	})
+}
+function countDownMall(times,obj){
+	var timeStp = window.setInterval(function(){
+			times = times - 1000;
+			var hh = parseInt(times / 1000 / 60 / 60 % 24, 10),
+		        mm = parseInt(times / 1000 / 60 % 60, 10),
+		        ss = parseInt(times / 1000 % 60, 10);
+			    hh = checkTime(hh);
+			    mm = checkTime(mm);  
+			    ss = checkTime(ss);  
+			
+			    obj.innerHTML = hh + ":" + mm + ":" + ss;
+			
+			if(times <= 0){
+				window.clearInterval(timeStp);
+			}
+		},1000);
+	
+	}
+
+/* function countDown(beg,end){
+	var begExp = beg.replace(new RegExp("-","gm"),"/"),
+		endExp = end.replace(new RegExp("-","gm"),"/"),
+		dateBeg = new Date(begExp),
+		dateEnd = new Date(endExp),
+		times = dateEnd.getTime() - dateBeg.getTime();
+	
+	var timeStp = window.setInterval(function(){
+		times = times - 1000;
+		var hh = parseInt(times / 1000 / 60 / 60 % 24, 10),
+        mm = parseInt(times / 1000 / 60 % 60, 10),
+        ss = parseInt(times / 1000 % 60, 10);
+	    hh = checkTime(hh);
+	    mm = checkTime(mm);  
+	    ss = checkTime(ss);  
+
+		var ct_item = document.querySelector(".ct_item");
+			ct_item.innerHTML = hh + ":" + mm + ":" + ss;
+		if(ct_item.className.indexOf("move") > -1){
+			return;
+		}
+		ct_item.className = "ct_item in_block move";	
+		if(times <= 0){
+			window.clearInterval(timeStp);
+		}
+	},1000);
+
+	
+} */
+
+/* function checkTime(i){    
+	if(i < 10){    
+		i = "0" + i;    
+	}    
+	return i;    
+}    */ 
+
+</script>	<style type="text/css">
+		span{box-sizing: border-box;display: block;padding:0;margin:0;}
+		.wd-50{width:50%;}
+		.wd-100 {width: 100%;}
+		.clearfix {clear: both;zoom: 1;overflow: hidden;}
+		.fl{float: left;}
+		.top-0{top:0;}
+		.left-0{left:0;}
+		.font14{font-size: 0.37rem;}
+		.font16{font-size: 0.43rem;}
+		.left-50{left:50%;}
+		.top-50{top:50%;}
+		.pt{padding-top: 0.27rem;}
+		.pv{padding: 0.27rem 0;}
+		.cl_ff770f{color: #ff770f;}
+		.absolute{position: absolute;}
+		.relative{position: relative;}
+		.text-center{text-align: center;}
+		.cl_999{color: #999999;}
+		.shadow{position:fixed;width:100%;height:100%;z-index:9999;background-color: rgba(0,0,0,0.5);}
+		.shadow_model{width:7.2rem;height:4.67rem;background-color: white;border-radius:0.27rem;z-index:99999;margin: 0rem 0 0 -3.6rem;top: 10% !important;}
+		.black{color:black;}
+		.model_tip{margin:1.07rem 0 0.4rem 0;}
+		.model_btn{bottom:0;border-top:0.03rem solid #e8e8e8;}
+		.bounce{
+				animation:bounce 0.3s ease-in 1;
+				-webkit-animation:bounce 0.3s ease-in 1; 
+			}
+		@keyframes bounce{
+			0%{transform: scale(0);opacity: 0;}
+			100%{transform: scale(1);opacity: 1;}
+		}
+		@-webkit-keyframes bounce{
+			0%{transform: scale(0);opacity: 0;}
+			100%{transform: scale(1);opacity: 1;}
+		}
+	</style>
+	<script type="text/javascript">
+		var cssEle = document.createElement('style');
+		document.documentElement.firstElementChild.appendChild(cssEle);
+		function setPxPerRem(){
+			var dpr = 1;
+			var PxPerRem = parseInt(document.documentElement.clientWidth * dpr / 10);
+				cssEle.innerHTML = 'html{font-size:' + PxPerRem + 'px!important;}';
+		}
+		setPxPerRem();
+	</script><!-- 商城订单 -->		
+
+
+</body>
+</html>

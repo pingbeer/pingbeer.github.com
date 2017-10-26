@@ -1,0 +1,692 @@
+﻿{
+  "payParamsObject": {
+    "appId": "jd_iphone_app4",
+    "payId": "97c89031711248a0b5ac627ab2d507ec",
+    "orderId": "60476517206",
+    "orderType": "0",
+    "version": "",
+    "client": "apple",
+    "success": true,
+    "payprice": "10.90",
+    "recentUserPayManner": "newJdpay",
+    "requireUUID": "08517082610004309906",
+    "jdPayChannelList": [
+      {
+        "channelName": "平安银行",
+        "channelId": "723274711110",
+        "code": "BANKCARD",
+        "realAmount": "1.90",
+        "preferentiaNum": "满10元减9元",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/PAB.png",
+        "status": 1,
+        "tip": "储蓄卡 (8604)",
+        "allCoupons": {}
+      },
+      {
+        "channelName": "打白条",
+        "channelId": "JDP_BAITIAO",
+        "code": "BAITIAO",
+        "realAmount": "10.90",
+        "logo": "http://static.360buyimg.com/finance/payment/sdk/icon/1.0.0/css/i/BAITIAO.png",
+        "status": 1,
+        "tip": "可用额度9716.23元",
+        "baiTiaoCoupons": {
+          "canUseCouponList": [],
+          "isSuccess": false,
+          "cantUseCouponList": []
+        },
+        "baiTiaoText": "请选择优惠"
+      },
+      {
+        "channelName": "Apple Pay",
+        "channelId": "JDP_QUICKPASS",
+        "code": "QUICKPASS",
+        "realAmount": "10.90",
+        "logo": "",
+        "status": 1,
+        "tip": "京东闪付 安全支付"
+      },
+      {
+        "channelName": "京东小金库",
+        "channelId": "JDP_XJK",
+        "code": "XJK",
+        "realAmount": "10.90",
+        "preferentiaNum": "1项优惠",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/XJKCONSUME.png",
+        "status": 1,
+        "tip": "可用余额187.90元，总额度187.90元",
+        "preferentialWay": "京东支付单单立减最高999元",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017072819223155501_20170728192231560",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "京东支付单单立减最高999元",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170728192231560",
+              "realAmount": 10.65,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        }
+      }
+    ],
+    "jdOtherPayChannelList": [
+      {
+        "channelName": "钢镚",
+        "channelId": "JDP_GB",
+        "code": "GB",
+        "realAmount": "10.79",
+        "logo": "http://static.360buyimg.com/finance/payment/sdk/icon/1.0.0/css/i/JDGB.png",
+        "status": 3,
+        "tip": "订单所属业务不支持使用钢镚"
+      }
+    ],
+    "jdPayBankCardChannelVo": [
+      {
+        "channelName": "平安银行",
+        "channelId": "723274711110",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/PAB.png",
+        "realAmount": "1.90",
+        "preferentialWay": "平安银行卡1元买单，满10减9",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017080810121578001_20170808101325221",
+              "couponTypeDesc": "立减",
+              "promotionDesc": "平安银行卡1元买单，满10减9",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170808101325221",
+              "realAmount": 1.9,
+              "showAmount": 1.9,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "满10元减9元",
+        "status": 1,
+        "tip": "储蓄卡 (8604)"
+      },
+      {
+        "channelName": "平安银行",
+        "channelId": "93065790",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/PAB.png",
+        "realAmount": "1.90",
+        "preferentialWay": "平安银行卡1元买单，满10减9",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017080810121578001_20170808101325221",
+              "couponTypeDesc": "立减",
+              "promotionDesc": "平安银行卡1元买单，满10减9",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170808101325221",
+              "realAmount": 1.9,
+              "showAmount": 1.9,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "满10元减9元",
+        "status": 1,
+        "tip": "信用卡 (5485)"
+      },
+      {
+        "channelName": "招商银行",
+        "channelId": "647034521110",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/CMB.png",
+        "realAmount": "10.90",
+        "preferentialWay": "招行信用卡优惠加码最高减818",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017081115580928701_20170811160030161",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "招行信用卡优惠加码最高减818",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170811160030161",
+              "realAmount": 10.62,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "招行专享随机减",
+        "status": 1,
+        "tip": "信用卡 (8243)"
+      },
+      {
+        "channelName": "招商银行",
+        "channelId": "691150391110",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/CMB.png",
+        "realAmount": "10.90",
+        "preferentialWay": "招行信用卡优惠加码最高减818",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017081115580928701_20170811160030161",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "招行信用卡优惠加码最高减818",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170811160030161",
+              "realAmount": 10.62,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "招行专享随机减",
+        "status": 1,
+        "tip": "信用卡 (8235)"
+      },
+      {
+        "channelName": "招商银行",
+        "channelId": "647029831110",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/CMB.png",
+        "realAmount": "10.90",
+        "preferentialWay": "招行信用卡优惠加码最高减818",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017081115580928701_20170811160030161",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "招行信用卡优惠加码最高减818",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170811160030161",
+              "realAmount": 10.62,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "招行专享随机减",
+        "status": 1,
+        "tip": "信用卡 (8268)"
+      },
+      {
+        "channelName": "招商银行",
+        "channelId": "23725260",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/CMB.png",
+        "realAmount": "10.90",
+        "preferentialWay": "京东支付单单立减最高999元",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017072819223155501_20170728192231560",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "京东支付单单立减最高999元",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170728192231560",
+              "realAmount": 10.65,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "单单减最高999",
+        "status": 1,
+        "tip": "储蓄卡 (4113)"
+      },
+      {
+        "channelName": "浦发银行",
+        "channelId": "100383723",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/SPDB.png",
+        "realAmount": "10.90",
+        "preferentialWay": "京东支付单单立减最高999元",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017072819223155501_20170728192231560",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "京东支付单单立减最高999元",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170728192231560",
+              "realAmount": 10.65,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "单单减最高999",
+        "status": 1,
+        "tip": "信用卡 (2018)"
+      },
+      {
+        "channelName": "中信银行",
+        "channelId": "88843949",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/CITIC.png",
+        "realAmount": "10.90",
+        "preferentialWay": "京东支付单单立减最高999元",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017072819223155501_20170728192231560",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "京东支付单单立减最高999元",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170728192231560",
+              "realAmount": 10.65,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "单单减最高999",
+        "status": 1,
+        "tip": "信用卡 (7717)"
+      },
+      {
+        "channelName": "浦发银行",
+        "channelId": "374276831110",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/SPDB.png",
+        "realAmount": "10.90",
+        "preferentialWay": "京东支付单单立减最高999元",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017072819223155501_20170728192231560",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "京东支付单单立减最高999元",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170728192231560",
+              "realAmount": 10.65,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "单单减最高999",
+        "status": 1,
+        "tip": "信用卡 (6240)"
+      },
+      {
+        "channelName": "广发银行",
+        "channelId": "371837981110",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/GDB.png",
+        "realAmount": "10.90",
+        "preferentialWay": "京东支付单单立减最高999元",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017072819223155501_20170728192231560",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "京东支付单单立减最高999元",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170728192231560",
+              "realAmount": 10.65,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "单单减最高999",
+        "status": 1,
+        "tip": "信用卡 (5017)"
+      },
+      {
+        "channelName": "建设银行",
+        "channelId": "93332413",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/CCB.png",
+        "realAmount": "10.90",
+        "preferentialWay": "京东支付单单立减最高999元",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017072819223155501_20170728192231560",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "京东支付单单立减最高999元",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170728192231560",
+              "realAmount": 10.65,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "单单减最高999",
+        "status": 1,
+        "tip": "信用卡 (0299)"
+      },
+      {
+        "channelName": "中信银行",
+        "channelId": "378570841110",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/CITIC.png",
+        "realAmount": "10.90",
+        "preferentialWay": "京东支付单单立减最高999元",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017072819223155501_20170728192231560",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "京东支付单单立减最高999元",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170728192231560",
+              "realAmount": 10.65,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "单单减最高999",
+        "status": 1,
+        "tip": "信用卡 (2019)"
+      },
+      {
+        "channelName": "浦发银行",
+        "channelId": "372854408",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/SPDB.png",
+        "realAmount": "10.90",
+        "preferentialWay": "京东支付单单立减最高999元",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017072819223155501_20170728192231560",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "京东支付单单立减最高999元",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170728192231560",
+              "realAmount": 10.65,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "单单减最高999",
+        "status": 1,
+        "tip": "信用卡 (4530)"
+      },
+      {
+        "channelName": "中国民生银行",
+        "channelId": "646843091110",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/CMBC.png",
+        "realAmount": "10.90",
+        "preferentialWay": "京东支付单单立减最高999元",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017072819223155501_20170728192231560",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "京东支付单单立减最高999元",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170728192231560",
+              "realAmount": 10.65,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "单单减最高999",
+        "status": 1,
+        "tip": "信用卡 (5097)"
+      },
+      {
+        "channelName": "中国民生银行",
+        "channelId": "646851151110",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/CMBC.png",
+        "realAmount": "10.90",
+        "preferentialWay": "京东支付单单立减最高999元",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017072819223155501_20170728192231560",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "京东支付单单立减最高999元",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170728192231560",
+              "realAmount": 10.65,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "单单减最高999",
+        "status": 1,
+        "tip": "信用卡 (7170)"
+      },
+      {
+        "channelName": "交通银行",
+        "channelId": "29217611",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/BCOM.png",
+        "realAmount": "10.90",
+        "preferentialWay": "京东支付单单立减最高999元",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017072819223155501_20170728192231560",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "京东支付单单立减最高999元",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170728192231560",
+              "realAmount": 10.65,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "单单减最高999",
+        "status": 1,
+        "tip": "信用卡 (1599)"
+      },
+      {
+        "channelName": "邮政储蓄",
+        "channelId": "980582881110",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/POST.png",
+        "realAmount": "10.90",
+        "preferentialWay": "京东支付单单立减最高999元",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017072819223155501_20170728192231560",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "京东支付单单立减最高999元",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170728192231560",
+              "realAmount": 10.65,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "单单减最高999",
+        "status": 1,
+        "tip": "储蓄卡 (4760)"
+      },
+      {
+        "channelName": "邮政储蓄",
+        "channelId": "564049031110",
+        "code": "BANKCARD",
+        "logo": "http://storage.jd.com/payment-assets/sdk/bank/POST.png",
+        "realAmount": "10.90",
+        "preferentialWay": "京东支付单单立减最高999元",
+        "allCoupons": {
+          "couponAndCutOffs": [
+            {
+              "payMarketingUUID": "2017072819223155501_20170728192231560",
+              "couponTypeDesc": "随机减",
+              "promotionDesc": "京东支付单单立减最高999元",
+              "remark": "",
+              "useDesc": "",
+              "prizeId": "20170728192231560",
+              "realAmount": 10.65,
+              "showAmount": 10.90,
+              "beginDate": "",
+              "endDate": ""
+            }
+          ]
+        },
+        "promotionLogUrl": "https://static.360buyimg.com/finance/mobile/payment/cashiers/2.0.1/css/img/common/lijian_small.png",
+        "preferentiaNum": "单单减最高999",
+        "status": 1,
+        "tip": "储蓄卡 (3037)"
+      },
+      {
+        "channelName": "使用新卡支付",
+        "channelId": "JDP_ADD_NEWCARD",
+        "code": "BANKCARD",
+        "logo": "https://storage.jd.com/payment-assets/sdk/bank/BANKCARD1.png",
+        "realAmount": "10.90",
+        "allCoupons": {},
+        "status": 1,
+        "tip": "无需网银，免手续费，安全绑卡"
+      }
+    ],
+    "saleDocuments": "",
+    "otherCardInfo": {},
+    "jdPayStatus": "0",
+    "payChannelList": [
+      {
+        "channelName": "新京东支付",
+        "sort": 1,
+        "channelCode": 16,
+        "status": 1,
+        "code": "newJdpay",
+        "tip": "银行卡 京东小金库 极速安全支付"
+      },
+      {
+        "channelName": "微信支付",
+        "sort": 8,
+        "channelCode": 2,
+        "status": 1,
+        "code": "weixin",
+        "tip": "微信安全支付"
+      },
+      {
+        "channelName": "微信支付",
+        "sort": 8,
+        "channelCode": 1,
+        "status": 0,
+        "code": "wapWeiXinPay",
+        "tip": "仅安装微信6.0.2 及以上版本客户端使用"
+      },
+      {
+        "channelName": "微信支付",
+        "sort": 8,
+        "channelCode": 17,
+        "status": 0,
+        "code": "weiXinGzh",
+        "tip": "微信安全支付"
+      },
+      {
+        "channelName": "QQ钱包支付",
+        "sort": 10,
+        "channelCode": 8,
+        "status": 0,
+        "code": "qqWalletPay",
+        "tip": "QQ钱包安全支付"
+      },
+      {
+        "channelName": "Apple Pay",
+        "sort": 12,
+        "channelCode": 1,
+        "status": 0,
+        "code": "applePay",
+        "tip": "Apple专属 安全支付"
+      },
+      {
+        "channelName": "银联支付",
+        "sort": 13,
+        "channelCode": 6,
+        "status": 1,
+        "code": "cups",
+        "tip": "中国银联在线支付服务"
+      },
+      {
+        "channelName": "微信好友代付",
+        "sort": 14,
+        "channelCode": 16,
+        "status": 1,
+        "code": "weiXinDFPay",
+        "tip": "帮你付款才是真爱"
+      }
+    ],
+    "needVerify": false,
+    "materialOrderTimeOut": 6,
+    "materialOrderTimeOutUnit": 1,
+    "materialOrderTimeOutDoc": "超过支付时效后订单将被取消，请尽快完成支付。",
+    "dialogSwitch": true,
+    "identityKey": "JH3U4DGTFEGCS",
+    "indexPopupConfig": {
+      "title": "确认要离开收银台?",
+      "content": "您的订单在23小时59分钟内未支付将被取消,请尽快完成支付。",
+      "backBtn": "确认离开",
+      "continueBtn": "继续支付",
+      "isPrePay": false,
+      "popVersion": "0"
+    },
+    "bankListJson": "",
+    "switch": {
+      "loadRiskJs": true
+    }
+  }
+}

@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html class=" -moz-" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resume</title>
+<style>
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block
+}
+
+body {
+    line-height: 1
+}
+
+ol,
+ul {
+    list-style: none
+}
+
+blockquote,
+q {
+    quotes: none
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+body {
+    font-family: 'Roboto Slab', serif;
+}
+
+ul {
+    margin-left: 24px;
+    margin-right: 24px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+li {
+    margin-top: 20px;
+    text-align: center;
+}
+
+span {
+    color: #fff;
+    font-size: 24px;
+}
+
+a {
+    color: #fff;
+    font-size: 14px;
+    display: block;
+}
+
+.line {
+    text-align: left;
+    font-style: italic;
+}
+
+.paper {
+    width: 8.27in;
+    height: 7.7in;
+    font-family: 'Roboto Slab', serif;
+    line-height: 1.5;
+    background: white;
+}
+
+.inner {
+    float: left;
+}
+
+.contact {
+    margin-top: 100%;
+    margin-bottom: 0;
+}
+
+.columnLeft {
+    width: calc(100%/3);
+    height: 100%;
+    background-color: #298537;
+}
+
+.columnRight {
+    width: calc(2*100%/3);
+    height: 100%;
+}
+
+.thick {
+    font-weight: bold;
+    color: #283c51;
+}
+
+.font-color{
+    color: #283c51;
+}
+
+.inline{
+    display: inline;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+
+@media screen {
+    body {
+
+        background: radial-gradient(#fff, #ccc);
+        background: radial-gradient(#ffffff, #fdfdfd 16%, #fbfbfb 33%, #f8f8f8 49%, #efefef 66%, #dfdfdf 82%, #bfbfbf 100%);
+    }
+    .paper {
+        margin: 0 auto;
+        box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.3), 0 14px 12px 0 rgba(0, 0, 0, 0.17);
+    }
+}
+
+canvas {
+    width: 100%;
+    height: 225px;
+}
+footer p {
+    float: left;
+    text-align: center;
+    width: 100%;
+    color: #283c51;
+    padding-bottom: 10px;
+}
+
+
+hr {
+    margin: 0 auto 0.6rem;
+    padding: 0;
+    width: 65%;
+    height: 1.5pt;
+    border: none;
+    background: #2cdb87;
+
+    background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #ffffff), color-stop(35%, #2cdb87), color-stop(50%, #2cdb87), color-stop(65%, #2cdb87), color-stop(100%, #ffffff));
+    background: -moz-linear-gradient(left, #ffffff, #2cdb87 35%, #2cdb87 50%, #2cdb87 65%, #ffffff);
+    background: -webkit-linear-gradient(left, #ffffff, #2cdb87 35%, #2cdb87 50%, #2cdb87 65%, #ffffff);
+    background: linear-gradient(to right, #ffffff, #2cdb87 35%, #2cdb87 50%, #2cdb87 65%, #ffffff);
+    color: #283c51;
+}
+
+hr::after {
+    position: relative;
+    top: -0.8rem;
+    display: inline-block;
+    padding: 0 0.25rem;
+    background: white;
+    content: "";
+    font-weight: 200;
+    font-size: 1.4rem;
+    font-family: Georgia, serif;
+}
+
+.none {
+    margin: 0 auto 0.6rem;
+    padding: 0;
+    width: 65%;
+    height: 1.5pt;
+    border: none;
+    background: #283c51;
+    color: #283c51;
+}
+ol {
+    width: 100%;
+}
+
+ol li {
+    float: left;
+    display: inline;
+}
+
+ol li:last-child {
+    float: right;
+    display: inline;
+}
+
+
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    
+    <![endif]-->
+
+.firebugResetStyles {
+
+    z-index: 2147483646 !important;
+
+    top: 0 !important;
+
+    left: 0 !important;
+
+    display: block !important;
+
+    border: 0 none !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    outline: 0 !important;
+
+    min-width: 0 !important;
+
+    max-width: none !important;
+
+    min-height: 0 !important;
+
+    max-height: none !important;
+
+    position: fixed !important;
+
+    transform: rotate(0deg) !important;
+
+    transform-origin: 50% 50% !important;
+
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+
+    background: transparent none !important;
+
+    pointer-events: none !important;
+
+    white-space: normal !important;
+
+}
+
+style.firebugResetStyles {
+
+    display: none !important;
+
+}
+
+
+
+.firebugBlockBackgroundColor {
+
+    background-color: transparent !important;
+
+}
+
+
+
+.firebugResetStyles:before, .firebugResetStyles:after {
+
+    content: "" !important;
+
+}
+
+.firebugCanvas {
+
+    display: none !important;
+
+}
+
+
+
+.firebugLayoutBox {
+
+    width: auto !important;
+
+    position: static !important;
+
+}
+
+
+
+.firebugLayoutBoxOffset {
+
+    opacity: 0.8 !important;
+
+    position: fixed !important;
+
+}
+
+
+
+.firebugLayoutLine {
+
+    opacity: 0.4 !important;
+
+    background-color: #000000 !important;
+
+}
+
+
+
+.firebugLayoutLineLeft, .firebugLayoutLineRight {
+
+    width: 1px !important;
+
+    height: 100% !important;
+
+}
+
+
+
+.firebugLayoutLineTop, .firebugLayoutLineBottom {
+
+    width: 100% !important;
+
+    height: 1px !important;
+
+}
+
+
+
+.firebugLayoutLineTop {
+
+    margin-top: -1px !important;
+
+    border-top: 1px solid #999999 !important;
+
+}
+
+
+
+.firebugLayoutLineRight {
+
+    border-right: 1px solid #999999 !important;
+
+}
+
+
+
+.firebugLayoutLineBottom {
+
+    border-bottom: 1px solid #999999 !important;
+
+}
+
+
+
+.firebugLayoutLineLeft {
+
+    margin-left: -1px !important;
+
+    border-left: 1px solid #999999 !important;
+
+}
+
+.firebugLayoutBoxParent {
+
+    border-top: 0 none !important;
+
+    border-right: 1px dashed #E00 !important;
+
+    border-bottom: 1px dashed #E00 !important;
+
+    border-left: 0 none !important;
+
+    position: fixed !important;
+
+    width: auto !important;
+
+}
+
+
+
+.firebugRuler{
+
+    position: absolute !important;
+
+}
+
+
+
+.firebugRulerH {
+
+    top: -15px !important;
+
+    left: 0 !important;
+
+    width: 100% !important;
+
+    height: 14px !important;
+
+
+    border-top: 1px solid #BBBBBB !important;
+
+    border-right: 1px dashed #BBBBBB !important;
+
+    border-bottom: 1px solid #000000 !important;
+
+}
+
+
+
+.firebugRulerV {
+
+    top: 0 !important;
+
+    left: -15px !important;
+
+    width: 14px !important;
+
+    height: 100% !important;
+
+
+
+    border-left: 1px solid #BBBBBB !important;
+
+    border-right: 1px solid #000000 !important;
+
+    border-bottom: 1px dashed #BBBBBB !important;
+
+}
+
+
+
+.overflowRulerX > .firebugRulerV {
+
+    left: 0 !important;
+
+}
+
+
+
+.overflowRulerY > .firebugRulerH {
+
+    top: 0 !important;
+
+}
+
+
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+.fbProxyElement {
+
+    position: fixed !important;
+
+    pointer-events: auto !important;
+
+}
+.Profile {
+    position: relative;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+}
+
+.Profile:before {
+
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 162px;
+
+    height: 162px;
+    border-radius: 162px;
+
+    }
+
+
+.Profile:after {
+    content: '';
+    position: absolute;
+    top: -13px;
+
+    left: -13px;
+    width: 172px;
+    height: 172px;
+
+    border-radius: 172px;
+
+    }
+
+.Profile img {
+    border-radius: 150px;
+}
+
+</style></head>
+<script src="jquery.js"></script>
+<body>
+<div class="paper">
+    <div class="inner columnLeft">
+        <ul>
+            <li class="Profile">
+                <img style="width:150px;height:150px;" src="logo.png">
+            </li>
+            <li>
+                <span>Jiuping Liu</span>
+                <a>web开发,可联系</a>
+                <a></a>
+                　　<a>Wechat: 2214763153</a>
+                　　<a>tel: 17093756995</a>
+                　　<a>Age: 28</a>
+                　　<a>E-mail:pingbeer@163.com</a>
+
+
+            </li>
+            <li>
+                <canvas style="width: 217px; height: 225px;" height="225" width="217" id="myChart"></canvas>
+            </li>
+   
+        </ul>
+        <ul class="contact">
+            <li>
+
+            </li>
+        </ul>
+    </div>
+    <div class="inner columnRight font-color thick">
+        <ul>
+          <!--  <li>
+                <span class="thick">Education</span>
+            </li>
+            <li><hr></li>
+            <li>
+                <ol>
+                    <li>Zhengzhou University</li>
+                    <li>2014.03 ~ 2017.03</li>
+
+                </ol>
+                <br><br>
+                <ol>
+                    <li>Logistics Management</li>
+                    <li>Major</li>
+                </ol>
+                <br><br><br><br>
+            </li> -->
+
+            <li>
+                <span class="thick">Experience</span>
+            </li>
+            <li><hr></li>
+            <li>
+                <ol>
+                    <li>Camelot</li>
+                    <li>2011.07 ~ 2012.05</li>
+                </ol>
+                <ol>
+                    <li class="line">
+                        Responsible for the development of company management.</li>
+                </ol>
+                <br><br><br><br>
+                <ol>
+                    <li>Sino</li>
+                    <li>2012.05 ~ now</li>
+                </ol>
+                <ol>
+                    <li class="line">Responsible for system optimization and reconstruction .</li>
+                </ol>
+                <br><br><br><br>
+                <br><br><br><br>
+            </li>
+            <li>
+                <span class="thick">Links</span>
+            </li>
+            <li><hr></li>
+            <li>
+                <ol>
+                    <li ><a style="padding:0 20px;color:#283c51" href="http://sy0739.cc" >我的主页</a><li>
+                    <!--<li><a style="padding:0 20px;color:#283c51" href="page.html" >我的业务</a><li>-->
+                    <li><a style="padding:0 20px;color:#283c51" href="http://sy0739.cc/mafengwo.html" >我的足迹</a><li>
+
+                </ol>
+
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/Chart.min.js"></script>
+<!--notice the order-->
+<!--<script src="arch/js/prefixfree.min.js"></script>-->
+<script>
+    var data = {
+        labels: ["ko", "android", "easyui", "springMVC", "bootstrap", "jquery","vuejs","ionic","angularjs"],
+
+        datasets: [
+            {
+
+                fillColor: "rgba(126, 206, 253, 0.4)",
+                strokeColor: "rgb(126,206,253)",
+                pointColor: "rgba(205 ,209 ,211 ,1)",
+                pointStrokeColor: "rgb(126,206,253)",
+                pointHighlightFill: "rgb(126,206,253)",
+                pointHighlightStroke: "rgb(126,206,253)",
+                data: [6, 4, 7, 7, 6, 7,3,4,7]
+            }
+        ]
+    };
+
+    var chartOptions = {
+        pointDotStrokeWidth : 3,
+        scaleOverride : true,
+        scaleSteps : 10,
+        scaleStartValue : 0,
+        scaleStepWidth : 1,
+        angleLineColor : "#fff",
+        pointLabelFontSize : 12,
+        pointLabelFontColor : "rgba(255 ,255 ,255 ,1)",
+        pointLabelFontFamily : "'Roboto Slab', serif",
+        scaleLineColor:"rgba(205 ,209 ,211 ,1)"
+    }
+
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var myRadarChart = new Chart(ctx).Radar(data, chartOptions);
+</script>
+<script type="text/javascript">
+    //右侧导航
+	$(function(){
+	 var btb=$(".rightNav");
+    var tempS;
+    $(".rightNav").hover(function(){
+        var thisObj = $(this);
+        tempS = setTimeout(function(){
+            thisObj.find("a").each(function(i){
+                var tA=$(this);
+				
+                setTimeout(function(){ tA.animate({right:"0"},200);},50*i);
+            });
+        },200);
+    },function(){
+        if(tempS){ clearTimeout(tempS); }
+        $(this).find("a").each(function(i){
+            var tA=$(this);
+            setTimeout(function(){ tA.animate({right:"-110"},200,function(){
+            });},50*i);
+        });
+    });
+	})
+   
+    var isIE6 = !!window.ActiveXObject&&!window.XMLHttpRequest;
+    //滚动加载
+    var scrollLoad =function(){
+        $("#content iframe[_src]").each(function(){
+            var t = $(this);
+            if( t.offset().top<= $(document).scrollTop() + $(window).height() )
+            {
+                t.attr( "src",t.attr("_src") ).removeAttr("_src");
+            }
+        });//each E
+    }
+    scrollLoad();
+    $(window).scroll(function(){
+        if(isIE6){ btb.css("top", $(document).scrollTop()+30) }
+        scrollLoad();
+    });
+</script>
+<style>
+    .rightNav {
+        /*background-image: url("about:blank");*/
+        cursor: pointer;
+        position: fixed;
+        right: 0;
+        text-align: left;
+        top: 100px;
+        width: 140px;
+    }
+    .rightNav a {
+        background: none repeat scroll 0 0 #fff;
+        cursor: pointer;
+        display: block;
+        height: 30px;
+        line-height: 30px;
+        margin-bottom: 2px;
+        overflow: hidden;
+        padding-right: 10px;
+        position: relative;
+        right: -110px;
+        width: 130px;
+    }
+    .rightNav a:hover {
+        color: #39a4dc;
+        text-decoration: none;
+    }
+    .rightNav a:hover em {
+        background: none repeat scroll 0 0 #00b700;
+    }
+    .rightNav a em {
+        background: none repeat scroll 0 0 #2cdb87;
+        color: #fff;
+        display: block;
+        float: left;
+        font-size: 16px;
+        margin-right: 10px;
+        text-align: center;
+        width: 30px;
+    }
+    .rightNav a.new em {
+        background: none repeat scroll 0 0 #f60;
+    }
+	.rightNav a{
+	color:#ccc;
+	text-decoration:none;
+	}
+</style>
+<div class="rightNav">
+    
+    <!-- <a href="arch/index.htm"  class="new"  style="right: -110px;"><em>1</em>后台管理系统</a> -->
+ <!--    <a href="page.html" style="right: -110px;"><em>2</em>163</a>
+    <a href="h5_page/qqScroll.html" style="right: -110px;"><em>3</em>QQScroll</a>
+    <a href="h5_page/fullpage/index.html" style="right: -110px;"><em>4</em>FullPage</a>
+    <a href="h5_page/flower/flower.html" style="right: -110px;"><em>5</em>FLOWER</a>
+    <a href="h5_page/bak/cloud.html" style="right: -110px;"><em>6</em>CLOUD</a>
+    <a href="h5_page/bak/lottory/lottory.html" style="right: -110px;"><em>7</em>LOTTORY</a>
+    <a href="#" title="mb_page/apps/personal/presonalCenter.html" style="right: -110px;"><em>8</em>CENTER</a>
+    <a href="#" title="pc_page/b2b/user_orderlist.html" style="right: -110px;"><em>9</em>ORDER</a> -->
+    <!-- <a href="pc_page/tab_scroll.html" title="" style="right: -110px;"><em>9</em>TAB</a> -->
+  
+
+
+</div>
+
+</body></html>

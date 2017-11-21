@@ -1,2 +1,9 @@
-agCli/node_modules/*
+﻿agCli/node_modules/*
+
+MyApp/node_modules/*
+
 vueCli/node_modules/*
+
+reactCli/node_modules/*
+
+reactapp/node_modules/*

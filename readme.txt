@@ -43,4 +43,5 @@ http://purecss.io/    css样式  最基本常用到的。非常强大
 书籍：
 
 用 angularJs 开发下一代应用
+git remote -v 查看当前的远程仓库版本
 

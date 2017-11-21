@@ -1,8 +1,8 @@
 ﻿agCli/node_modules/*
 
-MyApp/node_modules/*
-
 vueCli/node_modules/*
+MyApp/node_modules/*
+reactstart/node_modules/*
 
 reactCli/node_modules/*
 

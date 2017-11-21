@@ -4,7 +4,6 @@ body {
 input,textarea {
 	-webkit-appearance: none
 }
-
 .logo,article,aside,audio,canvas,footer,header,hgroup,main,nav,section,video {
 	display: block
 }

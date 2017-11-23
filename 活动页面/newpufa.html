@@ -1,0 +1,648 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="css/common.css?v=20170923" />
+		<link rel="stylesheet" href="css/sy.css?v=201709203" />
+		<link rel="stylesheet" type="text/css" href="css/zstyle.css?v=20170923" />
+		<link rel="stylesheet" href="css/alert.css?v=20170923" />
+		<title>首页</title>
+	</head>
+
+	<body>
+		<div id="content" class="top">
+			<ul class="clearfix productLists top-ul-one">
+				<li class="top-li-one">
+					<div style="padding: 0 1px;" class="clearfix">
+						<a class="isActcode" href="javascript:;" style="background: url(img/sy_03.png) no-repeat; background-size: cover;position: relative;" onclick="toProduct()">
+							<img src="" alt="" class="top-li-one-img2" />
+						</a>
+					</div>
+				</li>
+				<li class="top-li-two">
+					<div style="padding: 0 1px;">
+						<a style="height: 7rem; text-align: center;" href="javascript:;" onclick="toRecommend()"><img src="" class="top-li-one-img3" style="height: 100%; width: auto;" /></a>
+					</div>
+				</li>
+			</ul>
+			<ul class="clearfix seniority  top-ul-two">
+				<li class="top-ul-two-one">
+					<span class="top-ul-two-one-span" id="step1"></span>
+					<div class="borderDiv" style="border: none;">
+						<a href="javascript:;" onclick="getQuali(this)">
+							<img src="" id="getQualiImg">
+						</a>
+					</div>
+
+				</li>
+				<li class="top-ul-two-two">
+					<span class="top-ul-two-two-span" id="step2"></span>
+					<div class="borderDiv" style="border: none;">
+						<a href="javascript:;" onclick="check888(this)">
+							<img src="" id="charge888">
+						</a>
+					</div>
+				</li>
+			</ul>
+			<!--爆款和抽奖的第二种状态-->
+			<ul class="clearfix seniority  top-ul-two style_two" style="display: none;">
+				<li class="top-ul-two-one">
+					<span class="top-ul-two-one-span" id="step3"><!--以获取资格的用户抢兑爆款--></span>
+					<div class="borderDiv" style="border: none;">
+						<a href="javascript:;" onclick="checkBox(this)" class="style_2">
+							<img src="" id="two-boxImg" />
+						</a>
+					</div>
+
+				</li>
+				<li class="top-ul-two-two">
+					<span class="top-ul-two-two-span" id="step4"><!--未抢到资格的用户可免费抽奖--></span>
+					<div class="borderDiv" style="border: none;">
+						<a href="javascript:;" onclick="bugHotCook()" class="style_2">
+							<img src="img/chou2.png" id="two-freeRobImg" />
+						</a>
+
+					</div>
+				</li>
+			</ul>
+			<!--钻市场抢兑-->
+			<ul class="activeProduct jewel" style="display: none;">
+				<span id="step5" class="activeProduct-span"><!--周四中午12点--></span>
+				<li id="thursProduct">
+					<a href="javascript:;" style="background: url(img/zuan.png) no-repeat; background-size: 100%;" id="jewel" onclick="checkDiamonds()">
+						<!--钻市场抢兑-->
+					</a>
+				</li>
+			</ul>
+			<!--爆款和抽奖的第一种状态-->
+			<ul class="activeProduct style_one">
+				<span id="step7" class="activeProduct-span"><!--每周四下午2点，已获取资格用户抢兑爆款--></span>
+				<li id="thursProduct">
+					<a href="javascript:;" style="background: url(img/qiang.png) no-repeat; background-size: 100%;" id="boxImg" onclick="checkBox(this)">
+						<!--爆款抢 周四下午2点起-->
+					</a>
+				</li>
+				<span id="step8" class="activeProduct-span"><!--每周四上午十点起，未抢到爆款客户可免费抽奖--></span>
+				<li id="FriProduct">
+					<a href="javascript:;" style="background: url(img/chou.png) no-repeat; background-size: 100%;" id="freeRobImg" onclick="bugHotCook()">
+						<!--免费抽奖 周五上午10点起-->
+					</a>
+				</li>
+			</ul>
+			<div class="foot-nav">
+				<ul class="foot-tip clearfix">
+					<li>
+						<a href="javascript:;">
+							<img src="img/icon_gift.png" />
+							<span id="">我的奖品</span>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<img src="img/icon_order.png" />
+							<span id="">我的订单</span>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;" class="judge">
+							<img src="img/icon_rule.png" />
+							<span id="">活动规则</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="loading">
+			<img src="img/loading-2.gif" alt="" />
+		</div>
+		<script type="text/javascript" src="js/jquery-1.12.4.min.js?v=20170922"></script>
+		<script type="text/javascript" src="js/alertPopShow.js?v=20170922"></script>
+		<script type="text/javascript" src="js/foot.js?v=20170922"></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js?v=20170915" type="text/javascript"></script>
+		<script type="text/javascript" src="js/weixinShare.js?v=201709141852"></script>
+		<script type="text/javascript" src="js/common.js?v=20170922"></script>
+		<script type="text/javascript">
+			var urlParam = getQueryStr("actCode");
+			var arr = urlParam.split(",");
+			var custId = '';
+			var actCode = '';
+			var scence1;
+			var scence2;
+			var scence3;
+			var scence4;
+			var scence5;
+			var scence6;
+			var isFormal;
+			//var actType=weekrob;//页面初始初始化请求参数：周周抢
+			//当前场次
+			var current = '';
+			if (arr != null && arr.length != 0) {
+				custId = arr[1];
+				actCode = arr[0];
+			}
+			var params = {
+				"custId": custId,
+				"actCode": actCode
+			}
+			if(custId == "00"){
+				popTipShow.alert('提 示', '用户信息失效，请重新登录', ['确 定'],
+								function(e) {
+									this.hide();
+									$("body").hide();
+								}
+							)
+			}else{
+				getScenDes();
+			}
+			var rebackOrderUrl = window.location.href;
+			sessionStorage.setItem("rebackOrderUrl", rebackOrderUrl);
+			var encodeUrl = Host + activitycore + '%252factivity%252fwx%252f' + actCode + '%252ehtm%253ffilename=index';
+			var linkUrl = host + xpmcactive + "/act/tohomepageshare/" + encodeUrl;
+			params = JSON.stringify(params);
+			window.localStorage.setItem("params", params); //设置localstorage;
+			//页面初始化
+			function getScenDes() {
+				$("#content").hide();
+				$.ajax({
+					type: "post",
+					url: host + activitycore + "/homepage/weekrob/" + custId + ".json?custid=" + custId,
+					async: false,
+					beforeSend: function() {
+						$(".loading").show();
+					},
+					success: function(resp) {
+						$(".loading").hide();
+						if (resp.code == 200) {
+							$("#content").show();
+							//钻市场连接
+							zscAppUrl = resp.data.appDiamondPath;
+							zscWxUrl = resp.data.wxDiamondPath;
+							var data = resp.data;
+							var rowList = data.pageList[0].rowList;
+							$(".top-li-one-img2").attr("src", rowList[0].cellList[0].imgUrl); //本期爆品
+							if (rowList[0].cellList[0].isFormal == 0) { //如果是加场则切换成加场图片
+								$(".isActcode").css({
+									"background": "url(img/plusactCode.png)",
+									"background-size": "cover"
+								})
+							}
+							if (rowList[3].cellList[0].isFormal == 0) { //如果是加场则切换成加场图片
+								isFormal = true;
+								$('#FriProduct').hide();
+								$('#step8').hide();
+								$('.top-ul-one').css('margin-top', '24rem');
+							}
+							scence1 = rowList[0].cellList[0].sceneId //爆品场次ID
+							$(".top-li-one-img3").attr("src", rowList[0].cellList[1].imgUrl); //我要推荐
+							current = rowList[0].cellList[1].sceneId //我要推荐场次ID
+							$("#getQualiImg").attr("src", rowList[1].cellList[0].imgUrl); //领资格
+							$("#step1").html(rowList[1].cellList[0].term); //领资格话术
+							scence3 = rowList[1].cellList[0].sceneId //领资格场次ID
+							$("#charge888").attr("src", rowList[1].cellList[1].imgUrl); //888
+							$("#step2").html(rowList[1].cellList[1].term); //888话术
+							scence4 = rowList[1].cellList[1].sceneId //888场次ID
+								//有钻市场
+							if (rowList[2].cellList.length > 1) {
+								$('.style_one').hide();
+								$('.jewel').show();
+								$('.style_two').show();
+								$('#two-boxImg').attr("src", rowList[2].cellList[0].imgUrl);
+								$("#step3").html(rowList[2].cellList[0].term); //爆款抢话术
+								scence5 = rowList[2].cellList[0].sceneId //爆款抢场次ID
+								$('.two-freeRobImg').attr("src", rowList[2].cellList[1].imgUrl);
+								$("#step4").html(rowList[2].cellList[1].term); //免费抽奖话术
+								scence6 = rowList[2].cellList[1].sceneId //免费抽奖场次ID
+								$("#step5").html(rowList[3].cellList[0].term); //钻石话术
+								$("#jewel").html(rowList[3].cellList[0].content);
+								scence7 = rowList[3].cellList[0].sceneId //钻石场次ID
+							} else {
+								//无钻市场
+								if (rowList[2].cellList.length == 1) {
+									$('.style_one').show();
+									$('.jewel').hide();
+									$('.style_two').hide();
+									$("#step7").html(rowList[2].cellList[0].term); //爆款抢话术
+									$("#boxImg").html(rowList[2].cellList[0].content);
+									scence5 = rowList[2].cellList[0].sceneId //爆款抢场次ID
+									$("#step8").html(rowList[3].cellList[0].term); //免费抽奖话术
+									$("#freeRobImg").html(rowList[3].cellList[0].content);
+									scence6 = rowList[3].cellList[0].sceneId //免费抽奖场次ID
+								}
+							}
+						} else if (resp.code == 414) {
+							$("#content").show();
+							isPastDue();
+						} else if (resp.code == 405) {
+							$("#content").hide();
+							$("#appShare").hide();
+							popTipShow.alert('提 示', resp.msg, ['确 定'],
+								function(e) {
+									this.hide();
+								}
+							)
+						} else {
+							$("#content").show();
+							popTipShow.alert('提 示', resp.msg, ['确 定'],
+								function(e) {
+									this.hide();
+								}
+							)
+						}
+					},
+					error: function() {
+						$(".loading").hide();
+						webToast("网络不给力，请稍后再试", "middle", 2000);
+					}
+				});
+			}
+			//领取资格
+			function getQuali(obj) {
+				var scenceId = scence3;
+				if (scenceId == '' || scenceId == null || scenceId == 'null') {
+					popTipShow.alert('提 示', '网络不给力，请检查您的网络状态，稍后再试', ['确 定'],
+						function(e) {
+							this.hide();
+						}
+					)
+					return;
+				}
+				$.ajax({
+					type: "post",
+					url: host + activitycore + "/activity/weekhelpgame/checkuser/" + actCode + "/" + scenceId + "/" + custId + ".json?custid=" + custId,
+					async: true,
+					success: function(resp) {
+						window.location.href = "lucklynum2.html?scenId=" + scenceId + "#&nowTime=" + nowTime;
+						return;
+						if (resp.code == 410) {
+							if (resp.msg == "UNBANDCARD") {
+								popTipShow.confirm('提示', '对不起，您还未绑定浦发信用卡！', ['绑 定', '办 卡'],
+									function(e) {
+										//do something
+										var button = $(e.target).attr('class');
+										if (button == 'ok') { //绑 定
+											popTipShow.alert('提 示', '返回浦发信用卡官方微信主页面，发送“绑定”，并根据提示进行绑定操作。', ['确 定'],
+												function(e) {
+													this.hide();
+												}
+											)
+										}
+										if (button == 'cancel') { //办 卡
+											window.location.href = "https://mbank.spdbccc.com.cn/creditcard/indexActivity.htm?data=000004";
+										}
+									}
+								)
+							} else {
+								popTipShow.alert('提 示', resp.msg, ['确 定'],
+									function(e) {
+										//callback 处理按钮事件
+										var button = $(e.target).attr('class');
+										if (button == 'ok') {
+											this.hide();
+										}
+									}
+								)
+							}
+						} else if (resp.code == 200) {
+							if (resp.data == "detail_success") {
+								window.location.href = "lucklynum2.html?scenId=" + scenceId + "#&nowTime=" + nowTime;
+							} else {
+								window.location.href = "lucklynum.html?scenId=" + scenceId + "," + scence4 + "#&nowTime=" + nowTime;
+							}
+						} else if (resp.code == 414) {
+							isPastDue();
+						} else {
+							popTipShow.alert('提 示', resp.msg, ['确 定'],
+								function(e) {
+									//callback 处理按钮事件
+									var button = $(e.target).attr('class');
+									if (button == 'ok') {
+										this.hide();
+									}
+								}
+							)
+						}
+					},
+					error: function() {
+						webToast("网络不给力，请稍后再试", "middle", 2000);
+					}
+				});
+			}
+			//周四活动
+			function checkBox(obj) {
+				var scenId = scence5;
+				if (scenId == '' || scenId == null) {
+					popTipShow.alert('提 示', '网络不给力，请检查您的网络状态，稍后再试', ['确 定'],
+						function(e) {
+							this.hide();
+						}
+					)
+					return;
+				}
+				$.ajax({
+					type: "post",
+					url: host + activitycore + "/activity/common/checkcommon/" + actCode + "/" + custId + ".json?custid=" + custId,
+					async: true,
+					data: JSON.stringify({}),
+					datatype: "json",
+					success: function(resp) {
+						if (resp.code == 200) {
+							$.ajax({
+								type: "post",
+								url: host + activitycore + "/weekrob/querygoods/" + actCode + "/" + scenId + "/" + custId + "/.json?custid=" + custId,
+								async: true,
+								success: function(resp) {
+									if (resp.code == 410 || resp.code == 405) {
+										popTipShow.alert('提 示', resp.msg, ['确 定'],
+											function(e) {
+												this.hide();
+											}
+										)
+									} else if (resp.code == 414) {
+										isPastDue();
+									} else {
+										var list = resp.data.goodsList;
+										if (list.length > 1) {
+											window.location.href = "productlist.html?scenId=" + scenId + "#&nowTime=" + nowTime;
+										} else if (list.length == 1) {
+											window.location.href = "prodectbuy.html?scenId=" + scenId + "," + list[0].id + "#&nowTime=" + nowTime;
+										}
+									}
+								},
+								error: function() {
+									webToast("网络不给力，请稍后再试", "middle", 2000);
+								}
+							});
+						} else if (resp.code == 410) {
+							if (resp.msg == "UNBANDCARD") {
+								popTipShow.confirm('提示', '对不起，您还未绑定浦发信用卡！', ['绑 定', '办 卡'],
+									function(e) {
+										//do something
+										var button = $(e.target).attr('class');
+										if (button == 'ok') { //绑 定
+											popTipShow.alert('提 示', '返回浦发信用卡官方微信主页面，发送“绑定”，并根据提示进行绑定操作。', ['确 定'],
+												function(e) {
+													this.hide();
+												}
+											)
+										}
+										if (button == 'cancel') { //办 卡
+											window.location.href = "https://mbank.spdbccc.com.cn/creditcard/indexActivity.htm?data=000004";
+										}
+									}
+								)
+							} else {
+								popTipShow.alert('提 示', resp.msg, ['确 定'],
+									function(e) {
+										//callback 处理按钮事件
+										var button = $(e.target).attr('class');
+										if (button == 'ok') {
+											this.hide();
+										}
+									}
+								)
+							}
+						} else if (resp.code == 414) {
+							isPastDue();
+						} else {
+							popTipShow.alert('提 示', resp.msg, ['确 定'],
+								function(e) {
+									//callback 处理按钮事件
+									var button = $(e.target).attr('class');
+									if (button == 'ok') {
+										this.hide();
+									}
+								}
+							)
+						}
+					},
+					error: function() {
+						webToast("网络不给力，请稍后再试", "middle", 2000);
+					}
+				});
+			}
+			//校验去开宝箱页面
+			function bugHotCook() {
+				var scenId = scence6;
+				if (isFormal == true) { //本期为加场
+					popTipShow.alert('提 示', '本期为加场，无抽奖机会', ['确 定'],
+						function(e) {
+							this.hide();
+						}
+					)
+					return;
+				}
+				//绑卡
+				$.ajax({
+					type: "post",
+					url: host + activitycore + "/activity/common/checkcommon/" + actCode + "/" + custId + ".json?custid=" + custId,
+					async: true,
+					data: JSON.stringify({}),
+					datatype: "json",
+					success: function(resp) {
+						if (resp.code == 200) {
+							window.location.href = "box.html?scenId=" + scenId + "#&nowTime=" + nowTime;
+						} else if (resp.code == 410) {
+							if (resp.msg == "UNBANDCARD") {
+								popTipShow.confirm('提示', '对不起，您还未绑定浦发信用卡！', ['绑 定', '办 卡'],
+									function(e) {
+										//do something
+										var button = $(e.target).attr('class');
+										if (button == 'ok') { //绑 定
+											popTipShow.alert('提 示', '返回浦发信用卡官方微信主页面，发送“绑定”，并根据提示进行绑定操作。', ['确 定'],
+												function(e) {
+													this.hide();
+												}
+											)
+										}
+										if (button == 'cancel') { //办 卡
+											window.location.href = "https://mbank.spdbccc.com.cn/creditcard/indexActivity.htm?data=000004";
+										}
+									}
+								)
+							} else {
+								popTipShow.alert('提 示', resp.msg, ['确 定'],
+									function(e) {
+										//callback 处理按钮事件
+										var button = $(e.target).attr('class');
+										if (button == 'ok') {
+											this.hide();
+										}
+									}
+								)
+							}
+						} else if (resp.code == 414) {
+							isPastDue();
+						} else {
+							popTipShow.alert('提 示', resp.msg, ['确 定'],
+								function(e) {
+									//callback 处理按钮事件
+									var button = $(e.target).attr('class');
+									if (button == 'ok') {
+										this.hide();
+									}
+								}
+							)
+						}
+					},
+					error: function() {
+						webToast("网络不给力，请稍后再试", "middle", 2000);
+					}
+				});
+			}
+			//钻石场
+			function checkDiamonds(obj) {
+				var scenId = scence7;
+				$.ajax({
+					type: "post",
+					url: host + activitycore + "/activity/common/checkcommon/" + actCode + "/" + custId + ".json?custid=" + custId,
+					async: true,
+					data: JSON.stringify({}),
+					datatype: "json",
+					success: function(resp) {
+						if (resp.code == 200) {
+							window.location.href = zscWxUrl;
+							var ua = window.navigator.userAgent.toLowerCase();
+							if (ua.match(/MicroMessenger/i) == "micromessenger") {
+								window.location.href = zscWxUrl;
+							} else {
+								window.location.href = zscAppUrl;
+							}
+						} else if (resp.code == 410) {
+							if (resp.msg == "UNBANDCARD") {
+								popTipShow.confirm('提示', '对不起，您还未绑定浦发信用卡！', ['绑 定', '办 卡'],
+									function(e) {
+										//do something
+										var button = $(e.target).attr('class');
+										if (button == 'ok') { //绑 定
+											popTipShow.alert('提 示', '返回浦发信用卡官方微信主页面，发送“绑定”，并根据提示进行绑定操作。', ['确 定'],
+												function(e) {
+													this.hide();
+												}
+											)
+										}
+										if (button == 'cancel') { //办 卡
+											window.location.href = "https://mbank.spdbccc.com.cn/creditcard/indexActivity.htm?data=000004";
+										}
+									}
+								)
+							} else {
+								popTipShow.alert('提 示', resp.msg, ['确 定'],
+									function(e) {
+										//callback 处理按钮事件
+										var button = $(e.target).attr('class');
+										if (button == 'ok') {
+											this.hide();
+										}
+									}
+								)
+							}
+						} else if (resp.code == 414) {
+							isPastDue();
+						} else {
+							popTipShow.alert('提 示', resp.msg, ['确 定'],
+								function(e) {
+									//callback 处理按钮事件
+									var button = $(e.target).attr('class');
+									if (button == 'ok') {
+										this.hide();
+									}
+								}
+							)
+						}
+					},
+					error: function() {
+						webToast("网络不给力，请稍后再试", "middle", 2000);
+					}
+				});
+			}
+			//888积分换购
+			function check888(obj) {
+				var scenId = scence4;
+				if (scenId == '' || scenId == null) {
+					popTipShow.alert('提 示', '网络不给力，请检查您的网络状态，稍后再试', ['确 定'],
+						function(e) {
+							this.hide();
+						}
+					)
+					return;
+				}
+				var scenNumId = scence3;
+				$.ajax({
+					type: "post",
+					url: host + activitycore + "/activity/common/checkcommon/" + actCode + "/" + custId + ".json?custid=" + custId,
+					async: true,
+					success: function(resp) {
+						window.location.href = "integralrob.html?scenId=" + scenId + "," + scenNumId + "#&nowTime=" + nowTime;
+						return;
+						if (resp.code == 200) { //通过
+							window.location.href = "integralrob.html?scenId=" + scenId + "," + scenNumId + "#&nowTime=" + nowTime;
+						} else if (resp.code == 410) {
+							if (resp.msg == "UNBANDCARD") {
+								popTipShow.confirm('提示', '对不起，您还未绑定浦发信用卡！', ['绑 定', '办 卡'],
+									function(e) {
+										//do something
+										var button = $(e.target).attr('class');
+										if (button == 'ok') { //绑 定
+											popTipShow.alert('提 示', '返回浦发信用卡官方微信主页面，发送“绑定”，并根据提示进行绑定操作。', ['确 定'],
+												function(e) {
+													this.hide();
+												}
+											)
+										}
+										if (button == 'cancel') { //办 卡
+											window.location.href = "https://mbank.spdbccc.com.cn/creditcard/indexActivity.htm?data=000004";
+										}
+									}
+								)
+							} else {
+								popTipShow.alert('提 示', resp.msg, ['确 定'],
+									function(e) {
+										//callback 处理按钮事件
+										var button = $(e.target).attr('class');
+										if (button == 'ok') {
+											this.hide();
+										}
+									}
+								)
+							}
+						} else if (resp.code == 414) {
+							isPastDue();
+						} else {
+							popTipShow.alert('提 示', resp.msg, ['确 定'],
+								function(e) {
+									//callback 处理按钮事件
+									var button = $(e.target).attr('class');
+									if (button == 'ok') {
+										this.hide();
+									}
+								}
+							)
+						}
+					},
+					error: function() {
+						webToast("网络不给力，请稍后再试", "middle", 2000);
+					}
+				});
+			}
+			//跳转投票页面
+			function toRecommend() {
+				window.location.href = 'recommend.html?current=' + current + "#&nowTime=" + nowTime;
+			}
+			//本期爆款
+			function toProduct() {
+				window.location.href = 'productshow.html?secnId=' + scence1 + "#&nowTime=" + nowTime;
+			}
+			//app分享 
+			function wechatFirend() { //分享给朋友
+				window.jsspdb.shareToWXSceneSession(linkUrl, shareTitle, shareContent, "1");
+			}
+
+			function weichatGroup() { //分享给朋友圈
+				window.jsspdb.shareToWXSceneTimeline(linkUrl, shareTitle, shareContent, "1");
+			}
+		</script>
+	</body>
+
+</html>

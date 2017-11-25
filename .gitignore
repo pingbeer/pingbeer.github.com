@@ -1,5 +1,5 @@
 ﻿agCli/node_modules/*
-
+.idea/workspace.xml
 vueCli/node_modules/*
 MyApp/node_modules/*
 reactstart/node_modules/*

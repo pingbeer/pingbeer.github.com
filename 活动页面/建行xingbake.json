@@ -1,0 +1,74 @@
+﻿{
+  "respMsg": "成功",
+  "body": {
+    "entries": [
+      {
+        "tags": [
+          ""
+        ],
+        "venueDescription": "全国星巴克门店适用",
+        "title": "星巴克36元Grande杯电子兑换券",
+        "titleAlt": "星巴克36元普通中杯咖啡代金券（仅售19元）",
+        "manageType": "Voucher",
+        "ticketBeginTime": "2017-09-29T22:46:00+08:00",
+        "ticketEndTime": "2017-12-15T23:59:00+08:00",
+        "description": "https://s3.cn-north-1.amazonaws.com.cn/coupon-static.funguide.com.cn/html/20171009/64fb7890-773d-47ec-86f8-79f29803895e.html",
+        "descriptionHtml": null,
+        "termsHtml": null,
+        "type": "PAID",
+        "category": "甜品",
+        "categoryId": 85,
+        "price": "36",
+        "costPrice": "3",
+        "sortNo": "15066964229660000000000000000000",
+        "dealPrice": "19",
+        "terms": "https://s3.cn-north-1.amazonaws.com.cn/coupon-static.funguide.com.cn/html/20171009/b1f972f6-bf2d-40da-a649-cddfa467da3d.html",
+        "imageUri": [
+          "https://s3.cn-north-1.amazonaws.com.cn/coupon-static.funguide.com.cn/image/20170929/db6dddb8-018c-42ad-8ca2-e8ef8a97baba.png",
+          "https://s3.cn-north-1.amazonaws.com.cn/coupon-static.funguide.com.cn/image/20170929/5dbc9dc2-d31e-4e1c-b76b-89283ba328c6.png",
+          "https://s3.cn-north-1.amazonaws.com.cn/coupon-static.funguide.com.cn/image/20170929/40e6f3d2-844f-4cd3-97bf-ac005778abc3.png"
+        ],
+        "availabilityFrom": "2017-09-29T22:42:00+08:00",
+        "availabilityTo": "2017-11-30T23:59:00+08:00",
+        "redemptionFrom": "2017-09-29T22:46:00+08:00",
+        "redemptionTo": "2017-12-15T23:59:00+08:00",
+        "purchaseLimit":0,
+        "quantity": 24544,
+        "channelMsg": {
+          "vendorId": 185,
+          "logoImageUrl": null,
+          "vendorName": "星巴克",
+          "vendorNameAlt": "星巴克",
+          "locations": [
+            {
+              "name": "崇明八一广场店",
+              "englishAddress": null,
+              "chineseAddress": "上海市崇明县城桥镇八一路206号八一广场一层",
+              "telephone": "400-820-6998",
+              "longitude": "121.396462",
+              "latitude": "31.620937",
+              "cityName": "上海市"
+            }
+          ],
+          "stats": {
+            "sold": 11,
+            "redeemed": 0
+          },
+          "locationCounts": 12
+        },
+        "featured": false,
+        "provider": null,
+        "format": 0,
+        "deal_id": 541
+      }
+    ],
+    "rules": [],
+    "_metadata": {
+      "page": 0,
+      "page_size": 6,
+      "page_count": 0,
+      "total_count": 1
+    }
+  },
+  "respCode": "200"
+}

@@ -75,7 +75,7 @@
     //页面初始化
     $(function() {
         toinfo();
-      //  whilte();
+        whilte();
         getTimer();
     })
     //页面倒计时
@@ -155,10 +155,11 @@
                     }
                 }
                 if(respMsg !=""){
-                    popTipShow.alert('提示', respMsg, ['确 定'],
-                        function(e) {
-                            this.hide();
-                        })
+				
+                    <!-- popTipShow.alert('提示', respMsg, ['确 定'], -->
+                        <!-- function(e) { -->
+                            <!-- this.hide(); -->
+                        <!-- }) -->
                 }
             },
             error: function() {
@@ -223,14 +224,14 @@
                                                 })
                                         }
                                     } else {
-                                        var resultTip = resp.result.split(",")[1];
-                                        popTipShow.alert('提r示', resultTip, ['确 定'],
-                                            function(e) {
-                                                var button = $(e.target).attr('class');
-                                                if (button == 'ok') {
-                                                    window.location.href = rebackOrderUrl;
-                                                }
-                                            })
+                                        <!-- var resultTip = resp.result.split(",")[1]; -->
+                                        <!-- popTipShow.alert('提r示', resultTip, ['确 定'], -->
+                                            <!-- function(e) { -->
+                                                <!-- var button = $(e.target).attr('class'); -->
+                                                <!-- if (button == 'ok') { -->
+                                                    <!-- window.location.href = rebackOrderUrl; -->
+                                                <!-- } -->
+                                            <!-- }) -->
                                     }
                                 },
                                 error: function() {
@@ -239,7 +240,7 @@
                                 }
                             });
                         }
-                        fundd();
+                   //     fundd();
                         $.ajax({
                             type: "get",
                             url: host + activitycore + "/vcode/chkVCode/" + actCode + "/" + sceneId + "/" + userId + "/" + vcode + ".json?custid=" + userId,

@@ -1,0 +1,270 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="Cache-Control" content="max-age=1" />
+	<title>浦发银行信用卡</title> 
+	<link rel="stylesheet" href="./css/basic.css?v=1">
+	<link rel="stylesheet" href="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_css/smoothness/jquery-ui-1.10.1.custom.css">
+	<link rel="stylesheet" href="./css/customDialog.css?v=2">
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="./js/lib/jquery.min.js"></script>
+    <script src="./js/lib/jquery-ui-1.10.1.custom.min.js"></script>
+    <script src="./js/lib/bootstrap.min.js"></script>
+    <script src="./js/lib/jquery.slimscroll.js"></script>
+	<script src="./js/lib/myBase64Util.js?v=1"></script>
+	<script src="./js/lib/jquery.qrcode.min.js"></script>
+	<script src="./js/lib/wScratchPad.min.js" id="wScratchVersion"></script>
+	<script src="./myjs/lib/common.js?v=1"></script>
+    <script src="./myjs/lib/customDialog.js?v=1"></script>
+	<script src="./js/myCommon.js?v=20012"></script>
+	<script src="./js/commonShare.js?v=20012"></script>
+	<script src="./js/stat.js?v=1"></script>
+	<script>
+	var lotteryPage = new LotteryPage();
+var isAgain = true;
+
+if(window.__skipInitPage == undefined || !window.__skipInitPage) {
+    $(document).ready(function() {
+        commonShare.initWxSetting(lotteryPage.initPage,lotteryPage.doSendShare,false,true);
+        console.log("$(document).ready() initPage");
+    });
+}
+
+function LotteryPage() {
+
+    var _this = this;
+    var _cnt = 0;
+    var _lotteryCnt = 0;
+
+    this.initPage = function() {
+        $my.async.series([
+              initFormInfo,
+              showUserInfo,
+            ], function(totalCount, doneCount, error) {
+            if(totalCount == doneCount) {
+                console.log("lotteryPage initPage() done");
+            }
+        });
+    };
+
+    function initFormInfo(callback){
+    	$('[id="rule_mb"]').unbind('click').bind('click',function(){ 
+            $('[id="rule_mb"]').fadeOut();
+        });
+        $('.my_goods').unbind('click').bind('click',goGoods);
+    	
+   		$('#gjq_canvas').wScratchPad({
+ 	        size:15,
+ 	        bg:null,
+ 	        fg:'./imgs/ggk.jpg',
+ 	        cursor: null,
+ 	        scratchDown:function(e,percent){
+ 	            event.preventDefault();
+ 	            $(this.canvas).css('ma0rgin-right',$(this.canvas).css('margin-right')=="0px"?"1px":"0px");
+ 	        },
+ 	        scratchMove: function (e,percent){
+ 	            $(this.canvas).css('margin-right',$(this.canvas).css('margin-right')=="0px"?"1px":"0px");
+ 	            if (percent > 25 && isAgain){
+	                isAgain = false;
+	                event.preventDefault();
+	                this.clear();
+ 	            }
+ 	        },
+ 	        scratchUp:function(e,percent){
+ 	            event.preventDefault();
+ 	            $(this.canvas).css('margin-right',$(this.canvas).css('margin-right')=="0px"?"1px":"0px");
+ 	        }
+ 	    });
+        
+    	stat.pageStat("lottery");
+    	
+        setHtmlFontSize(); 
+        if(callback) {
+            callback();
+        }
+    }
+    function showUserLottery(){
+	 	$my.ajax({
+	         url: $my.getCloudDataServiceUrl(),
+	         data: {
+	             serviceType: "com.ebuy.activity.service.spdbcat.SpdBcatService",
+	             serviceMethod: "getUserLotteryHistory"
+	         },
+	         success: function(response) {
+	       	  if($my.checkPageResult(response)){
+		   	    	  var myObject = $.parseJSON(response).resultData;
+		   	    	  $('.spd').hide();
+		   	    	  if(myObject == undefined){
+		   	    		  $('#result').attr('src','https://magicactivity.oss-cn-hangzhou.aliyuncs.com/spdbcat/fail.jpg');
+		   	    	  }else{
+		   	    		  if(myObject.lottery_status == 1){
+			   	    		  $('#result').attr('src','https://magicactivity.oss-cn-hangzhou.aliyuncs.com/spdbcat/susses.jpg');
+		   	    		  }else{
+			   	    		  $('#result').attr('src','https://magicactivity.oss-cn-hangzhou.aliyuncs.com/spdbcat/fail.jpg');
+		   	    		  }
+		   	    	  }
+		   	    	  $('.gjq_item').empty();
+		         }
+		     }
+	   	});
+    }
+
+	function showUserInfo(callback){
+	
+		
+				
+					_lotteryCnt = 1;
+		   	    	  if(_lotteryCnt == 1){
+		   	    		  $('#cnt').text(1);
+		   	    		  _cnt = 1;
+		   	    		  $('.spd').unbind('touchstart').bind('touchstart',lottery);
+		   	    		  return;
+		   	    	  }else if(_lotteryCnt >1){
+		   	    	  	showUserLottery();
+		   	    	  }
+	   	    		  $('#cnt').text(0);
+	   	    		  _cnt = 0;
+	                		console.log("showUserInfo() done");
+					if(callback) {
+						callback();
+					}
+				
+	
+		<!-- $my.ajax({ -->
+			<!-- url: $my.getCloudDataServiceUrl(), -->
+			<!-- data: { -->
+				<!-- serviceType: "com.ebuy.activity.service.spdbcat.SpdBcatService", -->
+				<!-- serviceMethod: "getUserInfo" -->
+			<!-- }, -->
+			<!-- success: function(response) { -->
+				<!-- if($my.checkPageResult(response)){ -->
+					<!-- var myObject = $.parseJSON(response).resultData; -->
+					<!-- _lotteryCnt = myObject.lotteryCnt; -->
+		   	    	  <!-- if(_lotteryCnt == 1){ -->
+		   	    		  <!-- $('#cnt').text(1); -->
+		   	    		  <!-- _cnt = 1; -->
+		   	    		  <!-- $('.spd').unbind('touchstart').bind('touchstart',lottery); -->
+		   	    		  <!-- return; -->
+		   	    	  <!-- }else if(_lotteryCnt >1){ -->
+		   	    	  	<!-- showUserLottery(); -->
+		   	    	  <!-- } -->
+	   	    		  <!-- $('#cnt').text(0); -->
+	   	    		  <!-- _cnt = 0; -->
+	                		<!-- console.log("showUserInfo() done"); -->
+					<!-- if(callback) { -->
+						<!-- callback(); -->
+					<!-- } -->
+				<!-- } -->
+			<!-- }, -->
+		<!-- }); -->
+	}
+	
+    function lottery(){
+    	$('.spd').unbind('touchstart');
+    	if(_cnt != 1){
+    		return;
+    	}
+    	_cnt = 0;
+    	$('#cnt').text(0);
+	 	$my.ajax({
+	         url: $my.getCloudDataServiceUrl(),
+	         data: {
+	             serviceType: "com.ebuy.activity.service.spdbcat.SpdBcatService",
+	             serviceMethod: "doLottery"
+	         },
+	         success: function(response) {
+	       	  if($my.checkPageResult(response)){
+	   	    	  var myObject = $.parseJSON(response).resultData;
+	   	    	  if(myObject == undefined){
+	   	    		 
+	   	    		  $('#result').attr('src','https://magicactivity.oss-cn-hangzhou.aliyuncs.com/spdbcat/fail.jpg');
+	   	    	  }else{
+	   	    		
+	   	    		  $('#result').attr('src','https://magicactivity.oss-cn-hangzhou.aliyuncs.com/spdbcat/susses.jpg');
+	   	    	  }
+	   	    	  $('.spd').hide();
+	       	  }
+	         },
+	   	});
+    }
+    
+    function goGoods(){
+    	window.location = 'goods.html';
+    }
+
+	this.doSendShare = function(){
+		$my.ajax({
+	         url: $my.getCloudDataServiceUrl(),
+	         data: {
+	             serviceType: "com.ebuy.activity.service.spdbcat.SpdBcatService",
+	             serviceMethod: "shareSuccNotify"
+	         },
+	         success: function(response) {
+	       	  if($my.checkPageResult(response)){
+					
+	       	  }
+	         },
+	   	});
+	}
+}
+	</script>
+	<style>
+		
+.page{	
+	background:url(https://magicactivity.oss-cn-hangzhou.aliyuncs.com/spdbcat/b4.jpg);
+	background-size:100% auto;
+	background-repeat:no-repeat;
+	background-position:center 0;
+    background-size:100% auto;
+    text-align: center;
+    position:absolute;top:0;left:0;width:100%;min-height:100%;overflow:hidden;max-width:640px;min-width:320px;z-index:1;
+    background-color: #e5e6df;
+}
+
+.spd_gjq{position: absolute;left: 2.025rem;top: 8rem;}
+.gjq_show{width: 14.7rem;height: 7.5rem;z-index:48;overflow:hidden;position:absolute;z-index:51;}
+.gjq_item{width: 14.7rem;height: 7.5rem;position:absolute;z-index:52;overflow:hidden;}
+.zIndex58{z-index:58!important;}
+.gjq_item img{overflow:hidden;}
+.gjq_canvas{width:100%;height:100%;overflow:hidden;}
+.gjq_canvas img{display:none!important;}
+.gjq_canvas canvas{overflow:hidden;}
+.chance{width: 100%;position: absolute;top: 17rem;}
+.my_goods{width: 100%;position: absolute;top: 24rem;}
+.my_goods img{width: 6.5rem}
+
+.spd{width: 14.7rem;height: 7.5rem;position: absolute;left: 2.025rem;top: 8rem;z-index: 99;}
+
+	</style>
+</head>
+<body>
+	<div class="page " id="page">		
+		
+		<div class="spd">
+			
+		</div>
+		
+		
+		<div class="spd_gjq" id="spd_gjq" style="display: block;">
+
+			<div class="gjq_show" id="gjq_show" style="display:block">
+				<img id="result" src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/spdbcat/fail.jpg" alt="">
+			</div>
+
+			<div class="gjq_item" id="gjq_item">
+				<div class="gjq_canvas" id="gjq_canvas" style="text-align: left;"></div>
+			</div>
+		</div>
+		
+		<div class="chance">抽奖次数剩余<i id="cnt">0</i>次</div>
+		
+		<div class="my_goods">
+			<img src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/spdbcat/my_goods.png"/>
+		</div>
+		
+    </div>
+</body>
+</html>

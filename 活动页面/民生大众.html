@@ -1,0 +1,116 @@
+﻿<div class="content">
+	<div class="convert_top">
+		<div class="cvt_item border b_lrb">
+			<span class="ico_top"></span>
+			<span class="ico_ylt"></span>
+			<span class="ico_yrt"></span>
+			<p class="cvt_img">
+				<img ng-src={{actyGiftMap.goodsBannerPicPath}}>
+			</p>
+		</div>
+	</div>
+	<div class="w_cvt border b_top_btm">
+		<div class="w_box border b_btm">
+			<p class="w_title" ng-bind="actyGiftMap.giftName"></p>
+			<div class="wkit">
+				<div class="wkit_1" ng-bind="actyGiftMap.lifeSpan | lifeSpan"></div>
+				<div class="wkit_3">
+					<span ng-bind="timeFormat"></span>
+				</div>
+			</div>
+		</div>
+		<p class="w_tiaoma" ng-if="isShowTotal=='01'"><span class="jf_num" ng-bind="userQualifyTotal"></span> <em ng-bind="qualifyUnit"></em></p>
+		<p class="w_tiaoma" ng-bind-html="giftPriceCN" ng-hide="isPay"></p>
+		<div class="gift_redeem border b_top" ng-show="isPay">
+			<div>兑换价格</div>
+			<div class="font_32">
+				<p class="select_p">
+					<select ng-model="giftPrice">
+						<option ng-repeat="item in giftPriceList track by $index" value="{{item}}" ng-bind="item | transPrice"></option>
+					</select>
+				</p>
+			</div>
+		</div>
+		<div class="type_box border b_top" ng-if="giftClassFlag">
+			<p class="type_p1" ng-bind="giftClass"></p>
+			<p class="type_p2 on" ng-bind="giftClassName"></p>
+		</div>
+		<div class="type_box border b_top" ng-if=giftSpeNameFlag>
+			<p class="type_p1" ng-bind="giftSpeName"></p>
+			<p class="type_p2  on" ng-bind="giftSpeSlctName"></p>
+		</div>
+		<div class="gift_redeem border b_top">
+			<div>数量</div>
+			<div>
+				<p class="num_change" ng-if="giftRuleMap.exchType==01">
+					<span class="minusBtn" ng-click="minusBtn()"></span> 
+					<span class="num_int"><input type="text" ng-change="changeNum()" ng-model="pGiftNum.giftNum"/></span>
+					<span class="plusBtn" ng-click="plusBtn()"></span>
+				</p>
+				<p class="num_change" ng-if="giftRuleMap.exchType==02">
+					<span class="minusBtn"></span> 
+					<span class="num_int" ng-bind="pGiftNum.giftNum"></span> 
+					<span class="plusBtn"></span>
+				</p>
+			</div>
+		</div>
+		<div class="gift_redeem border b_top">
+			<div>小计</div>
+			<div>
+				<span class="col_ylow" ng-bind-html="giftSumPriceCN"></span>
+			</div>
+		</div>
+		<div class="gift_redeem code_dov border b_top">
+			<div>
+				<p class="yzm_box">
+					<span class="yzm_sp1">验证码:</span> 
+					<span class="yzm_sp2">
+						<input id="phoneMsg" type="text" name="jcaptcha" ng-model="jcaptcha" maxlength="5" placeholder="请输入右图字符" />
+					</span>
+				</p>
+			</div>
+			<div>
+				<p>
+					<img height="35px" ng-src={{jcaptchaImg}} onerror="javascript:this.src='image/reload.jpg'" onclick="this.src=servicePath+'jcaptcha.img?userKey='+encodeURIComponent(localStorage.userKey)+'&timestamp='+new Date().getTime()" />
+				</p>
+			</div>
+		</div>
+	</div> 
+	<div class="w_cvt border b_top_btm">
+		<div class="cvtNav" ng-if="shopsType!='03'">
+			<p class="cvt_title" ui-sref="shopList">适用门店</p>
+		</div>
+		<div class="cvtrule border b_top">
+			<p class="cvtrule_title" ng-class="{'on':isShowOn}" ng-click="isShowOn=!isShowOn">使用细则 <i class="ico_wtb"></i></p>
+			<div class="cvt_rule" ng-class="{'none':isShowOn}">
+			    <p ng-bind-html="useDetail"></p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="foter">
+	<p class="btn_card"  ng-click="submitOrder(actyGiftMap.actyID,actyGiftMap.giftID,$event)">确认兑换</p>
+	<!-- <p class="btn_card ">确认兑换</p> -->
+</div>
+<div class="pop_wraper" id="dh_success" ng-if="isSuccess">
+	<div class="pop_outer">
+	    <div class="pop_cont">
+	        <span class="ico_close" ui-sref="mypriv"></span>
+	        <p class="pop_icon"><span class="ico_success"></span></p>
+	        <p class="pop_title">兑换成功</p>
+	        <div class="pop_page" ng-bind="orderMessage"></div>
+	        <p class="pbtn_p" ui-sref="mypriv"><span class="ylw_btn">查看我的特权</span></p>
+	    </div>
+	</div>
+</div>
+<div class="pop_wraper" id="dh_fial" ng-if="isFail">
+	<div class="pop_outer">
+	    <div class="pop_cont">
+	        <span class="ico_close" ng-click="popClose()"></span>
+	        <p class="pop_icon"><span class="ico_fial"></span></p>
+	        <p class="pop_title" ng-bind="orderMessage"></p>
+	        <p class="pbtn_p" ng-click="popClose()"><span class="ylw_btn">返 回</span></p>
+	    </div>
+	</div>
+</div>
+<!-- <script type='text/javascript' src='activityday/script/weShareReady.js'></script> -->

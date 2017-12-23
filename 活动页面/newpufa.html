@@ -123,6 +123,7 @@
 		<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js?v=20170915" type="text/javascript"></script>
 		<script type="text/javascript" src="js/weixinShare.js?v=201709141852"></script>
 		<script type="text/javascript" src="js/common.js?v=20170922"></script>
+		<script src="js/fingerprint.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			var urlParam = getQueryStr("actCode");
 			var arr = urlParam.split(",");
@@ -135,6 +136,7 @@
 			var scence5;
 			var scence6;
 			var isFormal;
+			var devFinger = new Fingerprint().get();
 			//var actType=weekrob;//页面初始初始化请求参数：周周抢
 			//当前场次
 			var current = '';
@@ -154,7 +156,9 @@
 								}
 							)
 			}else{
+				var ind = "首页";
 				getScenDes();
+				fingerprint(ind);
 			}
 			var rebackOrderUrl = window.location.href;
 			sessionStorage.setItem("rebackOrderUrl", rebackOrderUrl);
@@ -162,12 +166,48 @@
 			var linkUrl = host + xpmcactive + "/act/tohomepageshare/" + encodeUrl;
 			params = JSON.stringify(params);
 			window.localStorage.setItem("params", params); //设置localstorage;
+			//pv,uv
+			function fingerprint(SCENE){
+				$.ajax({
+					type: "post",
+					url: host + activitycore + "/monitor/puv.pub",
+					async: true,
+					contentType: "application/json;charset=utf-8",
+					data: JSON.stringify({
+						"actCode": actCode,
+						"sceneId": SCENE,
+						"bizId": "1",
+						"devFinger": devFinger
+					}),
+					successFn: function(resp) {
+						console.log(resp);
+					}
+				});
+			}
+			function isBind(){
+				popTipShow.confirm('提示', '对不起，您还未绑定浦发信用卡！', ['绑 定', '办 卡'],
+									function(e) {
+										//do something
+										var button = $(e.target).attr('class');
+										if (button == 'ok') { //绑 定
+											popTipShow.alert('提 示', '返回浦发信用卡官方微信主页面，发送“绑定”，并根据提示进行绑定操作。', ['  确     定    '],
+												function(e) {
+													this.hide();
+												}
+											)
+										}
+										if (button == 'cancel') { //办 卡
+											window.location.href = "https://mbank.spdbccc.com.cn/creditcard/indexActivity.htm?data=000004";
+										}
+									}
+								)
+			}
 			//页面初始化
 			function getScenDes() {
 				$("#content").hide();
 				$.ajax({
 					type: "post",
-					url: host + activitycore + "/homepage/weekrob/" + custId + ".json?custid=" + custId,
+					url: host + activitycore + "/homepage/weekrob/" + custId + ".jsonx?custid=" + custId,
 					async: false,
 					beforeSend: function() {
 						$(".loading").show();
@@ -259,6 +299,8 @@
 			}
 			//领取资格
 			function getQuali(obj) {
+				var ind = "第一场";
+				fingerprint(ind);
 				var scenceId = scence3;
 				if (scenceId == '' || scenceId == null || scenceId == 'null') {
 					popTipShow.alert('提 示', '网络不给力，请检查您的网络状态，稍后再试', ['确 定'],
@@ -273,37 +315,10 @@
 					url: host + activitycore + "/activity/weekhelpgame/checkuser/" + actCode + "/" + scenceId + "/" + custId + ".json?custid=" + custId,
 					async: true,
 					success: function(resp) {
-						window.location.href = "lucklynum2.html?scenId=" + scenceId + "#&nowTime=" + nowTime;
+window.location.href = "lucklynum2.html?scenId=" + scenceId + "#&nowTime=" + nowTime;
 						return;
-						if (resp.code == 410) {
-							if (resp.msg == "UNBANDCARD") {
-								popTipShow.confirm('提示', '对不起，您还未绑定浦发信用卡！', ['绑 定', '办 卡'],
-									function(e) {
-										//do something
-										var button = $(e.target).attr('class');
-										if (button == 'ok') { //绑 定
-											popTipShow.alert('提 示', '返回浦发信用卡官方微信主页面，发送“绑定”，并根据提示进行绑定操作。', ['确 定'],
-												function(e) {
-													this.hide();
-												}
-											)
-										}
-										if (button == 'cancel') { //办 卡
-											window.location.href = "https://mbank.spdbccc.com.cn/creditcard/indexActivity.htm?data=000004";
-										}
-									}
-								)
-							} else {
-								popTipShow.alert('提 示', resp.msg, ['确 定'],
-									function(e) {
-										//callback 处理按钮事件
-										var button = $(e.target).attr('class');
-										if (button == 'ok') {
-											this.hide();
-										}
-									}
-								)
-							}
+						if (resp.code == 104) {
+							isBind();
 						} else if (resp.code == 200) {
 							if (resp.data == "detail_success") {
 								window.location.href = "lucklynum2.html?scenId=" + scenceId + "#&nowTime=" + nowTime;
@@ -331,6 +346,8 @@
 			}
 			//周四活动
 			function checkBox(obj) {
+				var ind = "第三场";
+				fingerprint(ind);
 				var scenId = scence5;
 				if (scenId == '' || scenId == null) {
 					popTipShow.alert('提 示', '网络不给力，请检查您的网络状态，稍后再试', ['确 定'],
@@ -350,10 +367,10 @@
 						if (resp.code == 200) {
 							$.ajax({
 								type: "post",
-								url: host + activitycore + "/weekrob/querygoods/" + actCode + "/" + scenId + "/" + custId + "/.json?custid=" + custId,
+								url: host + activitycore + "/weekrob/querygoods/" + actCode + "/" + scenId + "/" + custId + "/.jsonx?custid=" + custId,
 								async: true,
 								success: function(resp) {
-									if (resp.code == 410 || resp.code == 405) {
+									if (resp.code == 405) {
 										popTipShow.alert('提 示', resp.msg, ['确 定'],
 											function(e) {
 												this.hide();
@@ -361,6 +378,20 @@
 										)
 									} else if (resp.code == 414) {
 										isPastDue();
+									} else if (resp.code == 410){
+										if (resp.msg == "UNBANDCARD") {
+											isBind();
+										} else {
+											popTipShow.alert('提 示', resp.msg, ['确 定'],
+												function(e) {
+													//callback 处理按钮事件
+													var button = $(e.target).attr('class');
+													if (button == 'ok') {
+														this.hide();
+													}
+												}
+											)
+										}
 									} else {
 										var list = resp.data.goodsList;
 										if (list.length > 1) {
@@ -374,35 +405,8 @@
 									webToast("网络不给力，请稍后再试", "middle", 2000);
 								}
 							});
-						} else if (resp.code == 410) {
-							if (resp.msg == "UNBANDCARD") {
-								popTipShow.confirm('提示', '对不起，您还未绑定浦发信用卡！', ['绑 定', '办 卡'],
-									function(e) {
-										//do something
-										var button = $(e.target).attr('class');
-										if (button == 'ok') { //绑 定
-											popTipShow.alert('提 示', '返回浦发信用卡官方微信主页面，发送“绑定”，并根据提示进行绑定操作。', ['确 定'],
-												function(e) {
-													this.hide();
-												}
-											)
-										}
-										if (button == 'cancel') { //办 卡
-											window.location.href = "https://mbank.spdbccc.com.cn/creditcard/indexActivity.htm?data=000004";
-										}
-									}
-								)
-							} else {
-								popTipShow.alert('提 示', resp.msg, ['确 定'],
-									function(e) {
-										//callback 处理按钮事件
-										var button = $(e.target).attr('class');
-										if (button == 'ok') {
-											this.hide();
-										}
-									}
-								)
-							}
+						} else if (resp.code == 104) {
+							isBind();
 						} else if (resp.code == 414) {
 							isPastDue();
 						} else {
@@ -424,6 +428,8 @@
 			}
 			//校验去开宝箱页面
 			function bugHotCook() {
+				var ind = "第四场";
+				fingerprint(ind);
 				var scenId = scence6;
 				if (isFormal == true) { //本期为加场
 					popTipShow.alert('提 示', '本期为加场，无抽奖机会', ['确 定'],
@@ -443,35 +449,8 @@
 					success: function(resp) {
 						if (resp.code == 200) {
 							window.location.href = "box.html?scenId=" + scenId + "#&nowTime=" + nowTime;
-						} else if (resp.code == 410) {
-							if (resp.msg == "UNBANDCARD") {
-								popTipShow.confirm('提示', '对不起，您还未绑定浦发信用卡！', ['绑 定', '办 卡'],
-									function(e) {
-										//do something
-										var button = $(e.target).attr('class');
-										if (button == 'ok') { //绑 定
-											popTipShow.alert('提 示', '返回浦发信用卡官方微信主页面，发送“绑定”，并根据提示进行绑定操作。', ['确 定'],
-												function(e) {
-													this.hide();
-												}
-											)
-										}
-										if (button == 'cancel') { //办 卡
-											window.location.href = "https://mbank.spdbccc.com.cn/creditcard/indexActivity.htm?data=000004";
-										}
-									}
-								)
-							} else {
-								popTipShow.alert('提 示', resp.msg, ['确 定'],
-									function(e) {
-										//callback 处理按钮事件
-										var button = $(e.target).attr('class');
-										if (button == 'ok') {
-											this.hide();
-										}
-									}
-								)
-							}
+						} else if (resp.code == 104) {
+							isBind();
 						} else if (resp.code == 414) {
 							isPastDue();
 						} else {
@@ -493,6 +472,8 @@
 			}
 			//钻石场
 			function checkDiamonds(obj) {
+				var ind = "钻石场";
+				fingerprint(ind);
 				var scenId = scence7;
 				$.ajax({
 					type: "post",
@@ -509,35 +490,8 @@
 							} else {
 								window.location.href = zscAppUrl;
 							}
-						} else if (resp.code == 410) {
-							if (resp.msg == "UNBANDCARD") {
-								popTipShow.confirm('提示', '对不起，您还未绑定浦发信用卡！', ['绑 定', '办 卡'],
-									function(e) {
-										//do something
-										var button = $(e.target).attr('class');
-										if (button == 'ok') { //绑 定
-											popTipShow.alert('提 示', '返回浦发信用卡官方微信主页面，发送“绑定”，并根据提示进行绑定操作。', ['确 定'],
-												function(e) {
-													this.hide();
-												}
-											)
-										}
-										if (button == 'cancel') { //办 卡
-											window.location.href = "https://mbank.spdbccc.com.cn/creditcard/indexActivity.htm?data=000004";
-										}
-									}
-								)
-							} else {
-								popTipShow.alert('提 示', resp.msg, ['确 定'],
-									function(e) {
-										//callback 处理按钮事件
-										var button = $(e.target).attr('class');
-										if (button == 'ok') {
-											this.hide();
-										}
-									}
-								)
-							}
+						} else if (resp.code == 104) {
+							isBind();
 						} else if (resp.code == 414) {
 							isPastDue();
 						} else {
@@ -559,6 +513,8 @@
 			}
 			//888积分换购
 			function check888(obj) {
+				var ind = "第二场";
+				fingerprint(ind);
 				var scenId = scence4;
 				if (scenId == '' || scenId == null) {
 					popTipShow.alert('提 示', '网络不给力，请检查您的网络状态，稍后再试', ['确 定'],
@@ -574,39 +530,10 @@
 					url: host + activitycore + "/activity/common/checkcommon/" + actCode + "/" + custId + ".json?custid=" + custId,
 					async: true,
 					success: function(resp) {
-						window.location.href = "integralrob.html?scenId=" + scenId + "," + scenNumId + "#&nowTime=" + nowTime;
-						return;
 						if (resp.code == 200) { //通过
 							window.location.href = "integralrob.html?scenId=" + scenId + "," + scenNumId + "#&nowTime=" + nowTime;
-						} else if (resp.code == 410) {
-							if (resp.msg == "UNBANDCARD") {
-								popTipShow.confirm('提示', '对不起，您还未绑定浦发信用卡！', ['绑 定', '办 卡'],
-									function(e) {
-										//do something
-										var button = $(e.target).attr('class');
-										if (button == 'ok') { //绑 定
-											popTipShow.alert('提 示', '返回浦发信用卡官方微信主页面，发送“绑定”，并根据提示进行绑定操作。', ['确 定'],
-												function(e) {
-													this.hide();
-												}
-											)
-										}
-										if (button == 'cancel') { //办 卡
-											window.location.href = "https://mbank.spdbccc.com.cn/creditcard/indexActivity.htm?data=000004";
-										}
-									}
-								)
-							} else {
-								popTipShow.alert('提 示', resp.msg, ['确 定'],
-									function(e) {
-										//callback 处理按钮事件
-										var button = $(e.target).attr('class');
-										if (button == 'ok') {
-											this.hide();
-										}
-									}
-								)
-							}
+						} else if (resp.code == 104) {
+							isBind();
 						} else if (resp.code == 414) {
 							isPastDue();
 						} else {

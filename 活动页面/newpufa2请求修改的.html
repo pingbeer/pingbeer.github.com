@@ -204,7 +204,8 @@
                             success: function(resp) {
                                 //如果是yes	
                                 if (resp.code == 200) {
-                                    if (resp.data == '1') {
+                                  //  if (resp.data == '1') {
+								  if(true){
                                         //验证码判断
                                         $.ajax({
                                             type: "post",
@@ -258,7 +259,7 @@
                                         });
                                     } else {
                                         $('.vCode-erro').show();
-                                        changeCode();
+                                     //   changeCode();
                                         return;
                                     }
                                 } else if (respCode == 414) {

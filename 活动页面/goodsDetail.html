@@ -27,7 +27,6 @@
 	<script src="./js/myCommon.js?v=3"></script>
 	<script src="./js/commonShare.js?v=4"></script>
 	
-	
 	<script>
 	
 	var goodsDetailPage = new GoodsDetailPage();
@@ -167,7 +166,7 @@ function GoodsDetailPage() {
                     quantity:1
                 },
                 success: function(response) {
-				alert(window.location.href);
+				//alert(window.location.href);
                     if(response && response.length > 0) {
 
                         $("#confirmDiv").hide();
@@ -240,7 +239,7 @@ function GoodsDetailPage() {
 		}
 		.qm_li li{
 			float: left;
-			background-image: url(imgs/li_bg.png);
+			background-image: url(https://magicactivity.oss-cn-hangzhou.aliyuncs.com/spdregard/imgs/li_bg.png);
 			background-size: 100%;
 			width: 4.05rem;
 			height: 3.075rem;
@@ -281,6 +280,7 @@ function GoodsDetailPage() {
 		.span_1i1{float: left;}
 		.span_1i1 li{
 			margin-bottom: 1rem;
+			height: 1rem;
 		}
 		.span_1i2{
 			float: left;
@@ -288,18 +288,19 @@ function GoodsDetailPage() {
 		}
 		.span_1i2 li{
 			width: 8rem;
+			height: 1rem;
 			margin-bottom: 1rem;
 		}
 		.span_1i2 a{
 			text-decoration: underline;
 		}
 		.li_span{
-			height: 6rem;
+			height: 5.8rem!important;
 			-webkit-overflow-scrolling:touch;
 			overflow:auto;
 		}
 		.page_2_btn{
-			background-image: url(imgs/big_btn.png);
+			background-image: url(https://magicactivity.oss-cn-hangzhou.aliyuncs.com/spdregard/imgs/big_btn.png);
 			background-size: 100%;
 			width: 15.2rem;
 			height: 1.975rem;
@@ -321,7 +322,7 @@ function GoodsDetailPage() {
 			z-index: 9;
 		}
 		.tk_bg{
-			background-image: url(imgs/tk.png);
+			background-image: url(https://magicactivity.oss-cn-hangzhou.aliyuncs.com/spdregard/imgs/tk.png);
 			background-size: 100%;
 			width: 11rem;
 			height: 15.125rem;
@@ -336,7 +337,7 @@ function GoodsDetailPage() {
 			font-size: 0.7rem;
 		}
 		.tk_bg .class_a{
-			background-image: url(imgs/tk_btn.png);
+			background-image: url(https://magicactivity.oss-cn-hangzhou.aliyuncs.com/spdregard/imgs/tk_btn.png);
 			background-size: 100%;
 			width: 4.725rem;
 			height: 1.425rem;
@@ -353,6 +354,20 @@ function GoodsDetailPage() {
 		.bbbb{
 			right: 0.5rem;
 		}
+		.p1{width: 16rem;position: absolute;bottom: 3.5rem;text-align: center;}
+		.p1 input{width: 14rem;height: 1.5rem;line-height: 1.5rem;font-size: 0.8rem;background: #e9e9e9;border-radius: 0.2rem;padding-left: 0.5rem;text-align: center;}
+		input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
+		color: #666; 
+		} 
+		input:-moz-placeholder, textarea:-moz-placeholder { 
+		color: #666; 
+		} 
+		input::-moz-placeholder, textarea::-moz-placeholder { 
+		color: #666; 
+		} 
+		input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
+		color: #666; 
+		} 
 	</style>
 </head>
 <body>
@@ -369,7 +384,7 @@ function GoodsDetailPage() {
 
 
 		<div class="after_banner_2">
-			<img goodsResultShow="sectionIconUrl" src="imgs/yxy_zuidongni.png" alt=""/>
+			<img goodsResultShow="sectionIconUrl" src="" alt=""/>
 		</div>
 		<div class="after_span">
 			<ul class="span_1i1">
@@ -387,6 +402,9 @@ function GoodsDetailPage() {
 				<li class="li" goodsResult="goodsValidtimeInfo"></li>
 				<li class="li_span" goodsResultShow="goodsRuleInfo"></li>
 			</ul>
+		</div>
+		<div class="p1" style="display:none;">
+			<input type="tel" maxlength="16" placeholder="请输入心意码"/>
 		</div>
 
 		<div class="page_2_btn" id="confirm">

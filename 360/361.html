@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html class=" -moz-" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="photo-sphere-viewer.min.css">
+
+<script src="three.min.js"></script>
+<script src="device.js"></script>
+<script src="D.min.js"></script>
+<script src="uevent.min.js"></script>
+<script src="doT.min.js"></script>
+<script src="photo-sphere-viewer.min.js"></script>
+</head>
+
+<body style="margin:0;padding:0">
+	<div class="bg" style="display:none;">
+        <img src="https://images.mafengwo.net/mobile/images/wo/profile_bg.jpg">
+	</div>
+<div id="vr-btn" style="position:absolute;height:100%;width:100%"></div>
+<script>
+  var viewer = PhotoSphereViewer({
+    container: 'vr-btn',
+      navbar:[],
+      loading_txt:'',
+	  gyroscope:true,
+	   mousewheel: false, 
+      time_anim:false,
+    panorama: 'yingxiongbense-v1.jpg'
+  });
+</script>
+
+</body></html>

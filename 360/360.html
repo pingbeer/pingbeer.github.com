@@ -139,7 +139,11 @@
 //        panorama: 'http://ohsq4wr4p.bkt.clouddn.com/yingxiongbense-v1.jpg'
         panorama: 'http://b1-q.mafengwo.net/s11/M00/58/CC/wKgBEFpgVfOALwZyABYQ9ozAGEs96.jpeg'
     });
-    viewer.on('ready', function() {
+    viewer.on('panorama-loaded', function() {
+        viewer.doControls.update();
+        console.log(viewer.getNavbarButton("gyroscope")._onClick());
+        console.log(viewer);
+//        console.log($(viewer.navbar.items[0]).click());
 //      if(window.orientation){
 //          console.log(viewer);//.startGyroscopeControl();
 //        console.log($(".psv-gyroscope-button").html());

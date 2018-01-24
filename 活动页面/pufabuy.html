@@ -1,0 +1,916 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="Cache-Control" content="max-age=1" />
+	<title>商品购买</title>
+	<link rel="stylesheet" href="./css/basic.css">
+	<link rel="stylesheet" href="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_css/smoothness/jquery-ui-1.10.1.custom.css">
+	<link rel="stylesheet" href="./css/customDialog.css?v=2">
+    <link rel="stylesheet" href="./css/nouislider.min.css">
+	
+	<script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/jquery.min.js"></script>
+	<script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/jquery-ui-1.10.1.custom.min.js"></script>
+
+	<script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/preventClickDoubleFired.js"></script>    
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/easyJsDomUtil.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/salamaWebClientService.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/activity/common_js/lib/salama/salamaClientService.js"></script>
+    <script src="https://magicactivity.oss-cn-hangzhou.aliyuncs.com/scrm/scrm_collector.js?v=10"></script>
+
+    <script src="./myjs/lib/swiper.min.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js?v=1"></script>
+    <script src="./myjs/lib/jquery.nouislider.min.js?v=1"></script>
+
+	<script src="./myjs/lib/myCommon.js?v=1"></script>
+    <script src="./myjs/lib/customDialog.js"></script>
+	<script src="./myjs/lib/commonShare.js?v=2"></script>
+	<script src="./myjs/lib/shopCommon.js?v=1"></script>
+
+	<!-- <script src="./myjs/catalog_pro_buy.js?v=56"></script> -->
+	<script>
+	
+var catalogProBuyPage = new CatalogProBuyPage();
+
+if(window.__skipInitPage == undefined || !window.__skipInitPage) {
+    $(document).ready(function() {
+        setHtmlFontSize();
+        commonShare.initWxSetting(catalogProBuyPage.initPage,null,true,true);
+    });
+}
+
+function CatalogProBuyPage() {
+
+    var PAY_PLATFORM_WEIXIN = 1;
+    var PAY_PLATFORM_PUFA_WAP = 2;
+    var PAY_PLATFORM_PUFA_APP = 3;
+
+    var ORDER_TYPE_COMMON = 0;
+    var ORDER_TYPE_SHARE_SALE = 1;
+
+    var _this = this;
+
+    this.initPage = function() {
+
+        _this.appOrderNo = $my.getUrlParam("app_order_no");
+        _this.activityItemId = $my.getUrlParam("activity_item_id");
+        _this.orderType = $my.getUrlParam("order_type");
+
+        // Pre load backgroup-img of dialog
+        showDialog.showInfoDialog({msgInfo: "加载中"});
+        showDialog.closeDialog();
+
+        initFormInfo();
+    };
+
+    function initFormInfo() {
+		$my.showLoading();
+
+        initMenu();
+
+        // Default choose qty is 1
+        $("#choose_qty_cnt").val(1);
+        if(_this.orderType == ORDER_TYPE_SHARE_SALE) {
+            $("#item_price_module").hide();
+            $("#qty_chooser_module").hide();
+        }
+
+        $my.async.series([
+            initPayPlatform,
+            initActivityItemPayInfo,
+            initPointMoenyExchange,
+            initUserVitualAccount,
+            initVirtualMoenyExchange,
+            initChooseQtyPanel,
+            initChoosePayMethodPanel,
+            initBuy,
+            function() {
+                $('[id="page"]').removeClass('vis_h');
+                $my.hideLoading();
+            }
+        ]);
+    }
+
+    // --------------- 底部菜单 -----------------------
+    function initMenu() {
+        $('.navi_menu_index').on('click',function() {
+            window.location = './index.html';
+        });
+
+        $('.navi_menu_center').on('click',function() {
+        	$my.verifyUserInfo("user_center.html");
+        });
+    }
+    // --------------- 底部菜单 End --------------------
+
+    // --------------- 支付方式 ------------------------
+    function initPayPlatform(callback) {
+        // PayPlatform: 1-WeChat 2-PuFa 3-App
+        if(isPuFaAppClient()) {
+            _this.payPlatform = PAY_PLATFORM_PUFA_APP;
+        } else {
+            _this.payPlatform = PAY_PLATFORM_PUFA_WAP;
+        }
+
+        if(callback) {
+            callback();
+        }
+    }
+    // --------------- 支付方式 End ------------------------
+
+    // --------------- 商品详情 ------------------------
+    function initActivityItemPayInfo(callback) {
+        $my.ajax({
+            url: $my.getCloudDataServiceUrl(),
+            data: {
+                serviceType: "com.ebuy.shop.web.service.ItemService",
+                serviceMethod: "searchActivityItemPayInfo",
+                activityItemId: _this.activityItemId
+            },
+            success: function(response) {
+                if($my.string.isEmpty(response) || response == null) {
+                    $shop.showCommonErrorMsg();
+                    return;
+                }
+
+                var result = easyJsDomUtil.parseXML(response);
+                var resultData = $(result).find("resultData");
+                
+                _this.activityItemPayInfo = resultData;
+
+                var itemName = $(resultData).find("itemName").text();
+                $("#item_name").text(itemName);
+                _this.itemPriceType = $(resultData).find("priceType").text();
+                $("#item_url").attr("src", $(resultData).find("detailPicUrl").text());
+
+                initPriceInfo(resultData, callback);
+            },
+            error: function() {
+                $shop.showCommonErrorMsg();
+            }
+        });
+    }
+
+    function initPriceInfo(dataXml, callback) {
+        // Common Order
+        if(_this.orderType == ORDER_TYPE_COMMON) {
+            // Item selling price of cash
+            _this.itemPriceOfCash = $(dataXml).find("moneyPrice").text();
+            // Item selling price of point
+            _this.itemPriceOfPoint = $(dataXml).find("pointPrice").text();
+            // Item selling price of cash from point exchange
+            _this.itemPriceOfCashFromPoint = $(dataXml).find("pointMoneyPrice").text();
+
+            // Only allow money pay
+            if(_this.itemPriceType == 1) {
+                _this.payMethod = 1;
+            }
+
+            // Only allow point pay
+            if(_this.itemPriceType == 2) {
+                _this.payMethod = 2;
+            }
+
+            // Only allow money + point pay
+            if(_this.itemPriceType == 3) {
+                _this.payMethod = 3;
+            }
+
+            // Allow money pay, point pay or money + point pay
+            if(_this.itemPriceType == 4) {
+                _this.payMethod = 3;
+            }
+
+            if(callback) {
+                callback();
+            }
+        }
+
+        // Share Sale Order
+        if(_this.orderType == ORDER_TYPE_SHARE_SALE) {
+            $my.ajax({
+                url: $my.getCloudDataServiceUrl(),
+                data: {
+                    serviceType: "com.ebuy.shop.web.service.UserOrderService",
+                    serviceMethod: "searchUserOrderShareSalePrice",
+                    appOrderNo: _this.appOrderNo
+                },
+                success: function(response) {
+                    if(response && response.length > 0) {
+                        var result = easyJsDomUtil.parseXML(response);
+                        var resultCode = $(result).find('resultCode').text();
+                        var resultData = $(result).find('resultData').text();
+                        var errorMsg = $(result).find('errorMsg').text();
+
+                        if(resultCode != "0") {
+                            showDialog.showInfoDialog({title: "提示信息", msgInfo: errorMsg});
+                            return;
+                        }
+
+                        // Item selling price of cash
+                        _this.itemPriceOfCash = resultData;;
+                        // Item selling price of point
+                        _this.itemPriceOfPoint = 0;
+                        // Item selling price of cash from point exchange
+                        _this.itemPriceOfCashFromPoint = 0;
+
+                        // Allow money pay, point pay or money + point pay
+                        _this.itemPriceType = 4;
+                        _this.payMethod = 3;
+
+                        if(callback) {
+                            callback();
+                        }
+                    }
+                },
+                error: function() {
+                    $shop.showCommonErrorMsg();
+                }
+            });
+        }
+    }
+    // --------------- 商品详情 End --------------------
+
+    // --------------- 选择数量 ------------------------
+    function initChooseQtyPanel(callback) {
+        $("#choose_qty_item_price").text(_this.itemPriceOfCash);
+        setPriceInChooseQtyPanel();
+
+        $('.plus').on('click', function() {
+            var qty = Number($('#choose_qty_cnt').val());
+            if(checkIsQtyOutLimit(qty + 1)) {
+                showDialog.showInfoDialog({msgInfo: "已达到购买上限"});
+                return;
+            }
+
+            $('#choose_qty_cnt').val(qty + 1);
+
+            if(_this.itemPriceType == 4) {
+                if (_this.payMethod == 3) {
+                    _this.exchangeMoney = _this.itemPriceOfCash * (qty + 1);
+                    _this.deductedPriceOfCashFromPoint = 0;
+                    rebuildPointExchangeSlider(0, _this.itemPriceOfCash * (qty + 1));
+                }
+            }
+
+            if(_this.isShowVirtualMoneyExchangeSlider) {
+            	_this.exchangeMoney = _this.itemPriceOfCash * (qty + 1);
+                var sliderMax = (Number(_this.exchangeMoney)-1) > Number(_this.userVirAccBalance) ? _this.userVirAccBalance : (Number(_this.exchangeMoney)-1);
+            	rebuildVirtualMoneyExchangeSlider(0, sliderMax);
+            }
+
+            setPriceInChooseQtyPanel();
+        });
+
+        $('.reduce').on('click', function() {
+            var qty = Number($('#choose_qty_cnt').val());
+            if(qty <= 1) {
+                return;
+            }
+            $('#choose_qty_cnt').val(qty - 1);
+
+            if(_this.itemPriceType == 4) {
+                if (_this.payMethod == 3) {
+                    _this.exchangeMoney = _this.itemPriceOfCash * (qty - 1);
+                    _this.deductedPriceOfCashFromPoint = 0;
+
+                    rebuildPointExchangeSlider(0, _this.itemPriceOfCash * (qty - 1));
+                }
+            }
+
+            if(_this.isShowVirtualMoneyExchangeSlider) {
+            	_this.exchangeMoney = _this.itemPriceOfCash * (qty - 1);
+                var sliderMax = (Number(_this.exchangeMoney)-1) > Number(_this.userVirAccBalance) ? _this.userVirAccBalance : (Number(_this.exchangeMoney)-1);
+            	rebuildVirtualMoneyExchangeSlider(0, sliderMax);
+            }
+
+            setPriceInChooseQtyPanel();
+        });
+
+        $('#choose_qty_cnt').on("input", function() {
+            $('#choose_qty_cnt').val($('#choose_qty_cnt').val().replace(/[^\d]/g,''));
+
+            var qty = Number($('#choose_qty_cnt').val());
+            if(qty < 0) {
+                qty = 1;
+                $('#choose_qty_cnt').val(qty);
+            }
+
+            var allowLimit = getQtyOutLimit();
+            if(allowLimit > 0 && qty > allowLimit) {
+                showDialog.showInfoDialog({msgInfo: "目前该商品最多只能购买" + allowLimit + "个"});
+                qty = allowLimit;
+                $('#choose_qty_cnt').val(allowLimit);
+            }
+
+            if(_this.itemPriceType == 4) {
+                if (_this.payMethod == 3) {
+                    _this.exchangeMoney = _this.itemPriceOfCash * qty;
+                    _this.deductedPriceOfCashFromPoint = 0;
+
+                    if(qty > 0) {
+                        $("#point_deduction_module").show();
+
+                        rebuildPointExchangeSlider(0, _this.itemPriceOfCash * qty);
+                    } else {
+                        $("#point_deduction_module").hide();
+                    }
+                }
+            }
+
+            if(_this.isShowVirtualMoneyExchangeSlider) {
+            	_this.exchangeMoney = _this.itemPriceOfCash * qty;
+                var sliderMax = (Number(_this.exchangeMoney)-1) > Number(_this.userVirAccBalance) ? _this.userVirAccBalance : (Number(_this.exchangeMoney)-1);
+            	rebuildVirtualMoneyExchangeSlider(0, sliderMax);
+            }
+
+            setPriceInChooseQtyPanel();
+        });
+
+        if(callback) {
+            callback();
+        }
+    }
+
+    function setPriceInChooseQtyPanel() {
+        var qty = Number($("#choose_qty_cnt").val());
+
+        if(_this.payMethod == 1) {
+            $("#choose_qty_item_price").text(Number(_this.itemPriceOfCash).toFixed(2) + "元");
+            $("#choose_qty_total_price").text((_this.itemPriceOfCash * qty).toFixed(2) + "元");
+        }
+
+        if(_this.payMethod == 2) {
+            $("#choose_qty_item_price").text(_this.itemPriceOfPoint + "积分");
+            $("#choose_qty_total_price").text((_this.itemPriceOfPoint * qty)  + "积分");
+        }
+
+        if(_this.payMethod == 3) {
+            if(_this.itemPriceType == 4) {
+                $("#choose_qty_item_price").text(Number(_this.itemPriceOfCash).toFixed(2) + "元");
+                $("#choose_qty_total_price").text((_this.itemPriceOfCash * qty).toFixed(2) + "元");
+            } else {
+                $("#choose_qty_item_price").text(Number(_this.itemPriceOfCash).toFixed(2) + "元+" + _this.itemPriceOfPoint + "积分");
+                $("#choose_qty_total_price").text((_this.itemPriceOfCash * qty).toFixed(2) + "元+" + (_this.itemPriceOfPoint * qty) + "积分");
+            }
+        }
+    }
+
+    function getQtyOutLimit() {
+        var userLimitBuy = _this.activityItemPayInfo.find("userLimitBuy").text();
+        userLimitBuy = Number(userLimitBuy) < 0 ? 0 : Number(userLimitBuy);
+        var userLimitDailyBuy = _this.activityItemPayInfo.find("userLimitDailyBuy").text();
+        userLimitDailyBuy = Number(userLimitDailyBuy) < 0 ? 0 : Number(userLimitDailyBuy);
+        var itemDailyLimitBuy = _this.activityItemPayInfo.find("itemDailyLimitBuy").text();
+        itemDailyLimitBuy = Number(itemDailyLimitBuy) < 0 ? 0 : Number(itemDailyLimitBuy);
+
+        var userBuyingItemCnt = _this.activityItemPayInfo.find("userBuyingItemCnt").text();
+        userBuyingItemCnt = Number(userBuyingItemCnt) < 0 ? 0 : Number(userBuyingItemCnt);
+        var userBuyingItemDailyCnt = _this.activityItemPayInfo.find("userBuyingItemDailyCnt").text();
+        userBuyingItemDailyCnt = Number(userBuyingItemDailyCnt) < 0 ? 0 : Number(userBuyingItemDailyCnt);
+        var buyingItemDailyCnt = _this.activityItemPayInfo.find("buyingItemDailyCnt").text();
+        buyingItemDailyCnt = Number(buyingItemDailyCnt) < 0 ? 0 : Number(buyingItemDailyCnt);
+
+        var allowUserLimitBuy = userLimitBuy > 0 ? Number(userLimitBuy) - Number(userBuyingItemCnt) : 9999999;
+        var allowUserLimitDailyBuy = userLimitDailyBuy > 0 ? Number(userLimitDailyBuy) - Number(userBuyingItemDailyCnt) : 9999999;
+        var allowItemDailyLimitBuy = itemDailyLimitBuy > 0 ? Number(itemDailyLimitBuy) - Number(buyingItemDailyCnt) : 9999999;
+
+        return Math.min.apply(Math, [allowUserLimitBuy, allowUserLimitDailyBuy, allowItemDailyLimitBuy]);
+    }
+
+    function checkIsQtyOutLimit(qty) {
+        var allowLimit = getQtyOutLimit();
+        return allowLimit > 0 && Number(qty) > allowLimit;
+    }
+    // --------------- 选择数量 End ----------------------
+
+    // --------------- 选择支付方式 ----------------------
+    function initChoosePayMethodPanel(callback) {
+        if(callback) {
+            callback();
+        }
+    }
+    // --------------- 选择支付方式 End ------------------
+
+    // --------------- 积分抵扣 --------------------------
+    function initPointMoenyExchange(callback) {
+        if(_this.itemPriceType == 4 && _this.itemPriceOfCash > 0) {
+            $("#point_deduction_module").show();
+
+            _this.exchangeMoney = _this.itemPriceOfCash;
+            _this.deductedPriceOfCashFromPoint = 0;
+
+            createPointExchangeSlider(0, _this.itemPriceOfCash);
+
+            setPriceInChooseQtyPanel();
+        }
+
+        if(callback) {
+            callback();
+        }
+    }
+
+    function createPointExchangeSlider(min, max) {
+        if(Number(max) > 0) {
+            var slider = document.getElementById('point_slider');
+
+            noUiSlider.create(slider, {
+                start: 0,
+                step: 1,
+                behaviour: 'tap',
+                connect: [true, false],
+                range: {
+                    'min':Number(min),
+                    'max':Number(max)
+                }
+            });
+
+            slider.noUiSlider.on('update', function(values, handle) {
+                var qty = Number($('#choose_qty_cnt').val());
+                var sliderMoney = Number(values[handle]);
+
+                _this.exchangeMoney = _this.itemPriceOfCash * qty - sliderMoney;
+                _this.deductedPriceOfCashFromPoint = sliderMoney;
+
+                $('[id="point_slider_val"]').html(sliderMoney);
+
+                if(_this.isShowVirtualMoneyExchangeSlider) {
+                    var sliderMax = (Number(_this.exchangeMoney)-1) > Number(_this.userVirAccBalance) ? _this.userVirAccBalance : (Number(_this.exchangeMoney)-1);
+                	rebuildVirtualMoneyExchangeSlider(0, sliderMax- sliderMoney);
+                }
+
+                setPriceInChooseQtyPanel();
+            });
+
+            $("#point_slider_start").text(min);
+            $("#point_slider_ending").text(max);
+        }
+    }
+
+    function rebuildPointExchangeSlider(min, max) {
+        var pointSlider = document.getElementById('point_slider');
+        if(pointSlider.noUiSlider) {
+            pointSlider.noUiSlider.destroy();
+        }
+        if(max - min > 0 && _this.itemPriceType == 4) {
+            $("#point_deduction_module").show();
+            createPointExchangeSlider(min, max);
+        } else {
+            $("#point_deduction_module").hide();
+        }
+    }
+    // --------------- 积分抵扣 End ----------------------
+
+    // --------------- 用户礼券币 -------------------
+    function initUserVitualAccount(callback) {
+        $my.ajax({
+            url: $my.getCloudDataServiceUrl(),
+            data: {
+                serviceType: "com.ebuy.shop.web.service.UserGiftPointService",
+                serviceMethod: "searchAvailableGiftPoint"
+            },
+            success: function(response) {
+                if(response && response.length > 0) {
+                    var result = easyJsDomUtil.parseXML(response);
+                    var resultCode = $(result).find('resultCode').text();
+                    var resultData = $(result).find('resultData').text();
+                    var errorMsg = $(result).find('errorMsg').text();
+
+                    if(resultCode != "0") {
+                        console.log("获取礼券币信息失败");
+                        console.log(errorMsg);
+                        return;
+                    }
+
+                    _this.userVirAccBalance = resultData;
+                    
+                }else{
+                    console.log("获取礼券币信息失败");
+                }
+
+                if(callback) {
+                    callback();
+                }
+            },
+            error: function(response) {
+                if(callback){
+                    callback();
+                }
+            }
+        });
+    }
+    // --------------- 用户礼券币 End -------------------
+
+    // --------------- 礼券币抵扣 --------------------------
+    function initVirtualMoenyExchange(callback) {
+        _this.deductedPriceOfCashFromVirCur = 0;
+
+        _this.isShowVirtualMoneyExchangeSlider = Number(_this.userVirAccBalance) > 0 && Number(_this.itemPriceOfCash) > 0;
+//        _this.isShowVirtualMoneyExchangeSlider = true;
+        if(_this.isShowVirtualMoneyExchangeSlider) {
+            $("#virtual_cur_deduction_module").show();
+            $("#virtual_cash_balance").text($my.string.formatAmount(_this.userVirAccBalance,0));
+            var sliderMax = (Number(_this.itemPriceOfCash)-1) > Number(_this.userVirAccBalance) ? _this.userVirAccBalance : (Number(_this.itemPriceOfCash)-1);
+
+            var virtualSlider = document.getElementById('virtual_slider');
+            if(virtualSlider.noUiSlider) {
+                rebuildVirtualMoneyExchangeSlider(0, sliderMax);
+            } else {
+                createVirtualMoneyExchangeSlider(0, sliderMax);
+            }
+
+            setPriceInChooseQtyPanel();
+        }
+
+        if(callback) {
+            callback();
+        }
+    }
+
+    function createVirtualMoneyExchangeSlider(min, max) {
+        if(Number(max) > 0) {
+            var slider = document.getElementById('virtual_slider');
+
+            noUiSlider.create(slider, {
+                start: 0,
+                step: 1,
+                behaviour: 'tap',
+                connect: [true, false],
+                range: {
+                    'min':Number(min),
+                    'max':Number(max)
+                }
+            });
+
+            slider.noUiSlider.on('update', function(values, handle) {
+                var qty = Number($('#choose_qty_cnt').val());
+                var sliderMoney = Number(values[handle]);
+
+                _this.deductedPriceOfCashFromPointVirCur = sliderMoney;
+
+                $('[id="virtual_slider_val"]').html(sliderMoney);
+
+                setPriceInChooseQtyPanel();
+            });
+
+            $("#virtual_slider_start").text(min);
+            $("#virtual_slider_ending").text(max);
+        }
+    }
+
+    function rebuildVirtualMoneyExchangeSlider(min, max) {
+        var virtualSlider = document.getElementById('virtual_slider');
+        if(virtualSlider.noUiSlider) {
+            virtualSlider.noUiSlider.destroy();
+        }
+        if(max - min > 0) {
+            $("#virtual_cur_deduction_module").show();
+            createVirtualMoneyExchangeSlider(min, max);
+        } else {
+            $("#virtual_cur_deduction_module").hide();
+        }
+    }
+    // --------------- 礼券币抵扣 End ----------------------
+
+    // --------------- 立即购买 --------------------------
+    function initBuy(callback) {
+        if(Number(_this.itemPriceOfCash) + Number(_this.itemPriceOfCashFromPoint) == 0) {
+            $("#buy_btn").text("立即领取");
+        }
+
+        $("#buy_btn").unbind("click").bind("click", function() {
+      payOrder();
+        });
+        $("#buy_btn").show();
+
+        $(".pay_style_close").unbind("click").bind("click", function() {
+            $('#pay_type_0').hide();
+            $('#m_pay_style').removeClass('m_show_paystyle');
+        });
+
+        if(callback) {
+            callback();
+        }
+    }
+
+    function payOrder() {
+        $my.showLoading();
+        var qty = Number($("#choose_qty_cnt").val());
+
+        if(qty <= 0) {
+		qty=1;
+       //     showDialog.showInfoDialog({msgInfo: "购买数量必须大于0"});
+         //   $my.hideLoading();
+          //  return;
+        }
+
+        var spdPointMoney = 0;
+        if(_this.itemPriceType == 1) {
+            spdPointMoney = 0;
+        }
+        if(_this.itemPriceType == 2 || _this.itemPriceType == 3) {
+            spdPointMoney = _this.itemPriceOfCashFromPoint * qty;
+        }
+        if(_this.itemPriceType == 4) {
+            spdPointMoney = _this.deductedPriceOfCashFromPoint;
+        }
+
+        var serviceMethod;
+        if(_this.orderType == ORDER_TYPE_COMMON) {
+            serviceMethod = "commitCommonOrder";
+        }
+        if(_this.orderType == ORDER_TYPE_SHARE_SALE) {
+            serviceMethod = "commitShareSaleOrder";
+        }
+
+        $my.ajax({
+            url: $my.getCloudDataServiceUrl(),
+            data: {
+                serviceType: "com.ebuy.shop.web.service.UserOrderPayService",
+                serviceMethod: serviceMethod,
+                payPlatform: _this.payPlatform,
+                payMethod: _this.payMethod,
+                appOrderNo: _this.appOrderNo,
+                buyItemQty: Number($("#choose_qty_cnt").val()),
+                activityItemId: _this.activityItemId,
+                spdPointMoney: spdPointMoney,
+                giftPointMoney: _this.deductedPriceOfCashFromPointVirCur
+            },
+            success: function(response) {
+                try {
+
+                    $my.hideLoading();
+                    if(response && response.length > 0) {
+                        var result = easyJsDomUtil.parseXML(response);
+                        var resultCode = $(result).find('resultCode').text();
+                        var resultData = $(result).find('resultData');
+                        var errorMsg = $(result).find('errorMsg').text();
+
+                        if(resultCode == "-10") {
+                            window.location.href = "./common_busy.html";
+                            return;
+                        }
+                        
+                        if(resultCode != "0") {
+                        	if(resultCode == "11715"){
+                        		showDialog.showInfoDialog({msgInfo: "每人仅限享一次优惠购买权益", btnOk: function() {
+                        			$my.verifyUserInfo("user_order_list.html");
+                        		}});
+                        		return;
+                        	}
+                            showDialog.showInfoDialog({msgInfo: $my.string.isEmpty(errorMsg) ? "系统正忙，操作失败" : errorMsg, btnOk: function() {
+                                $my.verifyUserInfo("user_order_list.html");
+                            }});
+                            return;
+                        }
+
+                        var totalFee = Number($(resultData).find("totalFee").text());
+
+                        if(totalFee == 0) {
+                            // 0 yuan sale. Buy successfully then redirect to index
+                            showDialog.showInfoDialog({msgInfo: "购买成功", btnOk: function() {
+                                $my.verifyUserInfo("user_coupon_list.html");
+                            }});
+                            return;
+                        }
+
+                        if(typeof _this.deductedPriceOfCashFromPointVirCur == "undefined") {
+                            _this.deductedPriceOfCashFromPointVirCur = 0;
+                        }
+
+                        if(totalFee == Number(_this.deductedPriceOfCashFromPointVirCur)) {
+                            // User virtual currency deduct all price
+                            showDialog.showInfoDialog({msgInfo: "购买成功", btnOk: function() {
+                                $my.verifyUserInfo("user_coupon_list.html");
+                            }});
+                            return;
+                        }
+
+                        if(totalFee > 0 && totalFee > Number(_this.deductedPriceOfCashFromPointVirCur)) {
+                            if (_this.payPlatform == PAY_PLATFORM_PUFA_WAP) {
+                                var payData = $(resultData).find("wapPayData").text();
+                                var paySign = $(resultData).find("wapPaySign").text();
+                                var payUrl = $(resultData).find("wapPayUrl").text();
+
+                                $("#pay_data").val(payData);
+                                $("#pay_sign").val(paySign);
+                                $("#pay_form").attr("action", payUrl).submit();
+                            } else if (_this.payPlatform == PAY_PLATFORM_PUFA_APP) {
+                                showDialog.showInfoDialog({
+                                    msgInfo: "查看我的订单",
+                                    btnOk: function() {
+                                        $my.verifyUserInfo("user_order_list.html");
+                                    }
+                                });
+
+                                var appParam = {};
+                                appParam.bigOrderNo = $(resultData).find("appTradeOrderId").text();
+                                appParam.bigOrderReqNo = $(resultData).find("appTradeOrderId").text();
+                                appParam.bigOrderAmt = Number($(resultData).find("appPayAmt").text());
+                                appParam.goodsMsg = $(resultData).find("appPayGoodsMsg").text();
+                                appParam.instInfo = $(resultData).find("appPayInsInfo").text();
+                                appParam.instAmt = Number($(resultData).find("appPayInsAmt").text());
+                                if(Number($(resultData).find("appPayExchangeRateAmt").text()) > 0) {
+                                	appParam.exchangeRateAmt = $(resultData).find("appPayExchangeRateAmt").text();
+                                }
+                                appParam.serviceCode = $(resultData).find("appPayServiceCode").text();
+                                appParam.supportCardType = $(resultData).find("appPaySupportCardType").text();
+                                appParam.secondServiceCode = $(resultData).find("appPaySecondServiceCode").text();
+                                appParam.moneyPayment = $(resultData).find("appPayMoneyPayment").text();
+
+                                var orderJson = JSON.stringify(appParam);
+
+                                window.jsspdb.orderPay(orderJson);
+                            } else {
+                                showDialog.showInfoDialog({msgInfo: "操作失败，支付平台错误", btnOk: function() {
+                                    $my.verifyUserInfo("user_order_list.html");
+                                }});
+                            }
+                        }
+
+                    } else {
+                    	window.location.href = "./common_busy.html";
+                    }
+
+                } catch(e) {
+                    console.log(e);
+                    window.location.href = "./common_busy.html";
+                }
+            },
+            error: function() {
+                $my.hideLoading();
+                window.location.href = "./common_busy.html";
+            }
+        });
+    }
+
+    // --------------- 立即购买 End ----------------------
+}
+	</script>
+<style>
+.pro_buy_1{font-size:0.75rem;color:#a98f5c;line-height:1rem;}
+.pro_buy_1 span{padding:0.5rem;font-size:0.75rem;color:#a98f5c;line-height:1rem;}
+.pro_buy_2{border-top:0.25rem solid #f0f0f0;border-bottom:0.25rem solid #f0f0f0;padding:0.5rem;font-size:0.65rem;line-height:1rem;}
+.pro_buy_price{padding:0.2rem 0;}
+.pro_buy_price .fr{color:#CC0001;font-size:0.8rem;font-weight:bold;}
+.pro_buy_count{padding:0.2rem 0;}
+.reduce{width:1.5rem;height:1rem;background-image:url('https://spdticket-prod.oss-cn-hangzhou.aliyuncs.com/imgs/icon/icon_reduce.png');background-size:1.0rem 1.0rem;background-position:center center;background-repeat:no-repeat;}
+.plus{width:1.5rem;height:1rem;background-image:url('https://spdticket-prod.oss-cn-hangzhou.aliyuncs.com/imgs/icon/icon_plus.png');background-size:1.0rem 1.0rem;background-position:center center;background-repeat:no-repeat;}
+.count{width:1.6rem;border:1px solid #ddd;text-align:center;vertical-align:top;height:0.9rem;border-radius:0.2rem;}
+.count .box{width:100%;height:0.9rem;text-align:center;font-size:0.7rem;color:#666;line-height:0.9rem}
+
+.pro_buy_3{padding:0.5rem;}
+.title{font-size:0.7rem;line-height:1rem;color:#888;margin-bottom:0.3rem;}
+.pro_buy_paystyle{background:#f0f0f0;font-size:0.65rem;}
+.pro_buy_paystyle ul li{padding:0.5rem 0.2rem 0.5rem 1.8rem;background-image:url('https://spdticket-prod.oss-cn-hangzhou.aliyuncs.com/imgs/icon/icon_radio.png');background-repeat:no-repeat;background-position:0.5rem center;background-size:0.9rem 0.9rem;line-height:1rem;height:1rem;position:relative;}
+.pro_buy_paystyle ul li.on{background-color:#A98F5C;color:#fff;background-image:url('https://spdticket-prod.oss-cn-hangzhou.aliyuncs.com/imgs/icon/icon_radio_on.png')}
+.buy_paystyle_2{position:absolute;right:0;top:0.5rem;right:0.2rem;}
+
+.pro_buy_total{padding:0.2rem 0;}
+.pro_buy_total .fr{color:#CC0001;}
+
+.pro_buy_4{padding:0.5rem;position:relative;}
+.pro_buy_4_item{position:relative;height:1.4rem;line-height:1.4rem;position:relative;margin:0 1.5rem;}
+.jf_reduce{width:1.2rem;height:1.2rem;background-image:url('https://spdticket-prod.oss-cn-hangzhou.aliyuncs.com/imgs/icon/icon_reduce.png');background-size:1.1rem 1.1rem;background-position:center center;background-repeat:no-repeat;position:absolute;left:0;top:0;}
+.jf_box{margin:0 1.4rem;border:1px solid #ccc;border-radius:0.2rem;text-align:center;font-size:0.65rem;line-height:1.2rem;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.jf_plus{width:1.2rem;height:1.2rem;background-image:url('https://spdticket-prod.oss-cn-hangzhou.aliyuncs.com/imgs/icon/icon_plus.png');background-size:1.1rem 1.1rem;background-position:center center;background-repeat:no-repeat;position:absolute;right:0;top:0;}
+
+.pro_buy_4_tips{font-size:0.6rem;text-align:center;line-height:0.9rem;margin-top:0.2rem;color:#CC0001;}
+
+.m_pay_style{width:100%;position:fixed;z-index:102;background:#fff;left:0;bottom:0;-webkit-transform:translateY(100%);transform:translateY(100%);-webkit-transition:all 300ms linear;transition:all 300ms linear;}
+.m_show_paystyle{-webkit-transform:translateY(0%);transform:translateY(0%);-webkit-transition:all 300ms linear;transition:all 300ms linear;}
+.m_pay_style .pay_style_wrap{padding:0.5rem;position:relative;}
+.pay_style_title{font-size:0.8rem;color:#333;line-height:1.5rem;margin-bottom:0.2rem;}
+.pay_style_close{width:1.2rem;height:1.2rem;position:absolute;right:0.8rem;top:0.7rem;background-image:url('https://magicactivity.oss-cn-hangzhou.aliyuncs.com/pgqck/icon_close_gray.png');background-repeat:no-repeat;background-position:center center;background-size:0.6rem 0.6rem;}
+.pay_style_list ul li{padding:0.5rem 0.5rem 0.5rem 1.6rem;position:relative;height:1.2rem;line-height:1.2rem;overflow:hidden;font-size:0.7rem;color:#666;background-repeat:no-repeat;background-position:0 center;}
+.pay_style_weixin{background-image:url('https://magicactivity.oss-cn-hangzhou.aliyuncs.com/pgqck/pay_icon/weixin.png');}
+.pay_style_spd{background-image:url('https://spdticket-prod.oss-cn-hangzhou.aliyuncs.com/imgs/xiaopu_pay.png');}
+.pay_style_zhongchou{background-image:url('https://magicactivity.oss-cn-hangzhou.aliyuncs.com/pgqck/pay_icon/zhongchou.png');}
+.pay_style_list ul li:after{background-image:url('https://magicactivity.oss-cn-hangzhou.aliyuncs.com/pgqck/icon_arrow_right.png');background-size:0.4rem 0.65rem;background-position:right center;background-repeat:no-repeat;cursor:pointer;width:0.5rem;position:absolute;right:0.3rem;content:'';top:50%;height:1.3rem;margin-top:-0.65rem;}
+
+.slider{width:100%;height:14px;line-height:14px;position: relative;border-radius:2px;}
+.slider .ui-state-default{background:#A98F5C;width:1.5rem;height:1.5rem;border-radius:0;border:none;top:-0.15rem;margin-left:-0.1rem;}
+.slider_start{font-size:0.5rem;position: absolute;left:0;bottom:0;line-height:0.7rem;}
+.slider_ending{font-size:0.5rem;position: absolute;right:0;bottom:0;line-height:0.7rem;}
+</style>
+</head>
+<body>
+	<div class="page vis_h" id="page">
+
+		<!-- 商品详细start -->
+		<div class="m_catalog_pro_buy mb24">
+			<div class="pro_buy_1">
+                <img src="" alt="" id="item_url">
+                <span id="item_name"></span>
+			</div>
+			<div class="pro_buy_2">
+				<div class="pro_buy_price clearfix" id="item_price_module">
+					<div class="fl">
+						单价
+					</div>
+					<div class="fr" id="choose_qty_item_price">
+					</div>
+				</div>
+				<div class="pro_buy_count clearfix" id="qty_chooser_module">
+					<div class="fl">
+						数量
+					</div>
+					<div class="fr">
+						<span class="reduce"></span>
+						<span class="count">
+							<input type="text" class="box" value="1" maxlength="3" id="choose_qty_cnt">
+						</span>
+						<span class="plus"></span>
+					</div>
+				</div>
+				<div class="pro_buy_total clearfix">
+					<div class="fl">总计</div>
+					<div class="fr" id="choose_qty_total_price"></div>
+				</div>
+			</div>
+			<div class="pro_buy_3" style="display: none;">
+				<div class="title">请选择支付方式</div>
+				<div class="pro_buy_paystyle">
+					<ul>
+						<li type='money' id="choose_pay_method_money" style="display: none;"> <!--addClass(on)-->
+							<input type="hidden">
+							<div class="buy_paystyle_1">现金</div>
+							<div class="buy_paystyle_2" id="choose_pay_method_money_price"></div>
+						</li>
+						<li type="point" id="choose_pay_method_point" style="display: none;">
+							<input type="hidden">
+							<div class="buy_paystyle_1">积分</div>
+							<div class="buy_paystyle_2" id="choose_pay_method_point_price"></div>
+						</li>
+						<li type="moneyPoint" id="choose_pay_method_money_point" style="display: none;">
+							<input type="hidden">
+							<div class="buy_paystyle_1">现金+积分</div>
+							<div class="buy_paystyle_2" id="choose_pay_method_money_point_price"></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="pro_buy_4" id="point_deduction_module" style="display:none">
+				<div class="pro_buy_4_item">
+                    <div id="point_slider" class="slider"></div>
+                    <span class="slider_start" id="point_slider_start"></span>
+                    <span class="slider_ending" id="point_slider_ending"></span>
+				</div>
+                <div class="pro_buy_4_tips">积分抵扣现金：<span id="point_slider_val">0</span>元</div>
+			</div>
+			<div class="pro_buy_4" id="virtual_cur_deduction_module" style="display:none">
+				<div class="pro_buy_4_item">
+                    <div id="virtual_slider" class="slider"></div>
+                    <span class="slider_start" id="virtual_slider_start"></span>
+                    <span class="slider_ending" id="virtual_slider_ending"></span>
+				</div>
+                <div class="pro_buy_4_tips" id="slider_1">礼券币抵扣现金：<span id="virtual_slider_val">0</span>元</div>
+                <div class="pro_buy_4_tips" id="slider_2">(已激活礼券币余额：<span id="virtual_cash_balance"></span>枚)</div>
+            </div>
+		</div>
+		<!-- 商品详细end -->
+
+		<!-- 菜单start -->
+		<div class="m_navi_menu">
+			<div class="clearfix">
+				<div class="navi_menu_index">
+					<span>首页</span>
+				</div>
+				<div class="navi_menu_center">
+					<span>我的</span>
+				</div>
+				<div class="navi_menu_buyfast" onclick="payOrder();" >
+					立即购买
+				</div>
+			</div>
+		</div>
+		<!-- 菜单end -->
+
+        <!-- 支付方式 -->
+        <div class="m_pay_style" id="m_pay_style">
+            <div class="pay_style_wrap">
+                <span class="pay_style_close"></span>
+                <div class="pay_style_title">
+                    选择支付方式
+                </div>
+                <div class="pay_style_list">
+                    <ul>
+                        <!-- 小浦支付 -->
+                        <li id="pay_type_0" class="pay_style_spd"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+	</div>
+	
+	<div class="overLayer" id="overLayer" style="display:none"></div>
+
+    <!-- 支付 -->
+    <form action="" id="pay_form" style="display: none;" method="post">
+        <input type="hidden" name="data" id="pay_data"/>
+        <input type="hidden" name="sign" id="pay_sign"/>
+    </form>
+</body>
+</html>

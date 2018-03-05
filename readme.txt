@@ -1,47 +1,7 @@
-Ä£¿é»¯Ç°¶Ë×é¼ş
-layUI  http://www.layui.com/
-
-KISSY - A Powerful JavaScript Framework
-
-
-
-&&&&&&&&&&&&&&&&
-SeaJs±»ÑÏÖØÍÂ²Û¡£²»Ö÷ÕÅÑ§Ï°
-
- Sea.jsÊÇ°¢Àï°Í°ÍµÄÇ°¶ËÄ£¿é»¯¿ª·¢¿ò¼Ü,
-seaJs http://seajs.org/docs/
-
-http://seajs.org/docs/#docs
-
-&&&&&&&&&&&&&&&&&&&&&&&
-
 
 http://backbonejs.org/
-
-
-http://alibaba.github.io/weex/  °¢Àï°Í°ÍµÄweex Ä£¿é»¯Ç°¶Ë¹¤¾ß
-
-ReactJSÖĞÎÄµØÖ·£ºhttp://reactjs.cn/react/docs/getting-started.html   reactJs
-
-https://github.com/seajs/seajs/issues/547 Ç°¶ËÄ£¿é»¯ÎÊÌâ½â¾ö·½Ê½
-
-    layerµ¯²ã×é¼ş
-    layDateÈÕÆÚ¿Ø¼ş
-    layPage·ÖÒ³×é¼ş
-    layTplÄ£°æÒıÇæ
-
-	
-	LABjs¡¢RequireJS¡¢SeaJS 
-	¡£LABjs ÊÇÒ»¸öÎÄ¼ş¼ÓÔØÆ÷¡£
-
-RequireJS ºÍ SeaJS ÔòÊÇÄ£¿é¼ÓÔØÆ÷£¬³«µ¼µÄÊÇÒ»ÖÖÄ£¿é»¯¿ª·¢ÀíÄî£¬ºËĞÄ¼ÛÖµÊÇÈÃ JavaScript µÄÄ£¿é»¯¿ª·¢±äµÃ¸ü¼òµ¥×ÔÈ»¡£
-	http://www.w3school.com.cn/
-CSS
-
-http://purecss.io/    cssÑùÊ½  ×î»ù±¾³£ÓÃµ½µÄ¡£·Ç³£Ç¿´ó
-
-Êé¼®£º
-
-ÓÃ angularJs ¿ª·¢ÏÂÒ»´úÓ¦ÓÃ
-git remote -v ²é¿´µ±Ç°µÄÔ¶³Ì²Ö¿â°æ±¾
-
+http://alibaba.github.io/weex/  é˜¿é‡Œå·´å·´çš„weex æ¨¡å—åŒ–å‰ç«¯å·¥å…·
+ReactJSä¸­æ–‡åœ°å€ï¼šhttp://reactjs.cn/react/docs/getting-started.html   reactJs
+https://github.com/seajs/seajs/issues/547 å‰ç«¯æ¨¡å—åŒ–é—®é¢˜è§£å†³æ–¹å¼
+RequireJS å’Œ SeaJS åˆ™æ˜¯æ¨¡å—åŠ è½½å™¨ï¼Œå€¡å¯¼çš„æ˜¯ä¸€ç§æ¨¡å—åŒ–å¼€å‘ç†å¿µï¼Œæ ¸å¿ƒä»·å€¼æ˜¯è®© JavaScript çš„æ¨¡å—åŒ–å¼€å‘å˜å¾—æ›´ç®€å•è‡ªç„¶ã€‚
+http://purecss.io/    cssæ ·å¼  æœ€åŸºæœ¬å¸¸ç”¨åˆ°çš„ã€‚éå¸¸å¼ºå¤§
